@@ -11,21 +11,21 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
         /// <summary>
         /// Total number of tests that are part of the run
         /// </summary>
-        long TotalTests { get; set; }
+        public long TotalTests { get; set; }
 
         /// <summary>
         /// Total number of tests that failed
         /// </summary>
-        long TotalFailed { get; set; }
+        public long TotalFailed { get; set; }
 
         /// <summary>
         /// Total number of tests that were skipped
         /// </summary>
-        long TotalSkipped { get; set; }
+        public long TotalSkipped { get; set; }
 
         /// <summary>
         /// Total execution time
         /// </summary>
-        TimeSpan TotalExecutionTime { get; set; }
+        public TimeSpan TotalExecutionTime { get; set; }
     }
 }

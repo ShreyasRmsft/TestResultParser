@@ -20,6 +20,7 @@
         /// <inheritdoc />
         public void Error(string error)
         {
+            // TODO: In all Info, Error, Verbose and Warning, have a check for if that verbosity is enabled or not.
             throw new NotImplementedException();
         }
 

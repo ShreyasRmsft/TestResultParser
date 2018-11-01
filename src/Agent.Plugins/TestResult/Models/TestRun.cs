@@ -10,6 +10,12 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
     /// </summary>
     public class TestRun
     {
+        public TestRun(Collection<TestResult> testResults, TestRunSummary testRunSummary)
+        {
+            this.TestResults = testResults;
+            this.TestRunSummary = testRunSummary;
+        }
+
         /// <summary>
         /// All the results associated with the test run 
         /// </summary>
