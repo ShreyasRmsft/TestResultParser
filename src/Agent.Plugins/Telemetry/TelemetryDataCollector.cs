@@ -18,7 +18,7 @@
         /// <inheritdoc />
         public void AddProperty(string key, object value, bool aggregate = false)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

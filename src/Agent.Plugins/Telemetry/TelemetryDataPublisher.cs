@@ -9,7 +9,7 @@
         /// <inheritdoc />
         public void PublishTelemetry(IDictionary<string, object> properties)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

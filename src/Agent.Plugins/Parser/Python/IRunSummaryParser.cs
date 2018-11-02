@@ -8,8 +8,8 @@
         /// Parses data to output run summary.
         /// </summary>
         /// <param name="data">Data to be passed.</param>
-        /// <param name="runSummary">Run summary.</param>
-        /// <returns>Data to be parsed.</returns>
-        TestRunSummary Parse(string data, TestRunSummary runSummary);
+        /// <param name="partialTestRunSummary">Partial test run summary.</param>
+        /// <returns>Test run summary.</returns>
+        TestRunSummary Parse(string data, TestRunSummary partialTestRunSummary);
     }
 }

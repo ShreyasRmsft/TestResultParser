@@ -19,10 +19,5 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
         /// Result associated with the Test Case
         /// </summary>
         public TestOutcome Outcome { get; set; } = TestOutcome.None;
-
-        /// <summary>
-        /// Time taken by the test case to run
-        /// </summary>
-        public TimeSpan ExecutionTime { get; set; } = TimeSpan.Zero;
     }
 }

@@ -22,13 +22,12 @@
         public void Error(string error)
         {
             // TODO: In all Info, Error, Verbose and Warning, have a check for if that verbosity is enabled or not.
-            throw new NotImplementedException();
         }
 
         /// <inheritdoc />
         public void Info(string text)
         {
-            throw new NotImplementedException();
+
         }
 
         /// <inheritdoc />
@@ -40,13 +39,13 @@
         /// <inheritdoc />
         public void Verbose(string text)
         {
-            throw new NotImplementedException();
+
         }
 
         /// <inheritdoc />
         public void Warning(string text)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
