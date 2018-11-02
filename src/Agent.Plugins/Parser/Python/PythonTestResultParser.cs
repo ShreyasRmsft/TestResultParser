@@ -26,12 +26,12 @@
         {
         }
 
-        internal PythonTestResultParser(ITestRunManager testRunManager, IResultParser resultParser, IRunSummaryParser runSummaryParser, ITelemetryDataCollector telemetryCollector, IDiagnosticDataCollector diagnosticsCollector)
+        internal PythonTestResultParser(ITestRunManager testRunManager, IResultParser resultParser, IRunSummaryParser runSummaryParser, ITelemetryDataCollector telemetryDataCollector, IDiagnosticDataCollector diagnosticDataCollector)
         {
             // TODO: What happens when stream ends and we haven't yet received the test run summary but there are few test results present. In this case, we should report this inconsistency to telemetry and diagnostics. But we are not getting any call on unsubscribe.
             this.testRunManager = testRunManager;
-            this.telemetryDataCollector = telemetryCollector;
-            this.diagnosticDataCollector = diagnosticsCollector;
+            this.telemetryDataCollector = telemetryDataCollector;
+            this.diagnosticDataCollector = diagnosticDataCollector;
             this.resultParser = resultParser;
             this.runSummaryParser = runSummaryParser;
             this.state = ParserState.WaitingForResultOrSummary;

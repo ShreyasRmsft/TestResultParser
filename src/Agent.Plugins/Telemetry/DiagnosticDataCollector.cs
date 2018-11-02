@@ -6,6 +6,7 @@
 
     public class DiagnosticDataCollector : IDiagnosticDataCollector
     {
+        // TODO: Should diagnosticDataCollector be in telemetry folder? If not move it.
         private static IDiagnosticDataCollector instance;
 
         /// <summary>
