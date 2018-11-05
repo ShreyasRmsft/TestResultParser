@@ -1,15 +1,14 @@
 ﻿namespace Agent.Plugins.TestResultParser.Parser
 {
     using System;
-    using System.Threading;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
+    using Agent.Plugins.TestResultParser.Parser.Models;
 
     public class GenericTestResultParser : ITestResultParser
     {
-        public void ParseData(string data)
+        public void Parse(LogLineData line)
         {
-            Console.WriteLine("Receiving data: " + data);
-            Thread.Sleep(1000);
+            throw new NotImplementedException();
         }
     }
 }

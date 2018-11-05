@@ -2,6 +2,7 @@
 {
     using System;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
+    using Agent.Plugins.TestResultParser.Parser.Models;
     using Agent.Plugins.TestResultParser.Telemetry;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
 
@@ -27,7 +28,7 @@
         /// Parses input data to detect python test result.
         /// </summary>
         /// <param name="data">Data to be parsed.</param>
-        public void ParseData(string data)
+        public void Parse(LogLineData Line)
         {
             throw new NotImplementedException();
         }

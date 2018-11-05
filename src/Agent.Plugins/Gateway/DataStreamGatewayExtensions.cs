@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Agent.Plugins.TestResultParser.Gateway;
 using Agent.Plugins.TestResultParser.Parser;
 using Agent.Plugins.TestResultParser.Parser.Interfaces;
+using Agent.Plugins.TestResultParser.Parser.Models;
 
 namespace Agent.Plugins.TestResultParser.Bus
 {
@@ -21,7 +22,7 @@ namespace Agent.Plugins.TestResultParser.Bus
 
         public static Guid Subscribe<THandler>(this DataStreamGateway bus) where THandler : ITestResultParser, new()
         {
-            return bus.Subscribe(message => new THandler().ParseData(message));
+            return bus.Subscribe(message => new THandler().Parse(new LogLineData() { Line = message }));
         }
     }
 }

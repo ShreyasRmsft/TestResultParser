@@ -1,17 +1,21 @@
 ﻿namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
+    using Agent.Plugins.TestResultParser.Parser.Models;
+    using Agent.Plugins.TestResultParser.TestResult.Models;
     using TestResult = TestResult.Models.TestResult;
 
     public class MochaTestResultParser : ITestResultParser
     {
-        public List<TestResult> TestResults = new List<TestResult> { };
+        public TestRun TestRun = new TestRun { TestResults = new Collection<TestResult>() };
+
+        private MochaTestResultParserStateModel state = MochaTestResultParserStateModel.ParsingTestResults;
 
         /// <inheritdoc/>
-        public void ParseData(string data)
+        public void Parse(LogLineData testResultsLine)
         {
-            
+
         }
     }
 }

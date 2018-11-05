@@ -17,7 +17,7 @@ namespace Agent.Plugins.TestResultParser.Gateway
         public void Initialize()
         {
             var t = new GenericTestResultParser();
-            Subscribe(t.ParseData);
+            Subscribe(t.Parse);
 
             throw new NotImplementedException();
         }

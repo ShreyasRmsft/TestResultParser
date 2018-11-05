@@ -13,11 +13,11 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
         /// <summary>
         /// All the results associated with the test run 
         /// </summary>
-        Collection<TestResult> TestResults { get; set; }
+        public Collection<TestResult> TestResults { get; set; }
         
         /// <summary>
         /// Summary for the test run
         /// </summary>
-        TestRunSummary TestRunSummary { get; set; }
+        public TestRunSummary TestRunSummary { get; set; }
     }
 }

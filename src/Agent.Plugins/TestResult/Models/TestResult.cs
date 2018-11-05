@@ -13,16 +13,16 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
         /// <summary>
         /// Name of the Test case
         /// </summary>
-        string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Result associated with the Test Case
         /// </summary>
-        TestOutcome Outcome { get; set; }
+        public TestOutcome Outcome { get; set; }
 
         /// <summary>
         /// Time taken by the test case to run
         /// </summary>
-        TimeSpan ExecutionTime { get; set; }
+        public TimeSpan ExecutionTime { get; set; }
     }
 }
