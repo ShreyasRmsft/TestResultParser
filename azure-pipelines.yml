@@ -13,5 +13,5 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test --configuration $(buildConfiguration)
-  displayName: 'dotnet test $(buildConfiguration)'
+- script: dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)
+  displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
