@@ -15,14 +15,14 @@ namespace Agent.Plugins.TestResultParser.Bus
             return bus.ProcessDataAsync(message);
         }
 
-        public static Guid Subscribe(this DataStreamGateway bus, Func<Action<string>> handlerActionFactory)
+        public static Guid Subscribe(this DataStreamGateway bus, Func<Action<LogLineData>> handlerActionFactory)
         {
             return bus.Subscribe(message => handlerActionFactory().Invoke(message));
         }
 
         public static Guid Subscribe<THandler>(this DataStreamGateway bus) where THandler : ITestResultParser, new()
         {
-            return bus.Subscribe(message => new THandler().Parse(new LogLineData() { Line = message }));
+            return bus.Subscribe(message => new THandler().Parse(message));
         }
     }
 }

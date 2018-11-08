@@ -3,7 +3,7 @@
 
 namespace Agent.Plugins.TestResultParser.TestResult.Models
 {
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Contains the Test results and Test Summary for the Test run
@@ -11,9 +11,14 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
     public class TestRun
     {
         /// <summary>
-        /// All the results associated with the test run 
+        /// Collection of passed tests
         /// </summary>
-        public Collection<TestResult> TestResults { get; set; }
+        public List<TestResult> PassedTests { get; set; }
+
+        /// <summary>
+        /// Collection of failed tests
+        /// </summary>
+        public List<TestResult> FailedTests { get; set; }
         
         /// <summary>
         /// Summary for the test run

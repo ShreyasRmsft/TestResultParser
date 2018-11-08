@@ -8,9 +8,7 @@
 
     public class MochaTestResultParser : ITestResultParser
     {
-        public TestRun TestRun = new TestRun { TestResults = new Collection<TestResult>() };
-
-        private MochaTestResultParserStateModel state = MochaTestResultParserStateModel.ParsingTestResults;
+        public TestRun TestRun = new TestRun { };
 
         private MochaTestResultParserStateModel stateContext = MochaTestResultParserStateModel.ParsingTestResults;
 
