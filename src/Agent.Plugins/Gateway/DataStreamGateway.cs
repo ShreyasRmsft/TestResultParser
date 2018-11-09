@@ -10,6 +10,8 @@ using Agent.Plugins.TestResultParser.Bus.Interfaces;
 using Agent.Plugins.TestResultParser.Gateway.Interfaces;
 using Agent.Plugins.TestResultParser.Parser;
 using Agent.Plugins.TestResultParser.Parser.Models;
+using Agent.Plugins.TestResultParser.Parser.Node.Mocha;
+using Agent.Plugins.TestResultParser.TestRunManger;
 
 namespace Agent.Plugins.TestResultParser.Gateway
 {
@@ -17,8 +19,8 @@ namespace Agent.Plugins.TestResultParser.Gateway
     {
         public void Initialize()
         {
-            var t = new GenericTestResultParser();
-            Subscribe(t.Parse);
+            //var t = new MochaTestResultParser(new TestRunManager());
+            //Subscribe(t.Parse);
 
             throw new NotImplementedException();
         }

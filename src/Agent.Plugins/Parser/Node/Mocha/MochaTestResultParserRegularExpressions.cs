@@ -14,6 +14,6 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
         public static Regex PassedTestsSummaryMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.PassedTests}>0|[1-9][0-9]*) passing \\((?<{RegexCaptureGroups.TestRunTime}>[1-9][0-9]*)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$", RegexOptions.ExplicitCapture);
 
-        public static Regex FailedTestsSummaryMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.FailedTests}>0|[1-9][0-9]*) failing$", RegexOptions.ExplicitCapture);
+        public static Regex FailedTestsSummaryMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) failing$", RegexOptions.ExplicitCapture);
     }
 }

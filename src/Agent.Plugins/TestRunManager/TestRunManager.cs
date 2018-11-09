@@ -15,6 +15,8 @@ namespace Agent.Plugins.TestResultParser.TestRunManger
         private IDiagnosticDataCollector diagnosticDataCollector;
         private ITelemetryDataCollector telemetryDataCollector;
 
+        // TODO: Add a default constructor
+
         /// <summary>
         /// Construct the TestRunManger
         /// </summary>
