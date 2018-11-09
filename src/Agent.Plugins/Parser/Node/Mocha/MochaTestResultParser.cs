@@ -21,7 +21,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
         private MochaTestResultParserStateContext stateContext = new MochaTestResultParserStateContext();
 
-        private MochaTestResultParserStateModel state = MochaTestResultParserStateModel.ParsingTestResults;
+        private MochaTestResultParserState state = MochaTestResultParserState.ParsingTestResults;
 
         private IDiagnosticDataCollector diagnosticDataCollector;
 
@@ -72,23 +72,59 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 stateContext.LinesWithinWhichMatchIsExpected--;
             }
 
+            // State model for the mocha parser that defines the regexes to match against in each state
             switch (state)
             {
-                case MochaTestResultParserStateModel.ParsingTestResults:
+                case MochaTestResultParserState.ParsingTestResults:
 
                     if (MatchPassedTestCase(testResultsLine.Line))
                     {
-                        //LogIfDebug(testResultsLine, "MatchPassed");
                         return;
                     }
                     else if (MatchFailedTestCase(testResultsLine.Line))
                     {
-                        //LogIfDebug(testResultsLine, "MatchPassedUnicode");
                         return;
                     }
                     else if (MatchPassedSummary(testResultsLine.Line))
                     {
-                        //LogIfDebug(testResultsLine, "MatchPassedSummary");
+                        return;
+                    }
+
+                    break;
+
+                case MochaTestResultParserState.ParsingTestRunSummary:
+
+                    if (MatchFailedSummary(testResultsLine.Line))
+                    {
+                        return;
+                    }
+                    else if (MatchPassedTestCase(testResultsLine.Line))
+                    {
+                        return;
+                    }
+                    else if (MatchFailedTestCase(testResultsLine.Line))
+                    {
+                        return;
+                    }
+                    else if (MatchPassedSummary(testResultsLine.Line))
+                    {
+                        return;
+                    }
+
+                    break;
+
+                case MochaTestResultParserState.PostSummaryParsing:
+
+                    if (MatchFailedTestCase(testResultsLine.Line))
+                    {
+                        return;
+                    }
+                    else if (MatchPassedTestCase(testResultsLine.Line))
+                    {
+                        return;
+                    }
+                    else if (MatchPassedSummary(testResultsLine.Line))
+                    {
                         return;
                     }
 
@@ -110,7 +146,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 // Also since this is an action performed in context of a state should there be a separate function?
                 // Should this intelligence come from the caller?
                 // TODO: Logic for resetting the run. This should also include a publish step if enough summary data was encountered
-                if (state == MochaTestResultParserStateModel.ParsingTestRunSummary)
+                if (state == MochaTestResultParserState.ParsingTestRunSummary)
                 {
                     StartNewTestResult();
                 }
@@ -162,7 +198,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 // Also since this is an action performed in context of a state should there be a separate function?
                 // Should this intelligence come from the caller?
                 // TODO: Logic for resetting the run. This should also include a publish step if enough summary data was encountered
-                if (state == MochaTestResultParserStateModel.ParsingTestRunSummary)
+                if (state == MochaTestResultParserState.ParsingTestRunSummary)
                 {
                     StartNewTestResult();
                 }
@@ -184,28 +220,34 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             if (match.Success)
             {
-                // Unexpected matches
-                if (state == MochaTestResultParserStateModel.ParsingTestRunSummary)
+                // Unexpected matches for Passed summary
+                switch (state)
                 {
-                    if (testRun.FailedTests.Count != 0)
-                    {
-                        diagnosticDataCollector.Error("TODO");
-                        telemetryDataCollector.AddProperty("TODO", "TODO");
-                    }
+                    case MochaTestResultParserState.ParsingTestRunSummary:
 
-                    StartNewTestResult();
-                }
-                else if (state == MochaTestResultParserStateModel.PostSummaryParsing)
-                {
-                    if (stateContext.FailedTestsToSkipParsingPostSummary != 0)
-                    {
-                        diagnosticDataCollector.Error("TODO");
-                        telemetryDataCollector.AddProperty("TODO", "TODO");
-                    }
-                    StartNewTestResult();
-                }
+                        if (testRun.FailedTests.Count != 0)
+                        {
+                            diagnosticDataCollector.Error("TODO");
+                            telemetryDataCollector.AddProperty("TODO", "TODO");
+                        }
 
-                state = MochaTestResultParserStateModel.ParsingTestRunSummary;
+                        StartNewTestResult();
+
+                        break;
+
+                    case MochaTestResultParserState.PostSummaryParsing:
+
+                        if (stateContext.FailedTestsToSkipParsingPostSummary != 0)
+                        {
+                            diagnosticDataCollector.Error("TODO");
+                            telemetryDataCollector.AddProperty("TODO", "TODO");
+                        }
+                        StartNewTestResult();
+
+                        break;
+                }
+                
+                state = MochaTestResultParserState.ParsingTestRunSummary;
                 stateContext.LastFailedTestCaseNumber = 0;
 
                 if (!int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed))
@@ -273,12 +315,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
                 if (stateContext.FailedTestsToSkipParsingPostSummary == 0)
                 {
-                    state = MochaTestResultParserStateModel.ParsingTestResults;
+                    state = MochaTestResultParserState.ParsingTestResults;
                     StartNewTestResult();
                 }
                 else
                 {
-                    state = MochaTestResultParserStateModel.PostSummaryParsing;
+                    state = MochaTestResultParserState.PostSummaryParsing;
                 }
 
                 if (testRun.TestRunSummary.TotalFailed != testRun.FailedTests.Count)

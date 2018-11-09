@@ -3,6 +3,13 @@
 
 namespace Agent.Plugins.UnitTests
 {
+    using System.Collections.Generic;
+    using Agent.Plugins.TestResultParser.Publish.Interfaces;
+    using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
+    using Agent.Plugins.TestResultParser.TestResult.Models;
+    using Agent.Plugins.TestResultParser.TestRunManger;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
     using TestResult = Plugins.TestResultParser.TestResult.Models.TestResult;
 
     [TestClass]
