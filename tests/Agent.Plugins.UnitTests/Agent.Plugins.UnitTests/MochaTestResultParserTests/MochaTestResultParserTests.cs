@@ -3,10 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using Agent.Plugins.TestResultParser.Parser.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
     using Agent.Plugins.TestResultParser.Parser.Node.Mocha;
-    using Agent.Plugins.TestResultParser.Publish.Interfaces;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
     using Agent.Plugins.TestResultParser.TestRunManger;
@@ -49,7 +47,7 @@
 
             string testResultsConsoleOut = typeof(SuccessScenarios).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
 
-            var parser = new MochaTestResultParser(testRunManagerMock.Object, this.diagnosticDataCollector.Object, this.telemetryDataCollector.Object);
+            var parser = new MochaTestResultParser(testRunManagerMock.Object, this.diagnosticDataCollector.Object, this.telemetryDataCollector.Object, null);
 
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
@@ -67,7 +65,7 @@
                 if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    //if (property.Name.Contains("TestCase007"))
+                    //if (property.Name.Contains("TestCase015"))
                     yield return new object[] { property.Name };
                 }
             }
@@ -75,17 +73,20 @@
 
         public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun)
         {
-            int i = indexOfTestRun * 3;
+            int i = indexOfTestRun * 4;
 
             int expectedPassedTestsCount = int.Parse(resultFileContents[i + 0]);
             int expectedFailedTestsCount = int.Parse(resultFileContents[i + 1]);
-            long expectedTestRunDuration = long.Parse(resultFileContents[i + 2]);
+            int expectedSkippedTestsCount = int.Parse(resultFileContents[i + 2]);
+            long expectedTestRunDuration = long.Parse(resultFileContents[i + 3]);
 
             Assert.AreEqual(expectedPassedTestsCount, testRun.TestRunSummary.TotalPassed, "Passed tests summary does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.TestRunSummary.TotalFailed, "Failed tests summary does not match.");
+            Assert.AreEqual(expectedSkippedTestsCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
 
             Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
+            Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
 
             Assert.AreEqual(expectedTestRunDuration, testRun.TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");
         }

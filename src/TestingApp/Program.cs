@@ -18,7 +18,7 @@ namespace TestingApp
             var bus = new DataStreamGateway();
 
             // Automatic handler subscription
-            bus.Subscribe<GenericTestResultParser>();
+            // bus.Subscribe<GenericTestResultParser>();
             
             
             using (var fileStream = File.OpenRead(path))

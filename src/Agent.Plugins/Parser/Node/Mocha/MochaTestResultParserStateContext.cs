@@ -5,7 +5,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
     public class MochaTestResultParserStateContext : ParserStateContextBase
     {
-        public int FailedTestsToSkipParsingPostSummary { get; set; } = 0;
+        public int StackTracesToSkipParsingPostSummary { get; set; } = 0;
 
         public int LastFailedTestCaseNumber { get; set; } = 0;
 

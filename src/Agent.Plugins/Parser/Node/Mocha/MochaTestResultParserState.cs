@@ -5,8 +5,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
     public enum MochaTestResultParserState
     {
-        ParsingTestResults,
-        ParsingTestRunSummary,
-        PostSummaryParsing
+        ExpectingTestResults,
+        ExpectingTestRunSummary,
+        ExpectingStackTraces
     }
 }

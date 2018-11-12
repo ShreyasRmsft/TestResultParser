@@ -98,6 +98,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 2
         ///2
+        ///1
         ///9.
         /// </summary>
         internal static string TestCase001Result {
@@ -123,6 +124,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         
         /// <summary>
         ///   Looks up a localized string similar to 213
+        ///0
         ///0
         ///180000.
         /// </summary>
@@ -150,6 +152,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 19
         ///0
+        ///0
         ///2000.
         /// </summary>
         internal static string TestCase003Result {
@@ -176,6 +179,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 639
         ///1
+        ///0
         ///540000.
         /// </summary>
         internal static string TestCase004Result {
@@ -202,6 +206,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 951
         ///1
+        ///0
         ///720000.
         /// </summary>
         internal static string TestCase005Result {
@@ -228,6 +233,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 951
         ///1
+        ///0
         ///720000.
         /// </summary>
         internal static string TestCase006Result {
@@ -254,10 +260,8 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 445
         ///1
-        ///180000
         ///0
-        ///0
-        ///0.
+        ///180000.
         /// </summary>
         internal static string TestCase007Result {
             get {
@@ -283,6 +287,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 373
         ///1
+        ///0
         ///120000.
         /// </summary>
         internal static string TestCase008Result {
@@ -309,6 +314,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 453
         ///1
+        ///0
         ///120000.
         /// </summary>
         internal static string TestCase009Result {
@@ -334,6 +340,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         
         /// <summary>
         ///   Looks up a localized string similar to 374
+        ///0
         ///0
         ///120000.
         /// </summary>
@@ -361,11 +368,64 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 373
         ///1
+        ///0
         ///120000.
         /// </summary>
         internal static string TestCase011Result {
             get {
                 return ResourceManager.GetString("TestCase011Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt; mocha &quot;.\unit_tests\*.js\&quot;
+        ///
+        ///Terminate batch job (Y/N)? ^C^C^CY
+        ///PS D:\OwnedRepos\NodeJSTestSuite&gt; npm test .\unit_tests\*.js
+        ///
+        ///&gt; nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSTestSuite
+        ///&gt; mocha &quot;.\unit_tests\*.js&quot;
+        ///
+        ///
+        ///
+        ///  sampleUnitTests
+        ///    - Test method 1
+        ///    - Test method 2
+        ///    - Test method 3
+        ///    - Test method 4
+        ///    - Test method 5
+        ///
+        ///
+        ///  0 passing (12ms)
+        ///  5 pending
+        ///
+        ///&gt; nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSTestSuite
+        ///&gt; mocha &quot;.\unit_tests\*.js&quot;
+        ///
+        ///
+        ///
+        ///  sampleUnitTests
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase012 {
+            get {
+                return ResourceManager.GetString("TestCase012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0
+        ///0
+        ///5
+        ///12
+        ///0
+        ///2
+        ///3
+        ///11.
+        /// </summary>
+        internal static string TestCase012Result {
+            get {
+                return ResourceManager.GetString("TestCase012Result", resourceCulture);
             }
         }
         
@@ -391,6 +451,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         
         /// <summary>
         ///   Looks up a localized string similar to 126
+        ///0
         ///0
         ///9000.
         /// </summary>
@@ -422,7 +483,8 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 15
         ///2
-        ///255.
+        ///0
+        ///253.
         /// </summary>
         internal static string TestCase014Result {
             get {
@@ -452,9 +514,11 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 1
         ///1
+        ///0
         ///42
         ///1
         ///1
+        ///0
         ///42.
         /// </summary>
         internal static string TestCase015Result {
@@ -488,6 +552,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 851
         ///4
+        ///0
         ///4000.
         /// </summary>
         internal static string TestCase016Result {
@@ -518,9 +583,11 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         /// <summary>
         ///   Looks up a localized string similar to 27
         ///1
+        ///0
         ///2000
         ///27
         ///1
+        ///0
         ///2000.
         /// </summary>
         internal static string TestCase017Result {
