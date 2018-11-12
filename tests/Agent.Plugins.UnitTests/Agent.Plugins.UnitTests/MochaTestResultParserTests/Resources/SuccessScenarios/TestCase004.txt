@@ -1,0 +1,1813 @@
+2018-10-12T08:50:27.8265328Z ##[section]Starting: Test with node 5
+2018-10-12T08:50:27.8269711Z ==============================================================================
+2018-10-12T08:50:27.8269880Z Task         : Command Line
+2018-10-12T08:50:27.8270035Z Description  : Run a command line script using cmd.exe on Windows and bash on macOS and Linux.
+2018-10-12T08:50:27.8270179Z Version      : 2.136.0
+2018-10-12T08:50:27.8270318Z Author       : Microsoft Corporation
+2018-10-12T08:50:27.8270460Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkID=613735)
+2018-10-12T08:50:27.8270616Z ==============================================================================
+2018-10-12T08:50:28.6379301Z Generating script.
+2018-10-12T08:50:28.6505672Z Script contents:
+2018-10-12T08:50:28.6512643Z node make.js test --node 5 --runner ts
+2018-10-12T08:50:28.7100044Z ##[command]"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\cbea76ba-b870-4a3b-a31b-6d1db3b3bac7.cmd""
+2018-10-12T08:50:28.9752240Z 
+2018-10-12T08:50:28.9765052Z > prepending PATH D:\a\1\s\node_modules\.bin
+2018-10-12T08:50:28.9782036Z tsc tool:
+2018-10-12T08:50:29.4349116Z Version 2.3.4
+2018-10-12T08:50:29.4531369Z D:\a\1\s\node_modules\.bin\tsc
+2018-10-12T08:50:29.4532194Z mocha tool:
+2018-10-12T08:50:30.0567084Z 2.3.3
+2018-10-12T08:50:30.0777198Z D:\a\1\s\node_modules\.bin\mocha
+2018-10-12T08:50:30.0811195Z 
+2018-10-12T08:50:30.0819826Z > cd Tests
+2018-10-12T08:50:30.0820323Z 
+2018-10-12T08:50:30.0820631Z > tsc --rootDir D:\a\1\s\Tests --outDir D:\a\1\s\_build\Tests
+2018-10-12T08:50:31.9996438Z 
+2018-10-12T08:50:31.9997461Z > copying ps test lib resources
+2018-10-12T08:50:31.9997641Z copying **\@(*.ps1|*.psm1)
+2018-10-12T08:50:52.5621275Z 
+2018-10-12T08:50:52.5622233Z > node -v
+2018-10-12T08:50:52.5814616Z Downloading file: https://nodejs.org/dist/v5.10.1/win-x64/node.exe
+2018-10-12T08:50:54.1770059Z Downloading file: https://nodejs.org/dist/v5.10.1/win-x64/node.lib
+2018-10-12T08:50:54.7959249Z 
+2018-10-12T08:50:54.7959926Z > prepending PATH D:\a\1\s\_download\node-v5.10.1
+2018-10-12T08:50:54.7961931Z 
+2018-10-12T08:50:54.7963250Z > mocha D:/a/1/s/_build/Tasks/AndroidSigningV2/Tests/L0.js D:/a/1/s/_build/Tasks/AndroidSigningV3/Tests/L0.js D:/a/1/s/_build/Tasks/AppCenterDistributeV1/Tests/L0.js D:/a/1/s/_build/Tasks/AppCenterTestV1/Tests/L0.js D:/a/1/s/_build/Tasks/AzureAppServiceManageV0/Tests/L0.js D:/a/1/s/_build/Tasks/AzureFileCopyV1/Tests/L0.js D:/a/1/s/_build/Tasks/AzureFileCopyV2/Tests/L0.js D:/a/1/s/_build/Tasks/AzureMonitorAlertsV0/Tests/L0.js D:/a/1/s/_build/Tasks/AzureMysqlDeploymentV1/Tests/L0.js D:/a/1/s/_build/Tasks/AzureNLBManagementV1/Tests/L0.js D:/a/1/s/_build/Tasks/AzurePowerShellV3/Tests/L0.js D:/a/1/s/_build/Tasks/AzureResourceGroupDeploymentV2/Tests/L0.js D:/a/1/s/_build/Tasks/AzureRmWebAppDeploymentV3/Tests/L0.js D:/a/1/s/_build/Tasks/AzureRmWebAppDeploymentV4/Tests/L0.js D:/a/1/s/_build/Tasks/AzureVmssDeploymentV0/Tests/L0.js D:/a/1/s/_build/Tasks/CondaEnvironmentV0/Tests/L0.js D:/a/1/s/_build/Tasks/CondaEnvironmentV1/Tests/L0.js D:/a/1/s/_build/Tasks/CopyFilesV2/Tests/L0.js D:/a/1/s/_build/Tasks/DockerComposeV0/Tests/L0.js D:/a/1/s/_build/Tasks/DockerV0/Tests/L0.js D:/a/1/s/_build/Tasks/DockerV1/Tests/L0.js D:/a/1/s/_build/Tasks/DotNetCoreCLIV2/Tests/L0.js D:/a/1/s/_build/Tasks/DotNetCoreInstallerV0/Tests/L0.js D:/a/1/s/_build/Tasks/DownloadSecureFileV1/Tests/L0.js D:/a/1/s/_build/Tasks/GoV0/Tests/L0.js D:/a/1/s/_build/Tasks/GradleV2/Tests/L0.js D:/a/1/s/_build/Tasks/IISWebAppDeploymentOnMachineGroupV0/Tests/L0.js D:/a/1/s/_build/Tasks/IISWebAppManagementOnMachineGroupV0/Tests/L0.js D:/a/1/s/_build/Tasks/InstallAppleCertificateV2/Tests/L0.js D:/a/1/s/_build/Tasks/InstallAppleProvisioningProfileV1/Tests/L0.js D:/a/1/s/_build/Tasks/InstallSSHKeyV0/Tests/L0.js D:/a/1/s/_build/Tasks/JavaToolInstallerV0/Tests/L0.js D:/a/1/s/_build/Tasks/JenkinsDownloadArtifactsV1/Tests/L0.js D:/a/1/s/_build/Tasks/JenkinsQueueJobV2/Tests/L0.js D:/a/1/s/_build/Tasks/KubernetesV0/Tests/L0.js D:/a/1/s/_build/Tasks/KubernetesV1/Tests/L0.js D:/a/1/s/_build/Tasks/MSBuildV1/Tests/L0.js D:/a/1/s/_build/Tasks/NpmV1/Tests/L0.js D:/a/1/s/_build/Tasks/NuGetCommandV2/Tests/L0.js D:/a/1/s/_build/Tasks/NuGetPublisherV0/Tests/L0.js D:/a/1/s/_build/Tasks/NuGetV0/Tests/L0.js D:/a/1/s/_build/Tasks/PackerBuildV0/Tests/L0.js D:/a/1/s/_build/Tasks/PackerBuildV1/Tests/L0.js D:/a/1/s/_build/Tasks/PowerShellOnTargetMachinesV2/Tests/L0.js D:/a/1/s/_build/Tasks/PublishSymbolsV2/Tests/L0.js D:/a/1/s/_build/Tasks/PublishTestResultsV2/Tests/L0.js D:/a/1/s/_build/Tasks/PyPIPublisherV0/Tests/L0.js D:/a/1/s/_build/Tasks/ServiceFabricComposeDeployV0/Tests/L0.js D:/a/1/s/_build/Tasks/ServiceFabricDeployV1/Tests/L0.js D:/a/1/s/_build/Tasks/ServiceFabricPowerShellV1/Tests/L0.js D:/a/1/s/_build/Tasks/ServiceFabricUpdateManifestsV2/Tests/L0.js D:/a/1/s/_build/Tasks/SqlAzureDacpacDeploymentV1/Tests/L0.js D:/a/1/s/_build/Tasks/UsePythonVersionV0/Tests/L0.js D:/a/1/s/_build/Tasks/UseRubyVersionV0/Tests/L0.js D:/a/1/s/_build/Tasks/VSBuildV1/Tests/L0.js D:/a/1/s/_build/Tasks/VsTestPlatformToolInstallerV1/Tests/L0.js D:/a/1/s/_build/Tasks/VsTestV2/Tests/L0.js D:/a/1/s/_build/Tasks/WindowsMachineFileCopyV2/Tests/L0.js D:/a/1/s/_build/Tasks/XamarinAndroidV1/Tests/L0.js D:/a/1/s/_build/Tasks/XamariniOSV2/Tests/L0.js D:/a/1/s/_build/Tasks/XcodeV5/Tests/L0.js D:/a/1/s/_build/Tasks/Common/MSBuildHelpers/Tests/L0.js D:/a/1/s/_build/Tasks/Common/nuget-task-common/Tests/L0.js D:/a/1/s/_build/Tasks/Common/PowershellHelpers/Tests/L0.js D:/a/1/s/_build/Tasks/Common/RemoteDeployer/Tests/L0.js D:/a/1/s/_build/Tasks/Common/VstsAzureHelpers_/Tests/L0.js D:/a/1/s/_build/Tasks/Common/VstsAzureRestHelpers_/Tests/L0.js D:\a\1\s\_build\Tests\L0.js
+2018-10-12T08:50:56.7119684Z (node) warning: possible EventEmitter memory leak detected. 11 uncaughtException listeners added. Use emitter.setMaxListeners() to increase limit.
+2018-10-12T08:50:56.7125922Z Trace
+2018-10-12T08:50:56.7126381Z     at process.addListener (events.js:252:17)
+2018-10-12T08:50:56.7126733Z     at Object.<anonymous> (D:\a\1\s\_build\Tasks\GoV0\node_modules\vsts-task-lib\task.js:51:9)
+2018-10-12T08:50:56.7127161Z     at Module._compile (module.js:413:34)
+2018-10-12T08:50:56.7127696Z     at Object.Module._extensions..js (module.js:422:10)
+2018-10-12T08:50:56.7127965Z     at Module.load (module.js:357:32)
+2018-10-12T08:50:56.7128277Z     at Function.Module._load (module.js:314:12)
+2018-10-12T08:50:56.7128539Z     at Module.require (module.js:367:17)
+2018-10-12T08:50:56.7128783Z     at require (internal/module.js:16:19)
+2018-10-12T08:50:56.7129041Z     at Object.<anonymous> (D:\a\1\s\_build\Tasks\GoV0\Tests\L0.js:3:12)
+2018-10-12T08:50:56.7129298Z     at Module._compile (module.js:413:34)
+2018-10-12T08:50:56.7129543Z     at Object.Module._extensions..js (module.js:422:10)
+2018-10-12T08:50:56.7129837Z     at Module.load (module.js:357:32)
+2018-10-12T08:50:56.7130241Z     at Function.Module._load (module.js:314:12)
+2018-10-12T08:50:56.7130512Z     at Module.require (module.js:367:17)
+2018-10-12T08:50:56.7130765Z     at require (internal/module.js:16:19)
+2018-10-12T08:50:56.7131041Z     at D:\a\1\s\node_modules\mocha\lib\mocha.js:216:27
+2018-10-12T08:50:56.7131296Z     at Array.forEach (native)
+2018-10-12T08:50:56.7131561Z     at Mocha.loadFiles (D:\a\1\s\node_modules\mocha\lib\mocha.js:213:14)
+2018-10-12T08:50:56.7131811Z     at Mocha.run (D:\a\1\s\node_modules\mocha\lib\mocha.js:453:10)
+2018-10-12T08:50:56.7132082Z     at Object.<anonymous> (D:\a\1\s\node_modules\mocha\bin\_mocha:393:18)
+2018-10-12T08:50:56.7132535Z     at Module._compile (module.js:413:34)
+2018-10-12T08:50:56.7132817Z     at Object.Module._extensions..js (module.js:422:10)
+2018-10-12T08:50:56.7133084Z     at Module.load (module.js:357:32)
+2018-10-12T08:50:56.7133339Z     at Function.Module._load (module.js:314:12)
+2018-10-12T08:50:56.7133619Z     at Function.Module.runMain (module.js:447:10)
+2018-10-12T08:50:56.7133866Z     at startup (node.js:146:18)
+2018-10-12T08:50:56.7134127Z     at node.js:404:3
+2018-10-12T08:50:57.6998451Z Cannot run tests for WindowsMachineFileCopy on Non-Windows Platform
+2018-10-12T08:50:57.7950722Z 
+2018-10-12T08:50:57.7971935Z 
+2018-10-12T08:50:57.7991646Z   AndroidSigning Suite
+2018-10-12T08:50:58.0280728Z 
+2018-10-12T08:50:58.0281451Z     ΓêÜ Do not sign or zipalign if nothing is selected (227ms)
+2018-10-12T08:50:58.2440403Z 
+2018-10-12T08:50:58.2441045Z     ΓêÜ Do not align or sign if input single file does not exist (215ms)
+2018-10-12T08:50:58.4557870Z 
+2018-10-12T08:50:58.4558659Z     ΓêÜ Do not align or sign if input pattern does not match any files (212ms)
+2018-10-12T08:50:58.6785833Z 
+2018-10-12T08:50:58.6786362Z     ΓêÜ Use jarsigner from PATH before searching in JAVA_HOME (222ms)
+2018-10-12T08:50:58.8947030Z 
+2018-10-12T08:50:58.8947808Z     ΓêÜ Fail if jarsigner is not on PATH and JAVA_HOME is not set (216ms)
+2018-10-12T08:50:59.1164783Z 
+2018-10-12T08:50:59.1165653Z     ΓêÜ Fail if ANDROID_HOME is not set (221ms)
+2018-10-12T08:50:59.3414459Z 
+2018-10-12T08:50:59.3415158Z     ΓêÜ Signing a single file (225ms)
+2018-10-12T08:50:59.5674569Z 
+2018-10-12T08:50:59.5675383Z     ΓêÜ zipalign a single file (226ms)
+2018-10-12T08:50:59.7975973Z 
+2018-10-12T08:50:59.7976655Z     ΓêÜ Signing and aligning multiple files (230ms)
+2018-10-12T08:51:00.0160348Z 
+2018-10-12T08:51:00.0160996Z     ΓêÜ Download keystore file from SecureFile (218ms)
+2018-10-12T08:51:00.0164372Z 
+2018-10-12T08:51:00.0165607Z   AndroidSigning Suite v3
+2018-10-12T08:51:00.2272033Z 
+2018-10-12T08:51:00.2272782Z     ΓêÜ Do not sign or zipalign if nothing is selected (210ms)
+2018-10-12T08:51:00.4423712Z 
+2018-10-12T08:51:00.4424385Z     ΓêÜ Do not align or sign if input single file does not exist (215ms)
+2018-10-12T08:51:00.6675121Z 
+2018-10-12T08:51:00.6676264Z     ΓêÜ Do not align or sign if input pattern does not match any files (224ms)
+2018-10-12T08:51:00.8827741Z 
+2018-10-12T08:51:00.8828887Z     ΓêÜ Fail if ANDROID_HOME is not set (215ms)
+2018-10-12T08:51:01.1036711Z 
+2018-10-12T08:51:01.1037657Z     ΓêÜ Use apksigner in ANDROID_HOME to sign single file (221ms)
+2018-10-12T08:51:01.3238181Z 
+2018-10-12T08:51:01.3238665Z     ΓêÜ Use specified apksigner to sign a single file (220ms)
+2018-10-12T08:51:01.5412098Z 
+2018-10-12T08:51:01.5413174Z     ΓêÜ zipalign a single file (217ms)
+2018-10-12T08:51:01.7747840Z 
+2018-10-12T08:51:01.7748540Z     ΓêÜ Signing and aligning multiple files (234ms)
+2018-10-12T08:51:01.9938885Z 
+2018-10-12T08:51:01.9939572Z     ΓêÜ Download keystore file from SecureFile (219ms)
+2018-10-12T08:51:01.9940052Z 
+2018-10-12T08:51:01.9940418Z   AppCenterDistribute L0 Suite
+2018-10-12T08:51:02.7407073Z 
+2018-10-12T08:51:02.7408011Z     ΓêÜ Positive path: upload one ipa file (747ms)
+2018-10-12T08:51:03.3445725Z 
+2018-10-12T08:51:03.3446417Z     ΓêÜ Negative path: can not upload multiple files (603ms)
+2018-10-12T08:51:04.0133001Z 
+2018-10-12T08:51:04.0133766Z     ΓêÜ Negative path: cannot continue upload without symbols (669ms)
+2018-10-12T08:51:04.6722448Z 
+2018-10-12T08:51:04.6723535Z     ΓêÜ Postiive path: can continue upload without symbols if variable VSMobileCenterUpload.ContinueIfSymbolsNotFound is true (659ms)
+2018-10-12T08:51:05.3328799Z 
+2018-10-12T08:51:05.3329498Z     ΓêÜ Negative path: mobile center api rejects fail the task (660ms)
+2018-10-12T08:51:06.0326067Z 
+2018-10-12T08:51:06.0326773Z     ΓêÜ Positive path: single file with Include Parent (700ms)
+2018-10-12T08:51:06.7334450Z 
+2018-10-12T08:51:06.7335689Z     ΓêÜ Positive path: multiple dSYMs in the same foder (701ms)
+2018-10-12T08:51:07.4246903Z 
+2018-10-12T08:51:07.4248072Z     ΓêÜ Positive path: multiple dSYMs in parallel foders (691ms)
+2018-10-12T08:51:08.1164686Z 
+2018-10-12T08:51:08.1165412Z     ΓêÜ Positive path: multiple dSYMs in a tree (692ms)
+2018-10-12T08:51:08.8031317Z 
+2018-10-12T08:51:08.8032030Z     ΓêÜ Positive path: a single dSYM (686ms)
+2018-10-12T08:51:09.5001182Z 
+2018-10-12T08:51:09.5001948Z     ΓêÜ Positive path: a single PDB (697ms)
+2018-10-12T08:51:10.1692153Z 
+2018-10-12T08:51:10.1692894Z     ΓêÜ Positive path: multiple PDBs (669ms)
+2018-10-12T08:51:10.8339778Z 
+2018-10-12T08:51:10.8340594Z     ΓêÜ Positive path: publish commit info (including commit message) (664ms)
+2018-10-12T08:51:11.5111699Z 
+2018-10-12T08:51:11.5112418Z     ΓêÜ Positive path: publish commit info (excluding commit message) (677ms)
+2018-10-12T08:51:11.5112593Z 
+2018-10-12T08:51:11.5112792Z   AppCenterTest L0 Suite
+2018-10-12T08:51:12.0086656Z 
+2018-10-12T08:51:12.0087354Z     ΓêÜ Positive path: upload Appium test with service endpoint (498ms)
+2018-10-12T08:51:12.4973025Z 
+2018-10-12T08:51:12.4973857Z     ΓêÜ Positive path: upload Espresso test with service endpoint (489ms)
+2018-10-12T08:51:13.0019026Z 
+2018-10-12T08:51:13.0019994Z     ΓêÜ Positive path: upload Calabash test with service endpoint (504ms)
+2018-10-12T08:51:13.4983874Z 
+2018-10-12T08:51:13.4984551Z     ΓêÜ Positive path: upload XCUITest test with service endpoint (496ms)
+2018-10-12T08:51:14.0093913Z 
+2018-10-12T08:51:14.0094596Z     ΓêÜ Positive path: upload UITest with username and password (511ms)
+2018-10-12T08:51:14.5112578Z 
+2018-10-12T08:51:14.5113271Z     ΓêÜ Negative path: with username and password, should always logout even when test run failed (502ms)
+2018-10-12T08:51:15.0023134Z 
+2018-10-12T08:51:15.0023914Z     ΓêÜ Favor system appcenter cli over bundled cli (491ms)
+2018-10-12T08:51:15.0024292Z 
+2018-10-12T08:51:15.0024713Z   Azure App Service Manage Suite
+2018-10-12T08:52:07.4820225Z 	validating get
+2018-10-12T08:52:07.4821115Z 	validating update
+2018-10-12T08:52:07.4824365Z 
+2018-10-12T08:52:07.4824779Z     ΓêÜ azure-arm-appinsights AzureApplicationInsights (52479ms)
+2018-10-12T08:53:00.0179916Z 	validating start
+2018-10-12T08:53:00.0180731Z 	validating stop
+2018-10-12T08:53:00.0181126Z 	validating restart
+2018-10-12T08:53:00.0182195Z 	validating swap
+2018-10-12T08:53:00.0183740Z 	validating get
+2018-10-12T08:53:00.0184150Z 	validating getPublishingProfileWithSecrets
+2018-10-12T08:53:00.0185386Z 	validating getPublishingCredentials
+2018-10-12T08:53:00.0186097Z 	validating getApplicationSettings
+2018-10-12T08:53:00.0186875Z 	validating updateApplicationSettings
+2018-10-12T08:53:00.0187341Z 	validating getConfiguration
+2018-10-12T08:53:00.0188413Z 	validating updateConfiguration
+2018-10-12T08:53:00.0188891Z 	validating patchConfiguration
+2018-10-12T08:53:00.0189903Z 	validating getMetadata
+2018-10-12T08:53:00.0190679Z 	validating updateMetadata
+2018-10-12T08:53:00.0210792Z 
+2018-10-12T08:53:00.0213294Z     ΓêÜ azure-arm-app-service AzureAppService (52537ms)
+2018-10-12T08:53:00.6083249Z 	validating updateDeployment
+2018-10-12T08:53:00.6084271Z 	validating getContinuousJobs
+2018-10-12T08:53:00.6084594Z 	validating startContinuousWebJob
+2018-10-12T08:53:00.6085079Z 	validating stopContinuousWebJob
+2018-10-12T08:53:00.6085821Z 	validating installSiteExtension
+2018-10-12T08:53:00.6088088Z 	validating getSiteExtensions
+2018-10-12T08:53:00.6088403Z 	validating getAllSiteExtensions
+2018-10-12T08:53:00.6088569Z 	validating getProcess
+2018-10-12T08:53:00.6088780Z 	validating killProcess
+2018-10-12T08:53:00.6089073Z 	validating getAppSettings
+2018-10-12T08:53:00.6089776Z 	validating listDir
+2018-10-12T08:53:00.6090130Z 	validating getFileContent
+2018-10-12T08:53:00.6091174Z 	validating uploadFile
+2018-10-12T08:53:00.6091512Z 	validating createPath
+2018-10-12T08:53:00.6093462Z 	validating runCommand
+2018-10-12T08:53:00.6094250Z 	validating extractZIP
+2018-10-12T08:53:00.6094625Z 	validating zipDeploy
+2018-10-12T08:53:00.6095856Z 	validating deleteFile
+2018-10-12T08:53:00.6097426Z 
+2018-10-12T08:53:00.6097713Z     ΓêÜ azure-arm-app-service-kudu Kudu (588ms)
+2018-10-12T08:53:01.0798295Z 	validating list
+2018-10-12T08:53:01.0798972Z 	validating create
+2018-10-12T08:53:01.0799569Z 
+2018-10-12T08:53:01.0799984Z     ΓêÜ azure-arm-appinsights-webtests ApplicationInsightsWebTests (470ms)
+2018-10-12T08:53:01.5091378Z 
+2018-10-12T08:53:01.5092505Z     ΓêÜ azure-arm-resource Resources (429ms)
+2018-10-12T08:53:01.5092958Z 
+2018-10-12T08:53:01.5093506Z   AzureMonitorAlerts Suite
+2018-10-12T08:53:02.0190880Z 
+2018-10-12T08:53:02.0192543Z     ΓêÜ successfully creates alert rules when alert rules are not already present in resource group (509ms)
+2018-10-12T08:53:02.4939954Z 
+2018-10-12T08:53:02.4941108Z     ΓêÜ successfully updates alert rules when alert rules are present in resource group (475ms)
+2018-10-12T08:53:02.9727357Z 
+2018-10-12T08:53:02.9728062Z     ΓêÜ fails if alert rule name is configured for some other resource (479ms)
+2018-10-12T08:53:03.4592308Z 
+2018-10-12T08:53:03.4593073Z     ΓêÜ fails if not able to fetch target resource details (486ms)
+2018-10-12T08:53:03.9658872Z 
+2018-10-12T08:53:03.9659521Z     ΓêÜ fails if PUT request to add alert rule fails (507ms)
+2018-10-12T08:53:03.9674682Z 
+2018-10-12T08:53:03.9675476Z   AzureMySqlDeployment Suite
+2018-10-12T08:53:04.4424102Z 
+2018-10-12T08:53:04.4425296Z     ΓêÜ AzureMySqlDeployment MysqlServerOperationsL0Tests (475ms)
+2018-10-12T08:53:04.9200008Z 
+2018-10-12T08:53:04.9200657Z     ΓêÜ AzureMySqlDeployment FirewallOperationTests (478ms)
+2018-10-12T08:53:05.1394083Z 
+2018-10-12T08:53:05.1395132Z     ΓêÜ AzureMySqlDeployment ToolPathOperationTests (219ms)
+2018-10-12T08:53:05.5631793Z 
+2018-10-12T08:53:05.5632489Z     ΓêÜ AzureMySqlDeployment MysqlClient (424ms)
+2018-10-12T08:53:05.5632841Z 
+2018-10-12T08:53:05.5633242Z   AzureNLBManagement Suite
+2018-10-12T08:53:05.7971538Z 
+2018-10-12T08:53:05.7972596Z     ΓêÜ disconnects the virtual machine successfully from the load balancer's backend pool (234ms)
+2018-10-12T08:53:06.0250285Z 
+2018-10-12T08:53:06.0251712Z     ΓêÜ connects the virtual machine successfully to the load balancer's backend pool (228ms)
+2018-10-12T08:53:06.2735317Z 
+2018-10-12T08:53:06.2735996Z     ΓêÜ fails if primary network interface not found (248ms)
+2018-10-12T08:53:06.5114857Z 
+2018-10-12T08:53:06.5115729Z     ΓêÜ fails if could not fetch all network interfaces in resource group (237ms)
+2018-10-12T08:53:06.7608274Z 
+2018-10-12T08:53:06.7609061Z     ΓêÜ fails if setting the network interface fails (249ms)
+2018-10-12T08:53:07.0002873Z 
+2018-10-12T08:53:07.0003899Z     ΓêÜ connect fails if load balancer not found (238ms)
+2018-10-12T08:53:07.0004329Z 
+2018-10-12T08:53:07.0004632Z   Azure Resource Group Deployment
+2018-10-12T08:53:07.4128494Z 
+2018-10-12T08:53:07.4129091Z     ΓêÜ Successfully added Team Services Agent Extension on VM when option specified - Create or update RG (413ms)
+2018-10-12T08:53:07.8212223Z 
+2018-10-12T08:53:07.8212961Z     ΓêÜ Task fails when incorrect PAT token endpoint is given - Create or update RG (407ms)
+2018-10-12T08:53:08.1843743Z 
+2018-10-12T08:53:08.1844489Z     ΓêÜ Task fails when PAT service endpoint not of type Token is given  - Create or update RG (363ms)
+2018-10-12T08:53:08.5627767Z 
+2018-10-12T08:53:08.5628511Z     ΓêÜ Successfully removed failed extensions - Create or update RG (379ms)
+2018-10-12T08:53:08.9274568Z 
+2018-10-12T08:53:08.9275350Z     ΓêÜ Did not add extensions if no vms present (364ms)
+2018-10-12T08:53:09.3056075Z 
+2018-10-12T08:53:09.3057037Z     ΓêÜ Started stopped vm and installed extension (377ms)
+2018-10-12T08:53:09.6812637Z 
+2018-10-12T08:53:09.6813320Z     ΓêÜ Task Failed when a vm was transitioning (375ms)
+2018-10-12T08:53:10.0562887Z 
+2018-10-12T08:53:10.0563415Z     ΓêÜ Tags not copied when option not checked (375ms)
+2018-10-12T08:53:10.4408781Z 
+2018-10-12T08:53:10.4409475Z     ΓêÜ Successfully added Team Services Agent Extension on VM - Select RG (385ms)
+2018-10-12T08:53:10.8400551Z 
+2018-10-12T08:53:10.8401851Z     ΓêÜ Successfully added Team Services Agent Linux Extension on Linux VM (399ms)
+2018-10-12T08:53:11.2644271Z 
+2018-10-12T08:53:11.2645097Z     ΓêÜ Did not add Team Services Agent Extension on VM when option not specified (424ms)
+2018-10-12T08:53:11.6450214Z 
+2018-10-12T08:53:11.6451111Z     ΓêÜ Successfully deleted Team Services Agent Extension on VM - Delete VMs (380ms)
+2018-10-12T08:53:12.0128544Z 
+2018-10-12T08:53:12.0129229Z     ΓêÜ Successfully deleted Team Services Agent Extension on VM - Delete RG (368ms)
+2018-10-12T08:53:12.3869875Z 
+2018-10-12T08:53:12.3870585Z     ΓêÜ Did not delete extensions if no vms present - Delete VMs (374ms)
+2018-10-12T08:53:12.7555947Z 
+2018-10-12T08:53:12.7556781Z     ΓêÜ Did not delete extensions on stopped vm but vm got deleted- Delete VMs (368ms)
+2018-10-12T08:53:13.1198797Z 
+2018-10-12T08:53:13.1200062Z     ΓêÜ Did not delete extensions if no vms present - Delete RG (364ms)
+2018-10-12T08:53:13.4782583Z 
+2018-10-12T08:53:13.4783310Z     ΓêÜ Successfully triggered createOrUpdate deployment (358ms)
+2018-10-12T08:53:13.8402352Z 
+2018-10-12T08:53:13.8403102Z     ΓêÜ Successfully triggered createOrUpdate deployment and updated deploymentOutputs (362ms)
+2018-10-12T08:53:14.2222812Z 
+2018-10-12T08:53:14.2223907Z     ΓêÜ Create or Update RG, failed on faulty CSM template file (382ms)
+2018-10-12T08:53:14.6097591Z 
+2018-10-12T08:53:14.6098285Z     ΓêÜ Create or Update RG, succeeded on CSM template file with comments (388ms)
+2018-10-12T08:53:15.0108365Z 
+2018-10-12T08:53:15.0109055Z     ΓêÜ Selected Resource Group successfully (401ms)
+2018-10-12T08:53:15.3975358Z 
+2018-10-12T08:53:15.3976515Z     ΓêÜ Selected Resource Group successfully in Azure Stack environment (385ms)
+2018-10-12T08:53:15.7717000Z 
+2018-10-12T08:53:15.7717400Z     ΓêÜ Select Resource Group failed on empty output Variable (375ms)
+2018-10-12T08:53:16.1546841Z 
+2018-10-12T08:53:16.1881060Z     ΓêÜ Started VMs (383ms)
+2018-10-12T08:53:16.5323875Z 
+2018-10-12T08:53:16.5324593Z     ΓêÜ Stopped VMs (377ms)
+2018-10-12T08:53:16.9096533Z 
+2018-10-12T08:53:16.9097208Z     ΓêÜ Stopped VMs with deallocating (378ms)
+2018-10-12T08:53:17.2827983Z 
+2018-10-12T08:53:17.2828709Z     ΓêÜ Restarted VMs (373ms)
+2018-10-12T08:53:17.6689188Z 
+2018-10-12T08:53:17.6690051Z     ΓêÜ Deleted VMs (386ms)
+2018-10-12T08:53:18.0782761Z 
+2018-10-12T08:53:18.0783418Z     ΓêÜ Vms doesnot have windows VM (409ms)
+2018-10-12T08:53:18.4842072Z 
+2018-10-12T08:53:18.4843167Z     ΓêÜ No LB present, Vm Doesnot contain Custom Script Extension, Vm has no NSG (406ms)
+2018-10-12T08:53:18.9129577Z 
+2018-10-12T08:53:18.9136189Z     ΓêÜ 1 LB 1 VM present, No Inbound Nat Rule Present (429ms)
+2018-10-12T08:53:19.3420953Z 
+2018-10-12T08:53:19.3421686Z     ΓêÜ 1 LB 2 Vms present, No Inbound Nat Rules Present (429ms)
+2018-10-12T08:53:19.7607785Z 
+2018-10-12T08:53:19.7608807Z     ΓêÜ 1 LB 1 VM present, Inbound Nat Rule Present but has no VM attached (419ms)
+2018-10-12T08:53:20.1812507Z 
+2018-10-12T08:53:20.1813217Z     ΓêÜ 1 LB 2 VMs present, Inbound Nat Rule Present but has no VM attached (420ms)
+2018-10-12T08:53:20.6127478Z 
+2018-10-12T08:53:20.6128541Z     ΓêÜ 1 LB 1 VM present, Inbound Nat Rule Present and has VM attached (431ms)
+2018-10-12T08:53:21.0322294Z 
+2018-10-12T08:53:21.0323031Z     ΓêÜ 1 LB 2 Vms Present, Inbound Nat Rule Present and has VM attached (419ms)
+2018-10-12T08:53:21.4355753Z 
+2018-10-12T08:53:21.4356483Z     ΓêÜ VM doesnot have WinRMHttps Listener enabled, but has no Nsg (404ms)
+2018-10-12T08:53:21.8462897Z 
+2018-10-12T08:53:21.8463697Z     ΓêÜ WinRM Custom Script Extension is present on the VM, status is succeeded, substatus is succeeded (410ms)
+2018-10-12T08:53:22.2567549Z 
+2018-10-12T08:53:22.2568594Z     ΓêÜ WinRM Custom Script Extension is present on the VM , status is succeeded, substatus is failed (411ms)
+2018-10-12T08:53:22.6683615Z 
+2018-10-12T08:53:22.6684720Z     ΓêÜ WinRM Custom Script Extension is present on the VM, status is failed (411ms)
+2018-10-12T08:53:23.0745938Z 
+2018-10-12T08:53:23.0746410Z     ΓêÜ Vms have NSG (406ms)
+2018-10-12T08:53:23.4858482Z 
+2018-10-12T08:53:23.4859535Z     ΓêÜ WinRM Custom Script Extension present is not for enabling WinRMHttpsListener (411ms)
+2018-10-12T08:53:23.9126867Z 
+2018-10-12T08:53:23.9127586Z     ΓêÜ WinRM Custom Script is not present, VM has NSG associated (427ms)
+2018-10-12T08:53:24.3461033Z 
+2018-10-12T08:53:24.3461843Z     ΓêÜ 1 LB 1 VM, WinRM Custom Script extension is not present, VM has NSG associated (433ms)
+2018-10-12T08:53:24.7667784Z 
+2018-10-12T08:53:24.7668776Z     ΓêÜ 1 LB 2 Vms, WinRM Custom Script Extension is not present, VMs have NSG associated (421ms)
+2018-10-12T08:53:25.1896908Z 
+2018-10-12T08:53:25.1897599Z     ΓêÜ WinRM Custom Script Extension is not present, but some other CustomScriptExtension is present (423ms)
+2018-10-12T08:53:25.5791968Z 
+2018-10-12T08:53:25.5792675Z     ΓêÜ createOrUpdate deployment should fail when no template file is found (389ms)
+2018-10-12T08:53:25.9409562Z 
+2018-10-12T08:53:25.9410466Z     ΓêÜ createOrUpdate deployment should fail when multiple template files are found (362ms)
+2018-10-12T08:53:26.3107218Z 
+2018-10-12T08:53:26.3107954Z     ΓêÜ createOrUpdate deployment should fail when no parameter file is found (370ms)
+2018-10-12T08:53:26.6791789Z 
+2018-10-12T08:53:26.6792289Z     ΓêÜ createOrUpdate deployment should fail when multiple template files are found (368ms)
+2018-10-12T08:53:26.6792681Z 
+2018-10-12T08:53:26.6793165Z   AzureRmWebAppDeployment Suite
+2018-10-12T08:54:19.2284582Z 	validating get
+2018-10-12T08:54:19.2285359Z 	validating update
+2018-10-12T08:54:19.2287817Z 
+2018-10-12T08:54:19.2288185Z     ΓêÜ azure-arm-appinsights AzureApplicationInsights (52545ms)
+2018-10-12T08:55:11.7824732Z 	validating start
+2018-10-12T08:55:11.7825408Z 	validating stop
+2018-10-12T08:55:11.7825644Z 	validating restart
+2018-10-12T08:55:11.7825798Z 	validating swap
+2018-10-12T08:55:11.7825977Z 	validating get
+2018-10-12T08:55:11.7826128Z 	validating getPublishingProfileWithSecrets
+2018-10-12T08:55:11.7826451Z 	validating getPublishingCredentials
+2018-10-12T08:55:11.7826595Z 	validating getApplicationSettings
+2018-10-12T08:55:11.7826824Z 	validating updateApplicationSettings
+2018-10-12T08:55:11.7826999Z 	validating getConfiguration
+2018-10-12T08:55:11.7827898Z 	validating updateConfiguration
+2018-10-12T08:55:11.7828573Z 	validating patchConfiguration
+2018-10-12T08:55:11.7828997Z 	validating getMetadata
+2018-10-12T08:55:11.7829346Z 	validating updateMetadata
+2018-10-12T08:55:11.7830301Z 
+2018-10-12T08:55:11.7831170Z     ΓêÜ azure-arm-app-service AzureAppService (52554ms)
+2018-10-12T08:55:12.3081788Z 	validating updateDeployment
+2018-10-12T08:55:12.3082534Z 	validating getContinuousJobs
+2018-10-12T08:55:12.3082911Z 	validating startContinuousWebJob
+2018-10-12T08:55:12.3083174Z 	validating stopContinuousWebJob
+2018-10-12T08:55:12.3083448Z 	validating installSiteExtension
+2018-10-12T08:55:12.3083683Z 	validating getSiteExtensions
+2018-10-12T08:55:12.3083944Z 	validating getAllSiteExtensions
+2018-10-12T08:55:12.3084241Z 	validating getProcess
+2018-10-12T08:55:12.3084490Z 	validating killProcess
+2018-10-12T08:55:12.3084745Z 	validating getAppSettings
+2018-10-12T08:55:12.3085035Z 	validating listDir
+2018-10-12T08:55:12.3085347Z 	validating getFileContent
+2018-10-12T08:55:12.3085599Z 	validating uploadFile
+2018-10-12T08:55:12.3085864Z 	validating createPath
+2018-10-12T08:55:12.3086114Z 	validating runCommand
+2018-10-12T08:55:12.3086815Z 	validating extractZIP
+2018-10-12T08:55:12.3089171Z 	validating zipDeploy
+2018-10-12T08:55:12.3089525Z 	validating deleteFile
+2018-10-12T08:55:12.3090564Z 
+2018-10-12T08:55:12.3091604Z     ΓêÜ azure-arm-app-service-kudu Kudu (526ms)
+2018-10-12T08:55:12.6434593Z 
+2018-10-12T08:55:12.6436038Z     ΓêÜ Runs successfully with XML Transformation (L1) (333ms)
+2018-10-12T08:55:12.8846106Z 
+2018-10-12T08:55:12.8846821Z     ΓêÜ Runs successfully with XML variable substitution (240ms)
+2018-10-12T08:55:13.2509831Z 
+2018-10-12T08:55:13.2510514Z     ΓêÜ Runs successfully with JSON variable substitution (366ms)
+2018-10-12T08:55:13.4555229Z 
+2018-10-12T08:55:13.4556058Z     ΓêÜ Validate File Encoding (204ms)
+2018-10-12T08:55:13.7706501Z 
+2018-10-12T08:55:13.7707174Z     ΓêÜ Validate webdeployment-common.utility.copyDirectory() (314ms)
+2018-10-12T08:55:13.7715273Z 
+2018-10-12T08:55:13.7716136Z   AzureRmWebAppDeployment Suite
+2018-10-12T08:56:06.3455687Z 	validating get
+2018-10-12T08:56:06.3457328Z 	validating update
+2018-10-12T08:56:06.3457718Z 
+2018-10-12T08:56:06.3458701Z     ΓêÜ azure-arm-appinsights AzureApplicationInsights (52564ms)
+2018-10-12T08:56:59.9070970Z 	validating start
+2018-10-12T08:56:59.9071900Z 	validating stop
+2018-10-12T08:56:59.9072354Z 	validating restart
+2018-10-12T08:56:59.9073508Z 	validating swap
+2018-10-12T08:56:59.9074785Z 	validating get
+2018-10-12T08:56:59.9075233Z 	validating getPublishingProfileWithSecrets
+2018-10-12T08:56:59.9075895Z 	validating getPublishingCredentials
+2018-10-12T08:56:59.9077270Z 	validating getApplicationSettings
+2018-10-12T08:56:59.9078300Z 	validating updateApplicationSettings
+2018-10-12T08:56:59.9079663Z 	validating getConfiguration
+2018-10-12T08:56:59.9080180Z 	validating updateConfiguration
+2018-10-12T08:56:59.9081953Z 	validating patchConfiguration
+2018-10-12T08:56:59.9082377Z 	validating getMetadata
+2018-10-12T08:56:59.9083033Z 	validating updateMetadata
+2018-10-12T08:56:59.9085152Z 
+2018-10-12T08:56:59.9085537Z     ΓêÜ azure-arm-app-service AzureAppService (53568ms)
+2018-10-12T08:57:00.4424954Z 	validating updateDeployment
+2018-10-12T08:57:00.4426232Z 	validating getContinuousJobs
+2018-10-12T08:57:00.4426683Z 	validating startContinuousWebJob
+2018-10-12T08:57:00.4426961Z 	validating stopContinuousWebJob
+2018-10-12T08:57:00.4427245Z 	validating installSiteExtension
+2018-10-12T08:57:00.4427487Z 	validating getSiteExtensions
+2018-10-12T08:57:00.4428207Z 	validating getAllSiteExtensions
+2018-10-12T08:57:00.4428537Z 	validating getProcess
+2018-10-12T08:57:00.4428819Z 	validating killProcess
+2018-10-12T08:57:00.4429118Z 	validating getAppSettings
+2018-10-12T08:57:00.4429402Z 	validating listDir
+2018-10-12T08:57:00.4429668Z 	validating getFileContent
+2018-10-12T08:57:00.4429942Z 	validating uploadFile
+2018-10-12T08:57:00.4430228Z 	validating createPath
+2018-10-12T08:57:00.4431014Z 	validating runCommand
+2018-10-12T08:57:00.4431882Z 	validating extractZIP
+2018-10-12T08:57:00.4432586Z 	validating zipDeploy
+2018-10-12T08:57:00.4432935Z 	validating deleteFile
+2018-10-12T08:57:00.4434920Z 
+2018-10-12T08:57:00.4435785Z     ΓêÜ azure-arm-app-service-kudu Kudu (535ms)
+2018-10-12T08:57:00.8962254Z 
+2018-10-12T08:57:00.8963170Z     ΓêÜ azure-arm-resource Resources (451ms)
+2018-10-12T08:57:01.2446125Z 
+2018-10-12T08:57:01.2447111Z     ΓêÜ Runs successfully with XML Transformation (L1) (349ms)
+2018-10-12T08:57:01.5029357Z 
+2018-10-12T08:57:01.5029831Z     ΓêÜ Validate MSDeploy parameters (258ms)
+2018-10-12T08:57:01.6336385Z 
+2018-10-12T08:57:01.6337635Z     ΓêÜ Validate operations.ParameterParserUtility.parse() (131ms)
+2018-10-12T08:57:01.8883460Z 
+2018-10-12T08:57:01.8884119Z     ΓêÜ Runs successfully with XML variable substitution (255ms)
+2018-10-12T08:57:02.2633321Z 
+2018-10-12T08:57:02.2634005Z     ΓêÜ Runs successfully with JSON variable substitution (375ms)
+2018-10-12T08:57:02.4716554Z 
+2018-10-12T08:57:02.4718094Z     ΓêÜ Validate File Encoding (208ms)
+2018-10-12T08:57:02.7821353Z 
+2018-10-12T08:57:02.7822068Z     ΓêÜ Validate webdeployment-common.utility.copyDirectory() (310ms)
+2018-10-12T08:57:03.3809856Z 
+2018-10-12T08:57:03.3810591Z     ΓêÜ AzureRmWebAppDeploymentV4 DeploymentFactoryTests (598ms)
+2018-10-12T08:57:04.2554783Z 
+2018-10-12T08:57:04.2555503Z     ΓêÜ AzureRmWebAppDeploymentV4 AzureRmWebAppDeploymentProviderTests (874ms)
+2018-10-12T08:57:05.0806955Z 
+2018-10-12T08:57:05.0808058Z     ΓêÜ AzureRmWebAppDeploymentV4 BuiltInLinuxWebAppDeploymentProviderTests (823ms)
+2018-10-12T08:57:05.9889502Z 
+2018-10-12T08:57:05.9890607Z     ΓêÜ AzureRmWebAppDeploymentV4 ContainerWebAppDeploymentProviderTests (909ms)
+2018-10-12T08:57:06.7643127Z 
+2018-10-12T08:57:06.7643788Z     ΓêÜ AzureRmWebAppDeploymentV4 WindowsWebAppRunFromZipProviderTests (777ms)
+2018-10-12T08:57:07.6512197Z 
+2018-10-12T08:57:07.6512863Z     ΓêÜ AzureRmWebAppDeploymentV4 WindowsWebAppWarDeployProviderTests (886ms)
+2018-10-12T08:57:08.4086360Z 
+2018-10-12T08:57:08.4088641Z     ΓêÜ AzureRmWebAppDeploymentV4 WindowsWebAppZipDeployProviderTests (757ms)
+2018-10-12T08:57:09.3396619Z 
+2018-10-12T08:57:09.3397780Z     ΓêÜ AzureRmWebAppDeploymentV4 WindowsWebAppWebDeployProviderTests (931ms)
+2018-10-12T08:57:10.1923029Z 
+2018-10-12T08:57:10.1926266Z     ΓêÜ AzureRmWebAppDeploymentV4 PublishProfileWebAppDeploymentProviderTests (849ms)
+2018-10-12T08:57:11.8580589Z 
+2018-10-12T08:57:11.8581520Z     ΓêÜ AzureRmWebAppDeploymentV4 Validate TaskParameters (1662ms)
+2018-10-12T08:57:11.8700757Z 
+2018-10-12T08:57:11.8701049Z   Azure VMSS Deployment
+2018-10-12T08:57:12.2410492Z 
+2018-10-12T08:57:12.2421829Z     ΓêÜ should succeed if vmss image updated successfully (385ms)
+2018-10-12T08:57:12.6192510Z 
+2018-10-12T08:57:12.6193184Z     ΓêÜ should succeed if linux vmss image updated successfully (381ms)
+2018-10-12T08:57:12.9922636Z 
+2018-10-12T08:57:12.9923144Z     ΓêÜ should fail if failed to update VMSS image (373ms)
+2018-10-12T08:57:13.3385602Z 
+2018-10-12T08:57:13.3386312Z     ΓêÜ should fail if failed to list VMSSs (343ms)
+2018-10-12T08:57:13.6846642Z 
+2018-10-12T08:57:13.6847695Z     ΓêÜ should fail if failed to get matching VMSS (349ms)
+2018-10-12T08:57:14.0620679Z 
+2018-10-12T08:57:14.0621358Z     ΓêÜ should skip image update and update extension if image is already up-to-date (377ms)
+2018-10-12T08:57:14.4327214Z 
+2018-10-12T08:57:14.4328309Z     ΓêÜ should succeed even if listing old extensions fails (370ms)
+2018-10-12T08:57:14.7845059Z 
+2018-10-12T08:57:14.7846095Z     ΓêÜ should fail if installing extension fails (352ms)
+2018-10-12T08:57:15.1448911Z 
+2018-10-12T08:57:15.1449415Z     ΓêÜ should not remove extension if existing extensions are not custom script extension (360ms)
+2018-10-12T08:57:15.4955547Z 
+2018-10-12T08:57:15.4956223Z     ΓêÜ should update image but skip installing extension if image custom script is not specified (351ms)
+2018-10-12T08:57:15.8501316Z 
+2018-10-12T08:57:15.8502140Z     ΓêÜ should use unarchived custom scripts if archiving fails (354ms)
+2018-10-12T08:57:16.2391805Z 
+2018-10-12T08:57:16.2392608Z     ΓêÜ should use unarchived custom scripts if skipArchivingCustomScripts input is true (388ms)
+2018-10-12T08:57:16.6013335Z 
+2018-10-12T08:57:16.6014186Z     ΓêÜ should fail task if uploading custom scripts fails while listing keys (362ms)
+2018-10-12T08:57:16.9778904Z 
+2018-10-12T08:57:16.9779678Z     ΓêÜ should fail task if uploading custom scripts fails (376ms)
+2018-10-12T08:57:16.9780075Z 
+2018-10-12T08:57:16.9780501Z   CondaEnvironment L0 Suite
+2018-10-12T08:57:17.2065690Z 
+2018-10-12T08:57:17.2066089Z     ΓêÜ succeeds when creating and activating an environment (228ms)
+2018-10-12T08:57:17.4239260Z 
+2018-10-12T08:57:17.4240121Z     ΓêÜ fails when a Conda installation is not found (217ms)
+2018-10-12T08:57:17.4240541Z     conda.ts
+2018-10-12T08:57:17.4359342Z 
+2018-10-12T08:57:17.4359741Z       ΓêÜ creates and activates environment
+2018-10-12T08:57:17.4394620Z 
+2018-10-12T08:57:17.4395141Z       ΓêÜ updates Conda if the user requests it
+2018-10-12T08:57:17.4429504Z 
+2018-10-12T08:57:17.4430144Z       ΓêÜ fails if `conda` is not found
+2018-10-12T08:57:17.4443003Z     conda_internal.ts
+2018-10-12T08:57:17.4753545Z 
+2018-10-12T08:57:17.4753994Z       ΓêÜ finds the Conda installation with the CONDA variable
+2018-10-12T08:57:17.4858760Z 
+2018-10-12T08:57:17.4859094Z       ΓêÜ finds the Conda installation with PATH
+2018-10-12T08:57:17.4900505Z [command]conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:17.4901668Z rc:0
+2018-10-12T08:57:17.4902801Z success:true
+2018-10-12T08:57:17.4925839Z [command]conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:17.4926125Z rc:1
+2018-10-12T08:57:17.4926949Z success:false
+2018-10-12T08:57:17.4943763Z 
+2018-10-12T08:57:17.4944266Z       ΓêÜ creates Conda environment
+2018-10-12T08:57:17.5051039Z 
+2018-10-12T08:57:17.5051601Z       ΓêÜ activates Conda environment
+2018-10-12T08:57:17.5069340Z 
+2018-10-12T08:57:17.5069918Z   CondaEnvironment L0 Suite
+2018-10-12T08:57:17.7327977Z 
+2018-10-12T08:57:17.7328478Z     ΓêÜ succeeds when creating and activating an environment (225ms)
+2018-10-12T08:57:17.9549671Z 
+2018-10-12T08:57:17.9550552Z     ΓêÜ succeeds when using the `base` environment (222ms)
+2018-10-12T08:57:18.1694849Z 
+2018-10-12T08:57:18.1695566Z     ΓêÜ fails when a Conda installation is not found (215ms)
+2018-10-12T08:57:18.1695926Z     conda.ts
+2018-10-12T08:57:18.1777168Z 
+2018-10-12T08:57:18.1777542Z       ΓêÜ creates and activates environment
+2018-10-12T08:57:18.1807898Z 
+2018-10-12T08:57:18.1808299Z       ΓêÜ requires `createCustomEnvironment` to be set to create a custom environment
+2018-10-12T08:57:18.1832298Z 
+2018-10-12T08:57:18.1832808Z       ΓêÜ updates Conda if the user requests it
+2018-10-12T08:57:18.1857543Z 
+2018-10-12T08:57:18.1857900Z       ΓêÜ fails if `conda` is not found
+2018-10-12T08:57:18.1885310Z 
+2018-10-12T08:57:18.1885647Z       ΓêÜ fails if installing packages to the base environment fails
+2018-10-12T08:57:18.1897992Z     conda_internal.ts
+2018-10-12T08:57:18.1982561Z 
+2018-10-12T08:57:18.1982914Z       ΓêÜ finds the Conda installation with the CONDA variable
+2018-10-12T08:57:18.2031958Z 
+2018-10-12T08:57:18.2032293Z       ΓêÜ finds the Conda installation with PATH
+2018-10-12T08:57:18.2071571Z [command]conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:18.2072456Z rc:0
+2018-10-12T08:57:18.2073250Z success:true
+2018-10-12T08:57:18.2096142Z [command]conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:18.2096914Z rc:1
+2018-10-12T08:57:18.2097266Z success:false
+2018-10-12T08:57:18.2115023Z [command]sudo /miniconda/bin/conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:18.2115446Z rc:0
+2018-10-12T08:57:18.2115683Z success:true
+2018-10-12T08:57:18.2121004Z [command]sudo /miniconda/bin/conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:18.2121298Z rc:1
+2018-10-12T08:57:18.2121524Z success:false
+2018-10-12T08:57:18.2129128Z [command]sudo /miniconda/bin/conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:18.2129454Z rc:0
+2018-10-12T08:57:18.2129955Z success:true
+2018-10-12T08:57:18.2134071Z [command]sudo /miniconda/bin/conda create --quiet --prefix envsDir\env --mkdir --yes
+2018-10-12T08:57:18.2134317Z rc:1
+2018-10-12T08:57:18.2134552Z success:false
+2018-10-12T08:57:18.2136016Z 
+2018-10-12T08:57:18.2136703Z       ΓêÜ creates Conda environment
+2018-10-12T08:57:18.2168693Z 
+2018-10-12T08:57:18.2169272Z       ΓêÜ activates Conda environment
+2018-10-12T08:57:18.2195713Z [command]/miniconda/bin/conda info --base
+2018-10-12T08:57:18.2198550Z /base/environment
+2018-10-12T08:57:18.2198851Z       ΓêÜ adds base environment to path successfully
+2018-10-12T08:57:18.2209158Z 
+2018-10-12T08:57:18.2210745Z   CopyFiles L0 Suite
+2018-10-12T08:57:18.4354753Z 
+2018-10-12T08:57:18.4355670Z     ΓêÜ copy files from srcdir to destdir (214ms)
+2018-10-12T08:57:18.6473648Z 
+2018-10-12T08:57:18.6474603Z     ΓêÜ copy files and subtract based on exclude pattern (212ms)
+2018-10-12T08:57:18.8705925Z 
+2018-10-12T08:57:18.8708399Z     ΓêÜ fails if Contents not set (222ms)
+2018-10-12T08:57:19.1018514Z 
+2018-10-12T08:57:19.1019193Z     ΓêÜ fails if SourceFolder not set (232ms)
+2018-10-12T08:57:19.3309229Z 
+2018-10-12T08:57:19.3309924Z     ΓêÜ fails if TargetFolder not set (229ms)
+2018-10-12T08:57:19.5465871Z 
+2018-10-12T08:57:19.5467078Z     ΓêÜ fails if SourceFolder not found (216ms)
+2018-10-12T08:57:19.7656961Z 
+2018-10-12T08:57:19.7657400Z     ΓêÜ fails if target file is a directory (218ms)
+2018-10-12T08:57:19.9910272Z 
+2018-10-12T08:57:19.9911673Z     ΓêÜ skips if exists (225ms)
+2018-10-12T08:57:20.2222467Z 
+2018-10-12T08:57:20.2223161Z     ΓêÜ overwrites if specified (231ms)
+2018-10-12T08:57:20.4540519Z 
+2018-10-12T08:57:20.4541192Z     ΓêÜ cleans if specified (231ms)
+2018-10-12T08:57:20.6768536Z 
+2018-10-12T08:57:20.6769530Z     ΓêÜ cleans if specified and target is file (222ms)
+2018-10-12T08:57:20.9129442Z 
+2018-10-12T08:57:20.9130840Z     ΓêÜ roots patterns (236ms)
+2018-10-12T08:57:21.1333174Z 
+2018-10-12T08:57:21.1333898Z     ΓêÜ overwrites readonly (221ms)
+2018-10-12T08:57:21.1334236Z 
+2018-10-12T08:57:21.1334739Z   Docker Compose Suite
+2018-10-12T08:57:21.5055711Z 
+2018-10-12T08:57:21.5056591Z 
+2018-10-12T08:57:21.5056924Z     ΓêÜ Runs successfully for windows docker compose service build (372ms)
+2018-10-12T08:57:21.9081581Z 
+2018-10-12T08:57:21.9082564Z 
+2018-10-12T08:57:21.9083022Z     ΓêÜ Runs successfully for windows docker compose push service (404ms)
+2018-10-12T08:57:22.2765364Z 
+2018-10-12T08:57:22.2766397Z 
+2018-10-12T08:57:22.2766684Z     ΓêÜ Runs successfully for windows docker compose run service (367ms)
+2018-10-12T08:57:22.6443871Z 
+2018-10-12T08:57:22.6444465Z 
+2018-10-12T08:57:22.6444719Z     ΓêÜ Runs successfully for windows docker compose push service with ACR (368ms)
+2018-10-12T08:57:23.0220007Z 
+2018-10-12T08:57:23.0221458Z 
+2018-10-12T08:57:23.0221958Z     ΓêÜ Runs successfully for windows docker compose up command with ACR and additional docker compose file (377ms)
+2018-10-12T08:57:23.3965370Z 
+2018-10-12T08:57:23.3966936Z 
+2018-10-12T08:57:23.3967403Z     ΓêÜ Runs successfully for windows docker compose up command with ACR and additional docker compose file not present warning (375ms)
+2018-10-12T08:57:23.7577378Z 
+2018-10-12T08:57:23.7578005Z 
+2018-10-12T08:57:23.7578292Z     ΓêÜ Runs successfully for windows docker compose up command with ACR and additional docker compose relative file path (361ms)
+2018-10-12T08:57:23.7579058Z 
+2018-10-12T08:57:23.7579721Z   Docker Suite
+2018-10-12T08:57:24.0872507Z 
+2018-10-12T08:57:24.0873293Z 
+2018-10-12T08:57:24.0873762Z     ΓêÜ Runs successfully for docker build (329ms)
+2018-10-12T08:57:24.4055984Z 
+2018-10-12T08:57:24.4057206Z 
+2018-10-12T08:57:24.4057659Z     ΓêÜ Runs successfully for docker build with memory limit (318ms)
+2018-10-12T08:57:24.7110111Z 
+2018-10-12T08:57:24.7111046Z 
+2018-10-12T08:57:24.7111476Z     ΓêÜ Runs successfully for docker build for invalid image name (306ms)
+2018-10-12T08:57:25.0128798Z 
+2018-10-12T08:57:25.0130822Z 
+2018-10-12T08:57:25.0131421Z     ΓêÜ Runs fails for docker build for invalid image name and modify image name false (301ms)
+2018-10-12T08:57:25.3125857Z 
+2018-10-12T08:57:25.3127196Z 
+2018-10-12T08:57:25.3127629Z     ΓêÜ Runs successfully for docker build for invalid image name and additional image tag (299ms)
+2018-10-12T08:57:25.6104852Z 
+2018-10-12T08:57:25.6105200Z 
+2018-10-12T08:57:25.6105406Z     ΓêÜ Runs successfully for docker build with latest tag (298ms)
+2018-10-12T08:57:25.9125550Z 
+2018-10-12T08:57:25.9126906Z 
+2018-10-12T08:57:25.9127396Z     ΓêÜ Runs successfully for docker run image (302ms)
+2018-10-12T08:57:26.2004154Z 
+2018-10-12T08:57:26.2004952Z 
+2018-10-12T08:57:26.2005384Z     ΓêÜ Runs successfully for docker run image with memory limit (287ms)
+2018-10-12T08:57:26.5390864Z 
+2018-10-12T08:57:26.5391802Z 
+2018-10-12T08:57:26.5392241Z     ΓêÜ Runs successfully for docker tag image from image names file (337ms)
+2018-10-12T08:57:26.8498985Z 
+2018-10-12T08:57:26.8500169Z 
+2018-10-12T08:57:26.8500604Z     ΓêÜ Runs successfully for docker push image (310ms)
+2018-10-12T08:57:27.1565049Z 
+2018-10-12T08:57:27.1565668Z 
+2018-10-12T08:57:27.1566626Z     ΓêÜ Runs successfully for docker push image from image names file (306ms)
+2018-10-12T08:57:27.4461525Z 
+2018-10-12T08:57:27.4462438Z 
+2018-10-12T08:57:27.4462850Z     ΓêÜ Runs successfully for docker pull image (290ms)
+2018-10-12T08:57:27.7507574Z 
+2018-10-12T08:57:27.7508148Z 
+2018-10-12T08:57:27.7508396Z     ΓêÜ Runs successfully for docker build with ACR (304ms)
+2018-10-12T08:57:28.0541681Z 
+2018-10-12T08:57:28.0542633Z 
+2018-10-12T08:57:28.0543148Z     ΓêÜ Runs successfully for docker build with ACR and qualify image name (303ms)
+2018-10-12T08:57:28.0543493Z 
+2018-10-12T08:57:28.0550365Z   Docker Suite
+2018-10-12T08:57:28.3888575Z 
+2018-10-12T08:57:28.3889458Z 
+2018-10-12T08:57:28.3889854Z     ΓêÜ Runs successfully for docker build (333ms)
+2018-10-12T08:57:28.7012038Z 
+2018-10-12T08:57:28.7012652Z 
+2018-10-12T08:57:28.7013049Z     ΓêÜ Runs successfully for docker build with memory limit (312ms)
+2018-10-12T08:57:29.0118817Z 
+2018-10-12T08:57:29.0119362Z 
+2018-10-12T08:57:29.0119631Z     ΓêÜ Runs successfully for docker build for invalid image name (310ms)
+2018-10-12T08:57:29.3272576Z 
+2018-10-12T08:57:29.3273945Z 
+2018-10-12T08:57:29.3274419Z     ΓêÜ Runs fails for docker build for invalid image name and modify image name false (315ms)
+2018-10-12T08:57:29.6282257Z 
+2018-10-12T08:57:29.6282847Z 
+2018-10-12T08:57:29.6283097Z     ΓêÜ Runs successfully for docker build for invalid image name and additional image tag (301ms)
+2018-10-12T08:57:29.9315570Z 
+2018-10-12T08:57:29.9317579Z 
+2018-10-12T08:57:29.9318173Z     ΓêÜ Runs successfully for docker build with latest tag (303ms)
+2018-10-12T08:57:30.2490688Z 
+2018-10-12T08:57:30.2491363Z 
+2018-10-12T08:57:30.2491764Z     ΓêÜ Runs successfully for docker build with arguments (317ms)
+2018-10-12T08:57:30.5365626Z 
+2018-10-12T08:57:30.5366628Z 
+2018-10-12T08:57:30.5367077Z     ΓêÜ Runs successfully for docker run image (288ms)
+2018-10-12T08:57:30.8310749Z 
+2018-10-12T08:57:30.8311793Z 
+2018-10-12T08:57:30.8312233Z     ΓêÜ Runs successfully for docker run image with memory limit (294ms)
+2018-10-12T08:57:31.1413475Z 
+2018-10-12T08:57:31.1414501Z 
+2018-10-12T08:57:31.1415031Z     ΓêÜ Runs successfully for docker tag image from image names file (310ms)
+2018-10-12T08:57:31.4458250Z 
+2018-10-12T08:57:31.4458986Z 
+2018-10-12T08:57:31.4459442Z     ΓêÜ Runs successfully for docker tag image (304ms)
+2018-10-12T08:57:31.7378765Z 
+2018-10-12T08:57:31.7380243Z 
+2018-10-12T08:57:31.7380707Z     ΓêÜ Runs successfully for docker push image (292ms)
+2018-10-12T08:57:32.0389442Z 
+2018-10-12T08:57:32.0390098Z 
+2018-10-12T08:57:32.0390370Z     ΓêÜ Runs successfully for docker push image with arguments (301ms)
+2018-10-12T08:57:32.3424675Z 
+2018-10-12T08:57:32.3425085Z 
+2018-10-12T08:57:32.3425326Z     ΓêÜ Runs successfully for docker push image from image names file (303ms)
+2018-10-12T08:57:32.6539161Z 
+2018-10-12T08:57:32.6540106Z 
+2018-10-12T08:57:32.6540460Z     ΓêÜ Runs successfully for docker pull image (311ms)
+2018-10-12T08:57:32.9527640Z 
+2018-10-12T08:57:32.9528725Z 
+2018-10-12T08:57:32.9529171Z     ΓêÜ Runs successfully for docker build with ACR (298ms)
+2018-10-12T08:57:33.2583245Z 
+2018-10-12T08:57:33.2584158Z 
+2018-10-12T08:57:33.2584592Z     ΓêÜ Runs successfully for docker build with ACR and qualify image name (305ms)
+2018-10-12T08:57:33.2586275Z 
+2018-10-12T08:57:33.2587521Z   DotNetCoreExe Suite
+2018-10-12T08:57:33.4846813Z 
+2018-10-12T08:57:33.4847855Z     ΓêÜ fails if the dotnet tool is not found (226ms)
+2018-10-12T08:57:34.0644000Z 
+2018-10-12T08:57:34.0644695Z     ΓêÜ restore fails when zero match found (580ms)
+2018-10-12T08:57:34.4665727Z 
+2018-10-12T08:57:34.4666385Z     ΓêÜ restore passes when zero match found with empty string (402ms)
+2018-10-12T08:57:34.8506462Z 
+2018-10-12T08:57:34.8507793Z     ΓêÜ restore single solution (384ms)
+2018-10-12T08:57:35.2333589Z 
+2018-10-12T08:57:35.2334232Z     ΓêÜ restore nocache (384ms)
+2018-10-12T08:57:35.6331668Z 
+2018-10-12T08:57:35.6332469Z     ΓêÜ restore verbosity Detailed (399ms)
+2018-10-12T08:57:36.0142051Z 
+2018-10-12T08:57:36.0142959Z     ΓêÜ restore verbosity - omits switch (381ms)
+2018-10-12T08:57:36.4203829Z 
+2018-10-12T08:57:36.4204911Z     ΓêÜ restore with config file (405ms)
+2018-10-12T08:57:36.8035966Z 
+2018-10-12T08:57:36.8036626Z     ΓêÜ restore with packages directory (385ms)
+2018-10-12T08:57:37.1880735Z 
+2018-10-12T08:57:37.1881421Z     ΓêÜ restore with vsts feed (384ms)
+2018-10-12T08:57:37.5912180Z 
+2018-10-12T08:57:37.5913244Z     ΓêÜ restore select nuget.org source (403ms)
+2018-10-12T08:57:37.9737302Z 
+2018-10-12T08:57:37.9738071Z     ΓêÜ restore single solution with nuget config and multiple service connections (382ms)
+2018-10-12T08:57:38.5068682Z 
+2018-10-12T08:57:38.5069377Z     ΓêÜ build fails when zero match found (533ms)
+2018-10-12T08:57:39.0534664Z 
+2018-10-12T08:57:39.0535892Z     ΓêÜ build passes when zero match found with empty string (547ms)
+2018-10-12T08:57:39.5911319Z 
+2018-10-12T08:57:39.5912312Z     ΓêÜ test throws warning when zero match found (537ms)
+2018-10-12T08:57:40.4288969Z 
+2018-10-12T08:57:40.4289860Z     ΓêÜ publish works with explicit project files setting modifyoutput to false (838ms)
+2018-10-12T08:57:41.2600713Z 
+2018-10-12T08:57:41.2601470Z     ΓêÜ publish works with explicit project files (831ms)
+2018-10-12T08:57:42.1145194Z 
+2018-10-12T08:57:42.1146235Z     ΓêÜ publish works with no project file is specified (855ms)
+2018-10-12T08:57:45.5630017Z 
+2018-10-12T08:57:45.5630728Z     1) publish fails with when the dotnet publish fails
+2018-10-12T08:57:46.4042993Z 
+2018-10-12T08:57:46.4044067Z     ΓêÜ publish fails with error when the project file pattern return zero match (840ms)
+2018-10-12T08:57:47.2255924Z 
+2018-10-12T08:57:47.2256984Z     ΓêÜ publish works with publishWebProjects option (823ms)
+2018-10-12T08:57:48.0193235Z 
+2018-10-12T08:57:48.0194933Z     ΓêÜ publish updates the output with the project name appended (794ms)
+2018-10-12T08:57:48.0208896Z 
+2018-10-12T08:57:48.0209187Z     ΓêÜ publish works with zipAfterPublish option
+2018-10-12T08:57:48.8169955Z 
+2018-10-12T08:57:48.8171011Z     ΓêÜ publish fails with zipAfterPublish and publishWebProjects option with no project file specified (797ms)
+2018-10-12T08:57:49.2042024Z 
+2018-10-12T08:57:49.2042612Z     ΓêÜ packs with prerelease (387ms)
+2018-10-12T08:57:49.5778498Z 
+2018-10-12T08:57:49.5779422Z     ΓêÜ packs with env var (373ms)
+2018-10-12T08:57:49.9645773Z 
+2018-10-12T08:57:49.9646422Z     ΓêÜ packs with build number (386ms)
+2018-10-12T08:57:50.3533677Z 
+2018-10-12T08:57:50.3534893Z     ΓêÜ pack fails no files are found (389ms)
+2018-10-12T08:57:50.7378064Z 
+2018-10-12T08:57:50.7378892Z     ΓêÜ pushes successfully to internal hosted feed (384ms)
+2018-10-12T08:57:51.1319387Z 
+2018-10-12T08:57:51.1320628Z     ΓêÜ pushes successfully to internal onprem feed, does not set auth in config (394ms)
+2018-10-12T08:57:51.5248138Z 
+2018-10-12T08:57:51.5249265Z     ΓêÜ push fails when projects are not found (393ms)
+2018-10-12T08:57:51.9071763Z 
+2018-10-12T08:57:51.9072462Z     ΓêÜ test command with publish test results should call trx logger and publish test results (382ms)
+2018-10-12T08:57:52.2772335Z ##[warning]loc_mock_CouldNotSetCodePaging {}
+2018-10-12T08:57:52.2777113Z [command]c:\path\dotnet.exe test c:\agent new\home\directory\temp.csproj --logger trx --results-directory c:\agent new\home\temp
+2018-10-12T08:57:52.2777283Z dotnet output
+2018-10-12T08:57:52.2777463Z rc:0
+2018-10-12T08:57:52.2777592Z success:true
+2018-10-12T08:57:52.3781612Z ##[warning]Failed to publish test results: Could not find a part of the path 'c:\agent new\home\temp\sample.trx'.
+2018-10-12T08:57:52.3782236Z 
+2018-10-12T08:57:52.3782393Z 
+2018-10-12T08:57:52.3782633Z     ΓêÜ test command with publish test results directory containing spaces should call trx logger and publish test results (369ms)
+2018-10-12T08:57:52.6517148Z 
+2018-10-12T08:57:52.6517789Z     ΓêÜ test command with publish test results should call trx logger and publish test results without build props (375ms)
+2018-10-12T08:57:53.0303457Z 
+2018-10-12T08:57:53.0304960Z     ΓêÜ test command with publish test results should call trx logger and publish test results with failed dotnet test (378ms)
+2018-10-12T08:57:53.4025298Z 
+2018-10-12T08:57:53.4026277Z     ΓêÜ test command without publish test results (372ms)
+2018-10-12T08:57:54.2340342Z 
+2018-10-12T08:57:54.2341431Z     ΓêÜ custom command fails when no project match found (831ms)
+2018-10-12T08:57:55.0838689Z 
+2018-10-12T08:57:55.0839779Z     ΓêÜ custom command executes without projects if none supplied (850ms)
+2018-10-12T08:57:55.9404708Z 
+2018-10-12T08:57:55.9405442Z     ΓêÜ custom command fails if dotnet returns error (856ms)
+2018-10-12T08:57:56.7648941Z 
+2018-10-12T08:57:56.7649599Z     ΓêÜ custom command runs once for each matched project (825ms)
+2018-10-12T08:57:56.7649749Z 
+2018-10-12T08:57:56.7649885Z   DotNetCoreInstaller
+2018-10-12T08:57:57.0033189Z 
+2018-10-12T08:57:57.0034688Z     ΓêÜ [windows]should succeed if sdk installed successfully (238ms)
+2018-10-12T08:57:57.2277934Z 
+2018-10-12T08:57:57.2278809Z     ΓêÜ [windows]should succeed if runtime installed successfully (224ms)
+2018-10-12T08:57:57.4412379Z 
+2018-10-12T08:57:57.4412809Z     ΓêÜ [windows]should not install again if cache hit (213ms)
+2018-10-12T08:57:57.6534418Z 
+2018-10-12T08:57:57.6535428Z     ΓêÜ [windows]should download using legacy url if primary url does not work (212ms)
+2018-10-12T08:57:57.8661376Z 
+2018-10-12T08:57:57.8662027Z     ΓêÜ [windows]should fail if explicit version is not used (212ms)
+2018-10-12T08:57:58.0808409Z 
+2018-10-12T08:57:58.0809011Z     ΓêÜ [windows]should fail if getting download script fails (214ms)
+2018-10-12T08:57:58.0810321Z 
+2018-10-12T08:57:58.0810692Z   DownloadSecureFile Suite
+2018-10-12T08:57:58.2912234Z 
+2018-10-12T08:57:58.2912938Z     ΓêÜ Defaults: download secure file (210ms)
+2018-10-12T08:57:58.2913336Z 
+2018-10-12T08:57:58.2913707Z   GoToolInstaller
+2018-10-12T08:57:58.5032354Z 
+2018-10-12T08:57:58.5033145Z     ΓêÜ go get should succeed (211ms)
+2018-10-12T08:57:58.7159617Z 
+2018-10-12T08:57:58.7160453Z     ΓêÜ go get should fail (212ms)
+2018-10-12T08:57:58.9258994Z 
+2018-10-12T08:57:58.9260797Z     ΓêÜ go build should succeed with arguments (210ms)
+2018-10-12T08:57:59.1529348Z 
+2018-10-12T08:57:59.1530329Z     ΓêÜ go build should fail with argument (227ms)
+2018-10-12T08:57:59.3746071Z 
+2018-10-12T08:57:59.3746749Z     ΓêÜ go custom command should succeed (221ms)
+2018-10-12T08:57:59.5859427Z 
+2018-10-12T08:57:59.5860334Z     ΓêÜ go custom command should fail (211ms)
+2018-10-12T08:57:59.5860645Z 
+2018-10-12T08:57:59.5861000Z   Gradle L0 Suite
+2018-10-12T08:58:00.0140695Z 
+2018-10-12T08:58:00.0141211Z     ΓêÜ run gradle with all default inputs (427ms)
+2018-10-12T08:58:00.4416280Z 
+2018-10-12T08:58:00.4416954Z     ΓêÜ run gradle with missing wrapperScript (427ms)
+2018-10-12T08:58:00.8678995Z 
+2018-10-12T08:58:00.8679806Z     ΓêÜ run gradle with INVALID wrapperScript (426ms)
+2018-10-12T08:58:01.3460024Z 
+2018-10-12T08:58:01.3460991Z     ΓêÜ run gradle with cwd set to valid path (478ms)
+2018-10-12T08:58:01.7890708Z 
+2018-10-12T08:58:01.7891879Z     ΓêÜ run gradle with cwd set to INVALID path (443ms)
+2018-10-12T08:58:02.2436161Z 
+2018-10-12T08:58:02.2436846Z     ΓêÜ run gradle with options set (454ms)
+2018-10-12T08:58:02.7218862Z 
+2018-10-12T08:58:02.7219665Z     ΓêÜ run gradle with tasks not set (478ms)
+2018-10-12T08:58:03.1718767Z 
+2018-10-12T08:58:03.1719461Z     ΓêÜ run gradle with tasks set to multiple (450ms)
+2018-10-12T08:58:03.6147782Z 
+2018-10-12T08:58:03.6148857Z     ΓêÜ run gradle with missing publishJUnitResults input (442ms)
+2018-10-12T08:58:04.0723143Z 
+2018-10-12T08:58:04.0724139Z     ΓêÜ run gradle with publishJUnitResults set to "garbage" (458ms)
+2018-10-12T08:58:04.5150793Z 
+2018-10-12T08:58:04.5151847Z     ΓêÜ fails if missing testResultsFiles input (442ms)
+2018-10-12T08:58:04.9575235Z 
+2018-10-12T08:58:04.9576276Z     ΓêÜ fails if missing javaHomeSelection input (443ms)
+2018-10-12T08:58:05.4263568Z 
+2018-10-12T08:58:05.4265149Z     ΓêÜ run gradle with jdkVersion set to 1.8 (468ms)
+2018-10-12T08:58:05.8742744Z 
+2018-10-12T08:58:05.8743728Z     ΓêÜ run gradle with jdkVersion set to 1.5 (447ms)
+2018-10-12T08:58:06.3245722Z 
+2018-10-12T08:58:06.3246606Z     ΓêÜ run gradle with Valid inputs but it fails (451ms)
+2018-10-12T08:58:06.7649150Z 
+2018-10-12T08:58:06.7649844Z     ΓêÜ Gradle build with publish test results. (438ms)
+2018-10-12T08:58:07.2164993Z 
+2018-10-12T08:58:07.2165716Z     ΓêÜ Gradle build with publish test results with no matching test result files. (452ms)
+2018-10-12T08:58:07.6637078Z 
+2018-10-12T08:58:07.6638939Z     ΓêÜ Gradle with SonarQube - Should run Gradle with all default inputs when SonarQube analysis disabled (447ms)
+2018-10-12T08:58:08.1193808Z 
+2018-10-12T08:58:08.1194555Z     ΓêÜ Gradle with SonarQube - Should run Gradle with SonarQube (455ms)
+2018-10-12T08:58:08.6805919Z 
+2018-10-12T08:58:08.6806801Z     ΓêÜ Single Module Gradle with Checkstyle and FindBugs and PMD (561ms)
+2018-10-12T08:58:09.1455063Z 
+2018-10-12T08:58:09.1456092Z     ΓêÜ Gradle with code analysis - Only shows empty results for tools which are enabled (464ms)
+2018-10-12T08:58:09.6351756Z 
+2018-10-12T08:58:09.6352475Z     ΓêÜ Gradle with code analysis - Does not upload artifacts if code analysis reports were empty (489ms)
+2018-10-12T08:58:10.0863983Z 
+2018-10-12T08:58:10.0865052Z     ΓêÜ Gradle with code analysis - Does nothing if the tools were not enabled (451ms)
+2018-10-12T08:58:10.6452237Z 
+2018-10-12T08:58:10.6453758Z     ΓêÜ Multi Module Gradle with Checkstyle and FindBugs and PMD (558ms)
+2018-10-12T08:58:11.1183615Z 
+2018-10-12T08:58:11.1184338Z     ΓêÜ No Code Coverage results succeed (472ms)
+2018-10-12T08:58:11.5487049Z 
+2018-10-12T08:58:11.5487473Z     ΓêÜ No Code Coverage results fail (430ms)
+2018-10-12T08:58:11.6131913Z 
+2018-10-12T08:58:11.6132189Z     ΓêÜ Checkstyle tool retrieves results (56ms)
+2018-10-12T08:58:11.6295678Z 
+2018-10-12T08:58:11.6295907Z     ΓêÜ Pmd tool retrieves results
+2018-10-12T08:58:11.6379556Z 
+2018-10-12T08:58:11.6379846Z     ΓêÜ FindBugs tool retrieves results
+2018-10-12T08:58:11.6381028Z 
+2018-10-12T08:58:11.6381452Z   IISWebsiteDeploymentOnMachineGroup test suite
+2018-10-12T08:58:11.9473372Z 
+2018-10-12T08:58:11.9474367Z     ΓêÜ Runs successfully with default inputs (304ms)
+2018-10-12T08:58:12.2515837Z 
+2018-10-12T08:58:12.2516630Z     ΓêÜ Runs successfully with all other inputs (304ms)
+2018-10-12T08:58:12.5492729Z 
+2018-10-12T08:58:12.5493582Z     ΓêÜ Fails if msdeploy fails to execute (297ms)
+2018-10-12T08:58:12.8463232Z 
+2018-10-12T08:58:12.8463940Z     ΓêÜ Runs successfully with parameter file present in package (296ms)
+2018-10-12T08:58:13.3188001Z 
+2018-10-12T08:58:13.3188641Z     ΓêÜ Fails if parameters file provided by user is not present (472ms)
+2018-10-12T08:58:13.7723195Z 
+2018-10-12T08:58:13.7723913Z     ΓêÜ Fails if more than one package matched with specified pattern (453ms)
+2018-10-12T08:58:14.2277888Z 
+2018-10-12T08:58:14.2282668Z     ΓêÜ Fails if package or folder name is invalid (453ms)
+2018-10-12T08:58:14.5283820Z 
+2018-10-12T08:58:14.5284478Z     ΓêÜ Runs Successfully with XDT Transformation (Mock) (300ms)
+2018-10-12T08:58:14.9608479Z 
+2018-10-12T08:58:14.9609406Z     ΓêÜ Fails if XDT Transformation throws error (Mock) (432ms)
+2018-10-12T08:58:15.3063868Z 
+2018-10-12T08:58:15.3064505Z     ΓêÜ Runs successfully with XDT Transformation (L1) (345ms)
+2018-10-12T08:58:15.6056210Z 
+2018-10-12T08:58:15.6057581Z     ΓêÜ Runs successfully with XML variable substitution (292ms)
+2018-10-12T08:58:16.1327748Z 
+2018-10-12T08:58:16.1400831Z     ΓêÜ Runs successfully with JSON variable substitution (532ms)
+2018-10-12T08:58:16.4120821Z 
+2018-10-12T08:58:16.4121531Z     ΓêÜ Validate File Encoding (276ms)
+2018-10-12T08:58:16.9941604Z 
+2018-10-12T08:58:16.9945485Z     ΓêÜ Validate webdeployment-common.utility.copyDirectory() (581ms)
+2018-10-12T08:58:17.2864015Z 
+2018-10-12T08:58:17.2865532Z     ΓêÜ Validate MSDeploy parameters (290ms)
+2018-10-12T08:58:17.2869344Z 
+2018-10-12T08:58:17.2869590Z   InstallAppleCertificate Suite
+2018-10-12T08:58:17.6607656Z 
+2018-10-12T08:58:17.6609226Z     ΓêÜ Defaults: install cert in temporary keychain (374ms)
+2018-10-12T08:58:17.9069170Z 
+2018-10-12T08:58:17.9069971Z     ΓêÜ Defaults: install cert with empty password in temporary keychain (250ms)
+2018-10-12T08:58:18.1403909Z 
+2018-10-12T08:58:18.1404953Z     ΓêÜ Defaults: delete temporary keychain after build (233ms)
+2018-10-12T08:58:18.3941809Z 
+2018-10-12T08:58:18.3942539Z     ΓêÜ Defaults: install certificate in default keychain before build (253ms)
+2018-10-12T08:58:18.6259588Z 
+2018-10-12T08:58:18.6260476Z     ΓêÜ Defaults: delete certificate from default keychain after build (232ms)
+2018-10-12T08:58:18.8903482Z 
+2018-10-12T08:58:18.8904505Z     ΓêÜ Defaults: with user input CN do not parse for it (264ms)
+2018-10-12T08:58:19.1199034Z 
+2018-10-12T08:58:19.1199751Z     ΓêÜ Fails on windows (229ms)
+2018-10-12T08:58:19.1200451Z 
+2018-10-12T08:58:19.1200941Z   InstallAppleProvisioningProfile Suite
+2018-10-12T08:58:19.3564549Z 
+2018-10-12T08:58:19.3565231Z     ΓêÜ Defaults: install from SecureFile (236ms)
+2018-10-12T08:58:19.5927777Z 
+2018-10-12T08:58:19.5928724Z     ΓêÜ Install from source repository (236ms)
+2018-10-12T08:58:19.8169350Z 
+2018-10-12T08:58:19.8169979Z     ΓêÜ Install from source repository fails if provisioning profile is not found (224ms)
+2018-10-12T08:58:20.0400313Z 
+2018-10-12T08:58:20.0400987Z     ΓêÜ Remove profile during post execution (223ms)
+2018-10-12T08:58:20.2760207Z 
+2018-10-12T08:58:20.2760885Z     ΓêÜ Fails on windows (236ms)
+2018-10-12T08:58:20.2761202Z 
+2018-10-12T08:58:20.2761694Z   InstallSSHKey Suite
+2018-10-12T08:58:20.5193721Z 
+2018-10-12T08:58:20.5195486Z     ΓêÜ Start ssh-agent (243ms)
+2018-10-12T08:58:20.7545119Z 
+2018-10-12T08:58:20.7546439Z     ΓêÜ SSH key already installed (235ms)
+2018-10-12T08:58:20.9914089Z 
+2018-10-12T08:58:20.9915104Z     ΓêÜ SSH key malformed (237ms)
+2018-10-12T08:58:20.9915464Z 
+2018-10-12T08:58:20.9915770Z   JavaToolInstaller L0 Suite
+2018-10-12T08:58:21.2595067Z 
+2018-10-12T08:58:21.2595792Z     ΓêÜ should fail when JavaToolInstaller is run with no azure server endpoint (267ms)
+2018-10-12T08:58:21.3963102Z 
+2018-10-12T08:58:21.3963803Z     ΓêÜ should run successfully when fetching JDK files from azure storage (136ms)
+2018-10-12T08:58:21.6511027Z 
+2018-10-12T08:58:21.6511807Z     ΓêÜ should fail when JavaToolInstaller is run with to destination folder specified (254ms)
+2018-10-12T08:58:21.6512185Z 
+2018-10-12T08:58:21.6513047Z   JenkinsDownloadArtifacts L0 Suite
+2018-10-12T08:58:22.4886597Z 
+2018-10-12T08:58:22.4887290Z     ΓêÜ run JenkinsDownloadArtifacts with no server endpoint (837ms)
+2018-10-12T08:58:23.3216159Z 
+2018-10-12T08:58:23.3216875Z     ΓêÜ run JenkinsDownloadArtifacts with no save to (833ms)
+2018-10-12T08:58:24.1950363Z 
+2018-10-12T08:58:24.1951304Z     ΓêÜ run JenkinsDownloadArtifacts with no job name (873ms)
+2018-10-12T08:58:25.0795455Z 
+2018-10-12T08:58:25.0796311Z     ΓêÜ Should download commits from single build (885ms)
+2018-10-12T08:58:25.9620223Z 
+2018-10-12T08:58:25.9620873Z     ΓêÜ Validate github commit url (882ms)
+2018-10-12T08:58:26.8386425Z 
+2018-10-12T08:58:26.8387038Z     ΓêÜ Validate gitlab commit url (877ms)
+2018-10-12T08:58:27.7141204Z 
+2018-10-12T08:58:27.7143122Z     ΓêÜ Validate http commit url (874ms)
+2018-10-12T08:58:28.6158448Z 
+2018-10-12T08:58:28.6159152Z     ΓêÜ Validate invalid commit url (902ms)
+2018-10-12T08:58:29.5076636Z 
+2018-10-12T08:58:29.5077322Z     ΓêÜ Should download commits from build range (892ms)
+2018-10-12T08:58:30.3602118Z 
+2018-10-12T08:58:30.3602913Z     ΓêÜ Should download rollback commits (852ms)
+2018-10-12T08:58:31.1884632Z 
+2018-10-12T08:58:31.1885648Z     ΓêÜ No commits should be downloaded if both the jobId is same (828ms)
+2018-10-12T08:58:31.9859503Z 
+2018-10-12T08:58:31.9860307Z     ΓêÜ run JenkinsDownloadArtifacts for propagated artifacts with Artifact Provider not as Azure Storage (797ms)
+2018-10-12T08:58:32.8050319Z 
+2018-10-12T08:58:32.8051028Z     ΓêÜ run JenkinsDownloadArtifacts for propagated artifacts with no azure server endpoint (819ms)
+2018-10-12T08:58:33.2349905Z 
+2018-10-12T08:58:33.2350446Z     ΓêÜ run JenkinsDownloadArtifacts for propagated artifacts should run successfully (430ms)
+2018-10-12T08:58:34.1038622Z 
+2018-10-12T08:58:34.1039529Z     ΓêÜ Job type should be fetched even if its mentioned in the task input (869ms)
+2018-10-12T08:58:34.9538921Z 
+2018-10-12T08:58:34.9539603Z     ΓêÜ Should fail if invalid buildId mentioned for MultiBranch job type (850ms)
+2018-10-12T08:58:35.7875370Z 
+2018-10-12T08:58:35.7876088Z     ΓêÜ Should fail if invalid buildId mentioned for Freestyle job type (834ms)
+2018-10-12T08:58:36.6386290Z 
+2018-10-12T08:58:36.6386983Z     ΓêÜ Should find jobId and branchName if its multibranch pipeline project (851ms)
+2018-10-12T08:58:37.4697375Z 
+2018-10-12T08:58:37.4698680Z     ΓêÜ Should find jobId and branchName if its freestyle pipeline project (831ms)
+2018-10-12T08:58:38.3212487Z 
+2018-10-12T08:58:38.3213182Z     ΓêÜ Should fetch the LastSuccesful build correctly when its Freestyle project (851ms)
+2018-10-12T08:58:39.1544022Z 
+2018-10-12T08:58:39.1544886Z     ΓêÜ Should fetch the LastSuccesful build correctly when its MultiBranch Pipeline project (832ms)
+2018-10-12T08:58:39.9963578Z 
+2018-10-12T08:58:39.9964578Z     ΓêÜ Should have the correct url when downloading commits from multibranch pipeline project (841ms)
+2018-10-12T08:58:40.8295408Z 
+2018-10-12T08:58:40.8296160Z     ΓêÜ Should throw if the start and end builds are from different branch in multibranch pipeline project (833ms)
+2018-10-12T08:58:41.6864167Z 
+2018-10-12T08:58:41.6865096Z     ΓêÜ Should have the correct url if the job is under folder (857ms)
+2018-10-12T08:58:41.6865542Z 
+2018-10-12T08:58:41.6865944Z   JenkinsQueueJob L0 Suite
+2018-10-12T08:58:42.1499014Z 
+2018-10-12T08:58:42.1499987Z     ΓêÜ run JenkinsQueueJob with no server endpoint (463ms)
+2018-10-12T08:58:42.6031051Z 
+2018-10-12T08:58:42.6031918Z     ΓêÜ run JenkinsQueueJob with no job name (453ms)
+2018-10-12T08:58:43.0611345Z 
+2018-10-12T08:58:43.0612631Z     ΓêÜ run JenkinsQueueJob with no capture console (457ms)
+2018-10-12T08:58:43.5086711Z 
+2018-10-12T08:58:43.5087407Z     ΓêÜ run JenkinsQueueJob with no capture pipeline (447ms)
+2018-10-12T08:58:43.9717319Z 
+2018-10-12T08:58:43.9718295Z     ΓêÜ run JenkinsQueueJob with no parameterized job (463ms)
+2018-10-12T08:58:44.4526342Z 
+2018-10-12T08:58:44.4527141Z     ΓêÜ run JenkinsQueueJob with bogus url no parameters (481ms)
+2018-10-12T08:58:44.9222807Z 
+2018-10-12T08:58:44.9223631Z     ΓêÜ run JenkinsQueueJob with bogus url with parameters (469ms)
+2018-10-12T08:58:44.9223987Z 
+2018-10-12T08:58:44.9231886Z   Kubernetes Suite
+2018-10-12T08:58:45.2188865Z 
+2018-10-12T08:58:45.2189471Z 
+2018-10-12T08:58:45.2189726Z     ΓêÜ Run successfully when the authorization type of the endpoint is service account (295ms)
+2018-10-12T08:58:45.5167100Z 
+2018-10-12T08:58:45.5167675Z 
+2018-10-12T08:58:45.5167945Z     ΓêÜ Run successfully when the user provides a specific location for kubectl (297ms)
+2018-10-12T08:58:45.7941919Z 
+2018-10-12T08:58:45.7942740Z 
+2018-10-12T08:58:45.7943194Z     ΓêÜ Run successfully when the user provides the version for kubectl with checkLatest as false and version that dosent have a v prefix (277ms)
+2018-10-12T08:58:46.0928497Z 
+2018-10-12T08:58:46.0929048Z 
+2018-10-12T08:58:46.0929356Z     ΓêÜ Run successfully when the user provides the version for kubectl with checkLatest as true (298ms)
+2018-10-12T08:58:46.3918290Z 
+2018-10-12T08:58:46.3919270Z 
+2018-10-12T08:58:46.3921457Z     ΓêÜ Run successfully when the user provides the version 1.7 for kubectl with checkLatest as false (298ms)
+2018-10-12T08:58:46.6737727Z 
+2018-10-12T08:58:46.6738467Z 
+2018-10-12T08:58:46.6738741Z     ΓêÜ Run fails when the user provides a wrong location for kubectl (281ms)
+2018-10-12T08:58:46.9521153Z 
+2018-10-12T08:58:46.9522127Z 
+2018-10-12T08:58:46.9522584Z     ΓêÜ Runs successfully for kubectl apply using configuration file (278ms)
+2018-10-12T08:58:47.2486381Z 
+2018-10-12T08:58:47.2486744Z 
+2018-10-12T08:58:47.2486977Z     ΓêÜ Runs successfully for kubectl expose with configuration file and arguments (296ms)
+2018-10-12T08:58:47.5616839Z 
+2018-10-12T08:58:47.5642138Z 
+2018-10-12T08:58:47.5658074Z     ΓêÜ Runs successfully for kubectl get (306ms)
+2018-10-12T08:58:47.9756147Z 
+2018-10-12T08:58:47.9806720Z 
+2018-10-12T08:58:47.9807025Z     ΓêÜ Runs successfully for kubectl get in a particular namespace (405ms)
+2018-10-12T08:58:48.3541162Z 
+2018-10-12T08:58:48.3635951Z 
+2018-10-12T08:58:48.3751335Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using Container Registry with forceUpdate (392ms)
+2018-10-12T08:58:48.6679444Z 
+2018-10-12T08:58:48.6680093Z 
+2018-10-12T08:58:48.6681201Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using Container Registry without forceUpdate (308ms)
+2018-10-12T08:58:49.0026391Z 
+2018-10-12T08:58:49.0062923Z 
+2018-10-12T08:58:49.0172408Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using AzureContainerRegistry Registry with forceUpdate (334ms)
+2018-10-12T08:58:49.3388801Z 
+2018-10-12T08:58:49.3402535Z 
+2018-10-12T08:58:49.3403157Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using AzureContainerRegistry without forceUpdate (337ms)
+2018-10-12T08:58:49.8668168Z 
+2018-10-12T08:58:49.8668751Z 
+2018-10-12T08:58:49.8669381Z     ΓêÜ Runs successfully for kubectl generic secrets with forceUpdate (531ms)
+2018-10-12T08:58:50.1611447Z 
+2018-10-12T08:58:50.1612418Z 
+2018-10-12T08:58:50.1612904Z     ΓêÜ Runs successfully for kubectl generic secrets without forceUpdate (294ms)
+2018-10-12T08:58:50.4798694Z 
+2018-10-12T08:58:50.4800061Z 
+2018-10-12T08:58:50.4800799Z     ΓêÜ Runs successfully for kubectl create configMap from file with forceUpdate (318ms)
+2018-10-12T08:58:50.7888410Z 
+2018-10-12T08:58:50.7888974Z 
+2018-10-12T08:58:50.7889226Z     ΓêÜ Runs successfully for kubectl create configMap from directory without forceUpdate (308ms)
+2018-10-12T08:58:51.0940800Z 
+2018-10-12T08:58:51.0941425Z 
+2018-10-12T08:58:51.0941694Z     ΓêÜ Runs successfully for kubectl create configMap using literal values with forceUpdate (304ms)
+2018-10-12T08:58:51.3827692Z 
+2018-10-12T08:58:51.3828595Z 
+2018-10-12T08:58:51.3829043Z     ΓêÜ Runs successfully for kubectl kubectl create configMap using literal values without forceUpdate (288ms)
+2018-10-12T08:58:51.6832905Z 
+2018-10-12T08:58:51.6833501Z 
+2018-10-12T08:58:51.6833786Z     ΓêÜ Runs successfully for kubectl get and print the output in a particular format (300ms)
+2018-10-12T08:58:51.9864689Z 
+2018-10-12T08:58:51.9865193Z 
+2018-10-12T08:58:51.9865613Z     ΓêÜ Runs successfully for checking whether secrets, configmaps and kubectl commands are run in a consecutive manner (302ms)
+2018-10-12T08:58:52.2851902Z 
+2018-10-12T08:58:52.2852522Z 
+2018-10-12T08:58:52.2852859Z     ΓêÜ Runs fails if create config command fails even if create secret is successful (299ms)
+2018-10-12T08:58:52.6127103Z 
+2018-10-12T08:58:52.6127621Z 
+2018-10-12T08:58:52.6127888Z     ΓêÜ Runs successfully when forceUpdateConfigMap is false and configMap exists (327ms)
+2018-10-12T08:58:52.8929897Z 
+2018-10-12T08:58:52.8930889Z 
+2018-10-12T08:58:52.8931204Z     ΓêÜ Run successfully using the specified kubectl version when kubectl is present on machine and version is specified  (280ms)
+2018-10-12T08:58:53.1779234Z 
+2018-10-12T08:58:53.1780018Z 
+2018-10-12T08:58:53.1781953Z     ΓêÜ Json and yaml output format should not added for commands that dont support it (285ms)
+2018-10-12T08:58:53.1782517Z 
+2018-10-12T08:58:53.1782798Z   Kubernetes Suite
+2018-10-12T08:58:53.5790934Z 
+2018-10-12T08:58:53.5791636Z 
+2018-10-12T08:58:53.5791894Z     ΓêÜ Run successfully when the connectionType is Kubernetes Service Connection (400ms)
+2018-10-12T08:58:53.9908846Z 
+2018-10-12T08:58:53.9909532Z 
+2018-10-12T08:58:53.9909858Z     ΓêÜ Run successfully when the authorization type of the endpoint is service account and connectionType is Kubernetes Service Connection (412ms)
+2018-10-12T08:58:54.5289461Z 
+2018-10-12T08:58:54.5290031Z 
+2018-10-12T08:58:54.5290742Z     ΓêÜ Run successfully when the user provides a specific location for kubectl (537ms)
+2018-10-12T08:58:55.0613221Z 
+2018-10-12T08:58:55.0614297Z 
+2018-10-12T08:58:55.0614791Z     ΓêÜ Run successfully when the user provides the version for kubectl with checkLatest as false and version that dosent have a v prefix (532ms)
+2018-10-12T08:58:55.5822222Z 
+2018-10-12T08:58:55.5822785Z 
+2018-10-12T08:58:55.5823031Z     ΓêÜ Run successfully when the user provides the version for kubectl with checkLatest as true (520ms)
+2018-10-12T08:58:56.1083724Z 
+2018-10-12T08:58:56.1084163Z 
+2018-10-12T08:58:56.1084407Z     ΓêÜ Run successfully when the user provides the version 1.7 for kubectl with checkLatest as false (525ms)
+2018-10-12T08:58:56.6140379Z 
+2018-10-12T08:58:56.6141473Z 
+2018-10-12T08:58:56.6141950Z     ΓêÜ Run fails when the user provides a wrong location for kubectl (505ms)
+2018-10-12T08:58:57.1119974Z 
+2018-10-12T08:58:57.1120906Z 
+2018-10-12T08:58:57.1121398Z     ΓêÜ Runs successfully for kubectl apply using configuration file (497ms)
+2018-10-12T08:58:57.6204730Z 
+2018-10-12T08:58:57.6205677Z 
+2018-10-12T08:58:57.6206142Z     ΓêÜ Runs successfully for kubectl expose with configuration file and arguments (508ms)
+2018-10-12T08:58:58.1381202Z 
+2018-10-12T08:58:58.1382243Z 
+2018-10-12T08:58:58.1382660Z     ΓêÜ Runs successfully for kubectl get (517ms)
+2018-10-12T08:58:58.6439491Z 
+2018-10-12T08:58:58.6441621Z 
+2018-10-12T08:58:58.6442151Z     ΓêÜ Runs successfully for kubectl get in a particular namespace (506ms)
+2018-10-12T08:58:59.1740624Z 
+2018-10-12T08:58:59.1741637Z 
+2018-10-12T08:58:59.1742117Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using Container Registry with forceUpdate (529ms)
+2018-10-12T08:58:59.6977058Z 
+2018-10-12T08:58:59.6977953Z 
+2018-10-12T08:58:59.6978418Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using Container Registry without forceUpdate (523ms)
+2018-10-12T08:59:00.2146463Z 
+2018-10-12T08:59:00.2147037Z 
+2018-10-12T08:59:00.2147307Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using AzureContainerRegistry Registry with forceUpdate (517ms)
+2018-10-12T08:59:00.7096223Z 
+2018-10-12T08:59:00.7097855Z 
+2018-10-12T08:59:00.7098718Z     ΓêÜ Runs successfully for kubectl docker-registry secrets using AzureContainerRegistry without forceUpdate (495ms)
+2018-10-12T08:59:01.2350652Z 
+2018-10-12T08:59:01.2352361Z 
+2018-10-12T08:59:01.2352902Z     ΓêÜ Runs successfully for kubectl generic secrets with forceUpdate (525ms)
+2018-10-12T08:59:01.7268366Z 
+2018-10-12T08:59:01.7268944Z 
+2018-10-12T08:59:01.7269223Z     ΓêÜ Runs successfully for kubectl generic secrets without forceUpdate (491ms)
+2018-10-12T08:59:02.2364413Z 
+2018-10-12T08:59:02.2366190Z 
+2018-10-12T08:59:02.2367098Z     ΓêÜ Runs successfully for kubectl create configMap from file with forceUpdate (509ms)
+2018-10-12T08:59:02.7485626Z 
+2018-10-12T08:59:02.7487436Z 
+2018-10-12T08:59:02.7488028Z     ΓêÜ Runs successfully for kubectl create configMap from directory without forceUpdate (512ms)
+2018-10-12T08:59:03.2588763Z 
+2018-10-12T08:59:03.2590352Z 
+2018-10-12T08:59:03.2590896Z     ΓêÜ Runs successfully for kubectl create configMap using literal values with forceUpdate (510ms)
+2018-10-12T08:59:03.7812784Z 
+2018-10-12T08:59:03.7814891Z 
+2018-10-12T08:59:03.7815462Z     ΓêÜ Runs successfully for kubectl kubectl create configMap using literal values without forceUpdate (522ms)
+2018-10-12T08:59:04.3090434Z 
+2018-10-12T08:59:04.3091419Z 
+2018-10-12T08:59:04.3091886Z     ΓêÜ Runs successfully for kubectl get and print the output in a particular format (528ms)
+2018-10-12T08:59:04.8409056Z 
+2018-10-12T08:59:04.8410863Z 
+2018-10-12T08:59:04.8411524Z     ΓêÜ Runs successfully for checking whether secrets, configmaps and kubectl commands are run in a consecutive manner (531ms)
+2018-10-12T08:59:05.3833660Z 
+2018-10-12T08:59:05.3834241Z 
+2018-10-12T08:59:05.3834502Z     ΓêÜ Runs fails if create config command fails even if create secret is successful (542ms)
+2018-10-12T08:59:05.8899200Z 
+2018-10-12T08:59:05.8900038Z 
+2018-10-12T08:59:05.8900303Z     ΓêÜ Runs successfully when forceUpdateConfigMap is false and configMap exists (506ms)
+2018-10-12T08:59:06.4110399Z 
+2018-10-12T08:59:06.4110989Z 
+2018-10-12T08:59:06.4111280Z     ΓêÜ Run successfully using the specified kubectl version when kubectl is present on machine and version is specified  (521ms)
+2018-10-12T08:59:06.9323929Z 
+2018-10-12T08:59:06.9324483Z 
+2018-10-12T08:59:06.9325121Z     ΓêÜ Json and yaml output format should not added for commands that dont support it (520ms)
+2018-10-12T08:59:06.9325576Z 
+2018-10-12T08:59:06.9325959Z   MSBuild Suite
+2018-10-12T08:59:07.1622268Z 
+2018-10-12T08:59:07.1623058Z     ΓêÜ Xplat MSBuild: Defaults (225ms)
+2018-10-12T08:59:07.3852972Z 
+2018-10-12T08:59:07.3853640Z     ΓêÜ Xplat MSBuild: Clean and Build (223ms)
+2018-10-12T08:59:07.6221836Z 
+2018-10-12T08:59:07.6222584Z     ΓêÜ Xplat MSBuild: Multiple solutions (237ms)
+2018-10-12T08:59:07.6222920Z 
+2018-10-12T08:59:07.6223303Z   Npm Task
+2018-10-12T08:59:08.0346844Z 
+2018-10-12T08:59:08.0347572Z     ΓêÜ npm failure dumps debug log from npm cache (409ms)
+2018-10-12T08:59:08.4232432Z 
+2018-10-12T08:59:08.4233222Z     ΓêÜ npm failure dumps debug log from working directory (387ms)
+2018-10-12T08:59:08.8307972Z 
+2018-10-12T08:59:08.8309241Z     ΓêÜ custom command succeeds with single service endpoint (406ms)
+2018-10-12T08:59:09.2536511Z 
+2018-10-12T08:59:09.2537598Z     ΓêÜ custom command should return npm version (415ms)
+2018-10-12T08:59:09.6448412Z 
+2018-10-12T08:59:09.6449132Z     ΓêÜ should execute 'npm config list' without debug switch (397ms)
+2018-10-12T08:59:10.0248863Z 
+2018-10-12T08:59:10.0250021Z     ΓêÜ should fail when npm fails (378ms)
+2018-10-12T08:59:10.2881026Z 
+2018-10-12T08:59:10.2881650Z     ΓêÜ install using local feed (262ms)
+2018-10-12T08:59:10.6693247Z 
+2018-10-12T08:59:10.6694487Z     ΓêÜ install using npmrc (380ms)
+2018-10-12T08:59:11.0783642Z 
+2018-10-12T08:59:11.0784359Z     ΓêÜ install using multiple endpoints (408ms)
+2018-10-12T08:59:11.3480171Z 
+2018-10-12T08:59:11.3480844Z     ΓêÜ publish using feed (268ms)
+2018-10-12T08:59:11.6150893Z 
+2018-10-12T08:59:11.6151588Z     ΓêÜ publish using external registry (266ms)
+2018-10-12T08:59:11.6204955Z 
+2018-10-12T08:59:11.6205274Z     ΓêÜ gets npm registries
+2018-10-12T08:59:11.7771572Z 
+2018-10-12T08:59:11.7772022Z     ΓêÜ gets feed id from VSTS registry (156ms)
+2018-10-12T08:59:11.8858144Z 
+2018-10-12T08:59:11.8858884Z     ΓêÜ gets correct local registries (107ms)
+2018-10-12T08:59:11.9471314Z 
+2018-10-12T08:59:11.9471745Z     ΓêÜ does Basic auth for hosted when service endpoint auth is Token and endpoint is in the .visualstudio.com domain (60ms)
+2018-10-12T08:59:11.9984941Z 
+2018-10-12T08:59:11.9985775Z     ΓêÜ does Bearer auth for hosted when service endpoint auth is Token and endpoint is 3rd party (50ms)
+2018-10-12T08:59:12.0269881Z 
+2018-10-12T08:59:12.0270813Z     ΓêÜ handles views in registry URL
+2018-10-12T08:59:12.0272576Z 
+2018-10-12T08:59:12.0273207Z   NuGetCommand Suite
+2018-10-12T08:59:12.4255858Z 
+2018-10-12T08:59:12.4256754Z     ΓêÜ restore single solution (398ms)
+2018-10-12T08:59:12.8223192Z 
+2018-10-12T08:59:12.8223792Z     ΓêÜ restore single solution with CredentialProvider (397ms)
+2018-10-12T08:59:13.2266494Z 
+2018-10-12T08:59:13.2267172Z     ΓêÜ restore packages.config (399ms)
+2018-10-12T08:59:13.6376573Z 
+2018-10-12T08:59:13.6377647Z     ΓêÜ restore single solution with noCache (411ms)
+2018-10-12T08:59:14.0525249Z 
+2018-10-12T08:59:14.0526034Z     ΓêÜ restore single solution with disableParallelProcessing (415ms)
+2018-10-12T08:59:14.4748221Z 
+2018-10-12T08:59:14.4749882Z     ΓêÜ restore single solution with nuget config (422ms)
+2018-10-12T08:59:14.8795922Z 
+2018-10-12T08:59:14.8796605Z     ΓêÜ restore multiple solutions (404ms)
+2018-10-12T08:59:15.3021010Z 
+2018-10-12T08:59:15.3021759Z     ΓêÜ restore multiple solutions and parses pattern appropriately (423ms)
+2018-10-12T08:59:15.7014947Z 
+2018-10-12T08:59:15.7016009Z     ΓêÜ restore single solution mono (399ms)
+2018-10-12T08:59:16.0028130Z 
+2018-10-12T08:59:16.0029253Z     ΓêÜ restore select vsts source (301ms)
+2018-10-12T08:59:16.4134405Z 
+2018-10-12T08:59:16.4135465Z     ΓêÜ restore select nuget.org source (410ms)
+2018-10-12T08:59:16.7077041Z 
+2018-10-12T08:59:16.7077793Z     ΓêÜ restore select multiple sources (294ms)
+2018-10-12T08:59:17.0013885Z 
+2018-10-12T08:59:17.0014551Z     ΓêÜ pushes successfully to internal feed using NuGet.exe (294ms)
+2018-10-12T08:59:17.2875334Z 
+2018-10-12T08:59:17.2876011Z     ΓêÜ pushes successfully to internal feed using VstsNuGetPush.exe (286ms)
+2018-10-12T08:59:17.5707658Z 
+2018-10-12T08:59:17.5708496Z     ΓêÜ succeeds when conflict occurs using VstsNuGetPush.exe (283ms)
+2018-10-12T08:59:17.8551260Z 
+2018-10-12T08:59:17.8551965Z     ΓêÜ succeeds when conflict occurs using VstsNuGetPush.exe (285ms)
+2018-10-12T08:59:18.2511472Z 
+2018-10-12T08:59:18.2512133Z     ΓêÜ packs with prerelease (396ms)
+2018-10-12T08:59:18.6546135Z 
+2018-10-12T08:59:18.6546548Z     ΓêÜ packs with env var (403ms)
+2018-10-12T08:59:19.0629845Z 
+2018-10-12T08:59:19.0630980Z     ΓêÜ packs with build number (408ms)
+2018-10-12T08:59:19.4627108Z 
+2018-10-12T08:59:19.4627706Z     ΓêÜ packs with base path (400ms)
+2018-10-12T08:59:19.8811751Z 
+2018-10-12T08:59:19.8941775Z     ΓêÜ packs tool (413ms)
+2018-10-12T08:59:20.4742575Z 
+2018-10-12T08:59:20.4853853Z     ΓêÜ works with custom command happy path (581ms)
+2018-10-12T08:59:20.9579145Z 
+2018-10-12T08:59:20.9579848Z     ΓêÜ restore single solution with nuget config and multiple service connections (485ms)
+2018-10-12T08:59:21.4112780Z 
+2018-10-12T08:59:21.4114233Z     ΓêÜ custom command fails when exit code !=0 (448ms)
+2018-10-12T08:59:21.8605080Z 
+2018-10-12T08:59:21.8605732Z     ΓêÜ pack fails when exit code !=0 (458ms)
+2018-10-12T08:59:22.1585365Z 
+2018-10-12T08:59:22.1586094Z     ΓêÜ publish fails when duplicates are skipped and exit code!=[0|2] (298ms)
+2018-10-12T08:59:22.4504400Z 
+2018-10-12T08:59:22.4505444Z     ΓêÜ publish fails when duplicates are NOT skipped and exit code!=0 (292ms)
+2018-10-12T08:59:22.8581635Z 
+2018-10-12T08:59:22.8582405Z     ΓêÜ restore fails when exit code!=0 (408ms)
+2018-10-12T08:59:22.8582875Z 
+2018-10-12T08:59:22.8583199Z   NuGetPublisher Suite
+2018-10-12T08:59:23.1124978Z 
+2018-10-12T08:59:23.1126015Z     ΓêÜ publish single package internally (254ms)
+2018-10-12T08:59:23.3568975Z 
+2018-10-12T08:59:23.3570394Z     ΓêÜ publish single package externally (244ms)
+2018-10-12T08:59:23.3570811Z 
+2018-10-12T08:59:23.3571168Z   NuGet Task Suite
+2018-10-12T08:59:23.5949228Z 
+2018-10-12T08:59:23.5951099Z     ΓêÜ Happy path (237ms)
+2018-10-12T08:59:23.5951424Z 
+2018-10-12T08:59:23.5951784Z   PackerBuild Suite
+2018-10-12T08:59:24.0008780Z 
+2018-10-12T08:59:24.0009925Z     ΓêÜ Runs successfully for windows template (405ms)
+2018-10-12T08:59:24.3934021Z 
+2018-10-12T08:59:24.3935073Z     ΓêÜ Writes packer var file successfully for windows template (392ms)
+2018-10-12T08:59:24.7587500Z 
+2018-10-12T08:59:24.7587966Z     ΓêÜ Runs successfully for custom template (365ms)
+2018-10-12T08:59:25.1233073Z 
+2018-10-12T08:59:25.1234058Z     ΓêÜ Writes packer var file successfully for custom template (364ms)
+2018-10-12T08:59:25.5127432Z 
+2018-10-12T08:59:25.5128124Z     ΓêÜ Runs successfully for windows custom image (389ms)
+2018-10-12T08:59:25.8916441Z 
+2018-10-12T08:59:25.8917021Z     ΓêÜ Var file for packer tool is successfully created for custom image template (379ms)
+2018-10-12T08:59:26.2881866Z 
+2018-10-12T08:59:26.2882682Z     ΓêÜ Creates output variables from packer log (397ms)
+2018-10-12T08:59:26.6626271Z 
+2018-10-12T08:59:26.6627278Z     ΓêÜ Creates output variables from packer log for custom template (374ms)
+2018-10-12T08:59:27.0618860Z 
+2018-10-12T08:59:27.0619923Z     ΓêÜ Creates output variables from packer log for custom windows base image (399ms)
+2018-10-12T08:59:27.4566184Z 
+2018-10-12T08:59:27.4566828Z     ΓêÜ Should copy builtin template to temp location for windows template (394ms)
+2018-10-12T08:59:27.8502340Z 
+2018-10-12T08:59:27.8503774Z     ΓêÜ Should copy builtin template to temp location for windows template (394ms)
+2018-10-12T08:59:28.2425835Z 
+2018-10-12T08:59:28.2426535Z     ΓêÜ Should invoke three packer commands - fix, validate and build (392ms)
+2018-10-12T08:59:28.6413890Z 
+2018-10-12T08:59:28.6414599Z     ΓêÜ Should write output of packer fix to updated template file (399ms)
+2018-10-12T08:59:29.0317104Z 
+2018-10-12T08:59:29.0317750Z     ΓêÜ Should fetch SPN object id if service endpoint does not contain it (390ms)
+2018-10-12T08:59:29.4334016Z 
+2018-10-12T08:59:29.4335249Z     ΓêÜ Should cleanup temp template folder (401ms)
+2018-10-12T08:59:29.8006372Z 
+2018-10-12T08:59:29.8007094Z     ΓêÜ should fail if builtin template does not exist or copy fails (367ms)
+2018-10-12T08:59:30.1802417Z 
+2018-10-12T08:59:30.1803133Z     ΓêÜ should fail if custom windows base image template does not exist or copy fails (380ms)
+2018-10-12T08:59:30.5462822Z 
+2018-10-12T08:59:30.5463684Z     ΓêÜ should fail if os type is not supported (366ms)
+2018-10-12T08:59:30.9062477Z 
+2018-10-12T08:59:30.9063147Z     ΓêÜ should fail if deploy package path cannot be globbed (360ms)
+2018-10-12T08:59:31.3173828Z 
+2018-10-12T08:59:31.3174504Z     ΓêÜ should fail if packer fix exits with non zero code (410ms)
+2018-10-12T08:59:31.6960148Z 
+2018-10-12T08:59:31.6960778Z     ΓêÜ should fail if packer validate exits with non zero code (378ms)
+2018-10-12T08:59:32.0806108Z 
+2018-10-12T08:59:32.0806702Z     ΓêÜ should fail if packer build exits with non zero code (384ms)
+2018-10-12T08:59:32.4473491Z 
+2018-10-12T08:59:32.4474453Z     ΓêÜ should fail if packer build exits with non zero code for custom template (367ms)
+2018-10-12T08:59:32.8294789Z 
+2018-10-12T08:59:32.8295779Z     ΓêÜ should fail if output variables cannot be parsed from packer log (382ms)
+2018-10-12T08:59:33.2063652Z 
+2018-10-12T08:59:33.2064133Z     ΓêÜ should not fail if output variables cannot be parsed from packer log but output variables has not been set by user (377ms)
+2018-10-12T08:59:33.5819978Z 
+2018-10-12T08:59:33.5820670Z     ΓêÜ parser should parse LF and CR (375ms)
+2018-10-12T08:59:33.8461463Z 
+2018-10-12T08:59:33.8462153Z     ΓêÜ copyFiles should not create dest if it exists (264ms)
+2018-10-12T08:59:34.1098356Z 
+2018-10-12T08:59:34.1100894Z     ΓêÜ copyFiles should create dest if it does not exist (263ms)
+2018-10-12T08:59:34.3683736Z 
+2018-10-12T08:59:34.3684629Z     ΓêÜ isGreaterVersion should compare correctly (259ms)
+2018-10-12T08:59:34.7544877Z 
+2018-10-12T08:59:34.7545892Z     ΓêÜ Downloads packer for windows agent if packer not exists (386ms)
+2018-10-12T08:59:35.1462852Z 
+2018-10-12T08:59:35.1463519Z     ΓêÜ Downloads packer for windows agent if packer of lower version exists (392ms)
+2018-10-12T08:59:35.5521000Z 
+2018-10-12T08:59:35.5521711Z     ΓêÜ Should cleanup staging folder on windows agent (405ms)
+2018-10-12T08:59:35.9355354Z 
+2018-10-12T08:59:35.9357277Z     ΓêÜ Downloads packer failure should fail the task (383ms)
+2018-10-12T08:59:36.3044831Z 
+2018-10-12T08:59:36.3045368Z     ΓêÜ Packer zip extraction failure should fail the task (369ms)
+2018-10-12T08:59:36.6979196Z 
+2018-10-12T08:59:36.6980263Z     ΓêÜ Should add additional parameters to builder section in builtin template (393ms)
+2018-10-12T08:59:36.6980589Z 
+2018-10-12T08:59:36.6981129Z   PackerBuild Suite V1
+2018-10-12T08:59:37.0822257Z 
+2018-10-12T08:59:37.0822947Z     ΓêÜ Runs successfully for windows template (383ms)
+2018-10-12T08:59:37.4646311Z 
+2018-10-12T08:59:37.4646961Z     ΓêÜ Writes packer var file successfully for windows template (382ms)
+2018-10-12T08:59:37.8565879Z 
+2018-10-12T08:59:37.8567036Z     ΓêÜ Runs successfully for windows template with managed image (392ms)
+2018-10-12T08:59:38.2325904Z 
+2018-10-12T08:59:38.2326543Z     ΓêÜ Runs successfully for custom template (376ms)
+2018-10-12T08:59:38.6224433Z 
+2018-10-12T08:59:38.6225175Z     ΓêÜ Writes packer var file successfully for custom template (390ms)
+2018-10-12T08:59:39.0220359Z 
+2018-10-12T08:59:39.0221421Z     ΓêÜ Runs successfully for windows custom image (399ms)
+2018-10-12T08:59:39.4206572Z 
+2018-10-12T08:59:39.4207333Z     ΓêÜ Var file for packer tool is successfully created for custom image template (398ms)
+2018-10-12T08:59:39.7990095Z 
+2018-10-12T08:59:39.7990840Z     ΓêÜ Creates output variables from packer log (378ms)
+2018-10-12T08:59:40.1769414Z 
+2018-10-12T08:59:40.1770485Z     ΓêÜ Creates output variables from packer log for managed disk image (378ms)
+2018-10-12T08:59:40.5464682Z 
+2018-10-12T08:59:40.5465170Z     ΓêÜ Creates output variables from packer log for custom template (370ms)
+2018-10-12T08:59:40.9184416Z 
+2018-10-12T08:59:40.9185406Z     ΓêÜ Creates output variables from packer log for custom template generating managed image (372ms)
+2018-10-12T08:59:41.2977635Z 
+2018-10-12T08:59:41.2978999Z     ΓêÜ Creates output variables from packer log for custom windows base image (379ms)
+2018-10-12T08:59:41.6812688Z 
+2018-10-12T08:59:41.6813596Z     ΓêÜ Should copy builtin template to temp location for windows template (384ms)
+2018-10-12T08:59:42.0593703Z 
+2018-10-12T08:59:42.0594248Z     ΓêÜ Should copy builtin template to temp location for windows template (378ms)
+2018-10-12T08:59:42.4437167Z 
+2018-10-12T08:59:42.4438579Z     ΓêÜ Should invoke three packer commands - fix, validate and build (383ms)
+2018-10-12T08:59:42.8335826Z 
+2018-10-12T08:59:42.8336515Z     ΓêÜ Should write output of packer fix to updated template file (390ms)
+2018-10-12T08:59:43.2160124Z 
+2018-10-12T08:59:43.2161279Z     ΓêÜ Should fetch SPN object id if service endpoint does not contain it (382ms)
+2018-10-12T08:59:43.6177834Z 
+2018-10-12T08:59:43.6178997Z     ΓêÜ Should cleanup temp template folder (401ms)
+2018-10-12T08:59:43.9903349Z 
+2018-10-12T08:59:43.9904846Z     ΓêÜ should fail if builtin template does not exist or copy fails (372ms)
+2018-10-12T08:59:44.3701761Z 
+2018-10-12T08:59:44.3702475Z     ΓêÜ should fail if custom windows base image template does not exist or copy fails (379ms)
+2018-10-12T08:59:44.7339094Z 
+2018-10-12T08:59:44.7339762Z     ΓêÜ should fail if os type is not supported (363ms)
+2018-10-12T08:59:45.0828724Z 
+2018-10-12T08:59:45.0829412Z     ΓêÜ should fail if deploy package path cannot be globbed (349ms)
+2018-10-12T08:59:45.4466475Z 
+2018-10-12T08:59:45.4467138Z     ΓêÜ should fail if packer fix exits with non zero code (363ms)
+2018-10-12T08:59:45.8219965Z 
+2018-10-12T08:59:45.8220685Z     ΓêÜ should fail if packer validate exits with non zero code (375ms)
+2018-10-12T08:59:46.2023778Z 
+2018-10-12T08:59:46.2024441Z     ΓêÜ should fail if packer build exits with non zero code (379ms)
+2018-10-12T08:59:46.5693432Z 
+2018-10-12T08:59:46.5694142Z     ΓêÜ should fail if packer build exits with non zero code for custom template (368ms)
+2018-10-12T08:59:46.9423862Z 
+2018-10-12T08:59:46.9424528Z     ΓêÜ should fail if output variables cannot be parsed from packer log (373ms)
+2018-10-12T08:59:47.3254756Z 
+2018-10-12T08:59:47.3255237Z     ΓêÜ should not fail if output variables cannot be parsed from packer log but output variables has not been set by user (383ms)
+2018-10-12T08:59:47.7019379Z 
+2018-10-12T08:59:47.7020073Z     ΓêÜ parser should parse LF and CR (376ms)
+2018-10-12T08:59:47.9510423Z 
+2018-10-12T08:59:47.9511344Z     ΓêÜ copyFiles should not create dest if it exists (249ms)
+2018-10-12T08:59:48.2010332Z 
+2018-10-12T08:59:48.2011866Z     ΓêÜ copyFiles should create dest if it does not exist (250ms)
+2018-10-12T08:59:48.4462310Z 
+2018-10-12T08:59:48.4463018Z     ΓêÜ isGreaterVersion should compare correctly (245ms)
+2018-10-12T08:59:48.8402163Z 
+2018-10-12T08:59:48.8402752Z     ΓêÜ Downloads packer for windows agent if packer not exists (394ms)
+2018-10-12T08:59:49.2530097Z 
+2018-10-12T08:59:49.2530930Z     ΓêÜ Downloads packer for windows agent if packer of lower version exists (413ms)
+2018-10-12T08:59:49.6494657Z 
+2018-10-12T08:59:49.6495403Z     ΓêÜ Should cleanup staging folder on windows agent (397ms)
+2018-10-12T08:59:50.0309228Z 
+2018-10-12T08:59:50.0310214Z     ΓêÜ Downloads packer failure should fail the task (381ms)
+2018-10-12T08:59:50.4288893Z 
+2018-10-12T08:59:50.4289417Z     ΓêÜ Packer zip extraction failure should fail the task (398ms)
+2018-10-12T08:59:50.8186912Z 
+2018-10-12T08:59:50.8188241Z     ΓêÜ Should add additional parameters to builder section in builtin template (390ms)
+2018-10-12T08:59:50.8188631Z 
+2018-10-12T08:59:50.8188928Z   PublishTestResults Suite
+2018-10-12T08:59:50.8192738Z TestCaseName: TestResultsPublisher.exe is called on Windows OS
+2018-10-12T08:59:51.0577844Z 
+2018-10-12T08:59:51.0578574Z     ΓêÜ TestResultsPublisher.exe is called on Windows OS (239ms)
+2018-10-12T08:59:51.0583490Z TestCaseName: TestResultsPublisher.exe is not called on non-Windows OS
+2018-10-12T08:59:51.2768806Z 
+2018-10-12T08:59:51.2769564Z     ΓêÜ TestResultsPublisher.exe is not called on non-Windows OS (219ms)
+2018-10-12T08:59:51.2772886Z TestCaseName: Command should be called when exe returns with exit code for feature flag off
+2018-10-12T08:59:51.5141776Z 
+2018-10-12T08:59:51.5142834Z     ΓêÜ Command should be called when exe returns with exit code for feature flag off (237ms)
+2018-10-12T08:59:51.5144496Z TestCaseName: Command should not be called when exe returns with exit code for feature flag on
+2018-10-12T08:59:51.7483362Z 
+2018-10-12T08:59:51.7484603Z     ΓêÜ Command should not be called when exe returns with exit code for feature flag on (232ms)
+2018-10-12T08:59:51.7485239Z 
+2018-10-12T08:59:51.7485726Z   PyPI Publisher
+2018-10-12T08:59:52.0089812Z 
+2018-10-12T08:59:52.0090541Z     ΓêÜ Test to verify pip command arguements (256ms)
+2018-10-12T08:59:52.3482969Z 
+2018-10-12T08:59:52.3582677Z     ΓêÜ Test for Python tool execution failure  (341ms)
+2018-10-12T08:59:52.3594795Z 
+2018-10-12T08:59:52.3605525Z   UsePythonVersion L0 Suite
+2018-10-12T08:59:52.6442104Z 
+2018-10-12T08:59:52.6461735Z     ΓêÜ succeeds when version is found (297ms)
+2018-10-12T08:59:52.9086501Z 
+2018-10-12T08:59:52.9130593Z     ΓêÜ fails when version is not found (262ms)
+2018-10-12T08:59:53.3456822Z 
+2018-10-12T08:59:53.3500176Z     ΓêÜ selects architecture passed as input (409ms)
+2018-10-12T08:59:53.3501246Z     usepythonversion.ts
+2018-10-12T08:59:53.3501707Z 
+2018-10-12T08:59:53.3502085Z       ΓêÜ converts Python prerelease versions to the semantic version format
+2018-10-12T08:59:53.3504394Z 
+2018-10-12T08:59:53.3504668Z       ΓêÜ sets PATH correctly on Linux
+2018-10-12T08:59:53.3505851Z 
+2018-10-12T08:59:53.3506183Z       ΓêÜ sets PATH correctly on Windows
+2018-10-12T08:59:53.3506392Z 
+2018-10-12T08:59:53.3506636Z   UseRubyVersion L0 Suite
+2018-10-12T08:59:53.5916110Z 
+2018-10-12T08:59:53.5918235Z     ΓêÜ finds version in cache in Linux (247ms)
+2018-10-12T08:59:53.8485788Z 
+2018-10-12T08:59:53.8488035Z     ΓêÜ rejects version not in cache (256ms)
+2018-10-12T08:59:54.0731824Z 
+2018-10-12T08:59:54.0732933Z     ΓêÜ sets PATH correctly on Linux (230ms)
+2018-10-12T08:59:54.3101101Z 
+2018-10-12T08:59:54.3102330Z     ΓêÜ sets PATH correctly on Windows (236ms)
+2018-10-12T08:59:54.3102766Z 
+2018-10-12T08:59:54.3103092Z   VsTestPlatformToolInstaller Suite
+2018-10-12T08:59:54.5697839Z 
+2018-10-12T08:59:54.5698822Z     ΓêÜ Get latest pre-release version cache hit (259ms)
+2018-10-12T08:59:54.8222125Z 
+2018-10-12T08:59:54.8223074Z     ΓêÜ Get latest pre-release version cache miss and download success (252ms)
+2018-10-12T08:59:55.0774129Z 
+2018-10-12T08:59:55.0775370Z     ΓêÜ Get latest pre-release version listing failed but a stable version found in cache (254ms)
+2018-10-12T08:59:55.3458481Z 
+2018-10-12T08:59:55.3459476Z     ΓêÜ Get latest pre-release version listing failed but no stable version found in cache (268ms)
+2018-10-12T08:59:55.6041232Z 
+2018-10-12T08:59:55.6042098Z     ΓêÜ Get latest pre-release version cache miss and download failed but fallback cache hit (257ms)
+2018-10-12T08:59:55.8702675Z 
+2018-10-12T08:59:55.8703231Z     ΓêÜ Get latest pre-release version cache miss and download failed and fallback cache miss (265ms)
+2018-10-12T08:59:56.1271981Z 
+2018-10-12T08:59:56.1272715Z     ΓêÜ Get latest stable version cache hit (255ms)
+2018-10-12T08:59:56.3811732Z 
+2018-10-12T08:59:56.3812266Z     ΓêÜ Get latest stable version listing empty and cache hit (253ms)
+2018-10-12T08:59:56.6215877Z 
+2018-10-12T08:59:56.6770243Z     ΓêÜ Get specific version cache hit (240ms)
+2018-10-12T08:59:56.8599156Z 
+2018-10-12T08:59:56.8599645Z     ΓêÜ Get specific version cache miss and download success (238ms)
+2018-10-12T08:59:57.1061157Z 
+2018-10-12T08:59:57.1062269Z     ΓêÜ Get latest pre-release version cache hit from custom feed no password (245ms)
+2018-10-12T08:59:57.3505537Z 
+2018-10-12T08:59:57.3506568Z     ΓêÜ Get latest pre-release version cache hit from custom feed and password provided (244ms)
+2018-10-12T08:59:57.5936193Z 
+2018-10-12T08:59:57.5937684Z     ΓêÜ Get latest pre-release version cache hit from custom feed username and password provided (243ms)
+2018-10-12T08:59:57.8381874Z 
+2018-10-12T08:59:57.8382960Z     ΓêÜ Get latest pre-release version cache miss and download success for custom feed with password (244ms)
+2018-10-12T08:59:58.0826662Z 
+2018-10-12T08:59:58.0828119Z     ΓêÜ Get latest pre-release version cache hit from custom feed, password provided but writing config fails (244ms)
+2018-10-12T08:59:58.3235138Z 
+2018-10-12T08:59:58.3236093Z     ΓêÜ Get latest pre-release version cache hit from custom feed, password provided but writing config fails and fallback cache lookup fails (241ms)
+2018-10-12T08:59:58.5755566Z 
+2018-10-12T08:59:58.5756273Z     ΓêÜ Get specified package from path provided from network share cache hit (252ms)
+2018-10-12T08:59:58.8192208Z 
+2018-10-12T08:59:58.8193600Z     ΓêÜ Get specified package from path provided from network share cache miss and copy successful (243ms)
+2018-10-12T08:59:59.0800340Z 
+2018-10-12T08:59:59.0801573Z     ΓêÜ Get specified package from path provided from network share cache miss share and copy unsuccessful but fallback cache lookup successful (260ms)
+2018-10-12T08:59:59.3338707Z 
+2018-10-12T08:59:59.3339496Z     ΓêÜ Get specified package from path provided from network share cache miss and copy unsuccessful and fallback cache lookup unsuccessful (254ms)
+2018-10-12T08:59:59.5794441Z 
+2018-10-12T08:59:59.5795202Z     ΓêÜ Get specified package from path provided from network share invalid filename (245ms)
+2018-10-12T08:59:59.5795571Z 
+2018-10-12T08:59:59.5795920Z   VsTest Suite
+2018-10-12T08:59:59.5797976Z TestCaseName: InputDataContract parity between task and dtaExecutionhost
+2018-10-12T08:59:59.5798214Z 
+2018-10-12T08:59:59.5798325Z 
+2018-10-12T08:59:59.5833614Z [command]D:\a\1\s\_build\Tasks\VsTestV2\Tests\InputDataContractParityTool.exe ../_build/Tasks/VsTestV2/Modules/MS.VS.TestService.Common.dll
+2018-10-12T08:59:59.6713068Z {
+2018-10-12T08:59:59.6713497Z   "AgentName": "string",
+2018-10-12T08:59:59.6713639Z   "AccessToken": "string",
+2018-10-12T08:59:59.6713762Z   "AccessTokenType": "string",
+2018-10-12T08:59:59.6713896Z   "CollectionUri": "string",
+2018-10-12T08:59:59.6714017Z   "RunIdentifier": "string",
+2018-10-12T08:59:59.6714147Z   "TeamProject": "string",
+2018-10-12T08:59:59.6714264Z   "TestSelectionSettings": {
+2018-10-12T08:59:59.6714395Z     "TestSelectionType": "string",
+2018-10-12T08:59:59.6714516Z     "TestPlanTestSuiteSettings": {
+2018-10-12T08:59:59.6714780Z       "OnDemandTestRunId": "number",
+2018-10-12T08:59:59.6714904Z       "Testplan": "number",
+2018-10-12T08:59:59.6715051Z       "TestPlanConfigId": "number",
+2018-10-12T08:59:59.6715172Z       "TestSuites": "number[]"
+2018-10-12T08:59:59.6715299Z     },
+2018-10-12T08:59:59.6715413Z     "SearchFolder": "string",
+2018-10-12T08:59:59.6715545Z     "TestSourcesFile": "string",
+2018-10-12T08:59:59.6715665Z     "TestCaseFilter": "string"
+2018-10-12T08:59:59.6715792Z   },
+2018-10-12T08:59:59.6715904Z   "VsTestConsolePath": "string",
+2018-10-12T08:59:59.6716036Z   "SourcesDirectory": "string",
+2018-10-12T08:59:59.6716161Z   "UsingXCopyTestPlatformPackage": "boolean",
+2018-10-12T08:59:59.6716299Z   "EnableSingleAgentAPIFlow": "boolean",
+2018-10-12T08:59:59.6716421Z   "TestReportingSettings": {
+2018-10-12T08:59:59.6716552Z     "TestRunTitle": "string",
+2018-10-12T08:59:59.6716671Z     "TestResultsDirectory": "string",
+2018-10-12T08:59:59.6716804Z     "TestRunSystem": "string"
+2018-10-12T08:59:59.6716926Z   },
+2018-10-12T08:59:59.6717050Z   "TfsSpecificSettings": {
+2018-10-12T08:59:59.6717749Z     "BuildDefinitionId": "number",
+2018-10-12T08:59:59.6718089Z     "ReleaseDefinitionId": "number",
+2018-10-12T08:59:59.6718231Z     "BuildId": "number",
+2018-10-12T08:59:59.6718413Z     "BuildUri": "string",
+2018-10-12T08:59:59.6718551Z     "ReleaseId": "number",
+2018-10-12T08:59:59.6718695Z     "ReleaseUri": "string",
+2018-10-12T08:59:59.6718853Z     "ReleaseEnvironmentUri": "string",
+2018-10-12T08:59:59.6719036Z     "WorkFolder": "string"
+2018-10-12T08:59:59.6719169Z   },
+2018-10-12T08:59:59.6719308Z   "TargetBinariesSettings": {
+2018-10-12T08:59:59.6719444Z     "BuildConfig": "string",
+2018-10-12T08:59:59.6719577Z     "BuildPlatform": "string"
+2018-10-12T08:59:59.6719721Z   },
+2018-10-12T08:59:59.6719849Z   "TestSpecificSettings": {
+2018-10-12T08:59:59.6720000Z     "TestCaseAccessToken": "string"
+2018-10-12T08:59:59.6720132Z   },
+2018-10-12T08:59:59.6720272Z   "ProxySettings": {
+2018-10-12T08:59:59.6720417Z     "ProxyUrl": "string",
+2018-10-12T08:59:59.6720565Z     "ProxyUsername": "string",
+2018-10-12T08:59:59.6721039Z     "ProxyPassword": "string",
+2018-10-12T08:59:59.6721179Z     "ProxyBypassHosts": "string"
+2018-10-12T08:59:59.6721301Z   },
+2018-10-12T08:59:59.6721432Z   "DistributionSettings": {
+2018-10-12T08:59:59.6721557Z     "DistributeTestsBasedOn": "string",
+2018-10-12T08:59:59.6721699Z     "NumberOfTestAgents": "number",
+2018-10-12T08:59:59.6721826Z     "RunTimePerSlice": "number",
+2018-10-12T08:59:59.6721968Z     "NumberOfTestCasesPerSlice": "number"
+2018-10-12T08:59:59.6722094Z   },
+2018-10-12T08:59:59.6722224Z   "ExecutionSettings": {
+2018-10-12T08:59:59.6722354Z     "TestPlatformExecutionMode": "string",
+2018-10-12T08:59:59.6722494Z     "DefaultTestBatchSize": "number",
+2018-10-12T08:59:59.6722710Z     "AssemblyLevelParallelism": "boolean",
+2018-10-12T08:59:59.6722864Z     "CodeCoverageEnabled": "boolean",
+2018-10-12T08:59:59.6722998Z     "PathToCustomTestAdapters": "string",
+2018-10-12T08:59:59.6723148Z     "IgnoreTestFailures": "boolean",
+2018-10-12T08:59:59.6723278Z     "AdditionalConsoleParameters": "string",
+2018-10-12T08:59:59.6723430Z     "ProceedAfterAbortedTestCase": "boolean",
+2018-10-12T08:59:59.6723560Z     "SettingsFile": "string",
+2018-10-12T08:59:59.6723698Z     "OverridenParameters": "string",
+2018-10-12T08:59:59.6723829Z     "RerunSettings": {
+2018-10-12T08:59:59.6723964Z       "RerunFailedTests": "boolean",
+2018-10-12T08:59:59.6724190Z       "RerunType": "string",
+2018-10-12T08:59:59.6724325Z       "RerunFailedTestCasesMaxLimit": "number",
+2018-10-12T08:59:59.6724450Z       "RerunFailedThreshold": "number",
+2018-10-12T08:59:59.6724596Z       "RerunMaxAttempts": "number"
+2018-10-12T08:59:59.6724734Z     },
+2018-10-12T08:59:59.6724860Z     "RunTestsInIsolation": "boolean",
+2018-10-12T08:59:59.6724980Z     "TiaSettings": {
+2018-10-12T08:59:59.6725110Z       "Enabled": "boolean",
+2018-10-12T08:59:59.6725232Z       "DisableDataCollection": "boolean",
+2018-10-12T08:59:59.6725418Z       "RebaseLimit": "number",
+2018-10-12T08:59:59.6725538Z       "SourcesDirectory": "string",
+2018-10-12T08:59:59.6725674Z       "FileLevel": "boolean",
+2018-10-12T08:59:59.6725793Z       "FilterPaths": "string",
+2018-10-12T08:59:59.6725911Z       "UserMapFile": "string",
+2018-10-12T08:59:59.6726044Z       "IsPrFlow": "boolean",
+2018-10-12T08:59:59.6726166Z       "UseTestCaseFilterInResponseFile": "boolean"
+2018-10-12T08:59:59.6726300Z     },
+2018-10-12T08:59:59.6726411Z     "TempFolder": "string",
+2018-10-12T08:59:59.6726544Z     "VideoDataCollectorEnabled": "boolean",
+2018-10-12T08:59:59.6726668Z     "DiagnosticsSettings": {
+2018-10-12T08:59:59.6726798Z       "Enabled": "boolean",
+2018-10-12T08:59:59.6726917Z       "CollectDumpAlways": "boolean"
+2018-10-12T08:59:59.6727046Z     }
+2018-10-12T08:59:59.6727155Z   },
+2018-10-12T08:59:59.6727618Z   "Logging": {
+2018-10-12T08:59:59.6727762Z     "DebugLogging": "boolean",
+2018-10-12T08:59:59.6727917Z     "EnableConsoleLogs": "boolean"
+2018-10-12T08:59:59.6728044Z   }
+2018-10-12T08:59:59.6728180Z }
+2018-10-12T08:59:59.6731509Z #######################################################################################################################
+2018-10-12T08:59:59.6731773Z Ensure that the interfaces file is well formatted without extra newlines or whitespaces as the parser this test uses depends on the correct formatting of the inputdatacontract.ts file
+2018-10-12T08:59:59.6731961Z #######################################################################################################################
+2018-10-12T08:59:59.6741005Z 
+2018-10-12T08:59:59.6741523Z     ΓêÜ InputDataContract parity between task and dtaExecutionhost (94ms)
+2018-10-12T08:59:59.6742080Z 
+2018-10-12T08:59:59.6742447Z   XamarinAndroid L0 Suite
+2018-10-12T08:59:59.9216065Z 
+2018-10-12T08:59:59.9216840Z     ΓêÜ XamarinAndroid uses msbuild 15 on macOS (247ms)
+2018-10-12T08:59:59.9217733Z 
+2018-10-12T08:59:59.9218156Z   XamariniOS L0 Suite
+2018-10-12T09:00:00.1555523Z 
+2018-10-12T09:00:00.1556237Z     ΓêÜ run XamariniOSV2 with all default inputs (234ms)
+2018-10-12T09:00:00.3832888Z 
+2018-10-12T09:00:00.3834079Z     ΓêÜ XamariniOS signing with identifiers (227ms)
+2018-10-12T09:00:00.6137925Z 
+2018-10-12T09:00:00.6139445Z     ΓêÜ XamariniOS skip nuget restore (230ms)
+2018-10-12T09:00:00.8303874Z 
+2018-10-12T09:00:00.8305217Z     ΓêÜ XamariniOS clean build (216ms)
+2018-10-12T09:00:01.0502292Z 
+2018-10-12T09:00:01.0503216Z     ΓêÜ XamariniOS msbuild as build tool (219ms)
+2018-10-12T09:00:01.2789328Z 
+2018-10-12T09:00:01.2790049Z     ΓêÜ XamariniOS msbuild as build tool with location (228ms)
+2018-10-12T09:00:01.5139045Z 
+2018-10-12T09:00:01.5140148Z     ΓêÜ XamariniOS can find a single solution file with a glob pattern (235ms)
+2018-10-12T09:00:01.7372534Z 
+2018-10-12T09:00:01.7373946Z     ΓêÜ XamariniOS warns when multiple solution files match a glob pattern (223ms)
+2018-10-12T09:00:01.9615495Z 
+2018-10-12T09:00:01.9616160Z     ΓêÜ XamariniOS fails when no solution files match a glob pattern (224ms)
+2018-10-12T09:00:02.1801718Z 
+2018-10-12T09:00:02.1802382Z     ΓêÜ XamariniOS fallback to xbuild when msbuild is not found (218ms)
+2018-10-12T09:00:02.3959036Z 
+2018-10-12T09:00:02.3959981Z     ΓêÜ XamariniOS task fails on Windows (216ms)
+2018-10-12T09:00:02.6137973Z 
+2018-10-12T09:00:02.6138705Z     ΓêÜ run XamariniOSV2 with buildToolLocation set (218ms)
+2018-10-12T09:00:02.8290906Z 
+2018-10-12T09:00:02.8291486Z     ΓêÜ fails when solution is missing (215ms)
+2018-10-12T09:00:03.0411736Z 
+2018-10-12T09:00:03.0412381Z     ΓêÜ fails when configuration is missing (212ms)
+2018-10-12T09:00:03.2647310Z 
+2018-10-12T09:00:03.2648282Z     ΓêÜ fails when msbuildLocation not provided and msbuild is not found (224ms)
+2018-10-12T09:00:03.4798937Z 
+2018-10-12T09:00:03.4800135Z     ΓêÜ fails when msbuildLocation is provided but is incorrect (214ms)
+2018-10-12T09:00:03.6962581Z 
+2018-10-12T09:00:03.6963723Z     ΓêÜ fails when nuget not found (216ms)
+2018-10-12T09:00:03.6964048Z 
+2018-10-12T09:00:03.6964323Z   Xcode L0 Suite
+2018-10-12T09:00:03.9800209Z 
+2018-10-12T09:00:03.9801358Z     ΓêÜ Xcode 7 create IPA with archive and auto export (283ms)
+2018-10-12T09:00:04.2379590Z 
+2018-10-12T09:00:04.2380779Z     ΓêÜ Xcode 7 create IPA with archive and export with specified method (258ms)
+2018-10-12T09:00:04.4796020Z 
+2018-10-12T09:00:04.4796832Z     ΓêÜ Xcode 8 create IPA with export options plist (242ms)
+2018-10-12T09:00:04.7288522Z 
+2018-10-12T09:00:04.7289228Z     ΓêÜ Xcode 8 create IPA with bad exportOptionsPlist path (249ms)
+2018-10-12T09:00:04.9769436Z 
+2018-10-12T09:00:04.9770518Z     ΓêÜ Xcode create IPA with file paths for archive path and export path (248ms)
+2018-10-12T09:00:05.2301894Z 
+2018-10-12T09:00:05.2303011Z     ΓêÜ Xcode 7 create IPA with code signing identifiers (253ms)
+2018-10-12T09:00:05.4995034Z 
+2018-10-12T09:00:05.4996051Z     ΓêÜ Xcode 8 automatic code signing with identifiers (270ms)
+2018-10-12T09:00:05.7499480Z 
+2018-10-12T09:00:05.7500581Z     ΓêÜ Xcode 8 automatic signing with development team (250ms)
+2018-10-12T09:00:05.9995296Z 
+2018-10-12T09:00:05.9995815Z     ΓêÜ Xcode archive and export with project path (250ms)
+2018-10-12T09:00:06.2481612Z 
+2018-10-12T09:00:06.2482635Z     ΓêÜ Xcode 9 automatic signing with files (248ms)
+2018-10-12T09:00:06.5239292Z 
+2018-10-12T09:00:06.5240503Z     ΓêÜ Xcode 9 automatic signing with allowProvisioningUpdates (276ms)
+2018-10-12T09:00:06.7869530Z 
+2018-10-12T09:00:06.7870772Z     ΓêÜ Xcode 9 signing defaults to automatic, with auto export (263ms)
+2018-10-12T09:00:07.0519620Z 
+2018-10-12T09:00:07.0520520Z     ΓêÜ Xcode 9 signing defaults to manual, with auto export (265ms)
+2018-10-12T09:00:07.3189624Z 
+2018-10-12T09:00:07.3190489Z     ΓêÜ Xcode 9 signing with auto export and cloud entitlement for production (267ms)
+2018-10-12T09:00:07.5959312Z 
+2018-10-12T09:00:07.5960075Z     ΓêÜ Xcode 9 signing with auto export and cloud entitlement for development (277ms)
+2018-10-12T09:00:07.8346066Z 
+2018-10-12T09:00:07.8346936Z     ΓêÜ Task defaults - v4.127.0 (239ms)
+2018-10-12T09:00:08.0577620Z 
+2018-10-12T09:00:08.0578503Z     ΓêÜ Test results should be published in postexecution to work even when Xcode test has failures (223ms)
+2018-10-12T09:00:08.2910422Z 
+2018-10-12T09:00:08.2911637Z     ΓêÜ Test results publishing should fail if xcpretty is not installed (233ms)
+2018-10-12T09:00:08.5735564Z 
+2018-10-12T09:00:08.5736228Z     ΓêÜ macOS auto export (283ms)
+2018-10-12T09:00:08.8399924Z 
+2018-10-12T09:00:08.8400968Z     ΓêÜ macOS provisionless auto export (266ms)
+2018-10-12T09:00:08.8401324Z 
+2018-10-12T09:00:08.8401677Z   nuget-task-common Task Suite
+2018-10-12T09:00:08.9997668Z 
+2018-10-12T09:00:08.9998059Z     ΓêÜ No HTTP_PROXY (158ms)
+2018-10-12T09:00:09.0666744Z 
+2018-10-12T09:00:09.0667785Z     ΓêÜ Finds HTTP_PROXY (66ms)
+2018-10-12T09:00:09.1076124Z 
+2018-10-12T09:00:09.1076716Z     ΓêÜ Finds HTTP_PROXYUSERNAME (40ms)
+2018-10-12T09:00:09.1511262Z 
+2018-10-12T09:00:09.1512033Z     ΓêÜ Finds HTTP_PROXYPASSWORD (42ms)
+2018-10-12T09:00:09.1714939Z 
+2018-10-12T09:00:09.1715614Z     ΓêÜ NuGetXmlHelper adds source to NuGetConfig
+2018-10-12T09:00:09.1861091Z 
+2018-10-12T09:00:09.1861649Z     ΓêÜ NuGetXmlHelper correctly encodes element names
+2018-10-12T09:00:09.1861930Z 
+2018-10-12T09:00:09.1862244Z   General Suite
+2018-10-12T09:00:09.2635002Z 
+2018-10-12T09:00:09.2635744Z     ΓêÜ Find invalid task.json (77ms)
+2018-10-12T09:00:15.3039986Z 
+2018-10-12T09:00:15.3040689Z     ΓêÜ Find nested task.json (6040ms)
+2018-10-12T09:00:15.3390911Z 
+2018-10-12T09:00:15.3391570Z     ΓêÜ Find .js with uppercase
+2018-10-12T09:00:15.3638177Z 
+2018-10-12T09:00:15.3638703Z     ΓêÜ Find unsupported demands
+2018-10-12T09:00:15.3873816Z 
+2018-10-12T09:00:15.3874296Z     ΓêÜ Find unsupported runsOn
+2018-10-12T09:00:15.4114104Z 
+2018-10-12T09:00:15.4114964Z     ΓêÜ Find invalid server Task/ServerGate
+2018-10-12T09:00:15.4620962Z 
+2018-10-12T09:00:15.4622072Z     ΓêÜ Find invalid message key in task.json (50ms)
+2018-10-12T09:00:15.7720900Z 
+2018-10-12T09:00:15.7722020Z     ΓêÜ Find missing string in .ts (310ms)
+2018-10-12T09:00:16.1398246Z 
+2018-10-12T09:00:16.1398955Z     ΓêÜ Find missing string in .ps1/.psm1 (368ms)
+2018-10-12T09:00:16.1399856Z 
+2018-10-12T09:00:16.1402658Z 
+2018-10-12T09:00:16.1405004Z   639 passing (9m)
+2018-10-12T09:00:16.1405273Z   1 failing
+2018-10-12T09:00:16.1407731Z 
+2018-10-12T09:00:16.1412473Z   1) DotNetCoreExe Suite publish fails with when the dotnet publish fails:
+2018-10-12T09:00:16.1412867Z      Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
+2018-10-12T09:00:16.1413063Z       at done (D:\a\1\s\node_modules\mocha\lib\runnable.js:245:13)
+2018-10-12T09:00:16.1413208Z       at D:\a\1\s\node_modules\mocha\lib\runnable.js:317:7
+2018-10-12T09:00:16.1413373Z       at Context.<anonymous> (D:\a\1\s\_build\Tasks\DotNetCoreCLIV2\Tests\L0.js:229:9)
+2018-10-12T09:00:16.1413531Z       at callFnAsync (D:\a\1\s\node_modules\mocha\lib\runnable.js:306:8)
+2018-10-12T09:00:16.1413692Z       at Test.Runnable.run (D:\a\1\s\node_modules\mocha\lib\runnable.js:261:7)
+2018-10-12T09:00:16.1413951Z       at Runner.runTest (D:\a\1\s\node_modules\mocha\lib\runner.js:421:10)
+2018-10-12T09:00:16.1414111Z       at D:\a\1\s\node_modules\mocha\lib\runner.js:528:12
+2018-10-12T09:00:16.1414249Z       at next (D:\a\1\s\node_modules\mocha\lib\runner.js:341:14)
+2018-10-12T09:00:16.1414458Z       at D:\a\1\s\node_modules\mocha\lib\runner.js:351:7
+2018-10-12T09:00:16.1414602Z       at next (D:\a\1\s\node_modules\mocha\lib\runner.js:283:14)
+2018-10-12T09:00:16.1414764Z       at Immediate._onImmediate (D:\a\1\s\node_modules\mocha\lib\runner.js:319:5)
+2018-10-12T09:00:16.1414872Z 
+2018-10-12T09:00:16.1414996Z 
+2018-10-12T09:00:16.1415093Z 
+2018-10-12T09:00:16.3273258Z ##[error]Cmd.exe exited with code '1'.
+2018-10-12T09:00:16.3730846Z ##[section]Async Command Start: Publish test results
+2018-10-12T09:00:16.3731129Z ##[section]Async Command End: Publish test results
+2018-10-12T09:00:16.3731777Z ##[section]Finishing: Test with node 5

@@ -1,0 +1,191 @@
+﻿$ npm test
+> socket.io@2.1.1 test /home/travis/build/socketio/socket.io
+> nyc mocha --reporter spec --slow 200 --bail --timeout 10000 test/socket.io.js
+  socket.io
+    ✓ should be the same version as client
+    set
+      ✓ should be able to set ping timeout to engine.io
+      ✓ should be able to set ping interval to engine.io
+      ✓ should be able to set transports to engine.io
+      ✓ should be able to set maxHttpBufferSize to engine.io
+      ✓ should be able to set path with setting resource
+      ✓ should be able to set origins to engine.io
+      ✓ should be able to set authorization and send error packet
+      ✓ should be able to set authorization and succeed
+      ✓ should set the handshake BC object
+    server attachment
+      http.Server
+        ✓ should serve static files
+        ✓ should handle 304
+        ✓ should not serve static files
+        ✓ should work with #attach
+      port
+        ✓ should be bound
+        ✓ should be bound as a string
+        ✓ with listen
+        ✓ as a string
+    handshake
+      ✓ should disallow request when origin defined and none specified
+      ✓ should disallow request when origin defined and a different one specified
+      ✓ should allow request when origin defined an the same is specified
+      ✓ should allow request when origin defined as function and same is supplied
+      ✓ should allow request when origin defined as function and different is supplied
+      ✓ should allow request when origin defined as function and no origin is supplied
+      ✓ should default to port 443 when protocol is https
+      ✓ should allow request if custom function in opts.allowRequest returns true
+      ✓ should disallow request if custom function in opts.allowRequest returns false
+      ✓ should allow request when using an array of origins
+    close
+      ✓ should be able to close sio sending a srv
+      ✓ should be able to close sio sending a port
+      graceful close
+        ✓ should stop socket and timers (653ms)
+    namespaces
+      ✓ should be accessible through .sockets
+      ✓ should be aliased
+      ✓ should automatically connect
+      ✓ should fire a `connection` event
+      ✓ should fire a `connect` event
+      ✓ should work with many sockets
+      ✓ should be able to equivalently start with "" or "/" on server
+      ✓ should be equivalent for "" and "/" on client
+      ✓ should work with `of` and many sockets
+      ✓ should work with `of` second param
+      ✓ should disconnect upon transport disconnection
+      ✓ should disconnect both default and custom namespace upon disconnect
+      ✓ should not crash while disconnecting socket
+      ✓ should fire a `disconnecting` event just before leaving all rooms
+      ✓ should return error connecting to non-existent namespace
+      ✓ should not reuse same-namespace connections
+      ✓ should find all clients in a namespace
+      ✓ should find all clients in a namespace room
+      ✓ should find all clients across namespace rooms
+      ✓ should not emit volatile event after regular event (501ms)
+      ✓ should emit volatile event (501ms)
+      ✓ should enable compression by default
+      ✓ should disable compression
+      dynamic namespaces
+        ✓ should allow connections to dynamic namespaces with a regex
+        ✓ should allow connections to dynamic namespaces with a function
+        ✓ should disallow connections when no dynamic namespace matches
+    socket
+      ✓ should not fire events more than once after manually reconnecting
+      ✓ should not fire reconnect_failed event more than once when server closed
+      ✓ should receive events
+      ✓ should receive message events through `send`
+      ✓ should error with null messages
+      ✓ should handle transport null messages
+      ✓ should emit events
+      ✓ should emit events with utf8 multibyte character
+      ✓ should emit events with binary data
+(node:3859) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+      ✓ should emit events with several types of data (including binary)
+      ✓ should receive events with binary data
+      ✓ should receive events with several types of data (including binary) (123ms)
+      ✓ should not emit volatile event after regular event (polling) (204ms)
+      ✓ should not emit volatile event after regular event (ws) (208ms)
+      ✓ should emit volatile event (polling) (501ms)
+      ✓ should emit volatile event (ws) (200ms)
+      ✓ should emit only one consecutive volatile event (polling) (501ms)
+      ✓ should emit only one consecutive volatile event (ws) (202ms)
+      ✓ should emit regular events after trying a failed volatile event (polling) (201ms)
+      ✓ should emit regular events after trying a failed volatile event (ws) (201ms)
+      ✓ should emit message events through `send`
+      ✓ should receive event with callbacks
+      ✓ should receive all events emitted from namespaced client immediately and in order (109ms)
+      ✓ should emit events with callbacks
+      ✓ should receive events with args and callback
+      ✓ should emit events with args and callback
+      ✓ should receive events with binary args and callbacks
+      ✓ should emit events with binary args and callback
+      ✓ should emit events and receive binary data in a callback (110ms)
+      ✓ should receive events and pass binary data in a callback
+      ✓ should have access to the client
+      ✓ should have access to the connection
+      ✓ should have access to the request
+      ✓ should see query parameters in the request
+      ✓ should see query parameters sent from secondary namespace connections in handshake object
+      ✓ should handle very large json (1745ms)
+      ✓ should handle very large binary data (257ms)
+      ✓ should be able to emit after server close and restart (162ms)
+      ✓ should enable compression by default
+      ✓ should disable compression
+Note: warning expected and normal in test.
+Missing error handler on `socket`.
+Error: Illegal attachments
+    at decodeString (/home/travis/build/socketio/socket.io/node_modules/socket.io-parser/index.js:297:13)
+    at Decoder.add (/home/travis/build/socketio/socket.io/node_modules/socket.io-parser/index.js:242:14)
+    at Client.ondata (/home/travis/build/socketio/socket.io/lib/client.js:54:41)
+    at Socket.emit (events.js:182:13)
+    at Socket.onPacket (/home/travis/build/socketio/socket.io/node_modules/engine.io/lib/socket.js:109:14)
+    at WebSocket.emit (events.js:182:13)
+    at WebSocket.Transport.onPacket (/home/travis/build/socketio/socket.io/node_modules/engine.io/lib/transport.js:105:8)
+    at WebSocket.Transport.onData (/home/travis/build/socketio/socket.io/node_modules/engine.io/lib/transport.js:116:8)
+    at WebSocket.onData (/home/travis/build/socketio/socket.io/node_modules/engine.io/lib/transports/websocket.js:79:30)
+    at WebSocket.emit (events.js:182:13)
+    at Receiver._receiver.onmessage (/home/travis/build/socketio/socket.io/node_modules/ws/lib/WebSocket.js:141:47)
+    at Receiver.dataMessage (/home/travis/build/socketio/socket.io/node_modules/ws/lib/Receiver.js:389:14)
+    at Receiver.getData (/home/travis/build/socketio/socket.io/node_modules/ws/lib/Receiver.js:330:12)
+    at Receiver.startLoop (/home/travis/build/socketio/socket.io/node_modules/ws/lib/Receiver.js:165:16)
+    at Receiver.add (/home/travis/build/socketio/socket.io/node_modules/ws/lib/Receiver.js:139:10)
+    at Socket._ultron.on (/home/travis/build/socketio/socket.io/node_modules/ws/lib/WebSocket.js:138:22)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:283:12)
+    at readableAddChunk (_stream_readable.js:264:11)
+    at Socket.Readable.push (_stream_readable.js:219:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+      ✓ should error with raw binary and warn (207ms)
+Note: warning expected and normal in test.
+Missing error handler on `socket`.
+Error: handle me please
+    at Socket.onpacket (/home/travis/build/socketio/socket.io/lib/socket.js:89:878)
+    at /home/travis/build/socketio/socket.io/lib/client.js:58:530
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+      ✓ should not crash when receiving an error packet without handler (208ms)
+      ✓ should not crash with raw binary (108ms)
+      ✓ should handle empty binary packet (107ms)
+      ✓ should not crash when messing with Object prototype (and other globals) (106ms)
+      ✓ should always trigger the callback (if provided) when joining a room
+    messaging many
+      ✓ emits to a namespace
+      ✓ emits binary data to a namespace
+      ✓ emits to the rest
+      ✓ emits to rooms
+      ✓ emits to rooms avoiding dupes
+      ✓ broadcasts to rooms
+      ✓ broadcasts binary data to rooms
+      ✓ keeps track of rooms
+      ✓ deletes empty rooms
+      ✓ should properly cleanup left rooms
+      ✓ allows to join several rooms at once
+    middleware
+      ✓ should call functions
+      ✓ should pass errors
+      ✓ should pass `data` of error object
+      ✓ should only call connection after fns
+      ✓ should only call connection after (lengthy) fns (302ms)
+      ✓ should be ignored if socket gets closed
+      ✓ should call functions in expected order (204ms)
+      ✓ should disable the merge of handshake packets
+      ✓ should work with a custom namespace
+    socket middleware
+      ✓ should call functions
+      ✓ should pass errors
+      ✓ should pass `data` of error object
+  126 passing (9s)
+---------------------|----------|----------|----------|----------|-------------------|
+File                 |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+---------------------|----------|----------|----------|----------|-------------------|
+All files            |    91.87 |    84.59 |    92.73 |    92.85 |                   |
+ client.js           |    97.14 |    86.11 |      100 |    97.12 |       136,182,217 |
+ index.js            |    88.66 |    86.67 |    93.55 |    89.14 |... 04,405,406,490 |
+ namespace.js        |    91.67 |    83.33 |    88.89 |    91.11 |... 53,254,294,295 |
+ parent-namespace.js |    95.24 |      100 |    85.71 |      100 |                   |
+ socket.js           |    92.65 |    80.77 |    91.89 |    94.87 |... 96,497,509,510 |
+---------------------|----------|----------|----------|----------|-------------------|
+The command "npm test" exited with 0.
+cache.2
+store build cache
+0.00s
+1.92snothing changed, not updating cache
+Done. Your build exited with 0.

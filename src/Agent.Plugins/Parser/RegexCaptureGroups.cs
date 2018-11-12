@@ -13,6 +13,8 @@ namespace Agent.Plugins.TestResultParser.Parser
 
         public static string FailedTests { get; } = "FailedTests";
 
+        public static string PendingTests { get; } = "PendingTests";
+
         public static string TestRunTime { get; } = "TestRunTime";
 
         public static string TestRunTimeUnit { get; } = "TestRunTimeUnit";
