@@ -20,13 +20,13 @@
         /// <inheritdoc />
         public void Error(string error)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <inheritdoc />
         public void Info(string text)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <inheritdoc />
@@ -38,13 +38,13 @@
         /// <inheritdoc />
         public void Verbose(string text)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <inheritdoc />
         public void Warning(string text)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

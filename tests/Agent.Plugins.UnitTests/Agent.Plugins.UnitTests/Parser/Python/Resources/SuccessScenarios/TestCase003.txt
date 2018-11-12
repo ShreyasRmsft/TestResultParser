@@ -1,0 +1,24 @@
+test_passing (Test1.PythonTestClass) ... I am passing test
+some extra lines
+
+
+ok
+test_skipping (Test1.PythonTestClass) ... skipped
+test_failing (Test1.PythonTestClass) ... 
+hello world
+FAIL
+test_passing2 (Test1.PythonTestClass) ... ok
+
+======================================================================
+FAIL: test_failing (Test1.PythonTestClass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Code\LearningPython\Test1.py", line 15, in test_failing
+    self.assertEqual(2,3)
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+
+Ran 4 tests in 3.006s
+
+FAILED (skipped=1, failures=1)

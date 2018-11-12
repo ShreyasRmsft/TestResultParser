@@ -1,0 +1,18 @@
+test_failing (Test1.PythonTestClass) ... FailingTest
+FAIL
+test_passing (Test1.PythonTestClass) ... I am passing test
+ok
+test_passing2 (Test1.PythonTestClass) ... ok
+
+======================================================================
+FAIL: test_failing (Test1.PythonTestClass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Code\LearningPython\Test1.py", line 15, in test_failing
+    self.assertEqual(2,3)
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+FAILED (failures=1)

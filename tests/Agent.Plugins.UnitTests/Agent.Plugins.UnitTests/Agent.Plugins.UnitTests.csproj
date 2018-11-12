@@ -17,4 +17,19 @@
     <ProjectReference Include="..\..\..\src\Agent.Plugins\Agent.Plugins.TestResultParser.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Parser\Python\Resources\SuccessScenarios\PythonSuccessTestCases.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PythonSuccessTestCases.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Parser\Python\Resources\SuccessScenarios\PythonSuccessTestCases.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PythonSuccessTestCases.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

@@ -20,5 +20,10 @@
         {
             throw new NotImplementedException();
         }
+
+        public void AddProperty(object unexpectedError, string v, bool aggregate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
