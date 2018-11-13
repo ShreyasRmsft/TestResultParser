@@ -11,9 +11,9 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
     public class TestRun
     {
         /// <summary>
-        /// Name of the parser class that parsed the test run
+        /// Uri of the parser class that parsed the test run. Uri contains name and version number of the parser
         /// </summary>
-        public string Parser { get; set; }
+        public string ParserUri { get; set; }
 
         /// <summary>
         /// Test run id relative to the parser. This along with the parser name will uniquely identify a run

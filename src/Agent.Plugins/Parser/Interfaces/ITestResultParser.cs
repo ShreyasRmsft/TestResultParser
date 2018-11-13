@@ -9,5 +9,15 @@ namespace Agent.Plugins.TestResultParser.Parser.Interfaces
         /// </summary>
         /// <param name="line">Data to be parsed.</param>
         void Parse(LogLineData line);
+
+        /// <summary>
+        /// Name of the parser
+        /// </summary>
+        string ParserName { get; }
+
+        /// <summary>
+        /// Version number of the parser
+        /// </summary>
+        string ParserVersion { get; }
     }
 }

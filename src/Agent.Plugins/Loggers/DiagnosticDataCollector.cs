@@ -1,19 +1,19 @@
-﻿namespace Agent.Plugins.TestResultParser.Telemetry
+﻿namespace Agent.Plugins.TestResultParser.Loggers
 {
     using System;
     using System.Threading.Tasks;
-    using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
+    using Agent.Plugins.TestResultParser.Loggers.Interfaces;
 
-    public class DiagnosticDataCollector : IDiagnosticDataCollector
+    public class TraceLogger : ITraceLogger
     {
-        private static IDiagnosticDataCollector instance;
+        private static ITraceLogger instance;
 
         /// <summary>
         /// Gets the singleton instance of diagnostics data collector.
         /// </summary>
-        public static IDiagnosticDataCollector Instance
+        public static ITraceLogger Instance
         {
-            get => instance ?? (instance = new DiagnosticDataCollector());
+            get => instance ?? (instance = new TraceLogger());
             internal set => instance = value;
         }
 

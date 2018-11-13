@@ -1,6 +1,6 @@
-﻿namespace Agent.Plugins.TestResultParser.Telemetry.Interfaces
+﻿namespace Agent.Plugins.TestResultParser.Loggers.Interfaces
 {
-    public interface IDiagnosticDataCollector
+    public interface ITraceLogger
     {
         /// <summary>
         /// Verbose diagnostics.
