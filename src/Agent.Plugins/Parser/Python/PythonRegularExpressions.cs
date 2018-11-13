@@ -15,7 +15,7 @@
 
 
         public static readonly Regex SummaryTestCountAndTimePattern = new Regex(@"^Ran\s([0-9]+)\stests?\sin\s([0-9]+)(\.([0-9]+))?s");
-        public static readonly Regex SummaryOutcomePattern = new Regex(@"OK|FAILED\s\((.*)\)");
+        public static readonly Regex SummaryOutcomePattern = new Regex(@"(OK|FAILED)(\s\((.*)\))?");
         public static readonly Regex SummaryFailurePattern = new Regex($"failures=(?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*)");
 
         //public static readonly Regex ExpectedFailureOutcomePattern = new Regex(@"expected failure(\s(\([0-9]+(\.[0-9]+)?)s\))?$");

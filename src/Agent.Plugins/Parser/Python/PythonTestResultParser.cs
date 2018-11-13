@@ -22,7 +22,7 @@
         private ParserState state;
         private TestResult partialTestResult;
 
-        private TestRun currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>(), TestRunSummary = new TestRunSummary() };
+        private TestRun currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>()};
 
         public PythonTestResultParser(ITestRunManager testRunManager) : this(testRunManager, TelemetryDataCollector.Instance, DiagnosticDataCollector.Instance)
         {
@@ -106,7 +106,7 @@
         private void Reset()
         {
             partialTestResult = null;
-            currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>(), TestRunSummary = new TestRunSummary() };
+            currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>() };
             state = ParserState.ExpectingTestResults;
         }
     
@@ -199,15 +199,16 @@
                 var secTime = int.Parse(countAndTimeSummaryMatch.Groups[2].Value);
                 var msTime = int.Parse(countAndTimeSummaryMatch.Groups[4].Value);
 
+                currentTestRun.TestRunSummary = new TestRunSummary();
                 currentTestRun.TestRunSummary.TotalExecutionTime = new TimeSpan(0,0,0,secTime, msTime);
                 currentTestRun.TestRunSummary.TotalTests = testcount;
                 return true;
             }
 
             var resultSummaryMatch = PythonRegularExpressions.SummaryOutcomePattern.Match(data);
-            if(resultSummaryMatch.Success)
+            if(resultSummaryMatch.Success && currentTestRun.TestRunSummary != null)
             {
-                var resultIdentifer = resultSummaryMatch.Groups[1].Value;
+                var resultIdentifer = resultSummaryMatch.Groups[3].Value;
                 var failureCountPatternMatch = PythonRegularExpressions.SummaryFailurePattern.Match(resultIdentifer);
                 if(failureCountPatternMatch.Success)
                 {
