@@ -1,6 +1,8 @@
 ﻿namespace Agent.Plugins.TestResultParser.Parser.Python
 {
     using System;
+    using Agent.Plugins.TestResultParser.Loggers;
+    using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
     using Agent.Plugins.TestResultParser.Telemetry;
@@ -12,17 +14,21 @@
     public class PythonTestResultParser : ITestResultParser
     {
         private ITelemetryDataCollector telemetryDataCollector;
-        private IDiagnosticDataCollector diagnosticDataCollector;
+        private ITraceLogger diagnosticDataCollector;
 
-        public PythonTestResultParser() : this(TelemetryDataCollector.Instance, DiagnosticDataCollector.Instance)
+        public PythonTestResultParser() : this(TelemetryDataCollector.Instance, TraceLogger.Instance)
         {
         }
 
-        internal PythonTestResultParser(ITelemetryDataCollector telemetryCollector, IDiagnosticDataCollector diagnosticsCollector)
+        internal PythonTestResultParser(ITelemetryDataCollector telemetryCollector, ITraceLogger diagnosticsCollector)
         {
             this.telemetryDataCollector = telemetryCollector;
             this.diagnosticDataCollector = diagnosticsCollector;
         }
+
+        public string ParserName => throw new NotImplementedException();
+
+        public string ParserVersion => throw new NotImplementedException();
 
         /// <summary>
         /// Parses input data to detect python test result.

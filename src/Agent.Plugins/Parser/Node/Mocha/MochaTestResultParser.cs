@@ -54,7 +54,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.telemetryDataCollector = telemetryDataCollector;
 
             // Initialize the starting state of the parser
-            testRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>(), SkippedTests = new List<TestResult>(), TestRunSummary = new TestRunSummary() }
+            testRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>(), SkippedTests = new List<TestResult>(), TestRunSummary = new TestRunSummary() };
             stateContext = new MochaTestResultParserStateContext();
             state = MochaTestResultParserState.ExpectingTestResults;
 

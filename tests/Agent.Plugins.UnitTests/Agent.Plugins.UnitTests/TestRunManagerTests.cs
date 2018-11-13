@@ -4,6 +4,7 @@
 namespace Agent.Plugins.UnitTests
 {
     using System.Collections.Generic;
+    using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Publish.Interfaces;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
@@ -17,13 +18,13 @@ namespace Agent.Plugins.UnitTests
     {
         private TestRunManager testRunManager;
         private Mock<ITestRunPublisher> publisher;
-        private Mock<IDiagnosticDataCollector> diagnosticDataCollector;
+        private Mock<ITraceLogger> diagnosticDataCollector;
         private Mock<ITelemetryDataCollector> telemetryDataCollector;
 
         public TestRunManagerTests()
         {
             this.publisher = new Mock<ITestRunPublisher>();
-            this.diagnosticDataCollector = new Mock<IDiagnosticDataCollector>();
+            this.diagnosticDataCollector = new Mock<ITraceLogger>();
             this.telemetryDataCollector = new Mock<ITelemetryDataCollector>();
             this.testRunManager = new TestRunManager(publisher.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
         }

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
     using Agent.Plugins.TestResultParser.Parser.Node.Mocha;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
@@ -15,20 +16,13 @@
     [TestClass]
     public class MochaTestResultParserTests
     {
-        private Mock<IDiagnosticDataCollector> diagnosticDataCollector;
+        private Mock<ITraceLogger> diagnosticDataCollector;
         private Mock<ITelemetryDataCollector> telemetryDataCollector;
 
         public MochaTestResultParserTests()
         {
-            this.diagnosticDataCollector = new Mock<IDiagnosticDataCollector>();
+            this.diagnosticDataCollector = new Mock<ITraceLogger>();
             this.telemetryDataCollector = new Mock<ITelemetryDataCollector>();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ParseResultsShouldThrowWhenTestResultsIsNull()
-        {
-            //new MochaTestResultParser().ParseTestResultConsoleOut(null);
         }
 
         [DataTestMethod]
@@ -47,7 +41,7 @@
 
             string testResultsConsoleOut = typeof(SuccessScenarios).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
 
-            var parser = new MochaTestResultParser(testRunManagerMock.Object, this.diagnosticDataCollector.Object, this.telemetryDataCollector.Object, null);
+            var parser = new MochaTestResultParser(testRunManagerMock.Object, this.diagnosticDataCollector.Object, this.telemetryDataCollector.Object);
 
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
