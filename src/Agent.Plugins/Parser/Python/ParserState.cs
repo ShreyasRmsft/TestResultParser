@@ -2,8 +2,8 @@
 {
     internal enum ParserState
     {
-        PreSummary,
-        Summary,
-        PostSummary
+        ExpectingTestResults,
+        ExpectingFailedResults,
+        ExpectingSummary
     }
 }

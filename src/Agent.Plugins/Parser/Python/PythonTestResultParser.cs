@@ -34,7 +34,7 @@
             this.telemetryDataCollector = telemetryCollector;
             this.diagnosticDataCollector = diagnosticsCollector;
 
-            this.state = ParserState.PreSummary;
+            this.state = ParserState.ExpectingTestResults;
         }
 
         /// <summary>
@@ -53,12 +53,35 @@
 
             switch (state)
             {
-                case ParserState.Summary:
+                case ParserState.ExpectingSummary:
                     if (ParseSummary(data)) return;
 
-                    if (ParseTestResult(data) || ParseForFailedResult(data))
+                    if (ParseTestResult(data))
                     {
-                        state = ParserState.PreSummary;
+                        Reset();
+                        return;
+                    }
+                    if(ParseForFailedResult(data))
+                    {
+                        // This is not expected, log and reset
+                        diagnosticDataCollector.Error("TODO");
+                        state = ParserState.ExpectingFailedResults;
+                        return;
+                    }
+                    break;
+
+                case ParserState.ExpectingFailedResults:
+                    if (ParseForFailedResult(data)) return;
+                    if (ParseSummary(data))
+                    {
+                        state = ParserState.ExpectingSummary;
+                        return;
+                    }
+                    if(ParseTestResult(data))
+                    {
+                        // This is not expected, log and reset
+                        diagnosticDataCollector.Error("TODO");
+                        Reset();
                         return;
                     }
                     break;
@@ -67,16 +90,24 @@
                     if (ParseForFailedResult(data))
                     {
                         partialTestResult = null;
+                        state = ParserState.ExpectingFailedResults;
                         return;
                     }
                     if (ParseSummary(data))
                     {
                         partialTestResult = null;
-                        state = ParserState.Summary;
+                        state = ParserState.ExpectingSummary;
                         return;
                     }
                     break;
             }
+        }
+
+        private void Reset()
+        {
+            partialTestResult = null;
+            currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>(), TestRunSummary = new TestRunSummary() };
+            state = ParserState.ExpectingTestResults;
         }
     
         private bool ParseTestResult(string data)
@@ -185,7 +216,7 @@
 
                 //Publish the result
                 runManager.Publish(currentTestRun);
-                state = ParserState.PreSummary;
+                state = ParserState.ExpectingTestResults;
                 return true;
             }
 
