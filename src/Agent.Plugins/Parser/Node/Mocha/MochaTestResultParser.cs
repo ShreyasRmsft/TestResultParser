@@ -17,6 +17,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
     public class MochaTestResultParser : ITestResultParser
     {
+        // TODO: Need a hook for end of logs.
+        // Needed for multiple reasons. Scenarios where i am expecting things and have not yet published the run
+        // Needed where I have encoutered test results but got no summary
+        // It is true that it can be inferred due to the absense of the summary event, but I would like there to
+        // be one telemetry event per parser run
+
+        // TODO: Decide on a reset if no match found withing x lines logic after a previous match.
+        // This can be fine tuned depending on the previous match
+        // Infra already in place for this
+
         private TestRun testRun;
         private MochaTestResultParserStateContext stateContext;
 
@@ -170,6 +180,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         /// </summary>
         private void PublishRunAndResetParser()
         {
+            // TODO: If a reset is implemented
+            // this can still blindly pump incomplete test runs, validator needs to ensure it verifies and fires telemtry
+
             // Refresh the context
             stateContext = new MochaTestResultParserStateContext();
 
@@ -180,6 +193,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             testRun = new TestRun() { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>(), SkippedTests = new List<TestResult>(), TestRunSummary = new TestRunSummary() };
             testRun.ParserUri = $"{ParserName}/{ParserVersion}";
             state = MochaTestResultParserState.ExpectingTestResults;
+
+            logger.Verbose("TODO");
+            telemetryDataCollector.AddProperty("TODO", "TODO");
         }
 
         /// <summary>
@@ -349,6 +365,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             if (match.Success)
             {
+                logger.Verbose("TODO");
+                telemetryDataCollector.AddProperty("TODO", "TODO");
+
                 stateContext.LinesWithinWhichMatchIsExpected = 1;
                 stateContext.ExpectedMatch = "failed/pending tests summary";
 
@@ -380,6 +399,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                         PublishRunAndResetParser();
                         break;
                 }
+
+                logger.Verbose("TODO");
 
                 state = MochaTestResultParserState.ExpectingTestRunSummary;
                 stateContext.LastFailedTestCaseNumber = 0;
@@ -438,6 +459,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             if (match.Success)
             {
+                logger.Verbose("TODO");
+                telemetryDataCollector.AddProperty("TODO", "TODO");
+
                 stateContext.LinesWithinWhichMatchIsExpected = 0;
 
                 // Handle parse errors
@@ -453,11 +477,13 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 // If no failed tests found then skip the stack traces parsing state
                 if (testRun.TestRunSummary.TotalFailed == 0)
                 {
+                    logger.Verbose("TODO");
                     state = MochaTestResultParserState.ExpectingTestResults;
                     PublishRunAndResetParser();
                 }
                 else
                 {
+                    logger.Verbose("TODO");
                     state = MochaTestResultParserState.ExpectingStackTraces;
                 }
 
@@ -480,6 +506,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             if (match.Success)
             {
+                logger.Verbose("TODO");
+                telemetryDataCollector.AddProperty("TODO", "TODO");
+
                 stateContext.LinesWithinWhichMatchIsExpected = 1;
 
                 // Handle parse error

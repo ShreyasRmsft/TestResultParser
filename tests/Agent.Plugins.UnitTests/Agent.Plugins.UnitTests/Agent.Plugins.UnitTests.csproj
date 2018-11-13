@@ -18,6 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MochaTestResultParserTests\Resources\DetailedTests\DetailedTests.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DetailedTests.resx</DependentUpon>
+    </Compile>
     <Compile Update="MochaTestResultParserTests\Resources\SuccessScenarios\SuccessScenarios.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -26,6 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="MochaTestResultParserTests\Resources\DetailedTests\DetailedTests.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DetailedTests.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="MochaTestResultParserTests\Resources\SuccessScenarios\SuccessScenarios.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SuccessScenarios.Designer.cs</LastGenOutput>
