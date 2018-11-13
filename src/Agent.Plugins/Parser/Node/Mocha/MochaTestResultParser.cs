@@ -74,6 +74,11 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         /// <inheritdoc/>
         public void Parse(LogLineData testResultsLine)
         {
+            if(testResultsLine.Line.Contains("Do not sign or zipalign if nothing is selected"))
+            {
+
+            }
+
             // State model for the mocha parser that defines the regexes to match against in each state
             // Each state re-orders the regexes based on the frequency of expected matches
             switch (state)

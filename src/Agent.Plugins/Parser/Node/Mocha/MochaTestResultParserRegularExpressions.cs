@@ -9,7 +9,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
     // TODO: Check if mergin all or most of the regexes into a single one gives a perf boost
     public class MochaTestResultParserRegularExpressions
     {
-        public static Regex PassedTestCaseMatcher { get; } = new Regex($"  ((ΓêÜ)|✓) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestCaseMatcher { get; } = new Regex($"  ((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.*) \\((?<{RegexCaptureGroups.TestRunTime}>[1-9][0-9]*)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\))|(?<{RegexCaptureGroups.TestCaseName}>.*))", RegexOptions.ExplicitCapture);
 
         public static Regex FailedTestCaseMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 

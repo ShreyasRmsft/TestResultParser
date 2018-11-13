@@ -82,7 +82,12 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.DetailedT
         ///  1) sampleUnitTests
         ///       Test method 1:
         ///     Error: the string &quot;error&quot; was thrown, throw an Error :)
-        ///.
+        ///
+        ///
+        ///  2) sampleUnitTests
+        ///       Test method 2:
+        ///     Error: done() invoked with non-Error: hello
+        ///      at Context.&lt;anonymous&gt; ( [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TestCase001 {
             get {
@@ -105,6 +110,42 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.DetailedT
         internal static string TestCase001Result {
             get {
                 return ResourceManager.GetString("TestCase001Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2018-10-15T12:24:20.5437285Z ##[section]Starting: Test with node 6
+        ///2018-10-15T12:24:20.5446251Z ==============================================================================
+        ///2018-10-15T12:24:20.5446423Z Task         : Command Line
+        ///2018-10-15T12:24:20.5446584Z Description  : Run a command line script using cmd.exe on Windows and bash on macOS and Linux.
+        ///2018-10-15T12:24:20.5446731Z Version      : 2.136.0
+        ///2018-10-15T12:24:20.5446873Z Author       : Microsoft Corporation
+        ///2018-10-15T12:24:20.5447014Z Hel [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase002 {
+            get {
+                return ResourceManager.GetString("TestCase002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed 213
+        ///Do not sign or zipalign if nothing is selected
+        ///Do not align or sign if input single file does not exist
+        ///Do not align or sign if input pattern does not match any files
+        ///Use jarsigner from PATH before searching in JAVA_HOME
+        ///Fail if jarsigner is not on PATH and JAVA_HOME is not set
+        ///Fail if ANDROID_HOME is not set
+        ///Signing a single file
+        ///zipalign a single file
+        ///Signing and aligning multiple files
+        ///Download keystore file from SecureFile
+        ///Validate AzureFileCopy.Utility Get-AzureUtility
+        ///Validate A [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase002Result {
+            get {
+                return ResourceManager.GetString("TestCase002Result", resourceCulture);
             }
         }
     }
