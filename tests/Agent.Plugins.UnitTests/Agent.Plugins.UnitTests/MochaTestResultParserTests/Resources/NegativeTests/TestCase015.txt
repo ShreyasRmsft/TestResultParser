@@ -1,0 +1,56 @@
+test_fail (__main__.TestStringMethods) ... This is output for test_fail1
+test_fail1 contains multiple lines
+FAIL
+test_fail2 (__main__.TestStringMethods) ... This is output for test_fail2
+FAIL
+test_fail3 (__main__.TestStringMethods) ... FAIL
+test_fail4 (__main__.TestStringMethods) ... This is output for test_pass4
+FAIL
+test_pass (__main__.TestStringMethods) ... This is output for test_pass1
+test_pass1 contains multiple lines
+ok
+test_pass2 (__main__.TestStringMethods) ... This is output for test_pass2
+ok
+test_pass3 (__main__.TestStringMethods) ... ok
+test_skip (__main__.TestStringMethods) ... skipped 'demonstrating skipping'
+test_skip2 (__main__.TestStringMethods) ... skipped 'demonstrating skipping'
+test_split (__main__.TestStringMethods) ... This is output for test_split
+test_split contains multiple lines
+ok
+
+======================================================================
+FAIL: test_fail (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\python-testing\test-verbose.py", line 31, in test_fail
+    self.fail("I am failing in test_fail1")
+AssertionError: I am failing in test_fail1
+
+======================================================================
+FAIL: test_fail2 (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\python-testing\test-verbose.py", line 35, in test_fail2
+    self.fail("I am failing in test_fail2")
+AssertionError: I am failing in test_fail2
+
+======================================================================
+FAIL: test_fail3 (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\python-testing\test-verbose.py", line 38, in test_fail3
+    self.fail("I am failing in test_fail3")
+AssertionError: I am failing in test_fail3
+
+======================================================================
+FAIL: test_fail4 (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\python-testing\test-verbose.py", line 42, in test_fail4
+    self.fail("I am failing in test_fail4")
+AssertionError: I am failing in test_fail4
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.022s
+
+FAILED (failures=4, skipped=2)

@@ -1,0 +1,10 @@
+﻿Passed 3
+Test (5ms) method 3
+Test (30s) method 4
+Test (1m) method 5
+
+Failed 2
+Test method 1
+Test method 2
+
+Skipped 0

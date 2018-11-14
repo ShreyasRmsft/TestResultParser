@@ -1,0 +1,1347 @@
+Travis CI
+About Us
+ 
+Blog
+ 
+Status
+ 
+Documentation
+ Sign in with GitHub
+Help make Open Source a better place and start building better software today!
+
+Valloric / YouCompleteMe
+ build:passed
+Current
+ 
+Branches
+ 
+Build History
+ 
+Pull Requests
+ 
+Build #3028
+ 
+Job #3028.2
+ More options
+ master Merge pull request #3209 from santosh/docs
+removes repetitive line
+
+ Commit faa019a 
+ Compare f67e5ff..faa019a 
+ Branch master 
+  avatar micbou
+
+ #3028.2 passed
+ Ran for 5 min 59 sec
+ 13 days ago
+ no language set
+YCM_PYTHON_VERSION=3.4
+Job log
+ 
+View config
+ Raw log
+worker_info
+Worker information
+hostname: 248a0d71-c286-49b1-8668-c87afeff5215@1.i-0c78935-production-2-worker-org-ec2.travisci.net
+version: v4.1.2 https://github.com/travis-ci/worker/tree/91246b057ccd93649046771f29221f839c19a7d3
+instance: 932d865 travisci/ci-garnet:packer-1512502276-986baf0 (via amqp)
+startup: 2.190163287s
+system_info
+Build system information
+Build language: generic
+Build group: stable
+Build dist: trusty
+Build id: 449428936
+Job id: 449428938
+Runtime kernel version: 4.14.12-041412-generic
+travis-build version: 19c847e86
+Build image provisioning date and time
+Tue Dec  5 20:11:19 UTC 2017
+Operating System Details
+Distributor ID:	Ubuntu
+Description:	Ubuntu 14.04.5 LTS
+Release:	14.04
+Codename:	trusty
+Cookbooks Version
+7c2c6a6 https://github.com/travis-ci/travis-cookbooks/tree/7c2c6a6
+git version
+git version 2.15.1
+bash version
+GNU bash, version 4.3.11(1)-release (x86_64-pc-linux-gnu)
+gcc version
+gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4
+Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+docker version
+Client:
+ Version:      17.09.0-ce
+ API version:  1.32
+ Go version:   go1.8.3
+ Git commit:   afdb6d4
+ Built:        Tue Sep 26 22:39:28 2017
+ OS/Arch:      linux/amd64
+clang version
+clang version 5.0.0 (tags/RELEASE_500/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/clang-5.0.0/bin
+jq version
+jq-1.5
+bats version
+Bats 0.4.0
+shellcheck version
+0.4.6
+shfmt version
+v2.0.0
+ccache version
+ccache version 3.1.9
+Copyright (C) 2002-2007 Andrew Tridgell
+Copyright (C) 2009-2011 Joel Rosdahl
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 3 of the License, or (at your option) any later
+version.
+cmake version
+cmake version 3.9.2
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+heroku version
+heroku-cli/6.14.39-addc925 (linux-x64) node-v9.2.0
+imagemagick version
+Version: ImageMagick 6.7.7-10 2017-07-31 Q16 http://www.imagemagick.org
+md5deep version
+4.2
+mercurial version
+Mercurial Distributed SCM (version 4.2.2)
+(see https://mercurial-scm.org for more information)
+Copyright (C) 2005-2017 Matt Mackall and others
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+mysql version
+mysql  Ver 14.14 Distrib 5.6.33, for debian-linux-gnu (x86_64) using  EditLine wrapper
+openssl version
+OpenSSL 1.0.1f 6 Jan 2014
+packer version
+Packer v1.0.2
+Your version of Packer is out of date! The latest version
+is 1.1.2. You can update by downloading from www.packer.io
+postgresql client version
+psql (PostgreSQL) 9.6.6
+ragel version
+Ragel State Machine Compiler version 6.8 Feb 2013
+Copyright (c) 2001-2009 by Adrian Thurston
+subversion version
+svn, version 1.8.8 (r1568071)
+   compiled Aug 10 2017, 17:20:39 on x86_64-pc-linux-gnu
+Copyright (C) 2013 The Apache Software Foundation.
+This software consists of contributions made by many people;
+see the NOTICE file for more information.
+Subversion is open source software, see http://subversion.apache.org/
+The following repository access (RA) modules are available:
+* ra_svn : Module for accessing a repository using the svn network protocol.
+  - with Cyrus SASL authentication
+  - handles 'svn' scheme
+* ra_local : Module for accessing a repository on local disk.
+  - handles 'file' scheme
+* ra_serf : Module for accessing a repository via WebDAV protocol using serf.
+  - using serf 1.3.3
+  - handles 'http' scheme
+  - handles 'https' scheme
+sudo version
+Sudo version 1.8.9p5
+Configure options: --prefix=/usr -v --with-all-insults --with-pam --with-fqdn --with-logging=syslog --with-logfac=authpriv --with-env-editor --with-editor=/usr/bin/editor --with-timeout=15 --with-password-timeout=0 --with-passprompt=[sudo] password for %p:  --without-lecture --with-tty-tickets --disable-root-mailer --enable-admin-flag --with-sendmail=/usr/sbin/sendmail --with-timedir=/var/lib/sudo --mandir=/usr/share/man --libexecdir=/usr/lib/sudo --with-sssd --with-sssd-lib=/usr/lib/x86_64-linux-gnu --with-selinux
+Sudoers policy plugin version 1.8.9p5
+Sudoers file grammar version 43
+Sudoers path: /etc/sudoers
+Authentication methods: 'pam'
+Syslog facility if syslog is being used for logging: authpriv
+Syslog priority to use when user authenticates successfully: notice
+Syslog priority to use when user authenticates unsuccessfully: alert
+Send mail if the user is not in sudoers
+Use a separate timestamp for each user/tty combo
+Lecture user the first time they run sudo
+Root may run sudo
+Allow some information gathering to give useful error messages
+Require fully-qualified hostnames in the sudoers file
+Visudo will honor the EDITOR environment variable
+Set the LOGNAME and USER environment variables
+Length at which to wrap log file lines (0 for no wrap): 80
+Authentication timestamp timeout: 15.0 minutes
+Password prompt timeout: 0.0 minutes
+Number of tries to enter a password: 3
+Umask to use or 0777 to use user's: 022
+Path to mail program: /usr/sbin/sendmail
+Flags for mail program: -t
+Address to send mail to: root
+Subject line for mail messages: *** SECURITY information for %h ***
+Incorrect password message: Sorry, try again.
+Path to authentication timestamp dir: /var/lib/sudo
+Default password prompt: [sudo] password for %p: 
+Default user to run commands as: root
+Value to override user's $PATH with: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+Path to the editor for use by visudo: /usr/bin/editor
+When to require a password for 'list' pseudocommand: any
+When to require a password for 'verify' pseudocommand: all
+File descriptors >= 3 will be closed before executing a command
+Environment variables to check for sanity:
+	TZ
+	TERM
+	LINGUAS
+	LC_*
+	LANGUAGE
+	LANG
+	COLORTERM
+Environment variables to remove:
+	RUBYOPT
+	RUBYLIB
+	PYTHONUSERBASE
+	PYTHONINSPECT
+	PYTHONPATH
+	PYTHONHOME
+	TMPPREFIX
+	ZDOTDIR
+	READNULLCMD
+	NULLCMD
+	FPATH
+	PERL5DB
+	PERL5OPT
+	PERL5LIB
+	PERLLIB
+	PERLIO_DEBUG 
+	JAVA_TOOL_OPTIONS
+	SHELLOPTS
+	GLOBIGNORE
+	PS4
+	BASH_ENV
+	ENV
+	TERMCAP
+	TERMPATH
+	TERMINFO_DIRS
+	TERMINFO
+	_RLD*
+	LD_*
+	PATH_LOCALE
+	NLSPATH
+	HOSTALIASES
+	RES_OPTIONS
+	LOCALDOMAIN
+	CDPATH
+	IFS
+Environment variables to preserve:
+	JAVA_HOME
+	TRAVIS
+	CI
+	DEBIAN_FRONTEND
+	XAUTHORIZATION
+	XAUTHORITY
+	PS2
+	PS1
+	PATH
+	LS_COLORS
+	KRB5CCNAME
+	HOSTNAME
+	HOME
+	DISPLAY
+	COLORS
+Locale to use while parsing sudoers: C
+Directory in which to store input/output logs: /var/log/sudo-io
+File in which to store the input/output log: %{seq}
+Add an entry to the utmp/utmpx file when allocating a pty
+PAM service name to use
+PAM service name to use for login shells
+Create a new PAM session for the command to run in
+Maximum I/O log sequence number: 0
+Local IP address and netmask pairs:
+	172.17.0.2/255.255.0.0
+Sudoers I/O plugin version 1.8.9p5
+gzip version
+gzip 1.6
+Copyright (C) 2007, 2010, 2011 Free Software Foundation, Inc.
+Copyright (C) 1993 Jean-loup Gailly.
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+Written by Jean-loup Gailly.
+zip version
+Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+This is Zip 3.0 (July 5th 2008), by Info-ZIP.
+Currently maintained by E. Gordon.  Please send bug reports to
+the authors using the web page at www.info-zip.org; see README for details.
+Latest sources and executables are at ftp://ftp.info-zip.org/pub/infozip,
+as of above date; see http://www.info-zip.org/ for other sites.
+Compiled with gcc 4.8.2 for Unix (Linux ELF) on Oct 21 2013.
+Zip special compilation options:
+	USE_EF_UT_TIME       (store Universal Time)
+	BZIP2_SUPPORT        (bzip2 library version 1.0.6, 6-Sept-2010)
+	    bzip2 code and library copyright (c) Julian R Seward
+	    (See the bzip2 license for terms of use)
+	SYMLINK_SUPPORT      (symbolic links supported)
+	LARGE_FILE_SUPPORT   (can read and write large files on file system)
+	ZIP64_SUPPORT        (use Zip64 to store large files in archives)
+	UNICODE_SUPPORT      (store and read UTF-8 Unicode paths)
+	STORE_UNIX_UIDs_GIDs (store UID/GID sizes/values using new extra field)
+	UIDGID_NOT_16BIT     (old Unix 16-bit UID/GID extra field not used)
+	[encryption, version 2.91 of 05 Jan 2007] (modified for Zip 3)
+Encryption notice:
+	The encryption code of this program is not copyrighted and is
+	put in the public domain.  It was originally written in Europe
+	and, to the best of our knowledge, can be freely distributed
+	in both source and object forms from any country, including
+	the USA under License Exception TSU of the U.S. Export
+	Administration Regulations (section 740.13(e)) of 6 June 2002.
+Zip environment options:
+             ZIP:  [none]
+          ZIPOPT:  [none]
+vim version
+VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Nov 24 2016 16:43:18)
+Included patches: 1-52
+Extra patches: 8.0.0056
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version without GUI.  Features included (+) or not (-):
++acl             +farsi           +mouse_netterm   +syntax
++arabic          +file_in_path    +mouse_sgr       +tag_binary
++autocmd         +find_in_path    -mouse_sysmouse  +tag_old_static
+-balloon_eval    +float           +mouse_urxvt     -tag_any_white
+-browse          +folding         +mouse_xterm     -tcl
+++builtin_terms  -footer          +multi_byte      +terminfo
++byte_offset     +fork()          +multi_lang      +termresponse
++cindent         +gettext         -mzscheme        +textobjects
+-clientserver    -hangul_input    +netbeans_intg   +title
+-clipboard       +iconv           +path_extra      -toolbar
++cmdline_compl   +insert_expand   -perl            +user_commands
++cmdline_hist    +jumplist        +persistent_undo +vertsplit
++cmdline_info    +keymap          +postscript      +virtualedit
++comments        +langmap         +printer         +visual
++conceal         +libcall         +profile         +visualextra
++cryptv          +linebreak       +python          +viminfo
++cscope          +lispindent      -python3         +vreplace
++cursorbind      +listcmds        +quickfix        +wildignore
++cursorshape     +localmap        +reltime         +wildmenu
++dialog_con      -lua             +rightleft       +windows
++diff            +menu            -ruby            +writebackup
++digraphs        +mksession       +scrollbind      -X11
+-dnd             +modify_fname    +signs           -xfontset
+-ebcdic          +mouse           +smartindent     -xim
++emacs_tags      -mouseshape      -sniff           -xsmp
++eval            +mouse_dec       +startuptime     -xterm_clipboard
++ex_extra        +mouse_gpm       +statusline      -xterm_save
++extra_search    -mouse_jsbterm   -sun_workshop    -xpm
+   system vimrc file: "$VIM/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed -o vim        -lm -ltinfo -lnsl  -lselinux  -lacl -lattr -lgpm -ldl    -L/usr/lib/python2.7/config-x86_64-linux-gnu -lpython2.7 -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions      
+iptables version
+iptables v1.4.21
+curl version
+curl 7.35.0 (x86_64-pc-linux-gnu) libcurl/7.35.0 OpenSSL/1.0.1f zlib/1.2.8 libidn/1.28 librtmp/2.3
+wget version
+GNU Wget 1.15 built on linux-gnu.
+rsync version
+rsync  version 3.1.0  protocol version 31
+gimme version
+v1.2.0
+nvm version
+0.33.6
+perlbrew version
+/home/travis/perl5/perlbrew/bin/perlbrew  - App::perlbrew/0.80
+phpenv version
+rbenv 1.1.1-25-g6aa70b6
+rvm version
+rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+default ruby version
+ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+CouchDB version
+couchdb 1.6.1
+ElasticSearch version
+5.5.0
+Installed Firefox version
+firefox 56.0.2
+MongoDB version
+MongoDB 3.4.10
+PhantomJS version
+2.1.1
+Pre-installed PostgreSQL versions
+9.2.24
+9.3.20
+9.4.15
+9.5.10
+9.6.6
+RabbitMQ Version
+3.6.14
+Redis version
+redis-server 4.0.6
+riak version
+2.2.3
+Pre-installed Go versions
+1.7.4
+ant version
+Apache Ant(TM) version 1.9.3 compiled on April 8 2014
+mvn version
+Apache Maven 3.5.2 (138edd61fd100ec658bfa2d307c43b76940a5d7d; 2017-10-18T07:58:13Z)
+Maven home: /usr/local/maven-3.5.2
+Java version: 1.8.0_151, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-8-oracle/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "4.4.0-101-generic", arch: "amd64", family: "unix"
+gradle version
+------------------------------------------------------------
+Gradle 4.0.1
+------------------------------------------------------------
+Build time:   2017-07-07 14:02:41 UTC
+Revision:     38e5dc0f772daecca1d2681885d3d85414eb6826
+Groovy:       2.4.11
+Ant:          Apache Ant(TM) version 1.9.6 compiled on June 29 2015
+JVM:          1.8.0_151 (Oracle Corporation 25.151-b12)
+OS:           Linux 4.4.0-101-generic amd64
+lein version
+Leiningen 2.8.1 on Java 1.8.0_151 Java HotSpot(TM) 64-Bit Server VM
+Pre-installed Node.js versions
+v4.8.6
+v6.12.0
+v6.12.1
+v8.9
+v8.9.1
+phpenv versions
+  system
+  5.6
+* 5.6.32 (set by /home/travis/.phpenv/version)
+  7.0
+  7.0.25
+  7.1
+  7.1.11
+  hhvm
+  hhvm-stable
+composer --version
+Composer version 1.5.2 2017-09-11 16:59:25
+Pre-installed Ruby versions
+ruby-2.2.7
+ruby-2.3.4
+ruby-2.4.1
+Setting APT mirror in /etc/apt/sources.list: http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
+apt
+Adding APT Sources
+1.48s$ sudo -E apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
+gpg: keyring `/tmp/tmp7_pudip1/secring.gpg' created
+gpg: keyring `/tmp/tmp7_pudip1/pubring.gpg' created
+gpg: requesting key BA9EF27F from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmp7_pudip1/trustdb.gpg: trustdb created
+gpg: key BA9EF27F: public key "Launchpad Toolchain builds" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+1.83s$ sudo -E apt-add-repository -y "ppa:george-edison55/precise-backports"
+gpg: keyring `/tmp/tmpgxtn8kt0/secring.gpg' created
+gpg: keyring `/tmp/tmpgxtn8kt0/pubring.gpg' created
+gpg: requesting key 828AB726 from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmpgxtn8kt0/trustdb.gpg: trustdb created
+gpg: key 828AB726: public key "Launchpad George Edison's PPA" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+Installing APT Packages
+15.09s$ travis_apt_get_update
+139.16s$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install cmake-data cmake g++-4.8 libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libbz2-dev is already the newest version (1.0.6-5).
+libncurses5-dev is already the newest version (5.9+20140118-1ubuntu1).
+libncursesw5-dev is already the newest version (5.9+20140118-1ubuntu1).
+libreadline-dev is already the newest version (6.3-4ubuntu2).
+llvm is already the newest version (1:3.4-0ubuntu1).
+libsqlite3-dev is already the newest version (3.8.2-1ubuntu2.1).
+The following additional packages will be installed:
+  cpp-4.8 gcc-4.8 gcc-4.8-base gcc-8-base libarchive13 libasan0 libatomic1
+  libcurl3 libgcc-4.8-dev libgomp1 libisl15 libitm1 libmpfr4 libnettle4
+  libquadmath0 libssl1.0.0 libstdc++-4.8-dev libstdc++6 libtsan0 zlib1g
+Suggested packages:
+  codeblocks eclipse gcc-4.8-locales g++-4.8-multilib gcc-4.8-doc
+  libstdc++6-4.8-dbg gcc-4.8-multilib libgcc1-dbg libgomp1-dbg libitm1-dbg
+  libatomic1-dbg libasan0-dbg libtsan0-dbg libquadmath0-dbg lrzip
+  libstdc++-4.8-doc
+Recommended packages:
+  libssl-doc
+The following NEW packages will be installed:
+  cmake cmake-data gcc-8-base libarchive13 libisl15 libnettle4
+The following packages will be upgraded:
+  cpp-4.8 curl g++-4.8 gcc-4.8 gcc-4.8-base libasan0 libatomic1 libcurl3
+  libgcc-4.8-dev libgomp1 libitm1 libmpfr4 libquadmath0 libssl-dev libssl1.0.0
+  libstdc++-4.8-dev libstdc++6 libtsan0 wget zlib1g zlib1g-dev
+21 upgraded, 6 newly installed, 0 to remove and 231 not upgraded.
+Need to get 38.5 MB of archives.
+After this operation, 20.7 MB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 zlib1g-dev amd64 1:1.2.8.dfsg-1ubuntu1.1 [166 kB]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 zlib1g amd64 1:1.2.8.dfsg-1ubuntu1.1 [49.8 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 libssl-dev amd64 1.0.1f-1ubuntu2.26 [1,072 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 libssl1.0.0 amd64 1.0.1f-1ubuntu2.26 [829 kB]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 libnettle4 amd64 2.7.1-1ubuntu0.2 [102 kB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 libarchive13 amd64 3.1.2-7ubuntu2.6 [262 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 curl amd64 7.35.0-1ubuntu2.19 [123 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 libcurl3 amd64 7.35.0-1ubuntu2.19 [173 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty-updates/main amd64 wget amd64 1.15-1ubuntu1.14.04.4 [270 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty/main amd64 cmake-data all 2.8.12.2-0ubuntu3 [676 kB]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu trusty/main amd64 cmake amd64 2.8.12.2-0ubuntu3 [2,618 kB]
+Get:12 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 gcc-8-base amd64 8.1.0-5ubuntu1~14.04 [18.3 kB]
+Get:13 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libstdc++6 amd64 8.1.0-5ubuntu1~14.04 [310 kB]
+Get:14 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libatomic1 amd64 8.1.0-5ubuntu1~14.04 [9,082 B]
+Get:15 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libitm1 amd64 8.1.0-5ubuntu1~14.04 [27.9 kB]
+Get:16 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libgomp1 amd64 8.1.0-5ubuntu1~14.04 [75.9 kB]
+Get:17 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libisl15 amd64 0.15-3~14.04 [507 kB]
+Get:18 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libmpfr4 amd64 3.1.3-1~14.04 [178 kB]
+Get:19 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 g++-4.8 amd64 4.8.5-4ubuntu8~14.04.2 [18.2 MB]
+Get:20 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 gcc-4.8 amd64 4.8.5-4ubuntu8~14.04.2 [5,061 kB]
+Get:21 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 cpp-4.8 amd64 4.8.5-4ubuntu8~14.04.2 [4,602 kB]
+Get:22 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libstdc++-4.8-dev amd64 4.8.5-4ubuntu8~14.04.2 [1,053 kB]
+Get:23 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libtsan0 amd64 8.1.0-5ubuntu1~14.04 [284 kB]
+Get:24 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libquadmath0 amd64 8.1.0-5ubuntu1~14.04 [133 kB]
+Get:25 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libgcc-4.8-dev amd64 4.8.5-4ubuntu8~14.04.2 [1,688 kB]
+Get:26 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 libasan0 amd64 4.8.5-4ubuntu8~14.04.2 [63.1 kB]
+Get:27 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty/main amd64 gcc-4.8-base amd64 4.8.5-4ubuntu8~14.04.2 [15.7 kB]
+Fetched 38.5 MB in 2min 2s (314 kB/s)
+Preconfiguring packages ...
+(Reading database ... 72204 files and directories currently installed.)
+Preparing to unpack .../zlib1g-dev_1%3a1.2.8.dfsg-1ubuntu1.1_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.8.dfsg-1ubuntu1.1) over (1:1.2.8.dfsg-1ubuntu1) ...
+Preparing to unpack .../zlib1g_1%3a1.2.8.dfsg-1ubuntu1.1_amd64.deb ...
+Unpacking zlib1g:amd64 (1:1.2.8.dfsg-1ubuntu1.1) over (1:1.2.8.dfsg-1ubuntu1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up zlib1g:amd64 (1:1.2.8.dfsg-1ubuntu1.1) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
+Selecting previously unselected package gcc-8-base:amd64.
+(Reading database ... 72204 files and directories currently installed.)
+Preparing to unpack .../gcc-8-base_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking gcc-8-base:amd64 (8.1.0-5ubuntu1~14.04) ...
+Processing triggers for ccache (3.1.9-1) ...
+Updating symlinks in /usr/lib/ccache ...
+Setting up gcc-8-base:amd64 (8.1.0-5ubuntu1~14.04) ...
+(Reading database ... 72210 files and directories currently installed.)
+Preparing to unpack .../libstdc++6_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking libstdc++6:amd64 (8.1.0-5ubuntu1~14.04) over (4.8.4-2ubuntu1~14.04.3) ...
+Setting up libstdc++6:amd64 (8.1.0-5ubuntu1~14.04) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
+(Reading database ... 72211 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_1.0.1f-1ubuntu2.26_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.0.1f-1ubuntu2.26) over (1.0.1f-1ubuntu2.23) ...
+Preparing to unpack .../libssl1.0.0_1.0.1f-1ubuntu2.26_amd64.deb ...
+Unpacking libssl1.0.0:amd64 (1.0.1f-1ubuntu2.26) over (1.0.1f-1ubuntu2.23) ...
+Selecting previously unselected package libnettle4:amd64.
+Preparing to unpack .../libnettle4_2.7.1-1ubuntu0.2_amd64.deb ...
+Unpacking libnettle4:amd64 (2.7.1-1ubuntu0.2) ...
+Selecting previously unselected package libarchive13:amd64.
+Preparing to unpack .../libarchive13_3.1.2-7ubuntu2.6_amd64.deb ...
+Unpacking libarchive13:amd64 (3.1.2-7ubuntu2.6) ...
+Preparing to unpack .../libatomic1_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking libatomic1:amd64 (8.1.0-5ubuntu1~14.04) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libitm1_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking libitm1:amd64 (8.1.0-5ubuntu1~14.04) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libgomp1_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking libgomp1:amd64 (8.1.0-5ubuntu1~14.04) over (4.8.4-2ubuntu1~14.04.3) ...
+Selecting previously unselected package libisl15:amd64.
+Preparing to unpack .../libisl15_0.15-3~14.04_amd64.deb ...
+Unpacking libisl15:amd64 (0.15-3~14.04) ...
+Preparing to unpack .../libmpfr4_3.1.3-1~14.04_amd64.deb ...
+Unpacking libmpfr4:amd64 (3.1.3-1~14.04) over (3.1.2-1) ...
+Preparing to unpack .../g++-4.8_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking g++-4.8 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../gcc-4.8_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking gcc-4.8 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../cpp-4.8_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking cpp-4.8 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libstdc++-4.8-dev_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking libstdc++-4.8-dev:amd64 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libtsan0_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking libtsan0:amd64 (8.1.0-5ubuntu1~14.04) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libquadmath0_8.1.0-5ubuntu1~14.04_amd64.deb ...
+Unpacking libquadmath0:amd64 (8.1.0-5ubuntu1~14.04) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libgcc-4.8-dev_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking libgcc-4.8-dev:amd64 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../libasan0_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking libasan0:amd64 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../gcc-4.8-base_4.8.5-4ubuntu8~14.04.2_amd64.deb ...
+Unpacking gcc-4.8-base:amd64 (4.8.5-4ubuntu8~14.04.2) over (4.8.4-2ubuntu1~14.04.3) ...
+Preparing to unpack .../curl_7.35.0-1ubuntu2.19_amd64.deb ...
+Unpacking curl (7.35.0-1ubuntu2.19) over (7.35.0-1ubuntu2.13) ...
+Preparing to unpack .../libcurl3_7.35.0-1ubuntu2.19_amd64.deb ...
+Unpacking libcurl3:amd64 (7.35.0-1ubuntu2.19) over (7.35.0-1ubuntu2.13) ...
+Preparing to unpack .../wget_1.15-1ubuntu1.14.04.4_amd64.deb ...
+Unpacking wget (1.15-1ubuntu1.14.04.4) over (1.15-1ubuntu1.14.04.3) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../cmake-data_2.8.12.2-0ubuntu3_all.deb ...
+ERROR: cmake-data is broken - called emacs-package-install as a new-style add-on, but has no compat file.
+Unpacking cmake-data (2.8.12.2-0ubuntu3) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../cmake_2.8.12.2-0ubuntu3_amd64.deb ...
+Unpacking cmake (2.8.12.2-0ubuntu3) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Processing triggers for ccache (3.1.9-1) ...
+Updating symlinks in /usr/lib/ccache ...
+Processing triggers for install-info (5.2.0.dfsg.1-2) ...
+Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-1ubuntu1.1) ...
+Setting up libssl1.0.0:amd64 (1.0.1f-1ubuntu2.26) ...
+Setting up libssl-dev:amd64 (1.0.1f-1ubuntu2.26) ...
+Setting up libnettle4:amd64 (2.7.1-1ubuntu0.2) ...
+Setting up libarchive13:amd64 (3.1.2-7ubuntu2.6) ...
+Setting up libatomic1:amd64 (8.1.0-5ubuntu1~14.04) ...
+Setting up libitm1:amd64 (8.1.0-5ubuntu1~14.04) ...
+Setting up libgomp1:amd64 (8.1.0-5ubuntu1~14.04) ...
+Setting up libisl15:amd64 (0.15-3~14.04) ...
+Setting up libmpfr4:amd64 (3.1.3-1~14.04) ...
+Setting up gcc-4.8-base:amd64 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up cpp-4.8 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up libasan0:amd64 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up libtsan0:amd64 (8.1.0-5ubuntu1~14.04) ...
+Setting up libquadmath0:amd64 (8.1.0-5ubuntu1~14.04) ...
+Setting up libgcc-4.8-dev:amd64 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up gcc-4.8 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up libstdc++-4.8-dev:amd64 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up g++-4.8 (4.8.5-4ubuntu8~14.04.2) ...
+Setting up libcurl3:amd64 (7.35.0-1ubuntu2.19) ...
+Setting up curl (7.35.0-1ubuntu2.19) ...
+Setting up wget (1.15-1ubuntu1.14.04.4) ...
+Setting up cmake-data (2.8.12.2-0ubuntu3) ...
+Install cmake-data for emacs23
+install/cmake-data: Byte-compiling for emacs23
+Wrote /usr/share/emacs23/site-lisp/cmake-data/cmake-mode.elc
+Install cmake-data for emacs24
+install/cmake-data: Byte-compiling for emacs24
+Wrote /usr/share/emacs24/site-lisp/cmake-data/cmake-mode.elc
+Setting up cmake (2.8.12.2-0ubuntu3) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
+git.checkout
+0.51s$ git clone --depth=50 --branch=master https://github.com/Valloric/YouCompleteMe.git Valloric/YouCompleteMe
+Cloning into 'Valloric/YouCompleteMe'...
+remote: Enumerating objects: 961, done.
+remote: Counting objects: 100% (961/961), done.
+remote: Compressing objects: 100% (434/434), done.
+remote: Total 961 (delta 541), reused 832 (delta 457), pack-reused 0
+Receiving objects: 100% (961/961), 773.18 KiB | 11.89 MiB/s, done.
+Resolving deltas: 100% (541/541), done.
+$ cd Valloric/YouCompleteMe
+$ git checkout -qf faa019aa532475c5028527ffbfe1e910119d663c
+git.submodule
+18.47s$ git submodule update --init --recursive
+Submodule 'third_party/requests-futures' (https://github.com/ross/requests-futures) registered for path 'third_party/requests-futures'
+Submodule 'third_party/ycmd' (https://github.com/Valloric/ycmd) registered for path 'third_party/ycmd'
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/requests-futures'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd'...
+Submodule path 'third_party/requests-futures': checked out '98712e7d0f6be2a090b6fda2a925f85e63656b58'
+Submodule path 'third_party/ycmd': checked out 'ae8a33f87a116092639ba164a712960886890a1c'
+Submodule 'third_party/OmniSharpServer' (https://github.com/nosami/OmniSharpServer) registered for path 'third_party/ycmd/third_party/OmniSharpServer'
+Submodule 'third_party/bottle' (https://github.com/defnull/bottle) registered for path 'third_party/ycmd/third_party/bottle'
+Submodule 'third_party/cregex' (https://github.com/micbou/regex.git) registered for path 'third_party/ycmd/third_party/cregex'
+Submodule 'third_party/frozendict' (https://github.com/slezica/python-frozendict) registered for path 'third_party/ycmd/third_party/frozendict'
+Submodule 'third_party/go/src/github.com/mdempsky/gocode' (https://github.com/mdempsky/gocode) registered for path 'third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode'
+Submodule 'third_party/go/src/github.com/rogpeppe/godef' (https://github.com/rogpeppe/godef) registered for path 'third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef'
+Submodule 'third_party/jedi' (https://github.com/davidhalter/jedi) registered for path 'third_party/ycmd/third_party/jedi'
+Submodule 'third_party/parso' (https://github.com/davidhalter/parso) registered for path 'third_party/ycmd/third_party/parso'
+Submodule 'third_party/python-future' (https://github.com/PythonCharmers/python-future) registered for path 'third_party/ycmd/third_party/python-future'
+Submodule 'third_party/racerd' (https://github.com/jwilm/racerd) registered for path 'third_party/ycmd/third_party/racerd'
+Submodule 'third_party/requests' (https://github.com/kennethreitz/requests) registered for path 'third_party/ycmd/third_party/requests'
+Submodule 'third_party/waitress' (https://github.com/Pylons/waitress) registered for path 'third_party/ycmd/third_party/waitress'
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/bottle'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/cregex'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/frozendict'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/jedi'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/parso'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/python-future'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/racerd'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/requests'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/waitress'...
+Submodule path 'third_party/ycmd/third_party/OmniSharpServer': checked out 'e1902915c6790bcec00b8d551199c8a3537d33c9'
+Submodule 'NRefactory' (https://github.com/icsharpcode/NRefactory.git) registered for path 'third_party/ycmd/third_party/OmniSharpServer/NRefactory'
+Submodule 'cecil' (https://github.com/jbevain/cecil.git) registered for path 'third_party/ycmd/third_party/OmniSharpServer/cecil'
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory'...
+Cloning into '/home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/cecil'...
+Submodule path 'third_party/ycmd/third_party/OmniSharpServer/NRefactory': checked out '3f78bdbedb78cc3e3023bdfbeda016de194acffd'
+Submodule path 'third_party/ycmd/third_party/OmniSharpServer/cecil': checked out '4770957a006b34d35c7c85fbfe80e57de1ade1f9'
+Submodule path 'third_party/ycmd/third_party/bottle': checked out '7423aa0f64e381507d1e06a6bcab48888baf9a7b'
+Submodule path 'third_party/ycmd/third_party/cregex': checked out 'd2ef9c49e34bb6dbbe5fa503755dd07c62365aae'
+Submodule path 'third_party/ycmd/third_party/frozendict': checked out 'b27053e4d11f5891319fd29eda561c130ba3112a'
+Submodule path 'third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode': checked out '00e7f5ac290aeb20a3d8d31e737ae560a191a1d5'
+Submodule path 'third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef': checked out 'b692db1de5229d4248e23c41736b431eb665615d'
+Submodule path 'third_party/ycmd/third_party/jedi': checked out 'bd1010bbd2693f189ff780eb21fc4294071cb280'
+Submodule path 'third_party/ycmd/third_party/parso': checked out 'e6bc924fbabbfa3090044e475c91a7655b9c6e9b'
+Submodule path 'third_party/ycmd/third_party/python-future': checked out '6b8341c0412ddf8081151692e9034986a6f867bc'
+Submodule path 'third_party/ycmd/third_party/racerd': checked out '29cd4c6fd2a9301e49931c2e065b2e10c4b587e4'
+Submodule path 'third_party/ycmd/third_party/requests': checked out '1108058626450b863d154bb74d669754b480caa4'
+Submodule path 'third_party/ycmd/third_party/waitress': checked out '7bb27bb66322fc564e14005d29cb6fddd76a0ab6'
+Setting environment variables from .travis.yml
+$ export YCM_CORES=3
+$ export COVERAGE=true
+$ export YCM_PYTHON_VERSION=3.4
+cache.1
+Setting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+0.03s$ Installing caching utilities
+0.00s
+2.70sattempting to download cache archive
+fetching master/cache-linux-trusty-dd7da29dbe0f50f27b047e68f5cc5ca6a3371ec5cfa42b83f2e9cf45cb68bc9c.tgz
+found cache
+0.00s
+3.78sadding /home/travis/.cache/pip to cache
+adding /home/travis/.pyenv to cache
+creating directory /home/travis/.pyenv
+$ bash -c 'echo $BASH_VERSION'
+4.3.11(1)-release
+before_install
+0.21s$ git submodule update --init --recursive
+install
+1.59s$ source ci/travis/travis_install.sh
+# RVM overrides the cd, popd, and pushd shell commands, causing the
+# "shell_session_update: command not found" error on macOS when executing those
+# commands.
+unset -f cd popd pushd
+################
+# Compiler setup
+################
+# We can't use sudo, so we have to approximate the behaviour of setting the
+# default system compiler.
+mkdir -p ${HOME}/bin
+ln -s /usr/bin/g++-4.8 ${HOME}/bin/c++
+ln -s /usr/bin/gcc-4.8 ${HOME}/bin/cc
+export PATH=${HOME}/bin:${PATH}
+##############
+# Python setup
+##############
+PYENV_ROOT="${HOME}/.pyenv"
+if [ ! -d "${PYENV_ROOT}/.git" ]; then
+  rm -rf ${PYENV_ROOT}
+  git clone https://github.com/yyuu/pyenv.git ${PYENV_ROOT}
+fi
+pushd ${PYENV_ROOT}
+~/.pyenv ~/build/Valloric/YouCompleteMe
+git fetch --tags
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 18 (delta 10), reused 17 (delta 10), pack-reused 0
+Unpacking objects: 100% (18/18), done.
+From https://github.com/yyuu/pyenv
+   ee7b9741..80414b1b  master     -> origin/master
+ * [new tag]           v1.2.8     -> v1.2.8
+git checkout v1.2.1
+HEAD is now at b704c424... Update changelog for 1.2.1 release
+popd
+~/build/Valloric/YouCompleteMe
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"
+pyenv init -
+export PATH="/home/travis/.pyenv/shims:${PATH}"
+export PYENV_SHELL=bash
+source '/home/travis/.pyenv/libexec/../completions/pyenv.bash'
+_pyenv() {
+  COMPREPLY=()
+  local word="${COMP_WORDS[COMP_CWORD]}"
+  if [ "$COMP_CWORD" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "$(pyenv commands)" -- "$word") )
+  else
+    local words=("${COMP_WORDS[@]}")
+    unset words[0]
+    unset words[$COMP_CWORD]
+    local completions=$(pyenv completions "${words[@]}")
+    COMPREPLY=( $(compgen -W "$completions" -- "$word") )
+  fi
+}
+complete -F _pyenv pyenv
+command pyenv rehash 2>/dev/null
+pyenv() {
+  local command
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+  case "$command" in
+  rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")";;
+  *)
+    command pyenv "$command" "$@";;
+  esac
+}
+if [ "${YCM_PYTHON_VERSION}" == "2.7" ]; then
+  # Tests are failing on Python 2.7.0 with the exception
+  # "TypeError: argument can't be <type 'unicode'>"
+  PYENV_VERSION="2.7.1"
+else
+  PYENV_VERSION="3.4.0"
+fi
+# In order to work with ycmd, python *must* be built as a shared library. This
+# is set via the PYTHON_CONFIGURE_OPTS option.
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
+pyenv install --skip-existing ${PYENV_VERSION}
+pyenv rehash
+pyenv "sh-$command" "$@"
+hash -r 2>/dev/null || true
+pyenv global ${PYENV_VERSION}
+# It is quite easy to get the above series of steps wrong. Verify that the
+# version of python actually in the path and used is the version that was
+# requested, and fail the build if we broke the travis setup
+python_version=$(python -c 'import sys; print( "{0}.{1}".format( sys.version_info[0], sys.version_info[1] ) )')
+python -c 'import sys; print( "{0}.{1}".format( sys.version_info[0], sys.version_info[1] ) )'
+echo "Checking python version (actual ${python_version} vs expected ${YCM_PYTHON_VERSION})"
+Checking python version (actual 3.4 vs expected 3.4)
+test ${python_version} == ${YCM_PYTHON_VERSION}
+pip install -r python/test_requirements.txt
+Requirement already satisfied (use --upgrade to upgrade): flake8>=3.0.0 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 1))
+Requirement already satisfied (use --upgrade to upgrade): flake8-comprehensions>=1.4.1 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 2))
+Requirement already satisfied (use --upgrade to upgrade): flake8-ycm>=0.1.0 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 3))
+Requirement already satisfied (use --upgrade to upgrade): mock>=1.0.1 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 4))
+Requirement already satisfied (use --upgrade to upgrade): nose>=1.3.7 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 5))
+Requirement already satisfied (use --upgrade to upgrade): PyHamcrest>=1.8.0 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 6))
+Requirement already satisfied (use --upgrade to upgrade): future==0.15.2 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 9))
+Requirement already satisfied (use --upgrade to upgrade): coverage<4.4 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 13))
+Requirement already satisfied (use --upgrade to upgrade): codecov>=2.0.5 in /home/travis/.pyenv/versions/3.4.0/lib/python3.4/site-packages (from -r python/test_requirements.txt (line 14))
+Cleaning up...
+# The build infrastructure prints a lot of spam after this script runs, so make
+# sure to disable printing, and failing on non-zero exit code after this script
+# finishes
+set +ev
+137.66s$ ./run_tests.py
+Running flake8
+Searching Python 3.4 libraries...
+Found Python library: /home/travis/.pyenv/versions/3.4.0/lib/libpython3.4m.so
+Found Python headers folder: /home/travis/.pyenv/versions/3.4.0/include/python3.4m
+-- The C compiler identification is GNU 4.8.5
+-- The CXX compiler identification is GNU 4.8.5
+-- Check for working C compiler: /home/travis/bin/cc
+-- Check for working C compiler: /home/travis/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /home/travis/bin/c++
+-- Check for working CXX compiler: /home/travis/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PythonLibs: /home/travis/.pyenv/versions/3.4.0/lib/libpython3.4m.so (found suitable version "3.4.0", minimum required is "3.4") 
+-- NOT using libclang, no semantic completion for C/C++/ObjC will be available
+-- NOT using clang-tidy for static analysis.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/ycm_build_stvlkmlw
+Scanning dependencies of target BoostParts
+[  2%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/codecvt_error_category.cpp.o
+[  4%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/operations.cpp.o
+[  6%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/path.cpp.o
+[  9%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/path_traits.cpp.o
+[ 11%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/portability.cpp.o
+[ 13%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/unique_path.cpp.o
+[ 16%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/utf8_codecvt_facet.cpp.o
+[ 18%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/filesystem/src/windows_file_codecvt.cpp.o
+[ 20%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/c_regex_traits.cpp.o
+[ 23%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/cpp_regex_traits.cpp.o
+[ 25%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/cregex.cpp.o
+[ 27%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/fileiter.cpp.o
+[ 30%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/icu.cpp.o
+[ 32%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/instances.cpp.o
+[ 34%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/posix_api.cpp.o
+[ 37%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/regex.cpp.o
+[ 39%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/regex_debug.cpp.o
+[ 41%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/regex_raw_buffer.cpp.o
+[ 44%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/regex_traits_defaults.cpp.o
+[ 46%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/static_mutex.cpp.o
+[ 48%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/usinstances.cpp.o
+[ 51%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/w32_regex_traits.cpp.o
+[ 53%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/wc_regex_traits.cpp.o
+[ 55%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/wide_posix_api.cpp.o
+[ 58%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/regex/src/winstances.cpp.o
+[ 60%] Building CXX object BoostParts/CMakeFiles/BoostParts.dir/libs/system/src/error_code.cpp.o
+[ 62%] Linking CXX static library libBoostParts.a
+[ 62%] Built target BoostParts
+Scanning dependencies of target ycm_core
+[ 65%] Building CXX object ycm/CMakeFiles/ycm_core.dir/Candidate.cpp.o
+[ 67%] Building CXX object ycm/CMakeFiles/ycm_core.dir/CandidateRepository.cpp.o
+[ 69%] Building CXX object ycm/CMakeFiles/ycm_core.dir/Character.cpp.o
+[ 72%] Building CXX object ycm/CMakeFiles/ycm_core.dir/CharacterRepository.cpp.o
+[ 74%] Building CXX object ycm/CMakeFiles/ycm_core.dir/CodePoint.cpp.o
+[ 76%] Building CXX object ycm/CMakeFiles/ycm_core.dir/CodePointRepository.cpp.o
+[ 79%] Building CXX object ycm/CMakeFiles/ycm_core.dir/IdentifierCompleter.cpp.o
+[ 81%] Building CXX object ycm/CMakeFiles/ycm_core.dir/IdentifierDatabase.cpp.o
+[ 83%] Building CXX object ycm/CMakeFiles/ycm_core.dir/IdentifierUtils.cpp.o
+[ 86%] Building CXX object ycm/CMakeFiles/ycm_core.dir/PythonSupport.cpp.o
+[ 88%] Building CXX object ycm/CMakeFiles/ycm_core.dir/Result.cpp.o
+[ 90%] Building CXX object ycm/CMakeFiles/ycm_core.dir/Utils.cpp.o
+[ 93%] Building CXX object ycm/CMakeFiles/ycm_core.dir/Word.cpp.o
+[ 95%] Building CXX object ycm/CMakeFiles/ycm_core.dir/versioning.cpp.o
+[ 97%] Building CXX object ycm/CMakeFiles/ycm_core.dir/ycm_core.cpp.o
+[100%] Linking CXX shared library /home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/ycm_core.so
+[100%] Built target ycm_core
+-- The C compiler identification is GNU 4.8.5
+-- Check for working C compiler: /home/travis/bin/cc
+-- Check for working C compiler: /home/travis/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found PythonLibs: /home/travis/.pyenv/versions/3.4.0/lib/libpython3.4m.so (found version "3.4.0") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/regex_build_pen01iw0
+Scanning dependencies of target _regex
+[ 33%] Building C object CMakeFiles/_regex.dir/regex_3/_regex.c.o
+[ 66%] Building C object CMakeFiles/_regex.dir/regex_3/_regex_unicode.c.o
+[100%] Linking C shared library /home/travis/build/Valloric/YouCompleteMe/third_party/ycmd/third_party/cregex/regex_3/_regex.so
+[100%] Built target _regex
+#1 ycm.tests.client.base_request_test.BuildRequestData_AddWorkingDirWithFileName_test ... ok
+#2 ycm.tests.client.base_request_test.BuildRequestData_AddWorkingDir_test ... ok
+#3 ycm.tests.client.command_request_test.GoToResponse_QuickFix_test.GoTo_EmptyList_test ... ok
+#4 ycm.tests.client.command_request_test.GoToResponse_QuickFix_test.GoTo_MultiItem_List_test ... ok
+#5 ycm.tests.client.command_request_test.GoToResponse_QuickFix_test.GoTo_SingleItem_List_test ... ok
+#6 ycm.tests.client.command_request_test.Response_Detection_test.BasicResponse_test('AnythingYouLike', True) ... ok
+#6 ycm.tests.client.command_request_test.Response_Detection_test.BasicResponse_test('GoToEvenWorks', 10) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.BasicResponse_test('FixItWorks', 'String!') ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.BasicResponse_test('and8434fd andy garbag!', 10.3) ... ok
+#7 ycm.tests.client.command_request_test.Response_Detection_test.Detailed_Info_test('___________', 'This is a message') ... ok
+#7 ycm.tests.client.command_request_test.Response_Detection_test.Detailed_Info_test('', 'this is also a message') ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.Detailed_Info_test('GetDoc', 'std::string\netc\netc') ... ok
+#8 ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_Empty_test('FixIt',) ... ok
+#8 ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_Empty_test('Refactor',) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_Empty_test('GoToHell',) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_Empty_test('any_old_garbade!!!21',) ... ok
+#9 ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('AnythingYouLike', {'fixits': [{'chunks': [{'dummy chunk contents': True}]}]}, [{'dummy chunk contents': True}], 0, False) ... ok
+#9 ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('GoToEvenWorks', {'fixits': [{'chunks': [{'dummy chunk contents': True}]}]}, [{'dummy chunk contents': True}], 0, False) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('FixItWorks', {'fixits': [{'chunks': [{'dummy chunk contents': True}]}]}, [{'dummy chunk contents': True}], 0, False) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('and8434fd andy garbag!', {'fixits': [{'chunks': [{'dummy chunk contents': True}]}]}, [{'dummy chunk contents': True}], 0, False) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('Format', {'fixits': [{'chunks': [{'dummy chunk contents': True}]}]}, [{'dummy chunk contents': True}], 0, True) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('select from multiple 1', {'fixits': [{'text': 'first', 'chunks': [{'dummy chunk contents': True}]}, {'text': 'second', 'chunks': [{'dummy chunk contents': False}]}]}, [{'dummy chunk contents': True}], 0, False) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.FixIt_Response_test('select from multiple 2', {'fixits': [{'text': 'first', 'chunks': [{'dummy chunk contents': True}]}, {'text': 'second', 'chunks': [{'dummy chunk contents': False}]}]}, [{'dummy chunk contents': False}], 1, False) ... ok
+#10 ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('AnythingYouLike', {'column_num': 100, 'filepath': 'test', 'line_num': 10}) ... ok
+#10 ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('GoTo', {'column_num': 100, 'filepath': 'test', 'line_num': 10}) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('FindAThing', {'column_num': 100, 'filepath': 'test', 'line_num': 10}) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('FixItGoto', {'column_num': 100, 'filepath': 'test', 'line_num': 10}) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('AnythingYouLike', [{'column_num': 100, 'filepath': 'test', 'line_num': 10}]) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('GoTo', []) ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.GoTo_Single_test('FixItGoto', [{'column_num': 100, 'filepath': 'test', 'line_num': 10}, {'column_num': 100, 'filepath': 'test', 'line_num': 10}]) ... ok
+#11 ycm.tests.client.command_request_test.Response_Detection_test.Message_Response_test('___________', 'This is a message') ... ok
+#11 ycm.tests.client.command_request_test.Response_Detection_test.Message_Response_test('', 'this is also a message') ... ok
+   ycm.tests.client.command_request_test.Response_Detection_test.Message_Response_test('GetType', 'std::string') ... ok
+#12 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.All_Fields_test ... ok
+#13 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.Empty_Insertion_Text_test ... ok
+#14 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.Extra_Info_No_Doc_String_With_Detailed_Info_test ... ok
+#15 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.Extra_Info_No_Doc_String_test ... ok
+#16 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.Just_Detailed_Info_test ... ok
+#17 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.Just_Doc_String_test ... ok
+#18 ycm.tests.client.completion_request_test.ConvertCompletionResponseToVimDatas_test.No_Insertion_Text_test ... ok
+#19 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_NoResponse_test ... ok
+#20 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_NoExtraConf_test ... ok
+#21 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_ExtraConfFoundButNotLoaded_test ... ok
+#22 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_ExtraConfFoundAndLoaded_test ... ok
+#23 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_Completer_ServerRunningWithHost_test ... ok
+#24 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_Completer_ServerRunningWithoutHost_test ... ok
+#25 ycm.tests.client.debug_info_request_test.FormatDebugInfoResponse_Completer_ServerNotRunningWithNoLogfiles_test ... ok
+#26 ycm.tests.client.messages_request_test.HandlePollResponse_NoMessages_test ... ok
+#27 ycm.tests.client.messages_request_test.HandlePollResponse_PollingNotSupported_test ... ok
+#28 ycm.tests.client.messages_request_test.HandlePollResponse_SingleDiagnostic_test ... ok
+#29 ycm.tests.client.messages_request_test.HandlePollResponse_MultipleDiagnostics_test ... ok
+#30 ycm.tests.client.messages_request_test.HandlePollResponse_MultipleMessagesAndDiagnostics_test ... ok
+#31 ycm.tests.client.messages_request_test.HandlePollResponse_MultipleMessages_test ... ok
+#32 ycm.tests.client.messages_request_test.HandlePollResponse_SingleMessage_test ... ok
+#33 ycm.tests.client.omni_completion_request_tests.Done_AlwaysTrue_test ... ok
+#34 ycm.tests.client.omni_completion_request_tests.Response_FromOmniCompleter_test ... ok
+#35 ycm.tests.client.omni_completion_request_tests.RawResponse_ConvertedFromOmniCompleter_test ... ok
+#36 ycm.tests.base_test.AdjustCandidateInsertionText_Basic_test ... ok
+#37 ycm.tests.base_test.AdjustCandidateInsertionText_ParenInTextAfterCursor_test ... ok
+#38 ycm.tests.base_test.AdjustCandidateInsertionText_PlusInTextAfterCursor_test ... ok
+#39 ycm.tests.base_test.AdjustCandidateInsertionText_WhitespaceInTextAfterCursor_test ... ok
+#40 ycm.tests.base_test.AdjustCandidateInsertionText_MoreThanWordMatchingAfterCursor_test ... ok
+#41 ycm.tests.base_test.AdjustCandidateInsertionText_NotSuffix_test ... ok
+#42 ycm.tests.base_test.AdjustCandidateInsertionText_NothingAfterCursor_test ... ok
+#43 ycm.tests.base_test.AdjustCandidateInsertionText_MultipleStrings_test ... ok
+#44 ycm.tests.base_test.AdjustCandidateInsertionText_DictInput_test ... ok
+#45 ycm.tests.base_test.AdjustCandidateInsertionText_DontTouchAbbr_test ... ok
+#46 ycm.tests.base_test.OverlapLength_Basic_test ... ok
+#47 ycm.tests.base_test.OverlapLength_BasicWithUnicode_test ... ok
+#48 ycm.tests.base_test.OverlapLength_OneCharOverlap_test ... ok
+#49 ycm.tests.base_test.OverlapLength_SameStrings_test ... ok
+#50 ycm.tests.base_test.OverlapLength_Substring_test ... ok
+#51 ycm.tests.base_test.OverlapLength_LongestOverlap_test ... ok
+#52 ycm.tests.base_test.OverlapLength_EmptyInput_test ... ok
+#53 ycm.tests.base_test.OverlapLength_NoOverlap_test ... ok
+#54 ycm.tests.base_test.LastEnteredCharIsIdentifierChar_Basic_test ... ok
+#55 ycm.tests.base_test.LastEnteredCharIsIdentifierChar_FiletypeHtml_test ... ok
+#56 ycm.tests.base_test.LastEnteredCharIsIdentifierChar_ColumnIsZero_test ... ok
+#57 ycm.tests.base_test.LastEnteredCharIsIdentifierChar_LineEmpty_test ... ok
+#58 ycm.tests.base_test.LastEnteredCharIsIdentifierChar_NotIdentChar_test ... ok
+#59 ycm.tests.base_test.LastEnteredCharIsIdentifierChar_Unicode_test ... ok
+#60 ycm.tests.base_test.CurrentIdentifierFinished_Basic_test ... ok
+#61 ycm.tests.base_test.CurrentIdentifierFinished_NothingBeforeColumn_test ... ok
+#62 ycm.tests.base_test.CurrentIdentifierFinished_InvalidColumn_test ... ok
+#63 ycm.tests.base_test.CurrentIdentifierFinished_InMiddleOfLine_test ... ok
+#64 ycm.tests.base_test.CurrentIdentifierFinished_Html_test ... ok
+#65 ycm.tests.base_test.CurrentIdentifierFinished_WhitespaceOnly_test ... ok
+#66 ycm.tests.base_test.CurrentIdentifierFinished_Unicode_test ... ok
+#67 ycm.tests.command_test.SendCommandRequest_BuildRange_NoVisualMarks_test ... ok
+#68 ycm.tests.command_test.SendCommandRequest_BuildRange_VisualMarks_test ... ok
+#69 ycm.tests.command_test.SendCommandRequest_ExtraConfData_UndefinedValue_test ... ok
+#70 ycm.tests.command_test.SendCommandRequest_ExtraConfVimData_Works_test ... ok
+#71 ycm.tests.command_test.SendCommandRequest_IgnoreFileTypeOption_test ... ok
+#72 ycm.tests.completion_test.SendCompletionRequest_ErrorFromServer_test ... ok
+#73 ycm.tests.completion_test.SendCompletionRequest_ResponseContainingError_test ... ok
+#74 ycm.tests.completion_test.SendCompletionRequest_UnicodeWorkingDirectory_test ... ok
+#75 ycm.tests.diagnostic_filter_test.RegexFilter_test ... ok
+#76 ycm.tests.diagnostic_filter_test.RegexSingleList_test ... ok
+#77 ycm.tests.diagnostic_filter_test.RegexMultiList_test ... ok
+#78 ycm.tests.diagnostic_filter_test.RegexNotFiltered_test ... ok
+#79 ycm.tests.diagnostic_filter_test.LevelWarnings_test ... ok
+#80 ycm.tests.diagnostic_filter_test.LevelErrors_test ... ok
+#81 ycm.tests.diagnostic_filter_test.MultipleFilterTypesTypeTest_test ... ok
+#82 ycm.tests.diagnostic_filter_test.MergeMultipleFiletypes_test ... ok
+#83 ycm.tests.diagnostic_filter_test.CommaSeparatedFiletypes_test ... ok
+#84 ycm.tests.event_notification_test.EventNotification_BufferUnload_BuildRequestForDeletedAndUnsavedBuffers_test ... ok
+#85 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_Diagnostic_Error_Native_test ... ok
+#86 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_NonDiagnostic_ConfirmExtraConf_test ... ok
+#87 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_NonDiagnostic_Error_NonNative_test ... ok
+#88 ycm.tests.event_notification_test.EventNotification_BufferVisit_BuildRequestForCurrentAndUnsavedBuffers_test ... ok
+#89 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_NonDiagnostic_Error_test ... ok
+#90 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_SyntaxKeywords_ClearCacheIfRestart_test ... ok
+#91 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_SyntaxKeywords_SeedWithCache_test ... Exception ignored in: <_io.FileIO name=7 mode='rb'>
+ResourceWarning: unclosed file <_io.BufferedReader name=7>
+Exception ignored in: <_io.FileIO name=5 mode='rb'>
+ResourceWarning: unclosed file <_io.BufferedReader name=5>
+ok
+#92 ycm.tests.event_notification_test.EventNotification_FileReadyToParse_TagFiles_UnicodeWorkingDirectory_test ... ok
+#93 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_AllFiletypesDisabled_ForceSemantic_test ... ok
+#94 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_AllFiletypesDisabled_SemanticTrigger_test ... ok
+#95 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_ListFilter_test ... ok
+#96 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_List_Filter_Unicode_test ... ok
+#97 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_List_Unicode_test ... ok
+#98 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_List_test ... ok
+#99 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_ObjectListObject_Unicode_test ... ok
+#100 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_ObjectListObject_test ... ok
+#101 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_ObjectList_Unicode_test ... ok
+#102 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_ObjectList_test ... ok
+#103 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_Object_test ... ok
+#104 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_Cache_UseFindStart_test ... ok
+#105 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_ConvertStringsToDictionaries_test ... ok
+#106 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_FiletypeDisabled_ForceSemantic_test ... ok
+#107 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_FiletypeDisabled_SemanticTrigger_test ... ok
+#108 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_MoveCursorPositionAtStartColumn_test ... ok
+#109 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_ForceSemantic_test ... ok
+#110 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_ListFilter_test ... ok
+#111 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_List_Filter_Unicode_test ... ok
+#112 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_List_Unicode_test ... ok
+#113 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_List_test ... ok
+#114 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_NoSemanticTrigger_test ... ok
+#115 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_ObjectListObject_test ... ok
+#116 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_ObjectList_test ... ok
+#117 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_NoCache_UseFindStart_test ... ok
+#118 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_RestoreCursorPositionAfterOmnifuncCall_test ... ok
+#119 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(-4, [{'word': 'foo'}], 3) ... ok
+#119 ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(-3, [], 1) ... ok
+   ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(-2, [], 1) ... ok
+   ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(-1, [{'word': 'foo'}], 3) ... ok
+   ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(0, [{'word': 'foo'}], 1) ... ok
+   ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(1, [{'word': 'foo'}], 2) ... ok
+   ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(2, [{'word': 'foo'}], 3) ... ok
+   ycm.tests.omni_completer_test.OmniCompleter_GetCompletions_StartColumnCompliance_test(3, [{'word': 'foo'}], 3) ... ok
+#120 ycm.tests.paths_test.EndsWithPython_Python2Paths_test('python',) ... ok
+#120 ycm.tests.paths_test.EndsWithPython_Python2Paths_test('python2',) ... ok
+   ycm.tests.paths_test.EndsWithPython_Python2Paths_test('/usr/bin/python2.7',) ... ok
+   ycm.tests.paths_test.EndsWithPython_Python2Paths_test('/home/user/.pyenv/shims/python2.7',) ... ok
+   ycm.tests.paths_test.EndsWithPython_Python2Paths_test('C:\\Python27\\python.exe',) ... ok
+   ycm.tests.paths_test.EndsWithPython_Python2Paths_test('/Contents/MacOS/Python',) ... ok
+#121 ycm.tests.paths_test.EndsWithPython_Python3Paths_test('python3',) ... ok
+#121 ycm.tests.paths_test.EndsWithPython_Python3Paths_test('/usr/bin/python3.4',) ... ok
+   ycm.tests.paths_test.EndsWithPython_Python3Paths_test('/home/user/.pyenv/shims/python3.4',) ... ok
+   ycm.tests.paths_test.EndsWithPython_Python3Paths_test('C:\\Python34\\python.exe',) ... ok
+#122 ycm.tests.paths_test.EndsWithPython_BadPaths_test(None,) ... ok
+#122 ycm.tests.paths_test.EndsWithPython_BadPaths_test('',) ... ok
+   ycm.tests.paths_test.EndsWithPython_BadPaths_test('/opt/local/bin/vim',) ... ok
+   ycm.tests.paths_test.EndsWithPython_BadPaths_test('C:\\Program Files\\Vim\\vim74\\gvim.exe',) ... ok
+   ycm.tests.paths_test.EndsWithPython_BadPaths_test('/usr/bin/python2.5',) ... ok
+   ycm.tests.paths_test.EndsWithPython_BadPaths_test('/home/user/.pyenv/shims/python3.2',) ... ok
+#123 ycm.tests.postcomplete_test.FilterToCompletedCompletions_MatchIsReturned_test ... ok
+#124 ycm.tests.postcomplete_test.FilterToCompletedCompletions_ShortTextDoesntRaise_test ... ok
+#125 ycm.tests.postcomplete_test.FilterToCompletedCompletions_ExactMatchIsReturned_test ... ok
+#126 ycm.tests.postcomplete_test.FilterToCompletedCompletions_NonMatchIsntReturned_test ... ok
+#127 ycm.tests.postcomplete_test.FilterToCompletedCompletions_Unicode_test ... ok
+#128 ycm.tests.postcomplete_test.GetRequiredNamespaceImport_ReturnNoneForNoExtraData_test ... ok
+#129 ycm.tests.postcomplete_test.GetRequiredNamespaceImport_ReturnNamespaceFromExtraData_test ... ok
+#130 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_ReturnMatchIfExactMatches_test ... ok
+#131 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_ReturnMatchIfExactMatchesEvenIfPartial_test ... ok
+#132 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_DontReturnMatchIfNoExactMatchesAndPartial_test ... ok
+#133 ycm.tests.postcomplete_test.GetCompleteDoneHooks_EmptyOnOtherFiletype_test ... ok
+#134 ycm.tests.postcomplete_test.GetCompleteDoneHooks_ResultOnCsharp_test ... ok
+#135 ycm.tests.postcomplete_test.GetCompleteDoneHooks_ResultOnJava_test ... ok
+#136 ycm.tests.postcomplete_test.GetCompleteDoneHooks_ResultOnTypeScript_test ... ok
+#137 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_EmptyUserData_test ... ok
+#138 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_ReturnEmptyIfPendingMatches_test ... ok
+#139 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_ReturnMatchIfMatches_test ... ok
+#140 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_UseUserData0_test ... ok
+#141 ycm.tests.postcomplete_test.GetCompletionsUserMayHaveCompleted_UseUserData1_test ... ok
+#142 ycm.tests.postcomplete_test.OnCompleteDone_NoActionIfNotDone_test ... ok
+#143 ycm.tests.postcomplete_test.OnCompleteDone_NoActionNoError_test ... ok
+#144 ycm.tests.postcomplete_test.OnCompleteDone_WithActionCallsIt_test ... ok
+#145 ycm.tests.postcomplete_test.PostCompleteCsharp_EmptyDoesntInsertNamespace_test ... ok
+#146 ycm.tests.postcomplete_test.PostCompleteCsharp_ExistingWithoutNamespaceDoesntInsertNamespace_test ... ok
+#147 ycm.tests.postcomplete_test.PostCompleteCsharp_InsertSecondNamespaceIfSelected_test ... ok
+#148 ycm.tests.postcomplete_test.PostCompleteCsharp_ValueDoesInsertNamespace_test ... ok
+#149 ycm.tests.postcomplete_test.PostCompleteFixIt_ApplyFixIt_EmptyFixIt_test ... ok
+#150 ycm.tests.postcomplete_test.PostCompleteFixIt_ApplyFixIt_NoFixIt_test ... ok
+#151 ycm.tests.postcomplete_test.PostCompleteFixIt_ApplyFixIt_NoFixIts_test ... ok
+#152 ycm.tests.postcomplete_test.PostCompleteFixIt_ApplyFixIt_PickFirstUserData_test ... ok
+#153 ycm.tests.postcomplete_test.PostCompleteFixIt_ApplyFixIt_PickFirst_test ... ok
+#154 ycm.tests.postcomplete_test.PostCompleteFixIt_ApplyFixIt_PickSecond_test ... ok
+#155 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_PythonSyntax_test ... ok
+#156 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_CppSyntax_test ... ok
+#157 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_JavaSyntax_test ... ok
+#158 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_PhpSyntax_ContainsFunctions_test ... ok
+#159 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_PhpSyntax_ContainsPreProc_test ... ok
+#160 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_Basic_test ... ok
+#161 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_Function_test ... ok
+#162 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_ContainedArgAllowed_test ... ok
+#163 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_JunkIgnored_test ... ok
+#164 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_MultipleStatementGroups_test ... ok
+#165 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_StatementAndTypeGroups_test ... ok
+#166 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_StatementHierarchy_test ... ok
+#167 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_TypeHierarchy_test ... ok
+#168 ycm.tests.syntax_parse_test.KeywordsFromSyntaxListOutput_StatementAndTypeHierarchy_test ... ok
+#169 ycm.tests.syntax_parse_test.SyntaxGroupsFromOutput_Basic_test ... ok
+#170 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_Basic_test ... ok
+#171 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_Commas_test ... ok
+#172 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_WithLinksTo_test ... ok
+#173 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_KeywordStarts_test ... ok
+#174 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_KeywordMiddle_test ... ok
+#175 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_KeywordAssign_test ... ok
+#176 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_KeywordAssignAndMiddle_test ... ok
+#177 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_KeywordWithoutNextgroup_test ... ok
+#178 ycm.tests.syntax_parse_test.ExtractKeywordsFromGroup_ContainedSyntaxArgAllowed_test ... ok
+#179 ycm.tests.vimsupport_test.CurrentLineContents_EncodedUnicode_test ... ok
+#180 ycm.tests.vimsupport_test.InsertNamespace_append_test ... ok
+#181 ycm.tests.vimsupport_test.InsertNamespace_insert_test ... ok
+#182 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_NewOrExistingTab_AlreadyOpened_test ... ok
+#183 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_NewOrExistingTab_NotAlreadyOpened_test ... ok
+#184 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_SameBuffer_Modified_CanHide_test ... ok
+#185 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_SameBuffer_Modified_CannotHide_test ... ok
+#186 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_SameBuffer_SwapFile_Abort_test ... ok
+#187 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_SameBuffer_SwapFile_Quit_test ... ok
+#188 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_SameBuffer_SwapFile_Unexpected_test ... ok
+#189 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_SameBuffer_Unmodified_test ... ok
+#190 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_Split_AllTabs_AlreadyOpened_test ... ok
+#191 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_Split_AllTabs_NotAlreadyOpened_test ... ok
+#192 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_Split_CurrentTab_AlreadyOpened_test ... ok
+#193 ycm.tests.vimsupport_test.JumpToLocation_DifferentFile_Split_CurrentTab_NotAlreadyOpened_test ... ok
+#194 ycm.tests.vimsupport_test.JumpToLocation_SameFile_SameBuffer_NoSwapFile_test ... ok
+#195 ycm.tests.vimsupport_test.OpenFilename_test ... ok
+#196 ycm.tests.vimsupport_test.OpenLocationList_test ... ok
+#197 ycm.tests.vimsupport_test.ReplaceChunk_AddTextInLine_test ... ok
+#198 ycm.tests.vimsupport_test.ReplaceChunk_BeyondEndOfFile_test ... ok
+#199 ycm.tests.vimsupport_test.ReplaceChunk_CursorPosition_test ... ok
+#200 ycm.tests.vimsupport_test.ReplaceChunk_DeleteTextInLine_test ... ok
+#201 ycm.tests.vimsupport_test.ReplaceChunk_MultipleLinesToEvenLessMultipleLines_test ... ok
+#202 ycm.tests.vimsupport_test.ReplaceChunk_MultipleLinesToLessMultipleLines_test ... ok
+#203 ycm.tests.vimsupport_test.ReplaceChunk_MultipleLinesToMoreMultipleLines_test ... ok
+#204 ycm.tests.vimsupport_test.ReplaceChunk_MultipleLinesToSameMultipleLines_test ... ok
+#205 ycm.tests.vimsupport_test.ReplaceChunk_MultipleLinesToSingleLine_test ... ok
+#206 ycm.tests.vimsupport_test.ReplaceChunk_NewlineChunk_test ... ok
+#207 ycm.tests.vimsupport_test.ReplaceChunk_RemoveSingleLine_test ... ok
+#208 ycm.tests.vimsupport_test.ReplaceChunk_ReplaceTextInLine_test ... ok
+#209 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Add_1_test ... ok
+#210 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Add_2_test ... ok
+#211 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Add_3_test ... ok
+#212 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Del_1_test ... ok
+#213 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Del_2_test ... ok
+#214 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Del_3_test ... ok
+#215 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Repl_1_test ... ok
+#216 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Repl_2_test ... ok
+#217 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Repl_3_test ... ok
+#218 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Unicode_Grown_test ... ok
+#219 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Unicode_ReplaceAfterUnicode_test ... ok
+#220 ycm.tests.vimsupport_test.ReplaceChunk_SingleLine_Unicode_ReplaceUnicodeChars_test ... ok
+#221 ycm.tests.vimsupport_test.ReplaceChunk_SingleToMultipleLines2_test ... ok
+#222 ycm.tests.vimsupport_test.ReplaceChunk_SingleToMultipleLines3_test ... ok
+#223 ycm.tests.vimsupport_test.ReplaceChunk_SingleToMultipleLinesReplace_2_test ... ok
+#224 ycm.tests.vimsupport_test.ReplaceChunk_SingleToMultipleLinesReplace_test ... ok
+#225 ycm.tests.vimsupport_test.ReplaceChunk_SingleToMultipleLines_test ... ok
+#226 ycm.tests.vimsupport_test.ReplaceChunk_SpanBufferEdge_test ... ok
+#227 ycm.tests.vimsupport_test.ReplaceChunksInBuffer_LineOverlappingChunks_test ... ok
+#228 ycm.tests.vimsupport_test.ReplaceChunksInBuffer_OneLineIndentingChunks_test ... ok
+#229 ycm.tests.vimsupport_test.ReplaceChunksInBuffer_OutdentChunks_test ... ok
+#230 ycm.tests.vimsupport_test.ReplaceChunksInBuffer_SameLocation_test ... ok
+#231 ycm.tests.vimsupport_test.ReplaceChunksInBuffer_SortedChunks_test ... ok
+#232 ycm.tests.vimsupport_test.ReplaceChunksInBuffer_UnsortedChunks_test ... ok
+#233 ycm.tests.vimsupport_test.ReplaceChunks_MultiFile_Open_test ... ok
+#234 ycm.tests.vimsupport_test.ReplaceChunks_SingleFile_NotOpen_Silent_test ... ok
+#235 ycm.tests.vimsupport_test.ReplaceChunks_SingleFile_NotOpen_test ... ok
+#236 ycm.tests.vimsupport_test.ReplaceChunks_SingleFile_Open_test ... ok
+#237 ycm.tests.vimsupport_test.ReplaceChunks_User_Aborts_Opening_File_test ... ok
+#238 ycm.tests.vimsupport_test.ReplaceChunks_User_Declines_To_Open_File_test ... ok
+#239 ycm.tests.vimsupport_test.SelectFromList_FirstItem_test ... ok
+#240 ycm.tests.vimsupport_test.SelectFromList_LastItem_test ... ok
+#241 ycm.tests.vimsupport_test.SelectFromList_Negative_test ... ok
+#242 ycm.tests.vimsupport_test.SelectFromList_OutOfRange_test ... ok
+#243 ycm.tests.vimsupport_test.SelectFromList_SelectPrompt_test ... ok
+#244 ycm.tests.vimsupport_test.SetFittingHeightForCurrentWindow_LineWrapOff_test ... ok
+#245 ycm.tests.vimsupport_test.SetFittingHeightForCurrentWindow_LineWrapOn_test ... ok
+#246 ycm.tests.vimsupport_test.SetLocationList_NotCurrent_test ... ok
+#247 ycm.tests.vimsupport_test.SetLocationList_test ... ok
+#248 ycm.tests.vimsupport_test.SetLocationListsForBuffer_Current_test ... ok
+#249 ycm.tests.vimsupport_test.SetLocationListsForBuffer_MultipleWindows_test ... ok
+#250 ycm.tests.vimsupport_test.SetLocationListsForBuffer_NotCurrent_test ... ok
+#251 ycm.tests.vimsupport_test.SetLocationListsForBuffer_NotVisible_test ... ok
+#252 ycm.tests.vimsupport_test.TextAfterCursor_EncodedUnicode_test ... ok
+#253 ycm.tests.vimsupport_test.TextBeforeCursor_EncodedUnicode_test ... ok
+#254 ycm.tests.vimsupport_test.VimExpressionToPythonType_GeneratorPassthrough_test ... ok
+#255 ycm.tests.vimsupport_test.VimExpressionToPythonType_IntAsBytes_test ... ok
+#256 ycm.tests.vimsupport_test.VimExpressionToPythonType_IntAsUnicode_test ... ok
+#257 ycm.tests.vimsupport_test.VimExpressionToPythonType_ListPassthrough_test ... ok
+#258 ycm.tests.vimsupport_test.VimExpressionToPythonType_ObjectPassthrough_test ... ok
+#259 ycm.tests.vimsupport_test.VimExpressionToPythonType_StringAsBytes_test ... ok
+#260 ycm.tests.vimsupport_test.VimExpressionToPythonType_StringAsUnicode_test ... ok
+#261 ycm.tests.vimsupport_test.VimVersionAtLeast_test ... ok
+#262 ycm.tests.vimsupport_test.WriteToPreviewWindow_JumpFail_MultiLine_test ... ok
+#263 ycm.tests.vimsupport_test.WriteToPreviewWindow_JumpFail_test ... ok
+#264 ycm.tests.vimsupport_test.WriteToPreviewWindow_MultiLine_test ... ok
+#265 ycm.tests.vimsupport_test.WriteToPreviewWindow_test ... ok
+#266 ycm.tests.vimsupport_test.GetDiagnosticMatchPattern_ErrorInMiddleOfLine_test ... ok
+#267 ycm.tests.vimsupport_test.AddDiagnosticSyntaxMatch_WarningAtEndOfLine_test ... ok
+#268 ycm.tests.vimsupport_test.AddDiagnosticSyntaxMatch_UnicodeAtEndOfLine_test ... ok
+#269 ycm.tests.vimsupport_test.BufferIsVisibleForFilename_test ... ok
+#270 ycm.tests.vimsupport_test.CloseBuffersForFilename_test ... ok
+#271 ycm.tests.vimsupport_test.GetUnsavedAndSpecifiedBufferData_EncodedUnicodeCharsInBuffers_test ... ok
+#272 ycm.tests.vimsupport_test.GetBufferFilepath_NoBufferName_UnicodeWorkingDirectory_test ... ok
+#273 ycm.tests.vimsupport_test.Filetypes_IntegerFiletype_test ... ok
+#274 ycm.tests.youcompleteme_test.YouCompleteMe_NotifyUserIfServerCrashed_UnexpectedCore_test ... ok
+#275 ycm.tests.youcompleteme_test.YouCompleteMe_AsyncDiagnosticUpdate_PerFile_test ... ok
+#276 ycm.tests.youcompleteme_test.YouCompleteMe_AsyncDiagnosticUpdate_SingleFile_test ... ok
+#277 ycm.tests.youcompleteme_test.YouCompleteMe_DebugInfo_ServerNotRunning_test ... ok
+#278 ycm.tests.youcompleteme_test.YouCompleteMe_DebugInfo_ServerRunning_test ... ok
+#279 ycm.tests.youcompleteme_test.YouCompleteMe_GetDefinedSubcommands_ErrorFromServer_test ... ok
+#280 ycm.tests.youcompleteme_test.YouCompleteMe_GetDefinedSubcommands_ListFromServer_test ... ok
+#281 ycm.tests.youcompleteme_test.YouCompleteMe_OnCompleteDone_CompletionRequest_test ... ok
+#282 ycm.tests.youcompleteme_test.YouCompleteMe_OnCompleteDone_NoCompletionRequest_test ... ok
+#283 ycm.tests.youcompleteme_test.YouCompleteMe_OnPeriodicTick_DontRetry_test ... ok
+#284 ycm.tests.youcompleteme_test.YouCompleteMe_OnPeriodicTick_Exception_test ... ok
+#285 ycm.tests.youcompleteme_test.YouCompleteMe_OnPeriodicTick_ServerNotReady_test ... ok
+#286 ycm.tests.youcompleteme_test.YouCompleteMe_OnPeriodicTick_ServerNotRunning_test ... ok
+#287 ycm.tests.youcompleteme_test.YouCompleteMe_OnPeriodicTick_ValidResponse_test ... ok
+#288 ycm.tests.youcompleteme_test.YouCompleteMe_OnVimLeave_KeepClientLogfile_test ... ok
+#289 ycm.tests.youcompleteme_test.YouCompleteMe_OnVimLeave_RemoveClientLogfileByDefault_test ... ok
+#290 ycm.tests.youcompleteme_test.YouCompleteMe_ShouldResendFileParseRequest_NoParseRequest_test ... ok
+#291 ycm.tests.youcompleteme_test.YouCompleteMe_ShowDetailedDiagnostic_Exception_test ... ok
+#292 ycm.tests.youcompleteme_test.YouCompleteMe_ShowDetailedDiagnostic_MessageFromServer_test ... ok
+#293 ycm.tests.youcompleteme_test.YouCompleteMe_ShowDiagnostics_DiagnosticsFound_DoNotOpenLocationList_test ... ok
+#294 ycm.tests.youcompleteme_test.YouCompleteMe_ShowDiagnostics_DiagnosticsFound_OpenLocationList_test ... ok
+#295 ycm.tests.youcompleteme_test.YouCompleteMe_ShowDiagnostics_FiletypeNotSupported_test ... ok
+#296 ycm.tests.youcompleteme_test.YouCompleteMe_ShowDiagnostics_NoDiagnosticsDetected_test ... ok
+#297 ycm.tests.youcompleteme_test.YouCompleteMe_ToggleLogs_WithParameters_test ... ok
+#298 ycm.tests.youcompleteme_test.YouCompleteMe_ToggleLogs_WithoutParameters_NoSelection_test ... ok
+#299 ycm.tests.youcompleteme_test.YouCompleteMe_ToggleLogs_WithoutParameters_SelectLogfileAlreadyOpen_test ... ok
+#300 ycm.tests.youcompleteme_test.YouCompleteMe_ToggleLogs_WithoutParameters_SelectLogfileNotAlreadyOpen_test ... ok
+#301 ycm.tests.youcompleteme_test.YouCompleteMe_UpdateDiagnosticInterface_PrioritizeErrorsOverWarnings_test ... ok
+#302 ycm.tests.youcompleteme_test.YouCompleteMe_UpdateMatches_ClearDiagnosticMatchesInNewBuffer_test ... ok
+#303 ycm.tests.youcompleteme_test.YouCompleteMe_YcmCoreNotImported_test ... ok
+#304 ycm.tests.youcompleteme_test.YouCompleteMe_NotifyUserIfServerCrashed_MissingCore_test ... ok
+#305 ycm.tests.youcompleteme_test.YouCompleteMe_NotifyUserIfServerCrashed_Python2Core_test ... ok
+#306 ycm.tests.youcompleteme_test.YouCompleteMe_NotifyUserIfServerCrashed_Python3Core_test ... ok
+#307 ycm.tests.youcompleteme_test.YouCompleteMe_NotifyUserIfServerCrashed_OutdatedCore_test ... ok
+#308 ycm.tests.youcompleteme_test.YouCompleteMe_NotifyUserIfServerCrashed_UnexpectedExitCode_test ... ok
+#309 ycm.tests.youcompleteme_test.YouCompleteMe_InvalidPythonInterpreterPath_test ... ok
+#310 ycm.tests.youcompleteme_test.YouCompleteMe_NoPythonInterpreterFound_test ... ok
+Name                                        Stmts   Miss  Cover
+---------------------------------------------------------------
+ycm.py                                          0      0   100%
+ycm/base.py                                    82      1    99%
+ycm/buffer.py                                  59      2    97%
+ycm/client.py                                   0      0   100%
+ycm/client/base_request.py                    127      7    94%
+ycm/client/command_request.py                  76     14    82%
+ycm/client/completer_available_request.py      21      0   100%
+ycm/client/completion_request.py              123      2    98%
+ycm/client/debug_info_request.py               67      0   100%
+ycm/client/event_notification.py               32      2    94%
+ycm/client/messages_request.py                 42      0   100%
+ycm/client/omni_completion_request.py          33      0   100%
+ycm/client/shutdown_request.py                 15      0   100%
+ycm/client/ycmd_keepalive.py                   19      1    95%
+ycm/diagnostic_filter.py                       75      5    93%
+ycm/diagnostic_interface.py                   131      0   100%
+ycm/omni_completer.py                          70      6    91%
+ycm/paths.py                                   42      2    95%
+ycm/syntax_parse.py                           130      1    99%
+ycm/unsafe_thread_pool_executor.py             71     18    75%
+ycm/vimsupport.py                             499     32    94%
+ycm/youcompleteme.py                          403     23    94%
+---------------------------------------------------------------
+TOTAL                                        2117    116    95%
+----------------------------------------------------------------------
+Ran 352 tests in 75.028s
+OK
+The command "./run_tests.py" exited with 0.
+cache.2
+store build cache
+0.00s
+11.18schange detected (content changed, file is created, or file is deleted):
+/home/travis/.pyenv/.git/FETCH_HEAD
+/home/travis/.pyenv/.git/index
+/home/travis/.pyenv/.git/logs/refs/remotes/origin/master
+/home/travis/.pyenv/.git/objects/24/6b68faa02b19c9389d50b0643cbc901940081e
+/home/travis/.pyenv/.git/objects/2b/f9196ceeec9d3090ce0005b8720ce27fad3c47
+/home/travis/.pyenv/.git/objects/38/de9f178493cb1bc89c4124ec99e72b51c79978
+/home/travis/.pyenv/.git/objects/6c/62634baf05324f680169b3df98aec2c767be0a
+/home/travis/.pyenv/.git/objects/75/4e9368ae17082005af7a2fef2831083817ae8d
+/home/travis/.pyenv/.git/objects/75/ee79c5bd2a8685df2122978fe35a20d90bc930
+/home/travis/.pyenv/.git/objects/76/1d669647f883ee4a139b9509083fae3d0e0b16
+/home/travis/.pyenv/.git/objects/80/414b1b5b231faecdb0795a9aa81ba5bfc1d487
+/home/travis/.pyenv/.git/objects/83/5707da2237b8f69560b2de27ae8ddd3e6cb1a4
+/home/travis/.pyenv/.git/objects/aa/7b89eff507921c91b7f3ac84e71e542963e946
+/home/travis/.pyenv/.git/objects/b8/4b70d91c15cea091111914fb90ee5826f5c16b
+/home/travis/.pyenv/.git/objects/ba/2f587d38eccd521e
+...
+changes detected, packing new archive
+.
+uploading master/cache-linux-trusty-dd7da29dbe0f50f27b047e68f5cc5ca6a3371ec5cfa42b83f2e9cf45cb68bc9c.tgz
+cache uploaded
+after_success
+2.64s$ codecov
+      _____          _
+     / ____|        | |
+    | |     ___   __| | ___  ___ _____   __
+    | |    / _ \ / _  |/ _ \/ __/ _ \ \ / /
+    | |___| (_) | (_| |  __/ (_| (_) \ V /
+     \_____\___/ \____|\___|\___\___/ \_/
+                                    v2.0.15
+==> Detecting CI provider
+    Travis Detected
+==> Preparing upload
+==> Processing gcov (disable by -X gcov)
+    Executing gcov (find /home/travis/build/Valloric/YouCompleteMe -not -path './bower_components/**' -not -path './node_modules/**' -not -path './vendor/**' -type f -name '*.gcno'  -exec gcov -pb  {} +)
+==> Collecting reports
+    Generating coverage xml reports for Python
+    + /home/travis/build/Valloric/YouCompleteMe/coverage.xml bytes=80260
+==> Appending environment variables
+    + TRAVIS_OS_NAME
+==> Uploading
+    .url https://codecov.io
+    .query package=py2.0.15&slug=Valloric%2FYouCompleteMe&branch=master&job=449428938&service=travis&build=3028.2&pr=false&yaml=codecov.yml&commit=faa019aa532475c5028527ffbfe1e910119d663c
+    Pinging Codecov...
+    Uploading to S3...
+    https://codecov.io/github/Valloric/YouCompleteMe/commit/faa019aa532475c5028527ffbfe1e910119d663c
+Done. Your build exited with 0.
+Top
+©TRAVIS CI, GMBH
+Rigaer Straße 8
+10247 Berlin, Germany
+Work with Travis CI
+Blog
+Email
+Twitter
+HELP
+Documentation
+Community
+Changelog
+LEGAL
+Imprint
+Terms of Service
+Privacy Policy
+Security Statement
+TRAVIS CI STATUS
+Status: Travis CI Status

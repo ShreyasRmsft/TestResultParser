@@ -23,6 +23,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DetailedTests.resx</DependentUpon>
     </Compile>
+    <Compile Update="MochaTestResultParserTests\Resources\NegativeTests\NegativeTests.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NegativeTests.resx</DependentUpon>
+    </Compile>
     <Compile Update="MochaTestResultParserTests\Resources\SuccessScenarios\SuccessScenarios.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -35,10 +40,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DetailedTests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="MochaTestResultParserTests\Resources\NegativeTests\NegativeTests.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NegativeTests.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="MochaTestResultParserTests\Resources\SuccessScenarios\SuccessScenarios.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SuccessScenarios.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MochaTestResultParserTests\Resources\CorruptedRuns\" />
   </ItemGroup>
 
 </Project>

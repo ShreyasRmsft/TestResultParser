@@ -1,0 +1,1746 @@
+﻿#!/bin/bash -eo pipefail
+# Limit maxWorkers to 3 to avoid OOM on CircleCI
+yarn test-only --maxWorkers 3
+^D^Dyarn run v1.1.0
+warning You are using Node "10.12.0" which is not supported and may encounter bugs or unexpected behavior. Yarn supports the following semver range: "^4.8.0 || ^5.7.0 || ^6.2.2 || ^8.0.0"
+(node:5862) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+$ node --max_old_space_size=4096 node_modules/jest/bin/jest.js --verbose "--maxWorkers" "3"
+ PASS  __tests__/registries/npm-registry.js
+  normalizeConfig
+    ✓ environment is replaced (97ms)
+    ✓ path normalization doesn't affect all options
+    ✓ resolve path to current directory (20ms)
+    ✓ resolve path to home directory
+    ✓ resolve keep path to rooted directory
+    ✓ handles missing HOME (1ms)
+  request
+    ✓ should call requestManager.request with url (349ms)
+    ✓ should add `npm-otp` header (1ms)
+    using npm as default registry and using private registry for scoped packages
+      ✓ with request url yarn in context of package yarn auth is not sent (1ms)
+      ✓ with request url @yarn%2fcore in context of package @yarn/core auth is not sent (1ms)
+      ✓ with request url -/package/yarn/dist-tags in context of package yarn auth is not sent (1ms)
+      ✓ with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is not sent (1ms)
+      ✓ with request url -/user/token/abcdef auth is not sent (1ms)
+      ✓ with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is not sent (1ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is not sent
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent (10ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz auth is not sent (1ms)
+      ✓ with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken (3ms)
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (2ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+    using scoped packages in both npm and private registry
+      ✓ with request url yarn in context of package yarn auth is not sent
+      ✓ with request url @yarn%2fcore in context of package @yarn/core auth is scopedNpmAuthToken
+      ✓ with request url -/package/yarn/dist-tags in context of package yarn auth is not sent (1ms)
+      ✓ with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is scopedNpmAuthToken (1ms)
+      ✓ with request url -/user/token/abcdef auth is not sent (3ms)
+      ✓ with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken (1ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken (8ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz auth is not sent (1ms)
+      ✓ with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken (1ms)
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+    using authenticated npm and using private registry for scoped packages
+      ✓ with request url yarn in context of package yarn auth is not sent (1ms)
+      ✓ with request url @yarn%2fcore in context of package @yarn/core auth is scopedNpmAuthToken
+      ✓ with request url -/package/yarn/dist-tags in context of package yarn auth is not sent (1ms)
+      ✓ with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is scopedNpmAuthToken (1ms)
+      ✓ with request url -/user/token/abcdef auth is not sent
+      ✓ with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken (1ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz auth is not sent
+      ✓ with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken (5ms)
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (3ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+    using npm with always-auth and using private registry for scoped packages
+      ✓ with request url yarn in context of package yarn auth is npmAuthToken
+      ✓ with request url @yarn%2fcore in context of package @yarn/core auth is npmAuthToken (1ms)
+      ✓ with request url -/package/yarn/dist-tags in context of package yarn auth is npmAuthToken (1ms)
+      ✓ with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is npmAuthToken (1ms)
+      ✓ with request url -/user/token/abcdef auth is npmAuthToken (1ms)
+      ✓ with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is npmAuthToken (1ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is npmAuthToken (8ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is npmAuthToken (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz auth is not sent (1ms)
+      ✓ with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken (1ms)
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent
+    using private registry as default registry and using scoped packages on npm registry
+      ✓ with request url yarn in context of package yarn auth is privateAuthToken (1ms)
+      ✓ with request url @yarn%2fcore in context of package @yarn/core auth is scopedNpmAuthToken
+      ✓ with request url -/package/yarn/dist-tags in context of package yarn auth is privateAuthToken (1ms)
+      ✓ with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is scopedNpmAuthToken (1ms)
+      ✓ with request url -/user/token/abcdef auth is privateAuthToken
+      ✓ with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken (1ms)
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+      ✓ with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent (3ms)
+      ✓ with request url https://some.cdn.com/@yarn/core.tgz auth is not sent (1ms)
+      ✓ with request url @private/pkg in context of package @private/pkg auth is privateAuthToken
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+    registry url and request url path sensitivity
+      ✓ with request url https://registry.myorg.com/api/npm/registry/private---pkg.tar.gz in context of package @private/pkg auth is scopedPrivateAuthToken (1ms)
+      ✓ with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is not sent
+    using custom-host-suffix for registries where pathnames play a role
+      ✓ with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken (1ms)
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+      ✓ with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is scopedPrivateAuthToken
+    using multiple config entries for registries where pathnames play a role
+      ✓ with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken (1ms)
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+      ✓ with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is scopedPrivateAuthToken (1ms)
+    using username/password config for registries where pathnames play a role
+      ✓ with request url @private/pkg in context of package @private/pkg auth is c2NvcGVkUHJpdmF0ZVVzZXJuYW1lOu+/ve+/vSl577+977+977+977+9eO+/ve+/ve+/vQor
+      ✓ with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent (1ms)
+      ✓ with request url https://some.cdn.com/@private/pkg auth is not sent (1ms)
+      ✓ with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is c2NvcGVkUHJpdmF0ZVVzZXJuYW1lOu+/ve+/vSl577+977+977+977+9eO+/ve+/ve+/vQor (1ms)
+  isRequestToRegistry functional test
+    ✓ request to registry url matching (48ms)
+    ✓ isRequestToRegistry with custom host prefix (15ms)
+  isScopedPackage functional test
+    ✓ identifies scope correctly (2ms)
+  getRequestUrl functional test
+    ✓ returns pathname when it is a full URL
+    ✓ correctly handles registries lacking a trailing slash (1ms)
+  getPossibleConfigLocations
+    ✓ searches recursively to home directory (845ms)
+  checkOutdated functional test
+    ✓ homepage URL from top level (473ms)
+    ✓ homepage URL fallback to wanted package manifest (2ms)
+    ✓ repository URL from top level
+    ✓ repository URL fallback to wanted package manifest (1ms)
+    ✓ unpublished package (no versions) (23ms)
+    ✓ latest version fallback to wanted package manifest (1ms)
+    ✓ package with an empty response (1ms)
+
+ PASS  __tests__/package-hoister.js
+  ✓ Produces valid destination paths for scoped modules (1122ms)
+  ✓ hoists dependencies of dependencies up to root level when no version conflicts exist (40ms)
+  ✓ leaves dependencies of dependencies at leaf level when version conflict exists (2ms)
+  ✓ eliminates duplicates when multiple packages depend on the same package (2ms)
+  ✓ eliminates duplicates when version conflicts exist (2ms)
+  ✓ uses the modulesFolder configuration option as the first part of the path (1ms)
+  ✓ does not include ignored packages or their dependencies
+  ✓ includes ignored packages dependencies if another non-ignored package depends on it (8ms)
+  ✓ considers ignored packages when determining hoisting (2ms)
+  ✓ will hoist packages under subdirectories when they cannot hoist to root (1ms)
+  nohoist
+    ✓ nohoist can be turned off by disable workspaces (workspaces-experimental) (1ms)
+    ✓ nohoist pkg will be duplicated independent of the hoisted version (2ms)
+    ✓ nohoist pkg will NOT be duplicated within the same branch (1ms)
+    ✓ can dedupe and avoid circular reference (1ms)
+    ✓ can handle conflict version (1ms)
+    ✓ nohoist matches package regardless version (1ms)
+    ✓ can detect circular reference (1ms)
+    ✓ can nohoist a linked package (1ms)
+    ✓ can disable hoist for the whole branch (1ms)
+    ✓ can disable hoist for particular package tree (1ms)
+    ✓ originalParentPath shows before-hoist dependency tree path (1ms)
+    ✓ previousPaths should reflect hoist history (1ms)
+    nohoist = hoist to the top of its branch instead of root
+      ✓ shallow nohoist (2ms)
+      ✓ deep nohoist (5ms)
+    nohoistList pattern matching
+      ✓ match explicit path (2ms)
+      ✓ match glob pattern (5ms)
+    nohoist with workspaces context
+      disable hoist for a package
+        ✓ from root for all workspaces (108ms)
+        ✓ from root for a specific workspaces (2ms)
+        ✓ from workspace (1ms)
+      workspace depends on another workspace
+        ✓ can nohoist dependent workspace just like any package (2ms)
+        ✓ all workspaces nohoist will be honored (6ms)
+
+ PASS  __tests__/commands/upgrade.js (19.326s)
+  ✓ throws if lockfile is out of date (2571ms)
+  ✓ works with no arguments (4078ms)
+  ✓ upgrades transitive deps when no arguments
+  ✓ does not upgrade transitive deps that are also a direct dependency
+  ✓ does not upgrade transitive deps when specific package upgraded
+  ✓ works with single argument
+  ✓ works with multiple arguments (482ms)
+  ✓ respects dependency type
+  ✓ respects --ignore-engines flag (683ms)
+  ✓ upgrades from fixed version to latest
+  ✓ upgrades from fixed version to latest with workspaces
+  ✓ works with just a pattern
+  ✓ works with arguments and a pattern
+  ✓ upgrades to latest matching package.json semver when no package name passed
+  ✓ --latest upgrades to latest ignoring package.json when no package name passed (1ms)
+  ✓ --latest preserves "<=" semver range
+  ✓ --latest preserves "^" semver range
+  ✓ --latest preserves "~" semver range
+  ✓ --latest defaults to "^" semver range if existing range is complex
+  ✓ sets new version range to caret when --caret and --latest are passed
+  ✓ sets new version range to tilde when --tilde and --latest are passed
+  ✓ sets new version range to exact when --exact and --latest are passed
+  ✓ upgrades to latest matching semver when package name passed with version (1ms)
+  ✓ --latest upgrades to passed in version when package name passed with version
+  ✓ upgrades to latest matching package.json semver when package name passed
+  ✓ upgrades dependency packages not in registry (1354ms)
+  ✓ upgrades dev dependency packages not in registry (1007ms)
+  ✓ upgrades optional dependency packages not in registry (1515ms)
+  ✓ informs the type of dependency after upgrade (4460ms)
+  ✓ warns when peer dependency is not met after upgrade (2738ms)
+  ✓ doesn't warn when peer dependency is still met after upgrade
+  ✓ doesn't warn when upgrading a devDependency
+  ✓ can prune the offline mirror
+  ✓ respects --scope flag
+  ✓ respects --scope flag with caret
+  ✓ --latest works if there is an install script on a hoisted dependency
+  ✓ upgrade to workspace root preserves child dependencies
+  ✓ upgrade to workspace child preserves root dependencies
+  ✓ latest flag does not downgrade from a beta
+
+ PASS  __tests__/commands/install/workspaces-install.js
+  ✓ workspaces don't work with disabled configuration in .yarnrc (864ms)
+  ✓ workspaces don't work on non private projects
+  ✓ workspaces don't work with duplicate names (272ms)
+  ✓ workspaces warn and get ignored if they don't have a name and a version (445ms)
+  ✓ installs workspaces dependencies into root folder (1598ms)
+  ✓ install should install unhoistable dependencies in workspace node_modules
+  ✓ install should link workspaces that refer each other
+  ✓ install should not link workspaces that refer not compatible version of another workspace
+  ✓ install should not link a workspace if the version is not compatible
+  ✓ install should prioritize non workspace dependency at root over the workspace symlink
+  ✓ install should install subdependencies of workspaces
+  ✓ install should install subdependencies of workspaces that are not referenced in other workspaces
+  ✓ install should install dev dependencies of workspaces
+  ✓ install should not install dev dependencies of workspaces in production mode (1ms)
+  ✓ install should work correctly for workspaces that have similar names
+  ✓ check command should work (113ms)
+  ✓ install should link binaries at root and in workspace dependents
+  ✓ install should ignore node_modules in workspaces when used with **/*
+  ✓ install should link binaries properly when run from child workspace (403ms)
+  install should ignore deep node_modules in workspaces
+    ✓ without nohoist (96ms)
+    ✓ with nohoist (85ms)
+  nohoist
+    ✓ exclude packages by workspace
+    ✓ disable all hoist for every workspace
+    ✓ disable some hoist for every workspace
+    ✓ disable hoisting package across versions
+
+ PASS  __tests__/commands/install/integration.js (81.189s)
+  ✓ install should not hoist packages above their peer dependencies (6489ms)
+  ✓ install should resolve peer dependencies from same subtrees (148ms)
+  ✓ install optional subdependencies by default (215ms)
+  ✓ installing with --ignore-optional should not install optional subdependencies (91ms)
+  ✓ running install inside a workspace should run the install from the root of the workspace (154ms)
+  ✓ packages installed through the link protocol should validate all peer dependencies (74ms)
+  ✓ installing a package with a renamed file should not delete it (64ms)
+  ✓ installing a new package should correctly update it, even if the files mtime didn't change (2080ms)
+  ✓ properly find and save build artifacts (735ms)
+  ✓ reading a lockfile should not optimize it (14727ms)
+  ✓ creates a symlink to a directory when using the link: protocol (29ms)
+  ✓ creates a symlink to a non-existing directory when using the link: protocol (30ms)
+  ✓ resolves the symlinks relative to the package path when using the link: protocol; not the node_modules (32ms)
+  ✓ resolves the symlinks of other symlinked packages relative to the package using the link: protocol (47ms)
+  ✓ replace the symlink when it changes, when using the link: protocol (34ms)
+  ✓ changes the cache path when bumping the cache version (433ms)
+  ✓ changes the cache directory when bumping the cache version (416ms)
+  ✓ removes extraneous files that aren't in module or artifacts (324ms)
+  ✓ production mode with deduped dev dep shouldn't be removed (107ms)
+  ✓ production mode dep on package in dev deps shouldn't be removed (69ms)
+  ✓ hoisting should factor ignored dependencies (250ms)
+  ✓ --production flag ignores dev dependencies (68ms)
+  ✓ --production flag does not link dev dependency bin scripts (629ms)
+  ✓ root install with optional deps (8763ms)
+  ✓ install file: protocol with relative paths (129ms)
+  ✓ install file: protocol without force retains installed package (58ms)
+  ✓ install file: protocol with force re-installs local package (47ms)
+  ✓ install file: local packages with local dependencies (195ms)
+  ✓ install file: install without manifest of dependency (33ms)
+  ✓ install file: link file dependencies (34ms)
+  ✓ install file: protocol (47ms)
+  ✓ install with file: protocol as default (39ms)
+  ✓ don't install with file: protocol as default if target is a file (82ms)
+  ✓ don't install with implicit file: protocol if target does not have package.json (19ms)
+  ✓ install with explicit file: protocol if target does not have package.json (39ms)
+  ✓ don't install with file: protocol as default if target is valid semver (49ms)
+  ✓ don't hang when an install script tries to read from stdin (176ms)
+  ✓ install file: dedupe dependencies 1 (60ms)
+  ✓ install file: dedupe dependencies 2 (176ms)
+  ✓ install file: dedupe dependencies 3 (52ms)
+  ✓ install everything when flat is enabled (57ms)
+  ✓ install renamed packages (220ms)
+  ✓ install from git cache (38ms)
+  ✓ install from github (215ms)
+  ✓ check and install should verify integrity in the same way when flat (98ms)
+  ✓ check should verify that top level dependencies are installed correctly (51ms)
+  ✓ install should run install scripts in the order of dependencies (439ms)
+  ✓ install with comments in manifest (52ms)
+  ✓ install with comments in manifest resolutions does not result in warning (40ms)
+  ✓ install with null versions in manifest (244ms)
+  ✓ run install scripts in the order when one dependency does not have install script (501ms)
+  ✓ install should circumvent circular dependencies (63ms)
+  ✓ install should resolve circular dependencies 2 (6358ms)
+  ✓ install should be idempotent (217ms)
+  ✓ install should authenticate integrity field with sha1 checksums (87ms)
+  ✓ install should authenticate integrity field with sha512 checksums (60ms)
+  ✓ install should authenticate integrity field with sha384 checksums (63ms)
+  ✓ install should authenticate integrity field with options (57ms)
+  ✓ install should authenticate integrity field with combined sha1 and sha512 checksums (138ms)
+  ✓ install should authenticate integrity with multiple differing sha1 checksums (56ms)
+  ✓ install should authenticate integrity with multiple differing sha512 checksums (50ms)
+  ✓ install should authenticate integrity with wrong sha1 and right sha512 checksums (43ms)
+  ✓ install should fail to authenticate integrity with correct sha1 and incorrect sha512 (86ms)
+  ✓ install should fail to authenticate on sha512 integrity mismatch (44ms)
+  ✓ install should fail to authenticate on sha1 integrity mismatch (39ms)
+  ✓ install should not create the integrity field if missing and auto-add-integrity is false (63ms)
+  ✓ install should not create integrity field if not present and in offline mode (97ms)
+  ✓ install should ignore existing hash if integrity is present even if it fails to authenticate it (66ms)
+  ✓ install should ignore unknown integrity algorithms if it has other options in the sri (45ms)
+  ✓ install should fail if the only algorithms in the sri are unknown (35ms)
+  ✓ install should fail if the sri is malformed (113ms)
+  ✓ install should fail with unsupported algorithms (63ms)
+  ✓ install should update integrity in yarn.lock (--update-checksums)
+  ✓ install should update malformed integrity string in yarn.lock (--update-checksums)
+  ✓ install cache symlinks properly (94ms)
+  ✓ install a scoped module from authed private registry (140ms)
+  ✓ install a scoped module from authed private registry with a missing trailing slash (127ms)
+  ✓ install of scoped package with subdependency conflict should pass check (250ms)
+  ✓ install a module with incompatible optional dependency should skip dependency (58ms)
+  ✓ install a module with incompatible optional dependency should skip transient dependencies (96ms)
+  ✓ install a module with optional dependency should skip incompatible transient dependency (114ms)
+  ✓ optional dependency that fails to build should not be installed (234ms)
+  ✓ failing dependency of optional dependency should not be installed (1790ms)
+  ✓ a subdependency of an optional dependency that fails should be installed (351ms)
+  ✓ a sub-dependency should be non-optional if any parents mark it non-optional (147ms)
+  ✓ should not loose dependencies when installing with --production (22451ms)
+  ✓ a allows dependency with [] in os cpu requirements (171ms)
+  ✓ should skip integrity check and do install when --skip-integrity-check flag is passed (119ms)
+  ✓ bailout should work with --production flag too (82ms)
+  ✓ package version resolve should be deterministic (528ms)
+  ✓ transitive file: dependencies should work (69ms)
+  ✓ unbound transitive dependencies should not conflict with top level dependency (69ms)
+  ✓ manifest optimization respects versions with alternation (101ms)
+  ✓ top level patterns should match after install (70ms)
+  ✓ warns for missing bundledDependencies (831ms)
+  ✓ install will not overwrite linked scoped dependencies (237ms)
+  ✓ install will not overwrite linked dependencies (116ms)
+  ✓ file: dependency ending with `.git` should work (34ms)
+  ✓ install will not warn for missing peerDep when both shallower and deeper (1697ms)
+  ○ skipped 1 test
+
+ PASS  __tests__/commands/install/offline-mirror.js (10.658s)
+  ✓ install with offline mirror and pack-built-packages setting should run install scripts on first call and not run on second while producing the same node_modules (2996ms)
+  ✓ install with offline mirror and pack-built-packages setting should not ignore ".npmignore" (23ms)
+  ✓ install without pack-built-packages should keep running install scripts (455ms)
+  ✓ removing prebuilt package .tgz file falls back to running scripts (2ms)
+  ✓ switching platform for installed node_modules should trigger rebuild / using another prebuilt tgz (551ms)
+  ✓ creates the file in the mirror when fetching a git repository (6128ms)
+  ✓ install from offline mirror
+  ✓ install should add missing deps to yarn and mirror (PR import scenario)
+  ✓ install should update a dependency to yarn and mirror (PR import scenario 2)
+  ✓ offline mirror can be enabled from parent dir (1ms)
+  ✓ offline mirror can be enabled from parent dir, with merging of own .yarnrc
+  ✓ offline mirror can be disabled locally
+  ✓ prunes the offline mirror tarballs after pruning is enabled
+  ✓ scoped packages remain in offline mirror after pruning is enabled
+
+ PASS  __tests__/commands/add.js (95.519s)
+  ✓ add without --ignore-workspace-root-check should fail on the workspace root (13705ms)
+  ✓ add with --ignore-workspace-root-check shouldn't fail on the workspace root (7528ms)
+  ✓ adding to the workspace root should preserve workspace packages in lockfile (2099ms)
+  ✓ adds any new package to the current workspace, but install from the workspace (3801ms)
+  ✓ add creates an entry with a sha512 integrity field
+  ✓ add creates an entry with a sha1 integrity field when sha512 is unavailable
+  ✓ install with arg (1845ms)
+  ✓ install from github
+  ✓ install from github with invalid version should fail
+  ✓ install with --dev flag
+  ✓ install with --peer flag
+  ✓ install with --optional flag
+  ✓ install with --tilde flag
+  ✓ warns when adding a devDependency as dependency
+  ✓ doesn't warn when adding a devDependency as devDependency (1ms)
+  ✓ warns when adding a dependency as devDependency
+  ✓ doesn't warn when adding a dependency as dependency
+  ✓ install with link: specifier
+  ✓ install with arg that has binaries (4670ms)
+  ✓ add with no manifest creates blank manifest (26185ms)
+  ✓ add should ignore cache
+  ✓ add should not make package.json strict
+  ✓ add --save-exact should not make all package.json strict
+  ✓ add save-prefix should not expand ~ to home dir
+  ✓ add save-exact should make all package.json strict
+  ✓ add with new dependency should be deterministic 3 (31312ms)
+  ✓ install --initMirror should add init mirror deps from package.json (1ms)
+  ✓ add with new dependency should be deterministic
+  ✓ add with new dependency should be deterministic 2
+  ✓ add with offline mirror
+  ✓ install with --save and without offline mirror
+  ✓ upgrade scenario
+  ✓ upgrade scenario 2 (with sub dependencies)
+  ✓ install another fork of an existing package
+  ✓ downgrade scenario (1ms)
+  ✓ modules resolved multiple times should save to mirror correctly
+  ✓ Insecure HTTP npmjs tarball URLs should still be normalised to registry.yarnpkg.com
+  ✓ add should put a git dependency to mirror
+  ✓ add should store latest version in lockfile
+  ✓ add should generate correct integrity file
+  ✓ add infers line endings from existing win32 manifest file
+  ✓ add infers line endings from existing unix manifest file
+  ✓ install with latest tag
+  ✓ install with latest tag and --offline flag
+  ✓ install with latest tag and --offline flag scoped (1ms)
+  ✓ install with latest tag and --prefer-offline flag
+  ✓ install with latest tag and --prefer-offline flag scoped
+  ✓ doesn't warn when peer dependency is met during add
+  ✓ warns when peer dependency is not met during add
+  ✓ warns when peer dependency is incorrect during add
+  ✓ should only refer to higher levels to satisfy peer dependency
+  ✓ should refer to deeper dependencies to satisfy peer dependency
+  ✓ should retain build artifacts after add when missing integrity file
+  ✓ should retain build artifacts after add
+  ✓ should not run scripts if build artifact changed (214ms)
+  ✓ installing with --pure-lockfile and then adding should keep build artifacts (1ms)
+  ✓ preserves unaffected bin links after adding to workspace package
+  ✓ installs "latest" instead of maxSatisfying if it satisfies requested pattern
+  ✓ installs "latest" instead of maxSatisfying if no requested pattern
+  ○ skipped 2 tests
+  nohoist
+    ✓ can add nohoist package from workspace
+    ✓ can add nohoist package from root
+
+ PASS  __tests__/commands/check.js
+  ✓ --verify-tree should report wrong version (824ms)
+  ✓ --verify-tree should work from a workspace cwd
+  ✓ --verify-tree should report missing dependency
+  ✓ --verify-tree should pass on hoisted dependency  (53ms)
+  ✓ --verify-tree should check dev dependencies 
+  ✓ --verify-tree should check skip dev dependencies if --production flag passed (1ms)
+  ✓ --verify-tree should check skip deeper dev dependencies
+  ✓ --integrity should ignore comments and whitespaces in yarn.lock (621ms)
+  ✓ --integrity should fail if integrity file is missing
+  ✓ --integrity should fail if integrity file is not a json
+  ✓ --integrity should fail if yarn.lock has patterns changed
+  ✓ --integrity should fail if yarn.lock has new pattern
+  ✓ --integrity should fail if yarn.lock has resolved changed
+  ✓ --integrity should fail if files are missing and --check-files is passed (20ms)
+  ✓ --integrity should fail if --ignore-scripts is changed
+  ✓ when switching to --check-files install should rebuild integrity file (92ms)
+  ✓ --integrity should fail if integrity file have different linkedModules
+  ✓ --integrity should fail if integrity file has different systemParams (1ms)
+  ✓ --integrity should create the integrity file under the meta folder if enabled
+  ✓ --check-files should register the right entries even when using the meta folder
+  ✓ --integrity --check-files should not die on broken symlinks (144ms)
+  ✓ --integrity should not die on missing fields in integrity file
+  ✓ should ignore bundled dependencies
+  ✓ should warn about mismatched dependencies if they match resolutions (simple)
+  ✓ should warn about mismatched dependencies if they match resolutions (tree)
+  ✓ should warn about mismatched dependencies if they match resolutions (glob)
+  ✓ --integrity should throw an error if top level patterns do not match
+
+ PASS  __tests__/commands/install/lockfiles.js (11.052s)
+  ✓ does fetch files from the local filesystem (2521ms)
+  ✓ doesn't write new lockfile if existing one satisfied
+  ✓ writes new lockfile if existing one isn't satisfied (27ms)
+  ✓ writes a lockfile when there are no dependencies
+  ✓ throws an error if existing lockfile isn't satisfied with --frozen-lockfile
+  ✓ doesn't write new lockfile if existing one satisfied but not fully optimized with --frozen-lockfile (351ms)
+  ✓ install transitive optional dependency from lockfile (7554ms)
+  ✓ root install from shrinkwrap
+  ✓ install have a clean node_modules after lockfile update (branch switch scenario)
+  ✓ install have a clean node_modules after lockfile update (branch switch scenario 2)
+  ✓ install should write and read integrity file based on lockfile entries
+  ✓ install should retain artifacts when missing integrity file (1ms)
+  ✓ install should not continue if integrity check passes
+  ✓ install should not rewrite lockfile with no substantial changes
+  ✓ lockfile should be created when missing even if integrity matches
+  ✓ install infers line endings from existing win32 lockfile
+  ✓ install infers line endings from existing unix lockfile
+  ✓ install uses OS line endings when lockfile doesn't exist
+  ✓ install should rewrite lockfile if patterns can be merged
+  ✓ install should fix if lockfile patterns don't match resolved version
+  ✓ install should warn if a conflicting npm package-lock.json exists (1ms)
+  ✓ install should warn if a conflicting npm npm-shrinkwrap.json exists
+
+ PASS  __tests__/index.js (16.763s)
+  ✓ should add package (6285ms)
+  ✓ should add package with no-lockfile option (2235ms)
+  ✓ should add package with frozen-lockfile option (3023ms)
+  ✓ should add package with no-lockfile option in front (2217ms)
+  ✓ should add lockfile package (1869ms)
+  ✓ should add progress package globally
+  ✓ should run custom script
+  ✓ should run custom script without run command (1ms)
+  ✓ should run help command
+  ✓ should run help command with --help
+  ✓ should run help command with -h
+  ✓ should run add command with help option
+  ✓ should run add command with h option
+  ✓ should run help command with add option
+  ✓ should run --help command with add option
+  ✓ should run -h command with add option (1ms)
+  ✓ should show version of yarn with -v
+  ✓ should run version command
+  ✓ should run --version command
+  ✓ should exit cleanly when running invalid commands
+  ✓ should install if no args
+  ✓ should install if first arg looks like a flag
+  ✓ should not output JSON activity/progress if given --no-progress option
+  ✓ should run help of run command if --help is before script
+  ✓ should run help of custom-script if --help is after script (1ms)
+  ✓ should run bin command
+  ✓ should throws missing command for not camelised command
+  ✓ should throws missing command for not alphabetic command
+  ✓ should throws missing command for unknown command
+  ✓ should not display documentation link for unknown command
+  ✓ should display documentation link for known command
+  ✓ should throws missing command for constructor command
+  ✓ should run command with hyphens
+  ✓ should run camelised command for command with hyphens
+  ✓ should run help for command with hyphens (1ms)
+  ✓ should run help for camelised command
+  ✓ should not pass yarnrc flags to workspace command
+
+ PASS  __tests__/commands/install/integration-deduping.js (49.16s)
+  ✓ install should dedupe dependencies avoiding conflicts 0 (4036ms)
+  ✓ install should dedupe dependencies avoiding conflicts 1
+  ✓ install should dedupe dependencies avoiding conflicts 2 (571ms)
+  ✓ install should dedupe dependencies avoiding conflicts 3
+  ✓ install should dedupe dependencies avoiding conflicts 4 (1ms)
+  ✓ install should dedupe dependencies avoiding conflicts 5
+  ✓ install should dedupe dependencies avoiding conflicts 6 (jest/jest-runtime case)
+  ✓ install should dedupe dependencies avoiding conflicts 7 (477ms)
+  ✓ install should dedupe dependencies avoiding conflicts 8 (43735ms)
+  ✓ install should dedupe dependencies avoiding conflicts 9
+  hardlink
+    ✓ install should hardlink repeated dependencies
+    ✓ install should not hardlink repeated dependencies if linkDuplicates=false
+    ✓ install should not crash when hardlinking deep structures
+    ✓ install should consider different hoisting with --link-duplicate
+    ✓ install should consider different hoisting with --link-duplicate 2
+    ✓ install should not hardlink full package structure
+    in workspaces
+      ✓ no hardlink for workspace references and linked dependencies
+      ✓ should work with nohoist
+
+ PASS  __tests__/fetchers.js
+  ✓ BaseFetcher.fetch (112ms)
+  ✓ CopyFetcher.fetch (35ms)
+  ✓ GitFetcher.fetch (587ms)
+  ✓ GitFetcher.getTarballMirrorPath without slashes in the repo path (8ms)
+  ✓ GitFetcher.fetch with prepare script (2175ms)
+  ✓ TarballFetcher.fetch (71ms)
+  ✓ TarballFetcher.fetch throws on invalid hash (11ms)
+  ✓ TarballFetcher.fetch fixes hash if updateChecksums flag is true (44ms)
+  ✓ TarballFetcher.fetch throws on invalid integrity (9ms)
+  ✓ TarballFetcher.fetch supports local ungzipped tarball (32ms)
+  ✓ TarballFetcher.fetch properly stores tarball of package in offline mirror (20ms)
+  ✓ TarballFetcher.fetch properly stores tarball of scoped package in offline mirror (15ms)
+  ✓ TarballFetcher.fetch properly stores tarball for scoped package resolved from artifactory registry (11ms)
+  ✓ TarballFetcher.fetch properly stores tarball for scoped package resolved from new  style URLs (13ms)
+  ✓ TarballFetcher.fetch throws on truncated tar data (15ms)
+  ✓ TarballFetcher.fetch throws on truncated tar header (16ms)
+
+ PASS  __tests__/util/request-manager.js
+  ✓ RequestManager.request with cafile (257ms)
+  ✓ RequestManager.request with ca (string) (38ms)
+  ✓ RequestManager.request with ca (array) (29ms)
+  ✓ RequestManager.request with mutual TLS (46ms)
+  ✓ RequestManager.execute timeout error with maxRetryAttempts=1 (69ms)
+  ✓ RequestManager.execute timeout error with default maxRetryAttempts (281ms)
+  ✓ RequestManager.execute Request 403 error (12ms)
+  ✓ RequestManager.execute Request 442 error (13ms)
+  ✓ RequestManager.execute one time password error on npm request (12ms)
+  ✓ RequestManager.execute one time password error on npm login request (12ms)
+  ✓ RequestManager.execute retries on 408 error (16ms)
+  ✓ RequestManager.execute retries on 500 error (12ms)
+  ✓ RequestManager.execute retries on 542 error (10ms)
+  ✓ RequestManager.request with offlineNoRequests (14ms)
+  ✓ RequestManager.saveHar no captureHar error message (12ms)
+
+ PASS  __tests__/commands/install/focus.js
+  ✓ focus does not work from a non-workspaces project (463ms)
+  ✓ focus does not work from the root of a workspaces project (103ms)
+  ✓ focus does a normal workspace installation (3194ms)
+  ✓ focus shallowly installs sibling workspaces under target
+  ✓ focus should not bail out early after an un-focused install (426ms)
+  ✓ repeated focused installs should bail out early
+  ✓ switching directories for focused installs should fail integrity checks and reinstall (1ms)
+  ✓ focus shallowly installs anything that a sibling needed to shallowly install underneath that sibling
+  ✓ focus does not shallowly install a sibling's dev dependencies
+  ✓ focus runs shallow dependencies' postinstall scripts
+  ✓ focus installs transitive dependencies shallowly
+  ✓ focus does not install transitive devdependencies shallowly (but does install non-transitive devdeps)
+  ✓ focus does not shallowly install current version of sibling if another version is specified in package.json
+  ✓ focus works correctly when focusing on a scoped package
+  nohoist
+    ✓ focus installs nohoist dependencies shallowly
+    ✓ focus does not do nested shallow installs of transitive nohoist packages
+    ✓ focus installs the correct version when a package is nohoist but differs from the workspace version
+
+ PASS  __tests__/commands/remove.js
+  ✓ throws error with no arguments (756ms)
+  ✓ throws error when package is not found
+  ✓ remove without --ignore-workspace-root-check should fail on the workspace root (346ms)
+  ✓ remove with --ignore-workspace-root-check shouldn't fail on the workspace root (186ms)
+  ✓ removes package installed from npm registry
+  ✓ removes multiple installed packages
+  ✓ removes the whole scope when all scoped packages are removed
+  ✓ removes a single scoped package (1ms)
+  ✓ removes subdependencies (163ms)
+  ✓ can prune the offline mirror
+  ✓ removes package installed without a manifest
+  ✓ removes from workspace packages
+  ✓ preserves unaffected bin links after removing workspace packages (423ms)
+
+ PASS  __tests__/util/git.js
+  ✓ npmUrlToGitUrl (17ms)
+  ✓ secureGitUrl (6ms)
+  ✓ resolveDefaultBranch when local (85ms)
+  ✓ resolveDefaultBranch when remote (10ms)
+  ✓ resolveCommit (8ms)
+  secureGitUrl()
+    ✓ accepts URLs with commit hash (10ms)
+    ✓ accepts URLs without commit hash over secure protocols (2ms)
+    ✓ changes insecure URLs to HTTPS (4ms)
+    ✓ warns if insecure URLs cannot be changed to HTTPS (6ms)
+
+ PASS  __tests__/commands/why.js
+  ✓ throws error with no arguments (428ms)
+  ✓ throws error with too many arguments (1ms)
+  ✓ doesn't throw when using it inside a workspace (666ms)
+  ✓ throws error if module does not exist (247ms)
+  ✓ should determine that the module installed because it is in dependencies (12ms)
+  ✓ should determine that the module installed because it is in devDependencies
+  ✓ should determine that the module installed because mime-types depend on it (1ms)
+  ✓ should determine that the module installed because it is hoisted from glob depend on it (5ms)
+  ✓ should report when a module is included multiple times including the root (34ms)
+  reports multiple occurrences
+    ✓ due to nohoist
+    ✓ due to version conflict
+  queryWhy
+    ✓ can determine a nohoist module (1ms)
+    ✓ can determine a deep nohoist module (1ms)
+    ✓ can return multiple matches
+
+ PASS  __tests__/commands/run.js
+  ✓ lists all available commands with no arguments (218ms)
+  ✓ lists all available commands with no arguments and --non-interactive (21ms)
+  ✓ runs script containing spaces (24ms)
+  ✓ properly handles extra arguments and pre/post scripts (21ms)
+  ✓ properly handle bin scripts (29ms)
+  ✓ properly handle env command (37ms)
+  ✓ adds string delimiters if args have spaces (24ms)
+  ✓ adds quotes if args have spaces and quotes (34ms)
+  ✓ returns noScriptsAvailable with no scripts (28ms)
+  ✓ returns noBinAvailable with no bins (21ms)
+  ✓ adds workspace root node_modules/.bin to path when in a workspace (29ms)
+  ✓ runs script with custom script-shell (21ms)
+
+ PASS  __tests__/commands/global.js (11.996s)
+  ✓ add without flag (8008ms)
+  ✓ add with prefix flag (1ms)
+  ✓ add with PREFIX enviroment variable (3544ms)
+  ✓ shouldn't expose unwanted binaries
+  ✓ bin
+  ✓ add
+  ✓ add (with scoped registry)
+  ✓ remove
+  ✓ ls
+  ✓ list
+  ✓ upgrade (119ms)
+  ✓ symlink update (1ms)
+
+ PASS  __tests__/commands/import.js
+  ✓ import shallow deps (1567ms)
+  ✓ import deep deps (6ms)
+  ✓ import shallow dev deps
+  ✓ import github deps
+  ✓ import file deps
+  ✓ import overlapping semver ranges successfully
+  ✓ throw on missing dev deps
+  ✓ including Yarn and Node version in yarn.lock
+  ✓ import missing dev deps in production (35ms)
+  ✓ import missing opt deps (1ms)
+  ✓ throw when yarn.lock exists
+  ✓ import shallow deps from package-lock.json
+  ✓ import deep deps from package-lock.json
+  ✓ import shallow dev deps from package-lock.json
+  ✓ import github deps from package-lock.json
+  ✓ import file deps from package-lock.json
+  ✓ import overlapping semver ranges from package-lock.json successfully
+  ✓ throw on corrupted package-lock.json
+  ✓ throw on corrupted package-lock.json - missing dependencies (package-lock.json inconsistent)
+  ✓ import uncorrupted (consistent) package-lock.json with missing dependencies
+  ✓ including Yarn and Node version in yarn.lock from package-lock.json
+
+ PASS  __tests__/lockfile.js
+  ✓ parse/stringify 1 (9ms)
+  ✓ parse/stringify 2 (2ms)
+  ✓ parse/stringify 3 (1ms)
+  ✓ parse/stringify 4 (2ms)
+  ✓ parse (5ms)
+  ✓ stringify (1ms)
+  ✓ Lockfile.fromDirectory
+  ✓ Lockfile.getLocked (1ms)
+  ✓ Lockfile.getLocked pointer (1ms)
+  ✓ Lockfile.getLocked no cache
+  ✓ Lockfile.getLocked defaults
+  ✓ Lockfile.getLocked unknown (1ms)
+  ✓ Lockfile.getLockfile
+  ✓ Lockfile.getLockfile (sorting) (1ms)
+  ✓ Lockfile.getLockfile handles integrity field (1ms)
+  ✓ parse single merge conflict (2ms)
+  ✓ parse single merge conflict with CRLF
+  ✓ parse multiple merge conflicts (2ms)
+  ✓ parse merge conflict fail (1ms)
+  ✓ discards common ancestors in merge conflicts
+
+ PASS  __tests__/commands/pack.js
+  ✓ pack should work with a minimal example (583ms)
+  ✓ pack should include all files listed in the files array (29ms)
+  ✓ pack should include files based from the package’s root
+  ✓ pack should included globbed files
+  ✓ pack should include mandatory files not listed in files array if files not empty (14ms)
+  ✓ pack should exclude mandatory files from ignored directories
+  ✓ pack should include files only ignored in other directories (4ms)
+  ✓ pack should exclude all other files if files array is not empty
+  ✓ pack should exclude all dotfiles if not in files and files not empty
+  ✓ pack should exclude all files in dot-directories if not in files and files not empty
+  ✓ pack should include bundled dependencies (6ms)
+  ✓ pack should match dotfiles with globs
+
+ PASS  __tests__/commands/list.js
+  list
+    ✓ throws if lockfile out of date (372ms)
+    ✓ lists everything with no args
+    ✓ respects depth flag
+    ✓ accepts an argument
+    ✓ accepts a pattern
+    ✓ should not throw when list is called with resolutions field (4ms)
+    ✓ respects depth flag
+    ✓ matches exactly without glob in argument
+    ✓ expands a glob in argument
+    ✓ expands a glob in pattern
+    ✓ lists all dependencies when not production (33ms)
+    ✓ does not list devDependencies when production (25ms)
+    ✓ does not error listing dependencies when production and no devDependencies exist (19ms)
+    ✓ getParent should extract a parent object from a hash, if the parent key exists (1ms)
+    ✓ getParent should return undefined if the key does not exist in hash (1ms)
+    ✓ getReqDepth should return a number if valid
+    ✓ getReqDepth should return -1 if invalid (1ms)
+
+ PASS  __tests__/commands/install/resolutions.js
+  ✓ install with simple exact resolutions should override all versions (2301ms)
+  ✓ install with subtree exact resolutions should override subtree versions
+  ✓ install with --frozen-lockfile with resolutions
+  ✓ install with exotic resolutions should override versions (213ms)
+  ✓ install with range resolutions should override versions
+  ✓ should warn when resolution entries are incorrrect or incompatible
+  ✓ install with resolutions should correctly install simple scoped packages
+  ✓ install with resolutions should correctly install toplevel scoped packages
+  ✓ install with nested resolutions (1ms)
+  ✓ install with nested resolutions using flat mode
+  ✓ install with resolution settings should correctly bailout during the integrity check
+  ✓ adding resolutions after install should cause lockfile regeneration on second install
+
+ FAIL  __tests__/reporters/console-reporter.js
+  ✓ ConsoleReporter.step (13ms)
+  ✓ ConsoleReporter.header (1ms)
+  ✓ ConsoleReporter.footer (2ms)
+  ✓ ConsoleReporter.log (1ms)
+  ✕ ConsoleReporter.success (24ms)
+  ✕ ConsoleReporter.error (2ms)
+  ✕ ConsoleReporter.info (1ms)
+  ✓ ConsoleReporter.command (1ms)
+  ✕ ConsoleReporter.warn (1ms)
+  ✓ ConsoleReporter.tree (2ms)
+  ✓ ConsoleReporter.activity (36ms)
+  ✕ ConsoleReporter.select (11ms)
+  ✓ ConsoleReporter.progress (48ms)
+  ✓ ProgressBar (2ms)
+  ✓ Spinner (1ms)
+  ✓ close (1ms)
+  ✓ ConsoleReporter.log is silent when isSilent is true (1ms)
+  ✓ ConsoleReporter.tree is silent when isSilent is true (1ms)
+  ✓ ConsoleReporter.auditSummary (2ms)
+
+  ● ConsoleReporter.success
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "success foobar",
+    +   "stdout": "✅  success foobar",
+      }
+
+      61 |       r.success('foobar');
+      62 |     }),
+    > 63 |   ).toMatchSnapshot();
+      64 | });
+      65 | 
+      66 | test('ConsoleReporter.error', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:63:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.error
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+    -   "stderr": "error foobar",
+    +   "stderr": ":red_cirle:  error foobar",
+        "stdout": "",
+      }
+
+      69 |       r.error('foobar');
+      70 |     }),
+    > 71 |   ).toMatchSnapshot();
+      72 | });
+      73 | 
+      74 | test('ConsoleReporter.info', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:71:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.info
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "info foobar",
+    +   "stdout": "ℹ️  info foobar",
+      }
+
+      77 |       r.info('foobar');
+      78 |     }),
+    > 79 |   ).toMatchSnapshot();
+      80 | });
+      81 | 
+      82 | test('ConsoleReporter.command', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:79:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.warn
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+    -   "stderr": "warning foobar",
+    +   "stderr": "⚠️  warning foobar",
+        "stdout": "",
+      }
+
+      93 |       r.warn('foobar');
+      94 |     }),
+    > 95 |   ).toMatchSnapshot();
+      96 | });
+      97 | 
+      98 | test('ConsoleReporter.tree', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:95:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.select
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "info Ayo?
+    +   "stdout": "ℹ️  info Ayo?
+        1) foo
+        2) bar
+      Select one: 1",
+      }
+
+      154 |       expect(res).toBe('foo');
+      155 |     }),
+    > 156 |   ).toMatchSnapshot();
+      157 | });
+      158 | 
+      159 | test('ConsoleReporter.progress', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:156:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+ › 5 snapshot tests failed.
+ PASS  __tests__/config.js
+  ✓ getOption changes ~ to cwd when resolve=true (89ms)
+  ✓ getOption does not change ~ when resolve=false (62ms)
+  ✓ getOption does not change empty-string when resolve=true (15ms)
+  ✓ getOption does not change empty-string when resolve=false (8ms)
+  workspaces config
+    ✓ accessing workspaces config requires explicit enabling (10ms)
+    ✓ can adapt legacy workspaces to new format (1ms)
+    ✓ workspaces is eligible only for private packages (10ms)
+    ✓ nohoist is eligible only for private packages and workspacesNohoistEnabled (10ms)
+    ✓ can throw exception for eligibility violation (9ms)
+    ✓ can report eligibility warnings (17ms)
+
+ PASS  __tests__/lifecycle-scripts.js (6.681s)
+  ✓ should add the global yarnrc arguments to the command line (2234ms)
+  ✓ should add the command-specific yarnrc arguments to the command line if the command name matches
+  ✓ should not add the command-specific yarnrc arguments if the command name doesn't match
+  ✓ should allow overriding the yarnrc values from the command line (30ms)
+  ✓ should resolve the yarnrc values relative to where the file lives (131ms)
+  ✓ should expose `npm_config_argv` env variable to lifecycle scripts for back compatibility with npm (1593ms)
+  ✓ should not run pre/post hooks for .bin executables
+  ✓ should not run pre/post hooks if they are .bin executables and not scripts
+  ✓ should only expose non-internal configs
+  ✓ should run both prepublish and prepare when installing, but not prepublishOnly
+  ✓ should run both prepack and postpack
+  ✓ should allow setting environment variables via yarnrc
+  ✓ should inherit existing environment variables when setting via yarnrc
+  ✓ should not show any error messages when script ends successfully (921ms)
+  ✓ should throw error when the script ends with an exit code (836ms)
+  ✓ should throw error when the script ends with an exit signal (806ms)
+
+ PASS  __tests__/commands/version.js
+  ✓ run version with no arguments and --new-version flag (193ms)
+  ✓ run version with no arguments, --new-version flag where version is same as pkg.version (25ms)
+  ✓ run version with --non-interactive and --new-version should succeed (54ms)
+  ✓ run version with --non-interactive and without --new-version should succeed (34ms)
+  ✓ run version and make sure all lifecycle steps are executed (40ms)
+  ✓ run version and make sure only the defined lifecycle steps are executed (32ms)
+  ✓ run version and make sure git commit hooks are enabled by default (20ms)
+  ✓ run version with --no-commit-hooks and make sure git commit hooks are disabled (26ms)
+  ✓ run version and make sure commit hooks are disabled by config (22ms)
+  ✓ run version with --major flag and make sure major version is incremented (17ms)
+  ✓ run version with --minor flag and make sure minor version is incremented (25ms)
+  ✓ run version with --patch flag and make sure patch version is incremented (16ms)
+
+ PASS  __tests__/util/git/git-ref-resolver.js
+  ✓ resolveVersion (104ms)
+  ✓ isCommitSha (1ms)
+  ✓ parseRefs (1ms)
+
+ PASS  __tests__/commands/outdated.js
+  ✓ throws if lockfile is out of date (705ms)
+  ✓ no output when current matches latest (3ms)
+  ✓ works with no arguments
+  ✓ works with single argument
+  ✓ works with multiple arguments
+  ✓ works with exotic resolvers (19ms)
+  ✓ hides when current > latest (next, beta tag)
+  ✓ shows when wanted > current and current > latest (39ms)
+  ✓ displays correct dependency types (1ms)
+  ✓ shows dependencies from entire workspace (70ms)
+
+ PASS  __tests__/commands/init.js
+  ✓ init should create package.json on current cwd (36ms)
+  ✓ init --yes should create package.json with defaults (38ms)
+  ✓ init --yes --private should create package.json with defaults and private true (43ms)
+  ✓ init should use init-* configs when defined (44ms)
+  ✓ init using Github shorthand should resolve to full repository URL (33ms)
+  ✓ init and give private empty (15ms)
+  ✓ getGitConfigInfo should not return the git config val
+  ✓ getGitConfigInfo should not fail when git fails
+
+ PASS  __tests__/integration.js (155.861s)
+  ✓ yarn add scrollin (2983ms)
+  ✓ yarn add https://git@github.com/stevemao/left-pad.git (549ms)
+  ✓ yarn add https://github.com/bestander/chrome-app-livereload.git
+  ✓ yarn add bestander/chrome-app-livereload (61ms)
+  ✓ yarn add https://github.com/yarnpkg/yarn/releases/download/v0.18.1/yarn-v0.18.1.tar.gz (37227ms)
+  ✓ yarn add react-scripts@1.0.13 (50651ms)
+  ✓ --mutex network (22578ms)
+  ✓ --mutex network with busy port (792ms)
+  ✓ --cwd option (1358ms)
+  ✓ default rc (917ms)
+  ✓ --no-default-rc (882ms)
+  ✓ --use-yarnrc (860ms)
+  ✓ yarnrc arguments (2199ms)
+  ✓ yarn run <script> --opt (2957ms)
+  ✓ yarn run <script> -- --opt (1306ms)
+  ✓ yarn run <script> <strings that need escaping> (897ms)
+  ✓ yarn run <failing script> (730ms)
+  ✓ yarn run in path need escaping (740ms)
+  ✓ cache folder fallback (1442ms)
+  ✓ relative cache folder (738ms)
+  ✓ yarn create (2300ms)
+  ✓ yarn init -y (542ms)
+  production
+    ✓ it should be true when NODE_ENV=production (981ms)
+    ✓ it should default to false (866ms)
+    ✓ it should prefer CLI over NODE_ENV (864ms)
+    ✓ it should prefer YARN_PRODUCTION over NODE_ENV (713ms)
+    ✓ it should prefer CLI over YARN_PRODUCTION (514ms)
+  --registry option
+    ✓ --registry option with npm registry (1546ms)
+    ✓ --registry option with yarn registry (1313ms)
+    ✓ --registry option with non-exiting registry and show an error (13006ms)
+    ✓ registry option from yarnrc (1688ms)
+  yarnrc path
+    ✓ js file (348ms)
+    ✓ executable file (214ms)
+    ✓ js file exit code (350ms)
+    ✓ sh file exit code (210ms)
+
+ PASS  __tests__/util/semver.js
+  satisfiesWithPrereleases
+    ✓ matches the behavior of node-semver for non-prerelease versions (10ms)
+    ✓ matches inexact prerelease versions (4ms)
+    ✓ rejects prerelease versions that are too small (1ms)
+    ✓ rejects prerelease versions that are too big (1ms)
+    ✓ rejects prerelease versions that are invalid (1ms)
+    ✓ follows the semver spec when comparing prerelease versions (2ms)
+  diffWithUnstable
+    ✓ matches the behavior of node-semver for stable versions (2ms)
+    ✓ treats patch and minor releases for pre-major versions as minor & major respectively (1ms)
+    ✓ treats patch and minor releases for pre-minor versions as major (2ms)
+    ✓ returns null for equal versions (1ms)
+
+ PASS  __tests__/commands/info.js
+  ✓ without arguments and in directory containing a valid package file (693ms)
+  ✓ with first argument "." and in directory containing a valid package file (54ms)
+  ✓ with one argument shows info about the package with specified name
+  ✓ with one argument does not contain readme field
+  ✓ with two arguments and second argument "readme" shows readme string
+  ✓ with two arguments and second argument "version" shows `latest` version
+  ✓ with two arguments and second argument as a simple field
+  ✓ with two arguments and second argument as "."-separated field path (1ms)
+  ✓ with two arguments and second argument as a non-existing field
+  ✓ with two arguments and second argument path containing non-existing field
+  ✓ reports error on invalid package names (65ms)
+  ✓ reports error with too many arguments (3ms)
+
+ PASS  __tests__/commands/cache.js
+  ✓ list (418ms)
+  ✓ list skips corrupted package (97ms)
+  ✓ ls with scoped packages (270ms)
+  ✓ ls with filter that matches cache (273ms)
+  ✓ ls with filter that matches cache with wildcard (310ms)
+  ✓ ls with multiple patterns, one matching (233ms)
+  ✓ ls with pattern that only partially matches (526ms)
+  ✓ ls with filter that does not match (299ms)
+  ✓ ls filter by pattern with scoped package (208ms)
+  ✓ dir (63ms)
+  ✓ clean (288ms)
+  ✓ clean with package name (222ms)
+  ✓ clean with multiple package names (97ms)
+
+running the prepublish hook
+running the prepare hook
+running the prepublishOnly hook
+running the prepack hook
+running the postpack hook
+running the publish hook
+running the postpublish hook
+ PASS  __tests__/commands/publish.js
+  ✓ publish should default access to undefined (414ms)
+  ✓ publish should accept `--access restricted` argument
+  ✓ publish should accept `--access public` argument
+  ✓ publish should use publishConfig.access in package manifest (1ms)
+  ✓ publish should allow `--access` to override publishConfig.access (1ms)
+  ✓ publish should run lifecycle scripts in the correct order (35ms)
+  ✓ can specify a path
+  ✓ can specify a path without `--new-version`
+  ✓ publish should respect publishConfig.registry 
+  ✓ publish with publishConfig.registry and --registry (1ms)
+
+ PASS  __tests__/normalize-manifest.js
+  ✓ author object normalize (98ms)
+  ✓ author string (12ms)
+  ✓ authors file to contributors (14ms)
+  ✓ bin string (10ms)
+  ✓ binding.gyp scripts.install (10ms)
+  ✓ bugs string (10ms)
+  ✓ bundledDependencies alias (9ms)
+  ✓ clean version (10ms)
+  ✓ clean version with v (9ms)
+  ✓ contributors array expand (14ms)
+  ✓ dedupe all trivial dependencies (15ms)
+  ✓ dedupe dependencies (12ms)
+  ✓ dedupe dependencies root (12ms)
+  ✓ dedupe optionalDependencies (14ms)
+  ✓ dedupe optionalDependencies root (11ms)
+  ✓ dedupe single trivial dependency (31ms)
+  ✓ empty bin string (14ms)
+  ✓ engines array (14ms)
+  ✓ explode directories.bin (13ms)
+  ✓ explode directories.man (13ms)
+  ✓ extract description (17ms)
+  ✓ homepage string (14ms)
+  ✓ hosted git repository url (15ms)
+  ✓ keywords string (14ms)
+  ✓ maintainers array expand (14ms)
+  ✓ man string (12ms)
+  ✓ name (13ms)
+  ✓ readme (12ms)
+  ✓ repository string (12ms)
+  ✓ scoped bin string (9ms)
+  ✓ server scripts.start (12ms)
+  ✓ throw name blacklist (19ms)
+  ✓ throw name illegal character (20ms)
+  ✓ throw name non-string (21ms)
+  ✓ throw name start dot (13ms)
+  ✓ throw name url encode required (16ms)
+  ✓ valid license (109ms)
+  ✓ version (11ms)
+  ✓ warn builtin module collision (13ms)
+  ✓ warn empty string invalid license (10ms)
+  ✓ warn invalid license (9ms)
+  ✓ warn typo (10ms)
+  ✓ license warnings should not be thrown with global commands (7ms)
+  ✓ util.stringifyPerson (1ms)
+  ✓ util.parsePerson (1ms)
+  ✓ util.extractDescription
+  ✓ util.extractRepositoryUrl (1ms)
+
+ PASS  __tests__/util/execute-lifecycle-script.js
+  makeEnv
+    ✓ assigns npm_lifecycle_event to env (134ms)
+    ✓ assigns NODE_ENV production (10ms)
+    ✓ assigns INIT_CWD to env (8ms)
+    npm_package_*
+      ✓ assigns npm_lifecycle_script if manifest has a matching script (11ms)
+      ✓ does not overwrite npm_lifecycle_script if manifest does not have a matching script (10ms)
+      ✓ recursively adds keys separated by _ (9ms)
+      ✓ replaces invalid chars with _ (15ms)
+      ✓ it omits certain fields which tend to be too large (32ms)
+    npm_package_config_*
+      ✓ overwrites npm_package_config_* keys from yarn config or npm config (16ms)
+      ✓ does not overwrite if the name does not match the manifest (16ms)
+
+ PASS  __tests__/resolvers/exotics/bitbucket-resolver.js
+  ✓ hostname should be "bitbucket.org"  (2ms)
+  ✓ protocol should be "bitbucket" 
+  ✓ explodeHostedGitFragment should work for colon separator after host (1ms)
+  ✓ explodeHostedGitFragment should work for colon separator after host and with protocol before
+  ✓ explodeHostedGitFragment should work for slash separator after host (6ms)
+  ✓ explodeHostedGitFragment should work for package name and colon separator after host (1ms)
+  ✓ getTarballUrl should return the correct bitbucket tarball url
+  ✓ getGitHTTPBaseUrl should return the correct git bitbucket base url (1ms)
+  ✓ getGitHTTPUrl should append ".git" to the HTTP base URL
+  ✓ getGitHTTPUrl should return the correct git bitbucket SSH url
+  ✓ getHTTPFileUrl should return the correct HTTP file url (1ms)
+  ✓ getGitSSHUrl should return URL containing protocol (9ms)
+
+ PASS  __tests__/reporters/json-reporter.js
+  ✓ JSONReporter.step (4ms)
+  ✓ JSONReporter.footer (2ms)
+  ✓ JSONReporter.log
+  ✓ JSONReporter.command (7ms)
+  ✓ JSONReporter.success (1ms)
+  ✓ JSONReporter.error (1ms)
+  ✓ JSONReporter.warn (1ms)
+  ✓ JSONReporter.info
+  ✓ JSONReporter.activity (4ms)
+  ✓ JSONReporter.progress (6ms)
+  ✓ JSONReporter.auditAction (2ms)
+  ✓ JSONReporter.auditAdvisory (1ms)
+  ✓ JSONReporter.auditSummary (1ms)
+
+ PASS  __tests__/commands/audit.js
+  ✓ sends correct dependency map to audit api for single dependency. (722ms)
+  ✓ calls reporter auditAdvisory with correct data (57ms)
+  ✓ calls reporter auditSummary with correct data (70ms)
+
+ PASS  __tests__/util/user-dirs.js
+  getDataDir
+    on windows
+      ✓ uses Yarn/data within LOCALAPPDATA if it exists (4ms)
+      ✓ uses the config dir otherwise (1ms)
+    on linux/darwin
+      ✓ uses XDG_DATA_HOME if it is set (1ms)
+      ✓ falls back to the config dir
+  getCacheDir
+    on windows
+      ✓ uses Yarn\Cache within LOCALAPPDATA if it exists
+      ✓ uses AppData\Local\Cache otherwise
+    on darwin (macOS)
+      ✓ uses XDG_CACHE_HOME if it is set (1ms)
+      ✓ falls back to Library/Caches/Yarn
+    on others (linux, etc)
+      ✓ uses XDG_CACHE_HOME if it is set (1ms)
+      ✓ falls back to .cache/yarn
+  getConfigDir
+    on windows
+      ✓ uses Yarn\Config within LOCALAPPDATA if it exists (1ms)
+      ✓ uses the config dir otherwise
+    on linux/darwin
+      ✓ uses XDG_CONFIG_HOME if it is set
+      ✓ falls back to .config/yarn (1ms)
+
+ PASS  __tests__/reporters/base-reporter.js
+  ✓ BaseReporter.getTotalTime (2ms)
+  ✓ BaseReporter.step (1ms)
+  ✓ BaseReporter.error
+  ✓ BaseReporter.warn
+  ✓ BaseReporter.info
+  ✓ BaseReporter.success
+  ✓ BaseReporter.log
+  ✓ BaseReporter.command
+  ✓ BaseReporter.header
+  ✓ BaseReporter.footer
+  ✓ BaseReporter.activity
+  ✓ BaseReporter.question (1ms)
+  ✓ BaseReporter.select (1ms)
+  ✓ BaseReporter.progress
+  ✓ BaseReporter.disableProgress
+  ✓ BaseReporter.termstrings (1ms)
+  ✓ BaseReporter.prompt (1ms)
+  ✓ stringifyLangArgs should replace \n and \r\n with new line
+  ✓ stringifyLangArgs should not replace \\n with new line (1ms)
+
+ PASS  __tests__/util/filter.js
+  ✓ ignoreLinesToRegex (12ms)
+  ✓ filterOverridenGitignores (1ms)
+
+  console.warn __tests__/__mocks__/request.js:97
+    No request cache for https://raw.githubusercontent.com/bestander/chrome-app-livereload/e7539a7c82858db89069b9276befcff807a4caee/package.json
+
+ PASS  __tests__/resolvers/index.js
+  ✓ getExoticResolver does not return a Resolver for 0.0.0 pattern (58ms)
+  ✓ getExoticResolver returns NPM Registry Resolver for npm:0.0.0 pattern (2ms)
+  ✓ getExoticResolver returns Yarn Registry Resolver for yarn:0.0.0 pattern (2ms)
+  ✓ getExoticResolver returns Git Resolver for git+ssh://... pattern
+  ✓ getExoticResolver returns Git Resolver for git+https://... pattern (1ms)
+  ✓ getExoticResolver returns Git Resolver for git+file:///... pattern
+  ✓ getExoticResolver returns Git Resolver for git://... pattern
+  ✓ getExoticResolver returns Git Resolver for ssh://... pattern (1ms)
+  ✓ getExoticResolver returns Git Resolver for http://... pattern with .git extension
+  ✓ getExoticResolver returns Git Resolver for https://... pattern with .git extension
+  ✓ getExoticResolver returns Tarball Resolver for http://... pattern (1ms)
+  ✓ getExoticResolver returns Tarball Resolver for https://... pattern (1ms)
+  ✓ getExoticResolver returns Gist Resolver for gist://... pattern (1ms)
+
+  console.warn __tests__/__mocks__/request.js:97
+    No request cache for https://raw.githubusercontent.com/bestander/chrome-app-livereload/e7539a7c82858db89069b9276befcff807a4caee/yarn.json
+
+ PASS  __tests__/commands/autoclean.js
+  ✓ tells user to run with --init when .yarnclean does not exist (448ms)
+  ✓ tells user to run with --init when .yarnclean does not exist and --force
+  ✓ tells user to edit .yarnclean after init
+  ✓ creates .yarnclean when --init passed (2ms)
+  ✓ tells user to run with --force when .yarnclean exists
+  ✓ tells user file exists already when --init and .yarnclean exists (1ms)
+  ✓ runs clean when --force passed and .yarnclean exists (12ms)
+  ✓ runs clean even through workspaces (82ms)
+
+ PASS  __tests__/commands/unlink.js
+  ✓ creates folder in linkFolder (276ms)
+  ✓ throws error if package.json does not have name
+  ✓ creates cmd file on Windows
+
+ PASS  __tests__/package-request.js
+  ✓ Produce valid remote type for a git-over-ssh dep (119ms)
+  ✓ Produce valid remote type for a git-over-https dep (9ms)
+  ✓ Produce valid remote type for a git public dep (8ms)
+  ✓ Check parentNames flowing in the request (14ms)
+
+ PASS  __tests__/resolvers/exotics/git-resolver.js
+  ✓ isVersion true for ssh: protocol (2ms)
+  ✓ isVersion true for git: protocol
+  ✓ isVersion true for git+ssh: protocol (1ms)
+  ✓ isVersion true for http: protocol when ends with .git
+  ✓ isVersion true for http: protocol when ends with .git and hash
+  ✓ isVersion false for http: protocol when does not end with .git (1ms)
+  ✓ isVersion false for http: protocol when does not end with .git with hash
+  ✓ isVersion true for https: protocol when ends with .git
+  ✓ isVersion true for https: protocol when ends with .git and hash (1ms)
+  ✓ isVersion false for https: protocol when does not end with .git
+  ✓ isVersion false for https: protocol when does not end with .git with hash
+  ✓ isVersion false for file: protocol when ends with .git (1ms)
+  ✓ isVersion true for any github.com repo url
+  ✓ isVersion true for any gitlab.com repo url
+  ✓ isVersion true for any bitbucket.com repo url (1ms)
+  ✓ isVersion false for any github url to archive file
+
+ PASS  __tests__/commands/create.js
+  parsePackageName
+    ✓ invalid (78ms)
+    ✓ basic (2ms)
+    ✓ without name (1ms)
+  coerceCreatePackageName
+    ✓ invalid (1ms)
+    ✓ basic (2ms)
+    ✓ not postfixing with "-" if name is emptu
+
+ PASS  __tests__/util/git/git-spawn.js
+  spawn
+    ✓ spawn with default (9ms)
+    ✓ spawn with plink (7ms)
+    ✓ spawn with custom GIT_SSH (7ms)
+    ✓ spawn with custom GIT_SSH_COMMAND (22ms)
+
+ PASS  __tests__/commands/config.js
+  ✓ write cache-folder config into .yarnrc file (210ms)
+  ✓ cache-folder flag has higher priorities than .yarnrc file (13ms)
+  ✓ bin-links flag has higher priorities than .yarnrc file (13ms)
+  ✓ set true when option value is undefined (18ms)
+  ✓ set empty string to an option (10ms)
+  ✓ set value "false" to an option (17ms)
+  ✓ set value "true" to an option (10ms)
+
+ PASS  __tests__/commands/workspaces.js
+  ✓ workspaces info should list the workspaces (165ms)
+  ✓ workspaces run should spawn command for each workspace (11ms)
+
+ PASS  __tests__/commands/workspace.js
+  ✓ workspace run command (95ms)
+  ✓ workspace run command forwards raw arguments (10ms)
+
+ PASS  __tests__/commands/licenses.js
+  ✓ list should show licenses of dependencies (294ms)
+  ✓ generate-disclaimer should show license texts of dependencies (55ms)
+
+ PASS  __tests__/rc.js
+  ✓ resolve .yarnrc args and use --cwd if present (155ms)
+  ✓ don't resolve .yarnrc args from the default locations when using --no-default-rc (1ms)
+  ✓ resolve .yarnrc args from the extraneous locations when using --use-yarnrc
+  ✓ resolve .yarnrc args and use process.cwd() if no --cwd present (2ms)
+  ✓ resolve .yarnrc args and handle --cwd arg inside .yarnrc (6ms)
+  ✓ resolve .yarnrc args and bail out of recursive --cwd args inside of .yarnrc (3ms)
+  ✓ resolve .yarnrc args and adds command name prefixed arguments (2ms)
+
+ PASS  __tests__/util/fix-cmd-win-slashes.js
+  fixCmdWinSlashes
+    ✓ fixes just slashed command (41ms)
+    ✓ fixes slashed command in double quotes (1ms)
+    ✓ slashed command in single quotes (1ms)
+    ✓ fixes slashed command with slashed param
+    ✓ fixes slashed command in single quotes with two slashed params (1ms)
+    ✓ fixes two slashed commands (&&) with two slashed params
+    ✓ fixes three slashed commands (&&) with two slashed params (1ms)
+    ✓ does not change nested command (inside the quotes)
+
+ PASS  __tests__/resolvers/exotics/hosted-git-resolver.js
+  ✓ explodeHostedGitFragment jure/lens#fix-issue-#96 -> user: 'jure' (2ms)
+  ✓ explodeHostedGitFragment jure/lens#fix-issue-#96 -> repo: 'lens'
+  ✓ explodeHostedGitFragment jure/lens#fix-issue-#96 -> hash: 'fix-issue-#96' (1ms)
+  ✓ explodeHostedGitFragment jure/lens#feature/fix-issue -> user: 'jure'
+  ✓ explodeHostedGitFragment jure/lens#feature/fix-issue -> repo: 'lens' (1ms)
+  ✓ explodeHostedGitFragment jure/lens#feature/fix-issue -> hash: 'feature/fix-issue'
+  ✓ explodeHostedGitFragment jure/lens.github -> user: 'jure'
+  ✓ explodeHostedGitFragment jure/lens.github -> repo: 'lens.github' (1ms)
+  ✓ explodeHostedGitFragment jure/lens.github -> hash: ''
+  ✓ explodeHostedGitFragment jure/lens#semver:^3.0.0 -> user: 'jure'
+  ✓ explodeHostedGitFragment jure/lens#semver:^3.0.0 -> repo: 'lens'
+  ✓ explodeHostedGitFragment jure/lens#semver:^3.0.0 -> hash: 'semver:^3.0.0' (1ms)
+  ✓ explodeHostedGitFragment github:jure/lens -> user: 'jure'
+  ✓ explodeHostedGitFragment github:jure/lens -> repo: 'lens'
+  ✓ explodeHostedGitFragment github:jure/lens -> hash: '' (1ms)
+  ✓ explodeHostedGitFragment bitbucket:jure/lens -> user: 'jure'
+  ✓ explodeHostedGitFragment bitbucket:jure/lens -> repo: 'lens'
+  ✓ explodeHostedGitFragment bitbucket:jure/lens -> hash: ''
+  ✓ explodeHostedGitFragment git+ssh://git@github.com:jure/lens -> user: 'jure' (1ms)
+  ✓ explodeHostedGitFragment git+ssh://git@github.com:jure/lens -> repo: 'lens' (2ms)
+  ✓ explodeHostedGitFragment git+ssh://git@github.com:jure/lens -> hash: ''
+  ✓ explodeHostedGitFragment git+ssh://git@github.com:jure/lens.git -> user: 'jure'
+  ✓ explodeHostedGitFragment git+ssh://git@github.com:jure/lens.git -> repo: 'lens'
+  ✓ explodeHostedGitFragment git+ssh://git@github.com:jure/lens.git -> hash: ''
+  ✓ explodeHostedGitFragment git://git@github.com:jure/lens.git -> user: 'jure' (1ms)
+  ✓ explodeHostedGitFragment git://git@github.com:jure/lens.git -> repo: 'lens'
+  ✓ explodeHostedGitFragment git://git@github.com:jure/lens.git -> hash: ''
+  ✓ explodeHostedGitFragment git+https://login@github.com/jure/lens.git -> user: 'jure'
+  ✓ explodeHostedGitFragment git+https://login@github.com/jure/lens.git -> repo: 'lens'
+  ✓ explodeHostedGitFragment git+https://login@github.com/jure/lens.git -> hash: '' (1ms)
+  ✓ explodeHostedGitFragment git+ssh://git@github.com/jure/lens.git#semver:^3.1.0 -> user: 'jure'
+  ✓ explodeHostedGitFragment git+ssh://git@github.com/jure/lens.git#semver:^3.1.0 -> repo: 'lens'
+  ✓ explodeHostedGitFragment git+ssh://git@github.com/jure/lens.git#semver:^3.1.0 -> hash: 'semver:^3.1.0'
+  ✓ explodeHostedGitFragment git+http://login@github.com/jure/lens.git -> user: 'jure'
+  ✓ explodeHostedGitFragment git+http://login@github.com/jure/lens.git -> repo: 'lens' (1ms)
+  ✓ explodeHostedGitFragment git+http://login@github.com/jure/lens.git -> hash: ''
+
+ PASS  __tests__/commands/install/integration-hoisting.js
+  ✓ install hoister should prioritise popular transitive dependencies (585ms)
+  ✓ install hoister should prioritise popular deep dependencies (48ms)
+  ✓ install hoister should not install prioritised popular transitive devDependencies in --prod mode
+
+ PASS  __tests__/util/child.js
+  ✓ should forward signals to all spawned child processes (31ms)
+  ✓ should not attempt to forward signals to children that already terminated (2ms)
+
+ PASS  __tests__/util/fs-normalized.js
+  fileDatesEqual
+    !win32
+      ✓ Same dates equal (25ms)
+      ✓ Different dates differ (1ms)
+    win32
+      ✓ Same dates equal
+      ✓ Different dates differ (1ms)
+      ✓ Milliseconds are ignored when one date has zero milliseconds (1ms)
+
+ PASS  __tests__/resolvers/exotics/gitlab-resolver.js
+  ✓ getGitSSHUrl with hash (3ms)
+  ✓ getGitSSHUrl with no hash (1ms)
+  ✓ getGitHTTPBaseUrl should return the correct git gitlab HTTP base url (1ms)
+  ✓ getGitHTTPUrl should append ".git" to the HTTP base URL (1ms)
+  ✓ getGitSSHUrl should return URL containing protocol (13ms)
+
+ PASS  __tests__/resolvers/exotics/github-resolver.js
+  ✓ getGitSSHUrl with hash (2ms)
+  ✓ getGitSSHUrl with no hash (1ms)
+  ✓ getGitHTTPBaseUrl should return the correct git github HTTP base url
+  ✓ getGitHTTPUrl should append ".git" to the HTTP base URL
+  ✓ getGitSSHUrl should return URL containing protocol (4ms)
+
+ PASS  __tests__/commands/link.js
+  ✓ creates folder in linkFolder (98ms)
+  ✓ throws error if package.json does not have name (1ms)
+  ✓ creates cmd file on Windows
+
+ PASS  __tests__/util/guess-name.js
+  guessName
+    ✓ guess name of http://github.com/foo-bar/awesome-name (3ms)
+    ✓ guess name of http://github.com/foo-bar/awesome-name.git
+    ✓ guess name of http://awesome.com/awesome-name.git (1ms)
+    ✓ guess name of http://awesome.com/awesome-name.git?foo/bar#fiz/fuz
+    ✓ guess name of https://github.com/hashicorp/awesome-name/archive/v0.5.5.tar.gz
+    ✓ guess name of https://gitlab.com/foo/awesome-name/repository/archive.tar.gz?ref=3.11.0 (1ms)
+    ✓ guess name of https://gitlab.com/foo/awesome-name/repository/archive.tar.bz2?ref=3.11.0
+    ✓ guess name of https://gitlab.com/foo/awesome-name/repository/archive.tar?ref=3.11.0 (1ms)
+    ✓ guess name of https://gitlab.com/foo/awesome-name/repository/archive.zip?ref=3.11.0
+    ✓ guess name of git@gitlab.com:yolo/awesome-name.git (1ms)
+    ✓ guess name of https://gitlab.com/yolo/awesome-name.git
+    ✓ guess name of https://asesome.com/yolo/awesome-name-0.2.3.tar.gz
+    ✓ guess name of /foo/bar/awesome-name (1ms)
+    ✓ guess name of ./foo/bar/awesome-name
+    ✓ guess name of ../foo/bar/awesome-name (1ms)
+    ✓ guess name of file:../foo/bar/awesome-name
+    ✓ guess name of file:../foo/bar/awesome-name.tar.gz
+    ✓ guess name of awesome-name (1ms)
+    ✓ guess name of awesome-name.tar.gz
+  guessName dot examples
+    ✓ guess name of awesomename/awesome.name (1ms)
+    ✓ guess name of awesomename/awesome.name.git
+    ✓ guess name of awesomename/awesome.name.tar.gz
+    ✓ guess name of awesomename/awesome.name.tar.bz2 (1ms)
+
+ PASS  __tests__/reporters/event-reporter.js
+  ✓ EventReporter.finished (4ms)
+  ✓ EventReporter.step (2ms)
+  ✓ EventReporter.log
+  ✓ EventReporter.success (1ms)
+  ✓ EventReporter.error (1ms)
+  ✓ EventReporter.info (1ms)
+  ✓ EventReporter.command (1ms)
+  ✓ EventReporter.warn
+
+ PASS  __tests__/util/conversion.js
+  boolify
+    ✓ should recognize "true" values (2ms)
+    ✓ should recognize "false" values (1ms)
+    ✓ should treat unrecognized values as "true"
+  boolifyWithDefault
+    ✓ should return the default for empty values (2ms)
+    ✓ should be consistent with boolify() for non-empty values (4ms)
+
+ PASS  __tests__/hooks.js
+  ✓ install should call the resolveStep hook (234ms)
+  ✓ install should call the fetchStep hook (137ms)
+  ✓ install should call the linkStep hook (79ms)
+  ✓ install should call the buildStep hook (70ms)
+
+ PASS  __tests__/commands/upgrade-interactive.js
+  ✓ throws if lockfile is out of date (409ms)
+  ✓ exits with success if no upgrades (2ms)
+
+ PASS  __tests__/reporters/buffer-reporter.js
+  ✓ BufferReporter.finished (4ms)
+  ✓ BufferReporter.step (2ms)
+  ✓ BufferReporter.log
+  ✓ BufferReporter.success (1ms)
+  ✓ BufferReporter.error (1ms)
+  ✓ BufferReporter.info (1ms)
+  ✓ BufferReporter.command
+  ✓ BufferReporter.warn (1ms)
+
+ PASS  __tests__/util/path.js
+  resolveWithHome
+    ✓ Paths without home are resolved (1ms)
+    !win32
+      ✓ Paths with home are resolved (43ms)
+    win32
+      ✓ Paths with home are resolved (1ms)
+
+ PASS  __tests__/util/promise.js
+  ✓ promisify (7ms)
+  ✓ queue (7ms)
+
+ PASS  __tests__/commands/bin.js
+  ✓ running bin without arguments should return the folder where the binaries are stored (205ms)
+  ✓ running bin with a binary name as the argument should return its full path (720ms)
+
+ PASS  __tests__/package-compatibility.js
+  ✓ node semver semantics (16ms)
+  ✓ ignore semver prerelease semantics for yarn (1ms)
+
+ PASS  __tests__/util/env-replace.js
+  environment variable replacement
+    ✓ will replace a token that exists in the environment (2ms)
+    ✓ will not replace a token that does not exist in the environment
+    ✓ will not replace a token when a the token-replacement mechanism is prefixed a backslash literal (1ms)
+
+ PASS  __tests__/resolvers/exotics/registry-resolver.js
+  ✓ resolves unscoped npm: package (2ms)
+  ✓ resolves scoped npm: package (1ms)
+  ✓ resolves unscoped yarn: package
+  ✓ resolves scoped yarn: package
+
+ PASS  __tests__/util/parse-package-path.js
+  ✓ parsePackagePath (3ms)
+  ✓ isValidPackagePath (1ms)
+
+ PASS  __tests__/commands/install/unit.js
+  ✓ flat arg is inherited from root manifest (62ms)
+
+ PASS  __tests__/commands/owner.js
+  ✓ list should show owners (429ms)
+
+ PASS  __tests__/util/blocking-queue.js
+  ✓ max concurrency (12ms)
+
+ PASS  __tests__/util/signal-handler.js
+  ✓ should attach a handler for SIGTERM event (20ms)
+  ✓ attached SIGTERM handler should exit with status code 1 when invoked (4ms)
+
+ PASS  __tests__/util/root-user.js
+  ✓ isRootUser (2ms)
+  ✓ isFakeRoot (1ms)
+
+ PASS  __tests__/util/colorize-diff.js
+  colorizeDiff
+    when `from` and `to` versions are identical
+      ✓ returns from/to value (3ms)
+
+ PASS  __tests__/util/parse-package-name.js
+  ✓ parsePackageName (3ms)
+
+ PASS  __tests__/constants.js
+  ✓ getPathKey (5ms)
+
+ PASS  __tests__/util/misc.js
+  ✓ sortAlpha (3ms)
+
+ PASS  __tests__/package-resolver.js (16.453s)
+  ✓ resolve https://github.com/ocaml/ocaml-re (4196ms)
+  ✓ resolve git+https://github.com/stevemao/left-pad.git#1.3.0
+  ✓ resolve https://github.com/stevemao/left-pad.git#1.3.0 (1ms)
+  ✓ resolve https://git@github.com/stevemao/left-pad.git
+  ✓ resolve https://bitbucket.org/hgarcia/node-bitbucket-api.git (180ms)
+  ✓ resolve https://github.com/yarnpkg/yarn/releases/download/v0.18.1/yarn-v0.18.1.tar.gz (11910ms)
+  ✓ resolve https://github.com/yarnpkg/e2e-test-repo.git#greenkeeper/cross-env-3.1.4
+  ✓ resolve https://github.com/bestander/chrome-app-livereload.git
+  ✓ resolve livereload@https://github.com/bestander/chrome-app-livereload.git
+  ✓ resolve bestander/chrome-app-livereload
+  ✓ resolve livereload@https://github.com/bestander/chrome-app-livereload/archive/0.0.5.tar.gz
+  ✓ resolve gitlab:leanlabsio/kanban
+  ✓ resolve gist:d59975ac23e26ad4e25b (1ms)
+  ✓ resolve bitbucket:hgarcia/node-bitbucket-api
+  ✓ resolve scrollin
+  ✓ resolve gulp
+  ✓ resolve react-native
+  ✓ resolve ember-cli
+  ✓ resolve npm:gulp
+  ✓ resolve @polymer/iron-icon
+  ✓ offline resolve @foo/bar@1.2.3
+  ✓ addPattern does not add duplicates
+
+ PASS  __tests__/commands/install/bin-links.js (128.749s)
+  ✓ install should hoist nested bin scripts (15381ms)
+  ✓ direct dependency bin takes priority over transitive bin (9066ms)
+  ✓ install should respect --no-bin-links flag (7573ms)
+  ✓ newer transitive dep is overridden by newer direct dep (8605ms)
+  ✓ newer transitive dep is overridden by older direct dep (11731ms)
+  ✓ first transient dep is installed when same level and reference count (11482ms)
+  ✓ first dep is installed when same level and reference count and one is a dev dep (9465ms)
+  ✓ direct dependency is linked when bin name conflicts with transitive dependency (395ms)
+  ✓ Only top level (after hoisting) bin links should be linked (46543ms)
+  ✓ can use link protocol to install a package that would not be found via node module resolution (7333ms)
+  ✓ empty bin string does not create a link (56ms)
+  with nohoist
+    ✓ nohoist bin should be linked to its own local module (551ms)
+    ✓ nohoist bin should not be linked at top level, unless it is a top-level package (128ms)
+  with focus
+    ✓ focus points bin links to the shallowly installed packages (236ms)
+
+Summary of all failing tests
+ FAIL  __tests__/reporters/console-reporter.js
+  ● ConsoleReporter.success
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "success foobar",
+    +   "stdout": "✅  success foobar",
+      }
+
+      61 |       r.success('foobar');
+      62 |     }),
+    > 63 |   ).toMatchSnapshot();
+      64 | });
+      65 | 
+      66 | test('ConsoleReporter.error', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:63:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.error
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+    -   "stderr": "error foobar",
+    +   "stderr": ":red_cirle:  error foobar",
+        "stdout": "",
+      }
+
+      69 |       r.error('foobar');
+      70 |     }),
+    > 71 |   ).toMatchSnapshot();
+      72 | });
+      73 | 
+      74 | test('ConsoleReporter.info', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:71:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.info
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "info foobar",
+    +   "stdout": "ℹ️  info foobar",
+      }
+
+      77 |       r.info('foobar');
+      78 |     }),
+    > 79 |   ).toMatchSnapshot();
+      80 | });
+      81 | 
+      82 | test('ConsoleReporter.command', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:79:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.warn
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+    -   "stderr": "warning foobar",
+    +   "stderr": "⚠️  warning foobar",
+        "stdout": "",
+      }
+
+      93 |       r.warn('foobar');
+      94 |     }),
+    > 95 |   ).toMatchSnapshot();
+      96 | });
+      97 | 
+      98 | test('ConsoleReporter.tree', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:95:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+  ● ConsoleReporter.select
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "info Ayo?
+    +   "stdout": "ℹ️  info Ayo?
+        1) foo
+        2) bar
+      Select one: 1",
+      }
+
+      154 |       expect(res).toBe('foo');
+      155 |     }),
+    > 156 |   ).toMatchSnapshot();
+      157 | });
+      158 | 
+      159 | test('ConsoleReporter.progress', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:156:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+
+Snapshot Summary
+ › 5 snapshot tests failed in 1 test suite. Inspect your code changes or run `yarn run test-only -u` to update them.
+
+Test Suites: 1 failed, 87 passed, 88 total
+Tests:       5 failed, 3 skipped, 1192 passed, 1200 total
+Snapshots:   5 failed, 112 passed, 117 total
+Time:        254.843s
+Ran all test suites.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+Exited with code 1

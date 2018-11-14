@@ -148,5 +148,91 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.DetailedT
                 return ResourceManager.GetString("TestCase002Result", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt; gulp@4.0.0-alpha.3 test /home/travis/build/gulpjs/gulp
+        ///&gt; npm run-script lint &amp;&amp; mocha --reporter spec
+        ///&gt; gulp@4.0.0-alpha.3 lint /home/travis/build/gulpjs/gulp
+        ///&gt; jshint bin test index.js --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules &amp;&amp; jscs bin test index.js
+        ///✔ No problems
+        ///No code style errors found.
+        ///  gulp output stream
+        ///    dest()
+        ///  ✓ should return a stream
+        ///  ✓ should return a output stream that writes files (40ms)
+        ///  ✓ should return a output stream that does not write n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase003 {
+            get {
+                return ResourceManager.GetString("TestCase003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed 27
+        ///should return a stream
+        ///should return a output stream that writes files
+        ///should return a output stream that does not write non-read files
+        ///should return a output stream that writes streaming files into new directories
+        ///should return a output stream that writes streaming files into new directories (buffer: false)
+        ///should return a output stream that writes streaming files into new directories (read: false)
+        ///should return a output stream that writes streaming files into new directories (read: false, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase003Result {
+            get {
+                return ResourceManager.GetString("TestCase003Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt; nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSTestSuite
+        ///&gt; mocha &quot;.\unit_tests\*.js&quot;
+        ///
+        ///
+        ///
+        ///  sampleUnitTests
+        ///    1) Test method 1
+        ///    2) Test method 2
+        ///    ✓ Test (5ms) method 3 (5ms)
+        ///    ✓ Test (30s) method 4 (3ms)
+        ///    ✓ Test (1m) method 5 (3ms)
+        ///
+        ///
+        ///  3 passing (11ms)
+        ///  2 failing
+        ///
+        ///  1) sampleUnitTests
+        ///       Test method 1:
+        ///     Error: the string &quot;error&quot; was thrown, throw an Error :)
+        ///
+        ///
+        ///  2) sampleUnitTests
+        ///       Test method 2:
+        ///     Error: done() invoked with non-Error: hello
+        ///      at [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase004 {
+            get {
+                return ResourceManager.GetString("TestCase004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed 3
+        ///Test (5ms) method 3
+        ///Test (30s) method 4
+        ///Test (1m) method 5
+        ///
+        ///Failed 2
+        ///Test method 1
+        ///Test method 2
+        ///
+        ///Skipped 0.
+        /// </summary>
+        internal static string TestCase004Result {
+            get {
+                return ResourceManager.GetString("TestCase004Result", resourceCulture);
+            }
+        }
     }
 }

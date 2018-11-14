@@ -10,6 +10,7 @@
     using Agent.Plugins.TestResultParser.TestResult.Models;
     using Agent.Plugins.TestResultParser.TestRunManger;
     using Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.DetailedTests;
+    using Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.NegativeTests;
     using Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessScenarios;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
@@ -25,6 +26,8 @@
             diagnosticDataCollector = new Mock<ITraceLogger>();
             telemetryDataCollector = new Mock<ITelemetryDataCollector>();
         }
+
+        #region DataDrivenTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
@@ -75,6 +78,29 @@
             Assert.AreEqual(resultFileContents.Length / 3, indexOfTestRun, $"Expected {resultFileContents.Length / 3} test runs.");
         }
 
+        [DataTestMethod]
+        [DynamicData(nameof(GetNegativeTestsTestCases), DynamicDataSourceType.Method)]
+        public void NegativeTests(string testCase)
+        {
+            var testRunManagerMock = new Mock<ITestRunManager>();
+
+            testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>()));
+
+            string testResultsConsoleOut = typeof(NegativeTests).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
+            var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
+
+            foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
+            {
+                parser.Parse(new LogLineData() { Line = line });
+            }
+
+            testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been published.");
+        }
+
+        #endregion
+
+        #region DataDrivers
+
         public static IEnumerable<object[]> GetSuccessScenariosTestCases()
         {
             foreach (var property in typeof(SuccessScenarios).GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
@@ -100,6 +126,23 @@
                 }
             }
         }
+
+        public static IEnumerable<object[]> GetNegativeTestsTestCases()
+        {
+            foreach (var property in typeof(NegativeTests).GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+            {
+                if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
+                {
+                    // Uncomment the below line to run for a particular test case for debugging 
+                    //if (property.Name.Contains("TestCase015"))
+                    yield return new object[] { property.Name };
+                }
+            }
+        }
+
+        #endregion
+
+        #region ValidationHelpers
 
         public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun)
         {
@@ -148,10 +191,12 @@
             currentLine++;
 
             Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
-            for (int testIndex = 0; testIndex < expectedFailedTestsCount; currentLine++, testIndex++)
+            for (int testIndex = 0; testIndex < expectedSkippedTestsCount; currentLine++, testIndex++)
             {
                 Assert.AreEqual(resultFileContents[currentLine], testRun.SkippedTests[testIndex].Name, "Test Case name does not match.");
             }
         }
+
+        #endregion
     }
 }

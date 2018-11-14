@@ -130,4 +130,16 @@
   <data name="TestCase002Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>TestCase002Result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="TestCase003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>TestCase003.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase003Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>TestCase003Result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>TestCase004.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase004Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>TestCase004Result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>
