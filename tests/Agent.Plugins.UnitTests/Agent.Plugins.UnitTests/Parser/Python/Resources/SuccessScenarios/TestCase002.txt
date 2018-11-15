@@ -1,18 +1,13 @@
-test_failing (Test1.PythonTestClass) ... FailingTest
-FAIL
-test_passing (Test1.PythonTestClass) ... I am passing test
-ok
-test_passing2 (Test1.PythonTestClass) ... ok
-
-======================================================================
-FAIL: test_failing (Test1.PythonTestClass)
+This is output for test_expectedFail
+test_expectedFail contains multiple lines
+xThis is output for test_expectedFail2
+test_expectedFail2 contains multiple lines
+xThis is output for test_pass1 test_pass1 contains multiple lines .This is output for test_pass2
+..ssThis is output for test_split
+test_split contains multiple lines
+.
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "D:\Code\LearningPython\Test1.py", line 15, in test_failing
-    self.assertEqual(2,3)
-AssertionError: 2 != 3
 
-----------------------------------------------------------------------
-Ran 3 tests in 0.006s
+Ran 8 tests in 0.004s
 
-FAILED (failures=1)
+OK (skipped=2, expected failures=2)

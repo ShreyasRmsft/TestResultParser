@@ -56,15 +56,9 @@
                 case ParserState.ExpectingSummary:
                     if (ParseSummary(data)) return;
 
-                    if (ParseTestResult(data))
-                    {
-                        Reset();
-                        return;
-                    }
+                    if (ParseTestResult(data)) return;
                     if(ParseForFailedResult(data))
                     {
-                        // This is not expected, log and reset
-                        diagnosticDataCollector.Error("TODO");
                         state = ParserState.ExpectingFailedResults;
                         return;
                     }
@@ -77,13 +71,8 @@
                         state = ParserState.ExpectingSummary;
                         return;
                     }
-                    if(ParseTestResult(data))
-                    {
-                        // This is not expected, log and reset
-                        diagnosticDataCollector.Error("TODO");
-                        Reset();
-                        return;
-                    }
+
+                    if (ParseTestResult(data)) return;
                     break;
                 default:
                     if (ParseTestResult(data)) return;
@@ -109,7 +98,7 @@
             currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>() };
             state = ParserState.ExpectingTestResults;
         }
-    
+        
         private bool ParseTestResult(string data)
         {
             var resultMatch = PythonRegularExpressions.ResultPattern.Match(data);
@@ -129,7 +118,7 @@
             {
                 partialTestResult = null;
             }
-            
+
             // Test result name
             var resultNameIdentifier = resultMatch.Groups[1].Value.Trim();
             string resultName = GetResultName(data, resultNameIdentifier);
@@ -138,6 +127,12 @@
             {
                 return false;
             }
+            
+            if(state != ParserState.ExpectingTestResults)
+            {
+                Reset();
+            }
+
             var result = new TestResult();
             result.Name = resultName;
 
@@ -166,7 +161,12 @@
             // Parse
             var failedResultMatch = PythonRegularExpressions.FailedResultPattern.Match(data);
             if (!failedResultMatch.Success) { return false; }
-            
+
+            if (state == ParserState.ExpectingSummary)
+            {
+                Reset();
+            }
+
             // Set result name.
             string resultNameIdentifier = failedResultMatch.Groups[1].Value.Trim();
 
@@ -191,36 +191,54 @@
 
         private bool ParseSummary(string data)
         {
-            var countAndTimeSummaryMatch = PythonRegularExpressions.SummaryTestCountAndTimePattern.Match(data);
-
-            if(countAndTimeSummaryMatch.Success)
+            if (currentTestRun.TestRunSummary == null)
             {
-                var testcount = int.Parse(countAndTimeSummaryMatch.Groups[1].Value);
-                var secTime = int.Parse(countAndTimeSummaryMatch.Groups[2].Value);
-                var msTime = int.Parse(countAndTimeSummaryMatch.Groups[4].Value);
+                var countAndTimeSummaryMatch = PythonRegularExpressions.SummaryTestCountAndTimePattern.Match(data);
 
-                currentTestRun.TestRunSummary = new TestRunSummary();
-                currentTestRun.TestRunSummary.TotalExecutionTime = new TimeSpan(0,0,0,secTime, msTime);
-                currentTestRun.TestRunSummary.TotalTests = testcount;
-                return true;
-            }
-
-            var resultSummaryMatch = PythonRegularExpressions.SummaryOutcomePattern.Match(data);
-            if(resultSummaryMatch.Success && currentTestRun.TestRunSummary != null)
-            {
-                var resultIdentifer = resultSummaryMatch.Groups[3].Value;
-                var failureCountPatternMatch = PythonRegularExpressions.SummaryFailurePattern.Match(resultIdentifer);
-                if(failureCountPatternMatch.Success)
+                if (countAndTimeSummaryMatch.Success)
                 {
-                    currentTestRun.TestRunSummary.TotalFailed = int.Parse(failureCountPatternMatch.Groups[1].Value);
+                    var testcount = int.Parse(countAndTimeSummaryMatch.Groups[1].Value);
+                    var secTime = int.Parse(countAndTimeSummaryMatch.Groups[2].Value);
+                    var msTime = int.Parse(countAndTimeSummaryMatch.Groups[4].Value);
+
+                    currentTestRun.TestRunSummary = new TestRunSummary();
+                    currentTestRun.TestRunSummary.TotalExecutionTime = new TimeSpan(0, 0, 0, secTime, msTime);
+                    currentTestRun.TestRunSummary.TotalTests = testcount;
+                    return true;
+                }
+            }
+            else
+            {
+                var allowedWhiteSpaceLineMatch = PythonRegularExpressions.SummaryAllowedWhiteSpaceLine.Match(data);
+                if (allowedWhiteSpaceLineMatch.Success)
+                {
+                    return true;
                 }
 
-                //Publish the result
-                runManager.Publish(currentTestRun);
-                state = ParserState.ExpectingTestResults;
-                return true;
-            }
+                var resultSummaryMatch = PythonRegularExpressions.SummaryOutcomePattern.Match(data);
+                if (resultSummaryMatch.Success)
+                {
+                    var resultIdentifer = resultSummaryMatch.Groups[3].Value;
+                    var failureCountPatternMatch = PythonRegularExpressions.SummaryFailurePattern.Match(resultIdentifer);
+                    if (failureCountPatternMatch.Success)
+                    {
+                        currentTestRun.TestRunSummary.TotalFailed = int.Parse(failureCountPatternMatch.Groups[RegexCaptureGroups.FailedTests].Value);
+                    }
 
+                    // TODO: Probably should have a separate bucket for errors
+                    var errorCountPatternMatch = PythonRegularExpressions.SummaryErrorsPattern.Match(resultIdentifer);
+                    if(errorCountPatternMatch.Success)
+                    {
+                        currentTestRun.TestRunSummary.TotalFailed += int.Parse(errorCountPatternMatch.Groups[RegexCaptureGroups.NumberOfErrors].Value);
+                    }
+
+                    //Publish the result
+                    runManager.Publish(currentTestRun);
+                    Reset();
+                    state = ParserState.ExpectingTestResults;
+                    return true;
+                }
+            }
             return false;
         }
 

@@ -136,4 +136,70 @@
   <data name="TestCase003Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>testcase003result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="TestCase004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase004.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase004Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase004result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase005.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase005Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase005result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase006.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase006Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase006result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase007.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase007Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase007result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase008.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase008Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase008result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase009.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase009Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase009result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase010.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase010Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase010result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase012.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase012Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase012result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase013.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase013Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase013result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TestCase014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase014.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase014Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase014result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase015.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TestCase015Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>testcase015result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

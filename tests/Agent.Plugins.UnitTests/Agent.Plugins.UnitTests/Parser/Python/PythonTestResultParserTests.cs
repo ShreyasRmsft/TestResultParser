@@ -62,14 +62,14 @@
                 int expectedPassedTestsCount = int.Parse(resultFileContents[i + 0]);
                 int expectedFailedTestsCount = int.Parse(resultFileContents[i + 1]);
                 int expectedTotalTestsCount = int.Parse(resultFileContents[i + 2]);
-                TimeSpan expectedTestRunDuration = TimeSpan.Parse(resultFileContents[i + 3]);
+                long expectedTestRunDuration = long.Parse(resultFileContents[i + 3]);
 
                 Assert.AreEqual(expectedPassedTestsCount, testResults[i / 4].PassedTests.Count, "Passed tests count does not match.");
                 Assert.AreEqual(expectedFailedTestsCount, testResults[i / 4].TestRunSummary.TotalFailed, "Failed tests count does not match.");
                 Assert.AreEqual(expectedFailedTestsCount, testResults[i / 4].FailedTests.Count, "Failed tests count does not match.");
 
                 Assert.AreEqual(expectedTotalTestsCount, testResults[i / 4].TestRunSummary.TotalTests, "Failed tests count does not match.");
-                Assert.AreEqual(expectedTestRunDuration, testResults[i / 4].TestRunSummary.TotalExecutionTime, "Test run duration did not match.");
+                Assert.AreEqual(expectedTestRunDuration, testResults[i / 4].TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");
             }
 
             Assert.AreEqual(i / 3, testResults.Count, $"Expected {i / 3} test results.");

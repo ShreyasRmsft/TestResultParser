@@ -62,14 +62,13 @@ namespace Agent.Plugins.UnitTests.Parser.Python.Resources.SuccessScenarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to test_passing (Test1.PythonTestClass) ... I am passing test
-        ///some extra lines
+        ///   Looks up a localized string similar to This is output for test_pass1 test_pass1 contains multiple lines .This is output for test_pass2
+        ///..This is output for test_split
+        ///test_split contains multiple lines
+        ///.
+        ///----------------------------------------------------------------------
         ///
-        ///
-        ///ok
-        ///test_passing2 (Test1.PythonTestClass) ... ok
-        ///
-        ///Ran 2 tests in 0.006s
+        ///Ran 4 tests in 0.002s
         ///
         ///OK.
         /// </summary>
@@ -80,10 +79,10 @@ namespace Agent.Plugins.UnitTests.Parser.Python.Resources.SuccessScenarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2
+        ///   Looks up a localized string similar to 0
         ///0
-        ///2
-        ///0:0:0:0.006.
+        ///4
+        ///2.
         /// </summary>
         internal static string TestCase001Result {
             get {
@@ -92,19 +91,19 @@ namespace Agent.Plugins.UnitTests.Parser.Python.Resources.SuccessScenarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to test_failing (Test1.PythonTestClass) ... FailingTest
-        ///FAIL
-        ///test_passing (Test1.PythonTestClass) ... I am passing test
-        ///ok
-        ///test_passing2 (Test1.PythonTestClass) ... ok
-        ///
-        ///test_failing2 (Test1.PythonTestClass) ... FAIL
-        ///
-        ///======================================================================
-        ///FAIL: test_failing (Test1.PythonTestClass)
+        ///   Looks up a localized string similar to This is output for test_expectedFail
+        ///test_expectedFail contains multiple lines
+        ///xThis is output for test_expectedFail2
+        ///test_expectedFail2 contains multiple lines
+        ///xThis is output for test_pass1 test_pass1 contains multiple lines .This is output for test_pass2
+        ///..ssThis is output for test_split
+        ///test_split contains multiple lines
+        ///.
         ///----------------------------------------------------------------------
-        ///Traceback (most recent call last):
-        ///  File &quot;D:\Code\LearningPython\Test1.py&quot;, line 15, in test_failing [rest of string was truncated]&quot;;.
+        ///
+        ///Ran 8 tests in 0.004s
+        ///
+        ///OK (skipped=2, expected failures=2).
         /// </summary>
         internal static string TestCase002 {
             get {
@@ -113,10 +112,10 @@ namespace Agent.Plugins.UnitTests.Parser.Python.Resources.SuccessScenarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2
-        ///2
-        ///4
-        ///0:0:0:0.006.
+        ///   Looks up a localized string similar to 0
+        ///0
+        ///8
+        ///4.
         /// </summary>
         internal static string TestCase002Result {
             get {
@@ -125,21 +124,20 @@ namespace Agent.Plugins.UnitTests.Parser.Python.Resources.SuccessScenarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to test_passing (Test1.PythonTestClass) ... I am passing test
-        ///some extra lines
-        ///
-        ///
-        ///ok
-        ///test_passing (Test1.PythonTestClass) ... skipped
-        ///test_failing (Test1.PythonTestClass) ... 
-        ///hello world
-        ///FAIL
-        ///test_passing2 (Test1.PythonTestClass) ... ok
-        ///test_failing2 (Test1.PythonTestClass) ... FAIL
-        ///
-        ///Ran 5 tests in 3.006s
-        ///
-        ///FAILURE (skipped=1, failure=2).
+        ///   Looks up a localized string similar to This is output for test_fail1
+        ///test_fail1 contains multiple lines
+        ///FThis is output for test_fail2
+        ///FFThis is output for test_pass4
+        ///FThis is output for test_pass1
+        ///test_pass1 contains multiple lines
+        ///.This is output for test_pass2
+        ///..ssThis is output for test_split
+        ///test_split contains multiple lines
+        ///.
+        ///======================================================================
+        ///FAIL: test_fail (__main__.TestStringMethods)
+        ///----------------------------------------------------------------------
+        ///Traceback (most  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TestCase003 {
             get {
@@ -148,14 +146,538 @@ namespace Agent.Plugins.UnitTests.Parser.Python.Resources.SuccessScenarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2
-        ///2
-        ///5
-        ///0:0:0:3.006.
+        ///   Looks up a localized string similar to 0
+        ///4
+        ///10
+        ///15.
         /// </summary>
         internal static string TestCase003Result {
             get {
                 return ResourceManager.GetString("TestCase003Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test_pass (__main__.TestStringMethods) ... This is output for test_pass1 test_pass1 contains multiple lines ok
+        ///test_pass2 (__main__.TestStringMethods) ... This is output for test_pass2
+        ///ok
+        ///test_pass3 (__main__.TestStringMethods) ... ok
+        ///test_split (__main__.TestStringMethods) ... This is output for test_split
+        ///test_split contains multiple lines
+        ///ok
+        ///
+        ///----------------------------------------------------------------------
+        ///
+        ///Ran 4 tests in 0.002s
+        ///
+        ///OK.
+        /// </summary>
+        internal static string TestCase004 {
+            get {
+                return ResourceManager.GetString("TestCase004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4
+        ///0
+        ///4
+        ///2.
+        /// </summary>
+        internal static string TestCase004Result {
+            get {
+                return ResourceManager.GetString("TestCase004Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test_fail (__main__.TestStringMethods) ... This is output for test_fail1
+        ///test_fail1 contains multiple lines
+        ///FAIL
+        ///test_fail2 (__main__.TestStringMethods) ... This is output for test_fail2
+        ///FAIL
+        ///test_fail3 (__main__.TestStringMethods) ... FAIL
+        ///test_fail4 (__main__.TestStringMethods) ... This is output for test_pass4
+        ///FAIL
+        ///test_pass (__main__.TestStringMethods) ... This is output for test_pass1
+        ///test_pass1 contains multiple lines
+        ///ok
+        ///test_pass2 (__main__.TestStringMethods) ... This is output for test_pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase005 {
+            get {
+                return ResourceManager.GetString("TestCase005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4
+        ///4
+        ///10
+        ///22.
+        /// </summary>
+        internal static string TestCase005Result {
+            get {
+                return ResourceManager.GetString("TestCase005Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test_expectedFail (__main__.TestStringMethods) ... This is output for test_expectedFail
+        ///test_expectedFail contains multiple lines
+        ///expected failure
+        ///test_expectedFail2 (__main__.TestStringMethods) ... This is output for test_expectedFail2
+        ///test_expectedFail2 contains multiple lines
+        ///expected failure
+        ///test_pass (__main__.TestStringMethods) ... This is output for test_pass1 test_pass1 contains multiple lines ok
+        ///test_pass2 (__main__.TestStringMethods) ... This is output for test_pass2
+        ///ok
+        ///test_pass3 (__main [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase006 {
+            get {
+                return ResourceManager.GetString("TestCase006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4
+        ///0
+        ///8
+        ///8.
+        /// </summary>
+        internal static string TestCase006Result {
+            get {
+                return ResourceManager.GetString("TestCase006Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///ageitgey / face_recognition
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #245
+        /// 
+        ///Job #245.5
+        /// More options
+        /// master Link to chinese readme
+        /// Commit b9e5ad2 
+        /// Compare 50c0ac7..b9e5ad2 
+        /// Branch master 
+        /// Adam Geitgey avatar Adam Geitgey
+        ///
+        /// #245.5 passed
+        /// Ran for 17 min 35 sec
+        /// 14 days ago
+        /// Python: 3.7
+        ///Jo [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase007 {
+            get {
+                return ResourceManager.GetString("TestCase007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 29
+        ///0
+        ///29
+        ///337554.
+        /// </summary>
+        internal static string TestCase007Result {
+            get {
+                return ResourceManager.GetString("TestCase007Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///ageitgey / face_recognition
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #87
+        /// 
+        ///Job #87.4
+        /// More options
+        /// parallel-processing All support for parallel processing in the CLI
+        /// Commit d172081 
+        /// Compare d172081ad589 
+        /// Branch parallel-processing 
+        /// Adam Geitgey avatar Adam Geitgey
+        ///
+        /// #87.4 failed
+        /// Ran for 8  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase008 {
+            get {
+                return ResourceManager.GetString("TestCase008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 13
+        ///1
+        ///14
+        ///24776.
+        /// </summary>
+        internal static string TestCase008Result {
+            get {
+                return ResourceManager.GetString("TestCase008Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///ageitgey / face_recognition
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #10
+        /// 
+        ///Job #10.3
+        /// More options
+        /// master build
+        /// Commit 8798dec 
+        /// Compare 751f060..8798dec 
+        /// Branch master 
+        /// Adam Geitgey avatar Adam Geitgey
+        ///
+        /// #10.3 failed
+        /// Ran for 7 min 42 sec
+        /// 2 years ago
+        /// Python: 3.5
+        ///Job log
+        /// 
+        ///View config [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase009 {
+            get {
+                return ResourceManager.GetString("TestCase009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0
+        ///1
+        ///1
+        ///0.
+        /// </summary>
+        internal static string TestCase009Result {
+            get {
+                return ResourceManager.GetString("TestCase009Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///rg3 / youtube-dl
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #16999
+        /// 
+        ///Job #16999.7
+        /// More options
+        /// master [picarto] Extract more metadata (closes #16518)
+        /// Commit 730c0d1 
+        /// Compare 83852e5..730c0d1 
+        /// Branch master 
+        /// Sergey M. avatar Sergey M.
+        ///
+        /// #16999.7 passed
+        /// Ran for 1 min 20 sec
+        /// 3 days ago
+        /// Pyt [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase010 {
+            get {
+                return ResourceManager.GetString("TestCase010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 195
+        ///0
+        ///195
+        ///44211.
+        /// </summary>
+        internal static string TestCase010Result {
+            get {
+                return ResourceManager.GetString("TestCase010Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///rg3 / youtube-dl
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #16435
+        /// 
+        ///Job #16435.7
+        /// More options
+        /// master [frontendmasters] Fix issues and improve extraction (closes #3661, closes #16328)
+        /// Commit 49128b5 
+        /// Compare 4742150..49128b5 
+        /// Branch master 
+        /// Sergey M. avatar Sergey M.
+        ///
+        /// #16435.7 failed
+        /// Ran f [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase012 {
+            get {
+                return ResourceManager.GetString("TestCase012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 126
+        ///18
+        ///144
+        ///2858.
+        /// </summary>
+        internal static string TestCase012Result {
+            get {
+                return ResourceManager.GetString("TestCase012Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///Valloric / YouCompleteMe
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #3028
+        /// 
+        ///Job #3028.2
+        /// More options
+        /// master Merge pull request #3209 from santosh/docs
+        ///removes repetitive line
+        ///
+        /// Commit faa019a 
+        /// Compare f67e5ff..faa019a 
+        /// Branch master 
+        ///  avatar micbou
+        ///
+        /// #3028.2 passed
+        /// Ran for 5 min 59 sec
+        /// 1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase013 {
+            get {
+                return ResourceManager.GetString("TestCase013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 352
+        ///0
+        ///352
+        ///75028s.
+        /// </summary>
+        internal static string TestCase013Result {
+            get {
+                return ResourceManager.GetString("TestCase013Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///Valloric / YouCompleteMe
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #3004
+        /// 
+        ///Job #3004.1
+        /// More options
+        /// auto Auto merge of #3104 - micbou:omnifunc-convert-strings-dictionaries, r=micbou
+        ///[READY] Convert strings from omnifunc into dictionaries
+        ///
+        ///Vim allows each item of the list returned by an omnifunc to  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase014 {
+            get {
+                return ResourceManager.GetString("TestCase014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 346
+        ///6
+        ///352
+        ///117290.
+        /// </summary>
+        internal static string TestCase014Result {
+            get {
+                return ResourceManager.GetString("TestCase014Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travis CI
+        ///About Us
+        /// 
+        ///Blog
+        /// 
+        ///Status
+        /// 
+        ///Documentation
+        /// Sign in with GitHub
+        ///Help make Open Source a better place and start building better software today!
+        ///
+        ///Valloric / YouCompleteMe
+        /// build:passed
+        ///Current
+        /// 
+        ///Branches
+        /// 
+        ///Build History
+        /// 
+        ///Pull Requests
+        /// 
+        ///Build #2956
+        /// 
+        ///Job #2956.2
+        /// More options
+        /// master Auto merge of #3125 - micbou:omnifunc-invalid-start-column, r=micbou
+        ///[READY] Improve omnifunc compliance when start column is invalid
+        ///
+        ///Contrarily to [what the docs say](https://github.com/vim/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TestCase015 {
+            get {
+                return ResourceManager.GetString("TestCase015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 347
+        ///1
+        ///348
+        ///69389.
+        /// </summary>
+        internal static string TestCase015Result {
+            get {
+                return ResourceManager.GetString("TestCase015Result", resourceCulture);
             }
         }
     }

@@ -1,10 +1,9 @@
-test_passing (Test1.PythonTestClass) ... I am passing test
-some extra lines
+This is output for test_pass1 test_pass1 contains multiple lines .This is output for test_pass2
+..This is output for test_split
+test_split contains multiple lines
+.
+----------------------------------------------------------------------
 
-
-ok
-test_passing2 (Test1.PythonTestClass) ... ok
-
-Ran 2 tests in 0.006s
+Ran 4 tests in 0.002s
 
 OK
