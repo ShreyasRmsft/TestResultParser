@@ -10,16 +10,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
     // TODO: Split the partterns intoo smaller chunks with explanation and then sew them together
     public class MochaTestResultParserRegularExpressions
     {
-        public static Regex PassedTestCaseMatcher { get; } = new Regex($"  ((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.*) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.*)$)", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestCaseMatcher { get; } = new Regex($"^(  )+((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.*) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.*)$)", RegexOptions.ExplicitCapture);
 
-        public static Regex FailedTestCaseMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
+        public static Regex FailedTestCaseMatcher { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 
-        public static Regex PendingTestCaseMatcher { get; } = new Regex($"  - (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
+        public static Regex PendingTestCaseMatcher { get; } = new Regex($"^(  )+- (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 
-        public static Regex PassedTestsSummaryMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.PassedTests}>0|[1-9][0-9]*) passing \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestsSummaryMatcher { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.PassedTests}>0|[1-9][0-9]*) passing \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$", RegexOptions.ExplicitCapture);
 
-        public static Regex FailedTestsSummaryMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) failing$", RegexOptions.ExplicitCapture);
+        public static Regex FailedTestsSummaryMatcher { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) failing$", RegexOptions.ExplicitCapture);
 
-        public static Regex PendingTestsSummaryMatcher { get; } = new Regex($"  (?<{RegexCaptureGroups.PendingTests}>[1-9][0-9]*) pending", RegexOptions.ExplicitCapture);
+        public static Regex PendingTestsSummaryMatcher { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.PendingTests}>[1-9][0-9]*) pending", RegexOptions.ExplicitCapture);
     }
 }

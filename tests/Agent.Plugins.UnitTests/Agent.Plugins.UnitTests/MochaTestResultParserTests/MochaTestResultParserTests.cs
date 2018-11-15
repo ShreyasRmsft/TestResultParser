@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using System.Text.RegularExpressions;
     using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
     using Agent.Plugins.TestResultParser.Parser.Node.Mocha;
@@ -69,7 +70,7 @@
 
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
-                parser.Parse(new LogLineData() { Line = line });
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line) });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
@@ -94,7 +95,7 @@
 
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
-                parser.Parse(new LogLineData() { Line = line });
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line) });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 3), $"Expected {resultFileContents.Length / 3 } test runs.");
@@ -114,7 +115,7 @@
 
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
-                parser.Parse(new LogLineData() { Line = line });
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line) });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been published.");
@@ -131,7 +132,7 @@
                 if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    //if (property.Name.Contains("TestCase015"))
+                    // if (property.Name.Contains("TestCase007"))
                     yield return new object[] { property.Name };
                 }
             }
@@ -221,5 +222,19 @@
         }
 
         #endregion
+
+        private string RemoveTimeStampFromLogLineIfPresent(string line)
+        {
+            // Remove the preceding timestamp if present.
+            var trimTimeStamp = new Regex("^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{7}Z (?<TrimmedLog>.*)", RegexOptions.ExplicitCapture);
+            var match = trimTimeStamp.Match(line);
+
+            if (match.Success)
+            {
+                return match.Groups["TrimmedLog"].Value;
+            }
+
+            return line;
+        }
     }
 }

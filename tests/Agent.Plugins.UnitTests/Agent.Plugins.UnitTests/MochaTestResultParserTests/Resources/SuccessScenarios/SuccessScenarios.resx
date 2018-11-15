@@ -154,12 +154,6 @@
   <data name="TestCase006Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>TestCase006Result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="TestCase007" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>TestCase007.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="TestCase007Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>TestCase007Result.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="TestCase008" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>TestCase008.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

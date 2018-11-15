@@ -243,33 +243,6 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessSc
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2018-10-16T19:03:26.6163860Z ##[section]Starting: Run tests
-        ///2018-10-16T19:03:26.6173910Z ==============================================================================
-        ///2018-10-16T19:03:26.6174350Z Task         : Command Line
-        ///2018-10-16T19:03:26.6174760Z Description  : Run a command line script using cmd.exe on Windows and bash on macOS and Linux.
-        ///2018-10-16T19:03:26.6175170Z Version      : 2.136.0
-        ///2018-10-16T19:03:26.6175430Z Author       : Microsoft Corporation
-        ///2018-10-16T19:03:26.6175870Z Help       [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string TestCase007 {
-            get {
-                return ResourceManager.GetString("TestCase007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 445
-        ///1
-        ///0
-        ///180000.
-        /// </summary>
-        internal static string TestCase007Result {
-            get {
-                return ResourceManager.GetString("TestCase007Result", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 2018-10-10T14:11:12.7449110Z ##[section]Starting: Run tests
         ///2018-10-10T14:11:12.7452964Z ==============================================================================
         ///2018-10-10T14:11:12.7453043Z Task         : Command Line
