@@ -23,7 +23,30 @@
 
         public MochaTestResultParserTests()
         {
+            // Mock logger to log to console for easy debugging
             diagnosticDataCollector = new Mock<ITraceLogger>();
+
+            diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data =>
+            {
+                Console.WriteLine($"Info: {data}");
+            });
+
+            diagnosticDataCollector.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data =>
+            {
+                Console.WriteLine($"Verbose: {data}");
+            });
+
+            diagnosticDataCollector.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data =>
+            {
+                Console.WriteLine($"Warning: {data}");
+            });
+
+            diagnosticDataCollector.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data =>
+            {
+                Console.WriteLine($"Error: {data}");
+            });
+
+            // No-op for telemetry
             telemetryDataCollector = new Mock<ITelemetryDataCollector>();
         }
 

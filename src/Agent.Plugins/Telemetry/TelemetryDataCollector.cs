@@ -16,7 +16,7 @@
         }
 
         /// <inheritdoc />
-        public void AddProperty(string key, object value, bool aggregate = false)
+        public void AddToCumulativeTelemtery(string EventArea, string EventName, object value, bool aggregate = false)
         {
             throw new NotImplementedException();
         }
