@@ -41,7 +41,9 @@ namespace Agent.Plugins.UnitTests
         [TestMethod]
         public void PublishForTestRunWithNullTestSummaryShouldNotPublishAndLogError()
         {
-            TestRun testRun = new TestRun();
+            TestRun testRun = new TestRun("Dummy", 1);
+            testRun.TestRunSummary = null;
+
             this.testRunManager.Publish(testRun);
 
             this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never);
@@ -51,7 +53,7 @@ namespace Agent.Plugins.UnitTests
         [TestMethod]
         public void PublishForTestRunWithInvalidTestSummaryShouldNotPublishAndLogError()
         {
-            TestRun testRun = new TestRun();
+            TestRun testRun = new TestRun("Dummy", 1);
             testRun.TestRunSummary = this.CreateTestRunSummary(4, 3, 2);
 
             this.testRunManager.Publish(testRun);
@@ -63,7 +65,7 @@ namespace Agent.Plugins.UnitTests
         [TestMethod]
         public void PublishForTestRunWithNoResultsAndValidTestSummaryShouldPublishTheTestRun()
         {
-            TestRun testRun = new TestRun() { TestRunSummary = this.CreateTestRunSummary(4, 2, 1) };
+            TestRun testRun = new TestRun("Dummy", 1) { TestRunSummary = this.CreateTestRunSummary(4, 2, 1) };
 
             this.testRunManager.Publish(testRun);
 
@@ -76,7 +78,7 @@ namespace Agent.Plugins.UnitTests
             var passedTestList = this.CreateTestList(2, TestOutcome.Passed);
             var failedTestList = this.CreateTestList(2, TestOutcome.Failed);
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -94,7 +96,7 @@ namespace Agent.Plugins.UnitTests
             var passedTestList = this.CreateTestList(1, TestOutcome.Passed);
             var failedTestList = this.CreateTestList(1, TestOutcome.Failed);
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -112,7 +114,7 @@ namespace Agent.Plugins.UnitTests
             var passedTestList = this.CreateTestList(2, TestOutcome.Passed);
 
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun { PassedTests = passedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -129,7 +131,7 @@ namespace Agent.Plugins.UnitTests
             var passedTestList = this.CreateTestList(2, TestOutcome.Passed);
             var failedTestList = this.CreateTestList(1, TestOutcome.Failed);
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);

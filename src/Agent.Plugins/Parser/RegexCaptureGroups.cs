@@ -5,18 +5,18 @@ namespace Agent.Plugins.TestResultParser.Parser
 {
     public class RegexCaptureGroups
     {
-        public static string TestCaseName { get; } = "TestCaseName";
+        public const string TestCaseName = "TestCaseName";
 
-        public static string FailedTestCaseNumber { get; } = "FailedTestCaseNumber";
+        public const string FailedTestCaseNumber = "FailedTestCaseNumber";
 
-        public static string PassedTests { get; } = "PassedTests";
+        public const string PassedTests = "PassedTests";
 
-        public static string FailedTests { get; } = "FailedTests";
+        public const string FailedTests = "FailedTests";
 
-        public static string PendingTests { get; } = "PendingTests";
+        public const string PendingTests = "PendingTests";
 
-        public static string TestRunTime { get; } = "TestRunTime";
+        public const string TestRunTime = "TestRunTime";
 
-        public static string TestRunTimeUnit { get; } = "TestRunTimeUnit";
+        public const string TestRunTimeUnit = "TestRunTimeUnit";
     }
 }

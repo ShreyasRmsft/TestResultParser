@@ -3,7 +3,7 @@
 
 namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
-    public class MochaTestResultParserStateContext : ParserStateContextBase
+    public class MochaTestResultParserStateContext
     {
         public int StackTracesToSkipParsingPostSummary { get; set; } = 0;
 

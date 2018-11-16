@@ -22,7 +22,8 @@
         private Mock<ITraceLogger> diagnosticDataCollector;
         private Mock<ITelemetryDataCollector> telemetryDataCollector;
 
-        public MochaTestResultParserTests()
+        [TestInitialize]
+        public void TestInitialize()
         {
             // Mock logger to log to console for easy debugging
             diagnosticDataCollector = new Mock<ITraceLogger>();
@@ -68,9 +69,11 @@
             string testResultsConsoleOut = typeof(DetailedTests).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
+            int lineNumber = 0;
+
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line) });
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
@@ -93,9 +96,11 @@
             string testResultsConsoleOut = typeof(SuccessScenarios).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
+            int lineNumber = 0;
+
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line) });
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 3), $"Expected {resultFileContents.Length / 3 } test runs.");
@@ -113,9 +118,11 @@
             string testResultsConsoleOut = typeof(NegativeTests).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
+            int lineNumber = 0;
+
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line) });
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been published.");
