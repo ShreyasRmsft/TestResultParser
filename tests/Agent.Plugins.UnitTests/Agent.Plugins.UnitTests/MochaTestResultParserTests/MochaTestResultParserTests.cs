@@ -71,9 +71,10 @@
 
             int lineNumber = 0;
 
-            foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
+            // This is to ensure tests run on all OSes
+            testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
+            foreach (var line in testResultsConsoleOut.Split("\n"))
             {
-                Console.WriteLine(line);
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
             }
 
@@ -99,7 +100,8 @@
 
             int lineNumber = 0;
 
-            foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
+            testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
+            foreach (var line in testResultsConsoleOut.Split("\n"))
             {
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
@@ -121,7 +123,8 @@
 
             int lineNumber = 0;
 
-            foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
+            testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
+            foreach (var line in testResultsConsoleOut.Split("\n"))
             {
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
