@@ -2,7 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Reflection;
+    using System.Resources;
     using System.Text.RegularExpressions;
     using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
@@ -10,9 +12,6 @@
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
     using Agent.Plugins.TestResultParser.TestRunManger;
-    using Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.DetailedTests;
-    using Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.NegativeTests;
-    using Agent.Plugins.UnitTests.MochaTestResultParserTests.Resources.SuccessScenarios;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
@@ -55,40 +54,12 @@
         #region DataDrivenTests
 
         [DataTestMethod]
-        [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
-        public void DetailedAssertions(string testCase)
-        {
-            var resultFileContents = typeof(DetailedTests).GetProperty(testCase + "Result", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString().Split(Environment.NewLine);
-            var testRunManagerMock = new Mock<ITestRunManager>();
-
-            testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
-            {
-                ValidateTestRunWithDetails(testRun, resultFileContents);
-            });
-
-            string testResultsConsoleOut = typeof(DetailedTests).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
-            var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
-
-            int lineNumber = 0;
-
-            // This is to ensure tests run on all OSes
-            testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
-            foreach (var line in testResultsConsoleOut.Split("\n"))
-            {
-                Console.WriteLine(line.ToString());
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
-                Console.WriteLine(RemoveTimeStampFromLogLineIfPresent(line));
-            }
-
-            testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
-        }
-
-        [DataTestMethod]
         [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
         public void SuccessScenariosWithBasicAssertions(string testCase)
         {
             int indexOfTestRun = 0;
-            var resultFileContents = typeof(SuccessScenarios).GetProperty(testCase + "Result", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString().Split(Environment.NewLine);
+            var resultFileContents = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "SuccessScenarios", $"{testCase}Result.txt"));
+            var testResultsConsoleOut = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "SuccessScenarios", $"{testCase}.txt"));
 
             var testRunManagerMock = new Mock<ITestRunManager>();
 
@@ -97,13 +68,11 @@
                 ValidateTestRun(testRun, resultFileContents, indexOfTestRun++);
             });
 
-            string testResultsConsoleOut = typeof(SuccessScenarios).GetProperty(testCase, BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
             int lineNumber = 0;
 
-            testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
-            foreach (var line in testResultsConsoleOut.Split("\n"))
+            foreach (var line in testResultsConsoleOut)
             {
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
@@ -113,20 +82,42 @@
         }
 
         [DataTestMethod]
+        [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
+        public void DetailedAssertions(string testCase)
+        {
+            var resultFileContents = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "DetailedTests", $"{testCase}Result.txt"));
+            var testResultsConsoleOut = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "DetailedTests", $"{testCase}.txt"));
+            var testRunManagerMock = new Mock<ITestRunManager>();
+
+            testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            {
+                ValidateTestRunWithDetails(testRun, resultFileContents);
+            });
+
+            var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
+            int lineNumber = 0;
+
+            foreach (var line in testResultsConsoleOut)
+            {
+                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
+            }
+
+            testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
+        }
+
+        [DataTestMethod]
         [DynamicData(nameof(GetNegativeTestsTestCases), DynamicDataSourceType.Method)]
         public void NegativeTests(string testCase)
         {
+            var testResultsConsoleOut = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "NegativeTests", $"{testCase}.txt"));
             var testRunManagerMock = new Mock<ITestRunManager>();
 
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>()));
 
-            string testResultsConsoleOut = typeof(NegativeTests).GetProperty(testCase, BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
-
             int lineNumber = 0;
 
-            testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
-            foreach (var line in testResultsConsoleOut.Split("\n"))
+            foreach (var line in testResultsConsoleOut)
             {
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
@@ -140,39 +131,39 @@
 
         public static IEnumerable<object[]> GetSuccessScenariosTestCases()
         {
-            foreach (var property in typeof(SuccessScenarios).GetProperties(BindingFlags.NonPublic | BindingFlags.Static))
+            foreach (var testCase in new DirectoryInfo(Path.Combine("MochaTestResultParserTests", "Resources", "SuccessScenarios")).GetFiles("TestCase*.txt"))
             {
-                if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
+                if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    // if (property.Name.Contains("TestCase007"))
-                    yield return new object[] { property.Name };
+                    // if (testCase.Name.Contains("TestCase007"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
         }
 
         public static IEnumerable<object[]> GetDetailedTestsTestCases()
         {
-            foreach (var property in typeof(DetailedTests).GetProperties(BindingFlags.NonPublic | BindingFlags.Static))
+            foreach (var testCase in new DirectoryInfo(Path.Combine("MochaTestResultParserTests", "Resources", "DetailedTests")).GetFiles("TestCase*.txt"))
             {
-                if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
+                if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    //if (property.Name.Contains("TestCase015"))
-                    yield return new object[] { property.Name };
+                    // if (testCase.Name.Contains("TestCase007"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
         }
 
         public static IEnumerable<object[]> GetNegativeTestsTestCases()
         {
-            foreach (var property in typeof(NegativeTests).GetProperties(BindingFlags.NonPublic | BindingFlags.Static))
+            foreach (var testCase in new DirectoryInfo(Path.Combine("MochaTestResultParserTests", "Resources", "NegativeTests")).GetFiles("TestCase*.txt"))
             {
-                if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
+                if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    //if (property.Name.Contains("TestCase015"))
-                    yield return new object[] { property.Name };
+                    // if (testCase.Name.Contains("TestCase007"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
         }
