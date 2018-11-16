@@ -73,6 +73,7 @@
 
             foreach (var line in testResultsConsoleOut.Split(Environment.NewLine))
             {
+                Console.WriteLine(line);
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
             }
 
