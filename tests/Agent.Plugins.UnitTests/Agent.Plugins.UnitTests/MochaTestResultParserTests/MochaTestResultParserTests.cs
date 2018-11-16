@@ -58,7 +58,7 @@
         [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
         public void DetailedAssertions(string testCase)
         {
-            var resultFileContents = typeof(DetailedTests).GetProperty(testCase + "Result", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString().Split(Environment.NewLine);
+            var resultFileContents = typeof(DetailedTests).GetProperty(testCase + "Result", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString().Split(Environment.NewLine);
             var testRunManagerMock = new Mock<ITestRunManager>();
 
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
@@ -84,7 +84,7 @@
         public void SuccessScenariosWithBasicAssertions(string testCase)
         {
             int indexOfTestRun = 0;
-            var resultFileContents = typeof(SuccessScenarios).GetProperty(testCase + "Result", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString().Split(Environment.NewLine);
+            var resultFileContents = typeof(SuccessScenarios).GetProperty(testCase + "Result", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString().Split(Environment.NewLine);
 
             var testRunManagerMock = new Mock<ITestRunManager>();
 
@@ -93,7 +93,7 @@
                 ValidateTestRun(testRun, resultFileContents, indexOfTestRun++);
             });
 
-            string testResultsConsoleOut = typeof(SuccessScenarios).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
+            string testResultsConsoleOut = typeof(SuccessScenarios).GetProperty(testCase, BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
             int lineNumber = 0;
@@ -115,7 +115,7 @@
 
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>()));
 
-            string testResultsConsoleOut = typeof(NegativeTests).GetProperty(testCase, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
+            string testResultsConsoleOut = typeof(NegativeTests).GetProperty(testCase, BindingFlags.NonPublic | BindingFlags.Static).GetValue(null).ToString();
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
             int lineNumber = 0;
@@ -134,7 +134,7 @@
 
         public static IEnumerable<object[]> GetSuccessScenariosTestCases()
         {
-            foreach (var property in typeof(SuccessScenarios).GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+            foreach (var property in typeof(SuccessScenarios).GetProperties(BindingFlags.NonPublic | BindingFlags.Static))
             {
                 if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
                 {
@@ -147,7 +147,7 @@
 
         public static IEnumerable<object[]> GetDetailedTestsTestCases()
         {
-            foreach (var property in typeof(DetailedTests).GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+            foreach (var property in typeof(DetailedTests).GetProperties(BindingFlags.NonPublic | BindingFlags.Static))
             {
                 if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
                 {
@@ -160,7 +160,7 @@
 
         public static IEnumerable<object[]> GetNegativeTestsTestCases()
         {
-            foreach (var property in typeof(NegativeTests).GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
+            foreach (var property in typeof(NegativeTests).GetProperties(BindingFlags.NonPublic | BindingFlags.Static))
             {
                 if (property.Name.StartsWith("TestCase") && !property.Name.EndsWith("Result"))
                 {
@@ -230,6 +230,8 @@
 
         #endregion
 
+        #region utilites
+
         private string RemoveTimeStampFromLogLineIfPresent(string line)
         {
             // Remove the preceding timestamp if present.
@@ -243,5 +245,7 @@
 
             return line;
         }
+
+        #endregion
     }
 }
