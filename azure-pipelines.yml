@@ -1,8 +1,3 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 jobs:
 - job: Windows
   pool:
@@ -12,12 +7,9 @@ jobs:
     steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-
     - script: dotnet test "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx --collect "code coverage"
       displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
-
     - task: PublishTestResults@2
-  
 - job: macOS
   pool:
     vmImage: 'macOS-10.13'
@@ -26,12 +18,9 @@ jobs:
     steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-
     - script: dotnet test "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
       displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
-
     - task: PublishTestResults@2
-  
 - job: Linux
   pool:
     vmImage: 'ubuntu-16.04'
@@ -40,8 +29,6 @@ jobs:
     steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-
     - script: dotnet test "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
       displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
-
     - task: PublishTestResults@2
