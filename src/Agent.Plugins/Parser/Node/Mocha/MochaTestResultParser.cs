@@ -71,7 +71,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         }
 
         /// <inheritdoc/>
-        public void Parse(LogLineData testResultsLine)
+        public void Parse(LogData testResultsLine)
         {
             // State model for the mocha parser that defines the regexes to match against in each state
             // Each state re-orders the regexes based on the frequency of expected matches
@@ -247,7 +247,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         /// </summary>
         /// <param name="testResultsLine"></param>
         /// <returns></returns>
-        private bool MatchPassedTestCase(LogLineData testResultsLine)
+        private bool MatchPassedTestCase(LogData testResultsLine)
         {
             var match = MochaTestResultParserRegexes.PassedTestCase.Match(testResultsLine.Line);
 
@@ -294,7 +294,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             return true;
         }
 
-        private bool MatchFailedTestCase(LogLineData testResultsLine)
+        private bool MatchFailedTestCase(LogData testResultsLine)
         {
             var match = MochaTestResultParserRegexes.FailedTestCase.Match(testResultsLine.Line);
 
@@ -367,7 +367,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             return true;
         }
 
-        private bool MatchPendingTestCase(LogLineData testResultsLine)
+        private bool MatchPendingTestCase(LogData testResultsLine)
         {
             var match = MochaTestResultParserRegexes.PendingTestCase.Match(testResultsLine.Line);
 
@@ -414,7 +414,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             return true;
         }
 
-        private bool MatchPassedSummary(LogLineData testResultsLine)
+        private bool MatchPassedSummary(LogData testResultsLine)
         {
             var match = MochaTestResultParserRegexes.PassedTestsSummary.Match(testResultsLine.Line);
 
@@ -508,7 +508,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             return true;
         }
 
-        private bool MatchFailedSummary(LogLineData testResultsLine)
+        private bool MatchFailedSummary(LogData testResultsLine)
         {
             var match = MochaTestResultParserRegexes.FailedTestsSummary.Match(testResultsLine.Line);
 
@@ -556,7 +556,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             return true;
         }
 
-        private bool MatchPendingSummary(LogLineData testResultsLine)
+        private bool MatchPendingSummary(LogData testResultsLine)
         {
             var match = MochaTestResultParserRegexes.PendingTestsSummary.Match(testResultsLine.Line);
 

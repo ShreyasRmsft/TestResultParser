@@ -74,7 +74,7 @@
 
             foreach (var line in testResultsConsoleOut)
             {
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
+                parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 3), $"Expected {resultFileContents.Length / 3 } test runs.");
@@ -99,7 +99,7 @@
 
             foreach (var line in testResultsConsoleOut)
             {
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
+                parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
@@ -119,7 +119,7 @@
 
             foreach (var line in testResultsConsoleOut)
             {
-                parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
+                parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been published.");

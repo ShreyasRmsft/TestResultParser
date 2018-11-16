@@ -1,6 +1,6 @@
 ﻿namespace Agent.Plugins.TestResultParser.Parser.Models
 {
-    public class LogLineData
+    public class LogData
     {
         public string Line { get; set; }
 

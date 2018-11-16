@@ -34,7 +34,7 @@
         /// Parses input data to detect python test result.
         /// </summary>
         /// <param name="data">Data to be parsed.</param>
-        public void Parse(LogLineData Line)
+        public void Parse(LogData Line)
         {
             throw new NotImplementedException();
         }

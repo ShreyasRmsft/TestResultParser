@@ -8,7 +8,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Interfaces
         /// Parse task output line by line to detect the test result
         /// </summary>
         /// <param name="line">Data to be parsed.</param>
-        void Parse(LogLineData line);
+        void Parse(LogData line);
 
         /// <summary>
         /// Name of the parser
