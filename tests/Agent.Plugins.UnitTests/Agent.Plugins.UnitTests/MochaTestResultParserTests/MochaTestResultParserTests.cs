@@ -75,7 +75,9 @@
             testResultsConsoleOut = testResultsConsoleOut.Replace("\r\n", "\n");
             foreach (var line in testResultsConsoleOut.Split("\n"))
             {
+                Console.WriteLine(line.ToString());
                 parser.Parse(new LogLineData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
+                Console.WriteLine(RemoveTimeStampFromLogLineIfPresent(line));
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
