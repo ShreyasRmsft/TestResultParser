@@ -4,14 +4,11 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 jobs:
-
 - job: Windows
   pool:
     vmImage: 'vs2017-win2016'
-  steps:
     variables:
       buildConfiguration: 'Release'
-
     steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
@@ -24,10 +21,9 @@ jobs:
 - job: macOS
   pool:
     vmImage: 'macOS-10.13'
-  steps:
     variables:
       buildConfiguration: 'Release'
-
+      
     steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
@@ -40,7 +36,6 @@ jobs:
 - job: Linux
   pool:
     vmImage: 'ubuntu-16.04'
-  steps:
     variables:
       buildConfiguration: 'Release'
 
