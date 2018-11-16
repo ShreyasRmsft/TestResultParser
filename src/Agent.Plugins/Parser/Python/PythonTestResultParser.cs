@@ -26,9 +26,9 @@
             this.diagnosticDataCollector = diagnosticsCollector;
         }
 
-        public string ParserName => throw new NotImplementedException();
+        public string Name => throw new NotImplementedException();
 
-        public string ParserVersion => throw new NotImplementedException();
+        public string Version => throw new NotImplementedException();
 
         /// <summary>
         /// Parses input data to detect python test result.

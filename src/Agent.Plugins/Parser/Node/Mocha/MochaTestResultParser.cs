@@ -36,9 +36,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         private ITelemetryDataCollector telemetryDataCollector;
         private ITestRunManager testRunManager;
 
-        public string ParserName => nameof(MochaTestResultParser);
+        public string Name => nameof(MochaTestResultParser);
 
-        public string ParserVersion => "1.0";
+        public string Version => "1.0";
 
         /// <summary>
         /// Default constructor accepting only test run manager instance, rest of the requirements assume default values
@@ -65,7 +65,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.telemetryDataCollector = telemetryDataCollector;
 
             // Initialize the starting state of the parser
-            this.testRun = new TestRun($"{ParserName}/{ParserVersion}", this.currentTestRunId);
+            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
             this.stateContext = new MochaTestResultParserStateContext();
             this.state = MochaTestResultParserState.ExpectingTestResults;
         }
@@ -235,7 +235,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.stateContext = new MochaTestResultParserStateContext();
 
             // Start a new TestRun
-            this.testRun = new TestRun($"{ParserName}/{ParserVersion}", this.currentTestRunId);
+            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
             this.state = MochaTestResultParserState.ExpectingTestResults;
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");

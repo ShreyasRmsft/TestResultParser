@@ -13,11 +13,11 @@ namespace Agent.Plugins.TestResultParser.Parser.Interfaces
         /// <summary>
         /// Name of the parser
         /// </summary>
-        string ParserName { get; }
+        string Name { get; }
 
         /// <summary>
         /// Version number of the parser
         /// </summary>
-        string ParserVersion { get; }
+        string Version { get; }
     }
 }
