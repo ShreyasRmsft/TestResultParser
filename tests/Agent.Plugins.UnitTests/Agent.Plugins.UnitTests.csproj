@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -21,6 +20,10 @@
     <Content Include="MochaTestResultParserTests\Resources\**\*.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MochaTestResultParserTests\Resources\RegexTests\NegativeMatches\PendingTestsSummary.txt" />
   </ItemGroup>
 
 </Project>

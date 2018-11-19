@@ -305,12 +305,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             var testResult = new TestResult();
 
-            // Handle parse errors
-            if (!int.TryParse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value, out int testCaseNumber))
-            {
-                this.logger.Error($"MochaTestResultParser : MatchFailedTestCase : failed to parse failed test case number" +
-                    $" {match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value}. at line {testResultsLine.LineNumber}");
-            }
+            // Handling parse errors is unnecessary
+            int.TryParse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value, out int testCaseNumber);
 
             // In the event the failed test case number does not match the expected test case number log an error and move on
             if (testCaseNumber != this.stateContext.LastFailedTestCaseNumber + 1)
@@ -425,9 +421,6 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             this.logger.Info($"MochaTestResultParser : Passed test summary encountered at line {testResultsLine.LineNumber}.");
 
-            this.stateContext.LinesWithinWhichMatchIsExpected = 1;
-            this.stateContext.ExpectedMatch = "failed/pending tests summary";
-
             // Unexpected matches for Passed summary
             // We expect summary ideally only when we are in the first state.
             switch (this.state)
@@ -456,16 +449,15 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                     break;
             }
 
-            this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingTestRunSummary.");
-
+            this.stateContext.LinesWithinWhichMatchIsExpected = 1;
+            this.stateContext.ExpectedMatch = "failed/pending tests summary";
             this.state = MochaTestResultParserState.ExpectingTestRunSummary;
             this.stateContext.LastFailedTestCaseNumber = 0;
 
-            if (!int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed))
-            {
-                this.logger.Error($"MochaTestResultParser : MatchPassedSummary : failed to parse total passed tests number" +
-                    $" {match.Groups[RegexCaptureGroups.PassedTests].Value}. at line {testResultsLine.LineNumber}");
-            }
+            this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingTestRunSummary.");
+
+            // Handling parse errors is unnecessary
+            int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed);
 
             this.testRun.TestRunSummary.TotalPassed = totalPassed;
 
@@ -478,12 +470,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                     TelemetryConstants.PassedSummaryMismatch, new List<int> { this.currentTestRunId }, true);
             }
 
-            // Handle parse errors
-            if (!long.TryParse(match.Groups[RegexCaptureGroups.TestRunTime].Value, out long timeTaken))
-            {
-                this.logger.Error($"MochaTestResultParser : MatchPassedSummary : failed to parse test run time" +
-                    $" {match.Groups[RegexCaptureGroups.TestRunTime].Value}. at line {testResultsLine.LineNumber}");
-            }
+            // Handling parse errors is unnecessary
+            long.TryParse(match.Groups[RegexCaptureGroups.TestRunTime].Value, out long timeTaken);
 
             // Store time taken based on the unit used
             switch (match.Groups[RegexCaptureGroups.TestRunTimeUnit].Value)
@@ -521,28 +509,15 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             this.stateContext.LinesWithinWhichMatchIsExpected = 0;
 
-            // Handle parse errors
-            if (!int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out int totalFailed))
-            {
-                this.logger.Error($"MochaTestResultParser : MatchFailedSummary : failed to parse total failed tests number" +
-                    $" {match.Groups[RegexCaptureGroups.FailedTests].Value}. at line {testResultsLine.LineNumber}");
-            }
+            // Handling parse errors is unnecessary
+            int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out int totalFailed);
 
             this.testRun.TestRunSummary.TotalFailed = totalFailed;
             this.stateContext.StackTracesToSkipParsingPostSummary = totalFailed;
 
-            // If no failed tests found then skip the stack traces parsing state
-            if (this.testRun.TestRunSummary.TotalFailed == 0)
-            {
-                this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingTestResults.");
-                this.state = MochaTestResultParserState.ExpectingTestResults;
-                AttemptPublishAndResetParser();
-            }
-            else
-            {
-                this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingStackTraces.");
-                this.state = MochaTestResultParserState.ExpectingStackTraces;
-            }
+            
+            this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingStackTraces.");
+            this.state = MochaTestResultParserState.ExpectingStackTraces;
 
             // If encountered failed tests does not match summary fire telemtry
             if (this.testRun.TestRunSummary.TotalFailed != this.testRun.FailedTests.Count)
@@ -569,12 +544,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             this.stateContext.LinesWithinWhichMatchIsExpected = 1;
 
-            // Handle parse error
-            if (!int.TryParse(match.Groups[RegexCaptureGroups.PendingTests].Value, out int totalPending))
-            {
-                this.logger.Error($"MochaTestResultParser : MatchPendingSummary : failed to parse total pending tests number" +
-                    $" {match.Groups[RegexCaptureGroups.PendingTests].Value}. at line {testResultsLine.LineNumber}");
-            }
+            // Handling parse errors is unnecessary
+            int.TryParse(match.Groups[RegexCaptureGroups.PendingTests].Value, out int totalPending);
 
             this.testRun.TestRunSummary.TotalSkipped = totalPending;
 

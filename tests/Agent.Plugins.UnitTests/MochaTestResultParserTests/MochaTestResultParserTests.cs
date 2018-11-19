@@ -1,10 +1,11 @@
-﻿namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Reflection;
-    using System.Resources;
     using System.Text.RegularExpressions;
     using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
@@ -77,8 +78,36 @@
                 parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
 
-            testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 3), $"Expected {resultFileContents.Length / 3 } test runs.");
-            Assert.AreEqual(resultFileContents.Length / 3, indexOfTestRun, $"Expected {resultFileContents.Length / 3} test runs.");
+            testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 4), $"Expected {resultFileContents.Length / 4 } test runs.");
+            Assert.AreEqual(resultFileContents.Length / 4, indexOfTestRun, $"Expected {resultFileContents.Length / 4} test runs.");
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
+        public void PartialSuccessScenariosWithBasicAssertions(string testCase)
+        {
+            int indexOfTestRun = 0;
+            var resultFileContents = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "PartialSuccess", $"{testCase}Result.txt"));
+            var testResultsConsoleOut = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "PartialSuccess", $"{testCase}.txt"));
+
+            var testRunManagerMock = new Mock<ITestRunManager>();
+
+            testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            {
+                ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++);
+            });
+
+            var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
+
+            int lineNumber = 0;
+
+            foreach (var line in testResultsConsoleOut)
+            {
+                parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
+            }
+
+            testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
+            Assert.AreEqual(resultFileContents.Length / 7, indexOfTestRun, $"Expected {resultFileContents.Length / 7} test runs.");
         }
 
         [DataTestMethod]
@@ -99,11 +128,15 @@
 
             foreach (var line in testResultsConsoleOut)
             {
-                parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++});
+                parser.Parse(new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ });
             }
 
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been published.");
         }
+
+        #endregion
+
+        #region DataDrivers
 
         [DataTestMethod]
         [DynamicData(nameof(GetNegativeTestsTestCases), DynamicDataSourceType.Method)]
@@ -125,10 +158,6 @@
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been published.");
         }
 
-        #endregion
-
-        #region DataDrivers
-
         public static IEnumerable<object[]> GetSuccessScenariosTestCases()
         {
             foreach (var testCase in new DirectoryInfo(Path.Combine("MochaTestResultParserTests", "Resources", "SuccessScenarios")).GetFiles("TestCase*.txt"))
@@ -137,6 +166,19 @@
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
                     // if (testCase.Name.Contains("TestCase007"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
+                }
+            }
+        }
+
+        public static IEnumerable<object[]> GetPartialSuccessTestCases()
+        {
+            foreach (var testCase in new DirectoryInfo(Path.Combine("MochaTestResultParserTests", "Resources", "PartialSuccess")).GetFiles("TestCase*.txt"))
+            {
+                if (!testCase.Name.EndsWith("Result.txt"))
+                {
+                    // Uncomment the below line to run for a particular test case for debugging 
+                    // if (testCase.Name.Contains("TestCase009"))
                     yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
@@ -184,6 +226,29 @@
             Assert.AreEqual(expectedPassedTestsCount, testRun.TestRunSummary.TotalPassed, "Passed tests summary does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.TestRunSummary.TotalFailed, "Failed tests summary does not match.");
             Assert.AreEqual(expectedSkippedTestsCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
+
+            Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
+            Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
+            Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
+
+            Assert.AreEqual(expectedTestRunDuration, testRun.TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");
+        }
+
+        public void ValidatePartialSuccessTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun)
+        {
+            int i = indexOfTestRun * 7;
+
+            int expectedPassedTestsSummaryCount = int.Parse(resultFileContents[i + 0]);
+            int expectedPassedTestsCount = int.Parse(resultFileContents[i + 1]);
+            int expectedFailedTestsSummary = int.Parse(resultFileContents[i + 2]);
+            int expectedFailedTestsCount = int.Parse(resultFileContents[i + 3]);
+            int expectedSkippedTestsSummaryCount = int.Parse(resultFileContents[i + 4]);
+            int expectedSkippedTestsCount = int.Parse(resultFileContents[i + 5]);
+            long expectedTestRunDuration = long.Parse(resultFileContents[i + 6]);
+
+            Assert.AreEqual(expectedPassedTestsSummaryCount, testRun.TestRunSummary.TotalPassed, "Passed tests summary does not match.");
+            Assert.AreEqual(expectedFailedTestsSummary, testRun.TestRunSummary.TotalFailed, "Failed tests summary does not match.");
+            Assert.AreEqual(expectedSkippedTestsSummaryCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
 
             Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
