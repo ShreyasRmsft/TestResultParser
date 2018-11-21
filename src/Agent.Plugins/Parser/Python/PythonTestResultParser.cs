@@ -1,7 +1,12 @@
-﻿namespace Agent.Plugins.TestResultParser.Parser.Python
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Agent.Plugins.TestResultParser.Parser.Python
 {
     using System;
     using System.Collections.Generic;
+    using Agent.Plugins.TestResultParser.Loggers;
+    using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
     using Agent.Plugins.TestResultParser.Telemetry;
@@ -15,49 +20,66 @@
     /// </summary>
     public class PythonTestResultParser : ITestResultParser
     {
-        private ITestRunManager runManager;
-        private ITelemetryDataCollector telemetryDataCollector;
-        private IDiagnosticDataCollector diagnosticDataCollector;
-
         private ParserState state;
         private TestResult partialTestResult;
+        private TestRun currentTestRun;
+        private int currentTestRunId = 1;
 
-        private TestRun currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>()};
+        private ITestRunManager runManager;
+        private ITelemetryDataCollector telemetryDataCollector;
+        private ITraceLogger logger;
 
-        public PythonTestResultParser(ITestRunManager testRunManager) : this(testRunManager, TelemetryDataCollector.Instance, DiagnosticDataCollector.Instance)
+        public string Name => "Python";
+
+        public string Version => "1.0";
+
+        /// <summary>
+        /// Default constructor accepting only test run manager instance, rest of the requirements assume default values
+        /// </summary>
+        /// <param name="testRunManager"></param>
+        /// <param name="testRunManager"></param>
+        public PythonTestResultParser(ITestRunManager testRunManager) : this(testRunManager, TraceLogger.Instance, TelemetryDataCollector.Instance)
         {
         }
 
-        internal PythonTestResultParser(ITestRunManager testRunManager, ITelemetryDataCollector telemetryCollector, IDiagnosticDataCollector diagnosticsCollector)
+        /// <summary>
+        /// Detailed constructor where specified logger and telemetry data collector are initialized along with test run manager
+        /// </summary>
+        /// <param name="testRunPublisher"></param>
+        /// <param name="diagnosticDataCollector"></param>
+        /// <param name="telemetryDataCollector"></param>
+        public PythonTestResultParser(ITestRunManager testRunManager, ITraceLogger traceLogger, ITelemetryDataCollector telemetryCollector)
         {
+            traceLogger.Info("MochaTestResultParser.MochaTestResultParser : Starting mocha test result parser.");
+            telemetryCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.Initialize, true);
+
             this.runManager = testRunManager;
             this.telemetryDataCollector = telemetryCollector;
-            this.diagnosticDataCollector = diagnosticsCollector;
+            this.logger = traceLogger;
 
             this.state = ParserState.ExpectingTestResults;
+            this.currentTestRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
         }
 
         /// <summary>
         /// Parses input data to detect python test result.
         /// </summary>
-        /// <param name="data">Data to be parsed.</param>
-        public void Parse(LogLineData logLine)
+        /// <param name="logData">Data to be parsed.</param>
+        public void Parse(LogData logData)
         {
-            var data = logLine.Line;
-
             // Validate data input
-            if (!this.IsValidInput(data)) return;
+            if (!this.IsValidInput(logData.Line)) return;
 
             // Switch to proper parser state
-            this.diagnosticDataCollector.Verbose($"Current state: {nameof(this.state)}");
+            this.logger.Verbose($"Current state: {nameof(this.state)}");
 
             switch (state)
             {
                 case ParserState.ExpectingSummary:
-                    if (ParseSummary(data)) return;
+                    if (ParseSummary(logData)) return;
 
-                    if (ParseTestResult(data)) return;
-                    if(ParseForFailedResult(data))
+                    if (ParseTestResult(logData)) return;
+                    if(ParseForFailedResult(logData))
                     {
                         state = ParserState.ExpectingFailedResults;
                         return;
@@ -65,24 +87,25 @@
                     break;
 
                 case ParserState.ExpectingFailedResults:
-                    if (ParseForFailedResult(data)) return;
-                    if (ParseSummary(data))
+                    if (ParseForFailedResult(logData)) return;
+                    if (ParseSummary(logData))
                     {
                         state = ParserState.ExpectingSummary;
                         return;
                     }
 
-                    if (ParseTestResult(data)) return;
+                    if (ParseTestResult(logData)) return;
                     break;
+
                 default:
-                    if (ParseTestResult(data)) return;
-                    if (ParseForFailedResult(data))
+                    if (ParseTestResult(logData)) return;
+                    if (ParseForFailedResult(logData))
                     {
                         partialTestResult = null;
                         state = ParserState.ExpectingFailedResults;
                         return;
                     }
-                    if (ParseSummary(data))
+                    if (ParseSummary(logData))
                     {
                         partialTestResult = null;
                         state = ParserState.ExpectingSummary;
@@ -94,19 +117,19 @@
 
         private void Reset()
         {
-            partialTestResult = null;
-            currentTestRun = new TestRun { FailedTests = new List<TestResult>(), PassedTests = new List<TestResult>() };
-            state = ParserState.ExpectingTestResults;
+            this.partialTestResult = null;
+            this.currentTestRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
+            this.state = ParserState.ExpectingTestResults;
         }
         
-        private bool ParseTestResult(string data)
+        private bool ParseTestResult(LogData logData)
         {
-            var resultMatch = PythonRegularExpressions.ResultPattern.Match(data);
+            var resultMatch = PythonRegularExpressions.ResultPattern.Match(logData.Line);
 
             // This could be a partial result
             if (!resultMatch.Success && partialTestResult != null)
             {
-                var partialResultMatch = PythonRegularExpressions.PassedOutcomePattern.Match(data);
+                var partialResultMatch = PythonRegularExpressions.PassedOutcomePattern.Match(logData.Line);
                 if (partialResultMatch.Success)
                 {
                     partialTestResult.Outcome = TestOutcome.Passed;
@@ -121,7 +144,7 @@
 
             // Test result name
             var resultNameIdentifier = resultMatch.Groups[1].Value.Trim();
-            string resultName = GetResultName(data, resultNameIdentifier);
+            string resultName = GetResultName(logData, resultNameIdentifier);
 
             if (resultName == null)
             {
@@ -156,10 +179,10 @@
             return true;
         }
                      
-        private bool ParseForFailedResult(string data)
+        private bool ParseForFailedResult(LogData logData)
         {
             // Parse
-            var failedResultMatch = PythonRegularExpressions.FailedResultPattern.Match(data);
+            var failedResultMatch = PythonRegularExpressions.FailedResultPattern.Match(logData.Line);
             if (!failedResultMatch.Success) { return false; }
 
             if (state == ParserState.ExpectingSummary)
@@ -171,29 +194,29 @@
             string resultNameIdentifier = failedResultMatch.Groups[1].Value.Trim();
 
             var result = new TestResult();
-            result.Name = GetResultName(data, resultNameIdentifier);
+            result.Name = GetResultName(logData, resultNameIdentifier);
             result.Outcome = TestOutcome.Failed;
 
             currentTestRun.FailedTests.Add(result);
             return true;
         }
 
-        private string GetResultName(string data, string testResultNameIdentifier)
+        private string GetResultName(LogData logData, string testResultNameIdentifier)
         {
             if (string.IsNullOrWhiteSpace(testResultNameIdentifier))
             {
-                this.diagnosticDataCollector.Verbose($"Test result name is null or whitespace in data: {data}");
+                this.logger.Verbose($"Test result name is null or whitespace in logData: {logData.Line}");
                 return null;
             }
 
             return testResultNameIdentifier;
         }
 
-        private bool ParseSummary(string data)
+        private bool ParseSummary(LogData logData)
         {
             if (currentTestRun.TestRunSummary == null)
             {
-                var countAndTimeSummaryMatch = PythonRegularExpressions.SummaryTestCountAndTimePattern.Match(data);
+                var countAndTimeSummaryMatch = PythonRegularExpressions.SummaryTestCountAndTimePattern.Match(logData.Line);
 
                 if (countAndTimeSummaryMatch.Success)
                 {
@@ -209,13 +232,13 @@
             }
             else
             {
-                var allowedWhiteSpaceLineMatch = PythonRegularExpressions.SummaryAllowedWhiteSpaceLine.Match(data);
+                var allowedWhiteSpaceLineMatch = PythonRegularExpressions.SummaryAllowedWhiteSpaceLine.Match(logData.Line);
                 if (allowedWhiteSpaceLineMatch.Success)
                 {
                     return true;
                 }
 
-                var resultSummaryMatch = PythonRegularExpressions.SummaryOutcomePattern.Match(data);
+                var resultSummaryMatch = PythonRegularExpressions.SummaryOutcomePattern.Match(logData.Line);
                 if (resultSummaryMatch.Success)
                 {
                     var resultIdentifer = resultSummaryMatch.Groups[3].Value;
@@ -247,7 +270,7 @@
             if (data == null)
             {
                 //this.telemetryDataCollector.AddProperty(TelemetryConstants.UnexpectedError, "Received null data", aggregate: true);
-                this.diagnosticDataCollector.Error("Received null data"); // TODO: Is it ok to put in error here?
+                this.logger.Error("Received null data"); // TODO: Is it ok to put in error here?
             }
 
             return data != null;

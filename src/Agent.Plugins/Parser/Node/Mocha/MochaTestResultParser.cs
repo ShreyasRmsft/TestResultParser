@@ -65,7 +65,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.telemetryDataCollector = telemetryDataCollector;
 
             // Initialize the starting state of the parser
-            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
+            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId) { TestRunSummary = new TestRunSummary() };
             this.stateContext = new MochaTestResultParserStateContext();
             this.state = MochaTestResultParserState.ExpectingTestResults;
         }
@@ -235,7 +235,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.stateContext = new MochaTestResultParserStateContext();
 
             // Start a new TestRun
-            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
+            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId) { TestRunSummary = new TestRunSummary() };
             this.state = MochaTestResultParserState.ExpectingTestResults;
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
