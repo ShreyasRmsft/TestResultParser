@@ -3,6 +3,7 @@
 
 namespace Agent.Plugins.TestResultParser.TestRunManger
 {
+    using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Publish.Interfaces;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
@@ -12,14 +13,16 @@ namespace Agent.Plugins.TestResultParser.TestRunManger
     public class TestRunManager : ITestRunManager
     {
         private ITestRunPublisher publisher;
-        private IDiagnosticDataCollector diagnosticDataCollector;
+        private ITraceLogger diagnosticDataCollector;
         private ITelemetryDataCollector telemetryDataCollector;
+
+        // TODO: Add a default constructor
 
         /// <summary>
         /// Construct the TestRunManger
         /// </summary>
         /// <param name="testRunPublisher"></param>
-        public TestRunManager(ITestRunPublisher testRunPublisher, IDiagnosticDataCollector diagnosticDataCollector, ITelemetryDataCollector telemetryDataCollector)
+        public TestRunManager(ITestRunPublisher testRunPublisher, ITraceLogger diagnosticDataCollector, ITelemetryDataCollector telemetryDataCollector)
         {
             this.publisher = testRunPublisher;
             this.diagnosticDataCollector = diagnosticDataCollector;

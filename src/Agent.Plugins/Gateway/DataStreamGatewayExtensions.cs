@@ -15,7 +15,7 @@ namespace Agent.Plugins.TestResultParser.Bus
             return bus.ProcessDataAsync(message);
         }
 
-        public static Guid Subscribe(this DataStreamGateway bus, Func<Action<LogLineData>> handlerActionFactory)
+        public static Guid Subscribe(this DataStreamGateway bus, Func<Action<LogData>> handlerActionFactory)
         {
             return bus.Subscribe(message => handlerActionFactory().Invoke(message));
         }

@@ -1,0 +1,20 @@
+﻿> nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSTestSuite
+> mocha ".\unit_tests\*.js"
+
+
+
+  sampleUnitTests
+    1) Test method 1
+    2) Test method 2
+    - Test method 3
+    - Test method 4
+    - Test method 5
+
+
+  0 passing (11ms)
+  3 pending
+  2 failing
+
+  1) sampleUnitTests
+       Test method 1:
+     Error: the string "error" was thrown, throw an Error :)

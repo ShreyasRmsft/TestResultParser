@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.TestResultPar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingApp", "src\TestingApp\TestingApp.csproj", "{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.UnitTests", "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj", "{71941BAA-C619-4FB3-993E-71533F8CE7B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.UnitTests", "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj", "{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71941BAA-C619-4FB3-993E-71533F8CE7B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71941BAA-C619-4FB3-993E-71533F8CE7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71941BAA-C619-4FB3-993E-71533F8CE7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71941BAA-C619-4FB3-993E-71533F8CE7B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

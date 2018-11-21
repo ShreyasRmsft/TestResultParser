@@ -10,15 +10,17 @@ using Agent.Plugins.TestResultParser.Bus.Interfaces;
 using Agent.Plugins.TestResultParser.Gateway.Interfaces;
 using Agent.Plugins.TestResultParser.Parser;
 using Agent.Plugins.TestResultParser.Parser.Models;
+using Agent.Plugins.TestResultParser.Parser.Node.Mocha;
+using Agent.Plugins.TestResultParser.TestRunManger;
 
 namespace Agent.Plugins.TestResultParser.Gateway
 {
-    public class DataStreamGateway : IDataStreamGateway, IBus<LogLineData>
+    public class DataStreamGateway : IDataStreamGateway, IBus<LogData>
     {
         public void Initialize()
         {
-            var t = new GenericTestResultParser();
-            Subscribe(t.Parse);
+            //var t = new MochaTestResultParser(new TestRunManager());
+            //Subscribe(t.Parse);
 
             throw new NotImplementedException();
         }
@@ -31,7 +33,7 @@ namespace Agent.Plugins.TestResultParser.Gateway
             const int bufferSize = 1024;
             using (var streamReader = new StreamReader(stream, Encoding.UTF8, true, bufferSize))
             {
-                LogLineData logLine =  new LogLineData();
+                LogData logLine =  new LogData();
                 while ((logLine.Line = streamReader.ReadLine()) != null)
                 {
                     await _broadcast.SendAsync(logLine);
@@ -46,9 +48,9 @@ namespace Agent.Plugins.TestResultParser.Gateway
         }
 
         //TODO evaluate ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 2 }
-        public Guid Subscribe(Action<LogLineData> handlerAction)
+        public Guid Subscribe(Action<LogData> handlerAction)
         {
-            var handler = new ActionBlock<LogLineData>(handlerAction);
+            var handler = new ActionBlock<LogData>(handlerAction);
 
             _broadcast.LinkTo(handler, new DataflowLinkOptions { PropagateCompletion = true });
 
@@ -63,14 +65,14 @@ namespace Agent.Plugins.TestResultParser.Gateway
             }
         }
 
-        private Guid AddSubscription(ITargetBlock<LogLineData> subscription)
+        private Guid AddSubscription(ITargetBlock<LogData> subscription)
         {
             var subscriptionId = Guid.NewGuid();
             _subscribers.TryAdd(subscriptionId, subscription);
             return subscriptionId;
         }
 
-        private readonly BroadcastBlock<LogLineData> _broadcast = new BroadcastBlock<LogLineData>(message => message);
-        private readonly ConcurrentDictionary<Guid, ITargetBlock<LogLineData>> _subscribers = new ConcurrentDictionary<Guid, ITargetBlock<LogLineData>>();
+        private readonly BroadcastBlock<LogData> _broadcast = new BroadcastBlock<LogData>(message => message);
+        private readonly ConcurrentDictionary<Guid, ITargetBlock<LogData>> _subscribers = new ConcurrentDictionary<Guid, ITargetBlock<LogData>>();
     }
 }

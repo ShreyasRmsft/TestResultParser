@@ -1,14 +1,10 @@
-﻿namespace Agent.Plugins.TestResultParser.Telemetry.Interfaces
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Agent.Plugins.TestResultParser.Telemetry.Interfaces
 {
     public interface ITelemetryDataCollector
     {
-        /// <summary>
-        /// Adds key value pair as telemetry data.
-        /// </summary>
-        /// <param name="key">Key.</param>
-        /// <param name="value">Value.</param>
-        /// <param name="aggregate"></param>
-        void AddProperty(string key, object value, bool aggregate = false);
-        void AddProperty(object unexpectedError, string v, bool aggregate);
+        void AddToCumulativeTelemtery(string EventArea, string EventName, object value, bool aggregate = false);
     }
 }

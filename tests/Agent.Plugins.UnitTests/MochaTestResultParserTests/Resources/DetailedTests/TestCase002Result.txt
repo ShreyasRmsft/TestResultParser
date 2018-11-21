@@ -1,0 +1,218 @@
+Passed 213
+Do not sign or zipalign if nothing is selected
+Do not align or sign if input single file does not exist
+Do not align or sign if input pattern does not match any files
+Use jarsigner from PATH before searching in JAVA_HOME
+Fail if jarsigner is not on PATH and JAVA_HOME is not set
+Fail if ANDROID_HOME is not set
+Signing a single file
+zipalign a single file
+Signing and aligning multiple files
+Download keystore file from SecureFile
+Validate AzureFileCopy.Utility Get-AzureUtility
+Validate AzureFileCopy.Utility Validate-AzurePowershellVersion
+Validate AzureFileCopy.Utility Get-StorageKey
+Validate AzureFileCopy.Utility Get-StorageAccountType
+Validate AzureFileCopy.Utility Get-blobStorageEndpoint
+Validate AzureFileCopy.Utility Get-StorageKey
+Validate AzureFileCopy.Utility Upload-FilesToAzureContainer
+Validate AzureFileCopy.Utility Does-AzureVMMatchTagFilterCriteria
+Validate AzureFileCopy.Utility Get-TagBasedFilteredAzureVMs
+Validate AzureFileCopy.Utility Get-MachineBasedFilteredAzureVMs
+Validate AzureFileCopy.Utility Get-FilteredAzureVMsInResourceGroup
+Validate AzureFileCopy.Utility Get-FilteredAzureClassicVMsInResourceGroup
+Validate AzureFileCopy.Utility Get-FilteredAzureRMVMsInResourceGroup
+Validate AzureFileCopy.Utility Get-MachineNameFromId
+Validate AzureFileCopy.Utility Get-MachinesFqdnsForLB
+Validate AzureFileCopy.Utility Get-FrontEndPorts
+Validate AzureFileCopy.Utility Get-AzureRMVMsConnectionDetailsInResourceGroup
+Validate AzureFileCopy.Utility  Check-AzureCloudServiceExists
+Validate AzureFileCopy.Utility Get-AzureVMResourcesProperties
+Validate AzureFileCopy.Utility Get-AzureVMsCredentials
+Validate AzureFileCopy.Utility Copy-FilesParallelyToAzureVMs
+Validate AzureFileCopy.Utility Copy-FilesToAzureVMsFromStorageContainer
+Validate AzureFileCopy.Utility Validate-CustomScriptExecutionStatus
+Validate AzureFileCopy.Utility Add-AzureVMCustomScriptExtension
+Validate AzureFileCopy.Utility Is-WinRMCustomScriptExtensionExists
+Validate AzureFileCopy.Utility Copy-FilesSequentiallyToAzureVMs
+Validate AzureFileCopy.Utility Check-ContainerNameAndArgs
+AzureMySqlDeployment MysqlServerOperationsL0Tests
+AzureMySqlDeployment FirewallOperationTests
+AzureMySqlDeployment ToolPathOperationTests
+AzureMySqlDeployment MysqlClient
+azure-arm-appinsights AzureApplicationInsights
+azure-arm-app-service AzureAppService
+azure-arm-app-service-kudu Kudu
+Runs successfully with XML Transformation (L1)
+Runs successfully with XML variable substitution
+Runs successfully with JSON variable substitution
+Validate File Encoding
+Validate webdeployment-common.utility.copyDirectory()
+succeeds when creating and activating an environment
+fails when a Conda installation is not found
+creates and activates environment
+updates Conda if the user requests it
+fails if `conda` is not found
+finds the Conda installation with the CONDA variable
+finds the Conda installation with PATH
+creates Conda environment
+activates Conda environment
+Runs successfully for docker build
+Runs successfully for docker build with memory limit
+Runs successfully for docker build for invalid image name
+Runs fails for docker build for invalid image name and modify image name false
+Runs successfully for docker build for invalid image name and additional image tag
+Runs successfully for docker build with latest tag
+Runs successfully for docker build with arguments
+Runs successfully for docker run image
+Runs successfully for docker run image with memory limit
+Runs successfully for docker tag image from image names file
+Runs successfully for docker tag image
+Runs successfully for docker tag command with arguments
+Runs successfully for docker push image
+Runs successfully for docker push image with arguments
+Runs successfully for docker push image from image names file
+Runs successfully for docker pull image
+Runs successfully for docker build with ACR
+Runs successfully for docker build with ACR and qualify image name
+test iis manage utility - manage website
+test iis manage utility - manage application
+test iis manage utility - manage virtual directory
+test iis manage utility - manage application pool
+should fail when JavaToolInstaller is run with no azure server endpoint
+should run successfully when fetching JDK files from azure storage
+should fail when JavaToolInstaller is run with to destination folder specified
+npm failure dumps debug log from npm cache
+npm failure dumps debug log from working directory
+custom command succeeds with single service endpoint
+custom command should return npm version
+should execute 'npm config list' without debug switch
+should fail when npm fails
+install using local feed
+install using npmrc
+install using multiple endpoints
+publish using feed
+publish using external registry
+publish single package internally
+publish single package externally
+Validate with valid inputs
+Validate all SqlPackage.exe actions
+Validate Invoke-SqlCmd related actions
+Validate helper methods
+Validate Username end point (Create-AzureSqlDatabaseServerFirewallRule)
+Validate SPN end point (Create-AzureSqlDatabaseServerFirewallRule) 
+Validate Certificate end point (Create-AzureSqlDatabaseServerFirewallRule)
+Validate Username end point (Delete-AzureSqlDatabaseServerFirewallRule)
+Validate SPN end point (Delete-AzureSqlDatabaseServerFirewallRule)
+Validate Certificate end point (Delete-AzureSqlDatabaseServerFirewallRule)
+IP Address Range Check (Get-AgentIPAddress)
+Validate SQL Package Command Line Arguments (Get-SqlPackageCommandArguments)
+Validate Username (Get-FormattedSqlUsername)
+Validate UtilityMethods (EscapeSpecialChars)
+FindSqlPackagePath should give preference to msi installation over vs installation and sql server installation
+FindSqlPackagePath should select highest version
+Get latest pre-release version cache hit
+Get latest pre-release version cache miss and download success
+Get latest pre-release version listing failed but a stable version found in cache
+Get latest pre-release version listing failed but no stable version found in cache
+Get latest pre-release version cache miss and download failed but fallback cache hit
+Get latest pre-release version cache miss and download failed and fallback cache miss
+Get latest stable version cache hit
+Get latest stable version listing empty and cache hit
+Get specific version cache hit
+Get specific version cache miss and download success
+Get latest pre-release version cache hit from custom feed no password
+Get latest pre-release version cache hit from custom feed and password provided
+Get latest pre-release version cache hit from custom feed username and password provided
+Get latest pre-release version cache miss and download success for custom feed with password
+Get latest pre-release version cache hit from custom feed, password provided but writing config fails
+Get latest pre-release version cache hit from custom feed, password provided but writing config fails and fallback cache lookup fails
+Get specified package from path provided from network share cache hit
+Get specified package from path provided from network share cache miss and copy successful
+Get specified package from path provided from network share cache miss share and copy unsuccessful but fallback cache lookup successful
+Get specified package from path provided from network share cache miss and copy unsuccessful and fallback cache lookup unsuccessful
+Get specified package from path provided from network share invalid filename
+Xcode 7 create IPA with archive and auto export
+Xcode 7 create IPA with archive and export with specified method
+Xcode 8 create IPA with export options plist
+Xcode 8 create IPA with bad exportOptionsPlist path
+Xcode create IPA with file paths for archive path and export path
+Xcode 7 create IPA with code signing identifiers
+Xcode 8 automatic code signing with identifiers
+Xcode 8 automatic signing with development team
+Xcode archive and export with project path
+Xcode 9 automatic signing with files
+Xcode 9 automatic signing with allowProvisioningUpdates
+Xcode 9 signing defaults to automatic, with auto export
+Xcode 9 signing defaults to manual, with auto export
+Xcode 9 signing with auto export and cloud entitlement for production
+Xcode 9 signing with auto export and cloud entitlement for development
+Task defaults - v4.127.0
+Test results should be published in postexecution to work even when Xcode test has failures
+Test results publishing should fail if xcpretty is not installed
+macOS auto export
+macOS provisionless auto export
+No HTTP_PROXY
+Finds HTTP_PROXY
+Finds HTTP_PROXYUSERNAME
+Finds HTTP_PROXYPASSWORD
+NuGetXmlHelper adds source to NuGetConfig
+NuGetXmlHelper correctly encodes element names
+gets npm registries
+gets feed id from VSTS registry
+gets correct local registries
+does Basic auth for hosted when service endpoint auth is Token and endpoint is in the .visualstudio.com domain
+does Bearer auth for hosted when service endpoint auth is Token and endpoint is 3rd party
+handles views in registry URL
+(Get-TargetMachines) uses correct port and machine name
+(Get-WinRmConnectionToTargetMachine) throws if unable to create session
+(Retry-Connection) does not throw if cannot get pssession
+(Retry-Connection) does not throw if receive pssession throws
+(Retry-Connection) does not attempt remote connection if session state is not disconnected and availability is not none
+(Retry-Connection) attempts remote connection only if session state is disconnected and availability is none
+(Import-AzureModule) azure preferred falls back
+(Import-AzureModule) azure rm preferred falls back
+(Import-AzureModule) both preferred falls back
+(Import-AzureModule) throws when not found
+(Import-AzureModule) validates classic version
+(Import-FromModulePath) imports modules
+(Import-FromModulePath) returns false when not found
+(Import-FromModulePath) validate RM profile found
+(Import-FromSdkPath) imports module
+(Import-FromSdkPath) returns false when not found
+(Initialize-Azure) passes inputs
+(Initialize-Azure) throws when service name is null
+(Initialize-AzureSubscription) manged service identity should pass 
+(Initialize-AzureSubscription) passes values when cert auth
+(Initialize-AzureSubscription) passes values when SP auth
+(Initialize-AzureSubscription) passes values when UP auth
+(Initialize-AzureSubscription) throws useful error when SP auth and add account fails
+(Initialize-AzureSubscription) throws useful error when UP auth and add account fails
+(Initialize-AzureSubscription) throws when RM and cert auth
+(Initialize-AzureSubscription) passes values when cert auth and environment
+(Initialize-AzureSubscription) passes values when cert auth with service principal scheme
+(Initialize-AzureSubscription) throws when SP auth and classic 0.9.9
+(Initialize-AzureSubscription) throws when unsupported auth
+(Set-CurrentAzureRMSubscription) passes values
+(Set-CurrentAzureSubscription) passes values
+(Set-UserAgent) passes values
+Overriddes global debug preference
+Add-AzureStackDependencyData to populate Azure Stack endpoint data.
+Verify if Get-AzureActiveDirectoryResourceId returns correct URL.
+Get-AzureRMAccessToken should return access token
+Get-SpnAccessTokenUsingCertificate should return access token
+Get-AzureRmAccessToken should return access token based on endpoint parameters
+ConvertTo-Pfx should execute openssl.exe command and return pfx file path and password
+Find invalid task.json
+Find nested task.json
+Find .js with uppercase
+Find unsupported demands
+Find unsupported runsOn
+Find invalid server Task/ServerGate
+Find invalid message key in task.json
+Find missing string in .ts
+Find missing string in .ps1/.psm1
+
+Failed 0
+
+Skipped 0

@@ -1,0 +1,10 @@
+﻿Passed 0
+
+Failed 2
+Test method 1
+Test method 2
+
+Skipped 3
+Test method 3
+Test method 4
+Test method 5

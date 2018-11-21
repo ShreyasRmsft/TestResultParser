@@ -1,4 +1,7 @@
-﻿namespace Agent.Plugins.TestResultParser.Telemetry
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Agent.Plugins.TestResultParser.Telemetry
 {
     using System;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
@@ -16,14 +19,10 @@
         }
 
         /// <inheritdoc />
-        public void AddProperty(string key, object value, bool aggregate = false)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddProperty(object unexpectedError, string v, bool aggregate)
+        public void AddToCumulativeTelemtery(string EventArea, string EventName, object value, bool aggregate = false)
         {
             throw new NotImplementedException();
         }
     }
 }
+
