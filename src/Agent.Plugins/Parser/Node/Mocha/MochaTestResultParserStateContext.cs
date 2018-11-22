@@ -24,5 +24,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         public int LinesWithinWhichMatchIsExpected { get; set; }
 
         public string ExpectedMatch { get; set; }
+
+        public int CurrentLineNumber { get; set; }
     }
 }

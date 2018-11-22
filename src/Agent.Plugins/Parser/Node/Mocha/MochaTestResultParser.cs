@@ -73,6 +73,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         /// <inheritdoc/>
         public void Parse(LogData testResultsLine)
         {
+            stateContext.CurrentLineNumber = testResultsLine.LineNumber;
+
             // State model for the mocha parser that defines the regexes to match against in each state
             // Each state re-orders the regexes based on the frequency of expected matches
             switch (this.state)
@@ -233,7 +235,6 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         {
             // Start a new TestRun
             this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
-            this.state = MochaTestResultParserState.ExpectingTestResults;
 
             // Refresh the context
             this.stateContext = new MochaTestResultParserStateContext(testRun);

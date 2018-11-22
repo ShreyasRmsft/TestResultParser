@@ -100,37 +100,8 @@
             testResult.Outcome = TestOutcome.Skipped;
             testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
 
-            // Also since this is an action performed in context of a state should there be a separate function?
-            // Should this intelligence come from the caller?
-
-            switch (this.state)
-            {
-                // If a pending test case is encountered while in the summary state it indicates either completion
-                // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
-                // the run regardless. 
-                case MochaTestResultParserState.ExpectingTestRunSummary:
-
-                    AttemptPublishAndResetParser();
-                    break;
-
-                // If a pending test case is encountered while in the stack traces state it indicates corruption
-                // or incomplete stack trace data
-                case MochaTestResultParserState.ExpectingStackTraces:
-
-                    // This check is safety check for when we try to parse stack trace contents
-                    if (this.stateContext.StackTracesToSkipParsingPostSummary != 0)
-                    {
-                        this.logger.Error("MochaTestResultParser : Expecting stack traces but found pending test case instead.");
-                        this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.ExpectingStackTracesButFoundPendingTest,
-                            new List<int> { this.currentTestRunId }, true);
-                    }
-
-                    AttemptPublishAndResetParser();
-                    break;
-            }
-
-            this.testRun.SkippedTests.Add(testResult);
-            return true;
+            stateContext.TestRun.SkippedTests.Add(testResult);
+            return MochaTestResultParserState.ExpectingTestResults;
         }
     }
 }
