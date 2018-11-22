@@ -66,7 +66,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             // Initialize the starting state of the parser
             this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
-            this.stateContext = new MochaTestResultParserStateContext();
+            this.stateContext = new MochaTestResultParserStateContext(this.testRun);
             this.state = MochaTestResultParserState.ExpectingTestResults;
         }
 
@@ -231,12 +231,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
         private void ResetParser()
         {
-            // Refresh the context
-            this.stateContext = new MochaTestResultParserStateContext();
-
             // Start a new TestRun
             this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
             this.state = MochaTestResultParserState.ExpectingTestResults;
+
+            // Refresh the context
+            this.stateContext = new MochaTestResultParserStateContext(testRun);
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }
@@ -317,10 +317,10 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                     new List<int> { this.currentTestRunId }, true);
 
                 // If it was not 1 there's a good chance we read some random line as a failed test case hence consider it a
-                // no match since the number did not match what we were expecting anyway
+                // as a match but do not add it to our list of test cases or consider it a valid stack trace
                 if (testCaseNumber != 1)
                 {
-                    return false;
+                    return true;
                 }
 
                 // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
@@ -515,7 +515,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.testRun.TestRunSummary.TotalFailed = totalFailed;
             this.stateContext.StackTracesToSkipParsingPostSummary = totalFailed;
 
-            
+
             this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingStackTraces.");
             this.state = MochaTestResultParserState.ExpectingStackTraces;
 
