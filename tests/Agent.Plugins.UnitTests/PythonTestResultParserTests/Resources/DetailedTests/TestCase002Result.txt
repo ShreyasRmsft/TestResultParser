@@ -1,0 +1,15 @@
+Passed 4
+test_pass (__main__.TestStringMethods)
+test_pass2 (__main__.TestStringMethods)
+test_pass3 (__main__.TestStringMethods)
+test_split (__main__.TestStringMethods)
+
+Failed 4
+test_fail (__main__.TestStringMethods)
+test_fail2 (__main__.TestStringMethods)
+test_fail3 (__main__.TestStringMethods)
+test_fail4 (__main__.TestStringMethods)
+
+Skipped 2
+test_skip (__main__.TestStringMethods)
+test_skip2 (__main__.TestStringMethods)

@@ -143,7 +143,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Python
             }
 
             // Test result name
-            var resultNameIdentifier = resultMatch.Groups[1].Value.Trim();
+            var resultNameIdentifier = resultMatch.Groups[RegexCaptureGroups.TestCaseName].Value.Trim();
             string resultName = GetResultName(logData, resultNameIdentifier);
 
             if (resultName == null)
@@ -156,17 +156,24 @@ namespace Agent.Plugins.TestResultParser.Parser.Python
                 Reset();
             }
 
-            var result = new TestResult();
-            result.Name = resultName;
-
+            var result = new TestResult() { Name = resultName };
+            
             // Check for outcome if it is passed.
-            var testOutcomeIdentifier = resultMatch.Groups[2].Value.Trim();
+            var testOutcomeIdentifier = resultMatch.Groups[RegexCaptureGroups.TestOutcome].Value.Trim();
             var passedResultMatch = PythonRegularExpressions.PassedOutcomePattern.Match(testOutcomeIdentifier);
-
             if (passedResultMatch.Success)
             {
                 result.Outcome = TestOutcome.Passed;
                 currentTestRun.PassedTests.Add(result);
+            }
+            else
+            {
+                var skippedResultMatch = PythonRegularExpressions.SkippedOutcomePattern.Match(testOutcomeIdentifier);
+                if(skippedResultMatch.Success)
+                {
+                    result.Outcome = TestOutcome.Skipped;
+                    currentTestRun.SkippedTests.Add(result);
+                }
             }
 
             // Ignore the other results
@@ -191,7 +198,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Python
             }
 
             // Set result name.
-            string resultNameIdentifier = failedResultMatch.Groups[1].Value.Trim();
+            string resultNameIdentifier = failedResultMatch.Groups[RegexCaptureGroups.TestCaseName].Value.Trim();
 
             var result = new TestResult();
             result.Name = GetResultName(logData, resultNameIdentifier);
@@ -232,6 +239,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Python
             }
             else
             {
+                // TODO: Should we allow more than 1?
                 var allowedWhiteSpaceLineMatch = PythonRegularExpressions.SummaryAllowedWhiteSpaceLine.Match(logData.Line);
                 if (allowedWhiteSpaceLineMatch.Success)
                 {
@@ -248,12 +256,20 @@ namespace Agent.Plugins.TestResultParser.Parser.Python
                         currentTestRun.TestRunSummary.TotalFailed = int.Parse(failureCountPatternMatch.Groups[RegexCaptureGroups.FailedTests].Value);
                     }
 
-                    // TODO: Probably should have a separate bucket for errors
+                    // TODO: We should have a separate bucket for errors
                     var errorCountPatternMatch = PythonRegularExpressions.SummaryErrorsPattern.Match(resultIdentifer);
                     if(errorCountPatternMatch.Success)
                     {
-                        currentTestRun.TestRunSummary.TotalFailed += int.Parse(errorCountPatternMatch.Groups[RegexCaptureGroups.NumberOfErrors].Value);
+                        currentTestRun.TestRunSummary.TotalFailed += int.Parse(errorCountPatternMatch.Groups[RegexCaptureGroups.Errors].Value);
                     }
+
+                    var skippedCountPatternMatch = PythonRegularExpressions.SummarySkippedPattern.Match(resultIdentifer);
+                    if(skippedCountPatternMatch.Success)
+                    {
+                        currentTestRun.TestRunSummary.TotalSkipped = int.Parse(skippedCountPatternMatch.Groups[RegexCaptureGroups.SkippedTests].Value);
+                    }
+
+                    currentTestRun.TestRunSummary.TotalPassed = currentTestRun.TestRunSummary.TotalTests - (currentTestRun.TestRunSummary.TotalFailed + currentTestRun.TestRunSummary.TotalSkipped);
 
                     //Publish the result
                     runManager.Publish(currentTestRun);

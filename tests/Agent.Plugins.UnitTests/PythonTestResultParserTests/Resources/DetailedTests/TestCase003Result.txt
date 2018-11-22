@@ -1,0 +1,13 @@
+Passed 6
+test_expectedFail (__main__.TestStringMethods)
+test_expectedFail2 (__main__.TestStringMethods)
+test_pass (__main__.TestStringMethods)
+test_pass2 (__main__.TestStringMethods)
+test_pass3 (__main__.TestStringMethods)
+test_split (__main__.TestStringMethods)
+
+Failed 0
+
+Skipped 2
+test_skip (__main__.TestStringMethods)
+test_skip2 (__main__.TestStringMethods)
