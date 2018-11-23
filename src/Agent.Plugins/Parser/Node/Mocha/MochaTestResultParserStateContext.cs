@@ -5,7 +5,7 @@ using Agent.Plugins.TestResultParser.TestResult.Models;
 
 namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
-    public class MochaTestResultParserStateContext
+    public class MochaTestResultParserStateContext : TestResultParserStateContext
     {
         public MochaTestResultParserStateContext(TestRun testRun)
         {

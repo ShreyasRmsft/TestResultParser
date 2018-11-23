@@ -19,6 +19,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
         public const string UnexpectedFailedTestCaseNumber = "UnexpectedFailedTestCaseNumber";
 
+        public const string UnexpectedFailedStackTraceNumber = "UnexpectedFailedStackTraceNumber";
+
         public const string FailedTestCasesFoundButNoFailedSummary = "FailedTestCasesFoundButNoFailedSummary";
 
         public const string PendingTestCasesFoundButNoFailedSummary = "PendingTestCasesFoundButNoFailedSummary";

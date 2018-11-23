@@ -9,6 +9,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
     using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
+    using Agent.Plugins.TestResultParser.Parser.Node.Mocha.States;
     using Agent.Plugins.TestResultParser.Telemetry;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
@@ -31,10 +32,14 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         private MochaTestResultParserStateContext stateContext;
         private int currentTestRunId = 1;
 
-        private MochaTestResultParserState state;
+        private MochaTestResultParserState currentState;
         private ITraceLogger logger;
         private ITelemetryDataCollector telemetryDataCollector;
         private ITestRunManager testRunManager;
+
+        ITestResultParserState expectingTestResults;
+        ITestResultParserState expectingTestRunSummary;
+        ITestResultParserState expectingStackTraces;
 
         public string Name => nameof(MochaTestResultParser);
 
@@ -67,39 +72,27 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             // Initialize the starting state of the parser
             this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
             this.stateContext = new MochaTestResultParserStateContext(this.testRun);
-            this.state = MochaTestResultParserState.ExpectingTestResults;
+            this.currentState = MochaTestResultParserState.ExpectingTestResults;
+
+            this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingTestRunSummary = new ExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingStackTraces = new ExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
         }
 
         /// <inheritdoc/>
         public void Parse(LogData testResultsLine)
         {
-            stateContext.CurrentLineNumber = testResultsLine.LineNumber;
+            this.stateContext.CurrentLineNumber = testResultsLine.LineNumber;
 
             // State model for the mocha parser that defines the regexes to match against in each state
             // Each state re-orders the regexes based on the frequency of expected matches
-            switch (this.state)
+            switch (this.currentState)
             {
                 // This state primarily looks for test results 
                 // and transitions to the next one after a line of summary is encountered
                 case MochaTestResultParserState.ExpectingTestResults:
 
-                    if (MatchPassedTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchFailedTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPendingTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPassedSummary(testResultsLine))
-                    {
-                        return;
-                    }
-
+                    AttempMatch(expectingTestResults, testResultsLine);
                     break;
 
                 // This state primarily looks for test run summary 
@@ -107,31 +100,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 // else goes back to the first state after publishing the run
                 case MochaTestResultParserState.ExpectingTestRunSummary:
 
-                    if (MatchPendingSummary(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchFailedSummary(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPassedTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchFailedTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPendingTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPassedSummary(testResultsLine))
-                    {
-                        return;
-                    }
-
+                    AttempMatch(expectingTestRunSummary, testResultsLine);
                     break;
 
                 // This state primarily looks for stack traces
@@ -139,23 +108,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 // fires telemetry for unexpected behavior but moves on to the next test run
                 case MochaTestResultParserState.ExpectingStackTraces:
 
-                    if (MatchFailedTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPassedTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPendingTestCase(testResultsLine))
-                    {
-                        return;
-                    }
-                    if (MatchPassedSummary(testResultsLine))
-                    {
-                        return;
-                    }
-
+                    AttempMatch(expectingStackTraces, testResultsLine);
                     break;
             }
 
@@ -177,24 +130,32 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         }
 
         /// <summary>
-        /// Publishes the run and resets the parser by resetting the state context and current state
+        /// TODO
         /// </summary>
-        private void AttemptPublishAndResetParser(string reason = null)
+        /// <param name="state"></param>
+        /// <param name="testResultsLine"></param>
+        /// <returns></returns>
+        private MochaTestResultParserState AttempMatch(ITestResultParserState state, LogData testResultsLine)
         {
-            if (!string.IsNullOrEmpty(reason))
+            foreach (var regexActionPair in state.RegexesToMatch)
             {
-                this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publishing the test run : {reason}.");
-                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    TelemetryConstants.AttemptPublishAndResetParser, new List<string> { reason }, true);
+                var match = regexActionPair.Regex.Match(testResultsLine.Line);
+                if (match.Success)
+                {
+                    return (MochaTestResultParserState)regexActionPair.MatchAction(match, this.stateContext);
+                }
             }
 
-            PublishTestRun();
-
-            ResetParser();
+            return currentState;
         }
 
-        private void PublishTestRun()
+        /// <summary>
+        /// Publishes the run and resets the parser by resetting the state context and current state
+        /// </summary>
+        private void AttemptPublishAndResetParser()
         {
+            this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publish the test run.");
+
             // We have encountered failed test cases but no failed summary was encountered
             if (this.testRun.FailedTests.Count != 0 && this.testRun.TestRunSummary.TotalFailed == 0)
             {
@@ -212,12 +173,14 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             }
 
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
-            switch (this.state)
+            switch (this.currentState)
             {
                 case MochaTestResultParserState.ExpectingTestResults:
-                    if (this.testRun.PassedTests.Count != 0)
+                    if (this.testRun.PassedTests.Count != 0
+                        || this.testRun.FailedTests.Count != 0
+                        || this.testRun.SkippedTests.Count != 0)
                     {
-                        this.logger.Error("MochaTestResultParser : Passed tests were encountered but no passed summary was encountered.");
+                        this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
                         this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
                             TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.currentTestRunId }, true);
                     }
@@ -229,6 +192,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                     this.currentTestRunId++;
                     break;
             }
+
+            ResetParser();
         }
 
         private void ResetParser()
@@ -237,7 +202,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
 
             // Refresh the context
-            this.stateContext = new MochaTestResultParserStateContext(testRun);
+            this.stateContext = new MochaTestResultParserStateContext(this.testRun);
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }
@@ -265,7 +230,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             // Also since this is an action performed in context of a state should there be a separate function?
             // Should this intelligence come from the caller?
 
-            switch (this.state)
+            switch (this.currentState)
             {
                 // If a passed test case is encountered while in the summary state it indicates either completion
                 // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
@@ -351,7 +316,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             // If a failed test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless. 
-            if (this.state == MochaTestResultParserState.ExpectingTestRunSummary)
+            if (this.currentState == MochaTestResultParserState.ExpectingTestRunSummary)
             {
                 AttemptPublishAndResetParser();
             }
@@ -381,7 +346,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             // Also since this is an action performed in context of a state should there be a separate function?
             // Should this intelligence come from the caller?
 
-            switch (this.state)
+            switch (this.currentState)
             {
                 // If a pending test case is encountered while in the summary state it indicates either completion
                 // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
@@ -424,7 +389,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             // Unexpected matches for Passed summary
             // We expect summary ideally only when we are in the first state.
-            switch (this.state)
+            switch (this.currentState)
             {
                 case MochaTestResultParserState.ExpectingTestRunSummary:
 
@@ -452,7 +417,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             this.stateContext.LinesWithinWhichMatchIsExpected = 1;
             this.stateContext.ExpectedMatch = "failed/pending tests summary";
-            this.state = MochaTestResultParserState.ExpectingTestRunSummary;
+            this.currentState = MochaTestResultParserState.ExpectingTestRunSummary;
             this.stateContext.LastFailedTestCaseNumber = 0;
 
             this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingTestRunSummary.");
@@ -518,7 +483,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
 
             this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingStackTraces.");
-            this.state = MochaTestResultParserState.ExpectingStackTraces;
+            this.currentState = MochaTestResultParserState.ExpectingStackTraces;
 
             // If encountered failed tests does not match summary fire telemtry
             if (this.testRun.TestRunSummary.TotalFailed != this.testRun.FailedTests.Count)
@@ -561,5 +526,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
             return true;
         }
+
+        // TODO: Null Check
+
+        // try catch block around staete model
     }
 }

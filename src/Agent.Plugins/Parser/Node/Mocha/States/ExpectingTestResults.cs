@@ -14,12 +14,9 @@
     {
         private ITraceLogger logger;
         private ITelemetryDataCollector telemetryDataCollector;
-        private ParserResetAndAttempPublish resetParserAndAttempPublish;
+        private ParserResetAndAttempPublish attemptPublishAndResetParser;
 
-        public delegate MochaTestResultParserState MatchAction(Match match, MochaTestResultParserStateContext stateContext);
-        public delegate void ParserResetAndAttempPublish(string reason = null);
-
-        public List<Tuple<Regex, MatchAction>> RegexesToMatch { get; }
+        public List<RegexActionPair> RegexesToMatch { get; }
 
         public ExpectingTestResults(ParserResetAndAttempPublish parserResetAndAttempPublish)
             : this(parserResetAndAttempPublish, TraceLogger.Instance, TelemetryDataCollector.Instance)
@@ -30,44 +27,46 @@
         public ExpectingTestResults(ParserResetAndAttempPublish parserResetAndAttempPublish, ITraceLogger logger,
             ITelemetryDataCollector telemetryDataCollector)
         {
-            RegexesToMatch = new List<Tuple<Regex, MatchAction>>
+            RegexesToMatch = new List<RegexActionPair>
             {
-                new Tuple<Regex, MatchAction>(MochaTestResultParserRegexes.PassedTestCase, PassedTestCaseMatched),
-                new Tuple<Regex, MatchAction>(MochaTestResultParserRegexes.FailedTestCase, FailedTestCaseMatched),
-                new Tuple<Regex, MatchAction>(MochaTestResultParserRegexes.PendingTestCase, null),
-                new Tuple<Regex, MatchAction>(MochaTestResultParserRegexes.PassedTestsSummary, null)
+                new RegexActionPair(MochaTestResultParserRegexes.PassedTestCase, PassedTestCaseMatched),
+                new RegexActionPair(MochaTestResultParserRegexes.FailedTestCase, FailedTestCaseMatched),
+                new RegexActionPair(MochaTestResultParserRegexes.PendingTestCase, PendingTestCaseMatched),
+                new RegexActionPair(MochaTestResultParserRegexes.PassedTestsSummary, PassedTestsSummaryMatched)
             };
 
             this.logger = logger;
             this.telemetryDataCollector = telemetryDataCollector;
-            this.resetParserAndAttempPublish = parserResetAndAttempPublish;
+            this.attemptPublishAndResetParser = parserResetAndAttempPublish;
         }
 
-        private MochaTestResultParserState PassedTestCaseMatched(Match match, MochaTestResultParserStateContext stateContext)
+        private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
+            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
             var testResult = new TestResult();
 
             testResult.Outcome = TestOutcome.Passed;
             testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
 
-            stateContext.TestRun.PassedTests.Add(testResult);
+            mochaStateContext.TestRun.PassedTests.Add(testResult);
             return MochaTestResultParserState.ExpectingTestResults;
         }
 
-        private MochaTestResultParserState FailedTestCaseMatched(Match match, MochaTestResultParserStateContext stateContext)
+        private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
+            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
             var testResult = new TestResult();
 
             // Handling parse errors is unnecessary
             int.TryParse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value, out int testCaseNumber);
 
-            // In the event the failed test case number does not match the expected test case number log an error and move on
-            if (testCaseNumber != stateContext.LastFailedTestCaseNumber + 1)
+            // In the event the failed test case number does not match the expected test case number log an error
+            if (testCaseNumber != mochaStateContext.LastFailedTestCaseNumber + 1)
             {
-                this.logger.Error($"MochaTestResultParser : Expecting failed test case or stack trace with" +
-                    $" number {stateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
+                this.logger.Error($"MochaTestResultParser : Expecting failed test case with" +
+                    $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.UnexpectedFailedTestCaseNumber,
-                    new List<int> { stateContext.TestRun.TestRunId }, true);
+                    new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
                 // If it was not 1 there's a good chance we read some random line as a failed test case hence consider it a
                 // as a match but do not add it to our list of test cases
@@ -78,30 +77,82 @@
 
                 // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
                 // This is something we might choose to change if we realize there is a chance we can get such false detections often in the middle of a run
-                this.resetParserAndAttempPublish($"was expecting failed test case or stack trace with number {stateContext.LastFailedTestCaseNumber} but found" +
+                this.attemptPublishAndResetParser($"Expecting failed test case with number {mochaStateContext.LastFailedTestCaseNumber} but found" +
                     $" {testCaseNumber} instead");
             }
 
             // Increment either ways whether it was expected or context was reset and the encountered number was 1
-            stateContext.LastFailedTestCaseNumber++;
+            mochaStateContext.LastFailedTestCaseNumber++;
 
             testResult.Outcome = TestOutcome.Failed;
             testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
 
-            stateContext.TestRun.FailedTests.Add(testResult);
+            mochaStateContext.TestRun.FailedTests.Add(testResult);
 
             return MochaTestResultParserState.ExpectingTestResults;
         }
 
-        private MochaTestResultParserState MatchPendingTestCase(Match match, MochaTestResultParserStateContext stateContext)
+        private Enum PendingTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
+            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
             var testResult = new TestResult();
 
             testResult.Outcome = TestOutcome.Skipped;
             testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
 
-            stateContext.TestRun.SkippedTests.Add(testResult);
+            mochaStateContext.TestRun.SkippedTests.Add(testResult);
             return MochaTestResultParserState.ExpectingTestResults;
+        }
+
+        private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
+        {
+            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            this.logger.Info($"MochaTestResultParser : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
+
+            mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
+            mochaStateContext.ExpectedMatch = "failed/pending tests summary";
+            mochaStateContext.LastFailedTestCaseNumber = 0;
+
+            this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingTestRunSummary.");
+
+            // Handling parse errors is unnecessary
+            int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed);
+
+            mochaStateContext.TestRun.TestRunSummary.TotalPassed = totalPassed;
+
+            // Fire telemetry if summary does not agree with parsed tests count
+            if (mochaStateContext.TestRun.TestRunSummary.TotalPassed != mochaStateContext.TestRun.PassedTests.Count)
+            {
+                this.logger.Error($"MochaTestResultParser : Passed tests count does not match passed summary" +
+                    $" at line {mochaStateContext.CurrentLineNumber}");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
+            }
+
+            // Handling parse errors is unnecessary
+            long.TryParse(match.Groups[RegexCaptureGroups.TestRunTime].Value, out long timeTaken);
+
+            // Store time taken based on the unit used
+            switch (match.Groups[RegexCaptureGroups.TestRunTimeUnit].Value)
+            {
+                case "ms":
+                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken);
+                    break;
+
+                case "s":
+                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
+                    break;
+
+                case "m":
+                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 60 * 1000);
+                    break;
+
+                case "h":
+                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 60 * 60 * 1000);
+                    break;
+            }
+
+            return MochaTestResultParserState.ExpectingTestRunSummary;
         }
     }
 }
