@@ -51,7 +51,7 @@
             // This check is safety check for when we try to parse stack trace contents, as of now it will always evaluate to true
             if (mochaStateContext.StackTracesToSkipParsingPostSummary != 0)
             {
-                this.logger.Error($"MochaTestResultParser : Expecting stack traces but found passed test case instead at line {stateContext.CurrentLineNumber}.");
+                this.logger.Error($"MochaTestResultParser : ExpectingStackTraces :  Expecting stack traces but found passed test case instead at line {mochaStateContext.CurrentLineNumber}.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.ExpectingStackTracesButFoundPassedTest,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
@@ -72,7 +72,7 @@
             // In the event the failed test case number does not match the expected test case number log an error
             if (testCaseNumber != mochaStateContext.LastFailedTestCaseNumber + 1)
             {
-                this.logger.Error($"MochaTestResultParser : Expecting stack trace with" +
+                this.logger.Error($"MochaTestResultParser : ExpectingStackTraces : Expecting stack trace with" +
                     $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.UnexpectedFailedStackTraceNumber,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
@@ -131,7 +131,7 @@
             // This check is safety check for when we try to parse stack trace contents
             if (mochaStateContext.StackTracesToSkipParsingPostSummary != 0)
             {
-                this.logger.Error("MochaTestResultParser : Expecting stack traces but found pending test case instead.");
+                this.logger.Error("MochaTestResultParser : ExpectingStackTraces : Expecting stack traces but found pending test case instead.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.ExpectingStackTracesButFoundPendingTest,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
@@ -145,12 +145,12 @@
         private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaTestResultParserStateContext;
-            this.logger.Info($"MochaTestResultParser : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
+            this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             // If we were expecting more stack traces but got summary instead
             if (mochaStateContext.StackTracesToSkipParsingPostSummary != 0)
             {
-                this.logger.Error("MochaTestResultParser : Expecting stack traces but found passed summary instead.");
+                this.logger.Error("MochaTestResultParser : ExpectingStackTraces : Expecting stack traces but found passed summary instead.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.SummaryWithNoTestCases,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
@@ -197,7 +197,7 @@
                     break;
             }
 
-            this.logger.Info("MochaTestResultParser : Transitioned to state ExpectingTestRunSummary.");
+            this.logger.Info("MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary.");
             return MochaTestResultParserState.ExpectingTestRunSummary;
         }
     }
