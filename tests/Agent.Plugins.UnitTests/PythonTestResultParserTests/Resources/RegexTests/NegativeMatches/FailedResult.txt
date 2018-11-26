@@ -1,0 +1,7 @@
+﻿
+Failed : TestCase
+Fail : asas (asd)
+FAIL= testcase
+  FAIL:: testcase
+FAILtestcase:
+ FAIL : test (testproject)

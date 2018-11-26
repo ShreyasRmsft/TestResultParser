@@ -24,48 +24,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="MochaTestResultParserTests\Resources\RegexTests\NegativeMatches\PendingTestsSummary.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\DetailedTests\TestCase001.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\DetailedTests\TestCase001Result.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\DetailedTests\TestCase002.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\DetailedTests\TestCase002Result.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\DetailedTests\TestCase003.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\DetailedTests\TestCase003Result.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="PythonTestResultParserTests\Resources\DetailedTests\TestCase001.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="PythonTestResultParserTests\Resources\DetailedTests\TestCase001Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="PythonTestResultParserTests\Resources\DetailedTests\TestCase002.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="PythonTestResultParserTests\Resources\DetailedTests\TestCase002Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="PythonTestResultParserTests\Resources\DetailedTests\TestCase003.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="PythonTestResultParserTests\Resources\DetailedTests\TestCase003Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
+  
 </Project>

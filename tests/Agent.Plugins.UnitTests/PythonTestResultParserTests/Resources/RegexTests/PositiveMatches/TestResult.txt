@@ -1,0 +1,10 @@
+﻿abc ... abc
+testHello ... HelloWorld
+testHello ... skipped
+testHello ... skipped 'reason'
+testHello ... ok
+testHello (testProject) ... ok
+testHello (testProject) ... Hello world ok
+testHello (testProject) ... Hello world expected failure
+testHello (testProject) ... Hello world failed
+testHello (testProject) ... Hello world failed

@@ -8,5 +8,15 @@ namespace Agent.Plugins.TestResultParser.Parser.Python
         public const string EventArea = "Python";
 
         public const string Initialize = "Initialize";
+
+        public const string ParseException = "ParseException";
+
+        public const string InvalidInput = "InvalidInput";
+
+        public const string SummaryOrFailedTestsNotFound = "SummaryOrFailedTestsNotFound";
+
+        public const string TestRunSummaryCorrupted = "TestRunSummaryCorrupted";
+
+        public const string TestOutcomeSummaryNotFound = "TestOutcomeSummaryNotFound";
     }
 }

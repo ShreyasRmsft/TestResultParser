@@ -1,4 +1,4 @@
-﻿namespace Agent.Plugins.UnitTests.Parser.Python
+﻿namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
 {
     using Agent.Plugins.TestResultParser.Parser.Python;
     using Agent.Plugins.UnitTests.MochaTestResultParserTests;

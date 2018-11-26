@@ -1,0 +1,29 @@
+test_Error (Test1.PythonTestClass) ... ERROR
+test_expectedFailure (Test1.PythonTestClass) ... expected failure
+test_failing (Test1.PythonTestClass) ... FAIL
+test_passing (Test1.PythonTestClass) ... I am passing test
+
+
+ok
+test_passing2 (Test1.PythonTestClass) ... skipped ''
+
+======================================================================
+ERROR: test_Error (Test1.PythonTestClass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Code\LearningPython\Test1.py", line 21, in test_Error
+    assert len(self.verificationErrors) == 0
+AttributeError: 'PythonTestClass' object has no attribute 'verificationErrors'
+
+======================================================================
+FAIL: test_failing (Test1.PythonTestClass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Code\LearningPython\Test1.py", line 5, in test_failing
+    self.assertEqual(2,3)
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.007s
+
+FAILED (failures=1, errors=1, skipped=1, expected failures=1)

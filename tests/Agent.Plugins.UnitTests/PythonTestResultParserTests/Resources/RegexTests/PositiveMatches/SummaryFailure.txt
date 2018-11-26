@@ -1,0 +1,9 @@
+﻿failures = 3
+failures =3
+failures=3
+failures=4, errors=5
+errors = 3, failures = 4
+failures=5, errors=6, skipped=6
+errors= 6, failures= 5, skipped= 6
+failures= 5, skipped= 6, errors=5
+errors= 6, failures= 5, skipped= 6, expected failures = 6
