@@ -3,6 +3,7 @@
 
 namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
+    using System;
     using System.Collections.Generic;
     using Agent.Plugins.TestResultParser.Loggers;
     using Agent.Plugins.TestResultParser.Loggers.Interfaces;
@@ -80,63 +81,86 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         /// <inheritdoc/>
         public void Parse(LogData testResultsLine)
         {
-            this.stateContext.CurrentLineNumber = testResultsLine.LineNumber;
-
-            // State model for the mocha parser that defines the regexes to match against in each state
-            // Each state re-orders the regexes based on the frequency of expected matches
-            switch (this.currentState)
+            if (testResultsLine == null || testResultsLine.Line == null)
             {
-                // This state primarily looks for test results 
-                // and transitions to the next one after a line of summary is encountered
-                case MochaTestResultParserState.ExpectingTestResults:
-
-                    if (AttempMatch(this.expectingTestResults, testResultsLine))
-                        return;
-                    break;
-
-                // This state primarily looks for test run summary 
-                // If failed tests were found to be present transitions to the next one to look for stack traces
-                // else goes back to the first state after publishing the run
-                case MochaTestResultParserState.ExpectingTestRunSummary:
-
-                    if (AttempMatch(this.expectingTestRunSummary, testResultsLine))
-                        return;
-                    break;
-
-                // This state primarily looks for stack traces
-                // If any other match occurs before all the expected stack traces are found it 
-                // fires telemetry for unexpected behavior but moves on to the next test run
-                case MochaTestResultParserState.ExpectingStackTraces:
-
-                    if (AttempMatch(this.expectingStackTraces, testResultsLine))
-                        return;
-                    break;
-            }
-
-            // This is a mechanism to enforce matches that have to occur within 
-            // a specific number of lines after encountering the previous match
-            // one obvious usage is for successive summary lines containing passed,
-            // pending and failed test summary
-            if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
-            {
-                this.logger.Info($"MochaTestResultParser : Was expecting {this.stateContext.ExpectedMatch} before line {testResultsLine.LineNumber}, but no matches occurred.");
-                AttemptPublishAndResetParser();
+                this.logger.Error("MochaTestResultParser : Parse : Input line was null.");
                 return;
             }
 
-            if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
+            try
             {
-                this.stateContext.LinesWithinWhichMatchIsExpected--;
-                return;
+                this.stateContext.CurrentLineNumber = testResultsLine.LineNumber;
+
+                // State model for the mocha parser that defines the regexes to match against in each state
+                // Each state re-orders the regexes based on the frequency of expected matches
+                switch (this.currentState)
+                {
+                    // This state primarily looks for test results 
+                    // and transitions to the next one after a line of summary is encountered
+                    case MochaTestResultParserState.ExpectingTestResults:
+
+                        if (AttempMatch(this.expectingTestResults, testResultsLine))
+                            return;
+                        break;
+
+                    // This state primarily looks for test run summary 
+                    // If failed tests were found to be present transitions to the next one to look for stack traces
+                    // else goes back to the first state after publishing the run
+                    case MochaTestResultParserState.ExpectingTestRunSummary:
+
+                        if (AttempMatch(this.expectingTestRunSummary, testResultsLine))
+                            return;
+                        break;
+
+                    // This state primarily looks for stack traces
+                    // If any other match occurs before all the expected stack traces are found it 
+                    // fires telemetry for unexpected behavior but moves on to the next test run
+                    case MochaTestResultParserState.ExpectingStackTraces:
+
+                        if (AttempMatch(this.expectingStackTraces, testResultsLine))
+                            return;
+                        break;
+                }
+
+                // This is a mechanism to enforce matches that have to occur within 
+                // a specific number of lines after encountering the previous match
+                // one obvious usage is for successive summary lines containing passed,
+                // pending and failed test summary
+                if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
+                {
+                    this.logger.Info($"MochaTestResultParser : Parse : Was expecting {this.stateContext.ExpectedMatch} before line {testResultsLine.LineNumber}, but no matches occurred.");
+                    AttemptPublishAndResetParser();
+                    return;
+                }
+
+                // If no match occurred and a match was expected in a positive number of lines, decrement the counter
+                // A value of zero or lesser indicates not expecting a match
+                if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
+                {
+                    this.stateContext.LinesWithinWhichMatchIsExpected--;
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                this.logger.Error($"MochaTestResultParser : Parse : Failed with exception {e}.");
+
+                // This might start taking a lot of space if each and every parse operation starts throwing
+                // But if that happens then there's a lot more stuff broken.
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
+
+                // Rethrowing this so that the plugin is aware that the parser is erroring out
+                // Ideally this never should happen
+                throw;
             }
         }
 
         /// <summary>
-        /// TODO
+        /// Attemps to match the line with each regex specified by the current state
         /// </summary>
-        /// <param name="state"></param>
-        /// <param name="testResultsLine"></param>
-        /// <returns></returns>
+        /// <param name="state">Current state</param>
+        /// <param name="testResultsLine">Input line</param>
+        /// <returns>True if a match occurs</returns>
         private bool AttempMatch(ITestResultParserState state, LogData testResultsLine)
         {
             foreach (var regexActionPair in state.RegexesToMatch)
@@ -157,7 +181,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         /// </summary>
         private void AttemptPublishAndResetParser()
         {
-            this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publish the test run at line {stateContext.CurrentLineNumber}.");
+            this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publish the test run at line {this.stateContext.CurrentLineNumber}.");
 
             // We have encountered failed test cases but no failed summary was encountered
             if (this.testRun.FailedTests.Count != 0 && this.testRun.TestRunSummary.TotalFailed == 0)
@@ -199,6 +223,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             ResetParser();
         }
 
+        /// <summary>
+        /// Used to reset the parser inluding the test run and context
+        /// </summary>
         private void ResetParser()
         {
             // Start a new TestRun
@@ -208,13 +235,10 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.currentState = MochaTestResultParserState.ExpectingTestResults;
 
             // Refresh the context
-            this.stateContext = new MochaTestResultParserStateContext(this.testRun);
+            this.stateContext.Reset();
+            this.stateContext.TestRun = this.testRun;
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }
-
-        // TODO: Null Check
-
-        // try catch block around staete model
     }
 }

@@ -5,6 +5,7 @@
     /// </summary>
     public abstract class TestResultParserStateContext
     {
+        public abstract void Reset();
         // Extract out common properties here when enough parsers have been authored
     }
 }

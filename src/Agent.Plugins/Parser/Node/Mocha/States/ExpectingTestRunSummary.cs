@@ -1,4 +1,7 @@
-﻿namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
 {
     using System;
     using System.Collections.Generic;
@@ -10,13 +13,9 @@
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
 
-    public class ExpectingTestRunSummary : ITestResultParserState
+    public class ExpectingTestRunSummary : MochaParserStateBase
     {
-        private ITraceLogger logger;
-        private ITelemetryDataCollector telemetryDataCollector;
-        private ParserResetAndAttempPublish attemptPublishAndResetParser;
-
-        public List<RegexActionPair> RegexesToMatch { get; }
+        public override List<RegexActionPair> RegexesToMatch { get; }
 
         public ExpectingTestRunSummary(ParserResetAndAttempPublish parserResetAndAttempPublish) : this(parserResetAndAttempPublish, TraceLogger.Instance, TelemetryDataCollector.Instance)
         {
@@ -24,6 +23,7 @@
         }
 
         public ExpectingTestRunSummary(ParserResetAndAttempPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+            : base(parserResetAndAttempPublish, logger, telemetryDataCollector)
         {
             RegexesToMatch = new List<RegexActionPair>
             {
@@ -50,9 +50,7 @@
             this.attemptPublishAndResetParser();
 
             var testResult = new TestResult();
-
-            testResult.Outcome = TestOutcome.Passed;
-            testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
+            PrepareTestResult(testResult, TestOutcome.Passed, match);
 
             mochaStateContext.TestRun.PassedTests.Add(testResult);
             return MochaTestResultParserState.ExpectingTestResults;
@@ -87,9 +85,7 @@
             // Increment either ways whether it was expected or context was reset and the encountered number was 1
             mochaStateContext.LastFailedTestCaseNumber++;
 
-            testResult.Outcome = TestOutcome.Failed;
-            testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
-
+            PrepareTestResult(testResult, TestOutcome.Failed, match);
             mochaStateContext.TestRun.FailedTests.Add(testResult);
 
             return MochaTestResultParserState.ExpectingTestResults;
@@ -105,9 +101,7 @@
             this.attemptPublishAndResetParser();
 
             var testResult = new TestResult();
-
-            testResult.Outcome = TestOutcome.Skipped;
-            testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
+            PrepareTestResult(testResult, TestOutcome.Skipped, match);
 
             mochaStateContext.TestRun.SkippedTests.Add(testResult);
             return MochaTestResultParserState.ExpectingTestResults;
@@ -145,28 +139,8 @@
                     TelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 
-            // Handling parse errors is unnecessary
-            long.TryParse(match.Groups[RegexCaptureGroups.TestRunTime].Value, out long timeTaken);
-
-            // Store time taken based on the unit used
-            switch (match.Groups[RegexCaptureGroups.TestRunTimeUnit].Value)
-            {
-                case "ms":
-                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken);
-                    break;
-
-                case "s":
-                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
-                    break;
-
-                case "m":
-                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 60 * 1000);
-                    break;
-
-                case "h":
-                    mochaStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 60 * 60 * 1000);
-                    break;
-            }
+            // Extract the test run time from the passed tests summary
+            ExtractTestRunTime(match, mochaStateContext);
 
             this.logger.Info("MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestRunSummary.");
             return MochaTestResultParserState.ExpectingTestRunSummary;

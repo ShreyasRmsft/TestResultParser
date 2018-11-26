@@ -71,7 +71,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
-            int lineNumber = 0;
+            int lineNumber = 1;
 
             foreach (var line in testResultsConsoleOut)
             {
@@ -99,7 +99,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
 
-            int lineNumber = 0;
+            int lineNumber = 1;
 
             foreach (var line in testResultsConsoleOut)
             {
@@ -124,7 +124,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             });
 
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
-            int lineNumber = 0;
+            int lineNumber = 1;
 
             foreach (var line in testResultsConsoleOut)
             {
@@ -148,7 +148,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>()));
 
             var parser = new MochaTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
-            int lineNumber = 0;
+            int lineNumber = 1;
 
             foreach (var line in testResultsConsoleOut)
             {
@@ -178,7 +178,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
                 if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    // if (testCase.Name.Contains("TestCase009"))
+                     if (testCase.Name.Contains("TestCase011"))
                     yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
