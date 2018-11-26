@@ -13,11 +13,11 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
     {
         // TODO: .+
 
-        public static Regex PassedTestCase { get; } = new Regex($"^(  )+((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.*) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.*)$)", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestCase { get; } = new Regex($"^(  )+((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
-        public static Regex FailedTestCase { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.*$)", RegexOptions.ExplicitCapture);
+        public static Regex FailedTestCase { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.+$)", RegexOptions.ExplicitCapture);
 
-        public static Regex PendingTestCase { get; } = new Regex($"^(  )+- (?<{RegexCaptureGroups.TestCaseName}>.*$)", RegexOptions.ExplicitCapture);
+        public static Regex PendingTestCase { get; } = new Regex($"^(  )+- (?<{RegexCaptureGroups.TestCaseName}>.+$)", RegexOptions.ExplicitCapture);
 
         public static Regex PassedTestsSummary { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.PassedTests}>0|[1-9][0-9]*) passing \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$", RegexOptions.ExplicitCapture);
 
