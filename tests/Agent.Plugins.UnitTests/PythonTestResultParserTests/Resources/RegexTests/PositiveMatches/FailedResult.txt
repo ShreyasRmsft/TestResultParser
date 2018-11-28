@@ -1,0 +1,4 @@
+﻿FAIL : testCase (Foo)
+FAIL: TestCase
+FAIL :    testCase
+FAIL:TestCase

@@ -7,6 +7,8 @@ namespace Agent.Plugins.TestResultParser.Parser
     {
         public const string TestCaseName = "TestCaseName";
 
+        public const string TestOutcome = "TestOutcome";
+
         public const string FailedTestCaseNumber = "FailedTestCaseNumber";
 
         public const string PassedTests = "PassedTests";
@@ -15,7 +17,17 @@ namespace Agent.Plugins.TestResultParser.Parser
 
         public const string PendingTests = "PendingTests";
 
+        public const string SkippedTests = "SkippedTests";
+
+        public const string TotalTests = "TotalTests";
+
+        public const string ExpectedFailures = "ExpectedFailures";
+
+        public const string Errors = "Errors";
+
         public const string TestRunTime = "TestRunTime";
+
+        public const string TestRunTimeMs = "TestRunTimeMs";
 
         public const string TestRunTimeUnit = "TestRunTimeUnit";
     }

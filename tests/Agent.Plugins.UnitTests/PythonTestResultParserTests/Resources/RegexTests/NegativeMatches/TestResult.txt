@@ -1,0 +1,7 @@
+﻿
+.. ok
+... ok
+.... ok
+abcd ..... ok
+testHello ...
+testHello .. HelloWorld

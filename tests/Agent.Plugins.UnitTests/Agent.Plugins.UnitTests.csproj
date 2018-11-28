@@ -20,14 +20,9 @@
     <Content Include="MochaTestResultParserTests\Resources\**\*.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="PythonTestResultParserTests\Resources\**\*.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase011.txt" />
-    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase011Result.txt" />
-    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase012.txt" />
-    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase012Result.txt" />
-    <None Remove="MochaTestResultParserTests\Resources\RegexTests\NegativeMatches\PendingTestsSummary.txt" />
-  </ItemGroup>
-
+  
 </Project>

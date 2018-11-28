@@ -1,0 +1,4 @@
+﻿Ran 1 test in 3s
+Ran 2 tests in 5.5s
+Ran 100000 tests in 10000.4s
+Ran 0100000 tests in 10000.4s

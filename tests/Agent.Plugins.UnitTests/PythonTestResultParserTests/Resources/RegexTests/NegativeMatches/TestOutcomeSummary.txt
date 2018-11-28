@@ -1,0 +1,13 @@
+﻿
+ok
+failed
+ABC OK
+ABCOK (expected failure = 5)
+ok (expected failures=5)
+YOK (skipped=5)
+OK (skipped = 5, expected failure = 6) FAILED
+ABCFAILED (errors = 4, expected failure = 5)
+ABC FAILED (errors=4, expected failures=5)
+FAIL (errors=4, skipped=5)
+FAILED (errors = 4, skipped = 5, expected failure = 6) abc
+FAILED failures=9, skipped=5, expected failure=6

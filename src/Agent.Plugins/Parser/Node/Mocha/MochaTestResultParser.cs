@@ -27,18 +27,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         // This can be fine tuned depending on the previous match
         // Infra already in place for this
 
-        private TestRun testRun;
-        private MochaTestResultParserStateContext stateContext;
-        private int currentTestRunId = 1;
-
         private MochaTestResultParserState currentState;
-        private ITraceLogger logger;
-        private ITelemetryDataCollector telemetryDataCollector;
-        private ITestRunManager testRunManager;
+        private MochaTestResultParserStateContext stateContext;
 
-        ITestResultParserState expectingTestResults;
-        ITestResultParserState expectingTestRunSummary;
-        ITestResultParserState expectingStackTraces;
+        private readonly ITraceLogger logger;
+        private readonly ITelemetryDataCollector telemetryDataCollector;
+        private readonly ITestRunManager testRunManager;
+
+        private readonly ITestResultParserState expectingTestResults;
+        private readonly ITestResultParserState expectingTestRunSummary;
+        private readonly ITestResultParserState expectingStackTraces;
 
         public string Name => nameof(MochaTestResultParser);
 
@@ -69,8 +67,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.telemetryDataCollector = telemetryDataCollector;
 
             // Initialize the starting state of the parser
-            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
-            this.stateContext = new MochaTestResultParserStateContext(this.testRun);
+            var newTestRun = new TestRun($"{Name}/{Version}", 1);
+            this.stateContext = new MochaTestResultParserStateContext(newTestRun);
             this.currentState = MochaTestResultParserState.ExpectingTestResults;
 
             this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
@@ -182,41 +180,41 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         private void AttemptPublishAndResetParser()
         {
             this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publish the test run at line {this.stateContext.CurrentLineNumber}.");
+            var testRunToPublish = this.stateContext.TestRun;
 
             // We have encountered failed test cases but no failed summary was encountered
-            if (this.testRun.FailedTests.Count != 0 && this.testRun.TestRunSummary.TotalFailed == 0)
+            if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
             {
                 this.logger.Error("MochaTestResultParser : Failed tests were encountered but no failed summary was encountered.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.currentTestRunId }, true);
+                    TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
 
             // We have encountered pending test cases but no pending summary was encountered
-            if (this.testRun.SkippedTests.Count != 0 && this.testRun.TestRunSummary.TotalSkipped == 0)
+            if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
             {
                 this.logger.Error("MochaTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    TelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.currentTestRunId }, true);
+                    TelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
 
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
             switch (this.currentState)
             {
                 case MochaTestResultParserState.ExpectingTestResults:
-                    if (this.testRun.PassedTests.Count != 0
-                        || this.testRun.FailedTests.Count != 0
-                        || this.testRun.SkippedTests.Count != 0)
+                    if (testRunToPublish.PassedTests.Count != 0
+                        || testRunToPublish.FailedTests.Count != 0
+                        || testRunToPublish.SkippedTests.Count != 0)
                     {
                         this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
                         this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                            TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.currentTestRunId }, true);
+                            TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
                     break;
 
                 default:
                     // Publish the test run if reset and publish was called from any state other than the test results state
-                    this.testRunManager.Publish(this.testRun);
-                    this.currentTestRunId++;
+                    this.testRunManager.Publish(testRunToPublish);
                     break;
             }
 
@@ -229,14 +227,14 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         private void ResetParser()
         {
             // Start a new TestRun
-            this.testRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
+            var newTestRun = new TestRun($"{Name}/{Version}", this.stateContext.TestRun.TestRunId + 1);
 
             // Set state to ExpectingTestResults
             this.currentState = MochaTestResultParserState.ExpectingTestResults;
 
             // Refresh the context
             this.stateContext.Reset();
-            this.stateContext.TestRun = this.testRun;
+            this.stateContext.TestRun = newTestRun;
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }

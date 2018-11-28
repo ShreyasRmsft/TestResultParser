@@ -11,8 +11,6 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
     // TODO: Verify if tabs (/t) will come from the agent logs
     public class MochaTestResultParserRegexes
     {
-        // TODO: .+
-
         public static Regex PassedTestCase { get; } = new Regex($"^(  )+((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
         public static Regex FailedTestCase { get; } = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.+$)", RegexOptions.ExplicitCapture);
