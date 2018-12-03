@@ -24,5 +24,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase013.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase013Result.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase014.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase014Result.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase015.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase015Result.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase016.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase016Result.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase017.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase017Result.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase018.txt" />
+    <None Remove="MochaTestResultParserTests\Resources\PartialSuccess\TestCase018Result.txt" />
+  </ItemGroup>
   
 </Project>

@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Agent.Plugins.TestResultParser.TestResult.Models;
-
 namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 {
+    using Agent.Plugins.TestResultParser.TestResult.Models;
+
     public class MochaTestResultParserStateContext : TestResultParserStateContext
     {
         public MochaTestResultParserStateContext(TestRun testRun)
