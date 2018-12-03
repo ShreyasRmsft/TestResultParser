@@ -9,8 +9,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
     {
         public MochaTestResultParserStateContext(TestRun testRun)
         {
-            Initialize();
-            TestRun = testRun;
+            Initialize(testRun);
         }
 
         /// <summary>
@@ -47,25 +46,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         public int CurrentLineNumber { get; set; }
 
         /// <summary>
-        /// Used to reset the state context
+        /// Initializes all the values to their defaults
         /// </summary>
-        public override void Reset()
-        {
-            // Should this enforce passing of test run object?
-            Initialize();
-            TestRun = null;
-        }
-
-        /// <summary>
-        /// Re-initializes all the values to their defaults
-        /// </summary>
-        private void Initialize()
+        public override void Initialize(TestRun testRun)
         {
             StackTracesToSkipParsingPostSummary = 0;
             LastFailedTestCaseNumber = 0;
             LinesWithinWhichMatchIsExpected = -1;
             ExpectedMatch = null;
             CurrentLineNumber = 0;
+            TestRun = testRun;
         }
     }
 }

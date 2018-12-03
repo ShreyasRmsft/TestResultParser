@@ -27,7 +27,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         // This can be fine tuned depending on the previous match
         // Infra already in place for this
 
-        private MochaTestResultParserState currentState;
+        private MochaTestResultParserStates currentState;
         private MochaTestResultParserStateContext stateContext;
 
         private readonly ITraceLogger logger;
@@ -69,7 +69,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             // Initialize the starting state of the parser
             var newTestRun = new TestRun($"{Name}/{Version}", 1);
             this.stateContext = new MochaTestResultParserStateContext(newTestRun);
-            this.currentState = MochaTestResultParserState.ExpectingTestResults;
+            this.currentState = MochaTestResultParserStates.ExpectingTestResults;
 
             this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
             this.expectingTestRunSummary = new ExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
@@ -95,27 +95,27 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 {
                     // This state primarily looks for test results 
                     // and transitions to the next one after a line of summary is encountered
-                    case MochaTestResultParserState.ExpectingTestResults:
+                    case MochaTestResultParserStates.ExpectingTestResults:
 
-                        if (AttempMatch(this.expectingTestResults, testResultsLine))
+                        if (AttemptMatch(this.expectingTestResults, testResultsLine))
                             return;
                         break;
 
                     // This state primarily looks for test run summary 
                     // If failed tests were found to be present transitions to the next one to look for stack traces
                     // else goes back to the first state after publishing the run
-                    case MochaTestResultParserState.ExpectingTestRunSummary:
+                    case MochaTestResultParserStates.ExpectingTestRunSummary:
 
-                        if (AttempMatch(this.expectingTestRunSummary, testResultsLine))
+                        if (AttemptMatch(this.expectingTestRunSummary, testResultsLine))
                             return;
                         break;
 
                     // This state primarily looks for stack traces
                     // If any other match occurs before all the expected stack traces are found it 
                     // fires telemetry for unexpected behavior but moves on to the next test run
-                    case MochaTestResultParserState.ExpectingStackTraces:
+                    case MochaTestResultParserStates.ExpectingStackTraces:
 
-                        if (AttempMatch(this.expectingStackTraces, testResultsLine))
+                        if (AttemptMatch(this.expectingStackTraces, testResultsLine))
                             return;
                         break;
                 }
@@ -154,19 +154,19 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
         }
 
         /// <summary>
-        /// Attemps to match the line with each regex specified by the current state
+        /// Attempts to match the line with each regex specified by the current state
         /// </summary>
         /// <param name="state">Current state</param>
         /// <param name="testResultsLine">Input line</param>
         /// <returns>True if a match occurs</returns>
-        private bool AttempMatch(ITestResultParserState state, LogData testResultsLine)
+        private bool AttemptMatch(ITestResultParserState state, LogData testResultsLine)
         {
             foreach (var regexActionPair in state.RegexesToMatch)
             {
                 var match = regexActionPair.Regex.Match(testResultsLine.Line);
                 if (match.Success)
                 {
-                    this.currentState = (MochaTestResultParserState)regexActionPair.MatchAction(match, this.stateContext);
+                    this.currentState = (MochaTestResultParserStates)regexActionPair.MatchAction(match, this.stateContext);
                     return true;
                 }
             }
@@ -189,6 +189,14 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
                     TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
+            else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
+            {
+                // If encountered failed tests does not match summary fire telemtry
+                this.logger.Error($"MochaTestResultParser : Failed tests count does not match failed summary" +
+                    $" at line {this.stateContext.CurrentLineNumber}");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.PassedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            }
 
             // We have encountered pending test cases but no pending summary was encountered
             if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
@@ -197,11 +205,19 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
                     TelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
+            else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
+            {
+                // If encountered skipped tests does not match summary fire telemetry
+                this.logger.Error($"MochaTestResultParser : Pending tests count does not match pending summary" +
+                    $" at line {this.stateContext.CurrentLineNumber}");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.PendingSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            }
 
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
             switch (this.currentState)
             {
-                case MochaTestResultParserState.ExpectingTestResults:
+                case MochaTestResultParserStates.ExpectingTestResults:
                     if (testRunToPublish.PassedTests.Count != 0
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)
@@ -230,11 +246,10 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             var newTestRun = new TestRun($"{Name}/{Version}", this.stateContext.TestRun.TestRunId + 1);
 
             // Set state to ExpectingTestResults
-            this.currentState = MochaTestResultParserState.ExpectingTestResults;
+            this.currentState = MochaTestResultParserStates.ExpectingTestResults;
 
             // Refresh the context
-            this.stateContext.Reset();
-            this.stateContext.TestRun = newTestRun;
+            this.stateContext.Initialize(newTestRun);
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }

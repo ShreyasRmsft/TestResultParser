@@ -11,31 +11,58 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
 
+    /// <summary>
+    /// Base class for a mocha test result parser state
+    /// Has common methods that each state will need to use
+    /// </summary>
     public abstract class MochaParserStateBase : ITestResultParserState
     {
         protected ITraceLogger logger;
         protected ITelemetryDataCollector telemetryDataCollector;
-        protected ParserResetAndAttempPublish attemptPublishAndResetParser;
+        protected ParserResetAndAttemptPublish attemptPublishAndResetParser;
 
-        protected MochaParserStateBase(ParserResetAndAttempPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+        /// <summary>
+        /// List of regexes and their corresponding post successful match actions
+        /// </summary>
+        public virtual IEnumerable<RegexActionPair> RegexesToMatch => throw new NotImplementedException();
+
+        /// <summary>
+        /// Constructor for a mocha parser state
+        /// </summary>
+        /// <param name="parserResetAndAttempPublish">Delegate sent by the parser to reset the parser and attempt publication of test results</param>
+        /// <param name="logger"></param>
+        /// <param name="telemetryDataCollector"></param>
+        protected MochaParserStateBase(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
         {
             this.logger = logger;
             this.telemetryDataCollector = telemetryDataCollector;
             this.attemptPublishAndResetParser = parserResetAndAttempPublish;
         }
 
-        public virtual List<RegexActionPair> RegexesToMatch => throw new NotImplementedException();
-
-        protected void PrepareTestResult(TestResult testResult, TestOutcome testOutcome, Match match)
+        /// <summary>
+        /// Returns a test result with the outcome set and name extracted from the match
+        /// </summary>
+        /// <param name="testOutcome">Outcome of the test</param>
+        /// <param name="match">Match object for the test case result</param>
+        /// <returns></returns>
+        protected TestResult PrepareTestResult(TestOutcome testOutcome, Match match)
         {
-            testResult.Outcome = testOutcome;
-            testResult.Name = match.Groups[RegexCaptureGroups.TestCaseName].Value;
+            return new TestResult
+            {
+                Outcome = testOutcome,
+                Name = match.Groups[RegexCaptureGroups.TestCaseName].Value
+            };
         }
 
+        /// <summary>
+        /// Extracts the test run time data from the passed summary match object and populates it into the test run
+        /// </summary>
+        /// <param name="match">Passed summary match object</param>
+        /// <param name="mochaStateContext"></param>
         protected void ExtractTestRunTime(Match match, MochaTestResultParserStateContext mochaStateContext)
         {
             // Handling parse errors is unnecessary
-            long.TryParse(match.Groups[RegexCaptureGroups.TestRunTime].Value, out long timeTaken);
+            var timeTaken = long.Parse(match.Groups[RegexCaptureGroups.TestRunTime].Value);
 
             // Store time taken based on the unit used
             switch (match.Groups[RegexCaptureGroups.TestRunTimeUnit].Value)

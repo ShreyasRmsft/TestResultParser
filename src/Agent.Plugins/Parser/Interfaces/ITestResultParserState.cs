@@ -3,10 +3,10 @@
     using System.Collections.Generic;
     using Agent.Plugins.TestResultParser.Parser;
 
-    public delegate void ParserResetAndAttempPublish();
+    public delegate void ParserResetAndAttemptPublish();
 
     public interface ITestResultParserState
     {
-        List<RegexActionPair> RegexesToMatch { get; }
+        IEnumerable<RegexActionPair> RegexesToMatch { get; }
     }
 }

@@ -15,16 +15,18 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
 
     public class ExpectingTestResults : MochaParserStateBase
     {
-        public override List<RegexActionPair> RegexesToMatch { get; }
+        /// <inheritdoc />
+        public override IEnumerable<RegexActionPair> RegexesToMatch { get; }
 
-        public ExpectingTestResults(ParserResetAndAttempPublish parserResetAndAttempPublish)
+        public ExpectingTestResults(ParserResetAndAttemptPublish parserResetAndAttempPublish)
             : this(parserResetAndAttempPublish, TraceLogger.Instance, TelemetryDataCollector.Instance)
         {
 
         }
 
-        public ExpectingTestResults(ParserResetAndAttempPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
-            : base(parserResetAndAttempPublish, logger, telemetryDataCollector)
+        /// <inheritdoc />
+        public ExpectingTestResults(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+            : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
         {
             RegexesToMatch = new List<RegexActionPair>
             {
@@ -33,30 +35,24 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
                 new RegexActionPair(MochaTestResultParserRegexes.PendingTestCase, PendingTestCaseMatched),
                 new RegexActionPair(MochaTestResultParserRegexes.PassedTestsSummary, PassedTestsSummaryMatched)
             };
-
-            this.logger = logger;
-            this.telemetryDataCollector = telemetryDataCollector;
-            this.attemptPublishAndResetParser = parserResetAndAttempPublish;
         }
 
         private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaTestResultParserStateContext;
-            var testResult = new TestResult();
 
-            PrepareTestResult(testResult, TestOutcome.Passed, match);
+            var testResult = PrepareTestResult(TestOutcome.Passed, match);
             mochaStateContext.TestRun.PassedTests.Add(testResult);
 
-            return MochaTestResultParserState.ExpectingTestResults;
+            return MochaTestResultParserStates.ExpectingTestResults;
         }
 
         private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaTestResultParserStateContext;
-            var testResult = new TestResult();
 
             // Handling parse errors is unnecessary
-            int.TryParse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value, out int testCaseNumber);
+            var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
 
             // In the event the failed test case number does not match the expected test case number log an error
             if (testCaseNumber != mochaStateContext.LastFailedTestCaseNumber + 1)
@@ -70,7 +66,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
                 // as a match but do not add it to our list of test cases
                 if (testCaseNumber != 1)
                 {
-                    return MochaTestResultParserState.ExpectingTestResults;
+                    return MochaTestResultParserStates.ExpectingTestResults;
                 }
 
                 // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
@@ -81,21 +77,20 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             // Increment either ways whether it was expected or context was reset and the encountered number was 1
             mochaStateContext.LastFailedTestCaseNumber++;
 
-            PrepareTestResult(testResult, TestOutcome.Failed, match);
+            var testResult = PrepareTestResult(TestOutcome.Failed, match);
             mochaStateContext.TestRun.FailedTests.Add(testResult);
 
-            return MochaTestResultParserState.ExpectingTestResults;
+            return MochaTestResultParserStates.ExpectingTestResults;
         }
 
         private Enum PendingTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaTestResultParserStateContext;
-            var testResult = new TestResult();
 
-            PrepareTestResult(testResult, TestOutcome.Skipped, match);
+            var testResult = PrepareTestResult(TestOutcome.Skipped, match);
             mochaStateContext.TestRun.SkippedTests.Add(testResult);
 
-            return MochaTestResultParserState.ExpectingTestResults;
+            return MochaTestResultParserStates.ExpectingTestResults;
         }
 
         private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
@@ -110,7 +105,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             this.logger.Info("MochaTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary.");
 
             // Handling parse errors is unnecessary
-            int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed);
+            var totalPassed = int.Parse(match.Groups[RegexCaptureGroups.PassedTests].Value);
 
             mochaStateContext.TestRun.TestRunSummary.TotalPassed = totalPassed;
 
@@ -126,7 +121,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             // Extract the test run time from the passed tests summary
             ExtractTestRunTime(match, mochaStateContext);
 
-            return MochaTestResultParserState.ExpectingTestRunSummary;
+            return MochaTestResultParserStates.ExpectingTestRunSummary;
         }
     }
 }
