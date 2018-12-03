@@ -47,7 +47,8 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
-                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId++);
+                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId);
+                lastTestRunId = testRun.TestRunId;
             });
 
             foreach (var line in GetLines(testCase))
@@ -67,7 +68,8 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
-                ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId++);
+                ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId);
+                lastTestRunId = testRun.TestRunId;
             });
 
             foreach (var line in GetLines(testCase))
