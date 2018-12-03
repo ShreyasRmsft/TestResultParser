@@ -42,11 +42,12 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
         public void TestSuccessScenariosWithBasicAssertions(string testCase)
         {
             int indexOfTestRun = 0;
+            int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
             
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
-                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++);
+                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId++);
             });
 
             foreach (var line in GetLines(testCase))
@@ -61,11 +62,12 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
         public void TestPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
             int indexOfTestRun = 0;
+            int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
-                ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++);
+                ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId++);
             });
 
             foreach (var line in GetLines(testCase))
@@ -146,7 +148,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
         #region ValidationHelpers
 
-        public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun)
+        public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun, int lastTestRunId)
         {
             int i = indexOfTestRun * 5;
 
@@ -159,16 +161,17 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             Assert.AreEqual(expectedPassedTestsCount, testRun.TestRunSummary.TotalPassed, "Passed tests summary does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.TestRunSummary.TotalFailed, "Failed tests summary does not match.");
             Assert.AreEqual(expectedSkippedTestsCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
-            Assert.AreEqual(expectedTotalTestsCount, testRun.TestRunSummary.TotalTests, "Skipped tests summary does not match.");
+            Assert.AreEqual(expectedTotalTestsCount, testRun.TestRunSummary.TotalTests, "Total tests summary does not match.");
 
             Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
             Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
 
+            Assert.IsTrue(testRun.TestRunId > lastTestRunId, $"Expected test run id greater than {lastTestRunId} but found {testRun.TestRunId} instead.");
             Assert.AreEqual(expectedTestRunDuration, testRun.TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");
         }
 
-        public void ValidatePartialSuccessTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun)
+        public void ValidatePartialSuccessTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun, int lastTestRunId)
         {
             int i = indexOfTestRun * 8;
 
@@ -184,12 +187,13 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             Assert.AreEqual(expectedPassedTestsSummaryCount, testRun.TestRunSummary.TotalPassed, "Passed tests summary does not match.");
             Assert.AreEqual(expectedFailedTestsSummary, testRun.TestRunSummary.TotalFailed, "Failed tests summary does not match.");
             Assert.AreEqual(expectedSkippedTestsSummaryCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
-            Assert.AreEqual(expectedTotalTestsCount, testRun.TestRunSummary.TotalTests, "Skipped tests summary does not match.");
+            Assert.AreEqual(expectedTotalTestsCount, testRun.TestRunSummary.TotalTests, "Total tests summary does not match.");
 
             Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
             Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
             Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
 
+            Assert.IsTrue(testRun.TestRunId > lastTestRunId, $"Expected test run id greater than {lastTestRunId} but found {testRun.TestRunId} instead.");
             Assert.AreEqual(expectedTestRunDuration, testRun.TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");
         }
 

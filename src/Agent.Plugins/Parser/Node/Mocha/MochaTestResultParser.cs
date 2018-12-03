@@ -67,8 +67,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
             this.telemetryDataCollector = telemetryDataCollector;
 
             // Initialize the starting state of the parser
-            var newTestRun = new TestRun($"{Name}/{Version}", 1);
-            this.stateContext = new MochaTestResultParserStateContext(newTestRun);
+            var testRun = new TestRun($"{Name}/{Version}", 1);
+            this.stateContext = new MochaTestResultParserStateContext(testRun);
             this.currentState = MochaTestResultParserStates.ExpectingTestResults;
 
             this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
@@ -230,6 +230,13 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
 
                 default:
                     // Publish the test run if reset and publish was called from any state other than the test results state
+
+                    // Calculate total tests
+                    testRunToPublish.TestRunSummary.TotalTests =
+                        testRunToPublish.TestRunSummary.TotalPassed +
+                        testRunToPublish.TestRunSummary.TotalFailed +
+                        testRunToPublish.TestRunSummary.TotalSkipped;
+
                     this.testRunManager.Publish(testRunToPublish);
                     break;
             }

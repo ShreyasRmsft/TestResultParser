@@ -13,7 +13,7 @@ namespace Agent.Plugins.TestResultParser.TestResult.Models
         public TestRun(string parserUri, int testRunId)
         {
             ParserUri = parserUri;
-            TestRunId = TestRunId;
+            TestRunId = testRunId;
         }
 
         /// <summary>
