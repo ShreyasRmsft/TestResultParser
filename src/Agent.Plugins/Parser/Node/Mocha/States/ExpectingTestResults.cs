@@ -30,26 +30,26 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
         {
             RegexesToMatch = new List<RegexActionPair>
             {
-                new RegexActionPair(MochaTestResultParserRegexes.PassedTestCase, PassedTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.FailedTestCase, FailedTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PendingTestCase, PendingTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PassedTestsSummary, PassedTestsSummaryMatched)
+                new RegexActionPair(Regexes.PassedTestCase, PassedTestCaseMatched),
+                new RegexActionPair(Regexes.FailedTestCase, FailedTestCaseMatched),
+                new RegexActionPair(Regexes.PendingTestCase, PendingTestCaseMatched),
+                new RegexActionPair(Regexes.PassedTestsSummary, PassedTestsSummaryMatched)
             };
         }
 
         private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
             mochaStateContext.TestRun.PassedTests.Add(testResult);
 
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // Handling parse errors is unnecessary
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
@@ -66,7 +66,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
                 // as a match but do not add it to our list of test cases
                 if (testCaseNumber != 1)
                 {
-                    return MochaTestResultParserStates.ExpectingTestResults;
+                    return MochaParserStates.ExpectingTestResults;
                 }
 
                 // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
@@ -80,22 +80,22 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             mochaStateContext.TestRun.FailedTests.Add(testResult);
 
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum PendingTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             var testResult = PrepareTestResult(TestOutcome.Skipped, match);
             mochaStateContext.TestRun.SkippedTests.Add(testResult);
 
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
             this.logger.Info($"MochaTestResultParser : ExpectingTestResults : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
@@ -121,7 +121,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             // Extract the test run time from the passed tests summary
             ExtractTestRunTime(match, mochaStateContext);
 
-            return MochaTestResultParserStates.ExpectingTestRunSummary;
+            return MochaParserStates.ExpectingTestRunSummary;
         }
     }
 }

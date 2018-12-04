@@ -9,6 +9,16 @@ namespace Agent.Plugins.TestResultParser.Parser
     {
         public abstract void Initialize(TestRun testRun);
 
-        // Extract out common properties here when enough parsers have been authored
+        /// <summary>
+        /// Test run associted with the current iteration of the parser
+        /// </summary>
+        public TestRun TestRun { get; set; }
+
+        /// <summary>
+        /// The current line number of the input console log line
+        /// </summary>
+        public int CurrentLineNumber { get; set; }
+
+        // TODO: Extract out common properties here when enough parsers have been authored
     }
 }

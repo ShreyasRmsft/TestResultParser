@@ -59,7 +59,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
         /// </summary>
         /// <param name="match">Passed summary match object</param>
         /// <param name="mochaStateContext"></param>
-        protected void ExtractTestRunTime(Match match, MochaTestResultParserStateContext mochaStateContext)
+        protected void ExtractTestRunTime(Match match, MochaParserStateContext mochaStateContext)
         {
             // Handling parse errors is unnecessary
             var timeTaken = long.Parse(match.Groups[RegexCaptureGroups.TestRunTime].Value);

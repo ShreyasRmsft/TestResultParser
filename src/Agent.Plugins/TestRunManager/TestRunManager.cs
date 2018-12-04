@@ -68,8 +68,8 @@ namespace Agent.Plugins.TestResultParser.TestRunManger
 
             this.diagnosticDataCollector.Info($"Attempting to publish test run with id {testRun.TestRunId} received from parser {testRun.ParserUri}.");
 
-            // Test run id should be non zero for a valid test run
-            if (testRun.TestRunId == 0)
+            // Test run id should be positive and non zero for a valid test run
+            if (testRun.TestRunId <= 0)
             {
                 this.diagnosticDataCollector.Error("TestRunManger.ValidateAndPrepareForPublish : TestRunId was not set. Expected a non zero test run id.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.TestRunIdZero, 1, true);

@@ -29,16 +29,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
         {
             RegexesToMatch = new List<RegexActionPair>
             {
-                new RegexActionPair(MochaTestResultParserRegexes.FailedTestCase, FailedTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PassedTestCase, PassedTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PendingTestCase, PendingTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PassedTestsSummary, PassedTestsSummaryMatched)
+                new RegexActionPair(Regexes.FailedTestCase, FailedTestCaseMatched),
+                new RegexActionPair(Regexes.PassedTestCase, PassedTestCaseMatched),
+                new RegexActionPair(Regexes.PendingTestCase, PendingTestCaseMatched),
+                new RegexActionPair(Regexes.PassedTestsSummary, PassedTestsSummaryMatched)
             };
         }
 
         private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // If a passed test case is encountered while in the stack traces state it indicates corruption
             // or incomplete stack trace data
@@ -55,12 +55,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
             mochaStateContext.TestRun.PassedTests.Add(testResult);
 
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // Handling parse errors is unnecessary
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
@@ -80,7 +80,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
                     // If we are parsing stack traces then we should not return this as
                     // a successful match. If we do so then stack trace addition will not 
                     // happen for the current line
-                    return MochaTestResultParserStates.ExpectingStackTraces;
+                    return MochaParserStates.ExpectingStackTraces;
                 }
 
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.AttemptPublishAndResetParser,
@@ -94,7 +94,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
                 var testResult = PrepareTestResult(TestOutcome.Failed, match);
                 mochaStateContext.TestRun.FailedTests.Add(testResult);
 
-                return MochaTestResultParserStates.ExpectingTestResults;
+                return MochaParserStates.ExpectingTestResults;
             }
 
             mochaStateContext.LastFailedTestCaseNumber++;
@@ -108,15 +108,15 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             {
                 // We can also choose to ignore extra failures post summary if the number is not 1
                 this.attemptPublishAndResetParser();
-                return MochaTestResultParserStates.ExpectingTestResults;
+                return MochaParserStates.ExpectingTestResults;
             }
 
-            return MochaTestResultParserStates.ExpectingStackTraces;
+            return MochaParserStates.ExpectingStackTraces;
         }
 
         private Enum PendingTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // If a pending test case is encountered while in the stack traces state it indicates corruption
             // or incomplete stack trace data
@@ -134,12 +134,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Skipped, match);
             mochaStateContext.TestRun.SkippedTests.Add(testResult);
 
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
             this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             // If we were expecting more stack traces but got summary instead
@@ -173,7 +173,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             ExtractTestRunTime(match, mochaStateContext);
 
             this.logger.Info("MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary.");
-            return MochaTestResultParserStates.ExpectingTestRunSummary;
+            return MochaParserStates.ExpectingTestRunSummary;
         }
     }
 }

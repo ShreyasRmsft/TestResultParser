@@ -18,7 +18,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
         public void RegexPatternTest(string regexPattern)
         {
             var postiveTestCases = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
-            var regex = typeof(MochaTestResultParserRegexes).GetProperty(regexPattern).GetValue(null);
+            var regex = typeof(Regexes).GetProperty(regexPattern).GetValue(null);
             foreach (var testCase in postiveTestCases)
             {
                 Assert.IsTrue(((Regex)regex).Match(testCase).Success, $"Should have matched:{testCase}");
@@ -34,7 +34,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
         public static IEnumerable<object[]> GetRegexPatters()
         {
-            foreach (var property in typeof(MochaTestResultParserRegexes).GetProperties(BindingFlags.Public | BindingFlags.Static))
+            foreach (var property in typeof(Regexes).GetProperties(BindingFlags.Public | BindingFlags.Static))
             {
                 //if(property.Name.Contains("FailedTestsSummary"))
                 yield return new object[] { property.Name };

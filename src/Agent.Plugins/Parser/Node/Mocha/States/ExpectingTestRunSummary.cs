@@ -29,18 +29,18 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
         {
             RegexesToMatch = new List<RegexActionPair>
             {
-                new RegexActionPair(MochaTestResultParserRegexes.PendingTestsSummary, PendingTestsSummaryMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.FailedTestsSummary, FailedTestsSummaryMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PassedTestCase, PassedTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.FailedTestCase, FailedTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PendingTestCase, PendingTestCaseMatched),
-                new RegexActionPair(MochaTestResultParserRegexes.PassedTestsSummary, PassedTestsSummaryMatched),
+                new RegexActionPair(Regexes.PendingTestsSummary, PendingTestsSummaryMatched),
+                new RegexActionPair(Regexes.FailedTestsSummary, FailedTestsSummaryMatched),
+                new RegexActionPair(Regexes.PassedTestCase, PassedTestCaseMatched),
+                new RegexActionPair(Regexes.FailedTestCase, FailedTestCaseMatched),
+                new RegexActionPair(Regexes.PendingTestCase, PendingTestCaseMatched),
+                new RegexActionPair(Regexes.PassedTestsSummary, PassedTestsSummaryMatched),
             };
         }
 
         private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // If a passed test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
@@ -50,12 +50,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
 
             mochaStateContext.TestRun.PassedTests.Add(testResult);
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // If a failed test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
@@ -74,7 +74,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.UnexpectedFailedTestCaseNumber,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
-                return MochaTestResultParserStates.ExpectingTestResults;
+                return MochaParserStates.ExpectingTestResults;
             }
 
             // Increment either ways whether it was expected or context was reset and the encountered number was 1
@@ -83,12 +83,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             mochaStateContext.TestRun.FailedTests.Add(testResult);
 
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum PendingTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             // If a pending test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
@@ -98,12 +98,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Skipped, match);
 
             mochaStateContext.TestRun.SkippedTests.Add(testResult);
-            return MochaTestResultParserStates.ExpectingTestResults;
+            return MochaParserStates.ExpectingTestResults;
         }
 
         private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
@@ -137,12 +137,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             ExtractTestRunTime(match, mochaStateContext);
 
             this.logger.Info("MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestRunSummary.");
-            return MochaTestResultParserStates.ExpectingTestRunSummary;
+            return MochaParserStates.ExpectingTestRunSummary;
         }
 
         private Enum PendingTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Pending tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
@@ -153,12 +153,12 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
 
             mochaStateContext.TestRun.TestRunSummary.TotalSkipped = totalPending;
 
-            return MochaTestResultParserStates.ExpectingTestRunSummary;
+            return MochaParserStates.ExpectingTestRunSummary;
         }
 
         private Enum FailedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as MochaTestResultParserStateContext;
+            var mochaStateContext = stateContext as MochaParserStateContext;
 
             this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Failed tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
             mochaStateContext.LinesWithinWhichMatchIsExpected = 0;
@@ -171,7 +171,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
 
             // Do we want transition logs here?
             this.logger.Info("MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingStackTraces.");
-            return MochaTestResultParserStates.ExpectingStackTraces;
+            return MochaParserStates.ExpectingStackTraces;
         }
     }
 }
