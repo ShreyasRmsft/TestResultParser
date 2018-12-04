@@ -5,8 +5,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 {
     public enum JestParserStates
     {
+        ExpectingTestRunStart,
         ExpectingTestResults,
-        ExpectingTestRunSummary,
-        ExpectingStackTraces
+        ExpectingStackTraces,
+        ExpectingTestRunSummary
     }
 }

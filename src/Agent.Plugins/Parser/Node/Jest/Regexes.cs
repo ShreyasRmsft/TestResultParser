@@ -14,7 +14,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 
     public class Regexes
     {
-        public static Regex VerbosePassedTestCaseMatcher { get; } = new Regex("  (✓)|(√) (.*)");
+        public static Regex TestRunStart { get; } = new Regex($" ((FAIL)|(PASS)) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
+
+        public static Regex VerbosePassedTestCaseMatcher { get; } = new Regex("  ((✓)|(√)) (.*)");
 
         public static Regex VerboseFailedTestCaseMatcher { get; } = new Regex("  ((✕)|(×)) (.*)");
 

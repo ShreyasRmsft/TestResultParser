@@ -30,5 +30,7 @@ namespace Agent.Plugins.TestResultParser.Parser
         public const string TestRunTimeMs = "TestRunTimeMs";
 
         public const string TestRunTimeUnit = "TestRunTimeUnit";
+
+        public const string TestSourcesFile = "TestSourcesFile";
     }
 }

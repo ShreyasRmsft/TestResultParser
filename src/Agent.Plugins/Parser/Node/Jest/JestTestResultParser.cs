@@ -70,9 +70,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             this.stateContext = new JestParserStateContext(testRun);
             this.currentState = JestParserStates.ExpectingTestResults;
 
-            this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
-            this.expectingTestRunSummary = new ExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
-            this.expectingStackTraces = new ExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            //this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            //this.expectingTestRunSummary = new ExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            //this.expectingStackTraces = new ExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
         }
 
         /// <inheritdoc/>
@@ -88,33 +88,41 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             {
                 this.stateContext.CurrentLineNumber = testResultsLine.LineNumber;
 
-                // State model for the mocha parser that defines the regexes to match against in each state
+                // State model for the jest parser that defines the regexes to match against in each state
                 // Each state re-orders the regexes based on the frequency of expected matches
                 switch (this.currentState)
                 {
-                    // This state primarily looks for test results 
-                    // and transitions to the next one after a line of summary is encountered
+                    // This state primarily looks for test run start indicator and
+                    // transitions to the next one after encountering one
+                    case JestParserStates.ExpectingTestRunStart:
+
+                        if (AttemptMatch(this.expectingTestResults, testResultsLine))
+                            return;
+                        break;
+
+                    // This state primarily looks for test results and transitions
+                    // to the next one after a stack trace or summary is encountered
                     case JestParserStates.ExpectingTestResults:
 
                         if (AttemptMatch(this.expectingTestResults, testResultsLine))
                             return;
                         break;
 
-                    // This state primarily looks for test run summary 
-                    // If failed tests were found to be present transitions to the next one to look for stack traces
-                    // else goes back to the first state after publishing the run
-                    case JestParserStates.ExpectingTestRunSummary:
-
-                        if (AttemptMatch(this.expectingTestRunSummary, testResultsLine))
-                            return;
-                        break;
-
-                    // This state primarily looks for stack traces
-                    // If any other match occurs before all the expected stack traces are found it 
-                    // fires telemetry for unexpected behavior but moves on to the next test run
+                    // This state primarily looks for stack traces/failed test cases
+                    // and transitions on encountering summary
                     case JestParserStates.ExpectingStackTraces:
 
                         if (AttemptMatch(this.expectingStackTraces, testResultsLine))
+                            return;
+                        break;
+
+                    // This state primarily looks for test run summary 
+                    // and transitions back to testresults state on encountering
+                    // another test run start marker indicating tests being run from
+                    // more than one file
+                    case JestParserStates.ExpectingTestRunSummary:
+
+                        if (AttemptMatch(this.expectingTestRunSummary, testResultsLine))
                             return;
                         break;
                 }
@@ -147,7 +155,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
 
                 // Rethrowing this so that the plugin is aware that the parser is erroring out
-                // Ideally this never should happen
+                // Ideally this would never should happen
                 throw;
             }
         }
