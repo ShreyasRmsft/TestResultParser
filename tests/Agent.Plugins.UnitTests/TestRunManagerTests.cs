@@ -30,6 +30,25 @@ namespace Agent.Plugins.UnitTests
         }
 
         [TestMethod]
+        public void PublishShouldReturnNullForTestRunIdZero()
+        {
+            var testRun = new TestRun("XyzTestResultParser/1.0", 0);
+            this.testRunManager.Publish(testRun);
+
+            this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never);
+            this.diagnosticDataCollector.Verify(x => x.Error("TestRunManger.ValidateAndPrepareForPublish : TestRunId was not set. Expected a non zero test run id."));
+        }
+
+        [TestMethod]
+        public void PublishShouldReturnNullForEmptyParserUri()
+        {
+            this.testRunManager.Publish(new TestRun("", 1));
+
+            this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never);
+            this.diagnosticDataCollector.Verify(x => x.Error("TestRunManger.ValidateAndPrepareForPublish : TestRun did not have a valid parser uri associated with it."));
+        }
+
+        [TestMethod]
         public void PublishForNullTestRunShouldNotPublishAndLogError()
         {
             this.testRunManager.Publish(null);
@@ -54,7 +73,7 @@ namespace Agent.Plugins.UnitTests
         public void PublishForTestRunWithInvalidTestSummaryShouldNotPublishAndLogError()
         {
             TestRun testRun = new TestRun("Dummy", 1);
-            testRun.TestRunSummary = this.CreateTestRunSummary(4, 3, 2);
+            testRun.TestRunSummary = this.CreateTestRunSummary(4, 3, 1, 1);
 
             this.testRunManager.Publish(testRun);
 
@@ -77,8 +96,10 @@ namespace Agent.Plugins.UnitTests
         {
             var passedTestList = this.CreateTestList(2, TestOutcome.Passed);
             var failedTestList = this.CreateTestList(2, TestOutcome.Failed);
+            var skippedTestList = this.CreateTestList(0, TestOutcome.Skipped);
+
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, SkippedTests = skippedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -87,7 +108,7 @@ namespace Agent.Plugins.UnitTests
 
             this.diagnosticDataCollector.Verify(x => x.Warning("TestRunManger.ValidateAndPrepareForPublish : Failed test count does not match the Test summary."));
             this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once);
-            this.VerifyTestRun(passedTestList, null, summary, resultTestRun);
+            this.VerifyTestRun(resultTestRun, summary, passedTestList, null, skippedTestList);
         }
 
         [TestMethod]
@@ -95,8 +116,10 @@ namespace Agent.Plugins.UnitTests
         {
             var passedTestList = this.CreateTestList(1, TestOutcome.Passed);
             var failedTestList = this.CreateTestList(1, TestOutcome.Failed);
+            var skippedTestList = this.CreateTestList(0, TestOutcome.Skipped);
+
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, SkippedTests = skippedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -105,16 +128,18 @@ namespace Agent.Plugins.UnitTests
 
             this.diagnosticDataCollector.Verify(x => x.Warning("TestRunManger.ValidateAndPrepareForPublish : Passed test count does not match the Test summary."));
             this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once);
-            this.VerifyTestRun(null, failedTestList, summary, resultTestRun);
+            this.VerifyTestRun(resultTestRun, summary, null, failedTestList, skippedTestList);
         }
 
         [TestMethod]
         public void PublishForTestRunWithNoFailedTestResultsAndTestSummaryContainingFailuresShouldPublishTestRunWithFailedTestsCleared()
         {
             var passedTestList = this.CreateTestList(2, TestOutcome.Passed);
+            var failedTestList = this.CreateTestList(2, TestOutcome.Failed);
+            var skippedTestList = this.CreateTestList(0, TestOutcome.Skipped);
 
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, SkippedTests = skippedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -122,7 +147,27 @@ namespace Agent.Plugins.UnitTests
             this.testRunManager.Publish(testRun);
 
             this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once);
-            this.VerifyTestRun(passedTestList, null, summary, resultTestRun);
+            this.VerifyTestRun(resultTestRun, summary, passedTestList, null, skippedTestList);
+        }
+
+        [TestMethod]
+        public void PublishForTestRunWithMismatchedPassedTestResultsAndTestSummaryShouldPublishTestRunWithSkippedTestsCleared()
+        {
+            var passedTestList = this.CreateTestList(0, TestOutcome.Passed);
+            var skippedTestList = this.CreateTestList(1, TestOutcome.Skipped);
+            var failedTestList = this.CreateTestList(1, TestOutcome.Failed);
+
+            var summary = this.CreateTestRunSummary(4, 0, 1, 2);
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, SkippedTests = skippedTestList, TestRunSummary = summary };
+
+            TestRun resultTestRun = null;
+            this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
+
+            this.testRunManager.Publish(testRun);
+
+            this.diagnosticDataCollector.Verify(x => x.Warning("TestRunManger.ValidateAndPrepareForPublish : Skipped test count does not match the Test summary."));
+            this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once);
+            this.VerifyTestRun(resultTestRun, summary, passedTestList, failedTestList, null);
         }
 
         [TestMethod]
@@ -130,8 +175,10 @@ namespace Agent.Plugins.UnitTests
         {
             var passedTestList = this.CreateTestList(2, TestOutcome.Passed);
             var failedTestList = this.CreateTestList(1, TestOutcome.Failed);
+            var skippedTestList = this.CreateTestList(0, TestOutcome.Skipped);
+
             var summary = this.CreateTestRunSummary(4, 2, 1);
-            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, TestRunSummary = summary };
+            TestRun testRun = new TestRun("Dummy", 1) { PassedTests = passedTestList, FailedTests = failedTestList, SkippedTests = skippedTestList, TestRunSummary = summary };
 
             TestRun resultTestRun = null;
             this.publisher.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback((TestRun t) => resultTestRun = t);
@@ -139,16 +186,17 @@ namespace Agent.Plugins.UnitTests
             this.testRunManager.Publish(testRun);
 
             this.publisher.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Once);
-            this.VerifyTestRun(passedTestList, failedTestList, summary, resultTestRun);
+            this.VerifyTestRun(resultTestRun, summary, passedTestList, failedTestList, skippedTestList);
         }
 
-        private TestRunSummary CreateTestRunSummary(int totalTests, int totalPassed, int totalFailed)
+        private TestRunSummary CreateTestRunSummary(int totalTests, int totalPassed = 0, int totalFailed = 0, int totalSkipped = 0)
         {
             return new TestRunSummary
             {
                 TotalTests = totalTests,
                 TotalPassed = totalPassed,
                 TotalFailed = totalFailed,
+                TotalSkipped = totalSkipped,
                 TotalExecutionTime = new System.TimeSpan(0, 0, 0, 1, 50)
             };
         }
@@ -163,16 +211,19 @@ namespace Agent.Plugins.UnitTests
             return testList;
         }
 
-        private void VerifyTestRun(List<TestResult> expectedPassed, List<TestResult> expectedFailed, TestRunSummary expectedSummary, TestRun testRun)
+        private void VerifyTestRun(TestRun testRun, TestRunSummary expectedSummary, List<TestResult> expectedPassed = null,
+            List<TestResult> expectedFailed = null, List<TestResult> expectedSkipped = null)
         {
             Assert.AreEqual(expectedPassed, testRun.PassedTests);
             Assert.AreEqual(expectedFailed, testRun.FailedTests);
+            Assert.AreEqual(expectedSkipped, testRun.SkippedTests);
             Assert.AreEqual(expectedSummary, testRun.TestRunSummary);
 
             if (expectedSummary != null)
             {
                 if (expectedPassed != null) Assert.AreEqual(expectedSummary.TotalPassed, testRun.PassedTests.Count);
                 if (expectedFailed != null) Assert.AreEqual(expectedSummary.TotalFailed, testRun.FailedTests.Count);
+                if (expectedSkipped != null) Assert.AreEqual(expectedSummary.TotalSkipped, testRun.SkippedTests.Count);
             }
         }
     }
