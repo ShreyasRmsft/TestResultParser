@@ -14,15 +14,27 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 
     public class Regexes
     {
-        public static Regex TestRunStart { get; } = new Regex($" ((FAIL)|(PASS)) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
+        //  ● Console - pattern to ignore for failed tests
 
-        public static Regex VerbosePassedTestCaseMatcher { get; } = new Regex("  ((✓)|(√)) (.*)");
+        // ○ | Γùï - skipped
 
-        public static Regex VerboseFailedTestCaseMatcher { get; } = new Regex("  ((✕)|(×)) (.*)");
+        // passed verbose - ΓêÜ
 
-        public static Regex FailedTestCaseMatcher { get; } = new Regex("((ΓùÅ)|(●)) ((.* › ){0,1}.*)");
+        // verbose failed - ├ù
+
+        public static Regex TestRunStart { get; } = new Regex($"(( FAIL )|( PASS )) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
+
+        public static Regex PassedTestCase { get; } = new Regex("  ((✓)|(√)|(ΓêÜ)) (.*)");
+
+        public static Regex FailedTestCase { get; } = new Regex("  ((✕)|(×)|(├ù)) (.*)");
+
+        public static Regex SkippedTestCase { get; } = new Regex("  ((○)|(Γùï)) (.*)");
+
+        public static Regex StackTraceStart { get; } = new Regex("((ΓùÅ)|(●)) ((.* › ){0,1}.*)");
 
         public static Regex VerboseFailedTestSummaryIndicator { get; } = new Regex("Summary of all failing tests$");
+
+        public static Regex SummaryStart { get; } = new Regex($"Test Suites: .+"); // Should this be made tighter?
 
         public static Regex TestsSummaryMatcher { get; } = new Regex("Tests:[ ]+([1-9][0-9]*) (failed|passed|skipped)(.*, ([1-9][0-9]*) (failed|passed)){0,1}");
 

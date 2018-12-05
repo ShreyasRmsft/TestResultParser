@@ -9,12 +9,13 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
     using Agent.Plugins.TestResultParser.Loggers.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
     using Agent.Plugins.TestResultParser.Parser.Models;
+    using Agent.Plugins.TestResultParser.Parser.Node.Jest.States;
     using Agent.Plugins.TestResultParser.Telemetry;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
     using Agent.Plugins.TestResultParser.TestResult.Models;
     using Agent.Plugins.TestResultParser.TestRunManger;
 
-    public class JestTestResultParser
+    public class JestTestResultParser : ITestResultParser
     {
         // TODO: Need a hook for end of logs.
         // Needed for multiple reasons. Scenarios where i am expecting things and have not yet published the run
@@ -33,9 +34,10 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         private readonly ITelemetryDataCollector telemetryDataCollector;
         private readonly ITestRunManager testRunManager;
 
+        private readonly ITestResultParserState testRunStart;
         private readonly ITestResultParserState expectingTestResults;
-        private readonly ITestResultParserState expectingTestRunSummary;
         private readonly ITestResultParserState expectingStackTraces;
+        private readonly ITestResultParserState expectingTestRunSummary;
 
         public string Name => nameof(JestTestResultParser);
 
@@ -70,9 +72,11 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             this.stateContext = new JestParserStateContext(testRun);
             this.currentState = JestParserStates.ExpectingTestResults;
 
-            //this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
-            //this.expectingTestRunSummary = new ExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
-            //this.expectingStackTraces = new ExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.testRunStart = new ExpectingTestRunStart(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingStackTraces = new ExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingTestRunSummary = new ExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            
         }
 
         /// <inheritdoc/>
@@ -179,6 +183,93 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Publishes the run and resets the parser by resetting the state context and current state
+        /// </summary>
+        private void AttemptPublishAndResetParser()
+        {
+            this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publish the test run at line {this.stateContext.CurrentLineNumber}.");
+            var testRunToPublish = this.stateContext.TestRun;
+
+            //// We have encountered failed test cases but no failed summary was encountered
+            //if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
+            //{
+            //    this.logger.Error("MochaTestResultParser : Failed tests were encountered but no failed summary was encountered.");
+            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+            //        TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+            //}
+            //else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
+            //{
+            //    // If encountered failed tests does not match summary fire telemtry
+            //    this.logger.Error($"MochaTestResultParser : Failed tests count does not match failed summary" +
+            //        $" at line {this.stateContext.CurrentLineNumber}");
+            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+            //        TelemetryConstants.PassedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            //}
+
+            //// We have encountered pending test cases but no pending summary was encountered
+            //if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
+            //{
+            //    this.logger.Error("MochaTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
+            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+            //        TelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+            //}
+            //else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
+            //{
+            //    // If encountered skipped tests does not match summary fire telemetry
+            //    this.logger.Error($"MochaTestResultParser : Pending tests count does not match pending summary" +
+            //        $" at line {this.stateContext.CurrentLineNumber}");
+            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+            //        TelemetryConstants.PendingSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            //}
+
+            // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
+            switch (this.currentState)
+            {
+                case JestParserStates.ExpectingTestResults:
+                    if (testRunToPublish.PassedTests.Count != 0
+                        || testRunToPublish.FailedTests.Count != 0
+                        || testRunToPublish.SkippedTests.Count != 0)
+                    {
+                        //this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        //this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                        //    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    }
+                    break;
+
+                default:
+                    // Publish the test run if reset and publish was called from any state other than the test results state
+
+                    // Calculate total tests
+                    testRunToPublish.TestRunSummary.TotalTests =
+                        testRunToPublish.TestRunSummary.TotalPassed +
+                        testRunToPublish.TestRunSummary.TotalFailed +
+                        testRunToPublish.TestRunSummary.TotalSkipped;
+
+                    this.testRunManager.Publish(testRunToPublish);
+                    break;
+            }
+
+            ResetParser();
+        }
+
+        /// <summary>
+        /// Used to reset the parser inluding the test run and context
+        /// </summary>
+        private void ResetParser()
+        {
+            // Start a new TestRun
+            var newTestRun = new TestRun($"{Name}/{Version}", this.stateContext.TestRun.TestRunId + 1);
+
+            // Set state to ExpectingTestResults
+            this.currentState = JestParserStates.ExpectingTestResults;
+
+            // Refresh the context
+            this.stateContext.Initialize(newTestRun);
+
+            //this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }
     }
 }
