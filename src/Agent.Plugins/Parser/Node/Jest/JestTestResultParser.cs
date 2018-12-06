@@ -84,7 +84,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         {
             if (testResultsLine == null || testResultsLine.Line == null)
             {
-                this.logger.Error("MochaTestResultParser : Parse : Input line was null.");
+                this.logger.Error("JestTestResultParser : Parse : Input line was null.");
                 return;
             }
 

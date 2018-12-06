@@ -32,9 +32,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         /// </summary>
         public bool FailedTestsSummaryIndicatorEncountered { get; set; }
 
+        /// <summary>
+        /// Initializes all the values to their defaults
+        /// </summary>
         public override void Initialize(TestRun testRun)
         {
             TestRun = testRun;
+            LinesWithinWhichMatchIsExpected = 0;
+            ExpectedMatch = null;
+            VerboseOptionEnabled = false;
+            FailedTestsSummaryIndicatorEncountered = false;
         }
     }
 }

@@ -14,15 +14,6 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 
     public class Regexes
     {
-        //  ● Console - pattern to ignore for failed tests
-
-        // ○ | Γùï - skipped
-
-        // passed verbose - ΓêÜ
-
-        // verbose failed - ├ù
-
-
         // TODO: Optional time at the end of this line
         /// <summary>
         /// Matches lines with the following regex:
@@ -34,15 +25,15 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 
         /// <summary>
         /// Matches lines with the following regex:
-        /// ^  ((✓)|(√)|(ΓêÜ)) (.*)
+        /// ^  ((✓)|(√)|(ΓêÜ)) (((.+) \\(([0-9]+)(ms|s|m|h)\\)$)|(.+)$)
         /// </summary>
-        public static Regex PassedTestCase { get; } = new Regex($"^  ((✓)|(√)|(ΓêÜ)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestCase { get; } = new Regex($"^  ((✓)|(√)|(ΓêÜ)) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:
-        /// ^  ((✕)|(×)|(├ù)) (.*)
+        /// ^  ((✕)|(×)|(├ù)) (((.+) \\(([0-9]+)(ms|s|m|h)\\)$)|(.+)$)
         /// </summary>
-        public static Regex FailedTestCase { get; } = new Regex($"^  ((✕)|(×)|(├ù)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
+        public static Regex FailedTestCase { get; } = new Regex($"^  ((✕)|(×)|(├ù)) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:
