@@ -42,6 +42,13 @@
                 return JestParserStates.ExpectingStackTraces;
             }
 
+            // In non verbose mode console out appears as a failed test case
+            // Only difference being it's not colored red
+            if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
+            {
+                return JestParserStates.ExpectingStackTraces;
+            }
+
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jestStateContext.TestRun.FailedTests.Add(testResult);
 
