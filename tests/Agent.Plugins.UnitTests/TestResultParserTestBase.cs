@@ -39,7 +39,7 @@ namespace Agent.Plugins.UnitTests
             telemetryDataCollector = new Mock<ITelemetryDataCollector>();
         }
 
-        public void TestSuccessScenariosWithBasicAssertions(string testCase)
+        public void TestSuccessScenariosWithBasicAssertions(string testCase, bool assertOnlyFailedCount = false)
         {
             int indexOfTestRun = 0;
             int lastTestRunId = 0;
@@ -47,12 +47,17 @@ namespace Agent.Plugins.UnitTests
             
             testRunManagerMock.Setup(x => x.Publish(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
-                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId);
+                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId, assertOnlyFailedCount);
                 lastTestRunId = testRun.TestRunId;
             });
 
             foreach (var line in GetLines(testCase))
             {
+                // Uncomment the below to break at a particular line
+                if (line.Line == "Summary of all failing tests")
+                {
+                }
+
                 this.parser.Parse(line);
             }
 
@@ -127,11 +132,12 @@ namespace Agent.Plugins.UnitTests
                 if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    // if (testCase.Name.Contains("TestCase002"))
-                    yield return new object[] { testCase.FullName.Split(".txt")[0] };
+                     if (testCase.Name.Contains("TestCase004"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
         }
+
         public string RemoveTimeStampFromLogLineIfPresent(string line)
         {
             // Remove the preceding timestamp if present.
@@ -150,7 +156,8 @@ namespace Agent.Plugins.UnitTests
 
         #region ValidationHelpers
 
-        public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun, int lastTestRunId)
+        public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun,
+            int lastTestRunId, bool assertOnlyFailedCount = false)
         {
             int i = indexOfTestRun * 5;
 
@@ -165,9 +172,12 @@ namespace Agent.Plugins.UnitTests
             Assert.AreEqual(expectedSkippedTestsCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
             Assert.AreEqual(expectedTotalTestsCount, testRun.TestRunSummary.TotalTests, "Total tests summary does not match.");
 
-            Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
+            if (!assertOnlyFailedCount)
+            {
+                Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
+                Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
+            }
             Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
-            Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
 
             Assert.IsTrue(testRun.TestRunId > lastTestRunId, $"Expected test run id greater than {lastTestRunId} but found {testRun.TestRunId} instead.");
             Assert.AreEqual(expectedTestRunDuration, testRun.TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");

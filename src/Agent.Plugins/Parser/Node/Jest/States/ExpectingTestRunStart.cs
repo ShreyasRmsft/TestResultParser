@@ -31,7 +31,7 @@
 
         private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
 
             // Do we want to use PASS/FAIL information here?
 

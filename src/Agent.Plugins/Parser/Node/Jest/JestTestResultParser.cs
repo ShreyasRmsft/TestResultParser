@@ -70,7 +70,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             // Initialize the starting state of the parser
             var testRun = new TestRun($"{Name}/{Version}", 1);
             this.stateContext = new JestParserStateContext(testRun);
-            this.currentState = JestParserStates.ExpectingTestResults;
+            this.currentState = JestParserStates.ExpectingTestRunStart;
 
             this.testRunStart = new ExpectingTestRunStart(AttemptPublishAndResetParser, logger, telemetryDataCollector);
             this.expectingTestResults = new ExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
@@ -228,7 +228,26 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
             switch (this.currentState)
             {
+                case JestParserStates.ExpectingTestRunStart:
+
+                    //this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                    //this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    //    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+
+                    break;
+
                 case JestParserStates.ExpectingTestResults:
+                    if (testRunToPublish.PassedTests.Count != 0
+                        || testRunToPublish.FailedTests.Count != 0
+                        || testRunToPublish.SkippedTests.Count != 0)
+                    {
+                        //this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        //this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                        //    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    }
+                    break;
+
+                case JestParserStates.ExpectingStackTraces:
                     if (testRunToPublish.PassedTests.Count != 0
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)

@@ -8,6 +8,7 @@
     using Agent.Plugins.TestResultParser.Parser.Interfaces;
     using Agent.Plugins.TestResultParser.Telemetry;
     using Agent.Plugins.TestResultParser.Telemetry.Interfaces;
+    using Agent.Plugins.TestResultParser.TestResult.Models;
 
     public class ExpectingTestResults : JestParserStateBase
     {
@@ -36,42 +37,57 @@
 
         private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            var testResult = PrepareTestResult(TestOutcome.Passed, match);
+            jestStateContext.TestRun.PassedTests.Add(testResult);
 
             return JestParserStates.ExpectingTestResults;
         }
 
         private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            // TODO: Revisit if we even need to match these
+            // No-op as we would like to pick up failed test cases in the stack traces state
 
             return JestParserStates.ExpectingTestResults;
         }
 
         private Enum SkippedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            var testResult = PrepareTestResult(TestOutcome.Skipped, match);
+            jestStateContext.TestRun.SkippedTests.Add(testResult);
 
             return JestParserStates.ExpectingTestResults;
         }
 
         private Enum StackTraceStartMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            var testResult = PrepareTestResult(TestOutcome.Failed, match);
+            jestStateContext.TestRun.FailedTests.Add(testResult);
 
             return JestParserStates.ExpectingStackTraces;
         }
 
         private Enum SummaryStartMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            jestStateContext.LinesWithinWhichMatchIsExpected = 1;
+            jestStateContext.ExpectedMatch = "tests summary";
 
             return JestParserStates.ExpectingTestRunSummary;
         }
 
         private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
         {
-            var mochaStateContext = stateContext as JestParserStateContext;
+            var jestStateContext = stateContext as JestParserStateContext;
 
             // Do we want to use PASS/FAIL information here?
 

@@ -19,6 +19,7 @@
         [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
         public void SuccessScenariosWithBasicAssertions(string testCase)
         {
+            testCase = Path.Combine("PythonTestResultParserTests", "Resources", "SuccessScenarios", testCase);
             TestSuccessScenariosWithBasicAssertions(testCase);
         }
 
@@ -26,6 +27,7 @@
         [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
         public void PartialSuccessScenariosWithBasicAssertions(string testCase)
         {
+            testCase = Path.Combine("PythonTestResultParserTests", "Resources", "PartialSuccess", testCase);
             TestPartialSuccessScenariosWithBasicAssertions(testCase);
         }
 
@@ -33,6 +35,7 @@
         [DynamicData(nameof(GetDetailedTestCases), DynamicDataSourceType.Method)]
         public void DetailedAssertions(string testCase)
         {
+            testCase = Path.Combine("PythonTestResultParserTests", "Resources", "DetailedTests", testCase);
             TestWithDetailedAssertions(testCase);
         }
 

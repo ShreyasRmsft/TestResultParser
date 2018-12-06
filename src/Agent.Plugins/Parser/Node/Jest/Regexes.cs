@@ -22,23 +22,64 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 
         // verbose failed - ├ù
 
-        public static Regex TestRunStart { get; } = new Regex($"(( FAIL )|( PASS )) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
 
-        public static Regex PassedTestCase { get; } = new Regex("  ((✓)|(√)|(ΓêÜ)) (.*)");
+        // TODO: Optional time at the end of this line
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^(( FAIL )|( PASS )) (.+)
+        /// </summary>
+        public static Regex TestRunStart { get; } = new Regex($"^(( FAIL )|( PASS )) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
 
-        public static Regex FailedTestCase { get; } = new Regex("  ((✕)|(×)|(├ù)) (.*)");
+        // TODO: optional time at the end of each test case
 
-        public static Regex SkippedTestCase { get; } = new Regex("  ((○)|(Γùï)) (.*)");
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^  ((✓)|(√)|(ΓêÜ)) (.*)
+        /// </summary>
+        public static Regex PassedTestCase { get; } = new Regex($"^  ((✓)|(√)|(ΓêÜ)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 
-        public static Regex StackTraceStart { get; } = new Regex("((ΓùÅ)|(●)) ((.* › ){0,1}.*)");
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^  ((✕)|(×)|(├ù)) (.*)
+        /// </summary>
+        public static Regex FailedTestCase { get; } = new Regex($"^  ((✕)|(×)|(├ù)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 
-        public static Regex VerboseFailedTestSummaryIndicator { get; } = new Regex("Summary of all failing tests$");
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^  ((○)|(Γùï)) (.*)
+        /// </summary>
+        public static Regex SkippedTestCase { get; } = new Regex($"^  ((○)|(Γùï)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 
-        public static Regex SummaryStart { get; } = new Regex($"Test Suites: .+"); // Should this be made tighter?
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^  ((ΓùÅ)|(●)) ((.* › ){0,1}.*)
+        /// </summary>
+        public static Regex StackTraceStart { get; } = new Regex($"^  ((ΓùÅ)|(●)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
 
-        public static Regex TestsSummaryMatcher { get; } = new Regex("Tests:[ ]+([1-9][0-9]*) (failed|passed|skipped)(.*, ([1-9][0-9]*) (failed|passed)){0,1}");
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^Test Suites: .+
+        /// </summary>
+        public static Regex SummaryStart { get; } = new Regex($"^Test Suites: .+", RegexOptions.ExplicitCapture); // Should this be made tighter?
+
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^Tests:( )+(([1-9][0-9]*) (failed), )?(([1-9][0-9]*) (skipped), )?(([1-9][0-9]*) (passed), )?(([1-9][0-9]*) (total))
+        /// </summary>
+        public static Regex TestsSummaryMatcher { get; } = new Regex($"^Tests:[ ]+((?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) (failed), )?((?<{RegexCaptureGroups.SkippedTests}>[1-9][0-9]*) (skipped), )?((?<{RegexCaptureGroups.PassedTests}>[1-9][0-9]*) (passed), )?((?<{RegexCaptureGroups.TotalTests}>[1-9][0-9]*) (total))", RegexOptions.ExplicitCapture);
 
         // there can be an additonal esitmated time that can be printed hence not using a $
-        public static Regex TestRunTimeMatcher { get; } = new Regex("Time:[ ]+([0-9]+(\\.[0-9]+){0,1})(ms|s|m|h)");
+        /// <summary>
+        /// Matches lines with the following regex:
+        /// ^Time:( )+([0-9]+(\\.[0-9]+){0,1})(ms|s|m|h)
+        /// </summary>
+        public static Regex TestRunTimeMatcher { get; } = new Regex($"^Time:( )+(?<{RegexCaptureGroups.TestRunTime}>[0-9]+(\\.[0-9]+)?)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)", RegexOptions.ExplicitCapture);
+
+        /// <summary>
+        /// This is only printed when a large number of tests were run
+        /// Matches lines with the following regex:
+        /// ^Summary of all failing tests$
+        /// </summary>
+        public static Regex FailedTestsSummaryIndicator { get; } = new Regex($"^Summary of all failing tests$", RegexOptions.ExplicitCapture);
     }
 }
