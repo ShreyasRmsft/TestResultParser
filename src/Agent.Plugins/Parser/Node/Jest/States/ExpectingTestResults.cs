@@ -31,7 +31,8 @@
                 new RegexActionPair(Regexes.SkippedTestCase, SkippedTestCaseMatched),
                 new RegexActionPair(Regexes.StackTraceStart, StackTraceStartMatched),
                 new RegexActionPair(Regexes.SummaryStart, SummaryStartMatched),
-                new RegexActionPair(Regexes.TestRunStart, TestRunStartMatched)
+                new RegexActionPair(Regexes.TestRunStart, TestRunStartMatched),
+                new RegexActionPair(Regexes.FailedTestsSummaryIndicator, FailedTestsSummaryIndicatorMatched)
             };
         }
 
@@ -69,6 +70,13 @@
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
+            // In non verbose mode console out appears as a failed test case
+            // Only difference being it's not colored red
+            if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
+            {
+                return JestParserStates.ExpectingStackTraces;
+            }
+
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jestStateContext.TestRun.FailedTests.Add(testResult);
 
@@ -92,6 +100,15 @@
             // Do we want to use PASS/FAIL information here?
 
             return JestParserStates.ExpectingTestResults;
+        }
+
+        private Enum FailedTestsSummaryIndicatorMatched(Match match, TestResultParserStateContext stateContext)
+        {
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
+
+            return JestParserStates.ExpectingStackTraces;
         }
     }
 }

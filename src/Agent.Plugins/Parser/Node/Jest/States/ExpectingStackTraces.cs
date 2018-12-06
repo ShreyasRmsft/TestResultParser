@@ -62,6 +62,13 @@
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
+            // If a test run start indicator is encountered after failedTestsSummaryInidicator has
+            // been encountered it must be ignored
+            if (jestStateContext.FailedTestsSummaryIndicatorEncountered)
+            {
+                return JestParserStates.ExpectingStackTraces;
+            }
+
             // Do we want to use PASS/FAIL information here?
 
             return JestParserStates.ExpectingTestResults;
@@ -73,7 +80,7 @@
 
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
 
-            return JestParserStates.ExpectingTestResults;
+            return JestParserStates.ExpectingStackTraces;
         } 
     }
 }

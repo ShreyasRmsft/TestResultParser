@@ -54,9 +54,9 @@ namespace Agent.Plugins.UnitTests
             foreach (var line in GetLines(testCase))
             {
                 // Uncomment the below to break at a particular line
-                if (line.Line == "Summary of all failing tests")
-                {
-                }
+                //if (line.Line == "Summary of all failing tests")
+                //{
+                //}
 
                 this.parser.Parse(line);
             }
@@ -113,6 +113,23 @@ namespace Agent.Plugins.UnitTests
             testRunManagerMock.Verify(x => x.Publish(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been published.");
         }
 
+        #region Data Drivers
+
+        public static IEnumerable<object[]> GetTestCasesFromRelativePath(string relativePathToTestCase)
+        {
+            foreach (var testCase in new DirectoryInfo(relativePathToTestCase).GetFiles("TestCase*.txt"))
+            {
+                if (!testCase.Name.EndsWith("Result.txt"))
+                {
+                    // Uncomment the below line to run for a particular test case for debugging 
+                    //if (testCase.Name.Contains("TestCase004"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
+                }
+            }
+        }
+
+        #endregion
+
         #region Log Data Utilities
 
         public IEnumerable<LogData> GetLines(string testCase)
@@ -122,19 +139,6 @@ namespace Agent.Plugins.UnitTests
             foreach (var line in testResultsConsoleOut)
             {
                 yield return new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ };
-            }
-        }
-
-        public static IEnumerable<object[]> GetTestCasesFromRelativePath(string relativePathToTestCase)
-        {
-            foreach (var testCase in new DirectoryInfo(relativePathToTestCase).GetFiles("TestCase*.txt"))
-            {
-                if (!testCase.Name.EndsWith("Result.txt"))
-                {
-                    // Uncomment the below line to run for a particular test case for debugging 
-                     if (testCase.Name.Contains("TestCase004"))
-                    yield return new object[] { testCase.Name.Split(".txt")[0] };
-                }
             }
         }
 
