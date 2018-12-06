@@ -131,28 +131,28 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                         break;
                 }
 
-                //// This is a mechanism to enforce matches that have to occur within 
-                //// a specific number of lines after encountering the previous match
-                //// one obvious usage is for successive summary lines containing passed,
-                //// pending and failed test summary
-                //if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
-                //{
-                //    this.logger.Info($"MochaTestResultParser : Parse : Was expecting {this.stateContext.ExpectedMatch} before line {testResultsLine.LineNumber}, but no matches occurred.");
-                //    AttemptPublishAndResetParser();
-                //    return;
-                //}
+                // This is a mechanism to enforce matches that have to occur within 
+                // a specific number of lines after encountering the previous match
+                // one obvious usage is for successive summary lines which
+                // come one after the other
+                if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
+                {
+                    this.logger.Info($"JestTestResultParser : Parse : Was expecting {this.stateContext.ExpectedMatch} before line {testResultsLine.LineNumber}, but no matches occurred.");
+                    AttemptPublishAndResetParser();
+                    return;
+                }
 
-                //// If no match occurred and a match was expected in a positive number of lines, decrement the counter
-                //// A value of zero or lesser indicates not expecting a match
-                //if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
-                //{
-                //    this.stateContext.LinesWithinWhichMatchIsExpected--;
-                //    return;
-                //}
+                // If no match occurred and a match was expected in a positive number of lines, decrement the counter
+                // A value of zero or lesser indicates not expecting a match
+                if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
+                {
+                    this.stateContext.LinesWithinWhichMatchIsExpected--;
+                    return;
+                }
             }
             catch (Exception e)
             {
-                this.logger.Error($"MochaTestResultParser : Parse : Failed with exception {e}.");
+                this.logger.Error($"JestTestResultParser : Parse : Failed with exception {e}.");
 
                 // This might start taking a lot of space if each and every parse operation starts throwing
                 // But if that happens then there's a lot more stuff broken.
@@ -190,7 +190,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         /// </summary>
         private void AttemptPublishAndResetParser()
         {
-            this.logger.Info($"MochaTestResultParser : Resetting the parser and attempting to publish the test run at line {this.stateContext.CurrentLineNumber}.");
+            this.logger.Info($"JestTestResultParser : Resetting the parser and attempting to publish the test run at line {this.stateContext.CurrentLineNumber}.");
             var testRunToPublish = this.stateContext.TestRun;
 
             //// We have encountered failed test cases but no failed summary was encountered
