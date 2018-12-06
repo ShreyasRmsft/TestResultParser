@@ -230,9 +230,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             {
                 case JestParserStates.ExpectingTestRunStart:
 
-                    //this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                    //this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    //    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    this.logger.Error("JestTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
 
                     break;
 
@@ -241,9 +239,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)
                     {
-                        //this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                        //this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                        //    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                        this.logger.Error("JestTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                            TelemetryConstants.TestCasesFoundButNoSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
                     break;
 
@@ -252,9 +250,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)
                     {
-                        //this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                        //this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                        //    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                        this.logger.Error("JestTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                            TelemetryConstants.TestCasesFoundButNoSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
                     break;
 
@@ -288,7 +286,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             // Refresh the context
             this.stateContext.Initialize(newTestRun);
 
-            //this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
+            this.logger.Info("JestTestResultParser : Successfully reset the parser.");
         }
     }
 }

@@ -43,6 +43,9 @@
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
             jestStateContext.TestRun.PassedTests.Add(testResult);
 
+            // Used for telemetry for identifying how many runs are using --verbose option
+            jestStateContext.VerboseOptionEnabled = true;
+
             return JestParserStates.ExpectingTestResults;
         }
 
@@ -50,7 +53,10 @@
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
-            // TODO: Revisit if we even need to match these
+            // Used for telemetry for identifying how many runs are using --verbose option
+            jestStateContext.VerboseOptionEnabled = true;
+
+            // TODO: Revisit if we even need to match these, expcept for telemtry no other use
             // No-op as we would like to pick up failed test cases in the stack traces state
 
             return JestParserStates.ExpectingTestResults;
@@ -62,6 +68,9 @@
 
             var testResult = PrepareTestResult(TestOutcome.Skipped, match);
             jestStateContext.TestRun.SkippedTests.Add(testResult);
+
+            // Used for telemetry for identifying how many runs are using --verbose option
+            jestStateContext.VerboseOptionEnabled = true;
 
             return JestParserStates.ExpectingTestResults;
         }

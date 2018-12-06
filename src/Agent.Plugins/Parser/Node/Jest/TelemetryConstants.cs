@@ -8,5 +8,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         public const string EventArea = "JestTestResultParser";
 
         public const string Initialize = "Initialize";
+
+        public const string TestCasesFoundButNoSummary = "TestCasesFoundButNoSummary";
     }
 }
