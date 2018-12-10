@@ -28,7 +28,6 @@
             {
                 new RegexActionPair(Regexes.PassedTestCase, PassedTestCaseMatched),
                 new RegexActionPair(Regexes.FailedTestCase, FailedTestCaseMatched),
-                new RegexActionPair(Regexes.SkippedTestCase, SkippedTestCaseMatched),
                 new RegexActionPair(Regexes.StackTraceStart, StackTraceStartMatched),
                 new RegexActionPair(Regexes.SummaryStart, SummaryStartMatched),
                 new RegexActionPair(Regexes.TestRunStart, TestRunStartMatched),
@@ -58,19 +57,6 @@
 
             // TODO: Revisit if we even need to match these, expcept for telemtry no other use
             // No-op as we would like to pick up failed test cases in the stack traces state
-
-            return JestParserStates.ExpectingTestResults;
-        }
-
-        private Enum SkippedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
-        {
-            var jestStateContext = stateContext as JestParserStateContext;
-
-            var testResult = PrepareTestResult(TestOutcome.Skipped, match);
-            jestStateContext.TestRun.SkippedTests.Add(testResult);
-
-            // Used for telemetry for identifying how many runs are using --verbose option
-            jestStateContext.VerboseOptionEnabled = true;
 
             return JestParserStates.ExpectingTestResults;
         }

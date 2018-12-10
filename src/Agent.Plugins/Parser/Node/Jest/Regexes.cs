@@ -27,19 +27,13 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         /// Matches lines with the following regex:
         /// ^  ((✓)|(√)|(ΓêÜ)) (((.+) \\(([0-9]+)(ms|s|m|h)\\)$)|(.+)$)
         /// </summary>
-        public static Regex PassedTestCase { get; } = new Regex($"^  ((✓)|(√)|(ΓêÜ)) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestCase { get; } = new Regex($"^(  )+((✓)|(√)|(ΓêÜ)) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:
         /// ^  ((✕)|(×)|(├ù)) (((.+) \\(([0-9]+)(ms|s|m|h)\\)$)|(.+)$)
         /// </summary>
-        public static Regex FailedTestCase { get; } = new Regex($"^  ((✕)|(×)|(├ù)) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
-
-        /// <summary>
-        /// Matches lines with the following regex:
-        /// ^  ((○)|(Γùï)) (.*)
-        /// </summary>
-        public static Regex SkippedTestCase { get; } = new Regex($"^  ((○)|(Γùï)) (?<{RegexCaptureGroups.TestCaseName}>.*)", RegexOptions.ExplicitCapture);
+        public static Regex FailedTestCase { get; } = new Regex($"^(  )+((✕)|(×)|(├ù)) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:

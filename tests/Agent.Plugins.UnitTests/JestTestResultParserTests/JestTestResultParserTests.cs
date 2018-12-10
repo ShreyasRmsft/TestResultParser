@@ -35,13 +35,13 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
         //    TestPartialSuccessScenariosWithBasicAssertions(testCase);
         //}
 
-        //[DataTestMethod]
-        //[DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
-        //public void DetailedAssertions(string testCase)
-        //{
-        //    testCase = Path.Combine("JestTestResultParserTests", "Resources", "DetailedTests", testCase);
-        //    TestWithDetailedAssertions(testCase);
-        //}
+        [DataTestMethod]
+        [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
+        public void DetailedAssertions(string testCase)
+        {
+            testCase = Path.Combine("JestTestResultParserTests", "Resources", "DetailedTests", testCase);
+            TestWithDetailedAssertions(testCase);
+        }
 
         //[DataTestMethod]
         //[DynamicData(nameof(GetNegativeTestsTestCases), DynamicDataSourceType.Method)]

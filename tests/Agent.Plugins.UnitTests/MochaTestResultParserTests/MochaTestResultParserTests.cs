@@ -6,6 +6,8 @@ using System.IO;
 using Agent.Plugins.TestResultParser.Parser.Node.Mocha;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// TODO: Add test cases containing nested test suites
+
 namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 {
     [TestClass]

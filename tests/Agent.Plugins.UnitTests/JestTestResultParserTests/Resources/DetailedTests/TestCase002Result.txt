@@ -1,0 +1,17 @@
+﻿Passed 6
+Test method 1
+Test method 2
+Test method 4
+Test method 3
+Nested Test method 3
+Test method 1
+
+Failed 6
+first set › Test method 3
+first set › Test method 5
+first set › nested set › Nested Test method 4
+first set › Test method 4
+first set › Test method 5
+second set › Test method 2
+
+Skipped 0

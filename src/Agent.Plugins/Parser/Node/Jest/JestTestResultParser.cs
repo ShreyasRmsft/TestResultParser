@@ -219,22 +219,6 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                     TelemetryConstants.FailedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
-            // We have encountered skipped test cases but no pending summary was encountered
-            if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
-            {
-                this.logger.Error("JestTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
-                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    TelemetryConstants.SkippedTestCasesFoundButNoSkippedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
-            }
-            else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
-            {
-                // If encountered skipped tests does not match summary fire telemetry
-                this.logger.Error($"JestTestResultParser : Skipped tests count does not match skipped summary" +
-                    $" at line {this.stateContext.CurrentLineNumber}");
-                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    TelemetryConstants.SkippedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
-            }
-
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
             switch (this.currentState)
             {
