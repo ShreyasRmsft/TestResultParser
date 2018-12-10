@@ -195,7 +195,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha
                 this.logger.Error($"MochaTestResultParser : Failed tests count does not match failed summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                    TelemetryConstants.PassedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+                    TelemetryConstants.FailedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
             // We have encountered pending test cases but no pending summary was encountered

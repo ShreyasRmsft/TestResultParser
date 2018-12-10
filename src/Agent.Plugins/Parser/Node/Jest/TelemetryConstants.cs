@@ -10,5 +10,17 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         public const string Initialize = "Initialize";
 
         public const string TestCasesFoundButNoSummary = "TestCasesFoundButNoSummary";
+
+        public const string PassedSummaryMismatch = "PassedSummaryMismatch";
+
+        public const string FailedSummaryMismatch = "FailedSummaryMismatch";
+
+        public const string SkippedSummaryMismatch = "SkippedSummaryMismatch";
+
+        public const string PassedTestCasesFoundButNoPassedSummary = "PassedTestCasesFoundButNoPassedSummary";
+
+        public const string FailedTestCasesFoundButNoFailedSummary = "FailedTestCasesFoundButNoFailedSummary";
+
+        public const string SkippedTestCasesFoundButNoSkippedSummary = "SkippedTestCasesFoundButNoSkippedSummary";
     }
 }

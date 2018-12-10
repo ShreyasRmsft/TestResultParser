@@ -68,6 +68,8 @@ namespace Agent.Plugins.TestResultParser.TestRunManger
 
             this.diagnosticDataCollector.Info($"Attempting to publish test run with id {testRun.TestRunId} received from parser {testRun.ParserUri}.");
 
+            // TODO: If total tests is 0, take a call on whether to publish or not
+
             // Test run id should be positive and non zero for a valid test run
             if (testRun.TestRunId <= 0)
             {

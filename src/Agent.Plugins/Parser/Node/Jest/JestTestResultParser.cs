@@ -169,7 +169,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         /// </summary>
         /// <param name="state">Current state</param>
         /// <param name="testResultsLine">Input line</param>
-        /// <returns>True if a match occurs</returns>
+        /// <returns>true if a match occurs</returns>
         private bool AttemptMatch(ITestResultParserState state, LogData testResultsLine)
         {
             foreach (var regexActionPair in state.RegexesToMatch)
@@ -193,37 +193,53 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
             this.logger.Info($"JestTestResultParser : Resetting the parser and attempting to publish the test run at line {this.stateContext.CurrentLineNumber}.");
             var testRunToPublish = this.stateContext.TestRun;
 
-            //// We have encountered failed test cases but no failed summary was encountered
-            //if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
-            //{
-            //    this.logger.Error("MochaTestResultParser : Failed tests were encountered but no failed summary was encountered.");
-            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-            //        TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
-            //}
-            //else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
-            //{
-            //    // If encountered failed tests does not match summary fire telemtry
-            //    this.logger.Error($"MochaTestResultParser : Failed tests count does not match failed summary" +
-            //        $" at line {this.stateContext.CurrentLineNumber}");
-            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-            //        TelemetryConstants.PassedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
-            //}
+            // We have encountered passed test cases but no passed summary was encountered
+            if (testRunToPublish.PassedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalPassed == 0)
+            {
+                this.logger.Error("JestTestResultParser : Passed tests were encountered but no passed summary was encountered.");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+            }
+            else if (testRunToPublish.TestRunSummary.TotalPassed != testRunToPublish.PassedTests.Count)
+            {
+                // If encountered failed tests does not match summary fire telemtry
+                this.logger.Error($"JestTestResultParser : Passed tests count does not match passed summary" +
+                    $" at line {this.stateContext.CurrentLineNumber}");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.PassedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            }
 
-            //// We have encountered pending test cases but no pending summary was encountered
-            //if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
-            //{
-            //    this.logger.Error("MochaTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
-            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-            //        TelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
-            //}
-            //else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
-            //{
-            //    // If encountered skipped tests does not match summary fire telemetry
-            //    this.logger.Error($"MochaTestResultParser : Pending tests count does not match pending summary" +
-            //        $" at line {this.stateContext.CurrentLineNumber}");
-            //    this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-            //        TelemetryConstants.PendingSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
-            //}
+            // We have encountered failed test cases but no failed summary was encountered
+            if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
+            {
+                this.logger.Error("JestTestResultParser : Failed tests were encountered but no failed summary was encountered.");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+            }
+            else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
+            {
+                // If encountered failed tests does not match summary fire telemtry
+                this.logger.Error($"JestTestResultParser : Failed tests count does not match failed summary" +
+                    $" at line {this.stateContext.CurrentLineNumber}");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.FailedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            }
+
+            // We have encountered skipped test cases but no pending summary was encountered
+            if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
+            {
+                this.logger.Error("JestTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.SkippedTestCasesFoundButNoSkippedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+            }
+            else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
+            {
+                // If encountered skipped tests does not match summary fire telemetry
+                this.logger.Error($"JestTestResultParser : Skipped tests count does not match skipped summary" +
+                    $" at line {this.stateContext.CurrentLineNumber}");
+                this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                    TelemetryConstants.SkippedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+            }
 
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
             switch (this.currentState)
@@ -243,6 +259,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                         this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
                             TelemetryConstants.TestCasesFoundButNoSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
+
                     break;
 
                 case JestParserStates.ExpectingStackTraces:
@@ -254,6 +271,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                         this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
                             TelemetryConstants.TestCasesFoundButNoSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
+
                     break;
 
                 default:
