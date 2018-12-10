@@ -36,7 +36,7 @@
             var jestStateContext = stateContext as JestParserStateContext;
 
             jestStateContext.LinesWithinWhichMatchIsExpected = 2;
-            jestStateContext.ExpectedMatch = "test run time";
+            jestStateContext.NextExpectedMatch = "test run time";
 
             // Handling parse errors is unnecessary
             int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed);

@@ -50,6 +50,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
 
             mochaStateContext.TestRun.PassedTests.Add(testResult);
+            this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestResults " +
+                 $"at line {mochaStateContext.CurrentLineNumber}.");
+
             return MochaParserStates.ExpectingTestResults;
         }
 
@@ -117,7 +120,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             this.attemptPublishAndResetParser();
 
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
-            mochaStateContext.ExpectedMatch = "failed/pending tests summary";
+            mochaStateContext.NextExpectedMatch = "failed/pending tests summary";
 
             // Handling parse errors is unnecessary
             var totalPassed = int.Parse(match.Groups[RegexCaptureGroups.PassedTests].Value);
@@ -136,7 +139,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             // Extract the test run time from the passed tests summary
             ExtractTestRunTime(match, mochaStateContext);
 
-            this.logger.Info("MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestRunSummary.");
+            this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestRunSummary" +
+                $" at line {mochaStateContext.CurrentLineNumber}.");
             return MochaParserStates.ExpectingTestRunSummary;
         }
 
@@ -146,7 +150,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
 
             this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Pending tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
-            mochaStateContext.ExpectedMatch = "failed tests summary";
+            mochaStateContext.NextExpectedMatch = "failed tests summary";
 
             // Handling parse errors is unnecessary
             var totalPending = int.Parse(match.Groups[RegexCaptureGroups.PendingTests].Value);
@@ -170,7 +174,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             mochaStateContext.StackTracesToSkipParsingPostSummary = totalFailed;
 
             // Do we want transition logs here?
-            this.logger.Info("MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingStackTraces.");
+            this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingStackTraces" +
+                $" at line {mochaStateContext.CurrentLineNumber}.");
             return MochaParserStates.ExpectingStackTraces;
         }
     }

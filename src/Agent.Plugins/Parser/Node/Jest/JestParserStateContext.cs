@@ -4,7 +4,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 {
     public class JestParserStateContext : TestResultParserStateContext
     {
-        public JestParserStateContext(TestRun testRun)
+        public JestParserStateContext(TestRun testRun) : base(testRun)
         {
             Initialize(testRun);
         }
@@ -19,7 +19,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         /// Hint string for logging and telemetry to specify what match was expected in case it does not occur
         /// in the expected number of lines
         /// </summary>
-        public string ExpectedMatch { get; set; }
+        public string NextExpectedMatch { get; set; }
 
         /// <summary>
         /// Used to identify if a run had the --verbose option enabled
@@ -37,9 +37,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
         /// </summary>
         public override void Initialize(TestRun testRun)
         {
-            TestRun = testRun;
+            base.Initialize(testRun);
             LinesWithinWhichMatchIsExpected = 0;
-            ExpectedMatch = null;
+            NextExpectedMatch = null;
             VerboseOptionEnabled = false;
             FailedTestsSummaryIndicatorEncountered = false;
         }

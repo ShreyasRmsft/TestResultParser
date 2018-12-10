@@ -55,6 +55,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
             mochaStateContext.TestRun.PassedTests.Add(testResult);
 
+            this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestResults " +
+                $"at line {mochaStateContext.CurrentLineNumber}.");
+
             return MochaParserStates.ExpectingTestResults;
         }
 
@@ -93,6 +96,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
 
                 var testResult = PrepareTestResult(TestOutcome.Failed, match);
                 mochaStateContext.TestRun.FailedTests.Add(testResult);
+
+                this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestResults " +
+                    $"at line {mochaStateContext.CurrentLineNumber}.");
 
                 return MochaParserStates.ExpectingTestResults;
             }
@@ -134,6 +140,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             var testResult = PrepareTestResult(TestOutcome.Skipped, match);
             mochaStateContext.TestRun.SkippedTests.Add(testResult);
 
+            this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestResults " +
+                $"at line {mochaStateContext.CurrentLineNumber}.");
+
             return MochaParserStates.ExpectingTestResults;
         }
 
@@ -153,7 +162,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             this.attemptPublishAndResetParser();
 
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
-            mochaStateContext.ExpectedMatch = "failed/pending tests summary";
+            mochaStateContext.NextExpectedMatch = "failed/pending tests summary";
 
             // Handling parse errors is unnecessary
             var totalPassed = int.Parse(match.Groups[RegexCaptureGroups.PassedTests].Value);
@@ -172,7 +181,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             // Extract the test run time from the passed tests summary
             ExtractTestRunTime(match, mochaStateContext);
 
-            this.logger.Info("MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary.");
+            this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary " +
+                $"at line {mochaStateContext.CurrentLineNumber}.");
             return MochaParserStates.ExpectingTestRunSummary;
         }
     }

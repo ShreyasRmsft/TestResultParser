@@ -7,7 +7,16 @@ namespace Agent.Plugins.TestResultParser.Parser
     /// </summary>
     public abstract class TestResultParserStateContext
     {
-        public abstract void Initialize(TestRun testRun);
+        protected TestResultParserStateContext(TestRun testRun)
+        {
+            Initialize(testRun);
+        }
+
+        public virtual void Initialize(TestRun testRun)
+        {
+            TestRun = testRun;
+            CurrentLineNumber = 0;
+        }
 
         /// <summary>
         /// Test run associted with the current iteration of the parser

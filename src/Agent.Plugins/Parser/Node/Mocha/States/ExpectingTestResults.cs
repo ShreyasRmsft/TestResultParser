@@ -99,10 +99,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             this.logger.Info($"MochaTestResultParser : ExpectingTestResults : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
-            mochaStateContext.ExpectedMatch = "failed/pending tests summary";
+            mochaStateContext.NextExpectedMatch = "failed/pending tests summary";
             mochaStateContext.LastFailedTestCaseNumber = 0;
-
-            this.logger.Info("MochaTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary.");
 
             // Handling parse errors is unnecessary
             var totalPassed = int.Parse(match.Groups[RegexCaptureGroups.PassedTests].Value);
@@ -121,6 +119,8 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Mocha.States
             // Extract the test run time from the passed tests summary
             ExtractTestRunTime(match, mochaStateContext);
 
+            this.logger.Info($"MochaTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
+                $" at line {mochaStateContext.CurrentLineNumber}.");
             return MochaParserStates.ExpectingTestRunSummary;
         }
     }

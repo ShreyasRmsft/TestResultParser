@@ -97,7 +97,7 @@
             var jestStateContext = stateContext as JestParserStateContext;
 
             jestStateContext.LinesWithinWhichMatchIsExpected = 1;
-            jestStateContext.ExpectedMatch = "tests summary";
+            jestStateContext.NextExpectedMatch = "tests summary";
 
             return JestParserStates.ExpectingTestRunSummary;
         }

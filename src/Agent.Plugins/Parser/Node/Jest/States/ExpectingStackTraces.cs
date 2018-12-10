@@ -39,13 +39,17 @@
 
             if (jestStateContext.FailedTestsSummaryIndicatorEncountered)
             {
+                logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring StackTrace/Failed test case at line " +
+                    $"{stateContext.CurrentLineNumber} as it is part of the summarized failures.");
                 return JestParserStates.ExpectingStackTraces;
             }
-
+            
             // In non verbose mode console out appears as a failed test case
             // Only difference being it's not colored red
             if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
             {
+                logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring apparent StackTrace/Failed test case at line " +
+                    $"{stateContext.CurrentLineNumber} as Jest prints console out in this format in non verbose mode.");
                 return JestParserStates.ExpectingStackTraces;
             }
 
@@ -60,7 +64,9 @@
             var jestStateContext = stateContext as JestParserStateContext;
 
             jestStateContext.LinesWithinWhichMatchIsExpected = 1;
-            jestStateContext.ExpectedMatch = "tests summary";
+            jestStateContext.NextExpectedMatch = "tests summary";
+
+            logger.Info($"JestTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary.");
 
             return JestParserStates.ExpectingTestRunSummary;
         }
@@ -77,6 +83,7 @@
             }
 
             // Do we want to use PASS/FAIL information here?
+            logger.Info($"JestTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestResults.");
 
             return JestParserStates.ExpectingTestResults;
         }
@@ -86,6 +93,7 @@
             var jestStateContext = stateContext as JestParserStateContext;
 
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
+            logger.Info($"JestTestResultParser : ExpectingStackTraces : ");
 
             return JestParserStates.ExpectingStackTraces;
         } 

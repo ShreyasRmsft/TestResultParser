@@ -12,16 +12,16 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
     // TODO: Check if merging all or most of the regexes into a single one gives a perf boost
     // TODO: Verify if tabs (/t) will come from the agent logs
 
+    // TODO: update regexes in comments
+
     public class Regexes
     {
         // TODO: Optional time at the end of this line
         /// <summary>
         /// Matches lines with the following regex:
-        /// ^(( FAIL )|( PASS )) (.+)
+        /// ^(( ?FAIL ?)|( ?PASS ?)) (.+)
         /// </summary>
-        public static Regex TestRunStart { get; } = new Regex($"^(( FAIL )|( PASS )) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
-
-        // TODO: optional time at the end of each test case
+        public static Regex TestRunStart { get; } = new Regex($"^(( ?FAIL ?)|( ?PASS ?)) (?<{RegexCaptureGroups.TestSourcesFile}>.+)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:
