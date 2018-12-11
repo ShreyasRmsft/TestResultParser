@@ -106,6 +106,7 @@ namespace Agent.Plugins.TestResultParser.TestRunManger
             // Match the skipped test count and clear the skipped tests collection if mismatch occurs
             if (testRun.TestRunSummary.TotalSkipped != testRun.SkippedTests?.Count())
             {
+                // Some frameworks such as Jest do not yield names of skipped test cases. Do we want to whitelist here?
                 this.diagnosticDataCollector.Warning("TestRunManger.ValidateAndPrepareForPublish : Skipped test count does not match the Test summary.");
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea, TelemetryConstants.CountMismatch, 1, true);
                 testRun.SkippedTests = null;
