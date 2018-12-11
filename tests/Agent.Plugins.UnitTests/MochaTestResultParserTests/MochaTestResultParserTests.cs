@@ -53,6 +53,14 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             TestNegativeTestsScenarios(testCase);
         }
 
+        [DataTestMethod]
+        [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
+        public void CommonNegativeTests(string testCase)
+        {
+            testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
+            TestNegativeTestsScenarios(testCase);
+        }
+
         #endregion
 
         #region Data Drivers
@@ -75,6 +83,11 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
         public static IEnumerable<object[]> GetNegativeTestsTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("MochaTestResultParserTests", "Resources", "NegativeTests"));
+        }
+
+        public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("CommonTestResources", "NegativeTests"));
         }
 
         #endregion

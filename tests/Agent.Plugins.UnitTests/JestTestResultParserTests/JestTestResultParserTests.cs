@@ -51,6 +51,14 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
             TestNegativeTestsScenarios(testCase);
         }
 
+        [DataTestMethod]
+        [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
+        public void CommonNegativeTests(string testCase)
+        {
+            testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
+            TestNegativeTestsScenarios(testCase);
+        }
+
         #endregion
 
         #region Data Drivers
@@ -73,6 +81,11 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
         public static IEnumerable<object[]> GetNegativeTestsTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("JestTestResultParserTests", "Resources", "NegativeTests"));
+        }
+
+        public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("CommonTestResources", "NegativeTests"));
         }
 
         #endregion

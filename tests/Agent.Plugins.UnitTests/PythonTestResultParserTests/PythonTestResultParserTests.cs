@@ -39,6 +39,14 @@
             TestWithDetailedAssertions(testCase);
         }
 
+        [DataTestMethod]
+        [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
+        public void CommonNegativeTests(string testCase)
+        {
+            testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
+            TestNegativeTestsScenarios(testCase);
+        }
+
         public static IEnumerable<object[]> GetSuccessScenariosTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("PythonTestResultParserTests", "Resources", "SuccessScenarios"));
@@ -52,6 +60,11 @@
         public static IEnumerable<object[]> GetDetailedTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("PythonTestResultParserTests", "Resources", "DetailedTests"));
+        }
+
+        public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("CommonTestResources", "NegativeTests"));
         }
     }
 }
