@@ -46,6 +46,8 @@
             
             // In non verbose mode console out appears as a failed test case
             // Only difference being it's not colored red
+            // Also this generally is the first "stack trace" hence this code is ideally
+            // not likely to be hit but keeping it here as safety check
             if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
             {
                 logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring apparent StackTrace/Failed test case at line " +
@@ -66,7 +68,8 @@
             jestStateContext.LinesWithinWhichMatchIsExpected = 1;
             jestStateContext.NextExpectedMatch = "tests summary";
 
-            logger.Info($"JestTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary.");
+            this.logger.Info($"JestTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestRunSummary" +
+                $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingTestRunSummary;
         }
@@ -82,8 +85,8 @@
                 return JestParserStates.ExpectingStackTraces;
             }
 
-            // Do we want to use PASS/FAIL information here?
-            logger.Info($"JestTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestResults.");
+            this.logger.Info($"JestTestResultParser : ExpectingStackTraces : Transitioned to state ExpectingTestResults" +
+                $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingTestResults;
         }

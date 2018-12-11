@@ -28,11 +28,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="JestTestResultParserTests\Resources\DetailedTests\TestCase003.txt" />
-    <None Remove="JestTestResultParserTests\Resources\DetailedTests\TestCase003Result.txt" />
-    <None Remove="JestTestResultParserTests\Resources\DetailedTests\TestCase014.txt" />
-    <None Remove="JestTestResultParserTests\Resources\SuccessScenarios\TestCase014Result.txt" />
-  </ItemGroup>
-  
 </Project>

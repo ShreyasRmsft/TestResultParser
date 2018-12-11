@@ -42,10 +42,12 @@
             int.TryParse(match.Groups[RegexCaptureGroups.PassedTests].Value, out int totalPassed);
             int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out int totalFailed);
             int.TryParse(match.Groups[RegexCaptureGroups.SkippedTests].Value, out int totalSkipped);
+            int.TryParse(match.Groups[RegexCaptureGroups.TotalTests].Value, out int totalTests);
 
             jestStateContext.TestRun.TestRunSummary.TotalPassed = totalPassed;
             jestStateContext.TestRun.TestRunSummary.TotalFailed = totalFailed;
             jestStateContext.TestRun.TestRunSummary.TotalSkipped = totalSkipped;
+            jestStateContext.TestRun.TestRunSummary.TotalTests = totalTests;
 
             return JestParserStates.ExpectingTestRunSummary;
         }
@@ -87,7 +89,13 @@
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
-            // Do we want to use PASS/FAIL information here?
+            this.logger.Error($"JestTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestResults" +
+                $" at line {jestStateContext.CurrentLineNumber} as test run start indicator was encountered before encountering" +
+                $" the full summary.");
+            this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                TelemetryConstants.UnexpectedTestRunStart, new List<int> { jestStateContext.TestRun.TestRunId }, true);
+
+            this.attemptPublishAndResetParser();
 
             return JestParserStates.ExpectingTestResults;
         }

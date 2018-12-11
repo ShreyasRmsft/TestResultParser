@@ -75,6 +75,9 @@
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jestStateContext.TestRun.FailedTests.Add(testResult);
 
+            this.logger.Info($"JestTestResultParser : ExpectingTestResults : Transitioned to state ExpectingStackTraces" +
+                $" at line {jestStateContext.CurrentLineNumber}.");
+
             return JestParserStates.ExpectingStackTraces;
         }
 
@@ -85,23 +88,25 @@
             jestStateContext.LinesWithinWhichMatchIsExpected = 1;
             jestStateContext.NextExpectedMatch = "tests summary";
 
+            this.logger.Info($"JestTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
+                $" at line {jestStateContext.CurrentLineNumber}.");
+
             return JestParserStates.ExpectingTestRunSummary;
         }
 
         private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
-
-            // Do we want to use PASS/FAIL information here?
-
             return JestParserStates.ExpectingTestResults;
         }
 
         private Enum FailedTestsSummaryIndicatorMatched(Match match, TestResultParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
-
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
+
+            this.logger.Info($"JestTestResultParser : ExpectingTestResults : Transitioned to state ExpectingStackTraces" +
+                $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingStackTraces;
         }

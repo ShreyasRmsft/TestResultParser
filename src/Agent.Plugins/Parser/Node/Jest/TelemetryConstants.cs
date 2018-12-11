@@ -3,11 +3,19 @@
 
 namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 {
+    // TODO: mark the telemetry events that are considered as failure points/events
+
     public class TelemetryConstants
     {
         public const string EventArea = "JestTestResultParser";
 
         public const string Initialize = "Initialize";
+
+        public const string TotalTestsZero = "TotalTestsZero";
+
+        public const string TotalTestRunTimeZero = "TotalTestRunTimeZero";
+
+        public const string UnexpectedTestRunStart = "UnexpectedTestRunStart";
 
         public const string TestCasesFoundButNoSummary = "TestCasesFoundButNoSummary";
 

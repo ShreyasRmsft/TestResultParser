@@ -210,7 +210,7 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                 this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
                     TelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
-            else if (stateContext.VerboseOptionEnabled && testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
+            else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
             {
                 // If encountered failed tests does not match summary fire telemtry
                 this.logger.Error($"JestTestResultParser : Failed tests count does not match failed summary" +
@@ -229,18 +229,9 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
                     break;
 
                 case JestParserStates.ExpectingTestResults:
-                    if (testRunToPublish.PassedTests.Count != 0
-                        || testRunToPublish.FailedTests.Count != 0
-                        || testRunToPublish.SkippedTests.Count != 0)
-                    {
-                        this.logger.Error("JestTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                        this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
-                            TelemetryConstants.TestCasesFoundButNoSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
-                    }
-
-                    break;
 
                 case JestParserStates.ExpectingStackTraces:
+
                     if (testRunToPublish.PassedTests.Count != 0
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)
@@ -252,16 +243,26 @@ namespace Agent.Plugins.TestResultParser.Parser.Node.Jest
 
                     break;
 
-                default:
-                    // Publish the test run if reset and publish was called from any state other than the test results state
+                case JestParserStates.ExpectingTestRunSummary:
 
-                    // Calculate total tests
-                    testRunToPublish.TestRunSummary.TotalTests =
-                        testRunToPublish.TestRunSummary.TotalPassed +
-                        testRunToPublish.TestRunSummary.TotalFailed +
-                        testRunToPublish.TestRunSummary.TotalSkipped;
+                    if (testRunToPublish.TestRunSummary.TotalTests == 0)
+                    {
+                        this.logger.Error("JestTestResultParser : Skipping publish as total tests was 0.");
+                        this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                            TelemetryConstants.TotalTestsZero, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                        break;
+                    }
 
+                    if (testRunToPublish.TestRunSummary.TotalExecutionTime.TotalMilliseconds == 0)
+                    {
+                        this.logger.Error("JestTestResultParser : Total test run time was 0 or not encountered.");
+                        this.telemetryDataCollector.AddToCumulativeTelemtery(TelemetryConstants.EventArea,
+                            TelemetryConstants.TotalTestRunTimeZero, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    }
+
+                    // Only publish if total tests was not zero
                     this.testRunManager.Publish(testRunToPublish);
+
                     break;
             }
 
