@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     using System;
@@ -29,18 +32,18 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             if (jestStateContext.FailedTestsSummaryIndicatorEncountered)
             {
-                logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring StackTrace/Failed test case at line " +
+                this.logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring StackTrace/Failed test case at line " +
                     $"{stateContext.CurrentLineNumber} as it is part of the summarized failures.");
                 return JestParserStates.ExpectingStackTraces;
             }
-            
+
             // In non verbose mode console out appears as a failed test case
             // Only difference being it's not colored red
             // Also this generally is the first "stack trace" hence this code is ideally
             // not likely to be hit but keeping it here as safety check
             if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
             {
-                logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring apparent StackTrace/Failed test case at line " +
+                this.logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring apparent StackTrace/Failed test case at line " +
                     $"{stateContext.CurrentLineNumber} as Jest prints console out in this format in non verbose mode.");
                 return JestParserStates.ExpectingStackTraces;
             }
@@ -86,9 +89,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var jestStateContext = stateContext as JestParserStateContext;
 
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
-            logger.Info($"JestTestResultParser : ExpectingStackTraces : ");
+            this.logger.Info($"JestTestResultParser : ExpectingStackTraces : ");
 
             return JestParserStates.ExpectingStackTraces;
-        } 
+        }
     }
 }

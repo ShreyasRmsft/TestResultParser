@@ -56,7 +56,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (logData == null || logData.Line == null)
             {
-                logger.Error("MochaTestResultParser : Parse : Input line was null.");
+                this.logger.Error("MochaTestResultParser : Parse : Input line was null.");
                 return;
             }
 
@@ -120,7 +120,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                 // This might start taking a lot of space if each and every parse operation starts throwing
                 // But if that happens then there's a lot more stuff broken.
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
 
                 // Rethrowing this so that the plugin is aware that the parser is erroring out
                 // Ideally this never should happen
@@ -161,7 +161,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
             {
                 this.logger.Error("MochaTestResultParser : Failed tests were encountered but no failed summary was encountered.");
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
             else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
@@ -169,7 +169,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 // If encountered failed tests does not match summary fire telemtry
                 this.logger.Error($"MochaTestResultParser : Failed tests count does not match failed summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.FailedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
@@ -177,7 +177,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
             {
                 this.logger.Error("MochaTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
             else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
@@ -185,7 +185,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 // If encountered skipped tests does not match summary fire telemetry
                 this.logger.Error($"MochaTestResultParser : Pending tests count does not match pending summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.PendingSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
@@ -198,7 +198,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         || testRunToPublish.SkippedTests.Count != 0)
                     {
                         this.logger.Error("MochaTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                        telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                        this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                             MochaTelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
                     break;
@@ -238,12 +238,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
 
         private ITestResultParserState ExpectingTestResults => this.expectingTestResults ??
-            (this.expectingTestResults = new MochaParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingTestResults = new MochaParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, this.telemetry));
 
         private ITestResultParserState ExpectingStackTraces => this.expectingStackTraces ??
-            (this.expectingStackTraces = new MochaParserStateExpectingStackTraces(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingStackTraces = new MochaParserStateExpectingStackTraces(AttemptPublishAndResetParser, this.logger, this.telemetry));
 
         private ITestResultParserState ExpectingTestRunSummary => this.expectingTestRunSummary ??
-            (this.expectingTestRunSummary = new MochaParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingTestRunSummary = new MochaParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, this.telemetry));
     }
 }

@@ -1,13 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Agent.Plugins.Log.TestResultParser.Contracts;
-
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
+    using Agent.Plugins.Log.TestResultParser.Contracts;
 
     public class MochaParserStateExpectingStackTraces : MochaParserStateBase
     {
@@ -15,7 +14,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
         /// <inheritdoc />
-        public MochaParserStateExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector) 
+        public MochaParserStateExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
             : base(parserResetAndAttempPublish, logger, telemetryDataCollector)
         {
             RegexsToMatch = new List<RegexActionPair>
