@@ -14,7 +14,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
     public class MochaTestResultParserRegexTests
     {
         [DataTestMethod]
-        [DynamicData(nameof(GetRegexPatters), DynamicDataSourceType.Method)]
+        [DynamicData(nameof(GetRegexPatterns), DynamicDataSourceType.Method)]
         public void RegexPatternTest(string regexPattern)
         {
             var postiveTestCases = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
