@@ -32,7 +32,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             }
         }
 
-        public static IEnumerable<object[]> GetRegexPatters()
+        public static IEnumerable<object[]> GetRegexPatterns()
         {
             foreach (var property in typeof(MochaRegexes).GetProperties(BindingFlags.Public | BindingFlags.Static))
             {

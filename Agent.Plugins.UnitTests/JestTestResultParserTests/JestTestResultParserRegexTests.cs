@@ -14,7 +14,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
     public class JestTestResultParserRegexTests
     {
         [DataTestMethod]
-        [DynamicData(nameof(GetRegexPatters), DynamicDataSourceType.Method)]
+        [DynamicData(nameof(GetRegexPatterns), DynamicDataSourceType.Method)]
         public void RegexPatternTest(string regexPattern)
         {
             var postiveTestCases = File.ReadAllLines(Path.Combine("JestTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
@@ -32,7 +32,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
             }
         }
 
-        public static IEnumerable<object[]> GetRegexPatters()
+        public static IEnumerable<object[]> GetRegexPatterns()
         {
             foreach (var property in typeof(JestRegexs).GetProperties(BindingFlags.Public | BindingFlags.Static))
             {
