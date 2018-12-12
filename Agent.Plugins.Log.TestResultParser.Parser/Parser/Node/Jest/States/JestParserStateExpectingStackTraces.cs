@@ -12,7 +12,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     {
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
-
         /// <inheritdoc />
         public JestParserStateExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)

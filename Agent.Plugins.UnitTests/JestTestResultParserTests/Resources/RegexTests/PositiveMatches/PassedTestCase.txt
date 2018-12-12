@@ -1,0 +1,18 @@
+﻿  ✓ some test (5ms)
+    ✓ some test (5ms)
+  ✓ some test  
+  ✓ some test with sp$ci1 cha*s
+  ✓ some test (with) sp$ci1 cha*s 
+  ✓ some test (with) sp$ci1 cha*s (5ms)
+    √ some test (5ms)
+    √ some test (5ms)
+  √ some test  
+  √ some test with sp$ci1 cha*s
+  √ some test (with) sp$ci1 cha*s 
+  √ some test (with) sp$ci1 cha*s (5ms)
+    ΓêÜ some test (5ms)
+    ΓêÜ some test (5ms)
+  ΓêÜ some test  
+  ΓêÜ some test with sp$ci1 cha*s
+  ΓêÜ some test (with) sp$ci1 cha*s 
+  ΓêÜ some test (with) sp$ci1 cha*s (5ms)

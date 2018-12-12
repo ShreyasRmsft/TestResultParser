@@ -19,10 +19,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             RegexsToMatch = new List<RegexActionPair>
             {
-                new RegexActionPair(MochaRegexs.FailedTestCase, FailedTestCaseMatched),
-                new RegexActionPair(MochaRegexs.PassedTestCase, PassedTestCaseMatched),
-                new RegexActionPair(MochaRegexs.PendingTestCase, PendingTestCaseMatched),
-                new RegexActionPair(MochaRegexs.PassedTestsSummary, PassedTestsSummaryMatched)
+                new RegexActionPair(MochaRegexes.FailedTestCase, FailedTestCaseMatched),
+                new RegexActionPair(MochaRegexes.PassedTestCase, PassedTestCaseMatched),
+                new RegexActionPair(MochaRegexes.PendingTestCase, PendingTestCaseMatched),
+                new RegexActionPair(MochaRegexes.PassedTestsSummary, PassedTestsSummaryMatched)
             };
         }
 

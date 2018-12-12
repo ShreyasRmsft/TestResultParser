@@ -1,6 +1,7 @@
 ﻿> nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSJest
 > jest
 
+ FAIL  unit_tests/sample.test.js (7.702s)
   ● first set › Test method 2
 
     expect(received).toBe(expected) // Object.is equality
@@ -69,6 +70,7 @@
 
       at Object.toBe (unit_tests/sample.test.js:64:22)
 
+ FAIL  unit_tests/sample2.test.js
   ● first set › Test method 2
 
     expect(received).toBe(expected) // Object.is equality
@@ -137,7 +139,7 @@
 
       at Object.toBe (unit_tests/sample2.test.js:63:22)
 
-Test Suites: 2 failed, 2 total
+  Test Suites: 2 failed, 2 total
 Tests:       8 failed, 12 passed, 20 total
 Snapshots:   0 total
 Time:        18.698s

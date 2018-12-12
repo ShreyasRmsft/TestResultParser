@@ -18,8 +18,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             RegexsToMatch = new List<RegexActionPair>
             {
-                new RegexActionPair(JestRegexs.PassedTestCase, PassedTestCaseMatched),
                 new RegexActionPair(JestRegexs.FailedTestCase, FailedTestCaseMatched),
+                new RegexActionPair(JestRegexs.PassedTestCase, PassedTestCaseMatched),
                 new RegexActionPair(JestRegexs.StackTraceStart, StackTraceStartMatched),
                 new RegexActionPair(JestRegexs.SummaryStart, SummaryStartMatched),
                 new RegexActionPair(JestRegexs.TestRunStart, TestRunStartMatched),

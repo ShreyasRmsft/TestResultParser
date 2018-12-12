@@ -46,14 +46,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// Matches lines with the following regex:
         /// ^Tests:[ ]+(([1-9][0-9]*) (failed), )?(([1-9][0-9]*) (skipped), )?(([1-9][0-9]*) (passed), )?(([1-9][0-9]*) (total))
         /// </summary>
-        public static Regex TestsSummaryMatcher { get; } = new Regex($"^Tests:[ ]+((?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) (failed), )?((?<{RegexCaptureGroups.SkippedTests}>[1-9][0-9]*) (skipped), )?((?<{RegexCaptureGroups.PassedTests}>[1-9][0-9]*) (passed), )?((?<{RegexCaptureGroups.TotalTests}>[1-9][0-9]*) (total))", RegexOptions.ExplicitCapture);
+        public static Regex TestsSummary { get; } = new Regex($"^Tests:[ ]+((?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) (failed), )?((?<{RegexCaptureGroups.SkippedTests}>[1-9][0-9]*) (skipped), )?((?<{RegexCaptureGroups.PassedTests}>[1-9][0-9]*) (passed), )?((?<{RegexCaptureGroups.TotalTests}>[1-9][0-9]*) (total)$)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:
         /// ^Time:( )+([0-9]+(\\.[0-9]+){0,1})(ms|s|m|h)
         /// </summary>
-        public static Regex TestRunTimeMatcher { get; } = new Regex($"^Time:( )+(?<{RegexCaptureGroups.TestRunTime}>[0-9]+(\\.[0-9]+)?)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)", RegexOptions.ExplicitCapture);
-        // There can be an additonal esitmated time that can be printed hence not using a $
+        public static Regex TestRunTime { get; } = new Regex($"^Time:( )+(?<{RegexCaptureGroups.TestRunTime}>[0-9]+(\\.[0-9]+)?)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)(, estimated .+)?$", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// This is only printed when a large number of tests were run
