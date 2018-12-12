@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,9 +1,0 @@
-﻿  - test case 1
-    - test case 2
-      - test case 3
-  - test case : 4
-  - test case :: 5()
-  - Negative path: can (not) (3) upload multiple files
-  - Negative path: can \abc upload multiple files
-  - Negative path: can 123abc upload multiple files
-  - Negative path: can 123abc upload multiple files (failed)

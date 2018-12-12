@@ -1,0 +1,65 @@
+﻿+../node_modules/.bin/jest -w 2
+ PASS  fixtures/mjs-support/index.test.js (119.724s)
+ PASS  fixtures/webpack-message-formatting/index.test.js (140.943s)
+ PASS  fixtures/relative-paths/index.test.js (37.807s)
+ FAIL  fixtures/typescript-advanced/index.test.js (70.498s)
+  ● builds in development
+    expect(received).toBe(expected) // Object.is equality
+    Expected: true
+    Received: false
+      3 | test('builds in development', async () => {
+      4 |   const { fulfilled, ...rest } = await testSetup.scripts.start({ smoke: true });
+    > 5 |   expect(fulfilled).toBe(true);
+        |                     ^
+      6 | });
+      7 | test('builds in production', async () => {
+      8 |   const { fulfilled } = await testSetup.scripts.build();
+      at Object.toBe (fixtures/typescript-advanced/index.test.js:5:21)
+  ● builds in production
+    expect(received).toBe(expected) // Object.is equality
+    Expected: true
+    Received: false
+       7 | test('builds in production', async () => {
+       8 |   const { fulfilled } = await testSetup.scripts.build();
+    >  9 |   expect(fulfilled).toBe(true);
+         |                     ^
+      10 | });
+      11 | test('passes tests', async () => {
+      12 |   const { fulfilled } = await testSetup.scripts.test({
+      at Object.toBe (fixtures/typescript-advanced/index.test.js:9:21)
+ PASS  fixtures/boostrap-sass/index.test.js (95.694s)
+ PASS  fixtures/builds-with-multiple-runtimes/index.test.js (69.329s)
+ PASS  fixtures/issue-5176-flow-class-properties/index.test.js (32.432s)
+ PASS  fixtures/typescript/index.test.js (25.631s)
+Test Suites: 1 failed, 7 passed, 8 total
+Tests:       2 failed, 22 passed, 24 total
+Snapshots:   13 passed, 13 total
+Time:        306.843s
+Ran all test suites.
+++set +x
+e2e-behavior.sh: ERROR! An error was encountered executing line 100.
+Cleaning up.
+yarn config v1.13.0-20181024.1656
+success Set "registry" to "https://registry.yarnpkg.com".
+Exiting with error.
+The command "if [ $TEST_SUITE = "behavior" ]; then tasks/e2e-behavior.sh; fi" exited with 1.
+cache.2
+store build cache
+0.00s
+39.04schange detected (content changed, file is created, or file is deleted):
+/home/travis/.cache/yarn/v3/npm-babel-plugin-named-asset-import-0.2.3-0-c5f7b9846f322d53ae53e25a6d2e49f606e79399/node_modules/babel-plugin-named-asset-import/index.js
+/home/travis/.cache/yarn/v3/npm-babel-plugin-named-asset-import-0.2.3-0-c5f7b9846f322d53ae53e25a6d2e49f606e79399/node_modules/babel-plugin-named-asset-import/LICENSE
+/home/travis/.cache/yarn/v3/npm-babel-plugin-named-asset-import-0.2.3-0-c5f7b9846f322d53ae53e25a6d2e49f606e79399/node_modules/babel-plugin-named-asset-import/package.json
+/home/travis/.cache/yarn/v3/npm-babel-plugin-named-asset-import-0.2.3-0-c5f7b9846f322d53ae53e25a6d2e49f606e79399/node_modules/babel-plugin-named-asset-import/.yarn-metadata.json
+/home/travis/.cache/yarn/v3/npm-babel-plugin-named-asset-import-0.2.3-0-c5f7b9846f322d53ae53e25a6d2e49f606e79399/node_modules/babel-plugin-named-asset-import/.yarn-tarball.tgz
+/home/travis/.cache/yarn/v3/npm-babel-preset-react-app-5.0.5-0-5e9e9e094b68ebe801b97b8521d6dae065567e4f/node_modules/babel-preset-react-app/cre
+...
+changes detected, packing new archive
+.
+.
+.
+.
+.
+uploading master/cache-linux-trusty-a7f82e7f6797c1b243a7ea4d1205d91c56f9e33ecb566bf833fe67fc3b7c071c--node-8.tgz
+cache uploaded
+Done. Your build exited with 1.

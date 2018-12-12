@@ -7,8 +7,8 @@ jobs:
   steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-    - script: dotnet test "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx --collect "code coverage"
-      displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
+    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx --collect "code coverage"
+      displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: VSTest
@@ -21,8 +21,8 @@ jobs:
   steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-    - script: dotnet test "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
-      displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
+    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
+      displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: VSTest
@@ -35,8 +35,8 @@ jobs:
   steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-    - script: dotnet test "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
-      displayName: 'dotnet test tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
+    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
+      displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: VSTest

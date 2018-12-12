@@ -1,0 +1,8 @@
+This is output for test_pass1 test_pass1 contains multiple lines This is output for test_pass2
+This is output for test_split
+test_split contains multiple lines
+----------------------------------------------------------------------
+
+Ran 4 tests in 0.002s
+
+OK

@@ -1,6 +1,0 @@
-﻿skipped = 5
-skipped=6
-skipped = 5, expected failures = 4
-skipped =5, expected failures = 4
-failures=9,skipped=4
-errors=0, skipped =5 , expected failures =5

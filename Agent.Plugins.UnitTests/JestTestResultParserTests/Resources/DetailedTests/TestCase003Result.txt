@@ -1,0 +1,1199 @@
+﻿Passed 1193
+add without --ignore-workspace-root-check should fail on the workspace root
+add with --ignore-workspace-root-check shouldn't fail on the workspace root
+adding to the workspace root should preserve workspace packages in lockfile
+adds any new package to the current workspace, but install from the workspace
+add creates an entry with a sha512 integrity field
+add creates an entry with a sha1 integrity field when sha512 is unavailable
+install with arg
+install from github
+install from github with invalid version should fail
+install with --dev flag
+install with --peer flag
+install with --optional flag
+install with --tilde flag
+warns when adding a devDependency as dependency
+doesn't warn when adding a devDependency as devDependency
+warns when adding a dependency as devDependency
+doesn't warn when adding a dependency as dependency
+install with link: specifier
+install with arg that has binaries
+add with no manifest creates blank manifest
+add should ignore cache
+add should not make package.json strict
+add --save-exact should not make all package.json strict
+add save-prefix should not expand ~ to home dir
+add save-exact should make all package.json strict
+add with new dependency should be deterministic 3
+install --initMirror should add init mirror deps from package.json
+add with new dependency should be deterministic
+add with new dependency should be deterministic 2
+add with offline mirror
+install with --save and without offline mirror
+upgrade scenario
+upgrade scenario 2 (with sub dependencies)
+install another fork of an existing package
+downgrade scenario
+modules resolved multiple times should save to mirror correctly
+Insecure HTTP npmjs tarball URLs should still be normalised to registry.yarnpkg.com
+add should put a git dependency to mirror
+add should store latest version in lockfile
+add should generate correct integrity file
+add infers line endings from existing win32 manifest file
+add infers line endings from existing unix manifest file
+install with latest tag
+install with latest tag and --offline flag
+install with latest tag and --offline flag scoped
+install with latest tag and --prefer-offline flag
+install with latest tag and --prefer-offline flag scoped
+doesn't warn when peer dependency is met during add
+warns when peer dependency is not met during add
+warns when peer dependency is incorrect during add
+should only refer to higher levels to satisfy peer dependency
+should refer to deeper dependencies to satisfy peer dependency
+should retain build artifacts after add when missing integrity file
+should retain build artifacts after add
+should not run scripts if build artifact changed
+installing with --pure-lockfile and then adding should keep build artifacts
+preserves unaffected bin links after adding to workspace package
+installs "latest" instead of maxSatisfying if it satisfies requested pattern
+installs "latest" instead of maxSatisfying if no requested pattern
+can add nohoist package from workspace
+can add nohoist package from root
+environment is replaced
+path normalization doesn't affect all options
+resolve path to current directory
+resolve path to home directory
+resolve keep path to rooted directory
+handles missing HOME
+should call requestManager.request with url
+should add `npm-otp` header
+with request url yarn in context of package yarn auth is not sent
+with request url @yarn%2fcore in context of package @yarn/core auth is not sent
+with request url -/package/yarn/dist-tags in context of package yarn auth is not sent
+with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is not sent
+with request url -/user/token/abcdef auth is not sent
+with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is not sent
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is not sent
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz auth is not sent
+with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url yarn in context of package yarn auth is not sent
+with request url @yarn%2fcore in context of package @yarn/core auth is scopedNpmAuthToken
+with request url -/package/yarn/dist-tags in context of package yarn auth is not sent
+with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is scopedNpmAuthToken
+with request url -/user/token/abcdef auth is not sent
+with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz auth is not sent
+with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url yarn in context of package yarn auth is not sent
+with request url @yarn%2fcore in context of package @yarn/core auth is scopedNpmAuthToken
+with request url -/package/yarn/dist-tags in context of package yarn auth is not sent
+with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is scopedNpmAuthToken
+with request url -/user/token/abcdef auth is not sent
+with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz auth is not sent
+with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url yarn in context of package yarn auth is npmAuthToken
+with request url @yarn%2fcore in context of package @yarn/core auth is npmAuthToken
+with request url -/package/yarn/dist-tags in context of package yarn auth is npmAuthToken
+with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is npmAuthToken
+with request url -/user/token/abcdef auth is npmAuthToken
+with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is npmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is npmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is npmAuthToken
+with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz auth is not sent
+with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url yarn in context of package yarn auth is privateAuthToken
+with request url @yarn%2fcore in context of package @yarn/core auth is scopedNpmAuthToken
+with request url -/package/yarn/dist-tags in context of package yarn auth is privateAuthToken
+with request url -/package/@yarn%2fcore/dist-tags in context of package @yarn/core auth is scopedNpmAuthToken
+with request url -/user/token/abcdef auth is privateAuthToken
+with request url https://registry.npmjs.org/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz in context of package @yarn/core auth is scopedNpmAuthToken
+with request url https://registry.yarnpkg.com/dist/-/@yarn-core-1.0.0.tgz auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz in context of package @yarn/core auth is not sent
+with request url https://some.cdn.com/@yarn/core.tgz auth is not sent
+with request url @private/pkg in context of package @private/pkg auth is privateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url https://registry.myorg.com/api/npm/registry/private---pkg.tar.gz in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is not sent
+with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url @private/pkg in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is scopedPrivateAuthToken
+with request url @private/pkg in context of package @private/pkg auth is c2NvcGVkUHJpdmF0ZVVzZXJuYW1lOu+/ve+/vSl577+977+977+977+9eO+/ve+/ve+/vQor
+with request url https://some.cdn.com/some-hash/@private-pkg-1.0.0.tar.gz in context of package @private/pkg auth is not sent
+with request url https://some.cdn.com/@private/pkg auth is not sent
+with request url https://registry.myorg.com/api/packages/private---pkg.tar.gz in context of package @private/pkg auth is c2NvcGVkUHJpdmF0ZVVzZXJuYW1lOu+/ve+/vSl577+977+977+977+9eO+/ve+/ve+/vQor
+request to registry url matching
+isRequestToRegistry with custom host prefix
+identifies scope correctly
+returns pathname when it is a full URL
+correctly handles registries lacking a trailing slash
+searches recursively to home directory
+homepage URL from top level
+homepage URL fallback to wanted package manifest
+repository URL from top level
+repository URL fallback to wanted package manifest
+unpublished package (no versions)
+latest version fallback to wanted package manifest
+package with an empty response
+Produces valid destination paths for scoped modules
+hoists dependencies of dependencies up to root level when no version conflicts exist
+leaves dependencies of dependencies at leaf level when version conflict exists
+eliminates duplicates when multiple packages depend on the same package
+eliminates duplicates when version conflicts exist
+uses the modulesFolder configuration option as the first part of the path
+does not include ignored packages or their dependencies
+includes ignored packages dependencies if another non-ignored package depends on it
+considers ignored packages when determining hoisting
+will hoist packages under subdirectories when they cannot hoist to root
+nohoist can be turned off by disable workspaces (workspaces-experimental)
+nohoist pkg will be duplicated independent of the hoisted version
+nohoist pkg will NOT be duplicated within the same branch
+can dedupe and avoid circular reference
+can handle conflict version
+nohoist matches package regardless version
+can detect circular reference
+can nohoist a linked package
+can disable hoist for the whole branch
+can disable hoist for particular package tree
+originalParentPath shows before-hoist dependency tree path
+previousPaths should reflect hoist history
+shallow nohoist
+deep nohoist
+match explicit path
+match glob pattern
+from root for all workspaces
+from root for a specific workspaces
+from workspace
+can nohoist dependent workspace just like any package
+all workspaces nohoist will be honored
+install should not hoist packages above their peer dependencies
+install should resolve peer dependencies from same subtrees
+install optional subdependencies by default
+installing with --ignore-optional should not install optional subdependencies
+running install inside a workspace should run the install from the root of the workspace
+packages installed through the link protocol should validate all peer dependencies
+installing a package with a renamed file should not delete it
+installing a new package should correctly update it, even if the files mtime didn't change
+properly find and save build artifacts
+reading a lockfile should not optimize it
+creates a symlink to a directory when using the link: protocol
+creates a symlink to a non-existing directory when using the link: protocol
+resolves the symlinks relative to the package path when using the link: protocol; not the node_modules
+resolves the symlinks of other symlinked packages relative to the package using the link: protocol
+replace the symlink when it changes, when using the link: protocol
+changes the cache path when bumping the cache version
+changes the cache directory when bumping the cache version
+removes extraneous files that aren't in module or artifacts
+production mode with deduped dev dep shouldn't be removed
+production mode dep on package in dev deps shouldn't be removed
+hoisting should factor ignored dependencies
+--production flag ignores dev dependencies
+--production flag does not link dev dependency bin scripts
+root install with optional deps
+install file: protocol with relative paths
+install file: protocol without force retains installed package
+install file: protocol with force re-installs local package
+install file: local packages with local dependencies
+install file: install without manifest of dependency
+install file: link file dependencies
+install file: protocol
+install with file: protocol as default
+don't install with file: protocol as default if target is a file
+don't install with implicit file: protocol if target does not have package.json
+install with explicit file: protocol if target does not have package.json
+don't install with file: protocol as default if target is valid semver
+don't hang when an install script tries to read from stdin
+install file: dedupe dependencies 1
+install file: dedupe dependencies 2
+install file: dedupe dependencies 3
+install everything when flat is enabled
+install renamed packages
+install from git cache
+install from github
+check and install should verify integrity in the same way when flat
+check should verify that top level dependencies are installed correctly
+install should run install scripts in the order of dependencies
+install with comments in manifest
+install with comments in manifest resolutions does not result in warning
+install with null versions in manifest
+run install scripts in the order when one dependency does not have install script
+install should circumvent circular dependencies
+install should resolve circular dependencies 2
+install should be idempotent
+install should authenticate integrity field with sha1 checksums
+install should authenticate integrity field with sha512 checksums
+install should authenticate integrity field with sha384 checksums
+install should authenticate integrity field with options
+install should authenticate integrity field with combined sha1 and sha512 checksums
+install should authenticate integrity with multiple differing sha1 checksums
+install should authenticate integrity with multiple differing sha512 checksums
+install should authenticate integrity with wrong sha1 and right sha512 checksums
+install should fail to authenticate integrity with correct sha1 and incorrect sha512
+install should fail to authenticate on sha512 integrity mismatch
+install should fail to authenticate on sha1 integrity mismatch
+install should not create the integrity field if missing and auto-add-integrity is false
+install should not create integrity field if not present and in offline mode
+install should ignore existing hash if integrity is present even if it fails to authenticate it
+install should ignore unknown integrity algorithms if it has other options in the sri
+install should fail if the only algorithms in the sri are unknown
+install should fail if the sri is malformed
+install should fail with unsupported algorithms
+install should update integrity in yarn.lock (--update-checksums)
+install should update malformed integrity string in yarn.lock (--update-checksums)
+install a scoped module from authed private registry
+install a scoped module from authed private registry with a missing trailing slash
+install of scoped package with subdependency conflict should pass check
+install a module with incompatible optional dependency should skip dependency
+install a module with incompatible optional dependency should skip transient dependencies
+install a module with optional dependency should skip incompatible transient dependency
+install incompatible optional dependency should still install shared child dependencies
+optional dependency that fails to build should not be installed
+failing dependency of optional dependency should not be installed
+a subdependency of an optional dependency that fails should be installed
+a sub-dependency should be non-optional if any parents mark it non-optional
+should not loose dependencies when installing with --production
+a allows dependency with [] in os cpu requirements
+should skip integrity check and do install when --skip-integrity-check flag is passed
+bailout should work with --production flag too
+package version resolve should be deterministic
+transitive file: dependencies should work
+unbound transitive dependencies should not conflict with top level dependency
+manifest optimization respects versions with alternation
+top level patterns should match after install
+warns for missing bundledDependencies
+install will not overwrite linked scoped dependencies
+install will not overwrite linked dependencies
+file: dependency ending with `.git` should work
+install will not warn for missing peerDep when both shallower and deeper
+throws if lockfile is out of date
+works with no arguments
+upgrades transitive deps when no arguments
+does not upgrade transitive deps that are also a direct dependency
+does not upgrade transitive deps when specific package upgraded
+works with single argument
+works with multiple arguments
+respects dependency type
+respects --ignore-engines flag
+upgrades from fixed version to latest
+upgrades from fixed version to latest with workspaces
+works with just a pattern
+works with arguments and a pattern
+upgrades to latest matching package.json semver when no package name passed
+--latest upgrades to latest ignoring package.json when no package name passed
+--latest preserves "<=" semver range
+--latest preserves "^" semver range
+--latest preserves "~" semver range
+--latest defaults to "^" semver range if existing range is complex
+sets new version range to caret when --caret and --latest are passed
+sets new version range to tilde when --tilde and --latest are passed
+sets new version range to exact when --exact and --latest are passed
+upgrades to latest matching semver when package name passed with version
+--latest upgrades to passed in version when package name passed with version
+upgrades to latest matching package.json semver when package name passed
+upgrades dependency packages not in registry
+upgrades dev dependency packages not in registry
+upgrades optional dependency packages not in registry
+informs the type of dependency after upgrade
+warns when peer dependency is not met after upgrade
+doesn't warn when peer dependency is still met after upgrade
+doesn't warn when upgrading a devDependency
+can prune the offline mirror
+respects --scope flag
+respects --scope flag with caret
+--latest works if there is an install script on a hoisted dependency
+upgrade to workspace root preserves child dependencies
+upgrade to workspace child preserves root dependencies
+latest flag does not downgrade from a beta
+workspaces don't work with disabled configuration in .yarnrc
+workspaces don't work on non private projects
+workspaces don't work with duplicate names
+workspaces warn and get ignored if they don't have a name and a version
+installs workspaces dependencies into root folder
+install should install unhoistable dependencies in workspace node_modules
+install should link workspaces that refer each other
+install should not link workspaces that refer not compatible version of another workspace
+install should not link a workspace if the version is not compatible
+install should prioritize non workspace dependency at root over the workspace symlink
+install should install subdependencies of workspaces
+install should install subdependencies of workspaces that are not referenced in other workspaces
+install should install dev dependencies of workspaces
+install should not install dev dependencies of workspaces in production mode
+install should work correctly for workspaces that have similar names
+check command should work
+install should link binaries at root and in workspace dependents
+install should ignore node_modules in workspaces when used with **/*
+install should link binaries properly when run from child workspace
+without nohoist
+with nohoist
+exclude packages by workspace
+disable all hoist for every workspace
+disable some hoist for every workspace
+disable hoisting package across versions
+install with offline mirror and pack-built-packages setting should run install scripts on first call and not run on second while producing the same node_modules
+install with offline mirror and pack-built-packages setting should not ignore ".npmignore"
+install without pack-built-packages should keep running install scripts
+removing prebuilt package .tgz file falls back to running scripts
+switching platform for installed node_modules should trigger rebuild / using another prebuilt tgz
+creates the file in the mirror when fetching a git repository
+install from offline mirror
+install should add missing deps to yarn and mirror (PR import scenario)
+install should update a dependency to yarn and mirror (PR import scenario 2)
+offline mirror can be enabled from parent dir
+offline mirror can be enabled from parent dir, with merging of own .yarnrc
+offline mirror can be disabled locally
+prunes the offline mirror tarballs after pruning is enabled
+scoped packages remain in offline mirror after pruning is enabled
+install should dedupe dependencies avoiding conflicts 0
+install should dedupe dependencies avoiding conflicts 1
+install should dedupe dependencies avoiding conflicts 2
+install should dedupe dependencies avoiding conflicts 3
+install should dedupe dependencies avoiding conflicts 4
+install should dedupe dependencies avoiding conflicts 5
+install should dedupe dependencies avoiding conflicts 6 (jest/jest-runtime case)
+install should dedupe dependencies avoiding conflicts 7
+install should dedupe dependencies avoiding conflicts 8
+install should dedupe dependencies avoiding conflicts 9
+install should hardlink repeated dependencies
+install should not hardlink repeated dependencies if linkDuplicates=false
+install should not crash when hardlinking deep structures
+install should consider different hoisting with --link-duplicate
+install should consider different hoisting with --link-duplicate 2
+install should not hardlink full package structure
+no hardlink for workspace references and linked dependencies
+should work with nohoist
+--verify-tree should report wrong version
+--verify-tree should work from a workspace cwd
+--verify-tree should report missing dependency
+--verify-tree should pass on hoisted dependency 
+--verify-tree should check dev dependencies 
+--verify-tree should check skip dev dependencies if --production flag passed
+--verify-tree should check skip deeper dev dependencies
+--integrity should ignore comments and whitespaces in yarn.lock
+--integrity should fail if integrity file is missing
+--integrity should fail if integrity file is not a json
+--integrity should fail if yarn.lock has patterns changed
+--integrity should fail if yarn.lock has new pattern
+--integrity should fail if yarn.lock has resolved changed
+--integrity should fail if files are missing and --check-files is passed
+--integrity should fail if --ignore-scripts is changed
+when switching to --check-files install should rebuild integrity file
+--integrity should fail if integrity file have different linkedModules
+--integrity should fail if integrity file has different systemParams
+--integrity should create the integrity file under the meta folder if enabled
+--check-files should register the right entries even when using the meta folder
+--integrity --check-files should not die on broken symlinks
+--integrity should not die on missing fields in integrity file
+should ignore bundled dependencies
+should warn about mismatched dependencies if they match resolutions (simple)
+should warn about mismatched dependencies if they match resolutions (tree)
+should warn about mismatched dependencies if they match resolutions (glob)
+--integrity should throw an error if top level patterns do not match
+does fetch files from the local filesystem
+doesn't write new lockfile if existing one satisfied
+writes new lockfile if existing one isn't satisfied
+writes a lockfile when there are no dependencies
+throws an error if existing lockfile isn't satisfied with --frozen-lockfile
+doesn't write new lockfile if existing one satisfied but not fully optimized with --frozen-lockfile
+install transitive optional dependency from lockfile
+root install from shrinkwrap
+install have a clean node_modules after lockfile update (branch switch scenario)
+install have a clean node_modules after lockfile update (branch switch scenario 2)
+install should write and read integrity file based on lockfile entries
+install should retain artifacts when missing integrity file
+install should not continue if integrity check passes
+install should not rewrite lockfile with no substantial changes
+lockfile should be created when missing even if integrity matches
+install infers line endings from existing win32 lockfile
+install infers line endings from existing unix lockfile
+install uses OS line endings when lockfile doesn't exist
+install should rewrite lockfile if patterns can be merged
+install should fix if lockfile patterns don't match resolved version
+install should warn if a conflicting npm package-lock.json exists
+install should warn if a conflicting npm npm-shrinkwrap.json exists
+should add package
+should add package with no-lockfile option
+should add package with frozen-lockfile option
+should add package with no-lockfile option in front
+should add lockfile package
+should add progress package globally
+should run custom script
+should run custom script without run command
+should run help command
+should run help command with --help
+should run help command with -h
+should run add command with help option
+should run add command with h option
+should run help command with add option
+should run --help command with add option
+should run -h command with add option
+should show version of yarn with -v
+should run version command
+should run --version command
+should exit cleanly when running invalid commands
+should install if no args
+should install if first arg looks like a flag
+should not output JSON activity/progress if given --no-progress option
+should run help of run command if --help is before script
+should run help of custom-script if --help is after script
+should run bin command
+should throws missing command for not camelised command
+should throws missing command for not alphabetic command
+should throws missing command for unknown command
+should not display documentation link for unknown command
+should display documentation link for known command
+should throws missing command for constructor command
+should run command with hyphens
+should run camelised command for command with hyphens
+should run help for command with hyphens
+should run help for camelised command
+should not pass yarnrc flags to workspace command
+yarn add scrollin
+yarn add https://git@github.com/stevemao/left-pad.git
+yarn add https://github.com/bestander/chrome-app-livereload.git
+yarn add bestander/chrome-app-livereload
+--mutex network
+--mutex network with busy port
+--cwd option
+default rc
+--no-default-rc
+--use-yarnrc
+yarnrc arguments
+yarn run <script> --opt
+yarn run <script> -- --opt
+yarn run <script> <strings that need escaping>
+yarn run <failing script>
+yarn run in path need escaping
+cache folder fallback
+relative cache folder
+yarn create
+yarn init -y
+it should be true when NODE_ENV=production
+it should default to false
+it should prefer CLI over NODE_ENV
+it should prefer YARN_PRODUCTION over NODE_ENV
+it should prefer CLI over YARN_PRODUCTION
+--registry option with npm registry
+--registry option with yarn registry
+--registry option with non-exiting registry and show an error
+registry option from yarnrc
+js file
+executable file
+js file exit code
+sh file exit code
+BaseFetcher.fetch
+CopyFetcher.fetch
+GitFetcher.fetch
+GitFetcher.getTarballMirrorPath without slashes in the repo path
+GitFetcher.fetch with prepare script
+TarballFetcher.fetch
+TarballFetcher.fetch throws on invalid hash
+TarballFetcher.fetch fixes hash if updateChecksums flag is true
+TarballFetcher.fetch throws on invalid integrity
+TarballFetcher.fetch supports local ungzipped tarball
+TarballFetcher.fetch properly stores tarball of package in offline mirror
+TarballFetcher.fetch properly stores tarball of scoped package in offline mirror
+TarballFetcher.fetch properly stores tarball for scoped package resolved from artifactory registry
+TarballFetcher.fetch properly stores tarball for scoped package resolved from new  style URLs
+TarballFetcher.fetch throws on truncated tar data
+TarballFetcher.fetch throws on truncated tar header
+RequestManager.request with cafile
+RequestManager.request with ca (string)
+RequestManager.request with ca (array)
+RequestManager.request with mutual TLS
+RequestManager.execute timeout error with maxRetryAttempts=1
+RequestManager.execute timeout error with default maxRetryAttempts
+RequestManager.execute Request 403 error
+RequestManager.execute Request 442 error
+RequestManager.execute one time password error on npm request
+RequestManager.execute one time password error on npm login request
+RequestManager.execute retries on 408 error
+RequestManager.execute retries on 500 error
+RequestManager.execute retries on 542 error
+RequestManager.request with offlineNoRequests
+RequestManager.saveHar no captureHar error message
+focus does not work from a non-workspaces project
+focus does not work from the root of a workspaces project
+focus does a normal workspace installation
+focus shallowly installs sibling workspaces under target
+focus should not bail out early after an un-focused install
+repeated focused installs should bail out early
+switching directories for focused installs should fail integrity checks and reinstall
+focus shallowly installs anything that a sibling needed to shallowly install underneath that sibling
+focus does not shallowly install a sibling's dev dependencies
+focus runs shallow dependencies' postinstall scripts
+focus installs transitive dependencies shallowly
+focus does not install transitive devdependencies shallowly (but does install non-transitive devdeps)
+focus does not shallowly install current version of sibling if another version is specified in package.json
+focus works correctly when focusing on a scoped package
+focus installs nohoist dependencies shallowly
+focus does not do nested shallow installs of transitive nohoist packages
+focus installs the correct version when a package is nohoist but differs from the workspace version
+throws error with no arguments
+throws error when package is not found
+remove without --ignore-workspace-root-check should fail on the workspace root
+remove with --ignore-workspace-root-check shouldn't fail on the workspace root
+removes package installed from npm registry
+removes multiple installed packages
+removes the whole scope when all scoped packages are removed
+removes a single scoped package
+removes subdependencies
+can prune the offline mirror
+removes package installed without a manifest
+removes from workspace packages
+preserves unaffected bin links after removing workspace packages
+npmUrlToGitUrl
+secureGitUrl
+resolveDefaultBranch when local
+resolveDefaultBranch when remote
+resolveCommit
+accepts URLs with commit hash
+accepts URLs without commit hash over secure protocols
+changes insecure URLs to HTTPS
+warns if insecure URLs cannot be changed to HTTPS
+throws error with no arguments
+throws error with too many arguments
+doesn't throw when using it inside a workspace
+throws error if module does not exist
+should determine that the module installed because it is in dependencies
+should determine that the module installed because it is in devDependencies
+should determine that the module installed because mime-types depend on it
+should determine that the module installed because it is hoisted from glob depend on it
+should report when a module is included multiple times including the root
+due to nohoist
+due to version conflict
+can determine a nohoist module
+can determine a deep nohoist module
+can return multiple matches
+lists all available commands with no arguments
+lists all available commands with no arguments and --non-interactive
+runs script containing spaces
+properly handles extra arguments and pre/post scripts
+properly handle bin scripts
+properly handle env command
+adds string delimiters if args have spaces
+adds quotes if args have spaces and quotes
+returns noScriptsAvailable with no scripts
+returns noBinAvailable with no bins
+adds workspace root node_modules/.bin to path when in a workspace
+runs script with custom script-shell
+add without flag
+add with prefix flag
+add with PREFIX enviroment variable
+shouldn't expose unwanted binaries
+bin
+add
+add (with scoped registry)
+remove
+ls
+list
+upgrade
+symlink update
+import shallow deps
+import deep deps
+import shallow dev deps
+import github deps
+import file deps
+import overlapping semver ranges successfully
+throw on missing dev deps
+including Yarn and Node version in yarn.lock
+import missing dev deps in production
+import missing opt deps
+throw when yarn.lock exists
+import shallow deps from package-lock.json
+import deep deps from package-lock.json
+import shallow dev deps from package-lock.json
+import github deps from package-lock.json
+import file deps from package-lock.json
+import overlapping semver ranges from package-lock.json successfully
+throw on corrupted package-lock.json
+throw on corrupted package-lock.json - missing dependencies (package-lock.json inconsistent)
+import uncorrupted (consistent) package-lock.json with missing dependencies
+including Yarn and Node version in yarn.lock from package-lock.json
+parse/stringify 1
+parse/stringify 2
+parse/stringify 3
+parse/stringify 4
+parse
+stringify
+Lockfile.fromDirectory
+Lockfile.getLocked
+Lockfile.getLocked pointer
+Lockfile.getLocked no cache
+Lockfile.getLocked defaults
+Lockfile.getLocked unknown
+Lockfile.getLockfile
+Lockfile.getLockfile (sorting)
+Lockfile.getLockfile handles integrity field
+parse single merge conflict
+parse single merge conflict with CRLF
+parse multiple merge conflicts
+parse merge conflict fail
+discards common ancestors in merge conflicts
+pack should work with a minimal example
+pack should include all files listed in the files array
+pack should include files based from the package’s root
+pack should included globbed files
+pack should include mandatory files not listed in files array if files not empty
+pack should exclude mandatory files from ignored directories
+pack should include files only ignored in other directories
+pack should exclude all other files if files array is not empty
+pack should exclude all dotfiles if not in files and files not empty
+pack should exclude all files in dot-directories if not in files and files not empty
+pack should include bundled dependencies
+pack should match dotfiles with globs
+throws if lockfile out of date
+lists everything with no args
+respects depth flag
+accepts an argument
+accepts a pattern
+should not throw when list is called with resolutions field
+respects depth flag
+matches exactly without glob in argument
+expands a glob in argument
+expands a glob in pattern
+lists all dependencies when not production
+does not list devDependencies when production
+does not error listing dependencies when production and no devDependencies exist
+getParent should extract a parent object from a hash, if the parent key exists
+getParent should return undefined if the key does not exist in hash
+getReqDepth should return a number if valid
+getReqDepth should return -1 if invalid
+install with simple exact resolutions should override all versions
+install with subtree exact resolutions should override subtree versions
+install with --frozen-lockfile with resolutions
+install with exotic resolutions should override versions
+install with range resolutions should override versions
+should warn when resolution entries are incorrrect or incompatible
+install with resolutions should correctly install simple scoped packages
+install with resolutions should correctly install toplevel scoped packages
+install with nested resolutions
+install with nested resolutions using flat mode
+install with resolution settings should correctly bailout during the integrity check
+adding resolutions after install should cause lockfile regeneration on second install
+ConsoleReporter.step
+ConsoleReporter.header
+ConsoleReporter.footer
+ConsoleReporter.log
+ConsoleReporter.success
+ConsoleReporter.error
+ConsoleReporter.info
+ConsoleReporter.command
+ConsoleReporter.warn
+ConsoleReporter.tree
+ConsoleReporter.activity
+ConsoleReporter.select
+ConsoleReporter.progress
+ProgressBar
+Spinner
+close
+ConsoleReporter.log is silent when isSilent is true
+ConsoleReporter.tree is silent when isSilent is true
+ConsoleReporter.auditSummary
+getOption changes ~ to cwd when resolve=true
+getOption does not change ~ when resolve=false
+getOption does not change empty-string when resolve=true
+getOption does not change empty-string when resolve=false
+accessing workspaces config requires explicit enabling
+can adapt legacy workspaces to new format
+workspaces is eligible only for private packages
+nohoist is eligible only for private packages and workspacesNohoistEnabled
+can throw exception for eligibility violation
+can report eligibility warnings
+should add the global yarnrc arguments to the command line
+should add the command-specific yarnrc arguments to the command line if the command name matches
+should not add the command-specific yarnrc arguments if the command name doesn't match
+should allow overriding the yarnrc values from the command line
+should resolve the yarnrc values relative to where the file lives
+should expose `npm_config_argv` env variable to lifecycle scripts for back compatibility with npm
+should not run pre/post hooks for .bin executables
+should not run pre/post hooks if they are .bin executables and not scripts
+should only expose non-internal configs
+should run both prepublish and prepare when installing, but not prepublishOnly
+should run both prepack and postpack
+should allow setting environment variables via yarnrc
+should inherit existing environment variables when setting via yarnrc
+should not show any error messages when script ends successfully
+should throw error when the script ends with an exit code
+run version with no arguments and --new-version flag
+run version with no arguments, --new-version flag where version is same as pkg.version
+run version with --non-interactive and --new-version should succeed
+run version with --non-interactive and without --new-version should succeed
+run version and make sure all lifecycle steps are executed
+run version and make sure only the defined lifecycle steps are executed
+run version and make sure git commit hooks are enabled by default
+run version with --no-commit-hooks and make sure git commit hooks are disabled
+run version and make sure commit hooks are disabled by config
+run version with --major flag and make sure major version is incremented
+run version with --minor flag and make sure minor version is incremented
+run version with --patch flag and make sure patch version is incremented
+resolveVersion
+isCommitSha
+parseRefs
+throws if lockfile is out of date
+no output when current matches latest
+works with no arguments
+works with single argument
+works with multiple arguments
+works with exotic resolvers
+hides when current > latest (next, beta tag)
+shows when wanted > current and current > latest
+displays correct dependency types
+shows dependencies from entire workspace
+init should create package.json on current cwd
+init --yes should create package.json with defaults
+init --yes --private should create package.json with defaults and private true
+init should use init-* configs when defined
+init using Github shorthand should resolve to full repository URL
+init and give private empty
+getGitConfigInfo should not return the git config val
+getGitConfigInfo should not fail when git fails
+list
+list skips corrupted package
+ls with scoped packages
+ls with filter that matches cache
+ls with filter that matches cache with wildcard
+ls with multiple patterns, one matching
+ls with pattern that only partially matches
+ls with filter that does not match
+ls filter by pattern with scoped package
+dir
+clean
+clean with package name
+clean with multiple package names
+matches the behavior of node-semver for non-prerelease versions
+matches inexact prerelease versions
+rejects prerelease versions that are too small
+rejects prerelease versions that are too big
+rejects prerelease versions that are invalid
+follows the semver spec when comparing prerelease versions
+matches the behavior of node-semver for stable versions
+treats patch and minor releases for pre-major versions as minor & major respectively
+treats patch and minor releases for pre-minor versions as major
+returns null for equal versions
+without arguments and in directory containing a valid package file
+with first argument "." and in directory containing a valid package file
+with one argument shows info about the package with specified name
+with one argument does not contain readme field
+with two arguments and second argument "readme" shows readme string
+with two arguments and second argument "version" shows `latest` version
+with two arguments and second argument as a simple field
+with two arguments and second argument as "."-separated field path
+with two arguments and second argument as a non-existing field
+with two arguments and second argument path containing non-existing field
+reports error on invalid package names
+reports error with too many arguments
+author object normalize
+author string
+authors file to contributors
+bin string
+binding.gyp scripts.install
+bugs string
+bundledDependencies alias
+clean version
+clean version with v
+contributors array expand
+dedupe all trivial dependencies
+dedupe dependencies
+dedupe dependencies root
+dedupe optionalDependencies
+dedupe optionalDependencies root
+dedupe single trivial dependency
+empty bin string
+engines array
+explode directories.bin
+explode directories.man
+extract description
+homepage string
+hosted git repository url
+keywords string
+maintainers array expand
+man string
+name
+readme
+repository string
+scoped bin string
+server scripts.start
+throw name blacklist
+throw name illegal character
+throw name non-string
+throw name start dot
+throw name url encode required
+valid license
+version
+warn builtin module collision
+warn empty string invalid license
+warn invalid license
+warn typo
+license warnings should not be thrown with global commands
+util.stringifyPerson
+util.parsePerson
+util.extractDescription
+util.extractRepositoryUrl
+publish should default access to undefined
+publish should accept `--access restricted` argument
+publish should accept `--access public` argument
+publish should use publishConfig.access in package manifest
+publish should allow `--access` to override publishConfig.access
+publish should run lifecycle scripts in the correct order
+can specify a path
+can specify a path without `--new-version`
+publish should respect publishConfig.registry 
+publish with publishConfig.registry and --registry
+assigns npm_lifecycle_event to env
+assigns NODE_ENV production
+assigns INIT_CWD to env
+assigns npm_lifecycle_script if manifest has a matching script
+does not overwrite npm_lifecycle_script if manifest does not have a matching script
+recursively adds keys separated by _
+replaces invalid chars with _
+it omits certain fields which tend to be too large
+overwrites npm_package_config_* keys from yarn config or npm config
+does not overwrite if the name does not match the manifest
+JSONReporter.step
+JSONReporter.footer
+JSONReporter.log
+JSONReporter.command
+JSONReporter.success
+JSONReporter.error
+JSONReporter.warn
+JSONReporter.info
+JSONReporter.activity
+JSONReporter.progress
+JSONReporter.auditAction
+JSONReporter.auditAdvisory
+JSONReporter.auditSummary
+hostname should be "bitbucket.org" 
+protocol should be "bitbucket" 
+explodeHostedGitFragment should work for colon separator after host
+explodeHostedGitFragment should work for colon separator after host and with protocol before
+explodeHostedGitFragment should work for slash separator after host
+explodeHostedGitFragment should work for package name and colon separator after host
+getTarballUrl should return the correct bitbucket tarball url
+getGitHTTPBaseUrl should return the correct git bitbucket base url
+getGitHTTPUrl should append ".git" to the HTTP base URL
+getGitHTTPUrl should return the correct git bitbucket SSH url
+getHTTPFileUrl should return the correct HTTP file url
+getGitSSHUrl should return URL containing protocol
+resolve https://github.com/ocaml/ocaml-re
+resolve git+https://github.com/stevemao/left-pad.git#1.3.0
+resolve https://github.com/stevemao/left-pad.git#1.3.0
+resolve https://git@github.com/stevemao/left-pad.git
+resolve https://bitbucket.org/hgarcia/node-bitbucket-api.git
+resolve https://github.com/yarnpkg/yarn/releases/download/v0.18.1/yarn-v0.18.1.tar.gz
+resolve https://github.com/yarnpkg/e2e-test-repo.git#greenkeeper/cross-env-3.1.4
+resolve https://github.com/bestander/chrome-app-livereload.git
+resolve livereload@https://github.com/bestander/chrome-app-livereload.git
+resolve bestander/chrome-app-livereload
+resolve livereload@https://github.com/bestander/chrome-app-livereload/archive/0.0.5.tar.gz
+resolve gitlab:leanlabsio/kanban
+resolve gist:d59975ac23e26ad4e25b
+resolve bitbucket:hgarcia/node-bitbucket-api
+resolve scrollin
+resolve gulp
+resolve react-native
+resolve ember-cli
+resolve npm:gulp
+resolve @polymer/iron-icon
+offline resolve @foo/bar@1.2.3
+addPattern does not add duplicates
+sends correct dependency map to audit api for single dependency.
+calls reporter auditAdvisory with correct data
+calls reporter auditSummary with correct data
+uses Yarn/data within LOCALAPPDATA if it exists
+uses the config dir otherwise
+uses XDG_DATA_HOME if it is set
+falls back to the config dir
+uses Yarn\Cache within LOCALAPPDATA if it exists
+uses AppData\Local\Cache otherwise
+uses XDG_CACHE_HOME if it is set
+falls back to Library/Caches/Yarn
+uses XDG_CACHE_HOME if it is set
+falls back to .cache/yarn
+uses Yarn\Config within LOCALAPPDATA if it exists
+uses the config dir otherwise
+uses XDG_CONFIG_HOME if it is set
+falls back to .config/yarn
+BaseReporter.getTotalTime
+BaseReporter.step
+BaseReporter.error
+BaseReporter.warn
+BaseReporter.info
+BaseReporter.success
+BaseReporter.log
+BaseReporter.command
+BaseReporter.header
+BaseReporter.footer
+BaseReporter.activity
+BaseReporter.question
+BaseReporter.select
+BaseReporter.progress
+BaseReporter.disableProgress
+BaseReporter.termstrings
+BaseReporter.prompt
+stringifyLangArgs should replace \n and \r\n with new line
+stringifyLangArgs should not replace \\n with new line
+ignoreLinesToRegex
+filterOverridenGitignores
+getExoticResolver does not return a Resolver for 0.0.0 pattern
+getExoticResolver returns NPM Registry Resolver for npm:0.0.0 pattern
+getExoticResolver returns Yarn Registry Resolver for yarn:0.0.0 pattern
+getExoticResolver returns Git Resolver for git+ssh://... pattern
+getExoticResolver returns Git Resolver for git+https://... pattern
+getExoticResolver returns Git Resolver for git+file:///... pattern
+getExoticResolver returns Git Resolver for git://... pattern
+getExoticResolver returns Git Resolver for ssh://... pattern
+getExoticResolver returns Git Resolver for http://... pattern with .git extension
+getExoticResolver returns Git Resolver for https://... pattern with .git extension
+getExoticResolver returns Tarball Resolver for http://... pattern
+getExoticResolver returns Tarball Resolver for https://... pattern
+getExoticResolver returns Gist Resolver for gist://... pattern
+tells user to run with --init when .yarnclean does not exist
+tells user to run with --init when .yarnclean does not exist and --force
+tells user to edit .yarnclean after init
+creates .yarnclean when --init passed
+tells user to run with --force when .yarnclean exists
+tells user file exists already when --init and .yarnclean exists
+runs clean when --force passed and .yarnclean exists
+runs clean even through workspaces
+creates folder in linkFolder
+throws error if package.json does not have name
+creates cmd file on Windows
+Produce valid remote type for a git-over-ssh dep
+Produce valid remote type for a git-over-https dep
+Produce valid remote type for a git public dep
+Check parentNames flowing in the request
+isVersion true for ssh: protocol
+isVersion true for git: protocol
+isVersion true for git+ssh: protocol
+isVersion true for http: protocol when ends with .git
+isVersion true for http: protocol when ends with .git and hash
+isVersion false for http: protocol when does not end with .git
+isVersion false for http: protocol when does not end with .git with hash
+isVersion true for https: protocol when ends with .git
+isVersion true for https: protocol when ends with .git and hash
+isVersion false for https: protocol when does not end with .git
+isVersion false for https: protocol when does not end with .git with hash
+isVersion false for file: protocol when ends with .git
+isVersion true for any github.com repo url
+isVersion true for any gitlab.com repo url
+isVersion true for any bitbucket.com repo url
+isVersion false for any github url to archive file
+invalid
+basic
+without name
+invalid
+basic
+not postfixing with "-" if name is emptu
+spawn with default
+spawn with plink
+spawn with custom GIT_SSH
+spawn with custom GIT_SSH_COMMAND
+write cache-folder config into .yarnrc file
+cache-folder flag has higher priorities than .yarnrc file
+bin-links flag has higher priorities than .yarnrc file
+set true when option value is undefined
+set empty string to an option
+set value "false" to an option
+set value "true" to an option
+workspaces info should list the workspaces
+workspaces run should spawn command for each workspace
+workspace run command
+workspace run command forwards raw arguments
+list should show licenses of dependencies
+generate-disclaimer should show license texts of dependencies
+resolve .yarnrc args and use --cwd if present
+don't resolve .yarnrc args from the default locations when using --no-default-rc
+resolve .yarnrc args from the extraneous locations when using --use-yarnrc
+resolve .yarnrc args and use process.cwd() if no --cwd present
+resolve .yarnrc args and handle --cwd arg inside .yarnrc
+resolve .yarnrc args and bail out of recursive --cwd args inside of .yarnrc
+resolve .yarnrc args and adds command name prefixed arguments
+fixes just slashed command
+fixes slashed command in double quotes
+slashed command in single quotes
+fixes slashed command with slashed param
+fixes slashed command in single quotes with two slashed params
+fixes two slashed commands (&&) with two slashed params
+fixes three slashed commands (&&) with two slashed params
+does not change nested command (inside the quotes)
+explodeHostedGitFragment jure/lens#fix-issue-#96 -> user: 'jure'
+explodeHostedGitFragment jure/lens#fix-issue-#96 -> repo: 'lens'
+explodeHostedGitFragment jure/lens#fix-issue-#96 -> hash: 'fix-issue-#96'
+explodeHostedGitFragment jure/lens#feature/fix-issue -> user: 'jure'
+explodeHostedGitFragment jure/lens#feature/fix-issue -> repo: 'lens'
+explodeHostedGitFragment jure/lens#feature/fix-issue -> hash: 'feature/fix-issue'
+explodeHostedGitFragment jure/lens.github -> user: 'jure'
+explodeHostedGitFragment jure/lens.github -> repo: 'lens.github'
+explodeHostedGitFragment jure/lens.github -> hash: ''
+explodeHostedGitFragment jure/lens#semver:^3.0.0 -> user: 'jure'
+explodeHostedGitFragment jure/lens#semver:^3.0.0 -> repo: 'lens'
+explodeHostedGitFragment jure/lens#semver:^3.0.0 -> hash: 'semver:^3.0.0'
+explodeHostedGitFragment github:jure/lens -> user: 'jure'
+explodeHostedGitFragment github:jure/lens -> repo: 'lens'
+explodeHostedGitFragment github:jure/lens -> hash: ''
+explodeHostedGitFragment bitbucket:jure/lens -> user: 'jure'
+explodeHostedGitFragment bitbucket:jure/lens -> repo: 'lens'
+explodeHostedGitFragment bitbucket:jure/lens -> hash: ''
+explodeHostedGitFragment git+ssh://git@github.com:jure/lens -> user: 'jure'
+explodeHostedGitFragment git+ssh://git@github.com:jure/lens -> repo: 'lens'
+explodeHostedGitFragment git+ssh://git@github.com:jure/lens -> hash: ''
+explodeHostedGitFragment git+ssh://git@github.com:jure/lens.git -> user: 'jure'
+explodeHostedGitFragment git+ssh://git@github.com:jure/lens.git -> repo: 'lens'
+explodeHostedGitFragment git+ssh://git@github.com:jure/lens.git -> hash: ''
+explodeHostedGitFragment git://git@github.com:jure/lens.git -> user: 'jure'
+explodeHostedGitFragment git://git@github.com:jure/lens.git -> repo: 'lens'
+explodeHostedGitFragment git://git@github.com:jure/lens.git -> hash: ''
+explodeHostedGitFragment git+https://login@github.com/jure/lens.git -> user: 'jure'
+explodeHostedGitFragment git+https://login@github.com/jure/lens.git -> repo: 'lens'
+explodeHostedGitFragment git+https://login@github.com/jure/lens.git -> hash: ''
+explodeHostedGitFragment git+ssh://git@github.com/jure/lens.git#semver:^3.1.0 -> user: 'jure'
+explodeHostedGitFragment git+ssh://git@github.com/jure/lens.git#semver:^3.1.0 -> repo: 'lens'
+explodeHostedGitFragment git+ssh://git@github.com/jure/lens.git#semver:^3.1.0 -> hash: 'semver:^3.1.0'
+explodeHostedGitFragment git+http://login@github.com/jure/lens.git -> user: 'jure'
+explodeHostedGitFragment git+http://login@github.com/jure/lens.git -> repo: 'lens'
+explodeHostedGitFragment git+http://login@github.com/jure/lens.git -> hash: ''
+install hoister should prioritise popular transitive dependencies
+install hoister should prioritise popular deep dependencies
+install hoister should not install prioritised popular transitive devDependencies in --prod mode
+should forward signals to all spawned child processes
+should not attempt to forward signals to children that already terminated
+Same dates equal
+Different dates differ
+Same dates equal
+Different dates differ
+Milliseconds are ignored when one date has zero milliseconds
+getGitSSHUrl with hash
+getGitSSHUrl with no hash
+getGitHTTPBaseUrl should return the correct git gitlab HTTP base url
+getGitHTTPUrl should append ".git" to the HTTP base URL
+getGitSSHUrl should return URL containing protocol
+getGitSSHUrl with hash
+getGitSSHUrl with no hash
+getGitHTTPBaseUrl should return the correct git github HTTP base url
+getGitHTTPUrl should append ".git" to the HTTP base URL
+getGitSSHUrl should return URL containing protocol
+creates folder in linkFolder
+throws error if package.json does not have name
+creates cmd file on Windows
+guess name of http://github.com/foo-bar/awesome-name
+guess name of http://github.com/foo-bar/awesome-name.git
+guess name of http://awesome.com/awesome-name.git
+guess name of http://awesome.com/awesome-name.git?foo/bar#fiz/fuz
+guess name of https://github.com/hashicorp/awesome-name/archive/v0.5.5.tar.gz
+guess name of https://gitlab.com/foo/awesome-name/repository/archive.tar.gz?ref=3.11.0
+guess name of https://gitlab.com/foo/awesome-name/repository/archive.tar.bz2?ref=3.11.0
+guess name of https://gitlab.com/foo/awesome-name/repository/archive.tar?ref=3.11.0
+guess name of https://gitlab.com/foo/awesome-name/repository/archive.zip?ref=3.11.0
+guess name of git@gitlab.com:yolo/awesome-name.git
+guess name of https://gitlab.com/yolo/awesome-name.git
+guess name of https://asesome.com/yolo/awesome-name-0.2.3.tar.gz
+guess name of /foo/bar/awesome-name
+guess name of ./foo/bar/awesome-name
+guess name of ../foo/bar/awesome-name
+guess name of file:../foo/bar/awesome-name
+guess name of file:../foo/bar/awesome-name.tar.gz
+guess name of awesome-name
+guess name of awesome-name.tar.gz
+guess name of awesomename/awesome.name
+guess name of awesomename/awesome.name.git
+guess name of awesomename/awesome.name.tar.gz
+guess name of awesomename/awesome.name.tar.bz2
+EventReporter.finished
+EventReporter.step
+EventReporter.log
+EventReporter.success
+EventReporter.error
+EventReporter.info
+EventReporter.command
+EventReporter.warn
+should recognize "true" values
+should recognize "false" values
+should treat unrecognized values as "true"
+should return the default for empty values
+should be consistent with boolify() for non-empty values
+install should call the resolveStep hook
+install should call the fetchStep hook
+install should call the linkStep hook
+install should call the buildStep hook
+throws if lockfile is out of date
+exits with success if no upgrades
+BufferReporter.finished
+BufferReporter.step
+BufferReporter.log
+BufferReporter.success
+BufferReporter.error
+BufferReporter.info
+BufferReporter.command
+BufferReporter.warn
+Paths without home are resolved
+Paths with home are resolved
+Paths with home are resolved
+promisify
+queue
+running bin without arguments should return the folder where the binaries are stored
+running bin with a binary name as the argument should return its full path
+node semver semantics
+ignore semver prerelease semantics for yarn
+will replace a token that exists in the environment
+will not replace a token that does not exist in the environment
+will not replace a token when a the token-replacement mechanism is prefixed a backslash literal
+resolves unscoped npm: package
+resolves scoped npm: package
+resolves unscoped yarn: package
+resolves scoped yarn: package
+parsePackagePath
+isValidPackagePath
+flat arg is inherited from root manifest
+list should show owners
+max concurrency
+should attach a handler for SIGTERM event
+attached SIGTERM handler should exit with status code 1 when invoked
+isRootUser
+isFakeRoot
+returns from/to value
+parsePackageName
+getPathKey
+sortAlpha
+install should hoist nested bin scripts
+direct dependency bin takes priority over transitive bin
+install should respect --no-bin-links flag
+newer transitive dep is overridden by newer direct dep
+newer transitive dep is overridden by older direct dep
+first transient dep is installed when same level and reference count
+first dep is installed when same level and reference count and one is a dev dep
+direct dependency is linked when bin name conflicts with transitive dependency
+can use link protocol to install a package that would not be found via node module resolution
+empty bin string does not create a link
+nohoist bin should be linked to its own local module
+nohoist bin should not be linked at top level, unless it is a top-level package
+focus points bin links to the shallowly installed packages
+
+Failed 1
+Only top level (after hoisting) bin links should be linked
+
+Skipped 0

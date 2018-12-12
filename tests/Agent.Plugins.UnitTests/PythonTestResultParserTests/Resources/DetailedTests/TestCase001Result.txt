@@ -1,9 +1,0 @@
-Passed 4
-test_pass (__main__.TestStringMethods)
-test_pass2 (__main__.TestStringMethods)
-test_pass3 (__main__.TestStringMethods)
-test_split (__main__.TestStringMethods)
-
-Failed 0
-
-Skipped 0

@@ -1,0 +1,129 @@
+﻿> redux@3.7.2 prepare /home/travis/build/reactjs/redux
+> npm run clean && npm run lint && npm test && npm run build
+> redux@3.7.2 clean /home/travis/build/reactjs/redux
+> rimraf lib dist es coverage
+> redux@3.7.2 lint /home/travis/build/reactjs/redux
+> eslint src test build
+> redux@3.7.2 test /home/travis/build/reactjs/redux
+> cross-env BABEL_ENV=commonjs jest
+ PASS  test/utils/warning.spec.js
+ PASS  test/combineReducers.spec.js (5.632s)
+ PASS  test/compose.spec.js (5.748s)
+ PASS  test/bindActionCreators.spec.js (6.309s)
+ PASS  test/applyMiddleware.spec.js (6.459s)
+ PASS  test/createStore.spec.js (6.515s)
+ FAIL  test/typescript.spec.js (7.528s)
+  ● TypeScript definitions › should compile against index.d.ts
+    AssertionError: Semantic: /home/travis/build/reactjs/redux/index.d.ts (103,18): All declarations of 'Dispatch' must have identical type parameters.
+      
+      at node_modules/typescript-definition-tester/dist/index.js:17:15
+          at Array.forEach (<anonymous>)
+      at handleDiagnostics (node_modules/typescript-definition-tester/dist/index.js:14:17)
+      at compile (node_modules/typescript-definition-tester/dist/index.js:27:5)
+      at node_modules/typescript-definition-tester/dist/index.js:55:13
+      at next (node_modules/typescript-definition-tester/dist/index.js:74:24)
+      at node_modules/typescript-definition-tester/dist/index.js:87:21
+      at FSReqWrap.oncomplete (fs.js:154:5)
+Test Suites: 1 failed, 6 passed, 7 total
+Tests:       1 failed, 71 passed, 72 total
+Snapshots:   0 total
+Time:        11.631s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! redux@3.7.2 prepare: `npm run clean && npm run lint && npm test && npm run build`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the redux@3.7.2 prepare script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/travis/.npm/_logs/2017-10-22T22_13_18_297Z-debug.log
+The command "eval npm install  " failed. Retrying, 2 of 3.
+> redux@3.7.2 prepare /home/travis/build/reactjs/redux
+> npm run clean && npm run lint && npm test && npm run build
+> redux@3.7.2 clean /home/travis/build/reactjs/redux
+> rimraf lib dist es coverage
+> redux@3.7.2 lint /home/travis/build/reactjs/redux
+> eslint src test build
+> redux@3.7.2 test /home/travis/build/reactjs/redux
+> cross-env BABEL_ENV=commonjs jest
+ PASS  test/combineReducers.spec.js
+ PASS  test/bindActionCreators.spec.js
+ PASS  test/utils/warning.spec.js
+ PASS  test/applyMiddleware.spec.js
+ PASS  test/compose.spec.js
+ PASS  test/createStore.spec.js
+ FAIL  test/typescript.spec.js
+  ● TypeScript definitions › should compile against index.d.ts
+    AssertionError: Semantic: /home/travis/build/reactjs/redux/index.d.ts (103,18): All declarations of 'Dispatch' must have identical type parameters.
+      
+      at node_modules/typescript-definition-tester/dist/index.js:17:15
+          at Array.forEach (<anonymous>)
+      at handleDiagnostics (node_modules/typescript-definition-tester/dist/index.js:14:17)
+      at compile (node_modules/typescript-definition-tester/dist/index.js:27:5)
+      at node_modules/typescript-definition-tester/dist/index.js:55:13
+      at next (node_modules/typescript-definition-tester/dist/index.js:74:24)
+      at node_modules/typescript-definition-tester/dist/index.js:87:21
+      at FSReqWrap.oncomplete (fs.js:154:5)
+Test Suites: 1 failed, 6 passed, 7 total
+Tests:       1 failed, 71 passed, 72 total
+Snapshots:   0 total
+Time:        7.84s, estimated 8s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! redux@3.7.2 prepare: `npm run clean && npm run lint && npm test && npm run build`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the redux@3.7.2 prepare script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/travis/.npm/_logs/2017-10-22T22_13_44_187Z-debug.log
+The command "eval npm install  " failed. Retrying, 3 of 3.
+> redux@3.7.2 prepare /home/travis/build/reactjs/redux
+> npm run clean && npm run lint && npm test && npm run build
+> redux@3.7.2 clean /home/travis/build/reactjs/redux
+> rimraf lib dist es coverage
+> redux@3.7.2 lint /home/travis/build/reactjs/redux
+> eslint src test build
+> redux@3.7.2 test /home/travis/build/reactjs/redux
+> cross-env BABEL_ENV=commonjs jest
+ FAIL  test/typescript.spec.js
+  ● TypeScript definitions › should compile against index.d.ts
+    AssertionError: Semantic: /home/travis/build/reactjs/redux/index.d.ts (103,18): All declarations of 'Dispatch' must have identical type parameters.
+      
+      at node_modules/typescript-definition-tester/dist/index.js:17:15
+          at Array.forEach (<anonymous>)
+      at handleDiagnostics (node_modules/typescript-definition-tester/dist/index.js:14:17)
+      at compile (node_modules/typescript-definition-tester/dist/index.js:27:5)
+      at node_modules/typescript-definition-tester/dist/index.js:55:13
+      at next (node_modules/typescript-definition-tester/dist/index.js:74:24)
+      at node_modules/typescript-definition-tester/dist/index.js:87:21
+      at node_modules/graceful-fs/polyfills.js:287:18
+      at FSReqWrap.oncomplete (fs.js:154:5)
+ PASS  test/bindActionCreators.spec.js
+ PASS  test/createStore.spec.js
+ PASS  test/utils/warning.spec.js
+ PASS  test/combineReducers.spec.js
+ PASS  test/compose.spec.js
+ PASS  test/applyMiddleware.spec.js
+Test Suites: 1 failed, 6 passed, 7 total
+Tests:       1 failed, 71 passed, 72 total
+Snapshots:   0 total
+Time:        4.038s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! redux@3.7.2 prepare: `npm run clean && npm run lint && npm test && npm run build`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the redux@3.7.2 prepare script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/travis/.npm/_logs/2017-10-22T22_14_07_521Z-debug.log
+The command "eval npm install  " failed 3 times.
+The command "npm install " failed and exited with 1 during .
+Your build has been stopped.

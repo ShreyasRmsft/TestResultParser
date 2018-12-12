@@ -1,0 +1,122 @@
+﻿> gulp@4.0.0-alpha.3 test /home/travis/build/gulpjs/gulp
+> npm run-script lint && mocha --reporter spec
+> gulp@4.0.0-alpha.3 lint /home/travis/build/gulpjs/gulp
+> jshint bin test index.js --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules && jscs bin test index.js
+✔ No problems
+No code style errors found.
+  gulp output stream
+    dest()
+  ✓ should return a stream
+  ✓ should return a output stream that writes files (40ms)
+  ✓ should return a output stream that does not write non-read files
+  1) should return a output stream that writes streaming files
+  ✓ should return a output stream that writes streaming files into new directories
+  ✓ should return a output stream that writes streaming files into new directories (buffer: false)
+  ✓ should return a output stream that writes streaming files into new directories (read: false)
+  ✓ should return a output stream that writes streaming files into new directories (read: false, buffer: false)
+  gulp input stream
+    src()
+  ✓ should return a stream
+  ✓ should return a input stream from a flat glob
+  ✓ should return a input stream for multiple globs
+  ✓ should return a input stream for multiple globs, with negation
+  ✓ should return a input stream with no contents when read is false
+  ✓ should return a input stream with contents as stream when buffer is false
+  ✓ should return a input stream from a deep glob
+  ✓ should return a input stream from a deeper glob
+  ✓ should return a file stream from a flat path
+  gulp
+    watch()
+  ✓ should call the function when file changes: no options (338ms)
+  ✓ should execute the gulp.parallel tasks (328ms)
+  ✓ should work with destructuring (327ms)
+  ✓ should not call the function when no file changes: no options
+  ✓ should call the function when file changes: w/ options (326ms)
+  ✓ should not drop options when no callback specified (127ms)
+  ✓ should work without options or callback
+  ✓ should run many tasks: w/ options (328ms)
+  ✓ should run many tasks: no options (325ms)
+  ✓ should throw an error: passed parameter (string) is not a function
+  ✓ should throw an error: passed parameter (array) is not a function
+  27 passing (2s)
+  1 failing
+  1) gulp output stream dest() should return a output stream that writes streaming files:
+     Uncaught TypeError [ERR_INVALID_ARG_TYPE]: The "listener" argument must be of type Function
+      at WriteStream.close (fs.js:2298:10)
+      at finishMaybe (node_modules/readable-stream/lib/_stream_writable.js:607:14)
+      at afterWrite (node_modules/readable-stream/lib/_stream_writable.js:470:3)
+      at onwrite (node_modules/readable-stream/lib/_stream_writable.js:461:7)
+      at WritableState.onwrite (node_modules/readable-stream/lib/_stream_writable.js:169:5)
+      at onFutimes (node_modules/vinyl-fs/lib/file-operations.js:264:9)
+      at FSReqWrap.oncomplete (fs.js:149:20)
+npm ERR! Test failed.  See above for more details.
+The command "npm test" exited with 1.
+after_script
+4.96s$ npm run coveralls
+> gulp@4.0.0-alpha.3 coveralls /home/travis/build/gulpjs/gulp
+> istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage
+  gulp output stream
+    dest()
+  ✓ should return a stream
+  ✓ should return a output stream that writes files
+  ✓ should return a output stream that does not write non-read files
+  1) should return a output stream that writes streaming files
+  ✓ should return a output stream that writes streaming files into new directories
+  ✓ should return a output stream that writes streaming files into new directories (buffer: false)
+  ✓ should return a output stream that writes streaming files into new directories (read: false)
+  ✓ should return a output stream that writes streaming files into new directories (read: false, buffer: false)
+  gulp input stream
+    src()
+  ✓ should return a stream
+  ✓ should return a input stream from a flat glob
+  ✓ should return a input stream for multiple globs
+  ✓ should return a input stream for multiple globs, with negation
+  ✓ should return a input stream with no contents when read is false
+  ✓ should return a input stream with contents as stream when buffer is false
+  ✓ should return a input stream from a deep glob
+  ✓ should return a input stream from a deeper glob
+  ✓ should return a file stream from a flat path
+  gulp
+    watch()
+  ✓ should call the function when file changes: no options (340ms)
+  ✓ should execute the gulp.parallel tasks (328ms)
+  ✓ should work with destructuring (327ms)
+  ✓ should not call the function when no file changes: no options
+  ✓ should call the function when file changes: w/ options (326ms)
+  ✓ should not drop options when no callback specified (127ms)
+  ✓ should work without options or callback
+  ✓ should run many tasks: w/ options (328ms)
+  ✓ should run many tasks: no options (326ms)
+  ✓ should throw an error: passed parameter (string) is not a function
+  ✓ should throw an error: passed parameter (array) is not a function
+  27 passing (2s)
+  1 failing
+  1) gulp output stream dest() should return a output stream that writes streaming files:
+     Uncaught TypeError [ERR_INVALID_ARG_TYPE]: The "listener" argument must be of type Function
+      at WriteStream.close (fs.js:2298:10)
+      at finishMaybe (node_modules/readable-stream/lib/_stream_writable.js:607:14)
+      at afterWrite (node_modules/readable-stream/lib/_stream_writable.js:470:3)
+      at onwrite (node_modules/readable-stream/lib/_stream_writable.js:461:7)
+      at WritableState.onwrite (node_modules/readable-stream/lib/_stream_writable.js:169:5)
+      at onFutimes (node_modules/vinyl-fs/lib/file-operations.js:264:9)
+      at FSReqWrap.oncomplete (fs.js:149:20)
+=============================================================================
+Writing coverage object [/home/travis/build/gulpjs/gulp/coverage/coverage.json]
+Writing coverage reports at [/home/travis/build/gulpjs/gulp/coverage]
+=============================================================================
+=============================== Coverage summary ===============================
+Statements   : 100% ( 31/31 )
+Branches     : 100% ( 12/12 )
+Functions    : 100% ( 2/2 )
+Lines        : 100% ( 31/31 )
+================================================================================
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! gulp@4.0.0-alpha.3 coveralls: `istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the gulp@4.0.0-alpha.3 coveralls script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/travis/.npm/_logs/2017-12-21T23_05_50_536Z-debug.log
+Done. Your build exited with 1.

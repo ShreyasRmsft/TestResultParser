@@ -1,0 +1,710 @@
+﻿2018-10-25T16:02:57.3534062Z ##[section]Starting: Run tests with coverage
+2018-10-25T16:02:57.3538149Z ==============================================================================
+2018-10-25T16:02:57.3538229Z Task         : Command Line
+2018-10-25T16:02:57.3538307Z Description  : Run a command line script using cmd.exe on Windows and bash on macOS and Linux.
+2018-10-25T16:02:57.3538360Z Version      : 2.142.1
+2018-10-25T16:02:57.3538408Z Author       : Microsoft Corporation
+2018-10-25T16:02:57.3538487Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkID=613735)
+2018-10-25T16:02:57.3538543Z ==============================================================================
+2018-10-25T16:02:58.2150452Z Generating script.
+2018-10-25T16:02:58.2808267Z ##[command]"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\8d6cdc41-515b-4d91-8699-8f58053c09b5.cmd""
+2018-10-25T16:02:58.2898349Z Environment variable -e not defined
+2018-10-25T16:02:58.5761222Z yarn run v1.10.1
+2018-10-25T16:02:58.6738447Z $ rimraf coverage
+2018-10-25T16:02:58.8720176Z Done in 0.30s.
+2018-10-25T16:02:59.1689588Z yarn run v1.10.1
+2018-10-25T16:02:59.2599567Z $ node --max-old-space-size=4096 node_modules/jest-cli/bin/jest --testMatch "<rootDir>/test/*.test.js" --coverage --ci --maxWorkers=2
+2018-10-25T16:03:27.3435733Z PASS test/Validation.test.js (24.894s)
+2018-10-25T16:03:28.2182341Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:03:29.4387881Z PASS test/Compiler.test.js (27.004s)
+2018-10-25T16:03:31.3735046Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:03:32.5139485Z PASS test/Errors.test.js
+2018-10-25T16:03:34.5630968Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:03:55.0683230Z PASS test/ConfigTestCases.test.js (21.719s)
+2018-10-25T16:04:04.5600542Z PASS test/Compiler-caching.test.js (8.68s)
+2018-10-25T16:04:06.1675041Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:04:09.2952754Z PASS test/HotTestCases.test.js
+2018-10-25T16:04:12.5064020Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:04:14.1693561Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:04:19.4387261Z PASS test/StatsTestCases.test.js (9.338s)
+2018-10-25T16:04:21.5172952Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:04:22.9747315Z PASS test/MultiCompiler.test.js
+2018-10-25T16:04:59.9061447Z PASS test/WatchTestCases.test.js (91.809s)
+2018-10-25T16:05:01.2820833Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:04.7160000Z PASS test/RemoveFiles.test.js
+2018-10-25T16:05:06.0009182Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:07.8940176Z PASS test/HotModuleReplacementPlugin.test.js
+2018-10-25T16:05:09.3848961Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:10.3244429Z PASS test/NodeTemplatePlugin.test.js
+2018-10-25T16:05:12.0091542Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:15.0230390Z PASS test/WatchDetection.test.js (51.205s)
+2018-10-25T16:05:16.5859429Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:18.0507310Z PASS test/WatcherEvents.test.js
+2018-10-25T16:05:19.2678347Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:20.1330835Z PASS test/Stats.test.js
+2018-10-25T16:05:22.4043187Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:23.6178272Z PASS test/ProgressPlugin.test.js
+2018-10-25T16:05:27.0269114Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:05:32.7015490Z PASS test/Examples.test.js (21.234s)
+2018-10-25T16:06:07.5544317Z PASS test/TestCasesHotMultiStep.test.js (33.946s)
+2018-10-25T16:06:07.7753831Z   ΓùÅ Console
+2018-10-25T16:06:07.9622125Z 
+2018-10-25T16:06:08.0373686Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0379946Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:08.0380366Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0380567Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:08.0380734Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0380961Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:08.0381127Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0381449Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:08.0381664Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0381914Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:06:08.0382090Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0382300Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:08.0382475Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0382683Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:08.0382856Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0383226Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:06:08.0383446Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0383628Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:08.0383836Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0384026Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:08.0384230Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0384412Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:08.0385295Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0385522Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:08.0385729Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0385905Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:06:08.0386102Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0386278Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:06:08.0386469Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0386659Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:06:08.0386842Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:08.0387044Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:06:08.0387183Z 
+2018-10-25T16:06:41.1701571Z PASS test/TestCasesDevtoolEvalNamedModules.test.js (32.56s)
+2018-10-25T16:06:41.3250713Z   ΓùÅ Console
+2018-10-25T16:06:41.3725782Z 
+2018-10-25T16:06:41.3726866Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3727070Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:41.3727282Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3727489Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:41.3727652Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3727835Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:41.3727985Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3728194Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:41.3728339Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3728523Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:06:41.3728903Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3729064Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:41.3729261Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3729513Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:06:41.3729718Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3729877Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:06:41.3730075Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3730370Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:41.3730546Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3730754Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:41.3730900Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3731097Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:41.3731244Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3731462Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:06:41.3731650Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3731797Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:06:41.3731987Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3732135Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:06:41.3732299Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3732452Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:06:41.3732605Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:06:41.3732798Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:06:41.3732916Z 
+2018-10-25T16:06:42.8198279Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:07:36.5557846Z PASS test/TestCasesMinimizedHashedModules.test.js (54.75s)
+2018-10-25T16:07:36.6541216Z   ΓùÅ Console
+2018-10-25T16:07:36.6819540Z 
+2018-10-25T16:07:36.6822720Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6823348Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:07:36.6823589Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6823807Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:07:36.6824475Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6824727Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:07:36.6825014Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6825237Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:07:36.6825485Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6825713Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:07:36.6825939Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6826459Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:07:36.6826682Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6826999Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:07:36.6827219Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6827438Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:07:36.6827688Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6827920Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:07:36.6828201Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6828427Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:07:36.6828686Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6828909Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:07:36.6829117Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6829396Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:07:36.6829629Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6829894Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:07:36.6830102Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6830311Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:07:36.6830567Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6830800Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:07:36.6831016Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:07:36.6831270Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:07:36.6831399Z 
+2018-10-25T16:07:39.6294004Z (node:1380) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:08:13.7241544Z PASS test/TestCasesAllCombined.test.js (169.334s)
+2018-10-25T16:08:13.7242292Z   ΓùÅ Console
+2018-10-25T16:08:13.7242514Z 
+2018-10-25T16:08:13.7242662Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7242815Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:13.7243011Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7243225Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:13.7243469Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7244659Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:13.7244883Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7245047Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:13.7245238Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7245401Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:13.7245593Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7245771Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:13.7245964Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7246126Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:13.7246269Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7246474Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:13.7246623Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7246830Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:13.7246996Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7247213Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:13.7247363Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7247561Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:13.7247965Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7248196Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:13.7248528Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7248732Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:13.7248911Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7249061Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:13.7249251Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7249399Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:13.7249604Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:13.7249757Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:13.7250351Z 
+2018-10-25T16:08:24.9261969Z PASS test/TestCasesMinimizedSourceMap.test.js (47.406s)
+2018-10-25T16:08:25.0982928Z   ΓùÅ Console
+2018-10-25T16:08:25.0984533Z 
+2018-10-25T16:08:25.2810442Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2810615Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:25.2810684Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2810779Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:25.2810840Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2810934Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:25.2811045Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2811119Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:25.2811223Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2811294Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:25.2811402Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2811473Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:25.2811597Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2811669Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:25.2811731Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2811823Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:25.2811886Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2811978Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:25.2812041Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2812323Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:25.2812451Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2812608Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:25.2812721Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2812796Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:25.2812883Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2812957Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:25.2813120Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2813232Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:25.2813291Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2813354Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:25.2813446Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:25.2813510Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:25.2813592Z 
+2018-10-25T16:08:50.7699389Z PASS test/TestCasesHot.test.js (35.838s)
+2018-10-25T16:08:50.7699650Z   ΓùÅ Console
+2018-10-25T16:08:50.7699711Z 
+2018-10-25T16:08:50.7699799Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7699874Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:50.7699981Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7700059Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:50.7700127Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7700231Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:50.7700302Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7700394Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:50.7700503Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7700584Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:50.7700679Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7700759Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:50.7700853Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7700932Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:50.7701210Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7701316Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:50.7701390Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7701492Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:50.7701563Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7701647Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:50.7701844Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7701921Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:50.7702066Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7702150Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:50.7702260Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7702333Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:50.7702401Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7702792Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:50.7702871Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7702982Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:50.7703050Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:50.7703124Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:50.7703191Z 
+2018-10-25T16:08:58.9651328Z PASS test/TestCasesDevtoolEvalDeterministicModuleIds.test.js (32.858s)
+2018-10-25T16:08:59.0335511Z   ΓùÅ Console
+2018-10-25T16:08:59.0340853Z 
+2018-10-25T16:08:59.0343449Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0346434Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:59.0346994Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0347665Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:59.0348332Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0348699Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:59.0349109Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0349436Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:59.0350084Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0350451Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:59.0350803Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0351192Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:59.0351511Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0351833Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:08:59.0352257Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0352600Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:08:59.0353066Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0353397Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:59.0354136Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0354512Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:59.0354834Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0355157Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:59.0355557Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0355890Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:08:59.0356205Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0356588Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:59.0357011Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0357393Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:08:59.0357719Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0358050Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:59.0358414Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:08:59.0358794Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:08:59.0359085Z 
+2018-10-25T16:09:25.8680667Z PASS test/TestCasesDevtoolCheapEvalModuleSourceMap.test.js (34.249s)
+2018-10-25T16:09:25.8681726Z   ΓùÅ Console
+2018-10-25T16:09:25.8682035Z 
+2018-10-25T16:09:25.8682190Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8682348Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:25.8682553Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8683019Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:25.8683261Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8683434Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:25.8683634Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8683806Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:25.8683967Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8684180Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:09:25.8684482Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8684711Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:25.8684871Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8685081Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:25.8685236Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8685490Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:09:25.8685667Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8685878Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:25.8686040Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8686243Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:25.8686408Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8686570Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:25.8686762Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8686940Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:25.8687461Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8687630Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:09:25.8687845Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8688001Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:09:25.8688228Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8688393Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:09:25.8688764Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:25.8688923Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:09:25.8689104Z 
+2018-10-25T16:09:41.9652688Z PASS test/TestCasesDevtoolCheapInlineSourceMap.test.js (41.44s)
+2018-10-25T16:09:41.9653967Z   ΓùÅ Console
+2018-10-25T16:09:41.9654501Z 
+2018-10-25T16:09:41.9654717Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9654951Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:41.9655130Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9655303Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:41.9655575Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9656128Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:41.9656449Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9656642Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:41.9656870Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9657059Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:09:41.9657227Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9657474Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:41.9657984Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9658923Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:09:41.9659107Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9659543Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:09:41.9659786Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9659967Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:41.9660210Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9660397Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:41.9660657Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9660841Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:41.9661009Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9661253Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:09:41.9661634Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9661867Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:09:41.9662037Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9662209Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:09:41.9662444Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9662771Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:09:41.9662980Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:09:41.9663433Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:09:41.9663747Z 
+2018-10-25T16:10:00.2906939Z PASS test/TestCasesDevtoolCheapEvalSourceMap.test.js (33.348s)
+2018-10-25T16:10:00.2907840Z   ΓùÅ Console
+2018-10-25T16:10:00.2908034Z 
+2018-10-25T16:10:00.2908213Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2908540Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:00.2908722Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2908966Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:00.2909138Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2909372Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:00.2909602Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2916817Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:00.2917249Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2917474Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:00.2917732Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2917929Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:00.2918197Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2918405Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:00.2918585Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2918839Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:00.2919019Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2919258Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:00.2919442Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2919928Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:00.2920198Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2920395Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:00.2920634Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2920832Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:00.2921068Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2921253Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:00.2921940Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2922188Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:00.2922370Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2922651Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:00.2922838Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:00.2923093Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:00.2923245Z 
+2018-10-25T16:10:19.4628808Z PASS test/TestCasesDevtoolInlineSourceMap.test.js (36.658s)
+2018-10-25T16:10:19.4629102Z   ΓùÅ Console
+2018-10-25T16:10:19.4629158Z 
+2018-10-25T16:10:19.4629210Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4629276Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:19.4629393Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4629463Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:19.4629524Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4629645Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:19.4629709Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4629827Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:19.4629912Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4629984Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:19.4630097Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4630168Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:19.4630286Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4630356Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:19.4630701Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4630774Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:19.4630838Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4630951Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:19.4631015Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4631136Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:19.4631306Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4631374Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:19.4631484Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4631558Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:19.4631676Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4631740Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:19.4631849Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4631922Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:19.4631989Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4632100Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:19.4632160Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:19.4632269Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:19.4632309Z 
+2018-10-25T16:10:36.7167488Z PASS test/TestCasesDevtoolCheapSourceMap.test.js (35.449s)
+2018-10-25T16:10:36.7171255Z   ΓùÅ Console
+2018-10-25T16:10:36.7172994Z 
+2018-10-25T16:10:36.7177106Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7180300Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:36.7183706Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7184709Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:36.7207332Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7208685Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:36.7601296Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7601543Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:36.7601891Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7601983Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:36.7602104Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7602178Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:36.7602324Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7602398Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:36.7602510Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7602592Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:36.7602761Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7602878Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:36.7602943Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7603073Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:36.7603142Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7603211Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:36.7603326Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7603401Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:36.7603513Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7603578Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:36.7603685Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7603750Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:36.7603818Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7603936Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:36.7603997Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:36.7604062Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:36.7604149Z 
+2018-10-25T16:10:56.7146854Z PASS test/TestCasesDevtoolEvalSourceMap.test.js (36.067s)
+2018-10-25T16:10:56.7156638Z   ΓùÅ Console
+2018-10-25T16:10:56.7156950Z 
+2018-10-25T16:10:56.7157217Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7157579Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:56.7157830Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7158484Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:56.7158753Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7159299Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:56.7159634Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7159886Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:56.7160188Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7160436Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:56.7160942Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7161196Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:56.7161566Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7161819Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:10:56.7162122Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7162481Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:10:56.7162826Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7163085Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:56.7163393Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7163649Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:56.7163954Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7164202Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:56.7164500Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7164772Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:10:56.7165082Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7165333Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:56.7165566Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7165872Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:10:56.7166129Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7166372Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:56.7166664Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:10:56.7166906Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:10:56.7167044Z 
+2018-10-25T16:11:14.5078400Z PASS test/TestCasesDevelopment.test.js (36.604s)
+2018-10-25T16:11:14.5080909Z   ΓùÅ Console
+2018-10-25T16:11:14.5082160Z 
+2018-10-25T16:11:14.5098436Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5108597Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:14.5110678Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5113434Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:14.5115496Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5115855Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:14.5121226Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5130830Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:14.5130931Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5131063Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:11:14.5131128Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5131248Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:14.5131559Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5131705Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:14.5131770Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5131839Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:11:14.5131953Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5132023Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:14.5132137Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5132213Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:14.5132279Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5132395Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:14.5132457Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5132584Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:14.5132815Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5132944Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:11:14.5133053Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5133119Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:11:14.5133225Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5133289Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:11:14.5133349Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:14.5133458Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:11:14.5133579Z 
+2018-10-25T16:11:18.7977535Z (node:1820) DeprecationWarning: Compilation.chunks was changed from Array to Set (using Array method 'reduce' is deprecated)
+2018-10-25T16:11:34.6501941Z PASS test/TestCasesDevtoolSourceMap.test.js (37.014s)
+2018-10-25T16:11:34.7925492Z   ΓùÅ Console
+2018-10-25T16:11:34.8197578Z 
+2018-10-25T16:11:34.8198556Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8198834Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:34.8199066Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8199361Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:34.8199579Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8199868Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:34.8200153Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8200431Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:34.8200659Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8200938Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:11:34.8201165Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8201440Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:34.8201689Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8201919Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:11:34.8202197Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8202484Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:11:34.8202768Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8202994Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:34.8203529Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8203785Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:34.8204372Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8204624Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:34.8204904Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8205143Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:11:34.8205442Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8205835Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:11:34.8206137Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8206383Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:11:34.8206622Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8206855Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:11:34.8207031Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:11:34.8207334Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:11:34.8207554Z 
+2018-10-25T16:12:11.9825353Z PASS test/TestCasesDevtoolEval.test.js (36.342s)
+2018-10-25T16:12:12.0573250Z   ΓùÅ Console
+2018-10-25T16:12:12.2137086Z 
+2018-10-25T16:12:12.2221580Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2222583Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:12.2222869Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2223209Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:12.2223454Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2223767Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:12.2224132Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2224419Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:12.2225130Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2225409Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:12:12.2225739Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2225998Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:12.2226314Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2226833Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:12.2227174Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2227434Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:12:12.2227743Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2228000Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:12.2228313Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2228577Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:12.2229420Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2229704Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:12.2230019Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2230328Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:12.2230635Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2230894Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:12:12.2231155Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2231483Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:12:12.2231726Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2232091Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:12:12.2232458Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:12.2232822Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:12:12.2232993Z 
+2018-10-25T16:12:29.8905839Z PASS test/TestCasesProduction.test.js (74.308s)
+2018-10-25T16:12:29.8918287Z   ΓùÅ Console
+2018-10-25T16:12:29.8918506Z 
+2018-10-25T16:12:29.8918782Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8918993Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:29.8919165Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8919389Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:29.8919541Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8919758Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:29.8919915Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8920131Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:29.8920915Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8921144Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:12:29.8921543Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8921779Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:29.8921947Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8922112Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:29.8922332Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8922650Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:12:29.8922879Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8923040Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:29.8923260Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8923430Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:29.8923686Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8923861Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:29.8924077Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8924247Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:29.8924455Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8924702Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:12:29.8924908Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8925072Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:12:29.8925239Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8925473Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:12:29.8925681Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:29.8925845Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:12:29.8925971Z 
+2018-10-25T16:12:44.2343703Z PASS test/TestCasesNormal.test.js (31.24s)
+2018-10-25T16:12:44.2353432Z   ΓùÅ Console
+2018-10-25T16:12:44.2353552Z 
+2018-10-25T16:12:44.2354125Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2354490Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:44.2355111Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2355467Z       Caching failed for /module/D:\a\1\s\test\cases\compile\error-hide-stack\loader.js!: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:44.2355859Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2356250Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:44.2356647Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2356986Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:44.2357433Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2357766Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:12:44.2358256Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2358674Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?abc!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:44.2359059Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2359384Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\error-loader.js?def!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleError
+2018-10-25T16:12:44.2359700Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2360024Z       Caching failed for /module/D:\a\1\s\test\cases\errors\loader-error-warning\warning-loader.js?xyz!D:\a\1\s\test\cases\errors\loader-error-warning\a.js: Error: No serializer registered for ModuleWarning
+2018-10-25T16:12:44.2360422Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2360805Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:44.2361122Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2361448Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:44.2361830Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2362153Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:44.2362532Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2363601Z       Caching failed for /module/D:\a\1\s\test\cases\loaders\no-string\loader.js!D:\a\1\s\test\cases\loaders\no-string\pitch-loader.js!D:\a\1\s\test\cases\loaders\no-string\file.js: Error: No serializer registered for ModuleBuildError
+2018-10-25T16:12:44.2364048Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2364399Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:12:44.2365251Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2365599Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\context\templates\dump-file.txt: Error: No serializer registered for ModuleParseError
+2018-10-25T16:12:44.2365983Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2366426Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:12:44.2366931Z     console.warn lib/cache/FileCachePlugin.js:2862
+2018-10-25T16:12:44.2367254Z       Caching failed for /module/D:\a\1\s\test\cases\parsing\unsupported-amd\index.js: Error: No serializer registered for UnsupportedFeatureWarning
+2018-10-25T16:12:44.2367539Z 
+2018-10-25T16:12:44.9597339Z 
+2018-10-25T16:12:44.9641372Z Test Suites: 35 passed, 35 total
+2018-10-25T16:12:44.9641875Z Tests:       163 skipped, 21253 passed, 21416 total
+2018-10-25T16:12:44.9642382Z Snapshots:   87 passed, 87 total
+2018-10-25T16:12:44.9642730Z Time:        583.926s
+2018-10-25T16:12:44.9644123Z Ran all test suites.
+2018-10-25T16:12:44.9665252Z Force exiting Jest
+2018-10-25T16:12:44.9665612Z 
+2018-10-25T16:12:44.9665917Z Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+2018-10-25T16:12:45.0415578Z Done in 585.88s.
+2018-10-25T16:12:46.1218687Z ##[section]Finishing: Run tests with coverage

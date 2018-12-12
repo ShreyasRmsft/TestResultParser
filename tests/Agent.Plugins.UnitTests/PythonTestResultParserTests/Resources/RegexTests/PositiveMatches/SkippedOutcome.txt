@@ -1,5 +1,0 @@
-﻿skipped
-skipped ''  
-skipped 'reason'
-skipped abc
-skipped      

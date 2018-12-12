@@ -1,0 +1,9 @@
+﻿skipped:0
+skipped=
+skipped=asdv
+skipped=    4
+skipped= errors=4
+skipped:8, failures=9
+errors=8; skipped=9
+abcskipped=4
+failurskipped=5

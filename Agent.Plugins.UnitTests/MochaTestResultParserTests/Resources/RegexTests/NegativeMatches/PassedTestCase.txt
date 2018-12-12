@@ -1,0 +1,11 @@
+﻿
+✓ Negative path: can not upload multiple files
+ ✓ Negative path: can not upload multiple files
+   ✓ Negative path: can not upload multiple files
+✓Negative path: can not upload multiple files
+  - Negative path: can not upload multiple files
+  1) Negative path: can not upload multiple files
+✓ Negative path: can not upload multiple files
+Test Method 1
+  Test Method 1
+  ✓ 

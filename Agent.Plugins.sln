@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28218.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.TestResultParser", "src\Agent.Plugins\Agent.Plugins.TestResultParser.csproj", "{0BF8DDCA-848F-40EC-8AFD-EE3A1F2D0D5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.Log.TestResultParser.Parser", "Agent.Plugins.Log.TestResultParser.Parser\Agent.Plugins.Log.TestResultParser.Parser.csproj", "{0BF8DDCA-848F-40EC-8AFD-EE3A1F2D0D5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingApp", "src\TestingApp\TestingApp.csproj", "{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.Log.TestResultParser.Contracts", "Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj", "{57ECC381-810D-4D89-9DFF-D8F7165BDEA9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.UnitTests", "tests\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj", "{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agent.Plugins.UnitTests", "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj", "{15343636-4543-4AD8-9E55-13E8E270ACE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{0BF8DDCA-848F-40EC-8AFD-EE3A1F2D0D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF8DDCA-848F-40EC-8AFD-EE3A1F2D0D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF8DDCA-848F-40EC-8AFD-EE3A1F2D0D5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C63ACEA9-A7F4-43E2-A1FF-D1705B8060C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BF7EE3A-DD54-4747-BC88-3B84E61B35A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57ECC381-810D-4D89-9DFF-D8F7165BDEA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57ECC381-810D-4D89-9DFF-D8F7165BDEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57ECC381-810D-4D89-9DFF-D8F7165BDEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57ECC381-810D-4D89-9DFF-D8F7165BDEA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15343636-4543-4AD8-9E55-13E8E270ACE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15343636-4543-4AD8-9E55-13E8E270ACE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15343636-4543-4AD8-9E55-13E8E270ACE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15343636-4543-4AD8-9E55-13E8E270ACE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

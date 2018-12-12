@@ -1,8 +1,0 @@
-﻿hello world ok
-ok
- ok
-          ok
-hello world expected failure
-expected failure
- expected failure
-          expected failure

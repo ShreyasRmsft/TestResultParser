@@ -1,0 +1,321 @@
+﻿> nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSJest
+> jest
+
+ FAIL  unit_tests/sample.test.js
+   first set
+    √ Test method 1 (49ms)
+    √ Test method 2 (7ms)
+    √ Test method 4 (6ms)
+
+  ● first set › Test method 1
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:9:22)
+
+  ● first set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:9:22)
+
+  ● first set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      15 |
+      16 |     test('Test method 2', () => {
+    > 17 |         expect(true).toBe(false);
+         |                      ^
+      18 |     });
+      19 |
+      20 |     test('Test method 3', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:17:22)
+
+  ● first set › Test method 3
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:9:22)
+
+  ● first set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:9:22)
+
+  ● first set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      23 |
+      24 |     test('Test method 4', () => {
+    > 25 |         expect(true).toBe(false);
+         |                      ^
+      26 |     });
+      27 |
+      28 |     test('Test method 5', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:25:22)
+
+  ● first set › Test method 5
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:9:22)
+
+  ● second set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      53 |
+      54 |     test('Test method 2', () => {
+    > 55 |         expect(true).toBe(false);
+         |                      ^
+      56 |     });
+      57 |
+      58 |     test('Test method 3', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:55:22)
+
+  ● second set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      61 |
+      62 |     test('Test method 4', () => {
+    > 63 |         expect(true).toBe(false);
+         |                      ^
+      64 |     });
+      65 |
+      66 |     test('Test method 5', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:63:22)
+
+ FAIL  unit_tests/sample2.test.js
+  ● first set › Test method 1
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:9:22)
+
+  ● first set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:9:22)
+
+  ● first set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      15 |
+      16 |     test('Test method 2', () => {
+    > 17 |         expect(true).toBe(false);
+         |                      ^
+      18 |     });
+      19 |
+      20 |     test('Test method 3', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:17:22)
+
+  ● first set › Test method 3
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:9:22)
+
+  ● first set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:9:22)
+
+  ● first set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      23 |
+      24 |     test('Test method 4', () => {
+    > 25 |         expect(true).toBe(false);
+         |                      ^
+      26 |     });
+      27 |
+      28 |     test('Test method 5', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:25:22)
+
+  ● first set › Test method 5
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       7 |
+       8 |     beforeEach(() => {
+    >  9 |         expect(true).toBe(false);
+         |                      ^
+      10 |     })
+      11 |
+      12 |     test('Test method 1', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:9:22)
+
+  ● second set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      53 |
+      54 |     test('Test method 2', () => {
+    > 55 |         expect(true).toBe(false);
+         |                      ^
+      56 |     });
+      57 |
+      58 |     test('Test method 3', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:55:22)
+
+  ● second set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      61 |
+      62 |     test('Test method 4', () => {
+    > 63 |         expect(true).toBe(false);
+         |                      ^
+      64 |     });
+      65 |
+      66 |     test('Test method 5', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:63:22)
+
+Test Suites: 2 failed, 2 total
+Tests:       2 skipped, 20 total
+Snapshots:   0 total
+Time:        2.313s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
