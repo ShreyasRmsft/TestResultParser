@@ -134,7 +134,7 @@ namespace Agent.Plugins.UnitTests
             int lineNumber = 1;
             foreach (var line in testResultsConsoleOut)
             {
-                yield return new LogData() { Message = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ };
+                yield return new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ };
             }
         }
 

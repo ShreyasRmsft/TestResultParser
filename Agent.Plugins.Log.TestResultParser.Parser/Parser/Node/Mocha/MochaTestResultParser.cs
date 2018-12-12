@@ -46,15 +46,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.stateContext = new MochaParserStateContext(testRun);
             this.currentState = MochaParserStates.ExpectingTestResults;
 
-            this.expectingTestResults = new MochaExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
-            this.expectingTestRunSummary = new MochaExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
-            this.expectingStackTraces = new MochaExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingTestResults = new MochaParserStateExpectingTestResults(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingTestRunSummary = new MochaParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetryDataCollector);
+            this.expectingStackTraces = new MochaParserStateExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetryDataCollector);
         }
 
         /// <inheritdoc/>
-        public override void Parse(LogData testResultsLine)
+        public override void Parse(LogData logData)
         {
-            if (testResultsLine == null || testResultsLine.Message == null)
+            if (logData == null || logData.Line == null)
             {
                 logger.Error("MochaTestResultParser : Parse : Input line was null.");
                 return;
@@ -62,7 +62,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             try
             {
-                this.stateContext.CurrentLineNumber = testResultsLine.LineNumber;
+                this.stateContext.CurrentLineNumber = logData.LineNumber;
 
                 // State model for the mocha parser that defines the Regexs to match against in each state
                 // Each state re-orders the Regexs based on the frequency of expected matches
@@ -72,7 +72,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // and transitions to the next one after a line of summary is encountered
                     case MochaParserStates.ExpectingTestResults:
 
-                        if (AttemptMatch(this.ExpectingTestResults, testResultsLine))
+                        if (AttemptMatch(this.ExpectingTestResults, logData))
                             return;
                         break;
 
@@ -81,7 +81,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // else goes back to the first state after publishing the run
                     case MochaParserStates.ExpectingTestRunSummary:
 
-                        if (AttemptMatch(this.ExpectingTestRunSummary, testResultsLine))
+                        if (AttemptMatch(this.ExpectingTestRunSummary, logData))
                             return;
                         break;
 
@@ -90,7 +90,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // fires telemetry for unexpected behavior but moves on to the next test run
                     case MochaParserStates.ExpectingStackTraces:
 
-                        if (AttemptMatch(this.ExpectingStackTraces, testResultsLine))
+                        if (AttemptMatch(this.ExpectingStackTraces, logData))
                             return;
                         break;
                 }
@@ -101,7 +101,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 // pending and failed test summary
                 if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
                 {
-                    this.logger.Info($"MochaTestResultParser : Parse : Was expecting {this.stateContext.NextExpectedMatch} before line {testResultsLine.LineNumber}, but no matches occurred.");
+                    this.logger.Info($"MochaTestResultParser : Parse : Was expecting {this.stateContext.NextExpectedMatch} before line {logData.LineNumber}, but no matches occurred.");
                     AttemptPublishAndResetParser();
                     return;
                 }
@@ -132,13 +132,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// Attempts to match the line with each regex specified by the current state
         /// </summary>
         /// <param name="state">Current state</param>
-        /// <param name="testResultsLine">Input line</param>
+        /// <param name="logData">Input line</param>
         /// <returns>True if a match occurs</returns>
-        private bool AttemptMatch(ITestResultParserState state, LogData testResultsLine)
+        private bool AttemptMatch(ITestResultParserState state, LogData logData)
         {
             foreach (var regexActionPair in state.RegexsToMatch)
             {
-                var match = regexActionPair.Regex.Match(testResultsLine.Message);
+                var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
                 {
                     this.currentState = (MochaParserStates)regexActionPair.MatchAction(match, this.stateContext);
@@ -238,12 +238,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
 
         private ITestResultParserState ExpectingTestResults => this.expectingTestResults ??
-            (this.expectingTestResults = new MochaExpectingTestResults(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingTestResults = new MochaParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, telemetry));
 
         private ITestResultParserState ExpectingStackTraces => this.expectingStackTraces ??
-            (this.expectingStackTraces = new MochaExpectingStackTraces(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingStackTraces = new MochaParserStateExpectingStackTraces(AttemptPublishAndResetParser, this.logger, telemetry));
 
         private ITestResultParserState ExpectingTestRunSummary => this.expectingTestRunSummary ??
-            (this.expectingTestRunSummary = new MochaExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingTestRunSummary = new MochaParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, telemetry));
     }
 }

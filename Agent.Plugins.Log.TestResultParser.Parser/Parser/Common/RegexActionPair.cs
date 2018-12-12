@@ -3,7 +3,7 @@
     using System;
     using System.Text.RegularExpressions;
 
-    public delegate Enum MatchAction(Match match, TestResultParserStateContext stateContext);
+    public delegate Enum MatchAction(Match match, AbstractParserStateContext stateContext);
 
     public class RegexActionPair
     {

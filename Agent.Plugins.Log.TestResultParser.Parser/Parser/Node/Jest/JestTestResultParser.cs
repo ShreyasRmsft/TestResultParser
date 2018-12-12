@@ -50,9 +50,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         }
 
         /// <inheritdoc/>
-        public override void Parse(LogData testResultsLine)
+        public override void Parse(LogData logData)
         {
-            if (testResultsLine == null || testResultsLine.Message == null)
+            if (logData == null || logData.Line == null)
             {
                 logger.Error("JestTestResultParser : Parse : Input line was null.");
                 return;
@@ -60,7 +60,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             try
             {
-                this.stateContext.CurrentLineNumber = testResultsLine.LineNumber;
+                this.stateContext.CurrentLineNumber = logData.LineNumber;
 
                 // State model for the jest parser that defines the Regexs to match against in each state
                 // Each state re-orders the Regexs based on the frequency of expected matches
@@ -70,7 +70,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // transitions to the next one after encountering one
                     case JestParserStates.ExpectingTestRunStart:
 
-                        if (AttemptMatch(this.TestRunStart, testResultsLine))
+                        if (AttemptMatch(this.TestRunStart, logData))
                             return;
                         break;
 
@@ -78,7 +78,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // to the next one after a stack trace or summary is encountered
                     case JestParserStates.ExpectingTestResults:
 
-                        if (AttemptMatch(this.ExpectingTestResults, testResultsLine))
+                        if (AttemptMatch(this.ExpectingTestResults, logData))
                             return;
                         break;
 
@@ -86,7 +86,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // and transitions on encountering summary
                     case JestParserStates.ExpectingStackTraces:
 
-                        if (AttemptMatch(this.ExpectingStackTraces, testResultsLine))
+                        if (AttemptMatch(this.ExpectingStackTraces, logData))
                             return;
                         break;
 
@@ -96,7 +96,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // more than one file
                     case JestParserStates.ExpectingTestRunSummary:
 
-                        if (AttemptMatch(this.ExpectingTestRunSummary, testResultsLine))
+                        if (AttemptMatch(this.ExpectingTestRunSummary, logData))
                             return;
                         break;
                 }
@@ -107,7 +107,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 // come one after the other
                 if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
                 {
-                    this.logger.Info($"JestTestResultParser : Parse : Was expecting {this.stateContext.NextExpectedMatch} before line {testResultsLine.LineNumber}, but no matches occurred.");
+                    this.logger.Info($"JestTestResultParser : Parse : Was expecting {this.stateContext.NextExpectedMatch} before line {logData.LineNumber}, but no matches occurred.");
                     AttemptPublishAndResetParser();
                     return;
                 }
@@ -138,13 +138,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// Attempts to match the line with each regex specified by the current state
         /// </summary>
         /// <param name="state">Current state</param>
-        /// <param name="testResultsLine">Input line</param>
+        /// <param name="logData">Input line</param>
         /// <returns>true if a match occurs</returns>
-        private bool AttemptMatch(ITestResultParserState state, LogData testResultsLine)
+        private bool AttemptMatch(ITestResultParserState state, LogData logData)
         {
             foreach (var regexActionPair in state.RegexsToMatch)
             {
-                var match = regexActionPair.Regex.Match(testResultsLine.Message);
+                var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
                 {
                     this.currentState = (JestParserStates)regexActionPair.MatchAction(match, this.stateContext);
@@ -263,15 +263,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         }
 
         private ITestResultParserState TestRunStart => this.testRunStart ??
-            (this.testRunStart = new JestExpectingTestRunStart(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.testRunStart = new JestParserStateExpectingTestRunStart(AttemptPublishAndResetParser, this.logger, telemetry));
 
         private ITestResultParserState ExpectingTestResults => this.expectingTestResults ??
-            (this.expectingTestResults = new JestExpectingTestResults(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingTestResults = new JestParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, telemetry));
 
         private ITestResultParserState ExpectingStackTraces => this.expectingStackTraces ??
-            (this.expectingStackTraces = new JestExpectingStackTraces(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingStackTraces = new JestParserStateExpectingStackTraces(AttemptPublishAndResetParser, this.logger, telemetry));
 
         private ITestResultParserState ExpectingTestRunSummary => this.expectingTestRunSummary ??
-            (this.expectingTestRunSummary = new JestExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, telemetry));
+            (this.expectingTestRunSummary = new JestParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, telemetry));
     }
 }

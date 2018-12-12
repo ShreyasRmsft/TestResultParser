@@ -5,9 +5,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     /// <summary>
     /// Base class for all state context objects
     /// </summary>
-    public abstract class TestResultParserStateContext
+    public abstract class AbstractParserStateContext
     {
-        protected TestResultParserStateContext(TestRun testRun)
+        protected AbstractParserStateContext(TestRun testRun)
         {
             Initialize(testRun);
         }

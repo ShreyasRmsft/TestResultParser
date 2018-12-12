@@ -5,7 +5,7 @@ using Agent.Plugins.Log.TestResultParser.Contracts;
 
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
-    public class JestParserStateContext : TestResultParserStateContext
+    public class JestParserStateContext : AbstractParserStateContext
     {
         public JestParserStateContext(TestRun testRun) : base(testRun)
         {

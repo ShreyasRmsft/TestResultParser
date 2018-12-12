@@ -2,7 +2,7 @@
 {
     using System.Text.RegularExpressions;
 
-    public class PythonRegularExpressions
+    public class PythonRegexes
     {
         // Pattern : ^(.+) \.\.\. (.*)$
         // Example : test1 (testProject) ... ok

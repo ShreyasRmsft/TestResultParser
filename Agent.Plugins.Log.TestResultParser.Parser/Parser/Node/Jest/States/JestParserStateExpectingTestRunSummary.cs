@@ -5,12 +5,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     using System.Text.RegularExpressions;
     using Agent.Plugins.Log.TestResultParser.Contracts;
     
-    public class JestExpectingTestRunSummary : JestParserStateBase
+    public class JestParserStateExpectingTestRunSummary : JestParserStateBase
     {
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
         /// <inheritdoc />
-        public JestExpectingTestRunSummary(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+        public JestParserStateExpectingTestRunSummary(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
         {
             RegexsToMatch = new List<RegexActionPair>
@@ -21,7 +21,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             };
         }
 
-        private Enum TestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum TestsSummaryMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -42,7 +42,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return JestParserStates.ExpectingTestRunSummary;
         }
 
-        private Enum TestRunTimeMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum TestRunTimeMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -75,7 +75,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return JestParserStates.ExpectingTestRunStart;
         }
 
-        private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum TestRunStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 

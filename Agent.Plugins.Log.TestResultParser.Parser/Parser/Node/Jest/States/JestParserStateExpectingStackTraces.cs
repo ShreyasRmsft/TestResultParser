@@ -5,13 +5,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     using System.Text.RegularExpressions;
     using Agent.Plugins.Log.TestResultParser.Contracts;
 
-    public class JestExpectingStackTraces : JestParserStateBase
+    public class JestParserStateExpectingStackTraces : JestParserStateBase
     {
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
 
         /// <inheritdoc />
-        public JestExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+        public JestParserStateExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
         {
             RegexsToMatch = new List<RegexActionPair>
@@ -23,7 +23,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             };
         }
 
-        private Enum StackTraceStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum StackTraceStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -51,7 +51,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return JestParserStates.ExpectingStackTraces;
         }
 
-        private Enum SummaryStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum SummaryStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -64,7 +64,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return JestParserStates.ExpectingTestRunSummary;
         }
 
-        private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum TestRunStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -81,7 +81,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return JestParserStates.ExpectingTestResults;
         }
 
-        private Enum FailedTestsSummaryIndicatorMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum FailedTestsSummaryIndicatorMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 

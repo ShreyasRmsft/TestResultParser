@@ -8,12 +8,12 @@ using Agent.Plugins.Log.TestResultParser.Contracts;
 
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
-    public class JestExpectingTestRunStart : JestParserStateBase
+    public class JestParserStateExpectingTestRunStart : JestParserStateBase
     {
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
         /// <inheritdoc />
-        public JestExpectingTestRunStart(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+        public JestParserStateExpectingTestRunStart(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
         {
             RegexsToMatch = new List<RegexActionPair>
@@ -22,7 +22,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             };
         }
 
-        private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum TestRunStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 

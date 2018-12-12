@@ -5,12 +5,12 @@
     using System.Text.RegularExpressions;
     using Agent.Plugins.Log.TestResultParser.Contracts;
 
-    public class JestExpectingTestResults : JestParserStateBase
+    public class JestParserStateExpectingTestResults : JestParserStateBase
     {
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
         /// <inheritdoc />
-        public JestExpectingTestResults(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+        public JestParserStateExpectingTestResults(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
         {
             RegexsToMatch = new List<RegexActionPair>
@@ -24,7 +24,7 @@
             };
         }
 
-        private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum PassedTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -37,7 +37,7 @@
             return JestParserStates.ExpectingTestResults;
         }
 
-        private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum FailedTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -50,7 +50,7 @@
             return JestParserStates.ExpectingTestResults;
         }
 
-        private Enum StackTraceStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum StackTraceStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -70,7 +70,7 @@
             return JestParserStates.ExpectingStackTraces;
         }
 
-        private Enum SummaryStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum SummaryStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
@@ -83,13 +83,13 @@
             return JestParserStates.ExpectingTestRunSummary;
         }
 
-        private Enum TestRunStartMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum TestRunStartMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
             return JestParserStates.ExpectingTestResults;
         }
 
-        private Enum FailedTestsSummaryIndicatorMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum FailedTestsSummaryIndicatorMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jestStateContext = stateContext as JestParserStateContext;
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;

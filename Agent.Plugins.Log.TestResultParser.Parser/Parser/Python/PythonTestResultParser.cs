@@ -40,7 +40,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public override void Parse(LogData logData)
         {
             // Validate data input
-            if (!this.IsValidInput(logData.Message) || string.IsNullOrWhiteSpace(logData.Message)) return;
+            if (!this.IsValidInput(logData.Line) || string.IsNullOrWhiteSpace(logData.Line)) return;
 
             try
             {
@@ -105,7 +105,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
             catch (Exception ex)
             {
-                logger.Error($"PythonTestResultParser.Parse : Unable to parse the log line {logData.Message} with exception {ex.ToString()}");
+                logger.Error($"PythonTestResultParser.Parse : Unable to parse the log line {logData.Line} with exception {ex.ToString()}");
                 telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.ParseException, ex.Message);
 
                 Reset();
@@ -135,7 +135,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         private bool TryParseTestResult(LogData logData)
         {
-            var resultMatch = PythonRegularExpressions.TestResult.Match(logData.Message);
+            var resultMatch = PythonRegexes.TestResult.Match(logData.Line);
 
             if (!resultMatch.Success)
             {
@@ -153,7 +153,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             // Determine the outcome of the Test result
             var testOutcomeIdentifier = resultMatch.Groups[RegexCaptureGroups.TestOutcome].Value.Trim();
-            var passedResultMatch = PythonRegularExpressions.PassedOutcome.Match(testOutcomeIdentifier);
+            var passedResultMatch = PythonRegexes.PassedOutcome.Match(testOutcomeIdentifier);
             if (passedResultMatch.Success)
             {
                 result.Outcome = TestOutcome.Passed;
@@ -161,7 +161,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return true;
             }
 
-            var skippedResultMatch = PythonRegularExpressions.SkippedOutcome.Match(testOutcomeIdentifier);
+            var skippedResultMatch = PythonRegexes.SkippedOutcome.Match(testOutcomeIdentifier);
             if (skippedResultMatch.Success)
             {
                 result.Outcome = TestOutcome.NotExecuted;
@@ -176,7 +176,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         private bool TryParseForPartialResult(LogData logData)
         {
-            var partialResultMatch = PythonRegularExpressions.PassedOutcome.Match(logData.Message);
+            var partialResultMatch = PythonRegexes.PassedOutcome.Match(logData.Line);
             if (partialResultMatch.Success)
             {
                 this.partialTestResult.Outcome = TestOutcome.Passed;
@@ -189,7 +189,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private bool TryParseForFailedResult(LogData logData)
         {
             // Parse
-            var failedResultMatch = PythonRegularExpressions.FailedResult.Match(logData.Message);
+            var failedResultMatch = PythonRegexes.FailedResult.Match(logData.Line);
             if (!failedResultMatch.Success) { return false; }
 
             // Set result name.
@@ -207,7 +207,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (string.IsNullOrWhiteSpace(testResultNameIdentifier))
             {
-                logger.Verbose($"Test result name is null or whitespace in logData: {logData.Message}");
+                logger.Verbose($"Test result name is null or whitespace in logData: {logData.Line}");
                 return null;
             }
 
@@ -216,7 +216,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         private bool TryParseSummaryTestAndTime(LogData logData)
         {
-            var countAndTimeSummaryMatch = PythonRegularExpressions.TestCountAndTimeSummary.Match(logData.Message);
+            var countAndTimeSummaryMatch = PythonRegexes.TestCountAndTimeSummary.Match(logData.Line);
             if (countAndTimeSummaryMatch.Success)
             {
                 var testcount = int.Parse(countAndTimeSummaryMatch.Groups[RegexCaptureGroups.TotalTests].Value);
@@ -245,25 +245,25 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return false;
             }
 
-            var resultSummaryMatch = PythonRegularExpressions.TestOutcomeSummary.Match(logData.Message);
+            var resultSummaryMatch = PythonRegexes.TestOutcomeSummary.Match(logData.Line);
             if (resultSummaryMatch.Success)
             {
                 var resultIdentifer = resultSummaryMatch.Groups[RegexCaptureGroups.TestOutcome].Value;
 
-                var failureCountPatternMatch = PythonRegularExpressions.SummaryFailure.Match(resultIdentifer);
+                var failureCountPatternMatch = PythonRegexes.SummaryFailure.Match(resultIdentifer);
                 if (failureCountPatternMatch.Success)
                 {
                     currentTestRun.TestRunSummary.TotalFailed = int.Parse(failureCountPatternMatch.Groups[RegexCaptureGroups.FailedTests].Value);
                 }
 
                 // TODO: We should have a separate bucket for errors
-                var errorCountPatternMatch = PythonRegularExpressions.SummaryErrors.Match(resultIdentifer);
+                var errorCountPatternMatch = PythonRegexes.SummaryErrors.Match(resultIdentifer);
                 if (errorCountPatternMatch.Success)
                 {
                     currentTestRun.TestRunSummary.TotalFailed += int.Parse(errorCountPatternMatch.Groups[RegexCaptureGroups.Errors].Value);
                 }
 
-                var skippedCountPatternMatch = PythonRegularExpressions.SummarySkipped.Match(resultIdentifer);
+                var skippedCountPatternMatch = PythonRegexes.SummarySkipped.Match(resultIdentifer);
                 if (skippedCountPatternMatch.Success)
                 {
                     currentTestRun.TestRunSummary.TotalSkipped = int.Parse(skippedCountPatternMatch.Groups[RegexCaptureGroups.SkippedTests].Value);

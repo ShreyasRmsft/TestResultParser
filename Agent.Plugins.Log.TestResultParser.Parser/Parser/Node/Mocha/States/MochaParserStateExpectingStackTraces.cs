@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Agent.Plugins.Log.TestResultParser.Contracts;
-using Agent.Plugins.Log.TestResultParser.Parser;
 
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
@@ -10,13 +9,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
 
-    public class MochaExpectingStackTraces : MochaParserStateBase
+    public class MochaParserStateExpectingStackTraces : MochaParserStateBase
     {
         /// <inheritdoc />
         public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
 
         /// <inheritdoc />
-        public MochaExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector) 
+        public MochaParserStateExpectingStackTraces(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector) 
             : base(parserResetAndAttempPublish, logger, telemetryDataCollector)
         {
             RegexsToMatch = new List<RegexActionPair>
@@ -28,7 +27,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             };
         }
 
-        private Enum PassedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum PassedTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
 
@@ -53,7 +52,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return MochaParserStates.ExpectingTestResults;
         }
 
-        private Enum FailedTestCaseMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum FailedTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
 
@@ -112,7 +111,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return MochaParserStates.ExpectingStackTraces;
         }
 
-        private Enum PendingTestCaseMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum PendingTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
 
@@ -138,7 +137,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             return MochaParserStates.ExpectingTestResults;
         }
 
-        private Enum PassedTestsSummaryMatched(Match match, TestResultParserStateContext stateContext)
+        private Enum PassedTestsSummaryMatched(Match match, AbstractParserStateContext stateContext)
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
             this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");

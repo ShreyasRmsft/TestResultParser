@@ -18,7 +18,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
         public void RegexPatternTest(string regexPattern)
         {
             var postiveTestCases = File.ReadAllLines(Path.Combine("PythonTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
-            var regex = typeof(PythonRegularExpressions).GetProperty(regexPattern, BindingFlags.Public | BindingFlags.Static).GetValue(0);
+            var regex = typeof(PythonRegexes).GetProperty(regexPattern, BindingFlags.Public | BindingFlags.Static).GetValue(0);
 
             for (int i = 0; i < postiveTestCases.Length; i++)
             {
@@ -35,7 +35,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
 
         public static IEnumerable<object[]> GetRegexPatterns()
         {
-            foreach (var property in typeof(PythonRegularExpressions).GetProperties(BindingFlags.Public | BindingFlags.Static))
+            foreach (var property in typeof(PythonRegexes).GetProperties(BindingFlags.Public | BindingFlags.Static))
             {
                 //if(property.Name.Contains("FailedTestsSummary"))
                 yield return new object[] { property.Name };

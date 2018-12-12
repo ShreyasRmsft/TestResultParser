@@ -5,7 +5,7 @@ using Agent.Plugins.Log.TestResultParser.Contracts;
 
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
-    public class MochaParserStateContext : TestResultParserStateContext
+    public class MochaParserStateContext : AbstractParserStateContext
     {
         public MochaParserStateContext(TestRun testRun) : base(testRun)
         {
