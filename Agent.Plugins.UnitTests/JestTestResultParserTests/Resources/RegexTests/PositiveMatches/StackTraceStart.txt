@@ -1,0 +1,10 @@
+﻿  ΓùÅ some > test (5ms)
+  ΓùÅ some test  
+  ΓùÅ some test with sp$ci1 cha*s
+  ΓùÅ some test (with) sp$ci1 cha*s 
+  ΓùÅ some test (with) sp$ci1 cha*s (5ms)
+  ● some test (5ms)
+  ● some > test  
+  ● some test with sp$ci1 cha*s
+  ● some test (with) sp$ci1 cha*s 
+  ● some test (with) sp$ci1 cha*s (5ms)

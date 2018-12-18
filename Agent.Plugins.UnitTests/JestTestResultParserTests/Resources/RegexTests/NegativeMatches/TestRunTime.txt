@@ -1,0 +1,27 @@
+﻿ Time: 1ms
+  Time: 10ms
+    Time: 1000ms
+   Time: 1000s
+Time:1000m
+Time:1000h
+Time : 1.1ms
+Time :0.1ms
+Time:    0.00a1ms
+Time:    a124.001ms
+Time:    124a.5001ms
+Time:    100ss
+Time:  102350
+Time:   s
+Time:   123sm
+Time:   123.s
+Time:   .123ms
+Time:   1..123ms
+
+Time:   12.2.123ms
+Time:   1as
+Time:   s
+Time:        24.491s, estimated30s
+Time:        24.491s,estimated 30s
+Time:        24.491s estimated 30s
+Time:        24.491ss
+Time:        24.491s something else

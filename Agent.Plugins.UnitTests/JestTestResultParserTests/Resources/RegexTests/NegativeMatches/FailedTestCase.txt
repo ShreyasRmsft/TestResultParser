@@ -1,0 +1,11 @@
+﻿✕ some test (5ms)
+   ✕ some test (5ms)
+ ✕ some test  
+   ✕ some test with sp$ci1 cha*s
+✕some test (with) sp$ci1 cha*s 
+  ✕some test (with) sp$ci1 cha*s (5ms)
+    ✓ some test (5ms)
+    some test (5ms)
+
+the above line has been intentionally left blank
+:p :) :O

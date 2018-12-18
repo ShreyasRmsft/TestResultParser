@@ -8,7 +8,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     // TODO: Check if logs come prepended with the time stamp and if so have a definitive regex to ignore them to tighten the patterns
     // TODO: Check if merging all or most of the Regexs into a single one gives a perf boost
     // TODO: Verify if tabs (/t) will come from the agent logs
-    public class MochaRegexs
+    public class MochaRegexes
     {
         /// <summary>
         /// Matches lines with the following regex:

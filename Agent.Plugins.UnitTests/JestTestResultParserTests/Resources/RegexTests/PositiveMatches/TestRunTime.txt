@@ -1,0 +1,17 @@
+﻿Time: 1ms
+Time: 10ms
+Time: 1000ms
+Time: 1000s
+Time: 1000m
+Time: 1000h
+Time: 1.1ms
+Time:    0.1ms
+Time:    0.001ms
+Time:    124.001ms
+Time:    124.5001ms
+Time:    100.5001s
+Time:  102350s
+Time:   132500m
+Time:        24.491s, estimated 30s
+Time:        24.491s, estimated 30ms
+Time:        24.491s, estimated 30.4s

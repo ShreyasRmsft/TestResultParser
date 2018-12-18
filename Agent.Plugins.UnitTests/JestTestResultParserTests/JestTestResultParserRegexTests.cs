@@ -8,23 +8,23 @@ using System.Text.RegularExpressions;
 using Agent.Plugins.Log.TestResultParser.Parser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
+namespace Agent.Plugins.UnitTests.JestTestResultParserTests
 {
     [TestClass]
-    public class MochaTestResultParserRegexTests
+    public class JestTestResultParserRegexTests
     {
         [DataTestMethod]
         [DynamicData(nameof(GetRegexPatterns), DynamicDataSourceType.Method)]
         public void RegexPatternTest(string regexPattern)
         {
-            var postiveTestCases = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
-            var regex = typeof(MochaRegexes).GetProperty(regexPattern).GetValue(null);
+            var postiveTestCases = File.ReadAllLines(Path.Combine("JestTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
+            var regex = typeof(JestRegexs).GetProperty(regexPattern).GetValue(null);
             foreach (var testCase in postiveTestCases)
             {
                 Assert.IsTrue(((Regex)regex).Match(testCase).Success, $"Should have matched:{testCase}");
             }
 
-            var negativeTestCases = File.ReadAllLines(Path.Combine("MochaTestResultParserTests", "Resources", "RegexTests", "NegativeMatches", $"{regexPattern}.txt"));
+            var negativeTestCases = File.ReadAllLines(Path.Combine("JestTestResultParserTests", "Resources", "RegexTests", "NegativeMatches", $"{regexPattern}.txt"));
 
             foreach (var testCase in negativeTestCases)
             {
@@ -34,9 +34,10 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
         public static IEnumerable<object[]> GetRegexPatterns()
         {
-            foreach (var property in typeof(MochaRegexes).GetProperties(BindingFlags.Public | BindingFlags.Static))
+            foreach (var property in typeof(JestRegexs).GetProperties(BindingFlags.Public | BindingFlags.Static))
             {
-                //if(property.Name.Contains("FailedTestsSummary"))
+                // Uncomment the below line to debug a particular set of test/s
+                // if(property.Name.Contains("FailedTestsSummary"))
                 yield return new object[] { property.Name };
             }
         }

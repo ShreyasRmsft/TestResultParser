@@ -1,0 +1,16 @@
+﻿PASS somerandom file.js
+PASS somerandom file.js
+PASS somepath\\somerandom file.js
+PASS somepath\\someotherpath\\somerandom file.js
+ PASS  somerandom file.js
+ PASS  somerandom file.js
+ PASS  somepath\\somerandom file.js
+ PASS  somepath\\someotherpath\\somerandom file.js
+FAIL somerandom file.js
+FAIL somerandom file.js
+FAIL somepath\\somerandom file.js
+FAIL somepath\\someotherpath\\somerandom file.js
+ FAIL  somerandom file.js
+ FAIL  somerandom file.js
+ FAIL  somepath\\somerandom file.js
+ FAIL  somepath\\someotherpath\\somerandom file.js
