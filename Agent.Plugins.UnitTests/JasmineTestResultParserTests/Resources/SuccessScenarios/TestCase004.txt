@@ -1,0 +1,330 @@
+﻿PS E:\CodeBase\jasmine> jasmine
+Randomized with seed 45209
+Started
+................................................****..........................................*....................................................................................................................................................................................................FFFF.........................................................................................................................................................................................................................................FFFFFFFFF.....................................................................................................................................................................................................................................................................................................................................................................................................
+
+Failures:
+1) toHaveClass passes for a DOM element that has the expected class
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:13:19)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.createElementWithClassName (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:4:25)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:35:17)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+
+2) toHaveClass fails for a DOM element that lacks the expected class
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:13:19)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.createElementWithClassName (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:4:25)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:28:37)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+
+3) toHaveClass throws an exception when actual is not a DOM element
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:13:19)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createTextNode' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:60:29)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+4) toHaveClass fails for a DOM element that only has other classes
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:13:19)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.createElementWithClassName (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:4:25)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toHaveClassSpec.js:44:17)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+
+5) toEqual DOM nodes reports mismatches between a DOM node and a bare Object
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:721:33)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+6) toEqual DOM nodes reports mismatches between SVG nodes
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElementNS' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:628:28)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+7) toEqual DOM nodes reports whole DOM node when attribute contains > character
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:647:28)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+8) toEqual DOM nodes reports no content when DOM node has multiple empty text nodes
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:662:28)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+9) toEqual DOM nodes reports mismatches between DOM nodes with different tags
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:605:33)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+10) toEqual DOM nodes reports content when DOM node has non empty text node
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:679:28)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+
+11) toEqual DOM nodes reports empty DOM attributes
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:693:28)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+12) toEqual DOM nodes reports 0 attr value as non empty DOM attribute
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:707:28)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+13) toEqual DOM nodes reports mismatches between DOM nodes with different content
+  Message:
+    Error: Cannot find module 'jsdom'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'jsdom'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:581:21)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'createElement' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine\spec\core\matchers\toEqualSpec.js:613:28)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+Suite error: npm package
+  Message:
+    Error: Cannot find module 'temp'
+  Stack:
+    error properties: Object({ code: 'MODULE_NOT_FOUND' })
+    Error: Cannot find module 'temp'
+        at Function.Module._resolveFilename (internal/modules/cjs/loader.js:580:15)
+        at Function.Module._load (internal/modules/cjs/loader.js:506:25)
+        at Module.require (internal/modules/cjs/loader.js:636:17)
+        at require (internal/modules/cjs/helpers.js:20:18)
+        at Suite.<anonymous> (E:\CodeBase\jasmine\spec\npmPackage\npmPackageSpec.js:3:14)
+        at <Jasmine>
+        at Object.<anonymous> (E:\CodeBase\jasmine\spec\npmPackage\npmPackageSpec.js:1:63)
+        at Module._compile (internal/modules/cjs/loader.js:688:30)
+Pending:
+
+1) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+  No reason given
+
+
+2) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+  No reason given
+
+
+3) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+  No reason given
+
+
+4) JsApiReporter (integration specs) results should return nested suites as children of their parents
+  No reason given
+
+
+5) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+  should actually work, but no custom matchers for async yet
+
+926 specs, 14 failures, 5 pending specs
+Finished in 2.321 seconds
+Randomized with seed 45209 (jasmine --random=true --seed=45209)

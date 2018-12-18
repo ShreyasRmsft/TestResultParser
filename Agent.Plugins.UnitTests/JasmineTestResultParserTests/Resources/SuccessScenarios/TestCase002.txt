@@ -1,0 +1,12 @@
+﻿Randomized with seed 50903
+Started
+*......
+
+Pending:
+
+1) Tests for my math functions Suite 2 For Null array expect to throw error
+  Temporarily disabled with xit
+
+7 specs, 0 failures, 1 pending spec
+Finished in 0.019 seconds
+Randomized with seed 50903 (jasmine --random=true --seed=50903)

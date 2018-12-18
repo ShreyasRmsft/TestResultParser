@@ -1,0 +1,41 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Agent.Plugins.Log.TestResultParser.Parser;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
+{
+    [TestClass]
+    public class JasmineTestResultParserTests : TestResultParserTestBase
+    {
+        [TestInitialize]
+        public void TestInit()
+        {
+            this.parser = new JasmineTestResultParser(this.testRunManagerMock.Object, this.diagnosticDataCollector.Object, this.telemetryDataCollector.Object);
+        }
+
+        #region DataDrivenTests
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
+        public void SuccessScenariosWithBasicAssertions(string testCase)
+        {
+            testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "SuccessScenarios", testCase);
+            TestSuccessScenariosWithBasicAssertions(testCase, true);
+        }
+
+        #endregion
+
+        #region Data Drivers
+
+        public static IEnumerable<object[]> GetSuccessScenariosTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "SuccessScenarios"));
+        }
+
+        #endregion
+    }
+}
