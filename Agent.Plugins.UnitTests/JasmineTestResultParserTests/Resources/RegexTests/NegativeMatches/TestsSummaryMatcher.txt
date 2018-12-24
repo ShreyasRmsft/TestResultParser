@@ -1,0 +1,8 @@
+﻿2018-12-18T07:44:55.8092725Z 932 specs,   0 failures, 5 pending specs
+7 specs,  0 failures, 1 pending spec
+112 specs, 5  failures
+ 11 2a specs, 5 failures
+1 spec,  0 failures
+1  spec,  0 failures
+2018-12-18T07:44:55.8092725Z 932 specs, 0 failures, 5 pending specs
+   112 specs, 5 failures

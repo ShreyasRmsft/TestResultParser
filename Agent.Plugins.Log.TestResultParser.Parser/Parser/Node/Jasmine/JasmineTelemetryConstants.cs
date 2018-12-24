@@ -30,5 +30,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public const string TotalTestsZero = "TotalTestsZero";
 
         public const string TotalTestRunTimeZero = "TotalTestRunTimeZero";
+
+        public const string Exceptions = "Exceptions";
     }
 }

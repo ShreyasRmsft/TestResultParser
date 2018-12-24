@@ -1,0 +1,1 @@
+﻿Suite error: npm package

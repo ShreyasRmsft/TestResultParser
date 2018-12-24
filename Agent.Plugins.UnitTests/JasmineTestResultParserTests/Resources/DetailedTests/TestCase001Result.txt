@@ -1,0 +1,11 @@
+﻿Passed 866
+
+Failed 2
+Spies createSpyObj should allow you to omit the baseName
+Spies createSpyObj should create an object with a bunch of spy methods when you call jasmine.createSpyObj()
+
+Skipped 4
+JsApiReporter (integration specs) results should return nested suites as children of their parents
+JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id

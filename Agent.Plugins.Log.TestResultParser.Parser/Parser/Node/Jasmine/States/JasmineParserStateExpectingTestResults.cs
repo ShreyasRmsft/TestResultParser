@@ -35,7 +35,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            var passesTestsToExpect = match.ToString();
             return JasmineParserStates.ExpectingTestResults;
         }
 
@@ -47,9 +46,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             var testStatus = new List<char>(match.ToString());
-            jasmineStateContext.passedTestsToExpect = testStatus.FindAll((char x) => { return x == '.'; }).Count;
-            jasmineStateContext.failedTestsToExpect = testStatus.FindAll((char x) => { return x == 'F'; }).Count;
-            jasmineStateContext.skippedTestsToExpect = testStatus.FindAll((char x) => { return x == '*'; }).Count;
+            jasmineStateContext.PassedTestsToExpect = testStatus.FindAll((char x) => { return x == '.'; }).Count;
+            jasmineStateContext.FailedTestsToExpect = testStatus.FindAll((char x) => { return x == 'F'; }).Count;
+            jasmineStateContext.SkippedTestsToExpect = testStatus.FindAll((char x) => { return x == '*'; }).Count;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -61,7 +60,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
 
             // If it is a failed testcase , pendingStarterMatched is false
-            if (!jasmineStateContext.pendingStarterMatched)
+            if (!jasmineStateContext.PendingStarterMatched)
             {
                 if (testCaseNumber != jasmineStateContext.LastFailedTestCaseNumber + 1)
                 {
@@ -127,7 +126,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            jasmineStateContext.pendingStarterMatched = false;
+            jasmineStateContext.PendingStarterMatched = false;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -140,9 +139,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            // We set this as true so that any failedOrpending regex match after pending starter matched will be reported as oending tests
+            // We set this as true so that any failedOrpending regex match after pending starter matched will be reported as pending tests
             // as pending and failed have the same regex
-            jasmineStateContext.pendingStarterMatched = true;
+            jasmineStateContext.PendingStarterMatched = true;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -157,7 +156,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Suite error is counted as failed and summary includes this while reporting
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jasmineStateContext.TestRun.FailedTests.Add(testResult);
-            //jasmineStateContext.failedTestsToExpect++;
+            jasmineStateContext.SuiteErrors++;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -174,16 +173,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out failedTests);
             int.TryParse(match.Groups[RegexCaptureGroups.SkippedTests].Value, out skippedTests);
 
-            // Refer to testCase004. Here suite error is counted as a failure.
-            // So total passed tests will be counted as 926-14-5 = 907
-            // Actual total passed is 926-13-5 = 908
-            // jasmineStateContext.failedTestsToExpect is reporting correct. That is 13 failed tests.
-            // What to publish in this case.
+            // Since suite errors are added as failures in the summary, we need to remove this from passedTests
+            // calculation.
+            var passedTests = totalTests - skippedTests - (failedTests - jasmineStateContext.SuiteErrors);
 
             jasmineStateContext.TestRun.TestRunSummary.TotalTests = totalTests;
             jasmineStateContext.TestRun.TestRunSummary.TotalFailed = failedTests;
             jasmineStateContext.TestRun.TestRunSummary.TotalSkipped = skippedTests;
-            jasmineStateContext.TestRun.TestRunSummary.TotalPassed = totalTests - failedTests - skippedTests;
+            jasmineStateContext.TestRun.TestRunSummary.TotalPassed = passedTests;
 
             return JasmineParserStates.ExpectingTestRunSummary;
         }

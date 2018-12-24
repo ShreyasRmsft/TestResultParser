@@ -27,6 +27,23 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
             TestSuccessScenariosWithBasicAssertions(testCase, true);
         }
 
+        [DataTestMethod]
+        [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
+        public void PartialSuccessScenariosWithBasicAssertions(string testCase)
+        {
+            testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "PartialSuccess", testCase);
+            TestPartialSuccessScenariosWithBasicAssertions(testCase);
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
+        public void DetailedAssertions(string testCase)
+        {
+            testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "DetailedTests", testCase);
+            TestWithDetailedAssertionsWithoutPassedTests(testCase);
+        }
+
+
         #endregion
 
         #region Data Drivers
@@ -34,6 +51,15 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         public static IEnumerable<object[]> GetSuccessScenariosTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "SuccessScenarios"));
+        }
+
+        public static IEnumerable<object[]> GetPartialSuccessTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "PartialSuccess"));
+        }
+        public static IEnumerable<object[]> GetDetailedTestsTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "DetailedTests"));
         }
 
         #endregion

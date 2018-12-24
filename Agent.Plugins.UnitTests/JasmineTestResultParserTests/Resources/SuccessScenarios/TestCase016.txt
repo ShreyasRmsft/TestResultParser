@@ -1,0 +1,65 @@
+﻿PS E:\CodeBase\jasmine-npm> jasmine
+Randomized with seed 87246
+Started
+..........................................................................................F.............F.F.FF..
+
+Failures:
+1) Jasmine #execute can run only specified files
+  Message:
+    Expected $[0] = 'E:/CodeBase/jasmine-npm/spec/fixtures/sample_project/spec/fixture_spec.js' to equal '/fixtures/sample_project/spec/fixture_spec.js'.
+    Expected $[1] = 'E:/CodeBase/jasmine-npm/spec/fixtures/sample_project/spec/other_fixture_spec.js' to equal '/fixtures/sample_project/spec/other_fixture_spec.js'.
+  Stack:
+    Error: Expected $[0] = 'E:/CodeBase/jasmine-npm/spec/fixtures/sample_project/spec/fixture_spec.js' to equal '/fixtures/sample_project/spec/fixture_spec.js'.
+    Expected $[1] = 'E:/CodeBase/jasmine-npm/spec/fixtures/sample_project/spec/other_fixture_spec.js' to equal '/fixtures/sample_project/spec/other_fixture_spec.js'.
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine-npm\spec\jasmine_spec.js:395:29)
+        at <Jasmine>
+
+2) Jasmine #configureDefaultReporter creates a reporter with a default option if an option is not specified
+  Message:
+    Expected spy setOptions to have been called with [ Object({ print: <jasmine.any(Function)>, showColors: true, timer: <jasmine.any(Object)>, jasmineCorePath: 'fake/jasmine/path/jasmine.js' }) ] but actual calls were [ Object({ timer: <anonymous>({  }), print: Function, showColors: true, jasmineCorePath: 'fake\jasmine\path\jasmine.js' }) ].
+  Stack:
+    Error: Expected spy setOptions to have been called with [ Object({ print: <jasmine.any(Function)>, showColors: true, timer: <jasmine.any(Object)>, jasmineCorePath: 'fake/jasmine/path/jasmine.js' }) ] but actual calls were [ Object({ timer: <anonymous>({  }), print: Function, showColors: true, jasmineCorePath: 'fake\jasmine\path\jasmine.js' }) ].
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine-npm\spec\jasmine_spec.js:144:52)
+        at <Jasmine>
+
+3) Jasmine file handler add spec files with absolute glob pattern
+  Message:
+    Expected $[0] = 'E:/CodeBase/jasmine-npm/spec/command_spec.js' to equal 'E:\CodeBase\jasmine-npm\spec\command_spec.js'.
+  Stack:
+    Error: Expected $[0] = 'E:/CodeBase/jasmine-npm/spec/command_spec.js' to equal 'E:\CodeBase\jasmine-npm\spec\command_spec.js'.
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine-npm\spec\jasmine_spec.js:55:42)
+        at <Jasmine>
+
+4) Jasmine file handler add helper files with glob pattern to existings files
+  Message:
+    Expected $.length = 4 to equal 3.
+    Expected $[2] = 'command_spec.js' to equal 'jasmine_spec.js'.
+    Unexpected $[3] = 'jasmine_spec.js' in array.
+  Stack:
+    Error: Expected $.length = 4 to equal 3.
+    Expected $[2] = 'command_spec.js' to equal 'jasmine_spec.js'.
+    Unexpected $[3] = 'jasmine_spec.js' in array.
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine-npm\spec\jasmine_spec.js:81:58)
+        at <Jasmine>
+
+4) Jasmine file handler add helper files with glob pattern to existings files2
+5) Jasmine file handler add spec files with glob pattern to existings files
+  Message:
+    Expected $.length = 4 to equal 3.
+    Expected $[2] = 'command_spec.js' to equal 'jasmine_spec.js'.
+    Unexpected $[3] = 'jasmine_spec.js' in array.
+  Stack:
+    Error: Expected $.length = 4 to equal 3.
+    Expected $[2] = 'command_spec.js' to equal 'jasmine_spec.js'.
+    Unexpected $[3] = 'jasmine_spec.js' in array.
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\jasmine-npm\spec\jasmine_spec.js:74:56)
+        at <Jasmine>
+
+112 specs, 5 failures
+Finished in 0.514 seconds
+Randomized with seed 87246 (jasmine --random=true --seed=87246)

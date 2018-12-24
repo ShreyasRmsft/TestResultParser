@@ -1,0 +1,259 @@
+﻿https://travis-ci.org/pivotal-cf/pui-cursor/builds/60991980
+Using worker: worker-linux-85ee80ed-1.bb.travis-ci.org:travis-linux-8
+system_info
+Build system information
+Build language: node_js
+Build image provisioning date and time
+Wed Feb  4 18:22:50 UTC 2015
+Operating System Details
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04 LTS
+Release:	12.04
+Codename:	precise
+Linux Version
+2.6.32-042stab090.5
+Cookbooks Version
+23bb455 https://github.com/travis-ci/travis-cookbooks/tree/23bb455
+GCC version
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+LLVM version
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+Pre-installed Ruby versions
+ruby-1.9.3-p551
+Pre-installed Node.js versions
+v0.10.36
+Pre-installed Go versions
+1.4.1
+Redis version
+redis-server 2.8.19
+riak version
+2.0.2
+MongoDB version
+MongoDB 2.4.12
+CouchDB version
+couchdb 1.6.1
+Neo4j version
+1.9.4
+Cassandra version
+2.0.9
+RabbitMQ Version
+3.4.3
+ElasticSearch version
+1.4.0
+Installed Sphinx versions
+2.0.10
+2.1.9
+2.2.6
+Default Sphinx version
+2.2.6
+Installed Firefox version
+firefox 31.0esr
+PhantomJS version
+1.9.8
+ant -version
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+mvn -version
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "2.6.32-042stab090.5", arch: "amd64", family: "unix"
+git.checkout
+0.08s$ git clone --depth=50 git://github.com/pivotal-cf/pui-cursor.git pivotal-cf/pui-cursor
+Cloning into 'pivotal-cf/pui-cursor'...
+remote: Counting objects: 97, done.
+remote: Total 97 (delta 0), reused 0 (delta 0), pack-reused 97
+Receiving objects: 100% (97/97), 14.41 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (38/38), done.
+Checking connectivity... done.
+$ cd pivotal-cf/pui-cursor
+0.12s$ git fetch origin +refs/pull/1/merge:
+remote: Counting objects: 8, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (8/8), done.
+From git://github.com/pivotal-cf/pui-cursor
+ * branch            refs/pull/1/merge -> FETCH_HEAD
+$ git checkout -qf FETCH_HEAD
+Setting environment variables from .travis.yml
+$ export DEVELOPMENT=true
+1.38s$ nvm install 0.12
+######################################################################## 100.0%
+Now using node v0.12.2
+$ node --version
+v0.12.2
+$ npm --version
+2.7.4
+$ nvm --version
+0.23.3
+before_install.1
+0.77s$ wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+--2015-05-02 22:59:11--  https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.13.128
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.13.128|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 17950739 (17M) [application/x-tar]
+Saving to: `phantomjs-2.0.0-ubuntu-12.04.tar.bz2'
+100%[======================================>] 17,950,739  28.7M/s   in 0.6s    
+2015-05-02 22:59:11 (28.7 MB/s) - `phantomjs-2.0.0-ubuntu-12.04.tar.bz2' saved [17950739/17950739]
+before_install.2
+3.31s$ tar xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+before_install.3
+0.02s$ sudo rm -rf /usr/local/phantomjs/bin/phantomjs
+before_install.4
+0.01s$ sudo mv phantomjs /usr/local/phantomjs/bin/phantomjs
+install
+37.41s$ npm install 
+npm WARN peerDependencies The peer dependency webpack@* included from babel-loader will no
+npm WARN peerDependencies longer be automatically installed to fulfill the peerDependency 
+npm WARN peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+npm WARN optional dep failed, continuing fsevents@0.3.5
+npm WARN optional dep failed, continuing fsevents@0.3.5
+npm WARN optional dep failed, continuing fsevents@0.3.5
+require-dir@0.3.0 node_modules/require-dir
+run-sequence@1.1.0 node_modules/run-sequence
+└── chalk@1.0.0 (escape-string-regexp@1.0.3, ansi-styles@2.0.1, supports-color@1.3.1, strip-ansi@2.0.1, has-ansi@1.0.3)
+merge-stream@0.1.7 node_modules/merge-stream
+└── through2@0.6.5 (xtend@4.0.0, readable-stream@1.0.33)
+gulp-load-plugins@0.10.0 node_modules/gulp-load-plugins
+├── multimatch@2.0.0 (array-differ@1.0.0, array-union@1.0.1, minimatch@2.0.7)
+└── findup-sync@0.2.1 (glob@4.3.5)
+gulp-plumber@1.0.0 node_modules/gulp-plumber
+├── through2@0.6.5 (xtend@4.0.0, readable-stream@1.0.33)
+└── gulp-util@3.0.4 (array-differ@1.0.0, object-assign@2.0.0, beeper@1.0.0, array-uniq@1.0.2, lodash._reinterpolate@3.0.0, lodash._reescape@3.0.0, lodash._reevaluate@3.0.0, replace-ext@0.0.1, minimist@1.1.1, vinyl@0.4.6, chalk@1.0.0, lodash.template@3.5.1, multipipe@0.1.2, dateformat@1.0.11)
+gulp-babel@5.1.0 node_modules/gulp-babel
+├── object-assign@2.0.0
+├── replace-ext@0.0.1
+├── through2@0.6.5 (xtend@4.0.0, readable-stream@1.0.33)
+├── gulp-util@3.0.4 (array-differ@1.0.0, beeper@1.0.0, array-uniq@1.0.2, lodash._reevaluate@3.0.0, lodash._reinterpolate@3.0.0, lodash._reescape@3.0.0, minimist@1.1.1, vinyl@0.4.6, chalk@1.0.0, lodash.template@3.5.1, multipipe@0.1.2, dateformat@1.0.11)
+└── vinyl-sourcemaps-apply@0.1.4 (source-map@0.1.43)
+gulp-jasmine@2.0.1 node_modules/gulp-jasmine
+├── jasmine-terminal-reporter@0.9.1
+├── through2@0.6.5 (xtend@4.0.0, readable-stream@1.0.33)
+├── gulp-util@3.0.4 (array-differ@1.0.0, object-assign@2.0.0, beeper@1.0.0, array-uniq@1.0.2, lodash._reinterpolate@3.0.0, lodash._reescape@3.0.0, lodash._reevaluate@3.0.0, replace-ext@0.0.1, minimist@1.1.1, vinyl@0.4.6, chalk@1.0.0, lodash.template@3.5.1, multipipe@0.1.2, dateformat@1.0.11)
+└── jasmine@2.3.1 (exit@0.1.2, jasmine-core@2.3.0, glob@3.2.11)
+gulp-jasmine-browser@0.0.4 node_modules/gulp-jasmine-browser
+├── mime@1.3.4
+├── vinyl@0.4.6 (clone-stats@0.0.1, clone@0.2.0)
+├── through2@1.1.1 (xtend@4.0.0, readable-stream@1.1.13)
+├── jasmine-core@2.3.0
+├── portfinder@0.4.0 (async@0.9.0, mkdirp@0.5.0)
+└── express@4.12.3 (merge-descriptors@1.0.0, utils-merge@1.0.0, cookie-signature@1.0.6, methods@1.1.1, fresh@0.2.4, cookie@0.1.2, escape-html@1.0.1, range-parser@1.0.2, finalhandler@0.3.4, content-type@1.0.1, vary@1.0.0, parseurl@1.3.0, serve-static@1.9.2, content-disposition@0.5.0, path-to-regexp@0.1.3, depd@1.0.1, on-finished@2.2.1, qs@2.4.1, debug@2.1.3, send@0.12.2, etag@1.5.1, proxy-addr@1.0.7, accepts@1.2.5, type-is@1.6.1)
+gulp@3.8.11 node_modules/gulp
+├── pretty-hrtime@0.2.2
+├── interpret@0.3.10
+├── deprecated@0.0.1
+├── archy@1.0.0
+├── minimist@1.1.1
+├── tildify@1.0.0 (user-home@1.1.1)
+├── v8flags@2.0.5 (user-home@1.1.1)
+├── chalk@0.5.1 (ansi-styles@1.1.0, escape-string-regexp@1.0.3, supports-color@0.2.0, has-ansi@0.1.0, strip-ansi@0.3.0)
+├── orchestrator@0.3.7 (stream-consume@0.1.0, sequencify@0.0.7, end-of-stream@0.1.5)
+├── semver@4.3.3
+├── gulp-util@3.0.4 (array-differ@1.0.0, beeper@1.0.0, object-assign@2.0.0, array-uniq@1.0.2, lodash._reevaluate@3.0.0, lodash._reescape@3.0.0, lodash._reinterpolate@3.0.0, replace-ext@0.0.1, vinyl@0.4.6, chalk@1.0.0, lodash.template@3.5.1, through2@0.6.5, multipipe@0.1.2, dateformat@1.0.11)
+├── liftoff@2.0.3 (extend@2.0.1, flagged-respawn@0.3.1, resolve@1.1.6, findup-sync@0.2.1)
+└── vinyl-fs@0.3.13 (graceful-fs@3.0.6, strip-bom@1.0.0, vinyl@0.4.6, defaults@1.0.2, mkdirp@0.5.0, through2@0.6.5, glob-stream@3.1.18, glob-watcher@0.0.6)
+jquery@2.1.4 node_modules/jquery
+foreman@1.3.0 node_modules/foreman
+├── commander@2.1.0
+├── shell-quote@1.4.3 (array-filter@0.0.1, array-reduce@0.0.0, array-map@0.0.0, jsonify@0.0.0)
+├── mu2@0.5.20
+└── http-proxy@1.0.3 (eventemitter3@1.0.1)
+babel@5.2.6 node_modules/babel
+├── path-is-absolute@1.0.0
+├── fs-readdir-recursive@0.1.1
+├── convert-source-map@1.1.0
+├── commander@2.8.1 (graceful-readlink@1.0.1)
+├── output-file-sync@1.1.0 (xtend@4.0.0, mkdirp@0.5.0)
+├── glob@5.0.5 (inherits@2.0.1, once@1.3.1, inflight@1.0.4, minimatch@2.0.7)
+├── source-map@0.4.2 (amdefine@0.1.0)
+├── chokidar@1.0.1 (arrify@1.0.0, is-glob@1.1.3, glob-parent@1.2.0, async-each@0.1.6, is-binary-path@1.0.0, readdirp@1.3.0, anymatch@1.3.0)
+└── lodash@3.8.0
+gulp-webpack@1.4.0 node_modules/gulp-webpack
+├── through@2.3.7
+├── memory-fs@0.2.0
+├── vinyl@0.4.6 (clone-stats@0.0.1, clone@0.2.0)
+├── gulp-util@3.0.4 (array-differ@1.0.0, object-assign@2.0.0, beeper@1.0.0, array-uniq@1.0.2, lodash._reevaluate@3.0.0, lodash._reescape@3.0.0, lodash._reinterpolate@3.0.0, replace-ext@0.0.1, minimist@1.1.1, chalk@1.0.0, lodash.template@3.5.1, through2@0.6.5, multipipe@0.1.2, dateformat@1.0.11)
+└── webpack@1.8.11 (supports-color@1.3.1, interpret@0.5.2, clone@0.1.19, tapable@0.1.9, async@0.9.0, mkdirp@0.5.0, optimist@0.6.1, enhanced-resolve@0.8.5, watchpack@0.2.5, webpack-core@0.6.5, esprima@1.2.5, uglify-js@2.4.20, node-libs-browser@0.4.3)
+react@0.13.2 node_modules/react
+└── envify@3.4.0 (through@2.3.7, jstransform@10.1.0)
+gulp-eslint@0.9.0 node_modules/gulp-eslint
+├── object-assign@2.0.0
+├── optional@0.1.3
+├── through2@0.6.5 (xtend@4.0.0, readable-stream@1.0.33)
+├── bufferstreams@1.0.1 (readable-stream@1.0.33)
+├── gulp-util@3.0.4 (array-differ@1.0.0, beeper@1.0.0, array-uniq@1.0.2, lodash._reescape@3.0.0, lodash._reevaluate@3.0.0, lodash._reinterpolate@3.0.0, replace-ext@0.0.1, minimist@1.1.1, vinyl@0.4.6, chalk@1.0.0, lodash.template@3.5.1, multipipe@0.1.2, dateformat@1.0.11)
+└── eslint@0.19.0 (escape-string-regexp@1.0.3, user-home@1.1.1, strip-json-comments@1.0.2, xml-escape@1.0.0, estraverse-fb@1.3.1, globals@6.4.1, estraverse@2.0.0, text-table@0.2.0, debug@2.1.3, chalk@1.0.0, mkdirp@0.5.0, optionator@0.5.0, minimatch@2.0.7, concat-stream@1.4.8, espree@2.0.2, doctrine@0.6.4, js-yaml@3.3.0, escope@3.0.1)
+babel-core@5.2.6 node_modules/babel-core
+├── slash@1.0.0
+├── path-is-absolute@1.0.0
+├── fs-readdir-recursive@0.1.1
+├── shebang-regex@1.0.0
+├── to-fast-properties@1.0.1
+├── trim-right@1.0.0
+├── strip-json-comments@1.0.2
+├── leven@1.0.1
+├── user-home@1.1.1
+├── globals@6.4.1
+├── private@0.1.6
+├── estraverse@3.1.0
+├── esutils@2.0.2
+├── convert-source-map@1.1.0
+├── js-tokens@1.0.0
+├── chalk@1.0.0 (escape-string-regexp@1.0.3, ansi-styles@2.0.1, supports-color@1.3.1, strip-ansi@2.0.1, has-ansi@1.0.3)
+├── line-numbers@0.2.0 (left-pad@0.0.3)
+├── debug@2.1.3 (ms@0.7.0)
+├── is-integer@1.0.4 (is-finite@1.0.0, is-nan@1.0.1)
+├── detect-indent@3.0.1 (get-stdin@4.0.1, minimist@1.1.1)
+├── ast-types@0.7.6
+├── repeating@1.1.2 (is-finite@1.0.0, meow@3.1.0)
+├── output-file-sync@1.1.0 (xtend@4.0.0, mkdirp@0.5.0)
+├── minimatch@2.0.7 (brace-expansion@1.1.0)
+├── resolve@1.1.6
+├── bluebird@2.9.25
+├── source-map@0.4.2 (amdefine@0.1.0)
+├── source-map-support@0.2.10 (source-map@0.1.32)
+├── regexpu@1.1.2 (regjsgen@0.2.0, regenerate@1.2.1, regjsparser@0.1.4, recast@0.10.12)
+├── regenerator@0.8.22 (through@2.3.7, esprima-fb@13001.1.0-dev-harmony-fb, recast@0.10.12, defs@1.1.0, commoner@0.10.1)
+├── lodash@3.8.0
+└── core-js@0.9.6
+webpack@1.8.11 node_modules/webpack
+├── supports-color@1.3.1
+├── interpret@0.5.2
+├── tapable@0.1.9
+├── clone@0.1.19
+├── memory-fs@0.2.0
+├── async@0.9.0
+├── mkdirp@0.5.0 (minimist@0.0.8)
+├── optimist@0.6.1 (wordwrap@0.0.2, minimist@0.0.10)
+├── enhanced-resolve@0.8.5 (graceful-fs@3.0.6)
+├── webpack-core@0.6.5 (source-list-map@0.1.5, source-map@0.4.2)
+├── watchpack@0.2.5 (graceful-fs@3.0.6, chokidar@1.0.1)
+├── uglify-js@2.4.20 (uglify-to-browserify@1.0.2, async@0.2.10, yargs@3.5.4, source-map@0.1.34)
+├── esprima@1.2.5
+└── node-libs-browser@0.4.3 (https-browserify@0.0.0, tty-browserify@0.0.0, constants-browserify@0.0.1, process@0.10.1, path-browserify@0.0.0, os-browserify@0.1.2, string_decoder@0.10.31, punycode@1.3.2, domain-browser@1.1.4, querystring-es3@0.2.1, assert@1.3.0, timers-browserify@1.4.0, stream-browserify@1.0.0, events@1.0.2, vm-browserify@0.0.4, console-browserify@1.1.0, util@0.10.3, http-browserify@1.7.0, readable-stream@1.1.13, url@0.10.3, buffer@3.2.1, browserify-zlib@0.1.4, crypto-browserify@3.2.8)
+babel-loader@5.0.0 node_modules/babel-loader
+└── loader-utils@0.2.7 (json5@0.1.0, big.js@2.5.1)
+npm@2.9.0 node_modules/npm
+5.92s$ npm test
+> pui-cursor@0.0.7 test /home/travis/build/pivotal-cf/pui-cursor
+> gulp spec
+[22:59:54] Using gulpfile ~/build/pivotal-cf/pui-cursor/gulpfile.js
+[22:59:54] Starting 'spec'...
+[22:59:55] Starting 'lint'...
+[22:59:55] Finished 'lint' after 653 ms
+[22:59:55] Starting 'jasmine-ci'...
+Jasmine server listening on port 8000
+[22:59:58] Finished 'jasmine-ci' after 2.73 s
+[22:59:58] Finished 'spec' after 3.39 s
+.................
+17 specs, 0 failures
+Finished in 0.023 seconds
+The command "npm test" exited with 0.
+Done. Your build exited with 0.

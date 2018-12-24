@@ -1,0 +1,64 @@
+﻿##[debug]Evaluating condition for step: 'Command Line Script'
+##[debug]Evaluating: succeeded()
+##[debug]Evaluating succeeded:
+##[debug]=> True
+##[debug]Result: True
+##[section]Starting: Command Line Script
+==============================================================================
+Task         : Command Line
+Description  : Run a command line script using cmd.exe on Windows and bash on macOS and Linux.
+Version      : 2.142.2
+Author       : Microsoft Corporation
+Help         : [More Information](https://go.microsoft.com/fwlink/?LinkID=613735)
+==============================================================================
+##[debug]VstsTaskSdk 0.9.0 commit 6c48b16164b9a1c9548776ad2062dad5cd543352
+##[debug]Entering D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\cmdline.ps1.
+##[debug]Loading resource strings from: D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\task.json
+##[debug]Loaded 6 strings.
+##[debug]SYSTEM_CULTURE: 'en-US'
+##[debug]Loading resource strings from: D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\Strings\resources.resjson\en-US\resources.resjson
+##[debug]Loaded 6 strings.
+##[debug]INPUT_FAILONSTDERR: 'false'
+##[debug] Converted to bool: False
+##[debug]INPUT_SCRIPT: 'jasmine'
+##[debug]INPUT_WORKINGDIRECTORY: 'D:\a\1\s'
+##[debug]Asserting container path exists: 'D:\a\1\s'
+Generating script.
+Script contents:
+jasmine
+##[debug]AGENT_VERSION: '2.144.0'
+##[debug]AGENT_TEMPDIRECTORY: 'D:\a\_temp'
+##[debug]Asserting container path exists: 'D:\a\_temp'
+##[debug]Asserting leaf path exists: 'C:\Windows\system32\cmd.exe'
+##[debug]Entering Invoke-VstsTool.
+##[debug] Arguments: '/D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\ae9e9b47-5c57-43dc-a2c4-8040513a73a7.cmd""'
+##[debug] FileName: 'C:\Windows\system32\cmd.exe'
+##[debug] WorkingDirectory: 'D:\a\1\s'
+##[command]"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\ae9e9b47-5c57-43dc-a2c4-8040513a73a7.cmd""
+Randomized with seed 90076
+Started
+..........................................................*...................................................................................................................................................................................................................................................................................................................................................................................................................................................****..................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+Pending:
+
+1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+  should actually work, but no custom matchers for async yet
+
+2) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+  No reason given
+
+3) JsApiReporter (integration specs) results should return nested suites as children of their parents
+  No reason given
+4) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+  No reason given
+
+5) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+  No reason given
+
+932 specs, 0 failures, 5 pending specs
+Finished in 6.73 seconds
+Randomized with seed 90076 (jasmine --random=true --seed=90076)
+##[debug]Exit code: 0
+##[debug]Leaving Invoke-VstsTool.
+##[debug]Leaving D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\cmdline.ps1.
+##[section]Finishing: Command Line Script

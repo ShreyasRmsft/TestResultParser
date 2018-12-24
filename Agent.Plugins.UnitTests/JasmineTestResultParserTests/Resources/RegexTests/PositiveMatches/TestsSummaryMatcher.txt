@@ -1,0 +1,4 @@
+﻿8 specs, 1 failure, 1 pending spec
+7 specs, 0 failures, 1 pending spec
+112 specs, 5 failures
+1 spec, 0 failures

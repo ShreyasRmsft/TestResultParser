@@ -1,0 +1,7 @@
+﻿5) Jasmine file handler add spec files with glob pattern to existings files
+1) Env #afterEach accepts an async function
+5) Negative path: can (not) (3) upload multiple files
+5) Negative path: can \abc upload multiple files
+5) Negative path: can 123abc upload multiple files
+6) Negative path: can 123abc upload multiple files (failed)
+5) test case :: 5()

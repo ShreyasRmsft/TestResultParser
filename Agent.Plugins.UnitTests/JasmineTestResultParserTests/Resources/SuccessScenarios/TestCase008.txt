@@ -1,0 +1,652 @@
+﻿> yosethegame@1.0.0 test E:\CodeBase\yosethegame
+> jasmine
+
+Randomized with seed 53764
+Started
+...........FF.FFFFFFFFFFFFFFFFFFFFF...........F..........F............
+
+Failures:
+1) News service adds the current date to the given news
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'date' of undefined
+  Stack:
+        at <Jasmine>
+        at E:\CodeBase\yosethegame\spec\psql.news.service.spec.js:33:30
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:139:4)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'date' of undefined
+  Stack:
+        at <Jasmine>
+        at E:\CodeBase\yosethegame\spec\psql.news.service.spec.js:33:30
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:139:4)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+2) News service retrieves the news in the desc order
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'text' of undefined
+  Stack:
+        at <Jasmine>
+        at E:\CodeBase\yosethegame\spec\psql.news.service.spec.js:22:31
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:139:4)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'text' of undefined
+  Stack:
+        at <Jasmine>
+        at E:\CodeBase\yosethegame\spec\psql.news.service.spec.js:22:31
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:139:4)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+3) PostgreSql database can create a player
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+4) PostgreSql database searching players matching a criteria returns the matching players order by score desc
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+5) PostgreSql database searching players matching a criteria works with special characters
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+6) PostgreSql database searching players matching a criteria returns only the players with the criteria somewhere in the json
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+7) PostgreSql database prevents sql injection when searching players
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+8) PostgreSql database preserves an already existing player
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+9) PostgreSql database does not create extra players
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+10) PostgreSql database can modify a field
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+11) PostgreSql database returns undefined when the player is unknown
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+
+12) PostgreSql database offers a way to get the player count
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+13) PostgreSql database enjoys a env var
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    Expected undefined to be defined.
+  Stack:
+    Error: Expected undefined to be defined.
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\yosethegame\spec\psql.players.service.spec.js:26:15)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+
+14) PostgreSql database Retrieving all players returns empty collection when there is no player
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+
+15) PostgreSql database Retrieving all players returns players order by score
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+16) PostgreSql database Retrieving all players is possible
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+17) PostgreSql database Retrieving all players returns full players
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+18) PostgreSql database uses process.env.DATABASE_URL
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+
+19) PostgreSql database Score: sets score to 0 when creating a player
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+20) PostgreSql database Score: updates the score of the player when saving a player
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+21) PostgreSql database sets creation date to now when creating a player
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+22) PostgreSql database offers a way to get the total score of the community
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+23) PostgreSql database can add a new field
+  Message:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+  Stack:
+    Error: Timeout - Async callback was not invoked within 5000ms (set by jasmine.DEFAULT_TIMEOUT_INTERVAL)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+        at Timer.processTimers (timers.js:223:10)
+  Message:
+    TypeError: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+  Message:
+    Failed: Cannot read property 'rows' of undefined
+  Stack:
+        at <Jasmine>
+        at Query.callback (E:\CodeBase\yosethegame\app\lib\psql.database.js:13:23)
+        at Query.handleError (E:\CodeBase\yosethegame\node_modules\pg\lib\query.js:142:17)
+        at process.nextTick (E:\CodeBase\yosethegame\node_modules\pg\lib\client.js:60:13)
+        at process._tickCallback (internal/process/next_tick.js:61:11)
+
+24) PNG Badge of player endpoint builds the expected image
+  Message:
+    Expected 'PNG
+    
+IHDR   V      GVÓ   gAMA  ±üa    cHRM  z&    ú   è  u0  ê`  :  pºQ<   bKGD      ùC»     pHYs   Z   Z p#¸}   tIMEâÅäQ°  NIDAThÞímLTWÇ÷Î+2ò2ÀÈ;QK´DJ[h7ë®Ûµ»¤ÀºZº@±%
+    *DÒJb5]qMMu]?¬VÛ´YeÅõ5ºÔ¦£­T¬tÄÂ ò>ÌÌ½ûaöæªºM]åÿaNnÎ}Î}ÎsþççdùÑó£çGyï=!Â23É&À@PÜºòäOíÅy5moG(cßÞ½ìÎ÷[\%%Z¨QFYa¡üS{@eYÄOõ89$À;êvùFZA+ßoÈ723`ê ì#¨.¾öVÞ"o·<¹GÿX ì#ßÊuüÂbÑN,Ìc".&;&âòhb°c/+ädÿ_À@!4V­úúëW^¦¦¾¾3gFÛiµ ÓÁ%eeðÂþþ©© I²,IÐÐÐÓsü8¼ÿþ¥K«V©vIIfó¼y°xñ´io½ ¢¨öïÙcµnÞÿþ·ÍV[;¶ß.[99Ó¦'kµ>>°rettEÄÆN<{¶jßÜÜßþ<TV67Í62ÒÞþðq¹;Æ£Gka×®¶¶ª*¨ªÊÈøÛßÀá¤±ÇçëëtCZÚÌNçÀ DFEE,Ê²JÌââ-[`Ù²Ï>KK¦¦ÎéÓ-Ù³á,¨©Ï?·ÙêêÀåe§Sýî´i&ÅÅÁ¬YFcJ
+    X­ÝÝ--àpô÷ßî¯bUSsæÌ¾}püø·ß¾þº{C¹\P\<oÞúõ^^ë×_¼øæ{á¾  
+    °sçÎ;wªýÞÞÞÞÞÞPQQQQQË/_¾|9Ì1cÆ°hÑ¢E(¢(B_____lß¾}ûöíÐÞÞÞÞÞz½^¯×ÃÒ¥K.]
+    !!!!!! I$IÐÙÙÙÙÙ   Ú´iúýØØØØØXÈÌÌÌÌÌ£Ñh4U»={öìÙ³°MM ... to equal 'PNG
+    
+IHDR   V      GVÓ   gAMA  ±üa    cHRM  z&    ú   è  u0  ê`  :  pºQ<   bKGD      ùC»     pHYs   Z   Z p#¸ÎÅm  NIDAThÞímLTWÇ÷Î+2ò2ÀÈ;QK´DJ[h7ë®Ûµ»¤ÀºZº@±%
+    *DÒJb5]qMMu]?¬VÛ´YeÅõ5ºÔ¦£­T¬tÄÂ ò>ÌÌ½ûaöæªºM]åÿaNnÎ}Î}ÎsþççdùÑó£çGyï=!Â23É&À@PÜºòäOíÅy5moG(cßÞ½ìÎ÷[\%%Z¨QFYa¡üS{@eYÄOõ89$À;êvùFZA+ßoÈ723`ê ì#¨.¾öVÞ"o·<¹GÿX ì#ßÊuüÂbÑN,Ìc".&;&âòhb°c/+ädÿ_À@!4V­úúëW^¦¦¾¾3gFÛiµ ÓÁ%eeðÂþþ©© I²,IÐÐÐÓsü8¼ÿþ¥K«V©vIIfó¼y°xñ´io½ ¢¨öïÙcµnÞÿþ·ÍV[;¶ß.[99Ó¦'kµ>>°rettEÄÆN<{¶jßÜÜßþ<TV67Í62ÒÞþðq¹;Æ£Gka×®¶¶ª*¨ªÊÈøÛßÀá¤±ÇçëëtCZÚÌNçÀ DFEE,Ê²JÌââ-[`Ù²Ï>KK¦¦ÎéÓ-Ù³á,¨©Ï?·ÙêêÀåe§Sýî´i&ÅÅÁ¬YFcJ
+    X­ÝÝ--àpô÷ßî¯bUSsæÌ¾}püø·ß¾þº{C¹\P\<oÞúõ^^ë×_¼øæ{á¾  
+    °sçÎ;wªýÞÞÞÞÞÞPQQQQQË/_¾|9Ì1cÆ°hÑ¢E(¢(B_____lß¾}ûöíÐÞÞÞÞÞz½^¯×ÃÒ¥K.]
+    !!!!!! I$IÐÙÙÙÙÙ   Ú´iúýØØØØØXÈÌÌÌÌÌ£Ñh4U»={öìÙ³°MM ....
+  Stack:
+    Error: Expected 'PNG
+    
+IHDR   V      GVÓ   gAMA  ±üa    cHRM  z&    ú   è  u0  ê`  :  pºQ<   bKGD      ùC»     pHYs   Z   Z p#¸}   tIMEâÅäQ°  NIDAThÞímLTWÇ÷Î+2ò2ÀÈ;QK´DJ[h7ë®Ûµ»¤ÀºZº@±%
+    *DÒJb5]qMMu]?¬VÛ´YeÅõ5ºÔ¦£­T¬tÄÂ ò>ÌÌ½ûaöæªºM]åÿaNnÎ}Î}ÎsþççdùÑó£çGyï=!Â23É&À@PÜºòäOíÅy5moG(cßÞ½ìÎ÷[\%%Z¨QFYa¡üS{@eYÄOõ89$À;êvùFZA+ßoÈ723`ê ì#¨.¾öVÞ"o·<¹GÿX ì#ßÊuüÂbÑN,Ìc".&;&âòhb°c/+ädÿ_À@!4V­úúëW^¦¦¾¾3gFÛiµ ÓÁ%eeðÂþþ©© I²,IÐÐÐÓsü8¼ÿþ¥K«V©vIIfó¼y°xñ´io½ ¢¨öïÙcµnÞÿþ·ÍV[;¶ß.[99Ó¦'kµ>>°rettEÄÆN<{¶jßÜÜßþ<TV67Í62ÒÞþðq¹;Æ£Gka×®¶¶ª*¨ªÊÈøÛßÀá¤±ÇçëëtCZÚÌNçÀ DFEE,Ê²JÌââ-[`Ù²Ï>KK¦¦ÎéÓ-Ù³á,¨©Ï?·ÙêêÀåe§Sýî´i&ÅÅÁ¬YFcJ
+    X­ÝÝ--àpô÷ßî¯bUSsæÌ¾}püø·ß¾þº{C¹\P\<oÞúõ^^ë×_¼øæ{á¾  
+    °sçÎ;wªýÞÞÞÞÞÞPQQQQQË/_¾|9Ì1cÆ°hÑ¢E(¢(B_____lß¾}ûöíÐÞÞÞÞÞz½^¯×ÃÒ¥K.]
+    !!!!!! I$IÐÙÙÙÙÙ   Ú´iúýØØØØØXÈÌÌÌÌÌ£Ñh4U»={öìÙ³°MM ... to equal 'PNG
+    
+IHDR   V      GVÓ   gAMA  ±üa    cHRM  z&    ú   è  u0  ê`  :  pºQ<   bKGD      ùC»     pHYs   Z   Z p#¸ÎÅm  NIDAThÞímLTWÇ÷Î+2ò2ÀÈ;QK´DJ[h7ë®Ûµ»¤ÀºZº@±%
+    *DÒJb5]qMMu]?¬VÛ´YeÅõ5ºÔ¦£­T¬tÄÂ ò>ÌÌ½ûaöæªºM]åÿaNnÎ}Î}ÎsþççdùÑó£çGyï=!Â23É&À@PÜºòäOíÅy5moG(cßÞ½ìÎ÷[\%%Z¨QFYa¡üS{@eYÄOõ89$À;êvùFZA+ßoÈ723`ê ì#¨.¾öVÞ"o·<¹GÿX ì#ßÊuüÂbÑN,Ìc".&;&âòhb°c/+ädÿ_À@!4V­úúëW^¦¦¾¾3gFÛiµ ÓÁ%eeðÂþþ©© I²,IÐÐÐÓsü8¼ÿþ¥K«V©vIIfó¼y°xñ´io½ ¢¨öïÙcµnÞÿþ·ÍV[;¶ß.[99Ó¦'kµ>>°rettEÄÆN<{¶jßÜÜßþ<TV67Í62ÒÞþðq¹;Æ£Gka×®¶¶ª*¨ªÊÈøÛßÀá¤±ÇçëëtCZÚÌNçÀ DFEE,Ê²JÌââ-[`Ù²Ï>KK¦¦ÎéÓ-Ù³á,¨©Ï?·ÙêêÀåe§Sýî´i&ÅÅÁ¬YFcJ
+    X­ÝÝ--àpô÷ßî¯bUSsæÌ¾}püø·ß¾þº{C¹\P\<oÞúõ^^ë×_¼øæ{á¾  
+    °sçÎ;wªýÞÞÞÞÞÞPQQQQQË/_¾|9Ì1cÆ°hÑ¢E(¢(B_____lß¾}ûöíÐÞÞÞÞÞz½^¯×ÃÒ¥K.]
+    !!!!!! I$IÐÙÙÙÙÙ   Ú´iúýØØØØØXÈÌÌÌÌÌ£Ñh4U»={öìÙ³°MM ....
+        at <Jasmine>
+        at Request._callback (E:\CodeBase\yosethegame\spec\display.badge.png.of.player.spec.js:55:26)
+        at Request.self.callback (E:\CodeBase\yosethegame\node_modules\request\request.js:185:22)
+        at Request.emit (events.js:182:13)
+        at Request.<anonymous> (E:\CodeBase\yosethegame\node_modules\request\request.js:1161:10)
+        at Request.emit (events.js:182:13)
+        at IncomingMessage.<anonymous> (E:\CodeBase\yosethegame\node_modules\request\request.js:1083:12)
+        at Object.onceWrapper (events.js:273:13)
+        at IncomingMessage.emit (events.js:187:15)
+        at endReadableNT (_stream_readable.js:1094:12)
+
+25) Game experience When player passes the first challenge appears in the news
+  Message:
+    Expected 'http://localhost:5000/undefined' to contain 'max'.
+  Stack:
+    Error: Expected 'http://localhost:5000/undefined' to contain 'max'.
+        at <Jasmine>
+        at E:\CodeBase\yosethegame\spec\game.experience.spec.js:77:50
+        at tryCatcher (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\util.js:16:23)
+        at Promise._settlePromiseFromHandler (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:512:31)
+        at Promise._settlePromise (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:569:18)
+        at Promise._settlePromise0 (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:614:10)
+        at Promise._settlePromises (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:694:18)
+        at Promise._fulfill (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:638:18)
+        at Promise._resolveCallback (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:432:57)
+        at Promise._settlePromiseFromHandler (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:524:17)
+  Message:
+    Expected 'passed level "the second challenge" 0 s ago' to contain 'passed level "the first challenge"'.
+  Stack:
+    Error: Expected 'passed level "the second challenge" 0 s ago' to contain 'passed level "the first challenge"'.
+        at <Jasmine>
+        at E:\CodeBase\yosethegame\spec\game.experience.spec.js:78:41
+        at tryCatcher (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\util.js:16:23)
+        at Promise._settlePromiseFromHandler (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:512:31)
+        at Promise._settlePromise (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:569:18)
+        at Promise._settlePromise0 (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:614:10)
+        at Promise._settlePromises (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:694:18)
+        at Promise._fulfill (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:638:18)
+        at Promise._resolveCallback (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:432:57)
+        at Promise._settlePromiseFromHandler (E:\CodeBase\yosethegame\node_modules\bluebird\js\release\promise.js:524:17)
+
+70 specs, 25 failures
+Finished in 151.702 seconds
+Randomized with seed 53764 (jasmine --random=true --seed=53764)
+npm ERR! Test failed.  See above for more details.

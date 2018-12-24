@@ -1,0 +1,188 @@
+﻿2018-12-18T07:44:47.6208276Z ##[debug]Evaluating condition for step: 'Command Line Script'
+2018-12-18T07:44:47.6208756Z ##[debug]Evaluating: succeeded()
+2018-12-18T07:44:47.6208834Z ##[debug]Evaluating succeeded:
+2018-12-18T07:44:47.6208979Z ##[debug]=> True
+2018-12-18T07:44:47.6209298Z ##[debug]Result: True
+2018-12-18T07:44:47.6209459Z ##[section]Starting: Command Line Script
+2018-12-18T07:44:47.6212794Z ==============================================================================
+2018-12-18T07:44:47.6212879Z Task         : Command Line
+2018-12-18T07:44:47.6212916Z Description  : Run a command line script using cmd.exe on Windows and bash on macOS and Linux.
+2018-12-18T07:44:47.6212953Z Version      : 2.142.2
+2018-12-18T07:44:47.6213006Z Author       : Microsoft Corporation
+2018-12-18T07:44:47.6213042Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkID=613735)
+2018-12-18T07:44:47.6213077Z ==============================================================================
+2018-12-18T07:44:48.3268348Z ##[debug]VstsTaskSdk 0.9.0 commit 6c48b16164b9a1c9548776ad2062dad5cd543352
+2018-12-18T07:44:48.4188578Z ##[debug]Entering D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\cmdline.ps1.
+2018-12-18T07:44:48.4305022Z ##[debug]Loading resource strings from: D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\task.json
+2018-12-18T07:44:48.4517906Z ##[debug]Loaded 6 strings.
+2018-12-18T07:44:48.4636955Z ##[debug]SYSTEM_CULTURE: 'en-US'
+2018-12-18T07:44:48.4638415Z ##[debug]Loading resource strings from: D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\Strings\resources.resjson\en-US\resources.resjson
+2018-12-18T07:44:48.4757017Z ##[debug]Loaded 6 strings.
+2018-12-18T07:44:48.5024539Z ##[debug]INPUT_FAILONSTDERR: 'false'
+2018-12-18T07:44:48.5098463Z ##[debug] Converted to bool: False
+2018-12-18T07:44:48.5099151Z ##[debug]INPUT_SCRIPT: 'jasmine'
+2018-12-18T07:44:48.5108484Z ##[debug]INPUT_WORKINGDIRECTORY: 'D:\a\1\s'
+2018-12-18T07:44:48.5259455Z ##[debug]Asserting container path exists: 'D:\a\1\s'
+2018-12-18T07:44:48.5307174Z Generating script.
+2018-12-18T07:44:48.5386955Z Script contents:
+2018-12-18T07:44:48.5395323Z jasmine
+2018-12-18T07:44:48.5534536Z ##[debug]AGENT_VERSION: '2.144.0'
+2018-12-18T07:44:48.5807134Z ##[debug]AGENT_TEMPDIRECTORY: 'D:\a\_temp'
+2018-12-18T07:44:48.5922781Z ##[debug]Asserting container path exists: 'D:\a\_temp'
+2018-12-18T07:44:48.6052362Z ##[debug]Asserting leaf path exists: 'C:\Windows\system32\cmd.exe'
+2018-12-18T07:44:48.6190749Z ##[debug]Entering Invoke-VstsTool.
+2018-12-18T07:44:48.6318572Z ##[debug] Arguments: '/D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\ae9e9b47-5c57-43dc-a2c4-8040513a73a7.cmd""'
+2018-12-18T07:44:48.6338888Z ##[debug] FileName: 'C:\Windows\system32\cmd.exe'
+2018-12-18T07:44:48.6358214Z ##[debug] WorkingDirectory: 'D:\a\1\s'
+2018-12-18T07:44:48.6412049Z ##[command]"C:\Windows\system32\cmd.exe" /D /E:ON /V:OFF /S /C "CALL "D:\a\_temp\ae9e9b47-5c57-43dc-a2c4-8040513a73a7.cmd""
+2018-12-18T07:44:49.0785687Z Randomized with seed 90076
+2018-12-18T07:44:49.0786067Z Started
+2018-12-18T07:44:55.8084568Z ..........................................................*...................................................................................................................................................................................................................................................................................................................................................................................................................................................****..................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2018-12-18T07:44:55.8086813Z 
+2018-12-18T07:44:55.8087009Z Pending:
+2018-12-18T07:44:55.8087043Z 
+2018-12-18T07:44:55.8087288Z 1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8089581Z   should actually work, but no custom matchers for async yet
+2018-12-18T07:44:55.8089634Z 
+2018-12-18T07:44:55.8089657Z 
+2018-12-18T07:44:55.8089748Z 2) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+2018-12-18T07:44:55.8089960Z   No reason given
+2018-12-18T07:44:55.8090107Z 
+2018-12-18T07:44:55.8090255Z 
+2018-12-18T07:44:55.8090415Z 3) JsApiReporter (integration specs) results should return nested suites as children of their parents
+2018-12-18T07:44:55.8090571Z   No reason given
+2018-12-18T07:44:55.8090689Z 
+2018-12-18T07:44:55.8090827Z 
+2018-12-18T07:44:55.8090986Z 4) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+2018-12-18T07:44:55.8091159Z   No reason given
+2018-12-18T07:44:55.8091274Z 
+2018-12-18T07:44:55.8091387Z 
+2018-12-18T07:44:55.8091997Z 5) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+2018-12-18T07:44:55.8092157Z   No reason given
+2018-12-18T07:44:55.8092296Z 
+2018-12-18T07:44:55.8092725Z 932 specs, 0 failures, 5 pending specs
+2018-12-18T07:44:55.8092725Z Started
+2018-12-18T07:44:55.8093471Z Finished in 6.73 seconds
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:49.0785687Z Randomized with seed 90076
+2018-12-18T07:44:49.0786067Z Started
+2018-12-18T07:44:55.8084568Z ..........................................................*...................................................................................................................................................................................................................................................................................................................................................................................................................................................****..................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2018-12-18T07:44:55.8086813Z 
+2018-12-18T07:44:55.8087009Z Pending:
+2018-12-18T07:44:55.8087043Z 
+2018-12-18T07:44:55.8087288Z 1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8089581Z   should actually work, but no custom matchers for async yet
+2018-12-18T07:44:55.8089634Z 
+2018-12-18T07:44:55.8089657Z 
+2018-12-18T07:44:55.8089748Z 2) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+2018-12-18T07:44:55.8089960Z   No reason given
+2018-12-18T07:44:55.8090107Z 
+2018-12-18T07:44:55.8090255Z 
+2018-12-18T07:44:55.8090415Z 3) JsApiReporter (integration specs) results should return nested suites as children of their parents
+2018-12-18T07:44:55.8090571Z   No reason given
+2018-12-18T07:44:55.8090689Z 
+2018-12-18T07:44:55.8090827Z 
+2018-12-18T07:44:55.8090986Z 4) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+2018-12-18T07:44:55.8091159Z   No reason given
+2018-12-18T07:44:55.8091274Z 
+2018-12-18T07:44:55.8091387Z 
+2018-12-18T07:44:55.8091997Z 5) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+2018-12-18T07:44:55.8092157Z   No reason given
+2018-12-18T07:44:55.8092296Z 
+2018-12-18T07:44:55.8092725Z 932 specs, 0 failures, 5 pending specs
+2018-12-18T07:44:55.8092725Z Pending:
+2018-12-18T07:44:55.8093471Z Finished in 6.73 seconds
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:49.0785687Z Randomized with seed 90076
+2018-12-18T07:44:49.0786067Z Started
+2018-12-18T07:44:55.8084568Z ..........................................................*...................................................................................................................................................................................................................................................................................................................................................................................................................................................****..................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2018-12-18T07:44:55.8086813Z 
+2018-12-18T07:44:55.8087009Z Pending:
+2018-12-18T07:44:55.8087043Z 
+2018-12-18T07:44:55.8087288Z 1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8089581Z   should actually work, but no custom matchers for async yet
+2018-12-18T07:44:55.8089634Z 
+2018-12-18T07:44:55.8089657Z 
+2018-12-18T07:44:55.8089748Z 2) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+2018-12-18T07:44:55.8089960Z   No reason given
+2018-12-18T07:44:55.8090107Z 
+2018-12-18T07:44:55.8090255Z 
+2018-12-18T07:44:55.8090415Z 3) JsApiReporter (integration specs) results should return nested suites as children of their parents
+2018-12-18T07:44:55.8090571Z   No reason given
+2018-12-18T07:44:55.8090689Z 
+2018-12-18T07:44:55.8090827Z 
+2018-12-18T07:44:55.8090986Z 4) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+2018-12-18T07:44:55.8091159Z   No reason given
+2018-12-18T07:44:55.8091274Z 
+2018-12-18T07:44:55.8091387Z 
+2018-12-18T07:44:55.8091997Z 5) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+2018-12-18T07:44:55.8092157Z   No reason given
+2018-12-18T07:44:55.8092296Z 
+2018-12-18T07:44:55.8092725Z 932 specs, 0 failures, 5 pending specs
+2018-12-18T07:44:55.8092725Z Failures:
+2018-12-18T07:44:55.8093471Z Finished in 6.73 seconds
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:49.0785687Z Randomized with seed 90076
+2018-12-18T07:44:49.0786067Z Started
+2018-12-18T07:44:55.8084568Z ..........................................................*...................................................................................................................................................................................................................................................................................................................................................................................................................................................****..................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2018-12-18T07:44:55.8086813Z 
+2018-12-18T07:44:55.8087009Z Pending:
+2018-12-18T07:44:55.8087043Z 
+2018-12-18T07:44:55.8087288Z 1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8089581Z   should actually work, but no custom matchers for async yet
+2018-12-18T07:44:55.8089634Z 
+2018-12-18T07:44:55.8089657Z 
+2018-12-18T07:44:55.8089748Z 2) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+2018-12-18T07:44:55.8089960Z   No reason given
+2018-12-18T07:44:55.8090107Z 
+2018-12-18T07:44:55.8090255Z 
+2018-12-18T07:44:55.8090415Z 3) JsApiReporter (integration specs) results should return nested suites as children of their parents
+2018-12-18T07:44:55.8090571Z   No reason given
+2018-12-18T07:44:55.8090689Z 
+2018-12-18T07:44:55.8090827Z 
+2018-12-18T07:44:55.8090986Z 4) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+2018-12-18T07:44:55.8091159Z   No reason given
+2018-12-18T07:44:55.8091274Z 
+2018-12-18T07:44:55.8091387Z 
+2018-12-18T07:44:55.8091997Z 5) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+2018-12-18T07:44:55.8092157Z   No reason given
+2018-12-18T07:44:55.8092296Z 
+2018-12-18T07:44:55.8092725Z 932 specs, 0 failures, 5 pending specs
+2018-12-18T07:44:55.8092725Z 4) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8093471Z Finished in 6.73 seconds
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:49.0785687Z Randomized with seed 90076
+2018-12-18T07:44:49.0786067Z Started
+2018-12-18T07:44:55.8084568Z ..........................................................*...................................................................................................................................................................................................................................................................................................................................................................................................................................................****..................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2018-12-18T07:44:55.8086813Z 
+2018-12-18T07:44:55.8087009Z Pending:
+2018-12-18T07:44:55.8087043Z 
+2018-12-18T07:44:55.8087288Z 1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8089581Z   should actually work, but no custom matchers for async yet
+2018-12-18T07:44:55.8089634Z 
+2018-12-18T07:44:55.8089657Z 
+2018-12-18T07:44:55.8089748Z 2) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+2018-12-18T07:44:55.8089960Z   No reason given
+2018-12-18T07:44:55.8090107Z 
+2018-12-18T07:44:55.8090255Z 
+2018-12-18T07:44:55.8090415Z 3) JsApiReporter (integration specs) results should return nested suites as children of their parents
+2018-12-18T07:44:55.8090571Z   No reason given
+2018-12-18T07:44:55.8090689Z 
+2018-12-18T07:44:55.8090827Z 
+2018-12-18T07:44:55.8090986Z 4) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+2018-12-18T07:44:55.8091159Z   No reason given
+2018-12-18T07:44:55.8091274Z 
+2018-12-18T07:44:55.8091387Z 
+2018-12-18T07:44:55.8091997Z 5) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+2018-12-18T07:44:55.8092157Z   No reason given
+2018-12-18T07:44:55.8092296Z 
+2018-12-18T07:44:55.8092725Z 932 specs, 0 failures, 5 pending specs
+2018-12-18T07:44:55.8092725Z 1) AsyncExpectation #withContext prepends the context to a custom failure message from a function
+2018-12-18T07:44:55.8093471Z Finished in 6.73 seconds
+2018-12-18T07:44:55.8093671Z Randomized with seed 90076 (jasmine --random=true --seed=90076)
+2018-12-18T07:44:55.8448019Z ##[debug]Exit code: 0
+2018-12-18T07:44:55.8490563Z ##[debug]Leaving Invoke-VstsTool.
+2018-12-18T07:44:55.8528104Z ##[debug]Leaving D:\a\_tasks\CmdLine_d9bafed4-0b18-4f58-968d-86655b4d2ce9\2.142.2\cmdline.ps1.
+2018-12-18T07:44:55.8815123Z ##[section]Finishing: Command Line Script

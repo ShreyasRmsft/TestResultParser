@@ -79,7 +79,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                 // This might start taking a lot of space if each and every parse operation starts throwing
                 // But if that happens then there's a lot more stuff broken.
-                this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
+                this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.Exceptions, new List<string> { e.Message });
 
                 // Rethrowing this so that the plugin is aware that the parser is erroring out
                 // Ideally this would never should happen
@@ -147,14 +147,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     JasmineTelemetryConstants.PendingSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
-            if(testRunToPublish.TestRunSummary.TotalSkipped != this.stateContext.skippedTestsToExpect)
+            if(testRunToPublish.TestRunSummary.TotalSkipped != this.stateContext.SkippedTestsToExpect)
             {
                 this.logger.Error($"JasmineTestResultParser : Skipped tests count in summary does not match expected skipped.");
                 this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                     JasmineTelemetryConstants.SkippedTestCasesSummaryMismatchWithExpectedSkipped, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
 
-            if (testRunToPublish.TestRunSummary.TotalPassed != this.stateContext.passedTestsToExpect)
+            if (testRunToPublish.TestRunSummary.TotalPassed != this.stateContext.PassedTestsToExpect)
             {
                 this.logger.Error($"JasmineTestResultParser : Passed tests count in summary does not match expected passed.");
                 this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,

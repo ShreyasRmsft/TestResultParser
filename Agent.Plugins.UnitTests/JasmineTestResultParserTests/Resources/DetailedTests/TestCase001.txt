@@ -1,0 +1,681 @@
+﻿Worker information
+hostname: 322cb7b8-a61f-4b63-92f9-a615d8e79a3d@1.production-2-worker-org-04-packet.packet-ewr1.travisci.net
+version: v4.0.0 https://github.com/travis-ci/worker/tree/e5cb567e10c0eefe380e81c9a2229ac8fb6a16ce
+instance: 951009a travisci/ci-garnet:packer-1512502276-986baf0 (via amqp)
+startup: 2.257992216s
+system_info
+Build system information
+Build language: ruby
+Build group: stable
+Build dist: trusty
+Build id: 429168462
+Job id: 429168465
+Runtime kernel version: 4.4.0-112-generic
+travis-build version: dc1da7641
+Build image provisioning date and time
+Tue Dec  5 20:11:19 UTC 2017
+Operating System Details
+Distributor ID:	Ubuntu
+Description:	Ubuntu 14.04.5 LTS
+Release:	14.04
+Codename:	trusty
+Cookbooks Version
+7c2c6a6 https://github.com/travis-ci/travis-cookbooks/tree/7c2c6a6
+git version
+git version 2.15.1
+bash version
+GNU bash, version 4.3.11(1)-release (x86_64-pc-linux-gnu)
+gcc version
+gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4
+Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+docker version
+Client:
+ Version:      17.09.0-ce
+ API version:  1.32
+ Go version:   go1.8.3
+ Git commit:   afdb6d4
+ Built:        Tue Sep 26 22:39:28 2017
+ OS/Arch:      linux/amd64
+clang version
+clang version 5.0.0 (tags/RELEASE_500/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/clang-5.0.0/bin
+jq version
+jq-1.5
+bats version
+Bats 0.4.0
+shellcheck version
+0.4.6
+shfmt version
+v2.0.0
+ccache version
+ccache version 3.1.9
+Copyright (C) 2002-2007 Andrew Tridgell
+Copyright (C) 2009-2011 Joel Rosdahl
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 3 of the License, or (at your option) any later
+version.
+cmake version
+cmake version 3.9.2
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+heroku version
+heroku-cli/6.14.39-addc925 (linux-x64) node-v9.2.0
+imagemagick version
+Version: ImageMagick 6.7.7-10 2017-07-31 Q16 http://www.imagemagick.org
+md5deep version
+4.2
+mercurial version
+Mercurial Distributed SCM (version 4.2.2)
+(see https://mercurial-scm.org for more information)
+Copyright (C) 2005-2017 Matt Mackall and others
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+mysql version
+mysql  Ver 14.14 Distrib 5.6.33, for debian-linux-gnu (x86_64) using  EditLine wrapper
+openssl version
+OpenSSL 1.0.1f 6 Jan 2014
+packer version
+Packer v1.0.2
+Your version of Packer is out of date! The latest version
+is 1.1.2. You can update by downloading from www.packer.io
+postgresql client version
+psql (PostgreSQL) 9.6.6
+ragel version
+Ragel State Machine Compiler version 6.8 Feb 2013
+Copyright (c) 2001-2009 by Adrian Thurston
+subversion version
+svn, version 1.8.8 (r1568071)
+   compiled Aug 10 2017, 17:20:39 on x86_64-pc-linux-gnu
+Copyright (C) 2013 The Apache Software Foundation.
+This software consists of contributions made by many people;
+see the NOTICE file for more information.
+Subversion is open source software, see http://subversion.apache.org/
+The following repository access (RA) modules are available:
+* ra_svn : Module for accessing a repository using the svn network protocol.
+  - with Cyrus SASL authentication
+  - handles 'svn' scheme
+* ra_local : Module for accessing a repository on local disk.
+  - handles 'file' scheme
+* ra_serf : Module for accessing a repository via WebDAV protocol using serf.
+  - using serf 1.3.3
+  - handles 'http' scheme
+  - handles 'https' scheme
+sudo version
+Sudo version 1.8.9p5
+Configure options: --prefix=/usr -v --with-all-insults --with-pam --with-fqdn --with-logging=syslog --with-logfac=authpriv --with-env-editor --with-editor=/usr/bin/editor --with-timeout=15 --with-password-timeout=0 --with-passprompt=[sudo] password for %p:  --without-lecture --with-tty-tickets --disable-root-mailer --enable-admin-flag --with-sendmail=/usr/sbin/sendmail --with-timedir=/var/lib/sudo --mandir=/usr/share/man --libexecdir=/usr/lib/sudo --with-sssd --with-sssd-lib=/usr/lib/x86_64-linux-gnu --with-selinux
+Sudoers policy plugin version 1.8.9p5
+Sudoers file grammar version 43
+Sudoers path: /etc/sudoers
+Authentication methods: 'pam'
+Syslog facility if syslog is being used for logging: authpriv
+Syslog priority to use when user authenticates successfully: notice
+Syslog priority to use when user authenticates unsuccessfully: alert
+Send mail if the user is not in sudoers
+Use a separate timestamp for each user/tty combo
+Lecture user the first time they run sudo
+Root may run sudo
+Allow some information gathering to give useful error messages
+Require fully-qualified hostnames in the sudoers file
+Visudo will honor the EDITOR environment variable
+Set the LOGNAME and USER environment variables
+Length at which to wrap log file lines (0 for no wrap): 80
+Authentication timestamp timeout: 15.0 minutes
+Password prompt timeout: 0.0 minutes
+Number of tries to enter a password: 3
+Umask to use or 0777 to use user's: 022
+Path to mail program: /usr/sbin/sendmail
+Flags for mail program: -t
+Address to send mail to: root
+Subject line for mail messages: *** SECURITY information for %h ***
+Incorrect password message: Sorry, try again.
+Path to authentication timestamp dir: /var/lib/sudo
+Default password prompt: [sudo] password for %p: 
+Default user to run commands as: root
+Value to override user's $PATH with: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+Path to the editor for use by visudo: /usr/bin/editor
+When to require a password for 'list' pseudocommand: any
+When to require a password for 'verify' pseudocommand: all
+File descriptors >= 3 will be closed before executing a command
+Environment variables to check for sanity:
+	TZ
+	TERM
+	LINGUAS
+	LC_*
+	LANGUAGE
+	LANG
+	COLORTERM
+Environment variables to remove:
+	RUBYOPT
+	RUBYLIB
+	PYTHONUSERBASE
+	PYTHONINSPECT
+	PYTHONPATH
+	PYTHONHOME
+	TMPPREFIX
+	ZDOTDIR
+	READNULLCMD
+	NULLCMD
+	FPATH
+	PERL5DB
+	PERL5OPT
+	PERL5LIB
+	PERLLIB
+	PERLIO_DEBUG 
+	JAVA_TOOL_OPTIONS
+	SHELLOPTS
+	GLOBIGNORE
+	PS4
+	BASH_ENV
+	ENV
+	TERMCAP
+	TERMPATH
+	TERMINFO_DIRS
+	TERMINFO
+	_RLD*
+	LD_*
+	PATH_LOCALE
+	NLSPATH
+	HOSTALIASES
+	RES_OPTIONS
+	LOCALDOMAIN
+	CDPATH
+	IFS
+Environment variables to preserve:
+	JAVA_HOME
+	TRAVIS
+	CI
+	DEBIAN_FRONTEND
+	XAUTHORIZATION
+	XAUTHORITY
+	PS2
+	PS1
+	PATH
+	LS_COLORS
+	KRB5CCNAME
+	HOSTNAME
+	HOME
+	DISPLAY
+	COLORS
+Locale to use while parsing sudoers: C
+Directory in which to store input/output logs: /var/log/sudo-io
+File in which to store the input/output log: %{seq}
+Add an entry to the utmp/utmpx file when allocating a pty
+PAM service name to use
+PAM service name to use for login shells
+Create a new PAM session for the command to run in
+Maximum I/O log sequence number: 0
+Local IP address and netmask pairs:
+	172.17.0.2/255.255.0.0
+Sudoers I/O plugin version 1.8.9p5
+gzip version
+gzip 1.6
+Copyright (C) 2007, 2010, 2011 Free Software Foundation, Inc.
+Copyright (C) 1993 Jean-loup Gailly.
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+Written by Jean-loup Gailly.
+zip version
+Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+This is Zip 3.0 (July 5th 2008), by Info-ZIP.
+Currently maintained by E. Gordon.  Please send bug reports to
+the authors using the web page at www.info-zip.org; see README for details.
+Latest sources and executables are at ftp://ftp.info-zip.org/pub/infozip,
+as of above date; see http://www.info-zip.org/ for other sites.
+Compiled with gcc 4.8.2 for Unix (Linux ELF) on Oct 21 2013.
+Zip special compilation options:
+	USE_EF_UT_TIME       (store Universal Time)
+	BZIP2_SUPPORT        (bzip2 library version 1.0.6, 6-Sept-2010)
+	    bzip2 code and library copyright (c) Julian R Seward
+	    (See the bzip2 license for terms of use)
+	SYMLINK_SUPPORT      (symbolic links supported)
+	LARGE_FILE_SUPPORT   (can read and write large files on file system)
+	ZIP64_SUPPORT        (use Zip64 to store large files in archives)
+	UNICODE_SUPPORT      (store and read UTF-8 Unicode paths)
+	STORE_UNIX_UIDs_GIDs (store UID/GID sizes/values using new extra field)
+	UIDGID_NOT_16BIT     (old Unix 16-bit UID/GID extra field not used)
+	[encryption, version 2.91 of 05 Jan 2007] (modified for Zip 3)
+Encryption notice:
+	The encryption code of this program is not copyrighted and is
+	put in the public domain.  It was originally written in Europe
+	and, to the best of our knowledge, can be freely distributed
+	in both source and object forms from any country, including
+	the USA under License Exception TSU of the U.S. Export
+	Administration Regulations (section 740.13(e)) of 6 June 2002.
+Zip environment options:
+             ZIP:  [none]
+          ZIPOPT:  [none]
+vim version
+VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Nov 24 2016 16:43:18)
+Included patches: 1-52
+Extra patches: 8.0.0056
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version without GUI.  Features included (+) or not (-):
++acl             +farsi           +mouse_netterm   +syntax
++arabic          +file_in_path    +mouse_sgr       +tag_binary
++autocmd         +find_in_path    -mouse_sysmouse  +tag_old_static
+-balloon_eval    +float           +mouse_urxvt     -tag_any_white
+-browse          +folding         +mouse_xterm     -tcl
+++builtin_terms  -footer          +multi_byte      +terminfo
++byte_offset     +fork()          +multi_lang      +termresponse
++cindent         +gettext         -mzscheme        +textobjects
+-clientserver    -hangul_input    +netbeans_intg   +title
+-clipboard       +iconv           +path_extra      -toolbar
++cmdline_compl   +insert_expand   -perl            +user_commands
++cmdline_hist    +jumplist        +persistent_undo +vertsplit
++cmdline_info    +keymap          +postscript      +virtualedit
++comments        +langmap         +printer         +visual
++conceal         +libcall         +profile         +visualextra
++cryptv          +linebreak       +python          +viminfo
++cscope          +lispindent      -python3         +vreplace
++cursorbind      +listcmds        +quickfix        +wildignore
++cursorshape     +localmap        +reltime         +wildmenu
++dialog_con      -lua             +rightleft       +windows
++diff            +menu            -ruby            +writebackup
++digraphs        +mksession       +scrollbind      -X11
+-dnd             +modify_fname    +signs           -xfontset
+-ebcdic          +mouse           +smartindent     -xim
++emacs_tags      -mouseshape      -sniff           -xsmp
++eval            +mouse_dec       +startuptime     -xterm_clipboard
++ex_extra        +mouse_gpm       +statusline      -xterm_save
++extra_search    -mouse_jsbterm   -sun_workshop    -xpm
+   system vimrc file: "$VIM/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed -o vim        -lm -ltinfo -lnsl  -lselinux  -lacl -lattr -lgpm -ldl    -L/usr/lib/python2.7/config-x86_64-linux-gnu -lpython2.7 -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions      
+iptables version
+iptables v1.4.21
+curl version
+curl 7.35.0 (x86_64-pc-linux-gnu) libcurl/7.35.0 OpenSSL/1.0.1f zlib/1.2.8 libidn/1.28 librtmp/2.3
+wget version
+GNU Wget 1.15 built on linux-gnu.
+rsync version
+rsync  version 3.1.0  protocol version 31
+gimme version
+v1.2.0
+nvm version
+0.33.6
+perlbrew version
+/home/travis/perl5/perlbrew/bin/perlbrew  - App::perlbrew/0.80
+phpenv version
+rbenv 1.1.1-25-g6aa70b6
+rvm version
+rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+default ruby version
+ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+CouchDB version
+couchdb 1.6.1
+ElasticSearch version
+5.5.0
+Installed Firefox version
+firefox 56.0.2
+MongoDB version
+MongoDB 3.4.10
+PhantomJS version
+2.1.1
+Pre-installed PostgreSQL versions
+9.2.24
+9.3.20
+9.4.15
+9.5.10
+9.6.6
+RabbitMQ Version
+3.6.14
+Redis version
+redis-server 4.0.6
+riak version
+2.2.3
+Pre-installed Go versions
+1.7.4
+ant version
+Apache Ant(TM) version 1.9.3 compiled on April 8 2014
+mvn version
+Apache Maven 3.5.2 (138edd61fd100ec658bfa2d307c43b76940a5d7d; 2017-10-18T07:58:13Z)
+Maven home: /usr/local/maven-3.5.2
+Java version: 1.8.0_151, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-8-oracle/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "4.4.0-101-generic", arch: "amd64", family: "unix"
+gradle version
+------------------------------------------------------------
+Gradle 4.0.1
+------------------------------------------------------------
+Build time:   2017-07-07 14:02:41 UTC
+Revision:     38e5dc0f772daecca1d2681885d3d85414eb6826
+Groovy:       2.4.11
+Ant:          Apache Ant(TM) version 1.9.6 compiled on June 29 2015
+JVM:          1.8.0_151 (Oracle Corporation 25.151-b12)
+OS:           Linux 4.4.0-101-generic amd64
+lein version
+Leiningen 2.8.1 on Java 1.8.0_151 Java HotSpot(TM) 64-Bit Server VM
+Pre-installed Node.js versions
+v4.8.6
+v6.12.0
+v6.12.1
+v8.9
+v8.9.1
+phpenv versions
+  system
+  5.6
+* 5.6.32 (set by /home/travis/.phpenv/version)
+  7.0
+  7.0.25
+  7.1
+  7.1.11
+  hhvm
+  hhvm-stable
+composer --version
+Composer version 1.5.2 2017-09-11 16:59:25
+Pre-installed Ruby versions
+ruby-2.2.7
+ruby-2.3.4
+ruby-2.4.1
+Network availability confirmed.
+Setting APT mirror in /etc/apt/sources.list: http://archive.ubuntu.com/ubuntu/
+git.checkout
+0.88s$ git clone --depth=50 https://github.com/jasmine/jasmine.git jasmine/jasmine
+Cloning into 'jasmine/jasmine'...
+remote: Counting objects: 1240, done.
+remote: Compressing objects: 100% (696/696), done.
+remote: Total 1240 (delta 754), reused 867 (delta 526), pack-reused 0
+Receiving objects: 100% (1240/1240), 500.24 KiB | 7.58 MiB/s, done.
+Resolving deltas: 100% (754/754), done.
+$ cd jasmine/jasmine
+0.40s$ git fetch origin +refs/pull/1606/merge:
+remote: Counting objects: 26, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 26 (delta 18), reused 23 (delta 16), pack-reused 0
+Unpacking objects: 100% (26/26), done.
+From https://github.com/jasmine/jasmine
+ * branch            refs/pull/1606/merge -> FETCH_HEAD
+$ git checkout -qf FETCH_HEAD
+git.submodule
+0.04s$ git submodule update --init --recursive
+Setting environment variables from .travis.yml
+$ export USE_SAUCE=true
+$ export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+$ export TEST_COMMAND="bash travis-core-script.sh"
+$ export USE_SAUCE=false
+$ export TEST_COMMAND="bash travis-node-script.sh v9"
+0.43s$ rvm alias create 2.5 ruby-2.5.1
+Required ruby-2.5.1 is not installed.
+Creating alias 2.5 for ruby-2.5.1...
+rvm
+18.70s$ rvm use 2.5 --install --binary --fuzzy
+curl: (22) The requested URL returned error: 404 Not Found
+Required ruby-2.5.1 is not installed - installing.
+curl: (22) The requested URL returned error: 404 Not Found
+Searching for binary rubies, this might take some time.
+Found remote file https://rubies.travis-ci.org/ubuntu/14.04/x86_64/ruby-2.5.1.tar.bz2
+Checking requirements for ubuntu.
+Requirements installation successful.
+ruby-2.5.1 - #configure
+ruby-2.5.1 - #download
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 14.7M  100 14.7M    0     0  35.4M      0 --:--:-- --:--:-- --:--:--  113M
+No checksum for downloaded archive, recording checksum in user configuration.
+ruby-2.5.1 - #validate archive
+ruby-2.5.1 - #extract
+ruby-2.5.1 - #validate binary
+ruby-2.5.1 - #setup
+ruby-2.5.1 - #gemset created /home/travis/.rvm/gems/ruby-2.5.1@global
+ruby-2.5.1 - #importing gemset /home/travis/.rvm/gemsets/global.gems...........................................
+ruby-2.5.1 - #generating global wrappers........
+ruby-2.5.1 - #uninstalling gem rubygems-bundler-1.4.5.
+ruby-2.5.1 - #gemset created /home/travis/.rvm/gems/ruby-2.5.1
+ruby-2.5.1 - #importing gemset /home/travis/.rvm/gemsets/default.gems...............
+ruby-2.5.1 - #generating default wrappers........
+Using /home/travis/.rvm/gems/ruby-2.5.1
+$ export BUNDLE_GEMFILE=$PWD/Gemfile
+cache.1
+Setting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+0.07s$ Installing caching utilities
+0.00s
+5.58sattempting to download cache archive
+fetching PR.1606/cache-linux-trusty-cbfc92abc9c9e361e1764d787776edec20a6b8be7eef274a9b4f51f283f890ea--rvm-2.5--gemfile-Gemfile.tgz
+found cache
+cache.bundler
+0.00s
+2.69sadding /home/travis/build/jasmine/jasmine/vendor/bundle to cache
+creating directory /home/travis/build/jasmine/jasmine/vendor/bundle
+ruby.versions
+$ ruby --version
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux]
+$ rvm --version
+rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+$ bundle --version
+Bundler version 1.16.2
+$ gem --version
+2.7.7
+before_install.1
+2.16s$ gem update --system
+Latest version already installed. Done.
+before_install.2
+0.59s$ gem install bundler
+Fetching: bundler-1.16.4.gem (100%)
+Successfully installed bundler-1.16.4
+1 gem installed
+install.bundler
+3.82s$ bundle install --jobs=3 --retry=3 --path=${BUNDLE_PATH:-vendor/bundle}
+The git source `git://github.com/jasmine/jasmine_selenium_runner.git` uses the `git` protocol, which transmits data without encryption. Disable this warning with `bundle config git.allow_insecure true`, or switch to the `https` protocol to keep your data secure.
+Fetching https://github.com/jasmine/jasmine-gem.git
+Fetching git://github.com/jasmine/jasmine_selenium_runner.git
+Fetching gem metadata from https://rubygems.org/........
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies...
+Using rake 12.3.1
+Using public_suffix 3.0.3
+Using git 1.5.0
+Using github 0.1.1
+Using multipart-post 2.0.0
+Using thor 0.20.0
+Using bundler 1.16.4
+Using ffi 1.9.25
+Using chunky_png 1.3.10
+Using cmdparse 3.0.3
+Using multi_json 1.13.1
+Using sass 3.4.25
+Using rb-fsevent 0.10.3
+Using connection_pool 2.2.2
+Using unf_ext 0.0.7.5
+Using highline 2.0.0
+Using jasmine-core 3.2.1 from source at `.`
+Using phantomjs 2.1.1.0
+Using rack 2.0.5
+Using rubyzip 1.2.2
+Using json 2.1.0
+Using mime-types-data 3.2018.0812
+Using net-ssh 5.0.2
+Using netrc 0.11.0
+Using parallel 1.12.1
+Using faraday 0.15.2
+Using childprocess 0.9.0
+Using rb-inotify 0.9.10
+Using compass-core 1.0.3
+Using compass-import-once 1.0.5
+Using net-http-persistent 3.0.0
+Using unf 0.1.4
+Using jasmine 3.2.0 from https://github.com/jasmine/jasmine-gem.git (at master@874b760)
+Using mime-types 3.2.2
+Using net-ssh-gateway 2.0.0
+Using parallel_tests 1.3.7
+Using selenium-webdriver 3.14.0
+Using compass 1.0.3
+Using domain_name 0.5.20180417
+Using jasmine_selenium_runner 3.0.0 from git://github.com/jasmine/jasmine_selenium_runner.git (at master@5d8c706)
+Using addressable 2.5.2
+Using http-cookie 1.0.3
+Using sawyer 0.8.1
+Using rest-client 2.0.2
+Using octokit 4.12.0
+Using sauce_whisk 0.0.22
+Using anchorman 0.9.5
+Using sauce 3.7.2
+Using sauce-connect 3.6.3
+Bundle complete! 7 Gemfile dependencies, 49 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+49.46s$ $TEST_COMMAND
+Cloning into '/home/travis/.nvm'...
+remote: Counting objects: 7221, done.
+remote: Total 7221 (delta 0), reused 0 (delta 0), pack-reused 7221
+Receiving objects: 100% (7221/7221), 2.23 MiB | 16.29 MiB/s, done.
+Resolving deltas: 100% (4547/4547), done.
+Note: checking out 'v0.33.11'.
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+  git checkout -b <new-branch-name>
+HEAD is now at 93990ab... v0.33.11
+Downloading and installing node v9.11.2...
+Downloading https://nodejs.org/dist/v9.11.2/node-v9.11.2-linux-x64.tar.xz...
+######################################################################## 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v9.11.2 (npm v5.6.0)
+Creating default alias: default -> v9 (-> v9.11.2)
+npm WARN notice [SECURITY] lodash has the following vulnerability: 1 low. Go here for more details: https://nodesecurity.io/advisories?search=lodash&version=2.4.2 - Run `npm i npm@latest -g` to upgrade your npm version, and then `npm audit` to get more info.
+npm WARN deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm WARN deprecated minimatch@0.3.0: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm WARN notice [SECURITY] minimatch has the following vulnerability: 1 high. Go here for more details: https://nodesecurity.io/advisories?search=minimatch&version=0.2.14 - Run `npm i npm@latest -g` to upgrade your npm version, and then `npm audit` to get more info.
+npm WARN notice [SECURITY] minimatch has the following vulnerability: 1 high. Go here for more details: https://nodesecurity.io/advisories?search=minimatch&version=0.3.0 - Run `npm i npm@latest -g` to upgrade your npm version, and then `npm audit` to get more info.
+> iltorb@1.3.10 install /home/travis/build/jasmine/jasmine/node_modules/iltorb
+> detect-libc prebuild-install || node-gyp rebuild
+prebuild-install WARN install No prebuilt binaries found (target=9.11.2 runtime=node arch=x64 platform=linux)
+make: Entering directory `/home/travis/build/jasmine/jasmine/node_modules/iltorb/build'
+  CC(target) Release/obj.target/iltorb/brotli/common/dictionary.o
+  CC(target) Release/obj.target/iltorb/brotli/dec/bit_reader.o
+  CC(target) Release/obj.target/iltorb/brotli/dec/decode.o
+  CC(target) Release/obj.target/iltorb/brotli/dec/huffman.o
+  CC(target) Release/obj.target/iltorb/brotli/dec/state.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/backward_references.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/backward_references_hq.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/bit_cost.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/block_splitter.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/brotli_bit_stream.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/cluster.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/compress_fragment.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/compress_fragment_two_pass.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/dictionary_hash.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/encode.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/entropy_encode.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/histogram.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/literal_cost.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/memory.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/metablock.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/static_dict.o
+  CC(target) Release/obj.target/iltorb/brotli/enc/utf8_util.o
+  CXX(target) Release/obj.target/iltorb/src/common/allocator.o
+  CXX(target) Release/obj.target/iltorb/src/common/stream_coder.o
+  CXX(target) Release/obj.target/iltorb/src/dec/stream_decode.o
+  CXX(target) Release/obj.target/iltorb/src/dec/stream_decode_worker.o
+../src/dec/stream_decode_worker.cc: In member function ‘virtual void StreamDecodeWorker::HandleOKCallback()’:
+../src/dec/stream_decode_worker.cc:46:27: warning: ‘v8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>*) const’ is deprecated (declared at ../../nan/nan.h:1647) [-Wdeprecated-declarations]
+     callback->Call(1, argv);
+                           ^
+../src/dec/stream_decode_worker.cc:52:27: warning: ‘v8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>*) const’ is deprecated (declared at ../../nan/nan.h:1647) [-Wdeprecated-declarations]
+     callback->Call(2, argv);
+                           ^
+  CXX(target) Release/obj.target/iltorb/src/enc/stream_encode.o
+  CXX(target) Release/obj.target/iltorb/src/enc/stream_encode_worker.o
+../src/enc/stream_encode_worker.cc: In member function ‘virtual void StreamEncodeWorker::HandleOKCallback()’:
+../src/enc/stream_encode_worker.cc:47:27: warning: ‘v8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>*) const’ is deprecated (declared at ../../nan/nan.h:1647) [-Wdeprecated-declarations]
+     callback->Call(1, argv);
+                           ^
+../src/enc/stream_encode_worker.cc:53:27: warning: ‘v8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>*) const’ is deprecated (declared at ../../nan/nan.h:1647) [-Wdeprecated-declarations]
+     callback->Call(2, argv);
+                           ^
+  CXX(target) Release/obj.target/iltorb/src/iltorb.o
+  SOLINK_MODULE(target) Release/obj.target/iltorb.node
+  COPY Release/iltorb.node
+  COPY ../build/bindings/iltorb.node
+  TOUCH Release/obj.target/action_after_build.stamp
+make: Leaving directory `/home/travis/build/jasmine/jasmine/node_modules/iltorb/build'
+> phantomjs-prebuilt@2.1.16 install /home/travis/build/jasmine/jasmine/node_modules/phantomjs-prebuilt
+> node install.js
+Considering PhantomJS found at /usr/local/phantomjs/bin/phantomjs
+Found PhantomJS at /usr/local/phantomjs/bin/phantomjs ...verifying
+Writing location.js file
+PhantomJS is already installed on PATH at /usr/local/phantomjs/bin/phantomjs
+npm notice created a lockfile as package-lock.json. You should commit this file.
+added 473 packages in 32.171s
+> jasmine-core@3.2.1 test /home/travis/build/jasmine/jasmine
+> grunt jshint execSpecsInNode
+Running "jshint:beforeConcat" (jshint) task
+>> 79 files lint free.
+Running "jshint:afterConcat" (jshint) task
+>> 2 files lint free.
+Running "jshint:all" (jshint) task
+>> 79 files lint free.
+Running "execSpecsInNode" task
+Randomized with seed 46641
+Started
+...................................................................................................................................................................................................................................................................................................................................................................................................................................................****.............FF..................................................................................................................................................................................................................................................................................................................................................................................................................................
+Failures:
+1) Spies createSpyObj should allow you to omit the baseName
+  Message:
+    Expected object not to have properties
+        spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
+  Stack:
+    Error: Expected object not to have properties
+        spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
+        at <Jasmine>
+      at UserContext.<anonymous> (/home/travis/build/jasmine/jasmine/spec/core/SpySpec.js:122:22)
+        at <Jasmine>
+      at runCallback (timers.js:763:18)
+      at tryOnImmediate (timers.js:734:5)
+      at processImmediate (timers.js:716:5)
+2) Spies createSpyObj should create an object with a bunch of spy methods when you call jasmine.createSpyObj()
+  Message:
+    Expected object not to have properties
+        spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
+  Stack:
+    Error: Expected object not to have properties
+        spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
+        at <Jasmine>
+      at UserContext.<anonymous> (/home/travis/build/jasmine/jasmine/spec/core/SpySpec.js:114:22)
+        at <Jasmine>
+      at runCallback (timers.js:763:18)
+      at tryOnImmediate (timers.js:734:5)
+      at processImmediate (timers.js:716:5)
+Pending:
+1) JsApiReporter (integration specs) results should return nested suites as children of their parents
+  No reason given
+2) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+  No reason given
+3) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+  No reason given
+4) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+  No reason given
+872 specs, 2 failures, 4 pending specs
+Finished in 9.764 seconds
+Randomized with seed 46641 (jasmine --random=true --seed=46641)
+Warning: Task "execSpecsInNode" failed. Use --force to continue.
+Aborted due to warnings.
+npm ERR! Test failed.  See above for more details.
+The command "$TEST_COMMAND" exited with 1.
+cache.2
+store build cache
+$ bundle clean
+The git source `git://github.com/jasmine/jasmine_selenium_runner.git` uses the `git` protocol, which transmits data without encryption. Disable this warning with `bundle config git.allow_insecure true`, or switch to the `https` protocol to keep your data secure.
+0.00s
+6.77schange detected (content changed, file is created, or file is deleted):
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine-gem-874b760d4f00/.git/index
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine-gem-874b760d4f00/.git/logs/HEAD
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine_selenium_runner-5d8c7062a8ad/.git/index
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine_selenium_runner-5d8c7062a8ad/.git/logs/HEAD
+changes detected, packing new archive
+uploading archive
+Done. Your build exited with 1.

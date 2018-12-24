@@ -25,22 +25,27 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <summary>
         /// Bool value if pending starter regex has been matched
         /// </summary>
-        public bool pendingStarterMatched { get; set; }
+        public bool PendingStarterMatched { get; set; }
 
         /// <summary>
         /// Passed tests to expect from the test status
         /// </summary>
-        public int passedTestsToExpect { get; set; }
+        public int PassedTestsToExpect { get; set; }
 
         /// <summary>
         /// Failed tests to expect from the test status
         /// </summary>
-        public int failedTestsToExpect { get; set; }
+        public int FailedTestsToExpect { get; set; }
 
         /// <summary>
         /// Skipped tests to expect from the test status
         /// </summary>
-        public int skippedTestsToExpect { get; set; }
+        public int SkippedTestsToExpect { get; set; }
+
+        /// <summary>
+        /// Number of suite errors
+        /// </summary>
+        public int SuiteErrors { get; set; }
 
         /// <summary>
         /// Initializes all the values to their defaults
@@ -50,10 +55,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             base.Initialize(testRun);
             LastFailedTestCaseNumber = 0;
             LastPendingTestCaseNumber = 0;
-            passedTestsToExpect = 0;
-            failedTestsToExpect = 0;
-            skippedTestsToExpect = 0;
-            pendingStarterMatched = false;
+            PassedTestsToExpect = 0;
+            FailedTestsToExpect = 0;
+            SkippedTestsToExpect = 0;
+            PendingStarterMatched = false;
         }
 
     }

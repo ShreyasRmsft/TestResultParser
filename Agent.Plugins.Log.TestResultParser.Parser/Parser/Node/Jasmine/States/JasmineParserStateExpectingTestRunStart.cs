@@ -19,6 +19,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             RegexsToMatch = new List<RegexActionPair>
             {
                 new RegexActionPair(JasmineRegexes.TestRunStart, TestRunStartMatched),
+                new RegexActionPair(JasmineRegexes.TestStatus, TestStatusMatched),
             };
         }
 
@@ -28,6 +29,21 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
+
+            return JasmineParserStates.ExpectingTestResults;
+        }
+
+        private Enum TestStatusMatched(Match match, AbstractParserStateContext stateContext)
+        {
+            var jasmineStateContext = stateContext as JasmineParserStateContext;
+
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : Transitioned to state ExpectingTestResults" +
+                $" at line {jasmineStateContext.CurrentLineNumber}.");
+
+            var testStatus = new List<char>(match.ToString());
+            jasmineStateContext.PassedTestsToExpect = testStatus.FindAll((char x) => { return x == '.'; }).Count;
+            jasmineStateContext.FailedTestsToExpect = testStatus.FindAll((char x) => { return x == 'F'; }).Count;
+            jasmineStateContext.SkippedTestsToExpect = testStatus.FindAll((char x) => { return x == '*'; }).Count;
 
             return JasmineParserStates.ExpectingTestResults;
         }
