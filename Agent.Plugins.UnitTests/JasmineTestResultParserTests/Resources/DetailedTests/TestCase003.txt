@@ -1,49 +1,4 @@
-﻿Garbled numbers in failures and pending and numbers in test name
-0.04s$ git submodule update --init --recursive
-Setting environment variables from .travis.yml
-$ export USE_SAUCE=true
-$ export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-$ export TEST_COMMAND="bash travis-core-script.sh"
-$ export USE_SAUCE=false
-$ export TEST_COMMAND="bash travis-node-script.sh v9"
-0.43s$ rvm alias create 2.5 ruby-2.5.1
-Required ruby-2.5.1 is not installed.
-Creating alias 2.5 for ruby-2.5.1...
-rvm
-18.70s$ rvm use 2.5 --install --binary --fuzzy
-curl: (22) The requested URL returned error: 404 Not Found
-Required ruby-2.5.1 is not installed - installing.
-curl: (22) The requested URL returned error: 404 Not Found
-Searching for binary rubies, this might take some time.
-Found remote file https://rubies.travis-ci.org/ubuntu/14.04/x86_64/ruby-2.5.1.tar.bz2
-Checking requirements for ubuntu.
-Requirements installation successful.
-ruby-2.5.1 - #configure
-ruby-2.5.1 - #download
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 14.7M  100 14.7M    0     0  35.4M      0 --:--:-- --:--:-- --:--:--  113M
-No checksum for downloaded archive, recording checksum in user configuration.
-ruby-2.5.1 - #validate archive
-ruby-2.5.1 - #extract
-ruby-2.5.1 - #validate binary
-ruby-2.5.1 - #setup
-ruby-2.5.1 - #gemset created /home/travis/.rvm/gems/ruby-2.5.1@global
-ruby-2.5.1 - #importing gemset /home/travis/.rvm/gemsets/global.gems...........................................
-ruby-2.5.1 - #generating global wrappers........
-ruby-2.5.1 - #uninstalling gem rubygems-bundler-1.4.5.
-ruby-2.5.1 - #gemset created /home/travis/.rvm/gems/ruby-2.5.1
-ruby-2.5.1 - #importing gemset /home/travis/.rvm/gemsets/default.gems...............
-ruby-2.5.1 - #generating default wrappers........
-Using /home/travis/.rvm/gems/ruby-2.5.1
-$ export BUNDLE_GEMFILE=$PWD/Gemfile
-cache.1
-Setting up build cache
-$ export CASHER_DIR=${TRAVIS_HOME}/.casher
-::Value> Nan::Callback::Call(int, v8::Local<v8::Value>*) const’ is deprecated (declared at ../../nan/nan.h:1647) [-Wdeprecated-declarations]
-     callback->Call(1, argv);
-                           ^
+﻿Test case numbers garbled and names contain numbers and weird characters
 ../src/dec/stream_decode_worker.cc:52:27: warning: ‘v8::Local<v8::Value> Nan::Callback::Call(int, v8::Local<v8::Value>*) const’ is deprecated (declared at ../../nan/nan.h:1647) [-Wdeprecated-declarations]
      callback->Call(2, argv);
                            ^
@@ -96,20 +51,7 @@ Failures:
       at runCallback (timers.js:763:18)
       at tryOnImmediate (timers.js:734:5)
       at processImmediate (timers.js:716:5)
-3) Spies createSpyObj should create an object with a bunch of spy 1)methods when you call jasmine.createSpyObj()
-  Message:
-    Expected object not to have properties
-        spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
-  Stack:
-    Error: Expected object not to have properties
-        spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
-        at <Jasmine>
-      at UserContext.<anonymous> (/home/travis/build/jasmine/jasmine/spec/core/SpySpec.js:114:22)
-        at <Jasmine>
-      at runCallback (timers.js:763:18)
-      at tryOnImmediate (timers.js:734:5)
-      at processImmediate (timers.js:716:5)
-2) Spies createSpyObj should create an object with a bunch of spy 2) methods when you call jasmine.createSpyObj()
+2) Spies createSpyObj should create an object with a bunch of spy methods when you call jasmine.createSpyObj()
   Message:
     Expected object not to have properties
         spies: SpyObject({ calls: CallTracker({ track: Function, any: Function, count: Function, argsFor: Function, all: Function, allArgs: Function, first: Function, mostRecent: Function, reset: Function, saveArgumentsByValue: Function }), methods: [ Function, Function ] })
@@ -123,13 +65,13 @@ Failures:
       at tryOnImmediate (timers.js:734:5)
       at processImmediate (timers.js:716:5)
 Pending:
-1) JsApiReporter (integration specs) results should return nested suites as children of their parents
+1) JsApiReporter 1) (integration specs) results should~2#%$^%((*(~~ return nested suites as children of their parents
   No reason given
-3) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+3) JsApiReporter 2) (integration specs) results #summarizeResult_ should summarize a passing result
   No reason given
 2) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
   No reason given
-3) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+3) JsApiReporter 2) (integration specs) results #summarizeResult_ should summarize a passing result
   No reason given
 4) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
   No reason given

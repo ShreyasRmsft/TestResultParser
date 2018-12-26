@@ -252,6 +252,7 @@ npm@2.9.0 node_modules/npm
 Jasmine server listening on port 8000
 [22:59:58] Finished 'jasmine-ci' after 2.73 s
 [22:59:58] Finished 'spec' after 3.39 s
+Started
 .................
 17 specs, 0 failures
 Finished in 0.023 seconds

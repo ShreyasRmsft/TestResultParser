@@ -1,4 +1,5 @@
-﻿Worker information
+﻿Garbled numbering of failed/pending test cases
+GaWorker information
 hostname: 70452dc1-4386-410e-a7da-c83a0647f695@1.production-1-worker-org-05-packet
 version: v4.0.0 https://github.com/travis-ci/worker/tree/e5cb567e10c0eefe380e81c9a2229ac8fb6a16ce
 instance: ac8d588 travisci/ci-garnet:packer-1512502276-986baf0 (via amqp)

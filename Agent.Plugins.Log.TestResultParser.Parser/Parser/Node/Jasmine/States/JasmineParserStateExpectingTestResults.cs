@@ -32,8 +32,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
-                $" at line {jasmineStateContext.CurrentLineNumber}.");
+            // Test Run Start matched after already encountering test run start.
+            // Parser should be reset.
+
+            this.attemptPublishAndResetParser();
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -41,14 +43,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private Enum TestStatusMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
+            jasmineStateContext.LinesWithinWhichMatchIsExpected = 0;
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
-                $" at line {jasmineStateContext.CurrentLineNumber}.");
-
-            var testStatus = new List<char>(match.ToString());
-            jasmineStateContext.PassedTestsToExpect = testStatus.FindAll((char x) => { return x == '.'; }).Count;
-            jasmineStateContext.FailedTestsToExpect = testStatus.FindAll((char x) => { return x == 'F'; }).Count;
-            jasmineStateContext.SkippedTestsToExpect = testStatus.FindAll((char x) => { return x == '*'; }).Count;
+            var testStatus = match.ToString();
+            jasmineStateContext.PassedTestsToExpect = Regex.Matches(testStatus, "[.]").Count;
+            jasmineStateContext.FailedTestsToExpect = Regex.Matches(testStatus, "[F]").Count;
+            jasmineStateContext.SkippedTestsToExpect = Regex.Matches(testStatus, "[*]").Count;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -64,55 +64,44 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 if (testCaseNumber != jasmineStateContext.LastFailedTestCaseNumber + 1)
                 {
+                    // There's a good chance we read some random line as a failed test case hence consider it a
+                    // as a match but do not add it to our list of test cases
+
                     this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting failed test case with" +
                         $" number {jasmineStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
                     this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
-
-                    // If it was not 1 there's a good chance we read some random line as a failed test case hence consider it a
-                    // as a match but do not add it to our list of test cases
-                    if (testCaseNumber != 1)
-                    {
-                        return JasmineParserStates.ExpectingTestResults;
-                    }
-
-                    // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
-                    // This is something we might choose to change if we realize there is a chance we can get such false detections often in the middle of a run
-                    this.attemptPublishAndResetParser();
                 }
 
-                // Increment either ways whether it was expected or context was reset and the encountered number was 1
-                jasmineStateContext.LastFailedTestCaseNumber++;
+                else
+                {
+                    // Increment
+                    jasmineStateContext.LastFailedTestCaseNumber++;
 
-                var testResult = PrepareTestResult(TestOutcome.Failed, match);
-                jasmineStateContext.TestRun.FailedTests.Add(testResult);
+                    var testResult = PrepareTestResult(TestOutcome.Failed, match);
+                    jasmineStateContext.TestRun.FailedTests.Add(testResult);
+                }
             }
             else
             {
                 if (testCaseNumber != jasmineStateContext.LastPendingTestCaseNumber + 1)
                 {
-                    this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting failed test case with" +
-                        $" number {jasmineStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
+                    // There's a good chance we read some random line as a pending test case hence consider it a
+                    // as a match but do not add it to our list of test cases
+
+                    this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting pending test case with" +
+                        $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
                     this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
-
-                    // If it was not 1 there's a good chance we read some random line as a failed test case hence consider it a
-                    // as a match but do not add it to our list of test cases
-                    if (testCaseNumber != 1)
-                    {
-                        return JasmineParserStates.ExpectingTestResults;
-                    }
-
-                    // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
-                    // This is something we might choose to change if we realize there is a chance we can get such false detections often in the middle of a run
-                    this.attemptPublishAndResetParser();
                 }
+                else
+                {
+                    // Increment
+                    jasmineStateContext.LastPendingTestCaseNumber++;
 
-                // Increment either ways whether it was expected or context was reset and the encountered number was 1
-                jasmineStateContext.LastPendingTestCaseNumber++;
-
-                var testResult = PrepareTestResult(TestOutcome.NotExecuted, match);
-                jasmineStateContext.TestRun.SkippedTests.Add(testResult);
+                    var testResult = PrepareTestResult(TestOutcome.NotExecuted, match);
+                    jasmineStateContext.TestRun.SkippedTests.Add(testResult);
+                }
             }
 
             return JasmineParserStates.ExpectingTestResults;
@@ -122,9 +111,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             // All failures are reported after FailureStart regex is matched.
             var jasmineStateContext = stateContext as JasmineParserStateContext;
-
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
-                $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             jasmineStateContext.PendingStarterMatched = false;
 
@@ -136,9 +122,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // All pending are reported after PendingStart regex is matched.
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
-                $" at line {jasmineStateContext.CurrentLineNumber}.");
-
             // We set this as true so that any failedOrpending regex match after pending starter matched will be reported as pending tests
             // as pending and failed have the same regex
             jasmineStateContext.PendingStarterMatched = true;
@@ -149,9 +132,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private Enum SuiteErrorMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
-
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
-                $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             // Suite error is counted as failed and summary includes this while reporting
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
@@ -165,7 +145,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
+            jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
+            jasmineStateContext.NextExpectedMatch = "Finished in";
+
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             int totalTests, failedTests, skippedTests;

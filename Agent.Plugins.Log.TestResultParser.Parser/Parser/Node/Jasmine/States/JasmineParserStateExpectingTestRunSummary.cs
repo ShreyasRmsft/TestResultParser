@@ -30,10 +30,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            var timeTaken = double.Parse(match.Groups[RegexCaptureGroups.TestRunTime].Value);
-            jasmineStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : Transitioned to state ExpectingTestRunStart" +
+                $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            this.attemptPublishAndResetParser();
+            if (jasmineStateContext.LinesWithinWhichMatchIsExpected == 1)
+            {
+                var timeTaken = double.Parse(match.Groups[RegexCaptureGroups.TestRunTime].Value);
+                jasmineStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
+
+                this.attemptPublishAndResetParser();
+            }
 
             return JasmineParserStates.ExpectingTestRunStart;
         }
@@ -42,12 +48,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            // If a test run starte is encountered while in the summary state it indicates either completion
+            // If a test run started is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless. 
             this.attemptPublishAndResetParser();
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestResults" +
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             return JasmineParserStates.ExpectingTestResults;
@@ -93,12 +99,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         private Enum FailedOrPendingTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
-            var jasmineStateContext = stateContext as JasmineParserStateContext;
-
             // If a failed or pending test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless. 
             this.attemptPublishAndResetParser();
+
+            var jasmineStateContext = stateContext as JasmineParserStateContext;
+
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestResults" +
+                $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             // Since the parser is reset, the matched test case will be a failed test case or garbled value
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
@@ -110,7 +119,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
                     new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
 
-                return JasmineParserStates.ExpectingTestRunSummary;
+                return JasmineParserStates.ExpectingTestResults;
             }
 
             // Increment either ways whether it was expected or context was reset and the encountered number was 1

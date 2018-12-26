@@ -1,0 +1,58 @@
+﻿Test run time reported as 0 
+Running "execSpecsInNode" task
+Randomized with seed 54515
+Started
+.................*.*.*..*...*....*....................FFF........................................................................................................................................................................................................................................................................................................................................................................................*****................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Failures:
+1) Env #afterEach accepts an async function
+  Environment does not support async/await functions
+2) Env #afterAll accepts an async function
+  Environment does not support async/await functions
+3) Env #beforeEach accepts an async function
+  Environment does not support async/await functions
+
+Pending:
+1) Env #afterEach accepts an async function
+  Environment does not support async/await functions
+2) Env #afterAll accepts an async function
+  Environment does not support async/await functions
+3) Env #beforeEach accepts an async function
+  Environment does not support async/await functions
+4) Env #beforeAll accepts an async function
+  Environment does not support async/await functions
+5) Env #xit accepts an async function
+  Environment does not support async/await functions
+6) Env #it accepts an async function
+  Environment does not support async/await functions
+7) SpyStrategy allows a fake async function to be called instead
+  Environment does not support async/await functions
+8) JsApiReporter (integration specs) results #summarizeResult_ should have a stack trace for failing specs
+  No reason given
+9) JsApiReporter (integration specs) results #summarizeResult_ should summarize a passing result
+  No reason given
+10) JsApiReporter (integration specs) results should return nested suites as children of their parents
+  No reason given
+  kop[p[s[
+jnsiudodlpold
+kdkkdo]]
+uyhdsuioidkjdoijkojfb
+
+870 specs, 0 failures
+Finished in 0 seconds
+
+Randomized with seed 54515 (jasmine --random=true --seed=54515)
+Done.
+The command "$TEST_COMMAND" exited with 0.
+cache.2
+store build cache
+$ bundle clean
+The git source `git://github.com/jasmine/jasmine_selenium_runner.git` uses the `git` protocol, which transmits data without encryption. Disable this warning with `bundle config git.allow_insecure true`, or switch to the `https` protocol to keep your data secure.
+0.00s
+7.54schange detected (content changed, file is created, or file is deleted):
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine-gem-874b760d4f00/.git/index
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine-gem-874b760d4f00/.git/logs/HEAD
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine_selenium_runner-5d8c7062a8ad/.git/index
+/home/travis/build/jasmine/jasmine/vendor/bundle/ruby/2.5.0/bundler/gems/jasmine_selenium_runner-5d8c7062a8ad/.git/logs/HEAD
+changes detected, packing new archive
+uploading archive
+Done. Your build exited with 0.

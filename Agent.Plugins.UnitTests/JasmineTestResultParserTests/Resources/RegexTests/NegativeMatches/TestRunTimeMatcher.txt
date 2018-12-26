@@ -1,5 +1,8 @@
 ﻿Finished in 0.514 s
 Finished in 0.021 seconds:
 Finished in  151.702 seconds
+
  Finished in    0.5 seconds
  Finished in 0.5 seconds
+Finished in 1 minute and 5 seconds
+Finished in 1 minute 5 seconds

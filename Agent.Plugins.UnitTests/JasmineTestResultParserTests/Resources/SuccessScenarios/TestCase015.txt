@@ -1,4 +1,5 @@
-﻿2018-12-18T07:44:47.6208276Z ##[debug]Evaluating condition for step: 'Command Line Script'
+﻿Finished occurring after 1 line
+2018-12-18T07:44:47.6208276Z ##[debug]Evaluating condition for step: 'Command Line Script'
 2018-12-18T07:44:47.6208756Z ##[debug]Evaluating: succeeded()
 2018-12-18T07:44:47.6208834Z ##[debug]Evaluating succeeded:
 2018-12-18T07:44:47.6208979Z ##[debug]=> True

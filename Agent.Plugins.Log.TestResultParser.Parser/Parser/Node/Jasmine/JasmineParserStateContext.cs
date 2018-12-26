@@ -48,6 +48,18 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public int SuiteErrors { get; set; }
 
         /// <summary>
+        /// This is used to enforce that a match is expected within specified number of lines
+        /// The parser may take action accordingly
+        /// </summary>
+        public int LinesWithinWhichMatchIsExpected { get; set; }
+
+        /// <summary>
+        /// Hint string for logging and telemetry to specify what match was expected in case it does not occur
+        /// in the expected number of lines
+        /// </summary>
+        public string NextExpectedMatch { get; set; }
+
+        /// <summary>
         /// Initializes all the values to their defaults
         /// </summary>
         public new void Initialize(TestRun testRun)
@@ -59,6 +71,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             FailedTestsToExpect = 0;
             SkippedTestsToExpect = 0;
             PendingStarterMatched = false;
+            LinesWithinWhichMatchIsExpected = 0;
+            NextExpectedMatch = null;
         }
 
     }
