@@ -20,8 +20,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public override string Version => "1.0";
 
         /// <summary>
-        /// Default constructor accepting only test run manager instance, rest of the requirements assume default values
+        /// Detailed constructor where specified logger and telemetry data collector are initialized along with test run manager
         /// </summary>
+        /// <param name="testRunPublisher"></param>
+        /// <param name="diagnosticDataCollector"></param>
+        /// <param name="telemetryDataCollector"></param>
         public JasmineTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector) : 
             base(testRunManager, logger, telemetryDataCollector)
         {
@@ -137,7 +140,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
             else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
             {
-                // If encountered failed tests does not match summary fire telemtry
+                // If encountered failed tests does not match summary fire telemetry
                 this.logger.Error($"JasmineTestResultParser : Failed tests count does not match failed summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
                 this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,

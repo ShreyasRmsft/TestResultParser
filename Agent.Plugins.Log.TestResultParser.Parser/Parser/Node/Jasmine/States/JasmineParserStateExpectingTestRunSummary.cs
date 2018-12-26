@@ -23,6 +23,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 new RegexActionPair(JasmineRegexes.FailuresStart, FailuresStartMatched),
                 new RegexActionPair(JasmineRegexes.PendingStart, PendingStartMatched),
                 new RegexActionPair(JasmineRegexes.TestRunStart, TestRunStartMatched),
+                new RegexActionPair(JasmineRegexes.TestsSummaryMatcher, SummaryMatched)
             };
         }
 
@@ -33,13 +34,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : Transitioned to state ExpectingTestRunStart" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            if (jasmineStateContext.LinesWithinWhichMatchIsExpected == 1)
-            {
-                var timeTaken = double.Parse(match.Groups[RegexCaptureGroups.TestRunTime].Value);
-                jasmineStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
+            var timeTaken = double.Parse(match.Groups[RegexCaptureGroups.TestRunTime].Value);
+            jasmineStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
 
-                this.attemptPublishAndResetParser();
-            }
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : TestRunTime Matched" +
+               $" at line {jasmineStateContext.CurrentLineNumber}.");
+
+            this.attemptPublishAndResetParser();
 
             return JasmineParserStates.ExpectingTestRunStart;
         }
@@ -122,13 +123,40 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return JasmineParserStates.ExpectingTestResults;
             }
 
-            // Increment either ways whether it was expected or context was reset and the encountered number was 1
+            // Increment if it is not garbled value
             jasmineStateContext.LastFailedTestCaseNumber++;
 
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jasmineStateContext.TestRun.FailedTests.Add(testResult);
 
             return JasmineParserStates.ExpectingTestResults;
+        }
+
+        private Enum SummaryMatched(Match match, AbstractParserStateContext stateContext)
+        {
+            var jasmineStateContext = stateContext as JasmineParserStateContext;
+
+            jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
+            jasmineStateContext.NextExpectedMatch = "Finished in";
+
+            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
+                $" at line {jasmineStateContext.CurrentLineNumber}.");
+
+            int totalTests, failedTests, skippedTests;
+            int.TryParse(match.Groups[RegexCaptureGroups.TotalTests].Value, out totalTests);
+            int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out failedTests);
+            int.TryParse(match.Groups[RegexCaptureGroups.SkippedTests].Value, out skippedTests);
+
+            // Since suite errors are added as failures in the summary, we need to remove this from passedTests
+            // calculation.
+            var passedTests = totalTests - skippedTests - (failedTests - jasmineStateContext.SuiteErrors);
+
+            jasmineStateContext.TestRun.TestRunSummary.TotalTests = totalTests;
+            jasmineStateContext.TestRun.TestRunSummary.TotalFailed = failedTests;
+            jasmineStateContext.TestRun.TestRunSummary.TotalSkipped = skippedTests;
+            jasmineStateContext.TestRun.TestRunSummary.TotalPassed = passedTests;
+
+            return JasmineParserStates.ExpectingTestRunSummary;
         }
 
     }

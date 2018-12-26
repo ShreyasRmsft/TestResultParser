@@ -172,7 +172,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
             else if (this.stateContext.VerboseOptionEnabled && testRunToPublish.TestRunSummary.TotalPassed != testRunToPublish.PassedTests.Count)
             {
-                // If encountered failed tests does not match summary fire telemtry
+                // If encountered failed tests does not match summary fire telemetry
                 this.logger.Error($"JestTestResultParser : Passed tests count does not match passed summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
                 this.telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,

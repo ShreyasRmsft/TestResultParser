@@ -166,7 +166,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
             else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
             {
-                // If encountered failed tests does not match summary fire telemtry
+                // If encountered failed tests does not match summary fire telemetry
                 this.logger.Error($"MochaTestResultParser : Failed tests count does not match failed summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
                 this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,

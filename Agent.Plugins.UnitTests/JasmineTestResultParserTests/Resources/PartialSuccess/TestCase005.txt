@@ -79,6 +79,7 @@ kdkkdo]]
 uyhdsuioidkjdoijkojfb
 
 870 specs, 0 failures
+870 specs, 0 failures
 Finished in 0 seconds
 
 Randomized with seed 54515 (jasmine --random=true --seed=54515)

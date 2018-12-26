@@ -71,38 +71,37 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         $" number {jasmineStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
                     this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
+
+                    return JasmineParserStates.ExpectingTestResults;
                 }
 
-                else
-                {
-                    // Increment
-                    jasmineStateContext.LastFailedTestCaseNumber++;
+                // Increment
+                jasmineStateContext.LastFailedTestCaseNumber++;
 
-                    var testResult = PrepareTestResult(TestOutcome.Failed, match);
-                    jasmineStateContext.TestRun.FailedTests.Add(testResult);
-                }
+                var failedTestResult = PrepareTestResult(TestOutcome.Failed, match);
+                jasmineStateContext.TestRun.FailedTests.Add(failedTestResult);
+
+                return JasmineParserStates.ExpectingTestResults;
             }
-            else
+
+            if (testCaseNumber != jasmineStateContext.LastPendingTestCaseNumber + 1)
             {
-                if (testCaseNumber != jasmineStateContext.LastPendingTestCaseNumber + 1)
-                {
-                    // There's a good chance we read some random line as a pending test case hence consider it a
-                    // as a match but do not add it to our list of test cases
+                // There's a good chance we read some random line as a pending test case hence consider it a
+                // as a match but do not add it to our list of test cases
 
-                    this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting pending test case with" +
-                        $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
-                    this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
-                        new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
-                }
-                else
-                {
-                    // Increment
-                    jasmineStateContext.LastPendingTestCaseNumber++;
+                this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting pending test case with" +
+                    $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
+                this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
+                    new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
 
-                    var testResult = PrepareTestResult(TestOutcome.NotExecuted, match);
-                    jasmineStateContext.TestRun.SkippedTests.Add(testResult);
-                }
+                return JasmineParserStates.ExpectingTestResults;
             }
+
+            // Increment
+            jasmineStateContext.LastPendingTestCaseNumber++;
+
+            var skippedTestResult = PrepareTestResult(TestOutcome.NotExecuted, match);
+            jasmineStateContext.TestRun.SkippedTests.Add(skippedTestResult);
 
             return JasmineParserStates.ExpectingTestResults;
         }
