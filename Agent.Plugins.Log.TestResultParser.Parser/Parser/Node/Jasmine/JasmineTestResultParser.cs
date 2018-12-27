@@ -87,6 +87,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     return;
                 }
 
+                // If no match occurred and a match was expected in a positive number of lines, decrement the counter
+                // A value of zero or lesser indicates not expecting a match
+                if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
+                {
+                    this.stateContext.LinesWithinWhichMatchIsExpected--;
+                    return;
+                }
             }
             catch (Exception e)
             {
@@ -151,7 +158,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 this.logger.Error("JasmineTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
                 this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
-                    JasmineTelemetryConstants.PendingTestCasesFoundButNoFailedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    JasmineTelemetryConstants.SkippedTestCasesFoundButNoSkippedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
             }
             else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
             {
@@ -159,19 +166,52 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 this.logger.Error($"JasmineTestResultParser : Pending tests count does not match pending summary" +
                     $" at line {this.stateContext.CurrentLineNumber}");
                 this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
-                    JasmineTelemetryConstants.PendingSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
+                    JasmineTelemetryConstants.SkippedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
             // Ensure some summary data was detected before attempting a publish, ie. check if the state is not test results state
             switch (this.currentState)
-            { 
+            {
+                case JasmineParserStates.ExpectingTestRunStart:
+
+                    this.logger.Error("JasmineTestResultParser : Skipping publish as no test cases or summary has been encountered.");
+
+                    break;
+
+                case JasmineParserStates.ExpectingTestResults:
+                    if (testRunToPublish.PassedTests.Count != 0
+                        || testRunToPublish.FailedTests.Count != 0
+                        || testRunToPublish.SkippedTests.Count != 0)
+                    {
+                        this.logger.Error("JasmineTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                            JasmineTelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    }
+                    break;
+
                 case JasmineParserStates.ExpectingTestRunSummary:
 
-                    if (testRunToPublish.TestRunSummary.TotalExecutionTime.TotalMilliseconds == 0)
+                    if (testRunToPublish.TestRunSummary.TotalTests == 0)
                     {
-                        this.logger.Error("JasmineTestResultParser : Total test run time was 0.");
+                        this.logger.Error("JasmineTestResultParser : Skipping publish as total tests was 0.");
                         this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
-                            JasmineTelemetryConstants.TotalTestRunTimeZero, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                            JasmineTelemetryConstants.TotalTestsZero, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                        break;
+                    }
+
+                    if (testRunToPublish.TestRunSummary.TotalExecutionTime.TotalMilliseconds == 0 && this.stateContext.IsTimeParsed == false)
+                    {
+                        this.logger.Error("JasmineTestResultParser : Total test run time was not parsed.");
+                        this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                            JasmineTelemetryConstants.TotalTestRunTimeNotParsed, new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    }
+
+                    if(this.stateContext.SuiteErrors > 0)
+                    {
+                        // Adding telemetry for suite errors
+                        this.logger.Info($"JasmineTestResultParser : {this.stateContext.SuiteErrors} suite errors found in the test run.");
+                        this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.SuiteErrors,
+                            new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
 
                     // Only publish if total tests was not zero

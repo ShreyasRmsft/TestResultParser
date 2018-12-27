@@ -17,19 +17,19 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         public const string FailedTestCasesFoundButNoFailedSummary = "FailedTestCasesFoundButNoFailedSummary";
 
-        public const string PendingTestCasesFoundButNoFailedSummary = "PendingTestCasesFoundButNoFailedSummary";
+        public const string SkippedTestCasesFoundButNoSkippedSummary = "SkippedTestCasesFoundButNoSkippedSummary";
 
-        public const string PendingSummaryMismatch = "PendingSummaryMismatch";
+        public const string SkippedSummaryMismatch = "SkippedSummaryMismatch";
+
+        public const string FailedPendingTestCaseWithoutStarterMatch = "FailedPendingTestCaseWithoutStarterMatch";
+
+        public const string SuiteErrors = "SuiteErrors";
 
         public const string PassedTestCasesFoundButNoPassedSummary = "PassedTestCasesFoundButNoPassedSummary";
 
-        public const string FailedTestCasesSummaryMismatchWithExpectedFailed = "FailedTestCasesSummaryMismatchWithExpectedFailed";
-
-        public const string SkippedTestCasesSummaryMismatchWithExpectedSkipped = "SkippedTestCasesSummaryMismatchWithExpectedSkipped";
-
         public const string TotalTestsZero = "TotalTestsZero";
 
-        public const string TotalTestRunTimeZero = "TotalTestRunTimeZero";
+        public const string TotalTestRunTimeNotParsed = "TotalTestRunTimeNotParsed";
 
         public const string Exceptions = "Exceptions";
     }

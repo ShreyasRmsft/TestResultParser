@@ -29,7 +29,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
             jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
-            jasmineStateContext.NextExpectedMatch = "[F.*]$";
+            jasmineStateContext.NextExpectedMatch = "test run status";
 
             return JasmineParserStates.ExpectingTestResults;
         }

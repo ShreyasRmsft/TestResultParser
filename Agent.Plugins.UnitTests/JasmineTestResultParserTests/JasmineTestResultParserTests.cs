@@ -40,7 +40,7 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         public void DetailedAssertions(string testCase)
         {
             testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "DetailedTests", testCase);
-            TestWithDetailedAssertionsWithoutPassedTests(testCase);
+            TestWithDetailedAssertions(testCase);
         }
 
 

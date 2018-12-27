@@ -28,6 +28,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public bool PendingStarterMatched { get; set; }
 
         /// <summary>
+        /// Bool value if failures starter regex has been matched
+        /// </summary>
+        public bool FailureStarterMatched { get; set; }
+
+        /// <summary>
         /// Passed tests to expect from the test status
         /// </summary>
         public int PassedTestsToExpect { get; set; }
@@ -60,6 +65,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public string NextExpectedMatch { get; set; }
 
         /// <summary>
+        /// Bool variable to keep check if time has been parsed
+        /// </summary>
+        public bool IsTimeParsed { get; set; }
+
+        /// <summary>
         /// Initializes all the values to their defaults
         /// </summary>
         public new void Initialize(TestRun testRun)
@@ -71,9 +81,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             FailedTestsToExpect = 0;
             SkippedTestsToExpect = 0;
             PendingStarterMatched = false;
+            FailureStarterMatched = false;
             LinesWithinWhichMatchIsExpected = 0;
             NextExpectedMatch = null;
+            IsTimeParsed = false;
         }
-
     }
 }

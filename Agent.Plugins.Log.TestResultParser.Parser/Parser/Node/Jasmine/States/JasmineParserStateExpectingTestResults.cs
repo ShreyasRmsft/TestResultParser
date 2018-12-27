@@ -60,7 +60,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
 
             // If it is a failed testcase , pendingStarterMatched is false
-            if (!jasmineStateContext.PendingStarterMatched)
+            if (jasmineStateContext.FailureStarterMatched)
             {
                 if (testCaseNumber != jasmineStateContext.LastFailedTestCaseNumber + 1)
                 {
@@ -84,24 +84,35 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return JasmineParserStates.ExpectingTestResults;
             }
 
-            if (testCaseNumber != jasmineStateContext.LastPendingTestCaseNumber + 1)
+            else if (jasmineStateContext.PendingStarterMatched)
             {
-                // There's a good chance we read some random line as a pending test case hence consider it a
-                // as a match but do not add it to our list of test cases
+                if (testCaseNumber != jasmineStateContext.LastPendingTestCaseNumber + 1)
+                {
+                    // There's a good chance we read some random line as a pending test case hence consider it a
+                    // as a match but do not add it to our list of test cases
 
-                this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting pending test case with" +
-                    $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
-                    new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
+                    this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting pending test case with" +
+                        $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
+                    this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
+                        new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
+
+                    return JasmineParserStates.ExpectingTestResults;
+                }
+
+                // Increment
+                jasmineStateContext.LastPendingTestCaseNumber++;
+
+                var skippedTestResult = PrepareTestResult(TestOutcome.NotExecuted, match);
+                jasmineStateContext.TestRun.SkippedTests.Add(skippedTestResult);
 
                 return JasmineParserStates.ExpectingTestResults;
             }
 
-            // Increment
-            jasmineStateContext.LastPendingTestCaseNumber++;
-
-            var skippedTestResult = PrepareTestResult(TestOutcome.NotExecuted, match);
-            jasmineStateContext.TestRun.SkippedTests.Add(skippedTestResult);
+            // If none of the starter has matched, it must be a random line. Fire telemetry and log error
+            this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting failed/pending test case " +
+                        $" but encountered test case with {testCaseNumber} without encountering failed/pending starter.");
+            this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.FailedPendingTestCaseWithoutStarterMatch,
+                new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -111,6 +122,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // All failures are reported after FailureStart regex is matched.
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
+            jasmineStateContext.FailureStarterMatched = true;
             jasmineStateContext.PendingStarterMatched = false;
 
             return JasmineParserStates.ExpectingTestResults;
@@ -124,6 +136,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // We set this as true so that any failedOrpending regex match after pending starter matched will be reported as pending tests
             // as pending and failed have the same regex
             jasmineStateContext.PendingStarterMatched = true;
+            jasmineStateContext.FailureStarterMatched = false;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -145,7 +158,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
             jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
-            jasmineStateContext.NextExpectedMatch = "Finished in";
+            jasmineStateContext.NextExpectedMatch = "test run time";
 
             this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
@@ -166,6 +179,5 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             return JasmineParserStates.ExpectingTestRunSummary;
         }
-
     }
 }

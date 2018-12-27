@@ -1,4 +1,4 @@
-﻿Passed 866
+﻿Passed 0
 
 Failed 2
 Spies createSpyObj should allow you to omit the baseName
