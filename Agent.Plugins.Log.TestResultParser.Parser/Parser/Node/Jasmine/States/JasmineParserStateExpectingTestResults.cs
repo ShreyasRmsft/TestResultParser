@@ -59,7 +59,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
 
-            // If it is a failed testcase , pendingStarterMatched is false
+            // If it is a failed testcase , FailureStarterMatched is true
             if (jasmineStateContext.FailureStarterMatched)
             {
                 if (testCaseNumber != jasmineStateContext.LastFailedTestCaseNumber + 1)
@@ -84,7 +84,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return JasmineParserStates.ExpectingTestResults;
             }
 
-            else if (jasmineStateContext.PendingStarterMatched)
+            // If it is a pending testcase , PendingStarterMatched is true
+            if (jasmineStateContext.PendingStarterMatched)
             {
                 if (testCaseNumber != jasmineStateContext.LastPendingTestCaseNumber + 1)
                 {

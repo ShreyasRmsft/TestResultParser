@@ -35,7 +35,7 @@ namespace Agent.Plugins.UnitTests
             telemetryDataCollector = new Mock<ITelemetryDataCollector>();
         }
 
-        public void TestSuccessScenariosWithBasicAssertions(string testCase, bool assertOnlyFailedCount = false)
+        public void TestSuccessScenariosWithBasicAssertions(string testCase, bool assertFailedCount = true, bool assertPassedCount = true, bool assertSkippedCount = true)
         {
             int indexOfTestRun = 0;
             int lastTestRunId = 0;
@@ -43,7 +43,7 @@ namespace Agent.Plugins.UnitTests
             
             testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
-                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId, assertOnlyFailedCount);
+                ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId, assertFailedCount, assertPassedCount, assertSkippedCount);
                 lastTestRunId = testRun.TestRunId;
             });
 
@@ -157,7 +157,7 @@ namespace Agent.Plugins.UnitTests
         #region ValidationHelpers
 
         public void ValidateTestRun(TestRun testRun, string[] resultFileContents, int indexOfTestRun,
-            int lastTestRunId, bool assertOnlyFailedCount = false)
+            int lastTestRunId, bool assertFailedCount = true, bool assertPassedCount = true, bool assertSkippedCount = true)
         {
             int i = indexOfTestRun * 5;
 
@@ -172,9 +172,16 @@ namespace Agent.Plugins.UnitTests
             Assert.AreEqual(expectedSkippedTestsCount, testRun.TestRunSummary.TotalSkipped, "Skipped tests summary does not match.");
             Assert.AreEqual(expectedTotalTestsCount, testRun.TestRunSummary.TotalTests, "Total tests summary does not match.");
 
-            if (!assertOnlyFailedCount)
+            if (assertFailedCount)
+            {
+                Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
+            }
+            if (assertPassedCount)
             {
                 Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
+            }
+            if (assertSkippedCount)
+            {
                 Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
             }
             Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");

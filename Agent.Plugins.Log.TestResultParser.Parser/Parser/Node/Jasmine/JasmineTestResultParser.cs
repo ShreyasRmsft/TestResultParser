@@ -175,6 +175,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 case JasmineParserStates.ExpectingTestRunStart:
 
                     this.logger.Error("JasmineTestResultParser : Skipping publish as no test cases or summary has been encountered.");
+                    this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                            JasmineTelemetryConstants.NoSummaryEncounteredBeforePublish, new List<int> { this.stateContext.TestRun.TestRunId }, true);
 
                     break;
 
@@ -199,14 +201,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         break;
                     }
 
-                    if (testRunToPublish.TestRunSummary.TotalExecutionTime.TotalMilliseconds == 0 && this.stateContext.IsTimeParsed == false)
+                    if (this.stateContext.IsTimeParsed == false)
                     {
                         this.logger.Error("JasmineTestResultParser : Total test run time was not parsed.");
                         this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                             JasmineTelemetryConstants.TotalTestRunTimeNotParsed, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
 
-                    if(this.stateContext.SuiteErrors > 0)
+                    if (this.stateContext.SuiteErrors > 0)
                     {
                         // Adding telemetry for suite errors
                         this.logger.Info($"JasmineTestResultParser : {this.stateContext.SuiteErrors} suite errors found in the test run.");

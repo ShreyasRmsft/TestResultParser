@@ -25,7 +25,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
        public void SuccessScenariosWithBasicAssertions(string testCase)
        {
            testCase = Path.Combine("JestTestResultParserTests", "Resources", "SuccessScenarios", testCase);
-           TestSuccessScenariosWithBasicAssertions(testCase, true);
+           TestSuccessScenariosWithBasicAssertions(testCase, true, false, false);
        }
 
         [DataTestMethod]

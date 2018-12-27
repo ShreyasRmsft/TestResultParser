@@ -24,7 +24,7 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         public void SuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "SuccessScenarios", testCase);
-            TestSuccessScenariosWithBasicAssertions(testCase, true);
+            TestSuccessScenariosWithBasicAssertions(testCase, true, false, true);
         }
 
         [DataTestMethod]

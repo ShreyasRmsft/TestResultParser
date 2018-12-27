@@ -684,7 +684,7 @@ uyhdsuioidkjdoijkojfb
 15) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
   No reason given
 
-11)JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
+11) JsApiReporter (integration specs) results results() should return a hash of all results, indexed by spec id
   No reason given
 870 specs, 0 failures, 11 pending specs
 Finished in 15.559 seconds
