@@ -16,5 +16,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// </summary>
         /// <param name="testRun"></param>
         Task PublishAsync(TestRun testRun);
+
+        Task FinalizeAsync();
     }
 }
