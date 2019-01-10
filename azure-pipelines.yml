@@ -10,6 +10,7 @@ jobs:
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx --collect "code coverage"
       displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
+      condition: succeededOrFailed()
       inputs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
@@ -26,6 +27,7 @@ jobs:
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
       displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
+      condition: succeededOrFailed()
       inputs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
@@ -41,6 +43,7 @@ jobs:
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --configuration $(buildConfiguration) --logger:trx
       displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
+      condition: succeededOrFailed()
       inputs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
