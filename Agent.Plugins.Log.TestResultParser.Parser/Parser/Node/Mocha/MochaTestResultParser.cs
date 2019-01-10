@@ -222,7 +222,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // Trim the stack traces of extra newlines etc.
                     foreach (var failedTest in testRunToPublish.FailedTests)
                     {
-                        failedTest.StackTrace = failedTest.StackTrace.TrimEnd();
+                        if (failedTest.StackTrace != null)
+                        {
+                            failedTest.StackTrace = failedTest.StackTrace.TrimEnd();
+                        }
                     }
 
                     this.testRunManager.PublishAsync(testRunToPublish);
