@@ -33,7 +33,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // If a passed test case is encountered while in the stack traces state it indicates corruption
             // or incomplete stack trace data
             // This check is safety check for when we try to parse stack trace contents, as of now it will always evaluate to true
-            if (mochaStateContext.StackTracesToSkipParsingPostSummary != 0)
+            if (mochaStateContext.StackTracesToExpectPostSummary != 0)
             {
                 this.logger.Error($"MochaTestResultParser : ExpectingStackTraces :  Expecting stack traces but found passed test case instead at line {mochaStateContext.CurrentLineNumber}.");
                 this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.ExpectingStackTracesButFoundPassedTest,
@@ -95,14 +95,21 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             mochaStateContext.LastFailedTestCaseNumber++;
 
-            // As of now we are ignoring stack traces
-            // Otherwise parsing stacktrace code will go here
+            // Using another variable for better readability
+            var currentStackTraceIndex = mochaStateContext.LastFailedTestCaseNumber - 1;
 
-            mochaStateContext.StackTracesToSkipParsingPostSummary--;
+            // Consider matching the name of the test in the stack trace with what was parsed earlier
+            // Suite name is also available. Should we use it for reporting?
+            mochaStateContext.TestRun.FailedTests[currentStackTraceIndex].StackTrace = match.Value;
 
-            if (mochaStateContext.StackTracesToSkipParsingPostSummary == 0)
+            // Expect the stack trace to not be more than 50 lines long
+            // This is to ensure we don't skip publishing the run if the stack traces appear corrupted
+            mochaStateContext.LinesWithinWhichMatchIsExpected = 50;
+
+            mochaStateContext.StackTracesToExpectPostSummary--;
+
+            if (mochaStateContext.StackTracesToExpectPostSummary == 0)
             {
-                // We can also choose to ignore extra failures post summary if the number is not 1
                 this.attemptPublishAndResetParser();
                 return MochaParserStates.ExpectingTestResults;
             }
@@ -118,7 +125,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // or incomplete stack trace data
 
             // This check is safety check for when we try to parse stack trace contents
-            if (mochaStateContext.StackTracesToSkipParsingPostSummary != 0)
+            if (mochaStateContext.StackTracesToExpectPostSummary != 0)
             {
                 this.logger.Error("MochaTestResultParser : ExpectingStackTraces : Expecting stack traces but found pending test case instead.");
                 this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.ExpectingStackTracesButFoundPendingTest,
@@ -142,7 +149,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"MochaTestResultParser : ExpectingStackTraces : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             // If we were expecting more stack traces but got summary instead
-            if (mochaStateContext.StackTracesToSkipParsingPostSummary != 0)
+            if (mochaStateContext.StackTracesToExpectPostSummary != 0)
             {
                 this.logger.Error("MochaTestResultParser : ExpectingStackTraces : Expecting stack traces but found passed summary instead.");
                 this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,

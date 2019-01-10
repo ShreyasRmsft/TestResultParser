@@ -16,7 +16,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// This indicates the number of stack traces (they look exactly the same as a failed test case in mocha)
         /// to be skipped post summary
         /// </summary>
-        public int StackTracesToSkipParsingPostSummary { get; set; }
+        public int StackTracesToExpectPostSummary { get; set; }
 
         /// <summary>
         /// Test case number of the last failed test case encountered as part of the current run
@@ -41,7 +41,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public new void Initialize(TestRun testRun)
         {
             base.Initialize(testRun);
-            StackTracesToSkipParsingPostSummary = 0;
+            StackTracesToExpectPostSummary = 0;
             LastFailedTestCaseNumber = 0;
             LinesWithinWhichMatchIsExpected = -1;
             NextExpectedMatch = null;

@@ -162,7 +162,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var totalFailed = int.Parse(match.Groups[RegexCaptureGroups.FailedTests].Value);
 
             mochaStateContext.TestRun.TestRunSummary.TotalFailed = totalFailed;
-            mochaStateContext.StackTracesToSkipParsingPostSummary = totalFailed;
+            mochaStateContext.StackTracesToExpectPostSummary = totalFailed;
 
             // Do we want transition logs here?
             this.logger.Info($"MochaTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingStackTraces" +
