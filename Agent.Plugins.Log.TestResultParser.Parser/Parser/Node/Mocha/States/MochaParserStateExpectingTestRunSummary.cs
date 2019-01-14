@@ -8,7 +8,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     using System.Text.RegularExpressions;
     using Agent.Plugins.Log.TestResultParser.Contracts;
 
-
     public class MochaParserStateExpectingTestRunSummary : MochaParserStateBase
     {
         /// <inheritdoc />
