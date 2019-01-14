@@ -24,6 +24,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public int LastFailedTestCaseNumber { get; set; }
 
         /// <summary>
+        /// Current stack trace index. Used to insert the stack trace to the appropriate failed test case later in the stack traces state.
+        /// </summary>
+        public int CurrentStackTraceIndex { get { return LastFailedTestCaseNumber - 1; } }
+
+        /// <summary>
         /// This is used to enforce that a match is expected within specified number of lines
         /// The parser may take action accordingly
         /// </summary>

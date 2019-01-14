@@ -95,15 +95,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             mochaStateContext.LastFailedTestCaseNumber++;
 
-            // Using another variable for better readability
-            var currentStackTraceIndex = mochaStateContext.LastFailedTestCaseNumber - 1;
-
             // Only add the stack trace if a failed test had been encountered
-            if (currentStackTraceIndex < mochaStateContext.TestRun.FailedTests.Count)
+            if (mochaStateContext.CurrentStackTraceIndex < mochaStateContext.TestRun.FailedTests.Count)
             {
                 // Consider matching the name of the test in the stack trace with what was parsed earlier
                 // Suite name is also available. Should we use it for reporting?
-                mochaStateContext.TestRun.FailedTests[currentStackTraceIndex].StackTrace = match.Value;
+                mochaStateContext.TestRun.FailedTests[mochaStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
             }
             
             // Expect the stack trace to not be more than 50 lines long

@@ -93,7 +93,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         if (AttemptMatch(this.ExpectingStackTraces, logData))
                             return;
 
-                        var currentStackTraceIndex = stateContext.LastFailedTestCaseNumber - 1;
+                        var currentStackTraceIndex = stateContext.CurrentStackTraceIndex;
                         if (currentStackTraceIndex > -1 && currentStackTraceIndex < stateContext.TestRun.FailedTests.Count)
                         {
                             stateContext.TestRun.FailedTests[currentStackTraceIndex].StackTrace += Environment.NewLine + logData.Line;
