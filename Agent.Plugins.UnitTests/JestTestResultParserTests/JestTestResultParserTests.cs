@@ -22,7 +22,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
 
        [DataTestMethod]
        [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
-       public void SuccessScenariosWithBasicAssertions(string testCase)
+       public void JestTestResultParserSuccessScenariosWithBasicAssertions(string testCase)
        {
            testCase = Path.Combine("JestTestResultParserTests", "Resources", "SuccessScenarios", testCase);
            TestSuccessScenariosWithBasicAssertions(testCase, true, false, false);
@@ -30,7 +30,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
-        public void PartialSuccessScenariosWithBasicAssertions(string testCase)
+        public void JestTestResultParserPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("JestTestResultParserTests", "Resources", "PartialSuccess", testCase);
             TestPartialSuccessScenariosWithBasicAssertions(testCase);
@@ -38,7 +38,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
-        public void DetailedAssertions(string testCase)
+        public void JestTestResultParserDetailedAssertions(string testCase)
         {
             testCase = Path.Combine("JestTestResultParserTests", "Resources", "DetailedTests", testCase);
             TestWithDetailedAssertions(testCase);
@@ -46,7 +46,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetNegativeTestsTestCases), DynamicDataSourceType.Method)]
-        public void NegativeTests(string testCase)
+        public void JestTestResultParserNegativeTests(string testCase)
         {
             testCase = Path.Combine("JestTestResultParserTests", "Resources", "NegativeTests", testCase);
             TestNegativeTestsScenarios(testCase);
@@ -54,7 +54,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
-        public void CommonNegativeTests(string testCase)
+        public void JestTestResultParserCommonNegativeTests(string testCase)
         {
             testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
             TestNegativeTestsScenarios(testCase);

@@ -20,7 +20,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         // Infra already in place for this
 
         private JestParserStates currentState;
-        private JestParserStateContext stateContext;
+        private readonly JestParserStateContext stateContext;
 
         private ITestResultParserState testRunStart;
         private ITestResultParserState expectingTestResults;
@@ -100,25 +100,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             return;
                         break;
                 }
-
-                // This is a mechanism to enforce matches that have to occur within 
-                // a specific number of lines after encountering the previous match
-                // one obvious usage is for successive summary lines which
-                // come one after the other
-                if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
-                {
-                    this.logger.Info($"JestTestResultParser : Parse : Was expecting {this.stateContext.NextExpectedMatch} before line {logData.LineNumber}, but no matches occurred.");
-                    AttemptPublishAndResetParser();
-                    return;
-                }
-
-                // If no match occurred and a match was expected in a positive number of lines, decrement the counter
-                // A value of zero or lesser indicates not expecting a match
-                if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
-                {
-                    this.stateContext.LinesWithinWhichMatchIsExpected--;
-                    return;
-                }
             }
             catch (Exception e)
             {
@@ -142,7 +123,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <returns>true if a match occurs</returns>
         private bool AttemptMatch(ITestResultParserState state, LogData logData)
         {
-            foreach (var regexActionPair in state.RegexsToMatch)
+            foreach (var regexActionPair in state.RegexesToMatch)
             {
                 var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
@@ -151,6 +132,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     return true;
                 }
             }
+
+            state.PeformNoPatternMatchedAction(logData.Line, stateContext);
 
             return false;
         }
@@ -263,15 +246,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         }
 
         private ITestResultParserState TestRunStart => this.testRunStart ??
-            (this.testRunStart = new JestParserStateExpectingTestRunStart(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.testRunStart = new JestParserStateExpectingTestRunStart(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JestTestResultParser)));
 
         private ITestResultParserState ExpectingTestResults => this.expectingTestResults ??
-            (this.expectingTestResults = new JestParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.expectingTestResults = new JestParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JestTestResultParser)));
 
         private ITestResultParserState ExpectingStackTraces => this.expectingStackTraces ??
-            (this.expectingStackTraces = new JestParserStateExpectingStackTraces(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.expectingStackTraces = new JestParserStateExpectingStackTraces(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JestTestResultParser)));
 
         private ITestResultParserState ExpectingTestRunSummary => this.expectingTestRunSummary ??
-            (this.expectingTestRunSummary = new JestParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.expectingTestRunSummary = new JestParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JestTestResultParser)));
     }
 }

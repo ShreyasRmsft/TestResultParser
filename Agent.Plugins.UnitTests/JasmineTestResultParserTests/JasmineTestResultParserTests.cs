@@ -21,7 +21,7 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
-        public void SuccessScenariosWithBasicAssertions(string testCase)
+        public void JasmineTestResultParserSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "SuccessScenarios", testCase);
             TestSuccessScenariosWithBasicAssertions(testCase, true, false, true);
@@ -29,7 +29,7 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
-        public void PartialSuccessScenariosWithBasicAssertions(string testCase)
+        public void JasmineTestResultParserPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "PartialSuccess", testCase);
             TestPartialSuccessScenariosWithBasicAssertions(testCase);
@@ -37,10 +37,18 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
-        public void DetailedAssertions(string testCase)
+        public void JasmineTestResultParserDetailedAssertions(string testCase)
         {
             testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "DetailedTests", testCase);
             TestWithDetailedAssertions(testCase);
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
+        public void JasmineTestResultParserCommonNegativeTests(string testCase)
+        {
+            testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
+            TestNegativeTestsScenarios(testCase);
         }
 
 
@@ -60,6 +68,11 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         public static IEnumerable<object[]> GetDetailedTestsTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "DetailedTests"));
+        }
+
+        public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("CommonTestResources", "NegativeTests"));
         }
 
         #endregion

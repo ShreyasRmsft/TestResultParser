@@ -17,7 +17,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
-        public void SuccessScenariosWithBasicAssertions(string testCase)
+        public void PythonTestResultParserSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("PythonTestResultParserTests", "Resources", "SuccessScenarios", testCase);
             TestSuccessScenariosWithBasicAssertions(testCase);
@@ -25,7 +25,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
-        public void PartialSuccessScenariosWithBasicAssertions(string testCase)
+        public void PythonTestResultParserPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("PythonTestResultParserTests", "Resources", "PartialSuccess", testCase);
             TestPartialSuccessScenariosWithBasicAssertions(testCase);
@@ -33,7 +33,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetDetailedTestCases), DynamicDataSourceType.Method)]
-        public void DetailedAssertions(string testCase)
+        public void PythonTestResultParserDetailedAssertions(string testCase)
         {
             testCase = Path.Combine("PythonTestResultParserTests", "Resources", "DetailedTests", testCase);
             TestWithDetailedAssertions(testCase);
@@ -41,7 +41,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
-        public void CommonNegativeTests(string testCase)
+        public void PythonTestResultParserCommonNegativeTests(string testCase)
         {
             testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
             TestNegativeTestsScenarios(testCase);

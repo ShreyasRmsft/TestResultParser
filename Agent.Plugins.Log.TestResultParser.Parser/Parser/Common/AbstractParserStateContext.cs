@@ -19,6 +19,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             TestRun = testRun;
             CurrentLineNumber = 0;
+            NextExpectedMatch = null;
+            LinesWithinWhichMatchIsExpected = -1;
         }
 
         /// <summary>
@@ -31,6 +33,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public int CurrentLineNumber { get; set; }
 
-        // TODO: Extract out common properties here when enough parsers have been authored
+        /// <summary>
+        /// This is used to enforce that a match is expected within specified number of lines
+        /// The parser may take action accordingly
+        /// </summary>
+        public int LinesWithinWhichMatchIsExpected { get; set; }
+
+        /// <summary>
+        /// Hint string for logging and telemetry to specify what match was expected in case it does not occur
+        /// in the expected number of lines
+        /// </summary>
+        public string NextExpectedMatch { get; set; }
     }
 }

@@ -1,0 +1,88 @@
+> nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSTestSuite
+> mocha ".\unit_tests\sampleUnitTests.js"
+
+
+
+  sampleUnitTests
+    1) Test method 1
+    2) Test method 2
+    - Test method 3
+    3) Test method 4
+    4) Test method 5
+
+
+  0 passing (231ms)
+  1 pending
+  4 failing
+
+  1) sampleUnitTests
+       Test method 1:
+     Error: the string "error" was thrown, throw an Error :)
+
+
+  2) sampleUnitTests
+       Test method 2:
+     Error: done() invoked with non-Error: hello across
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ multiple lines
+ here
+      at Context.<anonymous> (unit_tests\sampleUnitTests.js:23:9)
+
+  3) sampleUnitTests
+       Test method 4:
+     Error: done() invoked with non-Error: some stack trace
+      at Context.<anonymous> (unit_tests\sampleUnitTests.js:32:9)
+
+  4) sampleUnitTests
+       Test method 5:
+     Error: the string "some big error\n of multiple lines" was thrown, throw an Error :)
+
+
+
+
+npm ERR! Test failed.  See above for more details.

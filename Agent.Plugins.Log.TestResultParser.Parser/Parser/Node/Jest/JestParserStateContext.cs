@@ -13,18 +13,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         }
 
         /// <summary>
-        /// This is used to enforce that a match is expected within specified number of lines
-        /// The parser may take action accordingly
-        /// </summary>
-        public int LinesWithinWhichMatchIsExpected { get; set; }
-
-        /// <summary>
-        /// Hint string for logging and telemetry to specify what match was expected in case it does not occur
-        /// in the expected number of lines
-        /// </summary>
-        public string NextExpectedMatch { get; set; }
-
-        /// <summary>
         /// Used to identify if a run had the --verbose option enabled
         /// </summary>
         public bool VerboseOptionEnabled { get; set; }

@@ -1,0 +1,5 @@
+FailedTests 4
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----

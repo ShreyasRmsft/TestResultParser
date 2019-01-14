@@ -10,13 +10,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
     public class JasmineParserStateExpectingTestResults : JasmineParserStateBase
     {
-        public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
+        public override IEnumerable<RegexActionPair> RegexesToMatch { get; }
 
         /// <inheritdoc />
-        public JasmineParserStateExpectingTestResults(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
-            : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
+        public JasmineParserStateExpectingTestResults(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger,
+            ITelemetryDataCollector telemetryDataCollector, string parseName)
+             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector, parseName)
         {
-            RegexsToMatch = new List<RegexActionPair>
+            RegexesToMatch = new List<RegexActionPair>
             {
                 new RegexActionPair(JasmineRegexes.FailedOrPendingTestCase, FailedOrPendingTestCaseMatched),
                 new RegexActionPair(JasmineRegexes.TestStatus, TestStatusMatched),
@@ -164,10 +165,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            int totalTests, failedTests, skippedTests;
-            int.TryParse(match.Groups[RegexCaptureGroups.TotalTests].Value, out totalTests);
-            int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out failedTests);
-            int.TryParse(match.Groups[RegexCaptureGroups.SkippedTests].Value, out skippedTests);
+            int.TryParse(match.Groups[RegexCaptureGroups.TotalTests].Value, out int totalTests);
+            int.TryParse(match.Groups[RegexCaptureGroups.FailedTests].Value, out int failedTests);
+            int.TryParse(match.Groups[RegexCaptureGroups.SkippedTests].Value, out int skippedTests);
 
             // Since suite errors are added as failures in the summary, we need to remove this from passedTests
             // calculation.

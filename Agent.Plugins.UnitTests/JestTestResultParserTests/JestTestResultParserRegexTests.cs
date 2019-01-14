@@ -15,7 +15,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
     {
         [DataTestMethod]
         [DynamicData(nameof(GetRegexPatterns), DynamicDataSourceType.Method)]
-        public void RegexPatternTest(string regexPattern)
+        public void JestTestResultParserRegexPatternTest(string regexPattern)
         {
             var postiveTestCases = File.ReadAllLines(Path.Combine("JestTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
             var regex = typeof(JestRegexs).GetProperty(regexPattern).GetValue(null);
