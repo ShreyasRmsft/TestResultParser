@@ -1,0 +1,58 @@
+FailedTests 4
+  1) sampleUnitTests
+       Test method 1:
+     Error: the string "error" was thrown, throw an Error :)
+-----EndOfStackTrace-----
+  2) sampleUnitTests
+       Test method 2:
+     Error: done() invoked with non-Error: hello across
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ multiple lines
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----
