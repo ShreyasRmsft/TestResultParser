@@ -16,12 +16,17 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// This indicates the number of stack traces (they look exactly the same as a failed test case in mocha)
         /// to be skipped post summary
         /// </summary>
-        public int StackTracesToSkipParsingPostSummary { get; set; }
+        public int StackTracesToExpectPostSummary { get; set; }
 
         /// <summary>
         /// Test case number of the last failed test case encountered as part of the current run
         /// </summary>
         public int LastFailedTestCaseNumber { get; set; }
+
+        /// <summary>
+        /// Current stack trace index. Used to insert the stack trace to the appropriate failed test case later in the stack traces state.
+        /// </summary>
+        public int CurrentStackTraceIndex { get { return LastFailedTestCaseNumber - 1; } }
 
         /// <summary>
         /// This is used to enforce that a match is expected within specified number of lines
@@ -41,7 +46,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public new void Initialize(TestRun testRun)
         {
             base.Initialize(testRun);
-            StackTracesToSkipParsingPostSummary = 0;
+            StackTracesToExpectPostSummary = 0;
             LastFailedTestCaseNumber = 0;
             LinesWithinWhichMatchIsExpected = -1;
             NextExpectedMatch = null;

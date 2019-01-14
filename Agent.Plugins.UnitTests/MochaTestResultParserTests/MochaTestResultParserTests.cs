@@ -23,7 +23,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
-        public void SuccessScenariosWithBasicAssertions(string testCase)
+        public void MochaParserSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("MochaTestResultParserTests", "Resources", "SuccessScenarios", testCase);
             TestSuccessScenariosWithBasicAssertions(testCase);
@@ -31,31 +31,39 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
 
         [DataTestMethod]
         [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]
-        public void PartialSuccessScenariosWithBasicAssertions(string testCase)
+        public void MochaParserPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
             testCase = Path.Combine("MochaTestResultParserTests", "Resources", "PartialSuccess", testCase);
             TestPartialSuccessScenariosWithBasicAssertions(testCase);
         }
 
         [DataTestMethod]
-        [DynamicData(nameof(GetDetailedTestsTestCases), DynamicDataSourceType.Method)]
-        public void DetailedAssertions(string testCase)
+        [DynamicData(nameof(GetDetailedTestCases), DynamicDataSourceType.Method)]
+        public void MochaParserDetailedAssertions(string testCase)
         {
             testCase = Path.Combine("MochaTestResultParserTests", "Resources", "DetailedTests", testCase);
             TestWithDetailedAssertions(testCase);
         }
 
         [DataTestMethod]
-        [DynamicData(nameof(GetNegativeTestsTestCases), DynamicDataSourceType.Method)]
-        public void NegativeTests(string testCase)
+        [DynamicData(nameof(GetNegativeTestCases), DynamicDataSourceType.Method)]
+        public void MochaParserNegativeTests(string testCase)
         {
             testCase = Path.Combine("MochaTestResultParserTests", "Resources", "NegativeTests", testCase);
             TestNegativeTestsScenarios(testCase);
         }
 
         [DataTestMethod]
-        [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
-        public void CommonNegativeTests(string testCase)
+        [DynamicData(nameof(GetStackTraceTestCases), DynamicDataSourceType.Method)]
+        public void MochaParserStackTraceTests(string testCase)
+        {
+            testCase = Path.Combine("MochaTestResultParserTests", "Resources", "StackTraceTests", testCase);
+            TestWithStackTraceAssertions(testCase);
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCommonNegativeTestCases), DynamicDataSourceType.Method)]
+        public void MochaParserCommonNegativeTests(string testCase)
         {
             testCase = Path.Combine("CommonTestResources", "NegativeTests", testCase);
             TestNegativeTestsScenarios(testCase);
@@ -75,17 +83,22 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
             return GetTestCasesFromRelativePath(Path.Combine("MochaTestResultParserTests", "Resources", "PartialSuccess"));
         }
 
-        public static IEnumerable<object[]> GetDetailedTestsTestCases()
+        public static IEnumerable<object[]> GetDetailedTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("MochaTestResultParserTests", "Resources", "DetailedTests"));
         }
 
-        public static IEnumerable<object[]> GetNegativeTestsTestCases()
+        public static IEnumerable<object[]> GetNegativeTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("MochaTestResultParserTests", "Resources", "NegativeTests"));
         }
 
-        public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()
+        public static IEnumerable<object[]> GetStackTraceTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("MochaTestResultParserTests", "Resources", "StackTraceTests"));
+        }
+
+        public static IEnumerable<object[]> GetCommonNegativeTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("CommonTestResources", "NegativeTests"));
         }

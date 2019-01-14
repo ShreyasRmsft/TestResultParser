@@ -24,5 +24,10 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// Time taken by the test case to run
         /// </summary>
         public TimeSpan ExecutionTime { get; set; }
+
+        /// <summary>
+        /// Stack trace in case of a failed test case
+        /// </summary>
+        public string StackTrace { get; set; }
     }
 }

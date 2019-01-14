@@ -99,6 +99,23 @@ namespace Agent.Plugins.UnitTests
             testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
         }
 
+        public void TestWithStackTraceAssertions(string testCase)
+        {
+            var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
+
+            testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            {
+                ValidateTestRunWithStackTraces(testRun, resultFileContents);
+            });
+
+            foreach (var line in GetLines(testCase))
+            {
+                this.parser.Parse(line);
+            }
+
+            testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+        }
+
         public void TestNegativeTestsScenarios(string testCase)
         {
             foreach (var line in GetLines(testCase))
@@ -176,16 +193,18 @@ namespace Agent.Plugins.UnitTests
             {
                 Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
             }
+
             if (assertPassedCount)
             {
                 Assert.AreEqual(expectedPassedTestsCount, testRun.PassedTests.Count, "Passed tests count does not match.");
             }
+
             if (assertSkippedCount)
             {
                 Assert.AreEqual(expectedSkippedTestsCount, testRun.SkippedTests.Count, "Skipped tests count does not match.");
             }
-            Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
 
+            Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
             Assert.IsTrue(testRun.TestRunId > lastTestRunId, $"Expected test run id greater than {lastTestRunId} but found {testRun.TestRunId} instead.");
             Assert.AreEqual(expectedTestRunDuration, testRun.TestRunSummary.TotalExecutionTime.TotalMilliseconds, "Test run duration did not match.");
         }
@@ -248,6 +267,39 @@ namespace Agent.Plugins.UnitTests
                 Assert.AreEqual(resultFileContents[currentLine], testRun.SkippedTests[testIndex].Name, "Test Case name does not match.");
             }
         }
+
+        public void ValidateTestRunWithStackTraces(TestRun testRun, string[] resultFileContents)
+        {
+            int currentLine = 0;
+            int expectedFailedTestsCount = int.Parse(resultFileContents[currentLine].Split(" ")[1]);
+            currentLine++;
+
+            Assert.AreEqual(expectedFailedTestsCount, testRun.FailedTests.Count, "Failed tests count does not match.");
+
+            for (int testIndex = 0; testIndex < expectedFailedTestsCount; testIndex++)
+            {
+                string expectedStackTrace = null;
+
+                while (resultFileContents[currentLine] != "-----EndOfStackTrace-----")
+                {
+                    if (expectedStackTrace == null)
+                    {
+                        expectedStackTrace = resultFileContents[currentLine];
+                    }
+                    else
+                    {
+                        expectedStackTrace += Environment.NewLine + resultFileContents[currentLine];
+                    }
+
+                    currentLine++;
+                }
+
+                currentLine++;
+
+                Assert.AreEqual(expectedStackTrace, testRun.FailedTests[testIndex].StackTrace, "Stack trace contents do not match.");
+            }
+        }
+
         #endregion
     }
 }

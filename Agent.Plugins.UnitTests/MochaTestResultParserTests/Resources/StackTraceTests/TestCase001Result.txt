@@ -1,0 +1,8 @@
+FailedTests 2
+  1) sampleUnitTests
+       Test method 2:
+     Error: done() invoked with non-Error: You have failed
+      at Context.<anonymous> (unit_tests\sampleUnitTests.js:17:9)
+-----EndOfStackTrace-----
+  2) sampleUnitTests
+-----EndOfStackTrace-----

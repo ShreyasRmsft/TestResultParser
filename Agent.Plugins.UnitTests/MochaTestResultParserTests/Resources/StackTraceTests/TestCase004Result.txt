@@ -1,0 +1,27 @@
+FailedTests 4
+  1) sampleUnitTests
+       Test method 1:
+
+
+     Error: the string "error" was thrown, throw an Error :)
+-----EndOfStackTrace-----
+  2) sampleUnitTests
+       Test method 2:
+     Error: done() invoked with non-Error: hello across
+ multiple lines
+ here
+      at Context.<anonymous> (unit_tests\sampleUnitTests.js:23:9)
+-----EndOfStackTrace-----
+  3) sampleUnitTests
+       Test method 4:
+     Error: done() invoked with non-Error: some stack trace
+      at Context.<anonymous> (unit_tests\sampleUnitTests.js:32:9)
+
+> nodejs-application@0.0.0 test D:\OwnedRepos\NodeJSTestSuite
+> mocha ".\unit_tests\sampleUnitTests.js"
+
+
+
+  sampleUnitTests
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----

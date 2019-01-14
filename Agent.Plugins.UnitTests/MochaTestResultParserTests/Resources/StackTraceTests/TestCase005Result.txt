@@ -1,0 +1,12 @@
+FailedTests 2
+  1) sampleUnitTests
+       Test method 1:
+     Error: the string "error" was thrown, throw an Error :)
+-----EndOfStackTrace-----
+  2) sampleUnitTests
+       Test method 2:
+     Error: done() invoked with non-Error: hello across
+ multiple lines
+ here
+      at Context.<anonymous> (unit_tests\sampleUnitTests.js:23:9)
+-----EndOfStackTrace-----

@@ -86,12 +86,19 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         break;
 
                     // This state primarily looks for stack traces
-                    // If any other match occurs before all the expected stack traces are found it 
-                    // fires telemetry for unexpected behavior but moves on to the next test run
+                    // If any other match occurs before all the expected stack traces are found,
+                    // it fires telemetry for unexpected behavior but moves on to the next test run
                     case MochaParserStates.ExpectingStackTraces:
 
                         if (AttemptMatch(this.ExpectingStackTraces, logData))
                             return;
+
+                        var currentStackTraceIndex = stateContext.CurrentStackTraceIndex;
+                        if (currentStackTraceIndex > -1 && currentStackTraceIndex < stateContext.TestRun.FailedTests.Count)
+                        {
+                            stateContext.TestRun.FailedTests[currentStackTraceIndex].StackTrace += Environment.NewLine + logData.Line;
+                        }
+
                         break;
                 }
 
@@ -212,6 +219,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         testRunToPublish.TestRunSummary.TotalFailed +
                         testRunToPublish.TestRunSummary.TotalSkipped;
 
+                    // Trim the stack traces of extra newlines etc.
+                    foreach (var failedTest in testRunToPublish.FailedTests)
+                    {
+                        if (failedTest.StackTrace != null)
+                        {
+                            failedTest.StackTrace = failedTest.StackTrace.TrimEnd();
+                        }
+                    }
+
                     this.testRunManager.PublishAsync(testRunToPublish);
                     break;
             }
@@ -235,7 +251,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             this.logger.Info("MochaTestResultParser : Successfully reset the parser.");
         }
-
 
         private ITestResultParserState ExpectingTestResults => this.expectingTestResults ??
             (this.expectingTestResults = new MochaParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, this.telemetry));
