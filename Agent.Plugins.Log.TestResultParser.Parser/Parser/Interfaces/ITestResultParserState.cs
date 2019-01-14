@@ -4,11 +4,23 @@
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     using System.Collections.Generic;
+    using Agent.Plugins.Log.TestResultParser.Contracts;
 
     public delegate void ParserResetAndAttemptPublish();
 
     public interface ITestResultParserState
     {
-        IEnumerable<RegexActionPair> RegexsToMatch { get; }
+        /// <summary>
+        /// Collection of regexes and the corresponding post match action on a successful match
+        /// </summary>
+        IEnumerable<RegexActionPair> RegexesToMatch { get; }
+
+        /// <summary>
+        /// Default action when no pattern in the state matches the given line
+        /// </summary>
+        /// <param name="line">Log line</param>
+        /// <param name="stateContext">State context object containing information regarding the parser's state</param>
+        /// <returns>True if the parser was reset</returns>
+        bool NoPatternMatched(string line, AbstractParserStateContext stateContext);
     }
 }

@@ -10,13 +10,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
     public class JestParserStateExpectingTestRunSummary : JestParserStateBase
     {
-        public override IEnumerable<RegexActionPair> RegexsToMatch { get; }
+        public override IEnumerable<RegexActionPair> RegexesToMatch { get; }
 
         /// <inheritdoc />
-        public JestParserStateExpectingTestRunSummary(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
-            : base(parserResetAndAttemptPublish, logger, telemetryDataCollector)
+        public JestParserStateExpectingTestRunSummary(ParserResetAndAttemptPublish parserResetAndAttemptPublish, ITraceLogger logger,
+            ITelemetryDataCollector telemetryDataCollector, string parseName)
+             : base(parserResetAndAttemptPublish, logger, telemetryDataCollector, parseName)
         {
-            RegexsToMatch = new List<RegexActionPair>
+            RegexesToMatch = new List<RegexActionPair>
             {
                 new RegexActionPair(JestRegexs.TestsSummary, TestsSummaryMatched),
                 new RegexActionPair(JestRegexs.TestRunTime, TestRunTimeMatched),

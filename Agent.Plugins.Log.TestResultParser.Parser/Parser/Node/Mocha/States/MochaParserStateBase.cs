@@ -4,7 +4,6 @@
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     using System;
-    using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Agent.Plugins.Log.TestResultParser.Contracts;
 
@@ -12,43 +11,18 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     /// Base class for a mocha test result parser state
     /// Has common methods that each state will need to use
     /// </summary>
-    public abstract class MochaParserStateBase : ITestResultParserState
+    public abstract class MochaParserStateBase : NodeParserStateBase
     {
-        protected ITraceLogger logger;
-        protected ITelemetryDataCollector telemetryDataCollector;
-        protected ParserResetAndAttemptPublish attemptPublishAndResetParser;
-
-        /// <summary>
-        /// List of Regexs and their corresponding post successful match actions
-        /// </summary>
-        public virtual IEnumerable<RegexActionPair> RegexsToMatch => throw new NotImplementedException();
-
         /// <summary>
         /// Constructor for a mocha parser state
         /// </summary>
         /// <param name="parserResetAndAttempPublish">Delegate sent by the parser to reset the parser and attempt publication of test results</param>
         /// <param name="logger"></param>
         /// <param name="telemetryDataCollector"></param>
-        protected MochaParserStateBase(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
+        protected MochaParserStateBase(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector, string parserName)
+            : base(parserResetAndAttempPublish, logger, telemetryDataCollector, parserName)
         {
-            this.logger = logger;
-            this.telemetryDataCollector = telemetryDataCollector;
-            this.attemptPublishAndResetParser = parserResetAndAttempPublish;
-        }
 
-        /// <summary>
-        /// Returns a test result with the outcome set and name extracted from the match
-        /// </summary>
-        /// <param name="testOutcome">Outcome of the test</param>
-        /// <param name="match">Match object for the test case result</param>
-        /// <returns></returns>
-        protected TestResult PrepareTestResult(TestOutcome testOutcome, Match match)
-        {
-            return new TestResult
-            {
-                Outcome = testOutcome,
-                Name = match.Groups[RegexCaptureGroups.TestCaseName].Value
-            };
         }
 
         /// <summary>

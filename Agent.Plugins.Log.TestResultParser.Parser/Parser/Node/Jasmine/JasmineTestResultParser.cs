@@ -10,7 +10,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     public class JasmineTestResultParser : AbstractTestResultParser
     {
         private JasmineParserStates currentState;
-        private JasmineParserStateContext stateContext;
+        private readonly JasmineParserStateContext stateContext;
 
         private ITestResultParserState testRunStart;
         private ITestResultParserState expectingTestResults;
@@ -75,25 +75,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             return;
                         break;
                 }
-
-                // This is a mechanism to enforce matches that have to occur within 
-                // a specific number of lines after encountering the previous match
-                // one obvious usage is for successive summary lines which
-                // come one after the other
-                if (this.stateContext.LinesWithinWhichMatchIsExpected == 1)
-                {
-                    this.logger.Info($"JasmineTestResultParser : Parse : Was expecting {this.stateContext.NextExpectedMatch} before line {logData.LineNumber}, but no matches occurred.");
-                    AttemptPublishAndResetParser();
-                    return;
-                }
-
-                // If no match occurred and a match was expected in a positive number of lines, decrement the counter
-                // A value of zero or lesser indicates not expecting a match
-                if (this.stateContext.LinesWithinWhichMatchIsExpected > 1)
-                {
-                    this.stateContext.LinesWithinWhichMatchIsExpected--;
-                    return;
-                }
             }
             catch (Exception e)
             {
@@ -117,7 +98,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <returns>True if a match occurs</returns>
         private bool AttemptMatch(ITestResultParserState state, LogData logData)
         {
-            foreach (var regexActionPair in state.RegexsToMatch)
+            foreach (var regexActionPair in state.RegexesToMatch)
             {
                 var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
@@ -126,6 +107,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     return true;
                 }
             }
+
+            state.NoPatternMatched(logData.Line, stateContext);
 
             return false;
         }
@@ -243,12 +226,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         }
 
         private ITestResultParserState TestRunStart => this.testRunStart ??
-            (this.testRunStart = new JasmineParserStateExpectingTestRunStart(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.testRunStart = new JasmineParserStateExpectingTestRunStart(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JasmineTestResultParser)));
 
         private ITestResultParserState ExpectingTestResults => this.expectingTestResults ??
-            (this.expectingTestResults = new JasmineParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.expectingTestResults = new JasmineParserStateExpectingTestResults(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JasmineTestResultParser)));
 
         private ITestResultParserState ExpectingTestRunSummary => this.expectingTestRunSummary ??
-            (this.expectingTestRunSummary = new JasmineParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, this.telemetry));
+            (this.expectingTestRunSummary = new JasmineParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, this.logger, this.telemetry, nameof(JasmineTestResultParser)));
     }
 }

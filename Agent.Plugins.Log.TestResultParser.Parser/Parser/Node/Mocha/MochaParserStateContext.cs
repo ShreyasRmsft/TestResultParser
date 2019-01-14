@@ -29,18 +29,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public int CurrentStackTraceIndex { get { return LastFailedTestCaseNumber - 1; } }
 
         /// <summary>
-        /// This is used to enforce that a match is expected within specified number of lines
-        /// The parser may take action accordingly
-        /// </summary>
-        public int LinesWithinWhichMatchIsExpected { get; set; }
-
-        /// <summary>
-        /// Hint string for logging and telemetry to specify what match was expected in case it does not occur
-        /// in the expected number of lines
-        /// </summary>
-        public string NextExpectedMatch { get; set; }
-
-        /// <summary>
         /// Initializes all the values to their defaults
         /// </summary>
         public new void Initialize(TestRun testRun)
@@ -48,8 +36,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             base.Initialize(testRun);
             StackTracesToExpectPostSummary = 0;
             LastFailedTestCaseNumber = 0;
-            LinesWithinWhichMatchIsExpected = -1;
-            NextExpectedMatch = null;
         }
     }
 }

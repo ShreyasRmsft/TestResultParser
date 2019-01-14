@@ -15,7 +15,7 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
     {
         [DataTestMethod]
         [DynamicData(nameof(GetRegexPatterns), DynamicDataSourceType.Method)]
-        public void RegexPatternTest(string regexPattern)
+        public void PythonTestResultParserRegexPatternTest(string regexPattern)
         {
             var postiveTestCases = File.ReadAllLines(Path.Combine("PythonTestResultParserTests", "Resources", "RegexTests", "PositiveMatches", $"{regexPattern}.txt"));
             var regex = typeof(PythonRegexes).GetProperty(regexPattern, BindingFlags.Public | BindingFlags.Static).GetValue(0);
