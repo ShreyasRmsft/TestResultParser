@@ -133,7 +133,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
             }
 
-            state.NoPatternMatched(logData.Line, stateContext);
+            state.PeformNoPatternMatchedAction(logData.Line, stateContext);
 
             return false;
         }

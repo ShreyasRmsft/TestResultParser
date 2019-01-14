@@ -41,12 +41,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         /// <summary>
         /// Default implemenation that checks for the constraint for the next expected match
-        /// If the number of lines within whic the next match expected falls to 0 this resets the parser
+        /// If the number of lines within which the next match expected falls to 0 this resets the parser
         /// </summary>
         /// <param name="line">Current line</param>
         /// <param name="stateContext">State context object containing information of the parser's state</param>
         /// <returns>True if the parser was reset</returns>>
-        public virtual bool NoPatternMatched(string line, AbstractParserStateContext stateContext)
+        public virtual bool PeformNoPatternMatchedAction(string line, AbstractParserStateContext stateContext)
         {
             // This is a mechanism to enforce matches that have to occur within 
             // a specific number of lines after encountering the previous match

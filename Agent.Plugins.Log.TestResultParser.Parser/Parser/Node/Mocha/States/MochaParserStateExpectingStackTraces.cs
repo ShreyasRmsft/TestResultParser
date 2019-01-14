@@ -191,10 +191,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         /// <param name="line">Current line</param>
         /// <param name="stateContext">State context object containing information of the parser's state</param>
-        /// <returns></returns>
-        public override bool NoPatternMatched(string line, AbstractParserStateContext stateContext)
+        /// <returns>True if the parser was reset</returns>
+        public override bool PeformNoPatternMatchedAction(string line, AbstractParserStateContext stateContext)
         {
-            if (base.NoPatternMatched(line, stateContext))
+            if (base.PeformNoPatternMatchedAction(line, stateContext))
             {
                 return true;
             }

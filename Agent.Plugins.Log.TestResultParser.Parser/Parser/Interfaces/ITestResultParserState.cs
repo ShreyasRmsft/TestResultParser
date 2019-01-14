@@ -21,6 +21,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <param name="line">Log line</param>
         /// <param name="stateContext">State context object containing information regarding the parser's state</param>
         /// <returns>True if the parser was reset</returns>
-        bool NoPatternMatched(string line, AbstractParserStateContext stateContext);
+        bool PeformNoPatternMatchedAction(string line, AbstractParserStateContext stateContext);
     }
 }

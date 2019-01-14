@@ -164,6 +164,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             mochaStateContext.TestRun.TestRunSummary.TotalFailed = totalFailed;
             mochaStateContext.StackTracesToExpectPostSummary = totalFailed;
 
+            // Max expected gap between summary and first stack trace
+            mochaStateContext.LinesWithinWhichMatchIsExpected = 50;
+
             // Do we want transition logs here?
             this.logger.Info($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingStackTraces" +
                 $" at line {mochaStateContext.CurrentLineNumber}.");
