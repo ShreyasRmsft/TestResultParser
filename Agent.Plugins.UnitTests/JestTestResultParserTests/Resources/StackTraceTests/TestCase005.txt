@@ -1,0 +1,129 @@
+﻿ FAIL  unit_tests/sample.test.js
+  first set
+    √ Test method 1 (49ms)
+    √ Test method 2 (7ms)
+    × Test method 3 (17ms)
+    √ Test method 4 (6ms)
+    × Test method 5 (7ms)
+
+  ● first set › Test method 3
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      23 |     test('Test method 3', () => {
+      24 |         console.log("bleh");
+    > 25 |         expect(true).toBe(false);
+         |                      ^
+      26 |     });
+      27 |
+      28 |     test('Test method 4', () => {
+
+      at Object.toBe (unit_tests/sample.test.js:25:22)
+
+  ● first set › Test method 5
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      31 |
+      32 |     test('Test method 5', () => {
+    > 33 |         expect(true).toBe(false);
+         |                      ^
+      34 |     });
+      35 |
+      36 |     afterEach(() => {
+
+      at Object.toBe (unit_tests/sample.test.js:33:22)
+
+ FAIL  unit_tests/sample2.test.js
+  first set
+    √ Test method 3
+    × Test method 4 (1ms)
+    × Test method 5 (1ms)
+    ○ skipped 2 tests
+    nested set
+      √ Nested Test method 3 (4ms)
+      × Nested Test method 4 (16ms)
+  second set
+    √ Test method 1 (1ms)
+    × Test method 2
+
+  ● first set › nested set › Nested Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      16 |
+      17 |         test('Nested Test method 4', () => {
+    > 18 |             expect(true).toBe(false);
+         |                          ^
+      19 |         });
+      20 |     });
+      21 |
+
+      at Object.toBe (unit_tests/sample2.test.js:18:26)
+
+  ● first set › Test method 4
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      34 |
+      35 |     test('Test method 4', () => {
+    > 36 |         expect(true).toBe(false);
+         |                      ^
+      37 |     });
+      38 |
+      39 |     test('Test method 5', () => {
+
+      at Object.toBe (unit_tests/sample2.test.js:36:22)
+
+  ● first set › Test method 5
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      38 |
+      39 |     test('Test method 5', () => {
+    > 40 |         expect(true).toBe(false);
+         |                      ^
+      41 |     });
+      42 |
+      43 |     afterEach(() => {
+
+      at Object.toBe (unit_tests/sample2.test.js:40:22)
+
+  ● second set › Test method 2
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      64 |
+      65 |     test('Test method 2', () => {
+    > 66 |         expect(true).toBe(false);
+         |                      ^
+      67 |     });
+      68 |
+      69 |     afterEach(() => {
+
+      at Object.toBe (unit_tests/sample2.test.js:66:22)
+
+Test Suites: 2 failed, 2 total
+Tests:       6 failed, 2 skipped, 6 passed, 14 total
+Snapshots:   0 total
+Time:        8.829s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.

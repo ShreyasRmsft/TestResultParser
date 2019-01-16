@@ -58,6 +58,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
+            // Set this by default to -1, if a genuine stack trace was encountered then the actual index will be set.
+            jestStateContext.CurrentStackTraceIndex = -1;
+
             // In non verbose mode console out appears as a failed test case
             // Only difference being it's not colored red
             if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
@@ -67,6 +70,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jestStateContext.TestRun.FailedTests.Add(testResult);
+            jestStateContext.CurrentStackTraceIndex = jestStateContext.TestRun.FailedTests.Count - 1;
+
+            // Expect the stack trace to not be more than 50 lines long
+            // This is to ensure we don't skip publishing the run if the stack traces appear corrupted
+            jestStateContext.LinesWithinWhichMatchIsExpected = 50;
+            jestStateContext.NextExpectedMatch = "next stacktraceStart/testrunStart/testrunSummary";
+            jestStateContext.TestRun.FailedTests[jestStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
 
             this.logger.Info($"JestTestResultParser : ExpectingTestResults : Transitioned to state ExpectingStackTraces" +
                 $" at line {jestStateContext.CurrentLineNumber}.");

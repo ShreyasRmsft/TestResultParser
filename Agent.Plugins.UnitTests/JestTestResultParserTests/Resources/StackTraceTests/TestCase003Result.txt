@@ -1,0 +1,10 @@
+﻿FailedTests 1
+  ● --mutex network with busy port
+
+    listen EADDRINUSE 127.0.0.1:58110
+      
+      at node_modules/dnscache/lib/index.js:99:29
+      at node_modules/dnscache/lib/cache.js:72:25
+      at RawTask.Object.<anonymous>.RawTask.call (node_modules/asap/asap.js:40:19)
+      at flush (node_modules/asap/raw.js:50:29)
+-----EndOfStackTrace-----

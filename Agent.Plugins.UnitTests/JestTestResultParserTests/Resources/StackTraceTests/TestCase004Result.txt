@@ -1,0 +1,136 @@
+﻿FailedTests 5
+  ● ConsoleReporter.success
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "success foobar",
+    +   "stdout": "✅  success foobar",
+      }
+
+      61 |       r.success('foobar');
+      62 |     }),
+    > 63 |   ).toMatchSnapshot();
+      64 | });
+      65 | 
+      66 | test('ConsoleReporter.error', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:63:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+-----EndOfStackTrace-----
+  ● ConsoleReporter.error
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+    -   "stderr": "error foobar",
+    +   "stderr": ":red_cirle:  error foobar",
+        "stdout": "",
+      }
+
+      69 |       r.error('foobar');
+      70 |     }),
+    > 71 |   ).toMatchSnapshot();
+      72 | });
+      73 | 
+      74 | test('ConsoleReporter.info', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:71:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+-----EndOfStackTrace-----
+  ● ConsoleReporter.info
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "info foobar",
+    +   "stdout": "ℹ️  info foobar",
+      }
+
+      77 |       r.info('foobar');
+      78 |     }),
+    > 79 |   ).toMatchSnapshot();
+      80 | });
+      81 | 
+      82 | test('ConsoleReporter.command', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:79:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+-----EndOfStackTrace-----
+  ● ConsoleReporter.warn
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+    -   "stderr": "warning foobar",
+    +   "stderr": "⚠️  warning foobar",
+        "stdout": "",
+      }
+
+      93 |       r.warn('foobar');
+      94 |     }),
+    > 95 |   ).toMatchSnapshot();
+      96 | });
+      97 | 
+      98 | test('ConsoleReporter.tree', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:95:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+-----EndOfStackTrace-----
+  ● ConsoleReporter.select
+
+    expect(value).toMatchSnapshot()
+    
+    Received value does not match stored snapshot 1.
+    
+    - Snapshot
+    + Received
+    
+      Object {
+        "stderr": "",
+    -   "stdout": "info Ayo?
+    +   "stdout": "ℹ️  info Ayo?
+        1) foo
+        2) bar
+      Select one: 1",
+      }
+
+      154 |       expect(res).toBe('foo');
+      155 |     }),
+    > 156 |   ).toMatchSnapshot();
+      157 | });
+      158 | 
+      159 | test('ConsoleReporter.progress', async () => {
+      
+      at Object.<anonymous> (__tests__/reporters/console-reporter.js:156:5)
+      at step (node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+
+ › 5 snapshot tests failed.
+-----EndOfStackTrace-----

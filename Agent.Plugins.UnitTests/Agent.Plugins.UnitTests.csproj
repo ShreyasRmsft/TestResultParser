@@ -28,7 +28,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj" />
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Parser\Agent.Plugins.Log.TestResultParser.Parser.csproj" />

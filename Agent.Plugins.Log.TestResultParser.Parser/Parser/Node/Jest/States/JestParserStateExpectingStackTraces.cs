@@ -30,6 +30,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
+            // Set this by default to -1, if a genuine stack trace was encountered then the actual index will be set.
+            jestStateContext.CurrentStackTraceIndex = -1;
+
             if (jestStateContext.FailedTestsSummaryIndicatorEncountered)
             {
                 this.logger.Verbose($"JestTestResultParser : ExpectingStackTraces: Ignoring StackTrace/Failed test case at line " +
@@ -50,6 +53,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
             jestStateContext.TestRun.FailedTests.Add(testResult);
+            jestStateContext.CurrentStackTraceIndex = jestStateContext.TestRun.FailedTests.Count - 1;
+
+            // Expect the stack trace to not be more than 50 lines long
+            // This is to ensure we don't skip publishing the run if the stack traces appear corrupted
+            jestStateContext.LinesWithinWhichMatchIsExpected = 50;
+            jestStateContext.NextExpectedMatch = "next stacktraceStart/testrunStart/testrunSummary";
+            jestStateContext.TestRun.FailedTests[jestStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
 
             return JestParserStates.ExpectingStackTraces;
         }
@@ -92,6 +102,31 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger.Info($"JestTestResultParser : ExpectingStackTraces : ");
 
             return JestParserStates.ExpectingStackTraces;
+        }
+
+        /// <summary>
+        /// If none of the patterns matched then considers adding the current line to stack trace
+        /// based on whether a stack trace start has been encountered
+        /// </summary>
+        /// <param name="line">Current line</param>
+        /// <param name="stateContext">State context object containing information of the parser's state</param>
+        /// <returns>True if the parser was reset</returns>
+        public override bool PeformNoPatternMatchedAction(string line, AbstractParserStateContext stateContext)
+        {
+            if (base.PeformNoPatternMatchedAction(line, stateContext))
+            {
+                return true;
+            }
+
+            var jestStateContext = stateContext as JestParserStateContext;
+
+            // Index out of range can never occur as the stack traces immediately follow the failed test case
+            if (jestStateContext.CurrentStackTraceIndex > -1)
+            {
+                stateContext.TestRun.FailedTests[jestStateContext.CurrentStackTraceIndex].StackTrace += Environment.NewLine + line;
+            }
+
+            return false;
         }
     }
 }

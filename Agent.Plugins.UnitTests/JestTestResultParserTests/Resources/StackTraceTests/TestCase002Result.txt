@@ -1,0 +1,13 @@
+﻿FailedTests 1
+  ● TypeScript definitions › should compile against index.d.ts
+    AssertionError: Semantic: /home/travis/build/reactjs/redux/index.d.ts (103,18): All declarations of 'Dispatch' must have identical type parameters.
+      
+      at node_modules/typescript-definition-tester/dist/index.js:17:15
+          at Array.forEach (<anonymous>)
+      at handleDiagnostics (node_modules/typescript-definition-tester/dist/index.js:14:17)
+      at compile (node_modules/typescript-definition-tester/dist/index.js:27:5)
+      at node_modules/typescript-definition-tester/dist/index.js:55:13
+      at next (node_modules/typescript-definition-tester/dist/index.js:74:24)
+      at node_modules/typescript-definition-tester/dist/index.js:87:21
+      at FSReqWrap.oncomplete (fs.js:154:5)
+-----EndOfStackTrace-----

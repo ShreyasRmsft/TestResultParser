@@ -24,12 +24,18 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public bool FailedTestsSummaryIndicatorEncountered { get; set; }
 
         /// <summary>
+        /// Current stack trace index. Used to insert the stack trace to the appropriate failed test case later in the stack traces state.
+        /// </summary>
+        public int CurrentStackTraceIndex { get; set; }
+
+        /// <summary>
         /// Initializes all the values to their defaults
         /// </summary>
         public new void Initialize(TestRun testRun)
         {
             base.Initialize(testRun);
-            LinesWithinWhichMatchIsExpected = 0;
+            LinesWithinWhichMatchIsExpected = -1;
+            CurrentStackTraceIndex = -1;
             NextExpectedMatch = null;
             VerboseOptionEnabled = false;
             FailedTestsSummaryIndicatorEncountered = false;
