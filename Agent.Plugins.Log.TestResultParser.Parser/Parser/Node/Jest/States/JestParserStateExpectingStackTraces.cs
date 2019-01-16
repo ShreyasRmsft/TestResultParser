@@ -58,7 +58,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Expect the stack trace to not be more than 50 lines long
             // This is to ensure we don't skip publishing the run if the stack traces appear corrupted
             jestStateContext.LinesWithinWhichMatchIsExpected = 50;
-            jestStateContext.NextExpectedMatch = "next stacktraceStart/testrunStart";
+            jestStateContext.NextExpectedMatch = "next stacktraceStart/testrunStart/testrunSummary";
             jestStateContext.TestRun.FailedTests[jestStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
 
             return JestParserStates.ExpectingStackTraces;
