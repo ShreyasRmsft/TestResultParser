@@ -128,6 +128,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
                 {
+                    // Reset this value on a match
+                    stateContext.LinesWithinWhichMatchIsExpected = -1;
+
                     this.currentState = (JestParserStates)regexActionPair.MatchAction(match, this.stateContext);
                     return true;
                 }
@@ -219,6 +222,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             JestTelemetryConstants.TotalTestRunTimeZero, new List<int> { this.stateContext.TestRun.TestRunId }, true);
                     }
 
+                    // Trim the stack traces of extra newlines etc.
+                    foreach (var failedTest in testRunToPublish.FailedTests)
+                    {
+                        if (failedTest.StackTrace != null)
+                        {
+                            failedTest.StackTrace = failedTest.StackTrace.TrimEnd();
+                        }
+                    }
+
                     // Only publish if total tests was not zero
                     this.testRunManager.PublishAsync(testRunToPublish);
 
@@ -237,7 +249,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var newTestRun = new TestRun($"{Name}/{Version}", this.stateContext.TestRun.TestRunId + 1);
 
             // Set state to ExpectingTestResults
-            this.currentState = JestParserStates.ExpectingTestResults;
+            this.currentState = JestParserStates.ExpectingTestRunStart;
 
             // Refresh the context
             this.stateContext.Initialize(newTestRun);

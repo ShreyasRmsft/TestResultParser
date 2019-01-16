@@ -21,18 +21,18 @@ namespace Agent.Plugins.UnitTests
 
         public TestResultParserTestBase()
         {
-            testRunManagerMock = new Mock<ITestRunManager>();
+            this.testRunManagerMock = new Mock<ITestRunManager>();
 
             // Mock logger to log to console for easy debugging
-            diagnosticDataCollector = new Mock<ITraceLogger>();
+            this.diagnosticDataCollector = new Mock<ITraceLogger>();
 
-            diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Info: {data}"); });
-            diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Verbose: {data}"); });
-            diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Warning: {data}"); });
-            diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Error: {data}"); });
+            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Info: {data}"); });
+            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Verbose: {data}"); });
+            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Warning: {data}"); });
+            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Error: {data}"); });
 
             // No-op for telemetry
-            telemetryDataCollector = new Mock<ITelemetryDataCollector>();
+            this.telemetryDataCollector = new Mock<ITelemetryDataCollector>();
         }
 
         public void TestSuccessScenariosWithBasicAssertions(string testCase, bool assertFailedCount = true, bool assertPassedCount = true, bool assertSkippedCount = true)
@@ -40,8 +40,8 @@ namespace Agent.Plugins.UnitTests
             int indexOfTestRun = 0;
             int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
-            
-            testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+
+            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId, assertFailedCount, assertPassedCount, assertSkippedCount);
                 lastTestRunId = testRun.TestRunId;
@@ -57,7 +57,7 @@ namespace Agent.Plugins.UnitTests
                 this.parser.Parse(line);
             }
 
-            testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(Math.Max(1, resultFileContents.Length / 5)), $"Expected {Math.Max(1, resultFileContents.Length / 5)} test runs.");
+            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(Math.Max(1, resultFileContents.Length / 5)), $"Expected {Math.Max(1, resultFileContents.Length / 5)} test runs.");
         }
 
         public void TestPartialSuccessScenariosWithBasicAssertions(string testCase)
@@ -66,7 +66,7 @@ namespace Agent.Plugins.UnitTests
             int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId);
                 lastTestRunId = testRun.TestRunId;
@@ -78,7 +78,7 @@ namespace Agent.Plugins.UnitTests
             }
 
             // TODO: fix assertions
-            testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
+            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
             Assert.AreEqual(resultFileContents.Length / 8, indexOfTestRun, $"Expected {resultFileContents.Length / 7} test runs.");
         }
 
@@ -86,7 +86,7 @@ namespace Agent.Plugins.UnitTests
         {
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRunWithDetails(testRun, resultFileContents);
             });
@@ -96,14 +96,14 @@ namespace Agent.Plugins.UnitTests
                 this.parser.Parse(line);
             }
 
-            testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
         }
 
         public void TestWithStackTraceAssertions(string testCase)
         {
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRunWithStackTraces(testRun, resultFileContents);
             });
@@ -113,7 +113,7 @@ namespace Agent.Plugins.UnitTests
                 this.parser.Parse(line);
             }
 
-            testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
         }
 
         public void TestNegativeTestsScenarios(string testCase)
@@ -123,7 +123,7 @@ namespace Agent.Plugins.UnitTests
                 this.parser.Parse(line);
             }
 
-            testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been Published.");
+            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been Published.");
         }
 
         #region Data Drivers
@@ -135,8 +135,8 @@ namespace Agent.Plugins.UnitTests
                 if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    //if (testCase.Name.Contains("TestCase004"))
-                        yield return new object[] { testCase.Name.Split(".txt")[0] };
+                    // if (testCase.Name.Contains("TestCase004"))
+                    yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
         }

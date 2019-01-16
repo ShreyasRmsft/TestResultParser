@@ -70,7 +70,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             SkippedTestsToExpect = 0;
             PendingStarterMatched = false;
             FailureStarterMatched = false;
-            LinesWithinWhichMatchIsExpected = 0;
+            LinesWithinWhichMatchIsExpected = -1;
             NextExpectedMatch = null;
             IsTimeParsed = false;
         }

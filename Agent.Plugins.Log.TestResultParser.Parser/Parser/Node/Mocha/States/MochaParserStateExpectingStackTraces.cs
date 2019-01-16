@@ -200,11 +200,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
 
             var mochaStateContext = stateContext as MochaParserStateContext;
-
-            var currentStackTraceIndex = mochaStateContext.CurrentStackTraceIndex;
-            if (currentStackTraceIndex > -1 && currentStackTraceIndex < stateContext.TestRun.FailedTests.Count)
+            if (mochaStateContext.CurrentStackTraceIndex > -1 && mochaStateContext.CurrentStackTraceIndex < stateContext.TestRun.FailedTests.Count)
             {
-                stateContext.TestRun.FailedTests[currentStackTraceIndex].StackTrace += Environment.NewLine + line;
+                stateContext.TestRun.FailedTests[mochaStateContext.CurrentStackTraceIndex].StackTrace += Environment.NewLine + line;
             }
 
             return false;

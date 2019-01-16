@@ -156,7 +156,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var mochaStateContext = stateContext as MochaParserStateContext;
 
             this.logger.Info($"{this.parserName} : {this.stateName} : Failed tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
-            mochaStateContext.LinesWithinWhichMatchIsExpected = 0;
 
             // Handling parse errors is unnecessary
             var totalFailed = int.Parse(match.Groups[RegexCaptureGroups.FailedTests].Value);

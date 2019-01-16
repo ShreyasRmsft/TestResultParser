@@ -53,6 +53,15 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
         }
 
         [DataTestMethod]
+        [DynamicData(nameof(GetStackTraceTestCases), DynamicDataSourceType.Method)]
+        public void JestParserStackTraceTests(string testCase)
+        {
+            testCase = Path.Combine("JestTestResultParserTests", "Resources", "StackTraceTests", testCase);
+            TestWithStackTraceAssertions(testCase);
+        }
+
+
+        [DataTestMethod]
         [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
         public void JestTestResultParserCommonNegativeTests(string testCase)
         {
@@ -82,6 +91,11 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
         public static IEnumerable<object[]> GetNegativeTestsTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("JestTestResultParserTests", "Resources", "NegativeTests"));
+        }
+
+        public static IEnumerable<object[]> GetStackTraceTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("JestTestResultParserTests", "Resources", "StackTraceTests"));
         }
 
         public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()

@@ -118,6 +118,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
                 {
+                    // Reset this value on a match
+                    stateContext.LinesWithinWhichMatchIsExpected = -1;
+
                     this.currentState = (MochaParserStates)regexActionPair.MatchAction(match, this.stateContext);
                     return true;
                 }

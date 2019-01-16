@@ -30,6 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="JestTestResultParserTests\Resources\PartialSuccess\TestCase006.txt" />
+    <None Remove="JestTestResultParserTests\Resources\PartialSuccess\TestCase006Result.txt" />
+    <None Remove="JestTestResultParserTests\Resources\StackTraceTests\TestCase006.txt" />
+    <None Remove="JestTestResultParserTests\Resources\StackTraceTests\TestCase006Result.txt" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj" />
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Parser\Agent.Plugins.Log.TestResultParser.Parser.csproj" />
   </ItemGroup>
