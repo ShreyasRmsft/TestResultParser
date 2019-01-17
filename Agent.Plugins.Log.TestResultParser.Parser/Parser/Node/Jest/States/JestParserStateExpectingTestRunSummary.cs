@@ -83,7 +83,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
-            this.logger.Error($"JestTestResultParser : ExpectingTestRunSummary : Transitioned to state ExpectingTestResults" +
+            this.logger.Error($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jestStateContext.CurrentLineNumber} as test run start indicator was encountered before encountering" +
                 $" the full summary.");
             this.telemetryDataCollector.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,

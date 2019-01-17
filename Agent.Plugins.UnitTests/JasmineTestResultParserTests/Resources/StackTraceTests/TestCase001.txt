@@ -1,0 +1,21 @@
+﻿Randomized with seed 11629
+Started
+.F.*....
+
+Failures:
+1) Tests for my math functions Suite 2 For decimal numbers to have at least 2 precision correct
+  Message:
+    Expected 4.2079 to be close to 4.108, 2.
+  Stack:
+    Error: Expected 4.2079 to be close to 4.108, 2.
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\MochaTestResultParser\hello_world2\spec\mathFunctionsSpec.js:61:45)
+        at <Jasmine>
+Pending:
+
+1) Tests for my math functions Suite 2 For Null array expect to throw error
+  Temporarily disabled with xit
+
+8 specs, 1 failure, 1 pending spec
+Finished in 0.025 seconds
+Randomized with seed 11629 (jasmine --random=true --seed=11629)

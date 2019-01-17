@@ -103,6 +103,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 var match = regexActionPair.Regex.Match(logData.Line);
                 if (match.Success)
                 {
+                    // Reset this value on a match
+                    stateContext.LinesWithinWhichMatchIsExpected = -1;
+
                     this.currentState = (JasmineParserStates)regexActionPair.MatchAction(match, this.stateContext);
                     return true;
                 }
@@ -197,6 +200,15 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         this.logger.Info($"JasmineTestResultParser : {this.stateContext.SuiteErrors} suite errors found in the test run.");
                         this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.SuiteErrors,
                             new List<int> { this.stateContext.TestRun.TestRunId }, true);
+                    }
+
+                    // Trim the stack traces of extra newlines etc.
+                    foreach (var failedTest in testRunToPublish.FailedTests)
+                    {
+                        if (failedTest.StackTrace != null)
+                        {
+                            failedTest.StackTrace = failedTest.StackTrace.TrimEnd();
+                        }
                     }
 
                     // Only publish if total tests was not zero

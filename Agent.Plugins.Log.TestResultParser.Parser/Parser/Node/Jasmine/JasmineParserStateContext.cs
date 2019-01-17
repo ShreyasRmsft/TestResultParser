@@ -13,6 +13,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         }
 
         /// <summary>
+        /// Current stack trace index. Used to insert the stack trace to the appropriate failed test case later in the stack traces state.
+        /// </summary>
+        public int CurrentStackTraceIndex { get; set; }
+
+        /// <summary>
         /// Test case number of the last failed test case encountered as part of the current run
         /// </summary>
         public int LastFailedTestCaseNumber { get; set; }
@@ -33,21 +38,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public bool FailureStarterMatched { get; set; }
 
         /// <summary>
-        /// Passed tests to expect from the test status
-        /// </summary>
-        public int PassedTestsToExpect { get; set; }
-
-        /// <summary>
-        /// Failed tests to expect from the test status
-        /// </summary>
-        public int FailedTestsToExpect { get; set; }
-
-        /// <summary>
-        /// Skipped tests to expect from the test status
-        /// </summary>
-        public int SkippedTestsToExpect { get; set; }
-
-        /// <summary>
         /// Number of suite errors
         /// </summary>
         public int SuiteErrors { get; set; }
@@ -65,12 +55,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             base.Initialize(testRun);
             LastFailedTestCaseNumber = 0;
             LastPendingTestCaseNumber = 0;
-            PassedTestsToExpect = 0;
-            FailedTestsToExpect = 0;
-            SkippedTestsToExpect = 0;
             PendingStarterMatched = false;
             FailureStarterMatched = false;
             LinesWithinWhichMatchIsExpected = -1;
+            CurrentStackTraceIndex = -1;
             NextExpectedMatch = null;
             IsTimeParsed = false;
         }

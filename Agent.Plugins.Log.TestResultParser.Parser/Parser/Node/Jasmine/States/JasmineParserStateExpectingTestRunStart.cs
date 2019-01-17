@@ -27,10 +27,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestRunStart : Transitioned to state ExpectingTestResults" +
+            this.logger.Info($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
-            jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
-            jasmineStateContext.NextExpectedMatch = "test run status";
+
+            // Console logs are dumped after test run start, if the summary or failed/pending test do not appear withing
+            // 500 line we wish to reset the parser to not incur unnecessary costs
+            jasmineStateContext.LinesWithinWhichMatchIsExpected = 500;
+            jasmineStateContext.NextExpectedMatch = "failed/pending tests or test run summary";
 
             return JasmineParserStates.ExpectingTestResults;
         }

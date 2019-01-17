@@ -28,6 +28,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase001.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase001Result.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase002.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase002Result.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase003.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase003Result.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase004.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase004Result.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase005.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\StackTraceTests\TestCase005Result.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\SuccessScenarios\TestCase017.txt" />
+    <None Remove="JasmineTestResultParserTests\Resources\SuccessScenarios\TestCase017Result.txt" />
+  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj" />

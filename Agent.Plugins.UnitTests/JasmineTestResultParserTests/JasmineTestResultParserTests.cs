@@ -44,6 +44,14 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         }
 
         [DataTestMethod]
+        [DynamicData(nameof(GetStackTraceTestCases), DynamicDataSourceType.Method)]
+        public void JasmineParserStackTraceTests(string testCase)
+        {
+            testCase = Path.Combine("JasmineTestResultParserTests", "Resources", "StackTraceTests", testCase);
+            TestWithStackTraceAssertions(testCase);
+        }
+
+        [DataTestMethod]
         [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
         public void JasmineTestResultParserCommonNegativeTests(string testCase)
         {
@@ -68,6 +76,10 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         public static IEnumerable<object[]> GetDetailedTestsTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "DetailedTests"));
+        }
+        public static IEnumerable<object[]> GetStackTraceTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("JasmineTestResultParserTests", "Resources", "StackTraceTests"));
         }
 
         public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()

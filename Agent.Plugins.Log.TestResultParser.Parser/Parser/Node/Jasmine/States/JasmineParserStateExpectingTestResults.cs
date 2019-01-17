@@ -20,7 +20,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             RegexesToMatch = new List<RegexActionPair>
             {
                 new RegexActionPair(JasmineRegexes.FailedOrPendingTestCase, FailedOrPendingTestCaseMatched),
-                new RegexActionPair(JasmineRegexes.TestStatus, TestStatusMatched),
                 new RegexActionPair(JasmineRegexes.FailuresStart, FailuresStartMatched),
                 new RegexActionPair(JasmineRegexes.PendingStart, PendingStartMatched),
                 new RegexActionPair(JasmineRegexes.TestsSummaryMatcher, SummaryMatched),
@@ -33,23 +32,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
+            this.logger.Info($"{this.parserName} : {this.stateName} : Resetting the parser, test run start matched unexpectedly, transitioned to state ExpectingTestResults" +
+                $" at line {jasmineStateContext.CurrentLineNumber}.");
+
             // Test Run Start matched after already encountering test run start.
             // Parser should be reset.
-
             this.attemptPublishAndResetParser();
-
-            return JasmineParserStates.ExpectingTestResults;
-        }
-
-        private Enum TestStatusMatched(Match match, AbstractParserStateContext stateContext)
-        {
-            var jasmineStateContext = stateContext as JasmineParserStateContext;
-            jasmineStateContext.LinesWithinWhichMatchIsExpected = 0;
-
-            var testStatus = match.ToString();
-            jasmineStateContext.PassedTestsToExpect = Regex.Matches(testStatus, "[.]").Count;
-            jasmineStateContext.FailedTestsToExpect = Regex.Matches(testStatus, "[F]").Count;
-            jasmineStateContext.SkippedTestsToExpect = Regex.Matches(testStatus, "[*]").Count;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -57,8 +45,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private Enum FailedOrPendingTestCaseMatched(Match match, AbstractParserStateContext stateContext)
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
-
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
+
+            // Set this by default to -1, if a genuine stack trace was encountered then the actual index will be set.
+            jasmineStateContext.CurrentStackTraceIndex = -1;
 
             // If it is a failed testcase , FailureStarterMatched is true
             if (jasmineStateContext.FailureStarterMatched)
@@ -68,7 +58,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // There's a good chance we read some random line as a failed test case hence consider it a
                     // as a match but do not add it to our list of test cases
 
-                    this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting failed test case with" +
+                    this.logger.Error($"{this.parserName} : {this.stateName} : Expecting failed test case with" +
                         $" number {jasmineStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
                     this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
@@ -82,6 +72,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 var failedTestResult = PrepareTestResult(TestOutcome.Failed, match);
                 jasmineStateContext.TestRun.FailedTests.Add(failedTestResult);
 
+                jasmineStateContext.CurrentStackTraceIndex = jasmineStateContext.TestRun.FailedTests.Count - 1;
+
+                // Expect the stack trace to not be more than 50 lines long
+                // This is to ensure we don't skip publishing the run if the stack traces appear corrupted
+                jasmineStateContext.LinesWithinWhichMatchIsExpected = 50;
+                jasmineStateContext.NextExpectedMatch = "next failed test case or pending test cases start or test run summary";
+                jasmineStateContext.TestRun.FailedTests[jasmineStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
+
                 return JasmineParserStates.ExpectingTestResults;
             }
 
@@ -93,7 +91,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // There's a good chance we read some random line as a pending test case hence consider it a
                     // as a match but do not add it to our list of test cases
 
-                    this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting pending test case with" +
+                    this.logger.Error($"{this.parserName} : {this.stateName} : Expecting pending test case with" +
                         $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
                     this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
@@ -111,7 +109,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
 
             // If none of the starter has matched, it must be a random line. Fire telemetry and log error
-            this.logger.Error($"JasmineTestResultParser : ExpectingTestResults : Expecting failed/pending test case " +
+            this.logger.Error($"{this.parserName} : {this.stateName} : Expecting failed/pending test case " +
                         $" but encountered test case with {testCaseNumber} without encountering failed/pending starter.");
             this.telemetryDataCollector.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.FailedPendingTestCaseWithoutStarterMatch,
                 new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
@@ -149,8 +147,17 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             // Suite error is counted as failed and summary includes this while reporting
             var testResult = PrepareTestResult(TestOutcome.Failed, match);
+
             jasmineStateContext.TestRun.FailedTests.Add(testResult);
             jasmineStateContext.SuiteErrors++;
+
+            jasmineStateContext.CurrentStackTraceIndex = jasmineStateContext.TestRun.FailedTests.Count - 1;
+
+            // Expect the stack trace to not be more than 50 lines long
+            // This is to ensure we don't skip publishing the run if the stack traces appear corrupted
+            jasmineStateContext.LinesWithinWhichMatchIsExpected = 50;
+            jasmineStateContext.NextExpectedMatch = "next failed test case or pending test cases start or test run summary";
+            jasmineStateContext.TestRun.FailedTests[jasmineStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -162,7 +169,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
             jasmineStateContext.NextExpectedMatch = "test run time";
 
-            this.logger.Info($"JasmineTestResultParser : ExpectingTestResults : Transitioned to state ExpectingTestRunSummary" +
+            this.logger.Info($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             int.TryParse(match.Groups[RegexCaptureGroups.TotalTests].Value, out int totalTests);
@@ -179,6 +186,31 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jasmineStateContext.TestRun.TestRunSummary.TotalPassed = passedTests;
 
             return JasmineParserStates.ExpectingTestRunSummary;
+        }
+
+        /// <summary>
+        /// If none of the patterns matched then considers adding the current line to stack trace
+        /// based on whether a stack trace start has been encountered
+        /// </summary>
+        /// <param name="line">Current line</param>
+        /// <param name="stateContext">State context object containing information of the parser's state</param>
+        /// <returns>True if the parser was reset</returns>
+        public override bool PeformNoPatternMatchedAction(string line, AbstractParserStateContext stateContext)
+        {
+            if (base.PeformNoPatternMatchedAction(line, stateContext))
+            {
+                return true;
+            }
+
+            var jasmineStateContext = stateContext as JasmineParserStateContext;
+
+            // Index out of range can never occur as the stack traces immediately follow the failed test case
+            if (jasmineStateContext.CurrentStackTraceIndex > -1)
+            {
+                stateContext.TestRun.FailedTests[jasmineStateContext.CurrentStackTraceIndex].StackTrace += Environment.NewLine + line;
+            }
+
+            return false;
         }
     }
 }
