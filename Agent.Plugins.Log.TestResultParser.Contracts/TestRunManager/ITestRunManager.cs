@@ -16,7 +16,10 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// </summary>
         /// <param name="testRun"></param>
         Task PublishAsync(TestRun testRun);
-
+        
+        /// <summary>
+        /// Signal to complete any pending operations and dispose
+        /// </summary>
         Task FinalizeAsync();
     }
 }
