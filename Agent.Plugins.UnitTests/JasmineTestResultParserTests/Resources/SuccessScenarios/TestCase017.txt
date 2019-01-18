@@ -1,0 +1,82 @@
+﻿ nodejs-application@0.0.0 test D:\OwnedRepos\NodeJsJasmine
+> jasmine --random=false ".\unit_tests\sample_spec.js"
+
+Started
+**bleh belh
+ bleh bleh
+FFFFFFF
+
+Failures:
+1) first set Test method 3
+  Message:
+    hello there set 1 thrown
+  Stack:
+
+
+2) first set Test method 4
+  Message:
+    hello there set 1 thrown
+  Stack:
+
+
+3) first set Test method 5
+  Message:
+    hello there set 1 thrown
+  Stack:
+
+
+4) second set Test method 1
+  Message:
+    hello there thrown
+  Stack:
+
+
+5) second set Test method 2
+  Message:
+    Expected true to be false.
+  Stack:
+    Error: Expected true to be false.
+        at <Jasmine>
+        at UserContext.it (D:\OwnedRepos\NodeJsJasmine\unit_tests\sample_spec.js:63:22)
+        at <Jasmine>
+  Message:
+    hello there thrown
+  Stack:
+
+
+6) second set Test method 3
+  Message:
+    hello there thrown
+  Stack:
+
+
+7) second set Test method 4
+  Message:
+    Expected true to be false.
+  Stack:
+    Error: Expected true to be false.
+        at <Jasmine>
+        at UserContext.it (D:\OwnedRepos\NodeJsJasmine\unit_tests\sample_spec.js:71:22)
+        at <Jasmine>
+  Message:
+    hello there thrown
+  Stack:
+
+
+Suite error: second set
+  Message:
+    General Kenobi thrown
+  Stack:
+
+Pending:
+
+1) first set Test method 1
+  No reason given
+
+
+2) first set Test method 2
+  No reason given
+
+9 specs, 8 failures, 2 pending specs
+Finished in 0.05 seconds
+npm ERR! Test failed.  See above for more details.

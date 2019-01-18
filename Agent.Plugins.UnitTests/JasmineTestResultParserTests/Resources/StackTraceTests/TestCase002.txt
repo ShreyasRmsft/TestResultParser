@@ -1,0 +1,420 @@
+﻿Randomized with seed 26739
+Started
+FFFFFFFFFFFFFFFFF
+
+Failures:
+1) KoansRunner presentation showing the suite description should prefix inner suite descriptions with 'Thinking'
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'getSuiteDescription' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:336:32)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+2) KoansRunner presentation showing the suite description should prefix outer suite descriptions with 'Thinking'
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'getSuiteDescription' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:328:32)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+3) KoansRunner Matcher reporting toContain should show actual and expected
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: jasmine.FakeTimer is not a constructor
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:77:19)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'runs' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:93:14)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+4) KoansRunner showing progress subjects with 1 failure should have 3 subjects
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:256:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'noOfSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:260:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+5) KoansRunner showing progress subjects with 1 failure should have a failure
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:256:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'failedSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:264:27)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+
+6) KoansRunner showing progress subjects with no failures should have 2 subjects
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:232:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'noOfSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:236:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+7) KoansRunner showing progress subjects with no failures should not have any failed subjects
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:232:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'failedSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:240:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+8) KoansRunner showing progress subjects with embedded suites only outer suites count as subjects should have 1 failure
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:309:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'failedSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:317:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+9) KoansRunner showing progress subjects with embedded suites only outer suites count as subjects should have 3 suites
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:309:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'noOfSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:313:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+10) KoansRunner showing progress subjects with 2 failures should have 2 failures
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:282:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'failedSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:290:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+11) KoansRunner showing progress subjects with 2 failures should have 4 subjects
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:282:15)
+        at <Jasmine>
+  Message:
+    TypeError: Cannot read property 'noOfSubjects' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:286:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+12) KoansRunner should run only specs beginning with spec parameter
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'location' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:46:18)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+13) KoansRunner failure messages (integration) should add the failure message to the DOM (non-toEquals matchers)
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+  Message:
+    TypeError: Cannot read property 'reportRunnerStarting' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:130:16)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+  Message:
+    TypeError: jasmine.ExpectationResult is not a constructor
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:139:27)
+        at <Jasmine>
+        at ontimeout (timers.js:436:11)
+        at tryOnTimeout (timers.js:300:5)
+        at listOnTimeout (timers.js:263:5)
+
+14) KoansRunner failure messages (integration) should add the failure message to the DOM (non-toEquals matchers) html escaping
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'reportRunnerStarting' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:130:16)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: jasmine.ExpectationResult is not a constructor
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:153:27)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+15) KoansRunner #reportSpecStarting should not log running specs by default
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    Error: <spyOn> : could not find an object to spy upon for log()
+    Usage: spyOn(<object>, <methodName>)
+  Stack:
+    Error: <spyOn> : could not find an object to spy upon for log()
+    Usage: spyOn(<object>, <methodName>)
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:209:7)
+        at <Jasmine>
+
+16) KoansRunner should display empty divs for every suite when the runner is starting
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'reportRunnerStarting' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:53:14)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+17) KoansRunner duplicate example names should report failures correctly
+  Message:
+    ReferenceError: document is not defined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:11:5)
+        at <Jasmine>
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+  Message:
+    TypeError: Cannot read property 'jasmineStarted' of undefined
+  Stack:
+        at <Jasmine>
+        at UserContext.<anonymous> (E:\CodeBase\javascript-koans\jasmine\runner_specs\suites\KoansRunnerSpec.js:184:11)
+        at <Jasmine>
+
+17 specs, 17 failures
+Finished in 0.614 seconds
+Randomized with seed 26739 (jasmine --random=true --seed=26739)
