@@ -27,10 +27,17 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         // Example : Ran 12 tests in 2.2s
         public static Regex TestCountAndTimeSummary { get; } = new Regex($"^Ran (?<{RegexCaptureGroups.TotalTests}>[0-9]+) tests? in (?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(\\.(?<{RegexCaptureGroups.TestRunTimeMs}>[0-9]+))?s", RegexOptions.ExplicitCapture);
 
+        public static Regex StackTraceBorder { get; } = new Regex("^----------------------------------------------------------------------(-)*$");
+
+        public static Regex StackTraceEnd { get; } = new Regex("^======================================================================(=)*$");
+
         // Example : Failed (failures=2)
         public static Regex TestOutcomeSummary { get; } = new Regex($"^(OK|FAILED) ?(\\((?<{RegexCaptureGroups.TestOutcome}>.*)\\))?$");
+
         public static Regex SummaryFailure { get; } = new Regex($"(^|, ?)failures ?= ?(?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*)", RegexOptions.ExplicitCapture);
+
         public static Regex SummaryErrors { get; } = new Regex($"(^|, ?)errors ?= ?(?<{RegexCaptureGroups.Errors}>[1-9][0-9]*)", RegexOptions.ExplicitCapture);
+
         public static Regex SummarySkipped { get; } = new Regex($"(^|, ?)skipped ?= ?(?<{RegexCaptureGroups.SkippedTests}>[1-9][0-9]*)", RegexOptions.ExplicitCapture);
     }
 }
