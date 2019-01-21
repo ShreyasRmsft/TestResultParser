@@ -1,0 +1,13 @@
+FailedTests 4
+Traceback (most recent call last):
+  File "D:\python-testing\test-verbose.py", line 31, in test_fail
+    self.fail("I am failing in test_fail1")
+AssertionError: I am failing in test_fail1
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----
+-----EndOfStackTrace-----
+Traceback (most recent call last):
+  File "D:\python-testing\test-verbose.py", line 42, in test_fail4
+    self.fail("I am failing in test_fail4")
+AssertionError: I am failing in test_fail4
+-----EndOfStackTrace-----

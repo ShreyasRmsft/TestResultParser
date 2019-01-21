@@ -296,7 +296,19 @@ namespace Agent.Plugins.UnitTests
 
                 currentLine++;
 
-                Assert.AreEqual(expectedStackTrace, testRun.FailedTests[testIndex].StackTrace, "Stack trace contents do not match.");
+                try
+                {
+                    Assert.AreEqual(expectedStackTrace, testRun.FailedTests[testIndex].StackTrace, "Stack trace contents do not match.");
+                }
+                catch
+                {
+                    if (expectedStackTrace == null && testRun.FailedTests[testIndex].StackTrace == string.Empty)
+                    {
+                        return;
+                    }
+
+                    throw;
+                }
             }
         }
 

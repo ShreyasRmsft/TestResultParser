@@ -51,16 +51,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 {
                     case ParserState.ExpectingSummary:
 
+                        if (string.IsNullOrWhiteSpace(logData.Line))
+                        {
+                            return;
+                        }
+
                         // Summary Test count and total time should have already been parsed
                         // Try to parse test outcome, number of tests for each outcome
                         if (TryParseSummaryOutcome(logData))
                         {
                             PublishAndReset(logData);
-                            return;
-                        }
-
-                        if (string.IsNullOrWhiteSpace(logData.Line))
-                        {
                             return;
                         }
 
@@ -82,7 +82,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         if (TryParseSummaryTestAndTime(logData))
                         {
                             this.state = ParserState.ExpectingSummary;
-                            this.logger.Info($"PythonTestResultParser : ExpectingFailedResults: transisitoned to state ExpectingSummary at line {logData.LineNumber}");
+                            this.logger.Info($"PythonTestResultParser : ExpectingFailedResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
                             return;
                         }
 
@@ -112,7 +112,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             this.partialTestResult = null;
                             this.state = ParserState.ExpectingFailedResults;
                             stackTraceLinesAllowedToParse = 50;
-                            this.logger.Info($"PythonTestResultParser : ExpectingTestResults: transisitoned to state ExpectingFailedResults at line {logData.LineNumber}");
+                            this.logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingFailedResults at line {logData.LineNumber}");
 
                             return;
                         }
@@ -121,7 +121,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         {
                             this.partialTestResult = null;
                             this.state = ParserState.ExpectingSummary;
-                            this.logger.Info($"PythonTestResultParser : ExpectingTestResults: transisitoned to state ExpectingSummary at line {logData.LineNumber}");
+                            this.logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
                             return;
                         }
 
