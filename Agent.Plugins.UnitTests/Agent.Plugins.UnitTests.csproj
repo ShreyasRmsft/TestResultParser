@@ -30,17 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="PythonTestResultParserTests\Resources\RegexTests\NegativeMatches\StackTraceBorder.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\RegexTests\NegativeMatches\StackTraceEnd - Copy.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\RegexTests\NegativeMatches\StackTraceEnd.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\RegexTests\PositiveMatches\StackTraceBorder.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\StackTraceTests\TestCase002.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\StackTraceTests\TestCase002Result.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\StackTraceTests\TestCase003.txt" />
-    <None Remove="PythonTestResultParserTests\Resources\StackTraceTests\TestCase003Result.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj" />
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Parser\Agent.Plugins.Log.TestResultParser.Parser.csproj" />
   </ItemGroup>

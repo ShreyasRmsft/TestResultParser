@@ -27,8 +27,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         // Example : Ran 12 tests in 2.2s
         public static Regex TestCountAndTimeSummary { get; } = new Regex($"^Ran (?<{RegexCaptureGroups.TotalTests}>[0-9]+) tests? in (?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(\\.(?<{RegexCaptureGroups.TestRunTimeMs}>[0-9]+))?s", RegexOptions.ExplicitCapture);
 
+        /// <summary>
+        /// Indicates the beginning of a stack trace, or the end of the last stack trace (just before summary)
+        /// </summary>
         public static Regex StackTraceBorder { get; } = new Regex("^----------------------------------------------------------------------(-)*$");
 
+        /// <summary>
+        /// Indicates the end of a stack trace (also starting of the heading of the next one)
+        /// </summary>
         public static Regex StackTraceEnd { get; } = new Regex("^======================================================================(=)*$");
 
         // Example : Failed (failures=2)
