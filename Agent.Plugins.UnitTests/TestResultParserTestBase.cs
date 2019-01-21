@@ -135,7 +135,7 @@ namespace Agent.Plugins.UnitTests
                 if (!testCase.Name.EndsWith("Result.txt"))
                 {
                     // Uncomment the below line to run for a particular test case for debugging 
-                    // if (testCase.Name.Contains("TestCase004"))
+                    // if (testCase.Name.Contains("TestCase002"))
                     yield return new object[] { testCase.Name.Split(".txt")[0] };
                 }
             }
@@ -296,7 +296,19 @@ namespace Agent.Plugins.UnitTests
 
                 currentLine++;
 
-                Assert.AreEqual(expectedStackTrace, testRun.FailedTests[testIndex].StackTrace, "Stack trace contents do not match.");
+                try
+                {
+                    Assert.AreEqual(expectedStackTrace, testRun.FailedTests[testIndex].StackTrace, "Stack trace contents do not match.");
+                }
+                catch
+                {
+                    if (expectedStackTrace == null && testRun.FailedTests[testIndex].StackTrace == string.Empty)
+                    {
+                        return;
+                    }
+
+                    throw;
+                }
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Agent.Plugins.Log.TestResultParser.Parser;
-using Agent.Plugins.UnitTests.MochaTestResultParserTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
@@ -40,6 +39,14 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
         }
 
         [DataTestMethod]
+        [DynamicData(nameof(GetStackTraceTestCases), DynamicDataSourceType.Method)]
+        public void PythonParserStackTraceTests(string testCase)
+        {
+            testCase = Path.Combine("PythonTestResultParserTests", "Resources", "StackTraceTests", testCase);
+            TestWithStackTraceAssertions(testCase);
+        }
+
+        [DataTestMethod]
         [DynamicData(nameof(GetCommonNegativeTestsTestCases), DynamicDataSourceType.Method)]
         public void PythonTestResultParserCommonNegativeTests(string testCase)
         {
@@ -60,6 +67,11 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
         public static IEnumerable<object[]> GetDetailedTestCases()
         {
             return GetTestCasesFromRelativePath(Path.Combine("PythonTestResultParserTests", "Resources", "DetailedTests"));
+        }
+
+        public static IEnumerable<object[]> GetStackTraceTestCases()
+        {
+            return GetTestCasesFromRelativePath(Path.Combine("PythonTestResultParserTests", "Resources", "StackTraceTests"));
         }
 
         public static IEnumerable<object[]> GetCommonNegativeTestsTestCases()

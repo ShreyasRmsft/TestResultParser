@@ -27,10 +27,23 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         // Example : Ran 12 tests in 2.2s
         public static Regex TestCountAndTimeSummary { get; } = new Regex($"^Ran (?<{RegexCaptureGroups.TotalTests}>[0-9]+) tests? in (?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(\\.(?<{RegexCaptureGroups.TestRunTimeMs}>[0-9]+))?s", RegexOptions.ExplicitCapture);
 
+        /// <summary>
+        /// Indicates the beginning of a stack trace, or the end of the last stack trace (just before summary)
+        /// </summary>
+        public static Regex StackTraceBorder { get; } = new Regex("^----------------------------------------------------------------------(-)*$");
+
+        /// <summary>
+        /// Indicates the end of a stack trace (also starting of the heading of the next one)
+        /// </summary>
+        public static Regex StackTraceEnd { get; } = new Regex("^======================================================================(=)*$");
+
         // Example : Failed (failures=2)
         public static Regex TestOutcomeSummary { get; } = new Regex($"^(OK|FAILED) ?(\\((?<{RegexCaptureGroups.TestOutcome}>.*)\\))?$");
+
         public static Regex SummaryFailure { get; } = new Regex($"(^|, ?)failures ?= ?(?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*)", RegexOptions.ExplicitCapture);
+
         public static Regex SummaryErrors { get; } = new Regex($"(^|, ?)errors ?= ?(?<{RegexCaptureGroups.Errors}>[1-9][0-9]*)", RegexOptions.ExplicitCapture);
+
         public static Regex SummarySkipped { get; } = new Regex($"(^|, ?)skipped ?= ?(?<{RegexCaptureGroups.SkippedTests}>[1-9][0-9]*)", RegexOptions.ExplicitCapture);
     }
 }
