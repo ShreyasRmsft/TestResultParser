@@ -14,7 +14,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// Matches lines with the following regex:
         /// ^(  )+((ΓêÜ)|✓) (((.+) \\(([0-9]+)(ms|s|m|h)\\)$)|(.+)$)
         /// </summary>
-        public static Regex PassedTestCase { get; } = new Regex($"^(  )+((ΓêÜ)|✓) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
+        public static Regex PassedTestCase { get; } = new Regex($"^(  )+((ΓêÜ)|✓|√) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)", RegexOptions.ExplicitCapture);
 
         /// <summary>
         /// Matches lines with the following regex:

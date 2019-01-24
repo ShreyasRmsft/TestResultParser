@@ -1,0 +1,94 @@
+﻿2019-01-23T12:10:02.1624594Z   gulp.dest()
+2019-01-23T12:10:02.1712787Z     √ should return a stream
+2019-01-23T12:10:02.1904139Z     √ should return a output stream that writes files
+2019-01-23T12:10:02.1962651Z     √ should return a output stream that does not write non-read files
+2019-01-23T12:10:02.2062684Z     √ should return a output stream that writes streaming files
+2019-01-23T12:10:02.2115540Z     √ should return a output stream that writes streaming files into new directories
+2019-01-23T12:10:02.2154995Z     √ should return a output stream that writes streaming files into new directories (buffer: false)
+2019-01-23T12:10:02.2191475Z     √ should return a output stream that writes streaming files into new directories (read: false)
+2019-01-23T12:10:02.2230603Z     √ should return a output stream that writes streaming files into new directories (read: false, buffer: false)
+2019-01-23T12:10:02.2241427Z 
+2019-01-23T12:10:02.2243209Z   gulp.src()
+2019-01-23T12:10:02.2250606Z     √ should return a stream
+2019-01-23T12:10:02.2300961Z     √ should return a input stream from a flat glob
+2019-01-23T12:10:02.2324802Z     √ should return a input stream for multiple globs
+2019-01-23T12:10:02.2348645Z     √ should return a input stream for multiple globs, with negation
+2019-01-23T12:10:02.2360840Z     √ should return a input stream with no contents when read is false
+2019-01-23T12:10:02.2378854Z     √ should return a input stream with contents as stream when buffer is false
+2019-01-23T12:10:02.2431799Z     √ should return a input stream from a deep glob
+2019-01-23T12:10:02.2476479Z     √ should return a input stream from a deeper glob
+2019-01-23T12:10:02.2494775Z     √ should return a file stream from a flat path
+2019-01-23T12:10:02.2538133Z     1) should return a file stream from a flat path
+2019-01-23T12:10:02.2539067Z 
+2019-01-23T12:10:02.2540133Z   gulp.watch()
+2019-01-23T12:10:02.5898783Z     √ should call the function when file changes: no options (335ms)
+2019-01-23T12:10:02.9207140Z     √ should execute the gulp.parallel tasks (329ms)
+2019-01-23T12:10:03.2512631Z     √ should work with destructuring (329ms)
+2019-01-23T12:10:03.2640971Z     √ should not call the function when no file changes: no options
+2019-01-23T12:10:03.5934528Z     √ should call the function when file changes: w/ options (328ms)
+2019-01-23T12:10:03.7227734Z     √ should not drop options when no callback specified (127ms)
+2019-01-23T12:10:03.7249261Z     √ should work without options or callback
+2019-01-23T12:10:04.0550666Z     √ should run many tasks: w/ options (328ms)
+2019-01-23T12:10:04.3858381Z     √ should run many tasks: no options (329ms)
+2019-01-23T12:10:04.3882443Z     √ should throw an error: passed parameter (string) is not a function
+2019-01-23T12:10:04.3917679Z     √ should throw an error: passed parameter (array) is not a function
+2019-01-23T12:10:04.3928055Z 
+2019-01-23T12:10:04.3930617Z 
+2019-01-23T12:10:04.3934601Z   28 passing (2s)
+2019-01-23T12:10:04.3935436Z   1 failing
+2019-01-23T12:10:04.3936385Z 
+2019-01-23T12:10:04.3960670Z   1) gulp.src() should return a file stream from a flat path:
+2019-01-23T12:10:04.3961678Z 
+2019-01-23T12:10:04.3963067Z       Uncaught Error: Expected 'E:\\Repo\\azure-pipelines-agent\\_layout\\_work\\1\\s\\test\\fixtures\\test.coffee' to equal 'E:\\Repo\\azure-pipelines-agent\\_layout\\_work\\1\\s\\test\\fixtures\\test2.coffee'
+2019-01-23T12:10:04.3964514Z       + expected - actual
+2019-01-23T12:10:04.3966069Z 
+2019-01-23T12:10:04.3967766Z       -E:\Repo\azure-pipelines-agent\_layout\_work\1\s\test\fixtures\test.coffee
+2019-01-23T12:10:04.3968865Z       +E:\Repo\azure-pipelines-agent\_layout\_work\1\s\test\fixtures\test2.coffee
+2019-01-23T12:10:04.3972448Z       
+2019-01-23T12:10:04.3974414Z       at assert (node_modules\expect\lib\assert.js:29:9)
+2019-01-23T12:10:04.3975362Z       at Expectation.toEqual (node_modules\expect\lib\Expectation.js:81:30)
+2019-01-23T12:10:04.3976274Z       at DestroyableTransform.<anonymous> (test\src.js:160:25)
+2019-01-23T12:10:04.3977163Z       at DestroyableTransform.EventEmitter.emit (domain.js:441:20)
+2019-01-23T12:10:04.3978061Z       at addChunk (node_modules\readable-stream\lib\_stream_readable.js:291:12)
+2019-01-23T12:10:04.3979020Z       at readableAddChunk (node_modules\readable-stream\lib\_stream_readable.js:278:11)
+2019-01-23T12:10:04.3979893Z       at DestroyableTransform.Readable.push (node_modules\readable-stream\lib\_stream_readable.js:245:10)
+2019-01-23T12:10:04.3980764Z       at DestroyableTransform.Transform.push (node_modules\readable-stream\lib\_stream_transform.js:148:32)
+2019-01-23T12:10:04.3981783Z       at Pumpify.onReadable (node_modules\to-through\index.js:25:14)
+2019-01-23T12:10:04.3982642Z       at Pumpify.EventEmitter.emit (domain.js:441:20)
+2019-01-23T12:10:04.3983836Z       at emitReadable_ (node_modules\readable-stream\lib\_stream_readable.js:504:10)
+2019-01-23T12:10:04.3984841Z       at emitReadable (node_modules\readable-stream\lib\_stream_readable.js:498:62)
+2019-01-23T12:10:04.3985956Z       at addChunk (node_modules\readable-stream\lib\_stream_readable.js:298:29)
+2019-01-23T12:10:04.3987098Z       at readableAddChunk (node_modules\readable-stream\lib\_stream_readable.js:278:11)
+2019-01-23T12:10:04.3988077Z       at Pumpify.Readable.push (node_modules\readable-stream\lib\_stream_readable.js:245:10)
+2019-01-23T12:10:04.3989117Z       at Pumpify.Duplexify._forward (node_modules\duplexify\index.js:170:26)
+2019-01-23T12:10:04.3989902Z       at DestroyableTransform.onreadable (node_modules\duplexify\index.js:134:10)
+2019-01-23T12:10:04.3991203Z       at DestroyableTransform.EventEmitter.emit (domain.js:441:20)
+2019-01-23T12:10:04.3992196Z       at emitReadable_ (node_modules\readable-stream\lib\_stream_readable.js:504:10)
+2019-01-23T12:10:04.3993214Z       at emitReadable (node_modules\readable-stream\lib\_stream_readable.js:498:62)
+2019-01-23T12:10:04.3994299Z       at addChunk (node_modules\readable-stream\lib\_stream_readable.js:298:29)
+2019-01-23T12:10:04.3995515Z       at readableAddChunk (node_modules\readable-stream\lib\_stream_readable.js:278:11)
+2019-01-23T12:10:04.3996385Z       at DestroyableTransform.Readable.push (node_modules\readable-stream\lib\_stream_readable.js:245:10)
+2019-01-23T12:10:04.3997595Z       at DestroyableTransform.Transform.push (node_modules\readable-stream\lib\_stream_transform.js:148:32)
+2019-01-23T12:10:04.3998530Z       at DestroyableTransform.afterTransform (node_modules\readable-stream\lib\_stream_transform.js:91:10)
+2019-01-23T12:10:04.4000389Z       at DestroyableTransform.addSourcemap [as _transform] (node_modules\vinyl-fs\lib\src\sourcemap.js:12:14)
+2019-01-23T12:10:04.4001863Z       at DestroyableTransform.Transform._read (node_modules\readable-stream\lib\_stream_transform.js:184:10)
+2019-01-23T12:10:04.4002940Z       at DestroyableTransform.Transform._write (node_modules\readable-stream\lib\_stream_transform.js:172:83)
+2019-01-23T12:10:04.4004017Z       at doWrite (node_modules\readable-stream\lib\_stream_writable.js:428:64)
+2019-01-23T12:10:04.4005180Z       at writeOrBuffer (node_modules\readable-stream\lib\_stream_writable.js:417:5)
+2019-01-23T12:10:04.4006345Z       at DestroyableTransform.Writable.write (node_modules\readable-stream\lib\_stream_writable.js:334:11)
+2019-01-23T12:10:04.4007395Z       at DestroyableTransform.ondata (node_modules\readable-stream\lib\_stream_readable.js:619:20)
+2019-01-23T12:10:04.4008470Z       at DestroyableTransform.EventEmitter.emit (domain.js:441:20)
+2019-01-23T12:10:04.4009740Z       at addChunk (node_modules\readable-stream\lib\_stream_readable.js:291:12)
+2019-01-23T12:10:04.4010601Z       at readableAddChunk (node_modules\readable-stream\lib\_stream_readable.js:278:11)
+2019-01-23T12:10:04.4011873Z       at DestroyableTransform.Readable.push (node_modules\readable-stream\lib\_stream_readable.js:245:10)
+2019-01-23T12:10:04.4012807Z       at DestroyableTransform.Transform.push (node_modules\readable-stream\lib\_stream_transform.js:148:32)
+2019-01-23T12:10:04.4013676Z       at DestroyableTransform.afterTransform (node_modules\readable-stream\lib\_stream_transform.js:91:10)
+2019-01-23T12:10:04.4014557Z       at onRead (node_modules\vinyl-fs\lib\src\read-contents\index.js:45:14)
+2019-01-23T12:10:04.4015466Z       at onReadFile (node_modules\vinyl-fs\lib\src\read-contents\read-buffer.js:21:5)
+2019-01-23T12:10:04.4016340Z       at node_modules\graceful-fs\graceful-fs.js:90:16
+2019-01-23T12:10:04.4017287Z       at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:53:3)
+2019-01-23T12:10:04.4018137Z 
+2019-01-23T12:10:04.4019300Z 
+2019-01-23T12:10:04.4020560Z 
+2019-01-23T12:10:04.5654188Z ##[error]npm ERR! Test failed.  See above for more details.
+2019-01-23T12:10:04.5748551Z ##[error]Cmd.exe exited with code '1'.

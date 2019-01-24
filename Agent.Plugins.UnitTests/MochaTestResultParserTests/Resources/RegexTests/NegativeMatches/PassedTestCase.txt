@@ -9,3 +9,4 @@
 Test Method 1
   Test Method 1
   ✓ 
+  √ 
