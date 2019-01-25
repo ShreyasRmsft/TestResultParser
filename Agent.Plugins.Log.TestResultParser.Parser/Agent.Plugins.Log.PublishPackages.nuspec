@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>azuredevops-testresultparser</id>
+    <version>0.0.1</version>
+    <title>AzureDevops Test Result Parser</title>
+    <authors>Nigurr</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>https://github.com/nigurr/TestResultParser/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/nigurr/TestResultParser</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Test result parser for Azure DevOps</description>
+    <copyright>Copyright 2019</copyright>
+  </metadata>
+  <files>
+      <file src="bin\Release\**\*.dll" target="content" /> 
+  </files>
+</package>
