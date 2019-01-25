@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>azuredevops-testresultparser</id>
-    <version>0.0.1</version>
+    <version>$version$</version>
     <title>AzureDevops Test Result Parser</title>
     <authors>Nigurr</authors>
     <owners>Microsoft</owners>
@@ -13,6 +13,6 @@
     <copyright>Copyright 2019</copyright>
   </metadata>
   <files>
-      <file src="bin\Release\**\*.dll" target="content" /> 
+      <file src="**\*.dll" target="content" />
   </files>
 </package>
