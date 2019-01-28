@@ -16,7 +16,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         protected string parserName;
         protected string stateName;
         protected ITraceLogger logger;
-        protected ITelemetryDataCollector telemetryDataCollector;
+        protected ITelemetryDataCollector telemetry;
         protected ParserResetAndAttemptPublish attemptPublishAndResetParser;
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             this.logger = logger;
             this.parserName = parserName;
             this.stateName = this.GetType().Name;
-            this.telemetryDataCollector = telemetryDataCollector;
+            this.telemetry = telemetryDataCollector;
             this.attemptPublishAndResetParser = parserResetAndAttempPublish;
         }
 
@@ -55,6 +55,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (stateContext.LinesWithinWhichMatchIsExpected == 1)
             {
                 this.logger.Info($"{this.parserName} : {this.stateName} : NoPatternMatched : Was expecting {stateContext.NextExpectedMatch} before line {stateContext.CurrentLineNumber}, but no matches occurred.");
+                this.telemetry.AddToCumulativeTelemetry(this.parserName, "UnexpectedParserResetCount", 1, true);
                 this.attemptPublishAndResetParser();
                 return true;
             }

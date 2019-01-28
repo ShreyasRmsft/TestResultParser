@@ -5,6 +5,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     // TODO: mark the telemetry events that are considered as failure points/events
 
+    // TODO: move common telemetry constants across parsers to a base class
+
     public class JestTelemetryConstants
     {
         public const string EventArea = "JestTestResultParser";
@@ -30,5 +32,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public const string FailedTestCasesFoundButNoFailedSummary = "FailedTestCasesFoundButNoFailedSummary";
 
         public const string SkippedTestCasesFoundButNoSkippedSummary = "SkippedTestCasesFoundButNoSkippedSummary";
+
+        public const string JestParserTotalTime = "JestParserTotalTime";
+
+        public const string TotalLinesParsed = "TotalLinesParsed";
     }
 }
