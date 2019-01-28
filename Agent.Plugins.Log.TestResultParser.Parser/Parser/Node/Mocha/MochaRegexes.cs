@@ -11,7 +11,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     // TODO: Verify if tabs (/t) will come from the agent logs
     public class MochaRegexes
     {
-        private static readonly TimeSpan MochaRegexDefaultTimeout = TimeSpan.FromMilliseconds(100);
+        /// <summary>
+        /// Default timeout for all the regexes
+        /// </summary>
+        private static readonly TimeSpan RegexDefaultTimeout = TimeSpan.FromMilliseconds(100);
 
         /// <summary>
         /// Matches lines with the following regex:
@@ -19,7 +22,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public static Regex PassedTestCase { get; }
             = new Regex($"^(  )+((ΓêÜ)|✓|√) (((?<{RegexCaptureGroups.TestCaseName}>.+) \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$)|(?<{RegexCaptureGroups.TestCaseName}>.+)$)",
-                RegexOptions.ExplicitCapture, MochaRegexDefaultTimeout);
+                RegexOptions.ExplicitCapture, RegexDefaultTimeout);
 
         /// <summary>
         /// Matches lines with the following regex:
@@ -27,7 +30,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public static Regex FailedTestCase { get; }
             = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTestCaseNumber}>[1-9][0-9]*)\\) (?<{RegexCaptureGroups.TestCaseName}>.+$)",
-                RegexOptions.ExplicitCapture, MochaRegexDefaultTimeout);
+                RegexOptions.ExplicitCapture, RegexDefaultTimeout);
 
         /// <summary>
         /// Matches lines with the following regex:
@@ -35,7 +38,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public static Regex PendingTestCase { get; }
             = new Regex($"^(  )+- (?<{RegexCaptureGroups.TestCaseName}>.+$)",
-                RegexOptions.ExplicitCapture, MochaRegexDefaultTimeout);
+                RegexOptions.ExplicitCapture, RegexDefaultTimeout);
 
         /// <summary>
         /// Matches lines with the following regex:
@@ -43,7 +46,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public static Regex PassedTestsSummary { get; }
             = new Regex($"^(  )+(?<{RegexCaptureGroups.PassedTests}>0|[1-9][0-9]*) passing \\((?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(?<{RegexCaptureGroups.TestRunTimeUnit}>ms|s|m|h)\\)$",
-                RegexOptions.ExplicitCapture, MochaRegexDefaultTimeout);
+                RegexOptions.ExplicitCapture, RegexDefaultTimeout);
 
         /// <summary>
         /// Matches lines with the following regex:
@@ -51,7 +54,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public static Regex FailedTestsSummary { get; } 
             = new Regex($"^(  )+(?<{RegexCaptureGroups.FailedTests}>[1-9][0-9]*) failing$",
-                RegexOptions.ExplicitCapture, MochaRegexDefaultTimeout);
+                RegexOptions.ExplicitCapture, RegexDefaultTimeout);
 
         /// <summary>
         /// Matches lines with the following regex:
@@ -59,6 +62,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public static Regex PendingTestsSummary { get; } 
             = new Regex($"^(  )+(?<{RegexCaptureGroups.PendingTests}>[1-9][0-9]*) pending$",
-                RegexOptions.ExplicitCapture, MochaRegexDefaultTimeout);
+                RegexOptions.ExplicitCapture, RegexDefaultTimeout);
     }
 }
