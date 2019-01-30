@@ -76,11 +76,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (_disposed)
                 return;
+
             if (disposing)
             {
                 StopAndLog();
-                GC.SuppressFinalize(this);
             }
+
             _disposed = true;
         }
 
