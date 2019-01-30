@@ -14,7 +14,7 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         [TestInitialize]
         public void TestInit()
         {
-            this.parser = new JasmineTestResultParser(this.testRunManagerMock.Object, this.diagnosticDataCollector.Object, this.telemetryDataCollector.Object);
+            this._parser = new JasmineTestResultParser(this._testRunManagerMock.Object, this._diagnosticDataCollector.Object, this._telemetryDataCollector.Object);
         }
 
         #region DataDrivenTests

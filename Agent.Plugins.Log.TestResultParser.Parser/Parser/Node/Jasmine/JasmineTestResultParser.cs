@@ -48,7 +48,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             // TODO: Fix an appropriate threshold based on performance on hosted machine with load
             using (var timer = new SimpleTimer("JasmineParserParseOperation", JasmineTelemetryConstants.EventArea,
-                JasmineTelemetryConstants.JasmineParserTotalTime, this._logger, this._telemetry, TimeSpan.FromMilliseconds(1)))
+                JasmineTelemetryConstants.JasmineParserTotalTime, logData.LineNumber, this._logger, this._telemetry, ParseOperationPermissibleThreshold))
             {
                 try
                 {

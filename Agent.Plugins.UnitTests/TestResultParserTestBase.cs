@@ -1,38 +1,61 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Agent.Plugins.Log.TestResultParser.Contracts;
-
 namespace Agent.Plugins.UnitTests
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Text.RegularExpressions;
+    using Agent.Plugins.Log.TestResultParser.Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
 
     public abstract class TestResultParserTestBase
     {
-        protected Mock<ITraceLogger> diagnosticDataCollector;
-        protected Mock<ITelemetryDataCollector> telemetryDataCollector;
-        protected Mock<ITestRunManager> testRunManagerMock;
-        protected ITestResultParser parser;
+        public TestContext TestContext { get; set; }
+
+        protected Mock<ITraceLogger> _diagnosticDataCollector;
+        protected Mock<ITelemetryDataCollector> _telemetryDataCollector;
+        protected Mock<ITestRunManager> _testRunManagerMock;
+        protected ITestResultParser _parser;
+        protected bool _isPythonParser = false;
+
+        private bool _perfRegressed = false;
+        private int _timesPerfTelemtryFired = 0;
+        private double _totalTime = 0;
+        private double perLineParseThresholdTimeInMilliseconds = 1;
 
         public TestResultParserTestBase()
         {
-            this.testRunManagerMock = new Mock<ITestRunManager>();
+            this._testRunManagerMock = new Mock<ITestRunManager>();
 
             // Mock logger to log to console for easy debugging
-            this.diagnosticDataCollector = new Mock<ITraceLogger>();
+            this._diagnosticDataCollector = new Mock<ITraceLogger>();
 
-            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Info: {data}"); });
-            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Verbose: {data}"); });
-            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Warning: {data}"); });
-            this.diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { Console.WriteLine($"Error: {data}"); });
+            this._diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
+            this._diagnosticDataCollector.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
+            this._diagnosticDataCollector.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
+
+            this._diagnosticDataCollector.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data =>
+            {
+                TestContext.WriteLine($"Warning: {data}");
+                if (data.StartsWith("PERF :"))
+                {
+                    this._perfRegressed = true;
+                }
+            });
 
             // No-op for telemetry
-            this.telemetryDataCollector = new Mock<ITelemetryDataCollector>();
+            this._telemetryDataCollector = new Mock<ITelemetryDataCollector>();
+
+            this._telemetryDataCollector.Setup(x => x.AddToCumulativeTelemetry(It.IsAny<string>(), It.IsRegex(".*ParserTotalTime"), It.IsAny<object>(), It.IsAny<bool>()))
+                .Callback<string, string, object, bool>((string eventArea, string eventName, object value, bool aggregate) =>
+                    {
+                        ++this._timesPerfTelemtryFired;
+                        this._totalTime += (double)value;
+                    });
         }
 
         public void TestSuccessScenariosWithBasicAssertions(string testCase, bool assertFailedCount = true, bool assertPassedCount = true, bool assertSkippedCount = true)
@@ -41,24 +64,22 @@ namespace Agent.Plugins.UnitTests
             int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId, assertFailedCount, assertPassedCount, assertSkippedCount);
                 lastTestRunId = testRun.TestRunId;
             });
 
-            foreach (var line in GetLines(testCase))
+            var inputLines = GetLines(testCase).ToList();
+            foreach (var line in inputLines)
             {
-                // Uncomment the below to break at a particular line
-                //if (line.Line == "Summary of all failing tests")
-                //{
-                //}
-
-                this.parser.Parse(line);
+                this._parser.Parse(line);
             }
 
-            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(Math.Max(1, resultFileContents.Length / 5)), $"Expected {Math.Max(1, resultFileContents.Length / 5)} test runs.");
-        }
+            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(Math.Max(1, resultFileContents.Length / 5)), $"Expected {Math.Max(1, resultFileContents.Length / 5)} test runs.");
+
+            ValidatePerf(inputLines.Count, _isPythonParser)
+;        }
 
         public void TestPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
@@ -66,64 +87,76 @@ namespace Agent.Plugins.UnitTests
             int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId);
                 lastTestRunId = testRun.TestRunId;
             });
 
-            foreach (var line in GetLines(testCase))
+            var inputLines = GetLines(testCase).ToList();
+            foreach (var line in inputLines)
             {
-                this.parser.Parse(line);
+                this._parser.Parse(line);
             }
 
             // TODO: fix assertions
-            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
+            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
             Assert.AreEqual(resultFileContents.Length / 8, indexOfTestRun, $"Expected {resultFileContents.Length / 7} test runs.");
+
+            ValidatePerf(inputLines.Count, _isPythonParser);
         }
 
         public void TestWithDetailedAssertions(string testCase)
         {
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRunWithDetails(testRun, resultFileContents);
             });
 
-            foreach (var line in GetLines(testCase))
+            var inputLines = GetLines(testCase).ToList();
+            foreach (var line in inputLines)
             {
-                this.parser.Parse(line);
+                this._parser.Parse(line);
             }
 
-            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+
+            ValidatePerf(inputLines.Count, _isPythonParser);
         }
 
         public void TestWithStackTraceAssertions(string testCase)
         {
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this.testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRunWithStackTraces(testRun, resultFileContents);
             });
 
-            foreach (var line in GetLines(testCase))
+            var inputLines = GetLines(testCase).ToList();
+            foreach (var line in inputLines)
             {
-                this.parser.Parse(line);
+                this._parser.Parse(line);
             }
 
-            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+
+            ValidatePerf(inputLines.Count, _isPythonParser);
         }
 
         public void TestNegativeTestsScenarios(string testCase)
         {
-            foreach (var line in GetLines(testCase))
+            var inputLines = GetLines(testCase).ToList();
+            foreach (var line in inputLines)
             {
-                this.parser.Parse(line);
+                this._parser.Parse(line);
             }
 
-            this.testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been Published.");
+            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been Published.");
+
+            ValidatePerf(inputLines.Count, _isPythonParser);
         }
 
         #region Data Drivers
@@ -147,8 +180,18 @@ namespace Agent.Plugins.UnitTests
 
         public IEnumerable<LogData> GetLines(string testCase)
         {
-            var testResultsConsoleOut = File.ReadAllLines($"{testCase}.txt");
-            int lineNumber = 1;
+            // Pre-pad the test case with initiazization logs to simulate the targeted scenario
+            // meant mainly to get more accurate perf readings
+            var linesToBePrependedToTheLogs = File.ReadAllLines(@"CommonTestResources\LogPadding\PrePadding.txt");
+
+            // Do not assign actual line numbers to these bogus lines as debugging 
+            // the actual test case file will become difficult
+
+            // The prepended logs will have a negative line number 
+            // and the actual line numebers will start at 1
+            int lineNumber = 1 - linesToBePrependedToTheLogs.Length;
+
+            var testResultsConsoleOut = linesToBePrependedToTheLogs.Concat(File.ReadAllLines($"{testCase}.txt"));
             foreach (var line in testResultsConsoleOut)
             {
                 yield return new LogData() { Line = RemoveTimeStampFromLogLineIfPresent(line), LineNumber = lineNumber++ };
@@ -310,6 +353,30 @@ namespace Agent.Plugins.UnitTests
                     throw;
                 }
             }
+        }
+
+        #endregion
+
+        #region PerfValidationHelpers
+
+        private void ValidatePerf(int inputLinesCount, bool isPythonParser = false)
+        {
+            // Perf related asserts
+            Assert.IsFalse(this._perfRegressed, "Regression in perf, please check logs for more details.");
+
+            if (isPythonParser)
+            {
+                // The python parser is peculiar in the aspect that it recalls Parse after a reset for certain lines
+                Assert.IsTrue(inputLinesCount <= this._timesPerfTelemtryFired, $"Perf telemetry not fired for every line, " +
+                    $" expected atleast {inputLinesCount} events but got {this._timesPerfTelemtryFired}");
+            }
+            else
+            {
+                Assert.AreEqual(inputLinesCount, this._timesPerfTelemtryFired, "Perf telemetry not fired for every line");
+            }
+
+            Assert.IsTrue(this._totalTime / inputLinesCount < this.perLineParseThresholdTimeInMilliseconds, $"The average allowed parse time per line is {this.perLineParseThresholdTimeInMilliseconds} but in this" +
+                $" case it was {this._totalTime / inputLinesCount}");
         }
 
         #endregion

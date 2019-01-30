@@ -51,7 +51,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             // TODO: Fix an appropriate threshold based on performance on hosted machine with load
             using (var timer = new SimpleTimer("PythonParserParseOperation", PythonTelemetryConstants.EventArea,
-                PythonTelemetryConstants.PythonParserTotalTime, _logger, _telemetry, TimeSpan.FromMilliseconds(1)))
+                PythonTelemetryConstants.PythonParserTotalTime, logData.LineNumber, _logger, _telemetry, ParseOperationPermissibleThreshold))
             {
                 try
                 {

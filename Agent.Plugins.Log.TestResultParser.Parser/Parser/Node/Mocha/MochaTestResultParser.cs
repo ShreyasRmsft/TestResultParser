@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Agent.Plugins.Log.TestResultParser.Contracts;
 
 namespace Agent.Plugins.Log.TestResultParser.Parser
@@ -59,7 +60,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             // TODO: Fix an appropriate threshold based on performance on hosted machine with load
             using (var timer = new SimpleTimer("MochaParserParseOperation", MochaTelemetryConstants.EventArea,
-                MochaTelemetryConstants.MochaParserTotalTime, this._logger, this._telemetry, TimeSpan.FromMilliseconds(1)))
+                MochaTelemetryConstants.MochaParserTotalTime, logData.LineNumber, this._logger, this._telemetry, ParseOperationPermissibleThreshold))
             {
                 try
                 {

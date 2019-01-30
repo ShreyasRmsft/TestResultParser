@@ -21,12 +21,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// Creates a timer with threshold. A perf message is logged only if
         /// the time elapsed is more than the threshold.
         /// </summary>
-        public SimpleTimer(string timerName, string telemetryArea, string telemetryEventName, ITraceLogger logger, 
+        public SimpleTimer(string timerName, string telemetryArea, string telemetryEventName, int lineNumber, ITraceLogger logger, 
             ITelemetryDataCollector telemetryDataCollector, TimeSpan threshold, bool publishTelemetry = true)
         {
             _name = timerName;
             _telemetryEventName = telemetryEventName;
             _telemetryArea = telemetryArea;
+            _lineNumber = lineNumber;
             _logger = logger;
             _telemetry = telemetryDataCollector;
             _threshold = threshold;
@@ -51,20 +52,23 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             _timer.Stop();
 
+            if (_publishTelemetry)
+            {
+                _telemetry.AddToCumulativeTelemetry(_telemetryArea, _telemetryEventName, _timer.Elapsed.TotalMilliseconds, true);
+            }
+
             if (_threshold.TotalMilliseconds == 0)
             {
-                _logger.Info($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms.");
+                _logger.Info($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms for line {_lineNumber}.");
                 return;
             }
 
             if (_timer.Elapsed > _threshold)
             {
-                _logger.Warning($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms.");
-                if (_publishTelemetry)
-                {
-                    // Is the precision enough?
-                    _telemetry.AddToCumulativeTelemetry(_telemetryArea, _telemetryEventName, _timer.Elapsed, true);
-                }
+                // Once we get a better understanding on these spikes, the alert can be based on threshold spikes allowed
+                _telemetry.AddToCumulativeTelemetry(_telemetryArea, "Spikes", 1, true);
+
+                _logger.Warning($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms for line {_lineNumber}.");
             }
         }
 
@@ -89,6 +93,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private readonly string _name;
         private readonly string _telemetryEventName;
         private readonly string _telemetryArea;
+        private readonly int _lineNumber;
         private readonly TimeSpan _threshold;
         private readonly bool _publishTelemetry;
 

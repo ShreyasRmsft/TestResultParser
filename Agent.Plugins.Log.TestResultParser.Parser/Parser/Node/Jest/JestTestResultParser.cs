@@ -61,7 +61,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             // TODO: Fix an appropriate threshold based on performance on hosted machine with load
             using (var timer = new SimpleTimer("JestParserParseOperation", JestTelemetryConstants.EventArea,
-                JestTelemetryConstants.JestParserTotalTime, this._logger, this._telemetry, TimeSpan.FromMilliseconds(1)))
+                JestTelemetryConstants.JestParserTotalTime, logData.LineNumber, this._logger, this._telemetry, ParseOperationPermissibleThreshold))
             {
                 try
                 {
