@@ -11,7 +11,8 @@ namespace Agent.Plugins.UnitTests.PythonTestResultParserTests
         [TestInitialize]
         public void TestInit()
         {
-            this.parser = new PythonTestResultParser(testRunManagerMock.Object, diagnosticDataCollector.Object, telemetryDataCollector.Object);
+            this._parser = new PythonTestResultParser(_testRunManagerMock.Object, _diagnosticDataCollector.Object, _telemetryDataCollector.Object);
+            this._isPythonParser = true;
         }
 
         [DataTestMethod]

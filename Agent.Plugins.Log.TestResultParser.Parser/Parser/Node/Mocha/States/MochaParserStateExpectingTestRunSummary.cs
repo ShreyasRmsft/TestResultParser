@@ -65,7 +65,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 this.logger.Error($"{this.parserName} : {this.stateName} : Expecting failed test case with" +
                     $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
                 return MochaParserStates.ExpectingTestResults;
@@ -104,7 +104,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Passed tests summary is not expected soon after encountering passed tests summary, atleast one test case should have been there.
             this.logger.Error($"{this.parserName} : {this.stateName} : Was expecting atleast one test case before encountering" +
                 $" summary again at line {mochaStateContext.CurrentLineNumber}");
-            this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
+            this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
                 new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
             // Reset the parser and start over
@@ -123,7 +123,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 this.logger.Error($"{this.parserName} : {this.stateName} : Passed tests count does not match passed summary" +
                     $" at line {mochaStateContext.CurrentLineNumber}");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 

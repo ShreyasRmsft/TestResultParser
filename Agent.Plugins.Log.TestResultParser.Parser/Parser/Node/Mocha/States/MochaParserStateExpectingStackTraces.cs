@@ -37,7 +37,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (mochaStateContext.StackTracesToExpectPostSummary != 0)
             {
                 this.logger.Error($"{this.parserName} : {this.stateName} : Expecting stack traces but found passed test case instead at line {mochaStateContext.CurrentLineNumber}.");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.ExpectingStackTracesButFoundPassedTest,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.ExpectingStackTracesButFoundPassedTest,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 
@@ -64,7 +64,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 this.logger.Error($"{this.parserName} : {this.stateName} : Expecting stack trace with" +
                     $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedStackTraceNumber,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedStackTraceNumber,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
                 // If it was not 1 there's a good chance we read some random line as a failed test case hence consider it a
@@ -77,7 +77,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     return MochaParserStates.ExpectingStackTraces;
                 }
 
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.AttemptPublishAndResetParser,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.AttemptPublishAndResetParser,
                     new List<string> { $"Expecting stack trace with number {mochaStateContext.LastFailedTestCaseNumber} but found {testCaseNumber} instead" });
 
                 // If the number was 1 then there's a good chance this is the beginning of the next test run, hence reset and start over
@@ -130,7 +130,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (mochaStateContext.StackTracesToExpectPostSummary != 0)
             {
                 this.logger.Error($"{this.parserName} : {this.stateName} : Expecting stack traces but found pending test case instead.");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.ExpectingStackTracesButFoundPendingTest,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.ExpectingStackTracesButFoundPendingTest,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 
@@ -154,7 +154,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (mochaStateContext.StackTracesToExpectPostSummary != 0)
             {
                 this.logger.Error($"{this.parserName} : {this.stateName} : Expecting stack traces but found passed summary instead.");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 
@@ -173,7 +173,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 this.logger.Error($"MochaTestResultParser : Passed tests count does not match passed summary" +
                     $" at line {mochaStateContext.CurrentLineNumber}");
-                this.telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                this.telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 

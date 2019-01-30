@@ -35,6 +35,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         public const string PendingSummaryMismatch = "PendingSummaryMismatch";
 
-        public const string Event = "";
+        public const string MochaParserTotalTime = "MochaParserTotalTime";
+
+        public const string TotalLinesParsed = "TotalLinesParsed";
     }
 }

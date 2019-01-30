@@ -33,6 +33,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         public const string NoSummaryEncounteredBeforePublish = "NoSummaryEncounteredBeforePublish";
 
+        public const string JasmineParserTotalTime = "JasmineParserTotalTime;";
+
         public const string Exceptions = "Exceptions";
+
+        public const string TotalLinesParsed = "TotalLinesParsed";
     }
 }

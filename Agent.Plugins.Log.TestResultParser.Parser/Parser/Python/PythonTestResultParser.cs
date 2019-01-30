@@ -5,6 +5,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     using System;
     using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using Agent.Plugins.Log.TestResultParser.Contracts;
 
     /// <summary>
@@ -29,8 +30,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         public PythonTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetry) : base(testRunManager, logger, telemetry)
         {
-            base.logger.Info("PythonTestResultParser : Starting python test result parser.");
-            base.telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.Initialize, true);
+            base._logger.Info("PythonTestResultParser : Starting python test result parser.");
+            base._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.Initialize, true);
 
             this.state = ParserState.ExpectingTestResults;
             this.currentTestRun = new TestRun($"{Name}/{Version}", this.currentTestRunId);
@@ -43,100 +44,115 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public override void Parse(LogData logData)
         {
             // Validate data input
-            if (!IsValidInput(logData.Line)) return;
-
-            try
+            if (!IsValidInput(logData.Line))
             {
-                switch (this.state)
+                return;
+            }
+
+            // TODO: Fix an appropriate threshold based on performance on hosted machine with load
+            using (var timer = new SimpleTimer("PythonParserParseOperation", PythonTelemetryConstants.EventArea,
+                PythonTelemetryConstants.PythonParserTotalTime, logData.LineNumber, _logger, _telemetry, ParseOperationPermissibleThreshold))
+            {
+                try
                 {
-                    case ParserState.ExpectingSummary:
+                    _telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TotalLinesParsed, logData.LineNumber);
 
-                        if (string.IsNullOrWhiteSpace(logData.Line))
-                        {
-                            return;
-                        }
+                    switch (this.state)
+                    {
+                        case ParserState.ExpectingSummary:
 
-                        // Summary Test count and total time should have already been parsed
-                        // Try to parse test outcome, number of tests for each outcome
-                        if (TryParseSummaryOutcome(logData))
-                        {
-                            PublishAndReset(logData);
-                            return;
-                        }
+                            if (string.IsNullOrWhiteSpace(logData.Line))
+                            {
+                                return;
+                            }
 
-                        // Summary was not parsed, reset the parser and try parse again.
-                        Reset(logData);
-                        Parse(logData);
-                        break;
+                            // Summary Test count and total time should have already been parsed
+                            // Try to parse test outcome, number of tests for each outcome
+                            if (TryParseSummaryOutcome(logData))
+                            {
+                                PublishAndReset(logData);
+                                return;
+                            }
 
-                    case ParserState.ExpectingFailedResults:
-
-                        // Try to parse for failed results and summary
-                        // If summary is parsed, change the state
-                        if (TryParseForFailedResult(logData))
-                        {
-                            stackTraceLinesAllowedToParse = 50;
-                            return;
-                        }
-
-                        if (TryParseSummaryTestAndTime(logData))
-                        {
-                            this.state = ParserState.ExpectingSummary;
-                            this.logger.Info($"PythonTestResultParser : ExpectingFailedResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
-                            return;
-                        }
-
-                        // Not expected, as Summary has not been encountered yet
-                        // If a new TestResult is found, reset the parser and Parse again
-                        if (TryParseTestResult(logData))
-                        {
-                            this.logger.Error($"PythonTestResultParser : Parse : Expecting failed result or summary but found new test result at line {logData.LineNumber}.");
-                            this.telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.SummaryOrFailedTestsNotFound, new List<int> { this.currentTestRunId }, true);
+                            // Summary was not parsed, reset the parser and try parse again.
                             Reset(logData);
                             Parse(logData);
-                        }
+                            break;
 
-                        TryParseStackTrace(logData);
-                        
-                        break;
+                        case ParserState.ExpectingFailedResults:
 
-                    case ParserState.ExpectingTestResults:
+                            // Try to parse for failed results and summary
+                            // If summary is parsed, change the state
+                            if (TryParseForFailedResult(logData))
+                            {
+                                stackTraceLinesAllowedToParse = 50;
+                                return;
+                            }
 
-                    default:
+                            if (TryParseSummaryTestAndTime(logData))
+                            {
+                                this.state = ParserState.ExpectingSummary;
+                                this._logger.Info($"PythonTestResultParser : ExpectingFailedResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
+                                return;
+                            }
 
-                        if (TryParseTestResult(logData)) return;
+                            // Not expected, as Summary has not been encountered yet
+                            // If a new TestResult is found, reset the parser and Parse again
+                            if (TryParseTestResult(logData))
+                            {
+                                this._logger.Error($"PythonTestResultParser : Parse : Expecting failed result or summary but found new test result at line {logData.LineNumber}.");
+                                this._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.SummaryOrFailedTestsNotFound, new List<int> { this.currentTestRunId }, true);
+                                Reset(logData);
+                                Parse(logData);
+                            }
 
-                        // Change the state and clear the partial result if failed result or summary is found
-                        if (TryParseForFailedResult(logData))
-                        {
-                            this.partialTestResult = null;
-                            this.state = ParserState.ExpectingFailedResults;
-                            stackTraceLinesAllowedToParse = 50;
-                            this.logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingFailedResults at line {logData.LineNumber}");
+                            TryParseStackTrace(logData);
 
-                            return;
-                        }
+                            break;
 
-                        if (TryParseSummaryTestAndTime(logData))
-                        {
-                            this.partialTestResult = null;
-                            this.state = ParserState.ExpectingSummary;
-                            this.logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
-                            return;
-                        }
+                        case ParserState.ExpectingTestResults:
 
-                        break;
+                        default:
+
+                            if (TryParseTestResult(logData)) return;
+
+                            // Change the state and clear the partial result if failed result or summary is found
+                            if (TryParseForFailedResult(logData))
+                            {
+                                this.partialTestResult = null;
+                                this.state = ParserState.ExpectingFailedResults;
+                                stackTraceLinesAllowedToParse = 50;
+                                this._logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingFailedResults at line {logData.LineNumber}");
+
+                                return;
+                            }
+
+                            if (TryParseSummaryTestAndTime(logData))
+                            {
+                                this.partialTestResult = null;
+                                this.state = ParserState.ExpectingSummary;
+                                this._logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
+                                return;
+                            }
+
+                            break;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                this.logger.Error($"PythonTestResultParser : Parse : Unable to parse the log line {logData.Line} with exception {ex.ToString()} at line {logData.LineNumber}");
-                this.telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.ParseException, ex.Message);
+                catch (RegexMatchTimeoutException regexMatchTimeoutException)
+                {
+                    this._logger.Warning($"JasmineTestResultParser : AttemptMatch : failed due to timeout while with exception { regexMatchTimeoutException } at line {logData.LineNumber}");
+                    this._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, "RegexTimeout", new List<string> { "UnknownRegex" }, true);
+                }
+                catch (Exception ex)
+                {
+                    this._logger.Error($"PythonTestResultParser : Parse : Unable to parse the log line {logData.Line} with exception {ex.ToString()} at line {logData.LineNumber}");
+                    this._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.ParseException, ex.Message);
 
-                Reset(logData);
+                    Reset(logData);
 
-                // Rethrow the exception so that the invoker of Parser is notified of a failure
-                throw;
+                    // Rethrow the exception so that the invoker of Parser is notified of a failure
+                    throw;
+                }
             }
         }
 
@@ -145,7 +161,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private void Reset(LogData logData)
         {
-            this.logger.Info($"PythonTestResultParser : Reset at line {logData.LineNumber}");
+            this._logger.Info($"PythonTestResultParser : Reset at line {logData.LineNumber}");
             this.partialTestResult = null;
             this.currentTestRun = new TestRun($"{Name}/{Version}", ++this.currentTestRunId);
             this.state = ParserState.ExpectingTestResults;
@@ -158,7 +174,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private void PublishAndReset(LogData logData)
         {
-            this.logger.Info($"PythonTestResultParser : PublishAndReset : Publishing TestRun {this.currentTestRunId} at line {logData.LineNumber}.");
+            this._logger.Info($"PythonTestResultParser : PublishAndReset : Publishing TestRun {this.currentTestRunId} at line {logData.LineNumber}.");
 
             foreach (var failedTest in this.currentTestRun.FailedTests)
             {
@@ -168,7 +184,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
             }
 
-            this.testRunManager.PublishAsync(this.currentTestRun);
+            this._testRunManager.PublishAsync(this.currentTestRun);
             Reset(logData);
         }
 
@@ -255,7 +271,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (string.IsNullOrWhiteSpace(testResultNameIdentifier))
             {
-                this.logger.Verbose($"Test result name is null or whitespace in logData: {logData.Line} at line {logData.LineNumber}");
+                this._logger.Verbose($"Test result name is null or whitespace in logData: {logData.Line} at line {logData.LineNumber}");
                 return null;
             }
 
@@ -277,7 +293,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     TotalTests = testcount
                 };
 
-                this.logger.Info($"PythonTestResultParser : TryParseSummaryTestAndTime : TestRunSummary with total time and tests created at line {logData.LineNumber}");
+                this._logger.Info($"PythonTestResultParser : TryParseSummaryTestAndTime : TestRunSummary with total time and tests created at line {logData.LineNumber}");
 
                 return true;
             }
@@ -290,8 +306,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (this.currentTestRun.TestRunSummary == null)
             {
                 // This is safe check, if must be true always because parsers will try to parse for Outcome if Test and Time Summary already parsed.
-                this.logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : TestRunSummary is null at line {logData.LineNumber}");
-                this.telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestRunSummaryCorrupted, new List<int> { this.currentTestRunId }, true);
+                this._logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : TestRunSummary is null at line {logData.LineNumber}");
+                this._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestRunSummaryCorrupted, new List<int> { this.currentTestRunId }, true);
                 return false;
             }
 
@@ -324,8 +340,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return true;
             }
 
-            this.logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : Expected match for SummaryTestOutcome was not found at line {logData.LineNumber}");
-            this.telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestOutcomeSummaryNotFound, new List<int> { this.currentTestRunId }, true);
+            this._logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : Expected match for SummaryTestOutcome was not found at line {logData.LineNumber}");
+            this._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestOutcomeSummaryNotFound, new List<int> { this.currentTestRunId }, true);
             return false;
         }
 
@@ -386,8 +402,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (data == null)
             {
-                this.logger.Error("PythonTestResultParser : IsValidInput : Received null data");
-                this.telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.InvalidInput, new List<int> { this.currentTestRunId }, true);
+                this._logger.Error("PythonTestResultParser : IsValidInput : Received null data");
+                this._telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.InvalidInput, new List<int> { this.currentTestRunId }, true);
             }
 
             return data != null;

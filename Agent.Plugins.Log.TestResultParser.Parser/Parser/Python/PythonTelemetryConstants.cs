@@ -18,5 +18,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public const string TestRunSummaryCorrupted = "TestRunSummaryCorrupted";
 
         public const string TestOutcomeSummaryNotFound = "TestOutcomeSummaryNotFound";
+
+        public const string PythonParserTotalTime = "PythonParserTotalTime";
+
+        public const string TotalLinesParsed = "TotalLinesParsed";
     }
 }
