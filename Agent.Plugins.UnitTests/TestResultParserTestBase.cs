@@ -22,7 +22,7 @@ namespace Agent.Plugins.UnitTests
         protected ITestResultParser _parser;
         protected bool _isPythonParser = false;
 
-        private bool _perfRegressed = false;
+        private int _singleLinePerfViolations = 0;
         private int _timesPerfTelemtryFired = 0;
         private double _totalTime = 0;
         private double perLineParseThresholdTimeInMilliseconds = 1;
@@ -43,7 +43,7 @@ namespace Agent.Plugins.UnitTests
                 TestContext.WriteLine($"Warning: {data}");
                 if (data.StartsWith("PERF :"))
                 {
-                    this._perfRegressed = true;
+                    this._singleLinePerfViolations += 1;
                 }
             });
 
@@ -358,10 +358,16 @@ namespace Agent.Plugins.UnitTests
 
         #region PerfValidationHelpers
 
+        /// <summary>
+        /// Perf related assertions
+        /// </summary>
+        /// <param name="inputLinesCount"></param>
+        /// <param name="isPythonParser"></param>
         private void ValidatePerf(int inputLinesCount, bool isPythonParser = false)
         {
-            // Perf related asserts
-            Assert.IsFalse(this._perfRegressed, "Regression in perf, please check logs for more details.");
+            // Allow a certain number of single line violations as these spikes happen due to reasons directly unrelated to
+            // the parser code but related to CLR like garbage collection etc.
+            Assert.IsFalse(this._singleLinePerfViolations > 5, "Regression in perf, please check logs for more details.");
 
             if (isPythonParser)
             {
@@ -374,6 +380,7 @@ namespace Agent.Plugins.UnitTests
                 Assert.AreEqual(inputLinesCount, this._timesPerfTelemtryFired, "Perf telemetry not fired for every line");
             }
 
+            // Out main interest is the overall run time of the parser for a realisitc number of lines of log output
             Assert.IsTrue(this._totalTime / inputLinesCount < this.perLineParseThresholdTimeInMilliseconds, $"The average allowed parse time per line is {this.perLineParseThresholdTimeInMilliseconds} but in this" +
                 $" case it was {this._totalTime / inputLinesCount}");
         }
