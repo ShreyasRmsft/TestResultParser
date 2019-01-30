@@ -41,5 +41,16 @@ namespace Agent.Plugins.UnitTests
 
             _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Once, "Expected SimpleTimer to have logged warning for time exceeded.");
         }
+
+        [TestMethod]
+        public void SimpleTimerShouldntWarnIfThresholdNotExceeded()
+        {
+            using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, _telemetry.Object, TimeSpan.FromMilliseconds(1000)))
+            {
+                Thread.Sleep(10);
+            }
+
+            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to have logged warning for time exceeded.");
+        }
     }
 }

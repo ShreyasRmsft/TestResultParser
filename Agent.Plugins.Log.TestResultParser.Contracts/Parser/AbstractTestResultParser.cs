@@ -11,7 +11,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         protected ITraceLogger _logger;
         protected ITelemetryDataCollector _telemetry;
 
-        protected TimeSpan ParseOperationPermissibleThreshold = TimeSpan.FromMilliseconds(20);
+        protected TimeSpan ParseOperationPermissibleThreshold = TimeSpan.FromMilliseconds(1);
 
         protected AbstractTestResultParser(ITestRunManager testRunManager, ITraceLogger traceLogger, ITelemetryDataCollector telemetryDataCollector)
         {

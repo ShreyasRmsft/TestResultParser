@@ -25,7 +25,7 @@ namespace Agent.Plugins.UnitTests
         private int _singleLinePerfViolations = 0;
         private int _timesPerfTelemtryFired = 0;
         private double _totalTime = 0;
-        private double perLineParseThresholdTimeInMilliseconds = 1;
+        private double perLineParseThresholdTimeInMilliseconds = 0.8;
 
         public TestResultParserTestBase()
         {
@@ -367,7 +367,7 @@ namespace Agent.Plugins.UnitTests
         {
             // Allow a certain number of single line violations as these spikes happen due to reasons directly unrelated to
             // the parser code but related to CLR like garbage collection etc.
-            Assert.IsFalse(this._singleLinePerfViolations > 5, "Regression in perf, please check logs for more details.");
+            Assert.IsFalse(this._singleLinePerfViolations > GetSpikesThreshold(inputLinesCount), "Regression in perf, please check logs for more details.");
 
             if (isPythonParser)
             {
@@ -383,6 +383,21 @@ namespace Agent.Plugins.UnitTests
             // Out main interest is the overall run time of the parser for a realisitc number of lines of log output
             Assert.IsTrue(this._totalTime / inputLinesCount < this.perLineParseThresholdTimeInMilliseconds, $"The average allowed parse time per line is {this.perLineParseThresholdTimeInMilliseconds} but in this" +
                 $" case it was {this._totalTime / inputLinesCount}");
+        }
+
+        private int GetSpikesThreshold(int inputLinesCount)
+        {
+            if (inputLinesCount < 100)
+            {
+                return 20;
+            }
+
+            if (inputLinesCount < 1000)
+            {
+                return 30;
+            }
+
+            return inputLinesCount / 200;
         }
 
         #endregion
