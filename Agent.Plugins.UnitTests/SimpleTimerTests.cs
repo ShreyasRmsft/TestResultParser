@@ -16,7 +16,7 @@ namespace Agent.Plugins.UnitTests
         public TestContext TestContext { get; set; }
 
         private Mock<ITraceLogger> _logger;
-        private Mock<ITelemetryDataCollector> telemetry;
+        private Mock<ITelemetryDataCollector> _telemetry;
 
         public SimpleTimerTests()
         {
@@ -27,12 +27,14 @@ namespace Agent.Plugins.UnitTests
             this._logger.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
             this._logger.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
             this._logger.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Warning: {data}"); });
+
+            this._telemetry = new Mock<ITelemetryDataCollector>();
         }
 
         [TestMethod]
         public void SimpleTimerShouldWarnIfThresholdExceeded()
         {
-            using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, telemetry.Object, TimeSpan.FromMilliseconds(1)))
+            using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, _telemetry.Object, TimeSpan.FromMilliseconds(1)))
             {
                 Thread.Sleep(10);
             }

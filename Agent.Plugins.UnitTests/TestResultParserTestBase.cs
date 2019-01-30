@@ -47,7 +47,6 @@ namespace Agent.Plugins.UnitTests
                 }
             });
 
-            // No-op for telemetry
             this._telemetryDataCollector = new Mock<ITelemetryDataCollector>();
 
             this._telemetryDataCollector.Setup(x => x.AddToCumulativeTelemetry(It.IsAny<string>(), It.IsRegex(".*ParserTotalTime"), It.IsAny<object>(), It.IsAny<bool>()))
