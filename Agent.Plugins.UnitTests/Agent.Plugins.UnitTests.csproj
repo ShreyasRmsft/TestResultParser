@@ -28,10 +28,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="CommonTestResources\LogPadding\PrePadding.txt" />
-  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Agent.Plugins.Log.TestResultParser.Contracts\Agent.Plugins.Log.TestResultParser.Contracts.csproj" />

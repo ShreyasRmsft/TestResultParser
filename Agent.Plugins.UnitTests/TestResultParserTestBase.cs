@@ -182,7 +182,7 @@ namespace Agent.Plugins.UnitTests
         {
             // Pre-pad the test case with initiazization logs to simulate the targeted scenario
             // meant mainly to get more accurate perf readings
-            var linesToBePrependedToTheLogs = File.ReadAllLines(@"CommonTestResources\LogPadding\PrePadding.txt");
+            var linesToBePrependedToTheLogs = File.ReadAllLines(Path.Combine("CommonTestResources", "LogPadding", "PrePadding.txt"));
 
             // Do not assign actual line numbers to these bogus lines as debugging 
             // the actual test case file will become difficult
