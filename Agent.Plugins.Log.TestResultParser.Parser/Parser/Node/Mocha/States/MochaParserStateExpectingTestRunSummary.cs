@@ -36,12 +36,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // If a passed test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless.
-            attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             var testResult = PrepareTestResult(TestOutcome.Passed, match);
 
             mochaStateContext.TestRun.PassedTests.Add(testResult);
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestResults " +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingTestResults " +
                  $"at line {mochaStateContext.CurrentLineNumber}.");
 
             return MochaParserStates.ExpectingTestResults;
@@ -54,7 +54,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // If a failed test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless. 
-            attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             // Handling parse errors is unnecessary
             var testCaseNumber = int.Parse(match.Groups[RegexCaptureGroups.FailedTestCaseNumber].Value);
@@ -63,9 +63,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // as a match but do not add it to our list of test cases
             if (testCaseNumber != 1)
             {
-                logger.Error($"{parserName} : {stateName} : Expecting failed test case with" +
+                Logger.Error($"{ParserName} : {StateName} : Expecting failed test case with" +
                     $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
+                Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
                     new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
                 return MochaParserStates.ExpectingTestResults;
@@ -87,7 +87,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // If a pending test case is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless.
-            attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             var testResult = PrepareTestResult(TestOutcome.NotExecuted, match);
 
@@ -99,16 +99,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
 
-            logger.Info($"{parserName} : {stateName} : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
+            Logger.Info($"{ParserName} : {StateName} : Passed test summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             // Passed tests summary is not expected soon after encountering passed tests summary, atleast one test case should have been there.
-            logger.Error($"{parserName} : {stateName} : Was expecting atleast one test case before encountering" +
+            Logger.Error($"{ParserName} : {StateName} : Was expecting atleast one test case before encountering" +
                 $" summary again at line {mochaStateContext.CurrentLineNumber}");
-            telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
+            Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
                 new List<int> { mochaStateContext.TestRun.TestRunId }, true);
 
             // Reset the parser and start over
-            attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
             mochaStateContext.NextExpectedMatch = "failed/pending tests summary";
@@ -121,16 +121,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Fire telemetry if summary does not agree with parsed tests count
             if (mochaStateContext.TestRun.TestRunSummary.TotalPassed != mochaStateContext.TestRun.PassedTests.Count)
             {
-                logger.Error($"{parserName} : {stateName} : Passed tests count does not match passed summary" +
+                Logger.Error($"{ParserName} : {StateName} : Passed tests count does not match passed summary" +
                     $" at line {mochaStateContext.CurrentLineNumber}");
-                telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
+                Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
                     MochaTelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
             }
 
             // Extract the test run time from the passed tests summary
             ExtractTestRunTime(match, mochaStateContext);
 
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestRunSummary" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {mochaStateContext.CurrentLineNumber}.");
             return MochaParserStates.ExpectingTestRunSummary;
         }
@@ -139,7 +139,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
 
-            logger.Info($"{parserName} : {stateName} : Pending tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
+            Logger.Info($"{ParserName} : {StateName} : Pending tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
             mochaStateContext.LinesWithinWhichMatchIsExpected = 1;
             mochaStateContext.NextExpectedMatch = "failed tests summary";
 
@@ -155,7 +155,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var mochaStateContext = stateContext as MochaParserStateContext;
 
-            logger.Info($"{parserName} : {stateName} : Failed tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
+            Logger.Info($"{ParserName} : {StateName} : Failed tests summary encountered at line {mochaStateContext.CurrentLineNumber}.");
 
             // Handling parse errors is unnecessary
             var totalFailed = int.Parse(match.Groups[RegexCaptureGroups.FailedTests].Value);
@@ -167,7 +167,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             mochaStateContext.LinesWithinWhichMatchIsExpected = 50;
 
             // Do we want transition logs here?
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingStackTraces" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingStackTraces" +
                 $" at line {mochaStateContext.CurrentLineNumber}.");
             return MochaParserStates.ExpectingStackTraces;
         }

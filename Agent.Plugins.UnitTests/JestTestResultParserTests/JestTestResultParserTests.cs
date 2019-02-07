@@ -14,7 +14,7 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
         [TestInitialize]
         public void TestInit()
         {
-            _parser = new JestTestResultParser(_testRunManagerMock.Object, _diagnosticDataCollector.Object, _telemetryDataCollector.Object);
+            Parser = new JestTestResultParser(TestRunManagerMock.Object, DiagnosticDataCollector.Object, TelemetryDataCollector.Object);
         }
 
         #region DataDrivenTests

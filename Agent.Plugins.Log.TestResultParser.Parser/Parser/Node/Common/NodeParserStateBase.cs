@@ -13,11 +13,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     /// </summary>
     public abstract class NodeParserStateBase : ITestResultParserState
     {
-        protected string parserName;
-        protected string stateName;
-        protected ITraceLogger logger;
-        protected ITelemetryDataCollector telemetry;
-        protected ParserResetAndAttemptPublish attemptPublishAndResetParser;
+        protected string ParserName;
+        protected string StateName;
+        protected ITraceLogger Logger;
+        protected ITelemetryDataCollector Telemetry;
+        protected ParserResetAndAttemptPublish AttemptPublishAndResetParser;
 
         /// <summary>
         /// List of Regexs and their corresponding post successful match actions
@@ -32,11 +32,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <param name="telemetryDataCollector"></param>
         protected NodeParserStateBase(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector, string parserName)
         {
-            this.logger = logger;
-            this.parserName = parserName;
-            stateName = GetType().Name;
-            telemetry = telemetryDataCollector;
-            attemptPublishAndResetParser = parserResetAndAttempPublish;
+            this.Logger = logger;
+            this.ParserName = parserName;
+            StateName = GetType().Name;
+            Telemetry = telemetryDataCollector;
+            AttemptPublishAndResetParser = parserResetAndAttempPublish;
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // pending and failed test summary
             if (stateContext.LinesWithinWhichMatchIsExpected == 1)
             {
-                logger.Info($"{parserName} : {stateName} : NoPatternMatched : Was expecting {stateContext.NextExpectedMatch} before line {stateContext.CurrentLineNumber}, but no matches occurred.");
-                telemetry.AddToCumulativeTelemetry(parserName, "UnexpectedParserResetCount", 1, true);
-                attemptPublishAndResetParser();
+                Logger.Info($"{ParserName} : {StateName} : NoPatternMatched : Was expecting {stateContext.NextExpectedMatch} before line {stateContext.CurrentLineNumber}, but no matches occurred.");
+                Telemetry.AddToCumulativeTelemetry(ParserName, "UnexpectedParserResetCount", 1, true);
+                AttemptPublishAndResetParser();
                 return true;
             }
 

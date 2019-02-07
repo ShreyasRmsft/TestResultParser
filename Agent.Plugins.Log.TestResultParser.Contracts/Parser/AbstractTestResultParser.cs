@@ -7,17 +7,17 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
 {
     public abstract class AbstractTestResultParser : ITestResultParser
     {
-        protected ITestRunManager testRunManager;
-        protected ITraceLogger logger;
-        protected ITelemetryDataCollector telemetry;
+        protected ITestRunManager TestRunManager;
+        protected ITraceLogger Logger;
+        protected ITelemetryDataCollector Telemetry;
 
         protected TimeSpan ParseOperationPermissibleThreshold = TimeSpan.FromMilliseconds(1);
 
         protected AbstractTestResultParser(ITestRunManager testRunManager, ITraceLogger traceLogger, ITelemetryDataCollector telemetryDataCollector)
         {
-            this.testRunManager = testRunManager;
-            this.logger = traceLogger;
-            this.telemetry = telemetryDataCollector;
+            TestRunManager = testRunManager;
+            Logger = traceLogger;
+            Telemetry = telemetryDataCollector;
         }
 
         public abstract void Parse(LogData line);

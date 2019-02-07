@@ -35,7 +35,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             if (jestStateContext.FailedTestsSummaryIndicatorEncountered)
             {
-                logger.Verbose($"{parserName} : {stateName} : Ignoring StackTrace/Failed test case at line " +
+                Logger.Verbose($"{ParserName} : {StateName} : Ignoring StackTrace/Failed test case at line " +
                     $"{stateContext.CurrentLineNumber} as it is part of the summarized failures.");
                 return JestParserStates.ExpectingStackTraces;
             }
@@ -46,7 +46,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // not likely to be hit but keeping it here as safety check
             if (match.Groups[RegexCaptureGroups.TestCaseName].Value == "Console")
             {
-                logger.Verbose($"{parserName} : {stateName} : Ignoring apparent StackTrace/Failed test case at line " +
+                Logger.Verbose($"{ParserName} : {StateName} : Ignoring apparent StackTrace/Failed test case at line " +
                     $"{stateContext.CurrentLineNumber} as Jest prints console out in this format in non verbose mode.");
                 return JestParserStates.ExpectingStackTraces;
             }
@@ -71,7 +71,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jestStateContext.LinesWithinWhichMatchIsExpected = 1;
             jestStateContext.NextExpectedMatch = "tests summary";
 
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestRunSummary" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingTestRunSummary;
@@ -88,7 +88,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 return JestParserStates.ExpectingStackTraces;
             }
 
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestResults" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingTestResults;
@@ -99,7 +99,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var jestStateContext = stateContext as JestParserStateContext;
 
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
-            logger.Info($"{parserName} : {stateName} : Matched the failed tests summary indicator" +
+            Logger.Info($"{ParserName} : {StateName} : Matched the failed tests summary indicator" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingStackTraces;

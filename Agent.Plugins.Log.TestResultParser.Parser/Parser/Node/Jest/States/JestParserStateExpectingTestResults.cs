@@ -78,7 +78,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jestStateContext.NextExpectedMatch = "next stacktraceStart/testrunStart/testrunSummary";
             jestStateContext.TestRun.FailedTests[jestStateContext.CurrentStackTraceIndex].StackTrace = match.Value;
 
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingStackTraces" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingStackTraces" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingStackTraces;
@@ -91,7 +91,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jestStateContext.LinesWithinWhichMatchIsExpected = 1;
             jestStateContext.NextExpectedMatch = "tests summary";
 
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestRunSummary" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingTestRunSummary;
@@ -108,7 +108,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             var jestStateContext = stateContext as JestParserStateContext;
             jestStateContext.FailedTestsSummaryIndicatorEncountered = true;
 
-            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingStackTraces" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingStackTraces" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingStackTraces;

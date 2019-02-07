@@ -74,7 +74,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     break;
             }
 
-            attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             return JestParserStates.ExpectingTestRunStart;
         }
@@ -83,13 +83,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
-            logger.Error($"{parserName} : {stateName} : Transitioned to state ExpectingTestResults" +
+            Logger.Error($"{ParserName} : {StateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jestStateContext.CurrentLineNumber} as test run start indicator was encountered before encountering" +
                 $" the full summary.");
-            telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+            Telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                 JestTelemetryConstants.UnexpectedTestRunStart, new List<int> { jestStateContext.TestRun.TestRunId }, true);
 
-            attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             return JestParserStates.ExpectingTestResults;
         }
