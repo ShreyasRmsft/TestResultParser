@@ -42,18 +42,18 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (logData == null || logData.Line == null)
             {
-                _logger.Error("JasmineTestResultParser : Parse : Input line was null.");
+                logger.Error("JasmineTestResultParser : Parse : Input line was null.");
                 return;
             }
 
             // TODO: Fix an appropriate threshold based on performance on hosted machine with load
             using (var timer = new SimpleTimer("JasmineParserParseOperation", JasmineTelemetryConstants.EventArea,
-                JasmineTelemetryConstants.JasmineParserTotalTime, logData.LineNumber, _logger, _telemetry, ParseOperationPermissibleThreshold))
+                JasmineTelemetryConstants.JasmineParserTotalTime, logData.LineNumber, logger, telemetry, ParseOperationPermissibleThreshold))
             {
                 try
                 {
                     stateContext.CurrentLineNumber = logData.LineNumber;
-                    _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.TotalLinesParsed, logData.LineNumber);
+                    telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.TotalLinesParsed, logData.LineNumber);
 
                     // State model for the jasmine parser that defines the Regexs to match against in each state
                     switch (currentState)
@@ -85,11 +85,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
                 catch (Exception e)
                 {
-                    _logger.Error($"JasmineTestResultParser : Parse : Failed with exception {e}.");
+                    logger.Error($"JasmineTestResultParser : Parse : Failed with exception {e}.");
 
                     // This might start taking a lot of space if each and every parse operation starts throwing
                     // But if that happens then there's a lot more stuff broken.
-                    _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.Exceptions, new List<string> { e.Message });
+                    telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.Exceptions, new List<string> { e.Message });
 
                     // Rethrowing this so that the plugin is aware that the parser is erroring out
                     // Ideally this would never should happen
@@ -122,8 +122,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
                 catch (RegexMatchTimeoutException)
                 {
-                    _logger.Warning($"JasmineTestResultParser : AttemptMatch : failed due to timeout while trying to match { regexActionPair.Regex.ToString() } at line {logData.LineNumber}");
-                    _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, "RegexTimeout", new List<string> { regexActionPair.Regex.ToString() }, true);
+                    logger.Warning($"JasmineTestResultParser : AttemptMatch : failed due to timeout while trying to match { regexActionPair.Regex.ToString() } at line {logData.LineNumber}");
+                    telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, "RegexTimeout", new List<string> { regexActionPair.Regex.ToString() }, true);
                 }
             }
 
@@ -137,37 +137,37 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private void AttemptPublishAndResetParser()
         {
-            _logger.Info($"JasmineTestResultParser : Resetting the parser and attempting to publish the test run at line {stateContext.CurrentLineNumber}.");
+            logger.Info($"JasmineTestResultParser : Resetting the parser and attempting to publish the test run at line {stateContext.CurrentLineNumber}.");
             var testRunToPublish = stateContext.TestRun;
 
             // We have encountered failed test cases but no failed summary was encountered
             if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
             {
-                _logger.Error("JasmineTestResultParser : Failed tests were encountered but no failed summary was encountered.");
-                _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                logger.Error("JasmineTestResultParser : Failed tests were encountered but no failed summary was encountered.");
+                telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                     JasmineTelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { stateContext.TestRun.TestRunId }, true);
             }
             else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
             {
                 // If encountered failed tests does not match summary fire telemetry
-                _logger.Error($"JasmineTestResultParser : Failed tests count does not match failed summary" +
+                logger.Error($"JasmineTestResultParser : Failed tests count does not match failed summary" +
                     $" at line {stateContext.CurrentLineNumber}");
-                _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                     JasmineTelemetryConstants.FailedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
             if (testRunToPublish.SkippedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalSkipped == 0)
             {
-                _logger.Error("JasmineTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
-                _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                logger.Error("JasmineTestResultParser : Skipped tests were encountered but no skipped summary was encountered.");
+                telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                     JasmineTelemetryConstants.SkippedTestCasesFoundButNoSkippedSummary, new List<int> { stateContext.TestRun.TestRunId }, true);
             }
             else if (testRunToPublish.TestRunSummary.TotalSkipped != testRunToPublish.SkippedTests.Count)
             {
                 // If encountered skipped tests does not match summary fire telemetry
-                _logger.Error($"JasmineTestResultParser : Pending tests count does not match pending summary" +
+                logger.Error($"JasmineTestResultParser : Pending tests count does not match pending summary" +
                     $" at line {stateContext.CurrentLineNumber}");
-                _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                     JasmineTelemetryConstants.SkippedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
@@ -176,8 +176,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 case JasmineParserStates.ExpectingTestRunStart:
 
-                    _logger.Error("JasmineTestResultParser : Skipping publish as no test cases or summary has been encountered.");
-                    _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                    logger.Error("JasmineTestResultParser : Skipping publish as no test cases or summary has been encountered.");
+                    telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                             JasmineTelemetryConstants.NoSummaryEncounteredBeforePublish, new List<int> { stateContext.TestRun.TestRunId }, true);
 
                     break;
@@ -187,8 +187,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)
                     {
-                        _logger.Error("JasmineTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                        _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                        logger.Error("JasmineTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                             JasmineTelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { stateContext.TestRun.TestRunId }, true);
                     }
                     break;
@@ -197,24 +197,24 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                     if (testRunToPublish.TestRunSummary.TotalTests == 0)
                     {
-                        _logger.Error("JasmineTestResultParser : Skipping publish as total tests was 0.");
-                        _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                        logger.Error("JasmineTestResultParser : Skipping publish as total tests was 0.");
+                        telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                             JasmineTelemetryConstants.TotalTestsZero, new List<int> { stateContext.TestRun.TestRunId }, true);
                         break;
                     }
 
                     if (stateContext.IsTimeParsed == false)
                     {
-                        _logger.Error("JasmineTestResultParser : Total test run time was not parsed.");
-                        _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
+                        logger.Error("JasmineTestResultParser : Total test run time was not parsed.");
+                        telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea,
                             JasmineTelemetryConstants.TotalTestRunTimeNotParsed, new List<int> { stateContext.TestRun.TestRunId }, true);
                     }
 
                     if (stateContext.SuiteErrors > 0)
                     {
                         // Adding telemetry for suite errors
-                        _logger.Info($"JasmineTestResultParser : {stateContext.SuiteErrors} suite errors found in the test run.");
-                        _telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.SuiteErrors,
+                        logger.Info($"JasmineTestResultParser : {stateContext.SuiteErrors} suite errors found in the test run.");
+                        telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.SuiteErrors,
                             new List<int> { stateContext.TestRun.TestRunId }, true);
                     }
 
@@ -228,7 +228,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     }
 
                     // Only publish if total tests was not zero
-                    _testRunManager.PublishAsync(testRunToPublish);
+                    testRunManager.PublishAsync(testRunToPublish);
 
                     break;
             }
@@ -250,16 +250,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Refresh the context
             stateContext.Initialize(newTestRun);
 
-            _logger.Info("JasmineTestResultParser : Successfully reset the parser.");
+            logger.Info("JasmineTestResultParser : Successfully reset the parser.");
         }
 
         private ITestResultParserState TestRunStart => testRunStart ??
-            (testRunStart = new JasmineParserStateExpectingTestRunStart(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JasmineTestResultParser)));
+            (testRunStart = new JasmineParserStateExpectingTestRunStart(AttemptPublishAndResetParser, logger, telemetry, nameof(JasmineTestResultParser)));
 
         private ITestResultParserState ExpectingTestResults => expectingTestResults ??
-            (expectingTestResults = new JasmineParserStateExpectingTestResults(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JasmineTestResultParser)));
+            (expectingTestResults = new JasmineParserStateExpectingTestResults(AttemptPublishAndResetParser, logger, telemetry, nameof(JasmineTestResultParser)));
 
         private ITestResultParserState ExpectingTestRunSummary => expectingTestRunSummary ??
-            (expectingTestRunSummary = new JasmineParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JasmineTestResultParser)));
+            (expectingTestRunSummary = new JasmineParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetry, nameof(JasmineTestResultParser)));
     }
 }

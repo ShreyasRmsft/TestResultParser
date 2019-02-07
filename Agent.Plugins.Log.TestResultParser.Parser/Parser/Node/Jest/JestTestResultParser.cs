@@ -55,18 +55,18 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (logData == null || logData.Line == null)
             {
-                _logger.Error("JestTestResultParser : Parse : Input line was null.");
+                logger.Error("JestTestResultParser : Parse : Input line was null.");
                 return;
             }
 
             // TODO: Fix an appropriate threshold based on performance on hosted machine with load
             using (var timer = new SimpleTimer("JestParserParseOperation", JestTelemetryConstants.EventArea,
-                JestTelemetryConstants.JestParserTotalTime, logData.LineNumber, _logger, _telemetry, ParseOperationPermissibleThreshold))
+                JestTelemetryConstants.JestParserTotalTime, logData.LineNumber, logger, telemetry, ParseOperationPermissibleThreshold))
             {
                 try
                 {
                     stateContext.CurrentLineNumber = logData.LineNumber;
-                    _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, JestTelemetryConstants.TotalLinesParsed, logData.LineNumber);
+                    telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, JestTelemetryConstants.TotalLinesParsed, logData.LineNumber);
 
                     // State model for the jest parser that defines the Regexs to match against in each state
                     // Each state re-orders the Regexs based on the frequency of expected matches
@@ -109,11 +109,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
                 catch (Exception e)
                 {
-                    _logger.Error($"JestTestResultParser : Parse : Failed with exception {e}.");
+                    logger.Error($"JestTestResultParser : Parse : Failed with exception {e}.");
 
                     // This might start taking a lot of space if each and every parse operation starts throwing
                     // But if that happens then there's a lot more stuff broken.
-                    _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
+                    telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, "Exceptions", new List<string> { e.Message });
 
                     // Rethrowing this so that the plugin is aware that the parser is erroring out
                     // Ideally this would never should happen
@@ -146,8 +146,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
                 catch (RegexMatchTimeoutException)
                 {
-                    _logger.Warning($"JestTestResultParser : AttemptMatch : failed due to timeout while trying to match { regexActionPair.Regex.ToString() } at line {logData.LineNumber}");
-                    _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, "RegexTimeout", new List<string> { regexActionPair.Regex.ToString() }, true);
+                    logger.Warning($"JestTestResultParser : AttemptMatch : failed due to timeout while trying to match { regexActionPair.Regex.ToString() } at line {logData.LineNumber}");
+                    telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, "RegexTimeout", new List<string> { regexActionPair.Regex.ToString() }, true);
                 }
             }
 
@@ -161,38 +161,38 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private void AttemptPublishAndResetParser()
         {
-            _logger.Info($"JestTestResultParser : Resetting the parser and attempting to publish the test run at line {stateContext.CurrentLineNumber}.");
+            logger.Info($"JestTestResultParser : Resetting the parser and attempting to publish the test run at line {stateContext.CurrentLineNumber}.");
             var testRunToPublish = stateContext.TestRun;
 
             // We have encountered passed test cases but no passed summary was encountered
             if (testRunToPublish.PassedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalPassed == 0)
             {
-                _logger.Error("JestTestResultParser : Passed tests were encountered but no passed summary was encountered.");
-                _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                logger.Error("JestTestResultParser : Passed tests were encountered but no passed summary was encountered.");
+                telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                     JestTelemetryConstants.PassedTestCasesFoundButNoPassedSummary, new List<int> { stateContext.TestRun.TestRunId }, true);
             }
             else if (stateContext.VerboseOptionEnabled && testRunToPublish.TestRunSummary.TotalPassed != testRunToPublish.PassedTests.Count)
             {
                 // If encountered failed tests does not match summary fire telemetry
-                _logger.Error($"JestTestResultParser : Passed tests count does not match passed summary" +
+                logger.Error($"JestTestResultParser : Passed tests count does not match passed summary" +
                     $" at line {stateContext.CurrentLineNumber}");
-                _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                     JestTelemetryConstants.PassedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
             // We have encountered failed test cases but no failed summary was encountered
             if (testRunToPublish.FailedTests.Count != 0 && testRunToPublish.TestRunSummary.TotalFailed == 0)
             {
-                _logger.Error("JestTestResultParser : Failed tests were encountered but no failed summary was encountered.");
-                _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                logger.Error("JestTestResultParser : Failed tests were encountered but no failed summary was encountered.");
+                telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                     JestTelemetryConstants.FailedTestCasesFoundButNoFailedSummary, new List<int> { stateContext.TestRun.TestRunId }, true);
             }
             else if (testRunToPublish.TestRunSummary.TotalFailed != testRunToPublish.FailedTests.Count)
             {
                 // If encountered failed tests does not match summary fire telemtry
-                _logger.Error($"JestTestResultParser : Failed tests count does not match failed summary" +
+                logger.Error($"JestTestResultParser : Failed tests count does not match failed summary" +
                     $" at line {stateContext.CurrentLineNumber}");
-                _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                     JestTelemetryConstants.FailedSummaryMismatch, new List<int> { testRunToPublish.TestRunId }, true);
             }
 
@@ -201,7 +201,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 case JestParserStates.ExpectingTestRunStart:
 
-                    _logger.Error("JestTestResultParser : Skipping publish as no test cases or summary has been encountered.");
+                    logger.Error("JestTestResultParser : Skipping publish as no test cases or summary has been encountered.");
 
                     break;
 
@@ -213,8 +213,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                         || testRunToPublish.FailedTests.Count != 0
                         || testRunToPublish.SkippedTests.Count != 0)
                     {
-                        _logger.Error("JestTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
-                        _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                        logger.Error("JestTestResultParser : Skipping publish as testcases were encountered but no summary was encountered.");
+                        telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                             JestTelemetryConstants.TestCasesFoundButNoSummary, new List<int> { stateContext.TestRun.TestRunId }, true);
                     }
 
@@ -224,16 +224,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                     if (testRunToPublish.TestRunSummary.TotalTests == 0)
                     {
-                        _logger.Error("JestTestResultParser : Skipping publish as total tests was 0.");
-                        _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                        logger.Error("JestTestResultParser : Skipping publish as total tests was 0.");
+                        telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                             JestTelemetryConstants.TotalTestsZero, new List<int> { stateContext.TestRun.TestRunId }, true);
                         break;
                     }
 
                     if (testRunToPublish.TestRunSummary.TotalExecutionTime.TotalMilliseconds == 0)
                     {
-                        _logger.Error("JestTestResultParser : Total test run time was 0 or not encountered.");
-                        _telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
+                        logger.Error("JestTestResultParser : Total test run time was 0 or not encountered.");
+                        telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
                             JestTelemetryConstants.TotalTestRunTimeZero, new List<int> { stateContext.TestRun.TestRunId }, true);
                     }
 
@@ -247,7 +247,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     }
 
                     // Only publish if total tests was not zero
-                    _testRunManager.PublishAsync(testRunToPublish);
+                    testRunManager.PublishAsync(testRunToPublish);
 
                     break;
             }
@@ -269,19 +269,19 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Refresh the context
             stateContext.Initialize(newTestRun);
 
-            _logger.Info("JestTestResultParser : Successfully reset the parser.");
+            logger.Info("JestTestResultParser : Successfully reset the parser.");
         }
 
         private ITestResultParserState TestRunStart => testRunStart ??
-            (testRunStart = new JestParserStateExpectingTestRunStart(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JestTestResultParser)));
+            (testRunStart = new JestParserStateExpectingTestRunStart(AttemptPublishAndResetParser, logger, telemetry, nameof(JestTestResultParser)));
 
         private ITestResultParserState ExpectingTestResults => expectingTestResults ??
-            (expectingTestResults = new JestParserStateExpectingTestResults(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JestTestResultParser)));
+            (expectingTestResults = new JestParserStateExpectingTestResults(AttemptPublishAndResetParser, logger, telemetry, nameof(JestTestResultParser)));
 
         private ITestResultParserState ExpectingStackTraces => expectingStackTraces ??
-            (expectingStackTraces = new JestParserStateExpectingStackTraces(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JestTestResultParser)));
+            (expectingStackTraces = new JestParserStateExpectingStackTraces(AttemptPublishAndResetParser, logger, telemetry, nameof(JestTestResultParser)));
 
         private ITestResultParserState ExpectingTestRunSummary => expectingTestRunSummary ??
-            (expectingTestRunSummary = new JestParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, _logger, _telemetry, nameof(JestTestResultParser)));
+            (expectingTestRunSummary = new JestParserStateExpectingTestRunSummary(AttemptPublishAndResetParser, logger, telemetry, nameof(JestTestResultParser)));
     }
 }
