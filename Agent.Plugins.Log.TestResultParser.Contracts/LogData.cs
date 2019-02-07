@@ -7,6 +7,6 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
     {
         public string Line { get; set; }
 
-        public int LineNumber { get; set; } 
+        public int LineNumber { get; set; }
     }
 }

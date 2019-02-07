@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using System.Collections.Generic;
 
@@ -10,7 +11,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
     /// </summary>
     public class TestRun
     {
-        public TestRun(string parserUri, int testRunId)
+        public TestRun(string parserUri, string testRunName, int testRunId)
         {
             if (parserUri.Split('/').Length != 2)
             {
@@ -18,6 +19,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
             }
 
             ParserUri = parserUri;
+            TestRunName = testRunName;
             TestRunId = testRunId;
         }
 
@@ -25,6 +27,11 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// Uri of the parser class that parsed the test run. Uri contains name and version number of the parser
         /// </summary>
         public string ParserUri { get; }
+
+        /// <summary>
+        /// Name to be used while publishing the test run
+        /// </summary>
+        public string TestRunName { get; }
 
         /// <summary>
         /// Test run id relative to the parser. This along with the parser name will uniquely identify a run

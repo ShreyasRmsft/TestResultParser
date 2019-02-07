@@ -27,7 +27,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingTestResults" +
+            Logger.Info($"{ParserName} : {StateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             // Console logs are dumped after test run start, if the summary or failed/pending test do not appear withing

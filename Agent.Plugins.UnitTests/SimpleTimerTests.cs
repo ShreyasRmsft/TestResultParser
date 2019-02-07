@@ -21,36 +21,39 @@ namespace Agent.Plugins.UnitTests
         public SimpleTimerTests()
         {
             // Mock logger to log to console for easy debugging
-            this._logger = new Mock<ITraceLogger>();
+            _logger = new Mock<ITraceLogger>();
 
-            this._logger.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
-            this._logger.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
-            this._logger.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
-            this._logger.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Warning: {data}"); });
+            _logger.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
+            _logger.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
+            _logger.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
+            _logger.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Warning: {data}"); });
 
-            this._telemetry = new Mock<ITelemetryDataCollector>();
+            _telemetry = new Mock<ITelemetryDataCollector>();
         }
 
         [TestMethod]
-        public void SimpleTimerShouldWarnIfThresholdExceeded()
+        public void SimpleTimerShouldWriteToVerboseIfThresholdExceeded()
         {
             using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, _telemetry.Object, TimeSpan.FromMilliseconds(1)))
             {
                 Thread.Sleep(10);
             }
 
-            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Once, "Expected SimpleTimer to have logged warning for time exceeded.");
+            _logger.Verify(x => x.Verbose(It.IsAny<string>()), Times.Once, "Expected SimpleTimer to have logged warning for time exceeded.");
         }
 
         [TestMethod]
-        public void SimpleTimerShouldntWarnIfThresholdNotExceeded()
+        public void SimpleTimerShouldntWriteIfThresholdNotExceeded()
         {
             using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, _telemetry.Object, TimeSpan.FromMilliseconds(1000)))
             {
                 Thread.Sleep(10);
             }
 
-            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to have logged warning for time exceeded.");
+            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
+            _logger.Verify(x => x.Verbose(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
+            _logger.Verify(x => x.Info(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
+            _logger.Verify(x => x.Error(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
         }
     }
 }

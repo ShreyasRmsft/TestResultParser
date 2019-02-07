@@ -5,7 +5,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     public class JasmineTelemetryConstants
     {
-        public const string EventArea = "JasmineTestResultParser";
+        public const string EventArea = "Jasmine";
 
         public const string Initialize = "Initialize";
 

@@ -4,7 +4,6 @@
 namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     using System.Collections.Generic;
-    using Agent.Plugins.Log.TestResultParser.Contracts;
 
     public delegate void ParserResetAndAttemptPublish();
 

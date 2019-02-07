@@ -9,7 +9,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
     public class JestTelemetryConstants
     {
-        public const string EventArea = "JestTestResultParser";
+        public const string EventArea = "Jest";
 
         public const string Initialize = "Initialize";
 
