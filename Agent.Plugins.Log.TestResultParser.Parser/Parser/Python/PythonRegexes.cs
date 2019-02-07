@@ -34,7 +34,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         // Pattern : ^Ran ([0-9]+) tests? in ([0-9]+)(\.([0-9]+))?s
         // Example : Ran 12 tests in 2.2s
-        public static Regex TestCountAndTimeSummary { get; } = new Regex($"^Ran (?<{RegexCaptureGroups.TotalTests}>[0-9]+) tests? in (?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(\\.(?<{RegexCaptureGroups.TestRunTimeMs}>[0-9]+))?s", 
+        public static Regex TestCountAndTimeSummary { get; } = new Regex($"^Ran (?<{RegexCaptureGroups.TotalTests}>[0-9]+) tests? in (?<{RegexCaptureGroups.TestRunTime}>[0-9]+)(\\.(?<{RegexCaptureGroups.TestRunTimeMs}>[0-9]+))?s",
             RegexOptions.ExplicitCapture, RegexDefaultTimeout);
 
         /// <summary>

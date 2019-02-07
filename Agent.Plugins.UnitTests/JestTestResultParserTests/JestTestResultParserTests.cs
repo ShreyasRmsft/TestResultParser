@@ -14,18 +14,18 @@ namespace Agent.Plugins.UnitTests.JestTestResultParserTests
         [TestInitialize]
         public void TestInit()
         {
-            this._parser = new JestTestResultParser(this._testRunManagerMock.Object, this._diagnosticDataCollector.Object, this._telemetryDataCollector.Object);
+            Parser = new JestTestResultParser(TestRunManagerMock.Object, DiagnosticDataCollector.Object, TelemetryDataCollector.Object);
         }
 
         #region DataDrivenTests
 
-       [DataTestMethod]
-       [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
-       public void JestTestResultParserSuccessScenariosWithBasicAssertions(string testCase)
-       {
-           testCase = Path.Combine("JestTestResultParserTests", "Resources", "SuccessScenarios", testCase);
-           TestSuccessScenariosWithBasicAssertions(testCase, true, false, false);
-       }
+        [DataTestMethod]
+        [DynamicData(nameof(GetSuccessScenariosTestCases), DynamicDataSourceType.Method)]
+        public void JestTestResultParserSuccessScenariosWithBasicAssertions(string testCase)
+        {
+            testCase = Path.Combine("JestTestResultParserTests", "Resources", "SuccessScenarios", testCase);
+            TestSuccessScenariosWithBasicAssertions(testCase, true, false, false);
+        }
 
         [DataTestMethod]
         [DynamicData(nameof(GetPartialSuccessTestCases), DynamicDataSourceType.Method)]

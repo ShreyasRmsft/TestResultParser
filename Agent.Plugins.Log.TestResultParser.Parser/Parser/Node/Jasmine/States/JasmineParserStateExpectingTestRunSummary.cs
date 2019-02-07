@@ -32,10 +32,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jasmineStateContext.TestRun.TestRunSummary.TotalExecutionTime = TimeSpan.FromMilliseconds(timeTaken * 1000);
             jasmineStateContext.IsTimeParsed = true;
 
-            this.logger.Info($"{this.parserName} : {this.stateName} : Test run time matched, transitioned to state ExpectingTestRunStart" +
+            Logger.Info($"{ParserName} : {StateName} : Test run time matched, transitioned to state ExpectingTestRunStart" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
-            this.attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             return JasmineParserStates.ExpectingTestRunStart;
         }
@@ -44,13 +44,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"{this.parserName} : {this.stateName} : Resetting the parser, test run start matched unexpectedly, transitioned to state ExpectingTestResults" +
+            Logger.Info($"{ParserName} : {StateName} : Resetting the parser, test run start matched unexpectedly, transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             // If a test run started is encountered while in the summary state it indicates either completion
             // or corruption of summary. Since Summary is Gospel to us, we will ignore the latter and publish
             // the run regardless. 
-            this.attemptPublishAndResetParser();
+            AttemptPublishAndResetParser();
 
             return JasmineParserStates.ExpectingTestResults;
         }

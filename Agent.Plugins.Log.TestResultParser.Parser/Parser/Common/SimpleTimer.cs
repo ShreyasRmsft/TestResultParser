@@ -21,7 +21,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// Creates a timer with threshold. A perf message is logged only if
         /// the time elapsed is more than the threshold.
         /// </summary>
-        public SimpleTimer(string timerName, string telemetryArea, string telemetryEventName, int lineNumber, ITraceLogger logger, 
+        public SimpleTimer(string timerName, string telemetryArea, string telemetryEventName, int lineNumber, ITraceLogger logger,
             ITelemetryDataCollector telemetryDataCollector, TimeSpan threshold, bool publishTelemetry = true)
         {
             _name = timerName;

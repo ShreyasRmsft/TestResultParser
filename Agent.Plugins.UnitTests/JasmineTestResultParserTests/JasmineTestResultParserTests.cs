@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Agent.Plugins.Log.TestResultParser.Parser;
 using System.Collections.Generic;
 using System.IO;
+using Agent.Plugins.Log.TestResultParser.Parser;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
 {
@@ -14,7 +14,7 @@ namespace Agent.Plugins.UnitTests.JasmineTestResultParserTests
         [TestInitialize]
         public void TestInit()
         {
-            this._parser = new JasmineTestResultParser(this._testRunManagerMock.Object, this._diagnosticDataCollector.Object, this._telemetryDataCollector.Object);
+            Parser = new JasmineTestResultParser(TestRunManagerMock.Object, DiagnosticDataCollector.Object, TelemetryDataCollector.Object);
         }
 
         #region DataDrivenTests

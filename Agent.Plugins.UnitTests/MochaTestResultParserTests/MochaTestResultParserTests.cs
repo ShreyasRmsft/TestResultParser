@@ -16,7 +16,7 @@ namespace Agent.Plugins.UnitTests.MochaTestResultParserTests
         [TestInitialize]
         public void TestInit()
         {
-            this._parser = new MochaTestResultParser(this._testRunManagerMock.Object, this._diagnosticDataCollector.Object, this._telemetryDataCollector.Object);
+            Parser = new MochaTestResultParser(TestRunManagerMock.Object, DiagnosticDataCollector.Object, TelemetryDataCollector.Object);
         }
 
         #region DataDrivenTests
