@@ -21,7 +21,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         void AddToCumulativeTelemetry(string eventArea, string eventName, object value, bool aggregate = false);
 
         /// <summary>
-        /// Publish the cumulative telemetry accrued over tinme and resets the collection
+        /// Publish the cumulative telemetry accrued over time and resets the collection
         /// </summary>
         Task PublishCumulativeTelemetryAsync();
 
