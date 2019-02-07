@@ -15,9 +15,9 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
 
         protected AbstractTestResultParser(ITestRunManager testRunManager, ITraceLogger traceLogger, ITelemetryDataCollector telemetryDataCollector)
         {
-            this._testRunManager = testRunManager;
-            this._logger = traceLogger;
-            this._telemetry = telemetryDataCollector;
+            _testRunManager = testRunManager;
+            _logger = traceLogger;
+            _telemetry = telemetryDataCollector;
         }
 
         public abstract void Parse(LogData line);

@@ -32,12 +32,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jasmineStateContext = stateContext as JasmineParserStateContext;
 
-            this.logger.Info($"{this.parserName} : {this.stateName} : Resetting the parser, test run start matched unexpectedly, transitioned to state ExpectingTestResults" +
+            logger.Info($"{parserName} : {stateName} : Resetting the parser, test run start matched unexpectedly, transitioned to state ExpectingTestResults" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             // Test Run Start matched after already encountering test run start.
             // Parser should be reset.
-            this.attemptPublishAndResetParser();
+            attemptPublishAndResetParser();
 
             return JasmineParserStates.ExpectingTestResults;
         }
@@ -58,9 +58,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // There's a good chance we read some random line as a failed test case hence consider it a
                     // as a match but do not add it to our list of test cases
 
-                    this.logger.Error($"{this.parserName} : {this.stateName} : Expecting failed test case with" +
+                    logger.Error($"{parserName} : {stateName} : Expecting failed test case with" +
                         $" number {jasmineStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                    this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
+                    telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
 
                     return JasmineParserStates.ExpectingTestResults;
@@ -91,9 +91,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                     // There's a good chance we read some random line as a pending test case hence consider it a
                     // as a match but do not add it to our list of test cases
 
-                    this.logger.Error($"{this.parserName} : {this.stateName} : Expecting pending test case with" +
+                    logger.Error($"{parserName} : {stateName} : Expecting pending test case with" +
                         $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
-                    this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
+                    telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
                         new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
 
                     return JasmineParserStates.ExpectingTestResults;
@@ -109,9 +109,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
 
             // If none of the starter has matched, it must be a random line. Fire telemetry and log error
-            this.logger.Error($"{this.parserName} : {this.stateName} : Expecting failed/pending test case " +
+            logger.Error($"{parserName} : {stateName} : Expecting failed/pending test case " +
                         $" but encountered test case with {testCaseNumber} without encountering failed/pending starter.");
-            this.telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.FailedPendingTestCaseWithoutStarterMatch,
+            telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.FailedPendingTestCaseWithoutStarterMatch,
                 new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
 
             return JasmineParserStates.ExpectingTestResults;
@@ -169,7 +169,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             jasmineStateContext.LinesWithinWhichMatchIsExpected = 1;
             jasmineStateContext.NextExpectedMatch = "test run time";
 
-            this.logger.Info($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingTestRunSummary" +
+            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestRunSummary" +
                 $" at line {jasmineStateContext.CurrentLineNumber}.");
 
             int.TryParse(match.Groups[RegexCaptureGroups.TotalTests].Value, out int totalTests);

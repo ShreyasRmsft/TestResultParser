@@ -26,7 +26,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <summary>
         /// Current stack trace index. Used to insert the stack trace to the appropriate failed test case later in the stack traces state.
         /// </summary>
-        public int CurrentStackTraceIndex { get { return LastFailedTestCaseNumber - 1; } }
+        public int CurrentStackTraceIndex => LastFailedTestCaseNumber - 1;
 
         /// <summary>
         /// Initializes all the values to their defaults

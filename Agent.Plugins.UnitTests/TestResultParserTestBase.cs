@@ -29,31 +29,31 @@ namespace Agent.Plugins.UnitTests
 
         public TestResultParserTestBase()
         {
-            this._testRunManagerMock = new Mock<ITestRunManager>();
+            _testRunManagerMock = new Mock<ITestRunManager>();
 
             // Mock logger to log to console for easy debugging
-            this._diagnosticDataCollector = new Mock<ITraceLogger>();
+            _diagnosticDataCollector = new Mock<ITraceLogger>();
 
-            this._diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
-            this._diagnosticDataCollector.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
-            this._diagnosticDataCollector.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
+            _diagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
+            _diagnosticDataCollector.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
+            _diagnosticDataCollector.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
 
-            this._diagnosticDataCollector.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data =>
+            _diagnosticDataCollector.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data =>
             {
                 TestContext.WriteLine($"Warning: {data}");
                 if (data.StartsWith("PERF :"))
                 {
-                    this._singleLinePerfViolations += 1;
+                    _singleLinePerfViolations += 1;
                 }
             });
 
-            this._telemetryDataCollector = new Mock<ITelemetryDataCollector>();
+            _telemetryDataCollector = new Mock<ITelemetryDataCollector>();
 
-            this._telemetryDataCollector.Setup(x => x.AddToCumulativeTelemetry(It.IsAny<string>(), It.IsRegex(".*ParserTotalTime"), It.IsAny<object>(), It.IsAny<bool>()))
+            _telemetryDataCollector.Setup(x => x.AddToCumulativeTelemetry(It.IsAny<string>(), It.IsRegex(".*ParserTotalTime"), It.IsAny<object>(), It.IsAny<bool>()))
                 .Callback<string, string, object, bool>((string eventArea, string eventName, object value, bool aggregate) =>
                     {
-                        ++this._timesPerfTelemtryFired;
-                        this._totalTime += (double)value;
+                        ++_timesPerfTelemtryFired;
+                        _totalTime += (double)value;
                     });
         }
 
@@ -63,7 +63,7 @@ namespace Agent.Plugins.UnitTests
             int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            _testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId, assertFailedCount, assertPassedCount, assertSkippedCount);
                 lastTestRunId = testRun.TestRunId;
@@ -72,13 +72,14 @@ namespace Agent.Plugins.UnitTests
             var inputLines = GetLines(testCase).ToList();
             foreach (var line in inputLines)
             {
-                this._parser.Parse(line);
+                _parser.Parse(line);
             }
 
-            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(Math.Max(1, resultFileContents.Length / 5)), $"Expected {Math.Max(1, resultFileContents.Length / 5)} test runs.");
+            _testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(Math.Max(1, resultFileContents.Length / 5)), $"Expected {Math.Max(1, resultFileContents.Length / 5)} test runs.");
 
             ValidatePerf(inputLines.Count, _isPythonParser)
-;        }
+;
+        }
 
         public void TestPartialSuccessScenariosWithBasicAssertions(string testCase)
         {
@@ -86,7 +87,7 @@ namespace Agent.Plugins.UnitTests
             int lastTestRunId = 0;
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            _testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidatePartialSuccessTestRun(testRun, resultFileContents, indexOfTestRun++, lastTestRunId);
                 lastTestRunId = testRun.TestRunId;
@@ -95,11 +96,11 @@ namespace Agent.Plugins.UnitTests
             var inputLines = GetLines(testCase).ToList();
             foreach (var line in inputLines)
             {
-                this._parser.Parse(line);
+                _parser.Parse(line);
             }
 
             // TODO: fix assertions
-            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
+            _testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Exactly(resultFileContents.Length / 7), $"Expected {resultFileContents.Length / 7 } test runs.");
             Assert.AreEqual(resultFileContents.Length / 8, indexOfTestRun, $"Expected {resultFileContents.Length / 7} test runs.");
 
             ValidatePerf(inputLines.Count, _isPythonParser);
@@ -109,7 +110,7 @@ namespace Agent.Plugins.UnitTests
         {
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            _testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRunWithDetails(testRun, resultFileContents);
             });
@@ -117,10 +118,10 @@ namespace Agent.Plugins.UnitTests
             var inputLines = GetLines(testCase).ToList();
             foreach (var line in inputLines)
             {
-                this._parser.Parse(line);
+                _parser.Parse(line);
             }
 
-            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+            _testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
 
             ValidatePerf(inputLines.Count, _isPythonParser);
         }
@@ -129,7 +130,7 @@ namespace Agent.Plugins.UnitTests
         {
             var resultFileContents = File.ReadAllLines($"{testCase}Result.txt");
 
-            this._testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
+            _testRunManagerMock.Setup(x => x.PublishAsync(It.IsAny<TestRun>())).Callback<TestRun>(testRun =>
             {
                 ValidateTestRunWithStackTraces(testRun, resultFileContents);
             });
@@ -137,10 +138,10 @@ namespace Agent.Plugins.UnitTests
             var inputLines = GetLines(testCase).ToList();
             foreach (var line in inputLines)
             {
-                this._parser.Parse(line);
+                _parser.Parse(line);
             }
 
-            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
+            _testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Once, $"Expected a test run to have been Published.");
 
             ValidatePerf(inputLines.Count, _isPythonParser);
         }
@@ -150,10 +151,10 @@ namespace Agent.Plugins.UnitTests
             var inputLines = GetLines(testCase).ToList();
             foreach (var line in inputLines)
             {
-                this._parser.Parse(line);
+                _parser.Parse(line);
             }
 
-            this._testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been Published.");
+            _testRunManagerMock.Verify(x => x.PublishAsync(It.IsAny<TestRun>()), Times.Never, $"Expected no test run to have been Published.");
 
             ValidatePerf(inputLines.Count, _isPythonParser);
         }
@@ -367,22 +368,22 @@ namespace Agent.Plugins.UnitTests
         {
             // Allow a certain number of single line violations as these spikes happen due to reasons directly unrelated to
             // the parser code but related to CLR like garbage collection etc.
-            Assert.IsFalse(this._singleLinePerfViolations > GetSpikesThreshold(inputLinesCount), "Regression in perf, please check logs for more details.");
+            Assert.IsFalse(_singleLinePerfViolations > GetSpikesThreshold(inputLinesCount), "Regression in perf, please check logs for more details.");
 
             if (isPythonParser)
             {
                 // The python parser is peculiar in the aspect that it recalls Parse after a reset for certain lines
-                Assert.IsTrue(inputLinesCount <= this._timesPerfTelemtryFired, $"Perf telemetry not fired for every line, " +
-                    $" expected atleast {inputLinesCount} events but got {this._timesPerfTelemtryFired}");
+                Assert.IsTrue(inputLinesCount <= _timesPerfTelemtryFired, $"Perf telemetry not fired for every line, " +
+                    $" expected atleast {inputLinesCount} events but got {_timesPerfTelemtryFired}");
             }
             else
             {
-                Assert.AreEqual(inputLinesCount, this._timesPerfTelemtryFired, "Perf telemetry not fired for every line");
+                Assert.AreEqual(inputLinesCount, _timesPerfTelemtryFired, "Perf telemetry not fired for every line");
             }
 
             // Out main interest is the overall run time of the parser for a realisitc number of lines of log output
-            Assert.IsTrue(this._totalTime / inputLinesCount < this.perLineParseThresholdTimeInMilliseconds, $"The average allowed parse time per line is {this.perLineParseThresholdTimeInMilliseconds} but in this" +
-                $" case it was {this._totalTime / inputLinesCount}");
+            Assert.IsTrue(_totalTime / inputLinesCount < perLineParseThresholdTimeInMilliseconds, $"The average allowed parse time per line is {perLineParseThresholdTimeInMilliseconds} but in this" +
+                $" case it was {_totalTime / inputLinesCount}");
         }
 
         private int GetSpikesThreshold(int inputLinesCount)

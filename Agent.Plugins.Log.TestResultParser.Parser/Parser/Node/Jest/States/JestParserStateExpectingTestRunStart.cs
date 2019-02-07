@@ -27,7 +27,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             var jestStateContext = stateContext as JestParserStateContext;
 
-            this.logger.Info($"{this.parserName} : {this.stateName} : Transitioned to state ExpectingTestResults" +
+            logger.Info($"{parserName} : {stateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jestStateContext.CurrentLineNumber}.");
 
             return JestParserStates.ExpectingTestResults;

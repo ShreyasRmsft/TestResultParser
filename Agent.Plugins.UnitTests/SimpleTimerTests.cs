@@ -21,14 +21,14 @@ namespace Agent.Plugins.UnitTests
         public SimpleTimerTests()
         {
             // Mock logger to log to console for easy debugging
-            this._logger = new Mock<ITraceLogger>();
+            _logger = new Mock<ITraceLogger>();
 
-            this._logger.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
-            this._logger.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
-            this._logger.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
-            this._logger.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Warning: {data}"); });
+            _logger.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
+            _logger.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
+            _logger.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
+            _logger.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Warning: {data}"); });
 
-            this._telemetry = new Mock<ITelemetryDataCollector>();
+            _telemetry = new Mock<ITelemetryDataCollector>();
         }
 
         [TestMethod]
