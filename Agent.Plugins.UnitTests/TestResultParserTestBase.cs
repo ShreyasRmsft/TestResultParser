@@ -397,7 +397,7 @@ namespace Agent.Plugins.UnitTests
                 return 30;
             }
 
-            return inputLinesCount / 200;
+            return 25 + inputLinesCount / 200;
         }
 
         #endregion
