@@ -38,6 +38,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             _stateContext = new JasmineParserStateContext(testRun);
             _currentState = JasmineParserStates.ExpectingTestRunStart;
+
         }
 
         public override void Parse(LogData logData)
