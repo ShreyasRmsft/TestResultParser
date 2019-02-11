@@ -33,8 +33,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.Initialize, true);
 
             // Initialize the starting state of the parser
-            var testRun = new TestRun($"{Name}/{Version}",
-                $"Mocha test run 1 - automatically inferred results", 1);
+            var testRun = new TestRun($"{Name}/{Version}", "Mocha", 1);
             _stateContext = new MochaParserStateContext(testRun);
             _currentState = MochaParserStates.ExpectingTestResults;
         }
@@ -223,8 +222,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private void ResetParser()
         {
             // Start a new TestRun
-            var newTestRun = new TestRun($"{Name}/{Version}",
-                $"Mocha test run {_stateContext.TestRun.TestRunId + 1} - automatically inferred results", _stateContext.TestRun.TestRunId + 1);
+            var newTestRun = new TestRun($"{Name}/{Version}", "Mocha", _stateContext.TestRun.TestRunId + 1);
 
             // Set state to ExpectingTestResults
             _currentState = MochaParserStates.ExpectingTestResults;

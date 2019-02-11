@@ -45,8 +45,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             telemetryDataCollector.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea, JestTelemetryConstants.Initialize, true);
 
             // Initialize the starting state of the parser
-            var testRun = new TestRun($"{Name}/{Version}",
-                $"Jest test run 1 - automatically inferred results", 1);
+            var testRun = new TestRun($"{Name}/{Version}", "Jest", 1);
             _stateContext = new JestParserStateContext(testRun);
             _currentState = JestParserStates.ExpectingTestRunStart;
         }
@@ -262,8 +261,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private void ResetParser()
         {
             // Start a new TestRun
-            var newTestRun = new TestRun($"{Name}/{Version}",
-                $"Jest test run {_stateContext.TestRun.TestRunId + 1} - automatically inferred results", _stateContext.TestRun.TestRunId + 1);
+            var newTestRun = new TestRun($"{Name}/{Version}", "Jest", _stateContext.TestRun.TestRunId + 1);
 
             // Set state to ExpectingTestResults
             _currentState = JestParserStates.ExpectingTestRunStart;

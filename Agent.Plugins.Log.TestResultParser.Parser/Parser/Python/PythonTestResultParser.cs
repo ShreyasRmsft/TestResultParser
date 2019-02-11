@@ -34,8 +34,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             base.Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.Initialize, true);
 
             _state = ParserState.ExpectingTestResults;
-            _currentTestRun = new TestRun($"{Name}/{Version}",
-                $"Python test run 1 - automatically inferred results", _currentTestRunId);
+            _currentTestRun = new TestRun($"{Name}/{Version}", "Python", _currentTestRunId);
         }
 
         /// <summary>
@@ -165,8 +164,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             Logger.Info($"PythonTestResultParser : Reset at line {logData.LineNumber}");
             _partialTestResult = null;
             _currentTestRunId += 1;
-            _currentTestRun = new TestRun($"{Name}/{Version}",
-                $"Python test run {_currentTestRunId} - automatically inferred results", _currentTestRunId);
+            _currentTestRun = new TestRun($"{Name}/{Version}", "Python", _currentTestRunId);
             _state = ParserState.ExpectingTestResults;
             _stackTraceLinesAllowedToParse = -1;
             _captureStackTrace = false;

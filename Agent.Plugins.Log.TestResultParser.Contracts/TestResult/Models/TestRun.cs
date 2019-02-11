@@ -11,7 +11,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
     /// </summary>
     public class TestRun
     {
-        public TestRun(string parserUri, string testRunName, int testRunId)
+        public TestRun(string parserUri, string runTitlePrefix, int testRunId)
         {
             if (parserUri.Split('/').Length != 2)
             {
@@ -19,7 +19,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
             }
 
             ParserUri = parserUri;
-            TestRunName = testRunName;
+            TestRunName = $"{runTitlePrefix} test run {testRunId} - automatically inferred results";
             TestRunId = testRunId;
         }
 
