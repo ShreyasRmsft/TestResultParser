@@ -10,16 +10,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     public class MochaTestResultParser : AbstractTestResultParser
     {
-        // TODO: Need a hook for end of logs.
-        // Needed for multiple reasons. Scenarios where i am expecting things and have not yet published the run
-        // Needed where I have encoutered test results but got no summary
-        // It is true that it can be inferred due to the absense of the summary event, but I would like there to
-        // be one telemetry event per parser run
-
-        // TODO: Decide on a reset if no match found withing x lines logic after a previous match.
-        // This can be fine tuned depending on the previous match
-        // Infra already in place for this
-
         private MochaParserStates _currentState;
         private readonly MochaParserStateContext _stateContext;
 
@@ -43,7 +33,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             telemetryDataCollector.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.Initialize, true);
 
             // Initialize the starting state of the parser
-            var testRun = new TestRun($"{Name}/{Version}", 1);
+            var testRun = new TestRun($"{Name}/{Version}", "Mocha", 1);
             _stateContext = new MochaParserStateContext(testRun);
             _currentState = MochaParserStates.ExpectingTestResults;
         }
@@ -232,7 +222,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private void ResetParser()
         {
             // Start a new TestRun
-            var newTestRun = new TestRun($"{Name}/{Version}", _stateContext.TestRun.TestRunId + 1);
+            var newTestRun = new TestRun($"{Name}/{Version}", "Mocha", _stateContext.TestRun.TestRunId + 1);
 
             // Set state to ExpectingTestResults
             _currentState = MochaParserStates.ExpectingTestResults;

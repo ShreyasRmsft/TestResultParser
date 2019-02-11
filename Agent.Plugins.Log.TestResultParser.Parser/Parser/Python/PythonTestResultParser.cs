@@ -13,13 +13,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
     /// </summary>
     public class PythonTestResultParser : AbstractTestResultParser
     {
-        private ParserState state;
-        private TestResult partialTestResult;
-        private TestRun currentTestRun;
-        private int currentTestRunId = 1;
+        private ParserState _state;
+        private TestResult _partialTestResult;
+        private TestRun _currentTestRun;
+        private int _currentTestRunId = 1;
 
-        private bool captureStackTrace = false;
-        private int stackTraceLinesAllowedToParse = -1;
+        private bool _captureStackTrace = false;
+        private int _stackTraceLinesAllowedToParse = -1;
 
         public override string Name => "Python";
 
@@ -33,8 +33,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             base.Logger.Info("PythonTestResultParser : Starting python test result parser.");
             base.Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.Initialize, true);
 
-            state = ParserState.ExpectingTestResults;
-            currentTestRun = new TestRun($"{Name}/{Version}", currentTestRunId);
+            _state = ParserState.ExpectingTestResults;
+            _currentTestRun = new TestRun($"{Name}/{Version}", "Python", _currentTestRunId);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 {
                     Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TotalLinesParsed, logData.LineNumber);
 
-                    switch (state)
+                    switch (_state)
                     {
                         case ParserState.ExpectingSummary:
 
@@ -85,13 +85,13 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             // If summary is parsed, change the state
                             if (TryParseForFailedResult(logData))
                             {
-                                stackTraceLinesAllowedToParse = 50;
+                                _stackTraceLinesAllowedToParse = 50;
                                 return;
                             }
 
                             if (TryParseSummaryTestAndTime(logData))
                             {
-                                state = ParserState.ExpectingSummary;
+                                _state = ParserState.ExpectingSummary;
                                 Logger.Info($"PythonTestResultParser : ExpectingFailedResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
                                 return;
                             }
@@ -101,7 +101,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             if (TryParseTestResult(logData))
                             {
                                 Logger.Error($"PythonTestResultParser : Parse : Expecting failed result or summary but found new test result at line {logData.LineNumber}.");
-                                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.SummaryOrFailedTestsNotFound, new List<int> { currentTestRunId }, true);
+                                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.SummaryOrFailedTestsNotFound, new List<int> { _currentTestRunId }, true);
                                 Reset(logData);
                                 Parse(logData);
                             }
@@ -119,9 +119,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             // Change the state and clear the partial result if failed result or summary is found
                             if (TryParseForFailedResult(logData))
                             {
-                                partialTestResult = null;
-                                state = ParserState.ExpectingFailedResults;
-                                stackTraceLinesAllowedToParse = 50;
+                                _partialTestResult = null;
+                                _state = ParserState.ExpectingFailedResults;
+                                _stackTraceLinesAllowedToParse = 50;
                                 Logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingFailedResults at line {logData.LineNumber}");
 
                                 return;
@@ -129,8 +129,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                             if (TryParseSummaryTestAndTime(logData))
                             {
-                                partialTestResult = null;
-                                state = ParserState.ExpectingSummary;
+                                _partialTestResult = null;
+                                _state = ParserState.ExpectingSummary;
                                 Logger.Info($"PythonTestResultParser : ExpectingTestResults: transitioned to state ExpectingSummary at line {logData.LineNumber}");
                                 return;
                             }
@@ -162,11 +162,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         private void Reset(LogData logData)
         {
             Logger.Info($"PythonTestResultParser : Reset at line {logData.LineNumber}");
-            partialTestResult = null;
-            currentTestRun = new TestRun($"{Name}/{Version}", ++currentTestRunId);
-            state = ParserState.ExpectingTestResults;
-            stackTraceLinesAllowedToParse = -1;
-            captureStackTrace = false;
+            _partialTestResult = null;
+            _currentTestRunId += 1;
+            _currentTestRun = new TestRun($"{Name}/{Version}", "Python", _currentTestRunId);
+            _state = ParserState.ExpectingTestResults;
+            _stackTraceLinesAllowedToParse = -1;
+            _captureStackTrace = false;
         }
 
         /// <summary>
@@ -174,9 +175,9 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private void PublishAndReset(LogData logData)
         {
-            Logger.Info($"PythonTestResultParser : PublishAndReset : Publishing TestRun {currentTestRunId} at line {logData.LineNumber}.");
+            Logger.Info($"PythonTestResultParser : PublishAndReset : Publishing TestRun {_currentTestRunId} at line {logData.LineNumber}.");
 
-            foreach (var failedTest in currentTestRun.FailedTests)
+            foreach (var failedTest in _currentTestRun.FailedTests)
             {
                 if (failedTest.StackTrace != null)
                 {
@@ -184,7 +185,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
             }
 
-            TestRunManager.PublishAsync(currentTestRun);
+            TestRunManager.PublishAsync(_currentTestRun);
             Reset(logData);
         }
 
@@ -194,10 +195,10 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             if (!resultMatch.Success)
             {
-                return partialTestResult == null ? false : TryParseForPartialResult(logData);
+                return _partialTestResult == null ? false : TryParseForPartialResult(logData);
             }
 
-            partialTestResult = null;
+            _partialTestResult = null;
 
             var testCaseNameIdentifier = resultMatch.Groups[RegexCaptureGroups.TestCaseName].Value.Trim();
             string testCaseName = GetResultName(logData, testCaseNameIdentifier);
@@ -215,7 +216,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (passedResultMatch.Success)
             {
                 result.Outcome = TestOutcome.Passed;
-                currentTestRun.PassedTests.Add(result);
+                _currentTestRun.PassedTests.Add(result);
                 return true;
             }
 
@@ -223,12 +224,12 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (skippedResultMatch.Success)
             {
                 result.Outcome = TestOutcome.NotExecuted;
-                currentTestRun.SkippedTests.Add(result);
+                _currentTestRun.SkippedTests.Add(result);
                 return true;
             }
 
             // The outcome for this result could not be determined, adding to partial result
-            partialTestResult = result;
+            _partialTestResult = result;
             return true;
         }
 
@@ -238,8 +239,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             if (partialResultMatch.Success)
             {
-                partialTestResult.Outcome = TestOutcome.Passed;
-                currentTestRun.PassedTests.Add(partialTestResult);
+                _partialTestResult.Outcome = TestOutcome.Passed;
+                _currentTestRun.PassedTests.Add(_partialTestResult);
                 return true;
             }
 
@@ -263,7 +264,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             result.Name = GetResultName(logData, resultNameIdentifier);
             result.Outcome = TestOutcome.Failed;
 
-            currentTestRun.FailedTests.Add(result);
+            _currentTestRun.FailedTests.Add(result);
             return true;
         }
 
@@ -287,7 +288,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 var secTime = int.Parse(countAndTimeSummaryMatch.Groups[RegexCaptureGroups.TestRunTime].Value);
                 var msTime = int.Parse(countAndTimeSummaryMatch.Groups[RegexCaptureGroups.TestRunTimeMs].Value);
 
-                currentTestRun.TestRunSummary = new TestRunSummary
+                _currentTestRun.TestRunSummary = new TestRunSummary
                 {
                     TotalExecutionTime = new TimeSpan(0, 0, 0, secTime, msTime),
                     TotalTests = testcount
@@ -303,11 +304,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         private bool TryParseSummaryOutcome(LogData logData)
         {
-            if (currentTestRun.TestRunSummary == null)
+            if (_currentTestRun.TestRunSummary == null)
             {
                 // This is safe check, if must be true always because parsers will try to parse for Outcome if Test and Time Summary already parsed.
                 Logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : TestRunSummary is null at line {logData.LineNumber}");
-                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestRunSummaryCorrupted, new List<int> { currentTestRunId }, true);
+                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestRunSummaryCorrupted, new List<int> { _currentTestRunId }, true);
                 return false;
             }
 
@@ -319,29 +320,29 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 var failureCountPatternMatch = PythonRegexes.SummaryFailure.Match(resultIdentifer);
                 if (failureCountPatternMatch.Success)
                 {
-                    currentTestRun.TestRunSummary.TotalFailed = int.Parse(failureCountPatternMatch.Groups[RegexCaptureGroups.FailedTests].Value);
+                    _currentTestRun.TestRunSummary.TotalFailed = int.Parse(failureCountPatternMatch.Groups[RegexCaptureGroups.FailedTests].Value);
                 }
 
                 // TODO: We should have a separate bucket for errors
                 var errorCountPatternMatch = PythonRegexes.SummaryErrors.Match(resultIdentifer);
                 if (errorCountPatternMatch.Success)
                 {
-                    currentTestRun.TestRunSummary.TotalFailed += int.Parse(errorCountPatternMatch.Groups[RegexCaptureGroups.Errors].Value);
+                    _currentTestRun.TestRunSummary.TotalFailed += int.Parse(errorCountPatternMatch.Groups[RegexCaptureGroups.Errors].Value);
                 }
 
                 var skippedCountPatternMatch = PythonRegexes.SummarySkipped.Match(resultIdentifer);
                 if (skippedCountPatternMatch.Success)
                 {
-                    currentTestRun.TestRunSummary.TotalSkipped = int.Parse(skippedCountPatternMatch.Groups[RegexCaptureGroups.SkippedTests].Value);
+                    _currentTestRun.TestRunSummary.TotalSkipped = int.Parse(skippedCountPatternMatch.Groups[RegexCaptureGroups.SkippedTests].Value);
                 }
 
                 // Since total passed count is not available, calculate the count based on available statistics.
-                currentTestRun.TestRunSummary.TotalPassed = currentTestRun.TestRunSummary.TotalTests - (currentTestRun.TestRunSummary.TotalFailed + currentTestRun.TestRunSummary.TotalSkipped);
+                _currentTestRun.TestRunSummary.TotalPassed = _currentTestRun.TestRunSummary.TotalTests - (_currentTestRun.TestRunSummary.TotalFailed + _currentTestRun.TestRunSummary.TotalSkipped);
                 return true;
             }
 
             Logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : Expected match for SummaryTestOutcome was not found at line {logData.LineNumber}");
-            Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestOutcomeSummaryNotFound, new List<int> { currentTestRunId }, true);
+            Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestOutcomeSummaryNotFound, new List<int> { _currentTestRunId }, true);
             return false;
         }
 
@@ -354,39 +355,39 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         {
             if (PythonRegexes.StackTraceBorder.IsMatch(logData.Line))
             {
-                captureStackTrace = !captureStackTrace;
+                _captureStackTrace = !_captureStackTrace;
                 return;
             }
 
             if (PythonRegexes.StackTraceEnd.IsMatch(logData.Line))
             {
-                captureStackTrace = false;
+                _captureStackTrace = false;
                 return;
             }
 
-            if (captureStackTrace == false)
+            if (_captureStackTrace == false)
             {
                 return;
             }
 
             // Add to the stack trace
-            if (currentTestRun.FailedTests[currentTestRun.FailedTests.Count - 1].StackTrace == null)
+            if (_currentTestRun.FailedTests[_currentTestRun.FailedTests.Count - 1].StackTrace == null)
             {
-                currentTestRun.FailedTests[currentTestRun.FailedTests.Count - 1].StackTrace = logData.Line;
+                _currentTestRun.FailedTests[_currentTestRun.FailedTests.Count - 1].StackTrace = logData.Line;
             }
             else
             {
-                currentTestRun.FailedTests[currentTestRun.FailedTests.Count - 1].StackTrace += Environment.NewLine + logData.Line;
+                _currentTestRun.FailedTests[_currentTestRun.FailedTests.Count - 1].StackTrace += Environment.NewLine + logData.Line;
             }
 
-            if (stackTraceLinesAllowedToParse > -1)
+            if (_stackTraceLinesAllowedToParse > -1)
             {
-                stackTraceLinesAllowedToParse--;
-                if (stackTraceLinesAllowedToParse == 0)
+                _stackTraceLinesAllowedToParse--;
+                if (_stackTraceLinesAllowedToParse == 0)
                 {
                     // Reset the parser if the stack trace does not terminate within 50 lines
-                    currentTestRun.FailedTests[currentTestRun.FailedTests.Count - 1].StackTrace = null;
-                    captureStackTrace = false;
+                    _currentTestRun.FailedTests[_currentTestRun.FailedTests.Count - 1].StackTrace = null;
+                    _captureStackTrace = false;
                 }
             }
 
@@ -403,7 +404,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (data == null)
             {
                 Logger.Error("PythonTestResultParser : IsValidInput : Received null data");
-                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.InvalidInput, new List<int> { currentTestRunId }, true);
+                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.InvalidInput, new List<int> { _currentTestRunId }, true);
             }
 
             return data != null;

@@ -32,25 +32,28 @@ namespace Agent.Plugins.UnitTests
         }
 
         [TestMethod]
-        public void SimpleTimerShouldWarnIfThresholdExceeded()
+        public void SimpleTimerShouldWriteToVerboseIfThresholdExceeded()
         {
             using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, _telemetry.Object, TimeSpan.FromMilliseconds(1)))
             {
                 Thread.Sleep(10);
             }
 
-            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Once, "Expected SimpleTimer to have logged warning for time exceeded.");
+            _logger.Verify(x => x.Verbose(It.IsAny<string>()), Times.Once, "Expected SimpleTimer to have logged warning for time exceeded.");
         }
 
         [TestMethod]
-        public void SimpleTimerShouldntWarnIfThresholdNotExceeded()
+        public void SimpleTimerShouldntWriteIfThresholdNotExceeded()
         {
             using (var simpleTimer = new SimpleTimer("someTimer", "someArea", "someEvent", 1, _logger.Object, _telemetry.Object, TimeSpan.FromMilliseconds(1000)))
             {
                 Thread.Sleep(10);
             }
 
-            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to have logged warning for time exceeded.");
+            _logger.Verify(x => x.Warning(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
+            _logger.Verify(x => x.Verbose(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
+            _logger.Verify(x => x.Info(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
+            _logger.Verify(x => x.Error(It.IsAny<string>()), Times.Never, "Expected SimpleTimer to not have logged anything.");
         }
     }
 }

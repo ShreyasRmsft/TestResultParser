@@ -35,12 +35,11 @@ namespace Agent.Plugins.UnitTests
             DiagnosticDataCollector = new Mock<ITraceLogger>();
 
             DiagnosticDataCollector.Setup(x => x.Info(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Info: {data}"); });
-            DiagnosticDataCollector.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Verbose: {data}"); });
             DiagnosticDataCollector.Setup(x => x.Error(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Error: {data}"); });
-
-            DiagnosticDataCollector.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data =>
+            DiagnosticDataCollector.Setup(x => x.Warning(It.IsAny<string>())).Callback<string>(data => { TestContext.WriteLine($"Warning: {data}"); });
+            DiagnosticDataCollector.Setup(x => x.Verbose(It.IsAny<string>())).Callback<string>(data =>
             {
-                TestContext.WriteLine($"Warning: {data}");
+                TestContext.WriteLine($"Verbose: {data}");
                 if (data.StartsWith("PERF :"))
                 {
                     _singleLinePerfViolations += 1;

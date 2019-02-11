@@ -5,7 +5,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 {
     public class MochaTelemetryConstants
     {
-        public const string EventArea = "MochaTestResultParser";
+        public const string EventArea = "Mocha";
 
         public const string Initialize = "Initialize";
 

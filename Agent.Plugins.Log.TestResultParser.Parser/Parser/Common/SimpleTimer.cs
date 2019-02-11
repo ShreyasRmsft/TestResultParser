@@ -45,8 +45,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         /// <summary>
         /// Stop the watch and log the trace message with the elapsed time.
-        /// Additionaly also adds the elapsed time to telemetry under the timer name and if
-        /// the timer is called multiple times the 
+        /// Additionaly also adds the elapsed time to telemetry under the timer name
         /// </summary>
         public void StopAndLog()
         {
@@ -68,7 +67,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 // Once we get a better understanding on these spikes, the alert can be based on threshold spikes allowed
                 _telemetry.AddToCumulativeTelemetry(_telemetryArea, "Spikes", 1, true);
 
-                _logger.Warning($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms for line {_lineNumber}.");
+                _logger.Verbose($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms for line {_lineNumber}.");
             }
         }
 
