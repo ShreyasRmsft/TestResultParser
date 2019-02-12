@@ -14,18 +14,18 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// is a costly operations. This helps is agrregating the data that would otherwise have been done later and the 
         /// inidividual data points themselves are of no interest.
         /// </summary>
-        /// <param name="eventSubArea">Sub area of the data point. This is along with the eventName forms the property name</param>
         /// <param name="eventName">Name of the data point</param>
         /// <param name="value">Data point value to be stored</param>
+        /// <param name="eventSubArea">Sub area of the data point. This is along with the eventName forms the property name</param>
         void AddAndAggregate(string eventName, object value, string eventSubArea = null);
 
         /// <summary>
         /// Adds a new property or overwrites it if it already exisits. Cumulates data throught the life cycle of the data collector until 
         /// PublishCumulativeTelemetryAsync is called.
         /// </summary>
-        /// <param name="eventName"></param>
-        /// <param name="value"></param>
-        /// <param name="eventSubArea"></param>
+        /// <param name="eventName">Name of the data point</param>
+        /// <param name="value">Data point value to be stored</param>
+        /// <param name="eventSubArea">Sub area of the data point. This is along with the eventName forms the property name</param>
         void AddOrUpdate(string eventName, object value, string eventSubArea = null);
 
         /// <summary>
