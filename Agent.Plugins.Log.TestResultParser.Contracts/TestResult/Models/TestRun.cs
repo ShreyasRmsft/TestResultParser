@@ -11,7 +11,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
     /// </summary>
     public class TestRun
     {
-        public TestRun(string parserUri, string runTitlePrefix, int testRunId)
+        public TestRun(string parserUri, string runNamePrefix, int testRunId)
         {
             if (parserUri.Split('/').Length != 2)
             {
@@ -19,7 +19,7 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
             }
 
             ParserUri = parserUri;
-            TestRunName = $"{runTitlePrefix} test run {testRunId} - automatically inferred results";
+            RunNamePrefix = runNamePrefix;
             TestRunId = testRunId;
         }
 
@@ -31,12 +31,23 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// <summary>
         /// Name to be used while publishing the test run
         /// </summary>
-        public string TestRunName { get; }
+        public string TestRunName
+        {
+            get
+            {
+                return $"{RunNamePrefix} test run {TestRunId} - automatically inferred results";
+            }
+        }
 
         /// <summary>
         /// Test run id relative to the parser. This along with the parser name will uniquely identify a run
         /// </summary>
         public int TestRunId { get; }
+
+        /// <summary>
+        /// The prefix to be addded to the test run title
+        /// </summary>
+        public string RunNamePrefix { get; }
 
         /// <summary>
         /// Collection of passed tests
