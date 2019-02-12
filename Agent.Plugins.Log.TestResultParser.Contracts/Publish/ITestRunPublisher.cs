@@ -13,7 +13,8 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// <summary>
         /// Publishs the given the test run
         /// </summary>
-        /// <param name="testRun"></param>
-        Task PublishAsync(TestRun testRun);
+        /// <param name="testRun">Test run to be published</param>
+        /// <returns>Test run id of the published test run</returns>
+        Task<int> PublishAsync(TestRun testRun);
     }
 }
