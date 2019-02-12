@@ -60,8 +60,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                     Logger.Error($"{ParserName} : {StateName} : Expecting failed test case with" +
                         $" number {jasmineStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                    Telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
-                        new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
+                    Telemetry.AddAndAggregate(JasmineTelemetryConstants.UnexpectedFailedTestCaseNumber,
+                        new List<int> { jasmineStateContext.TestRun.TestRunId }, JasmineTelemetryConstants.EventArea);
 
                     return JasmineParserStates.ExpectingTestResults;
                 }
@@ -93,8 +93,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
                     Logger.Error($"{ParserName} : {StateName} : Expecting pending test case with" +
                         $" number {jasmineStateContext.LastPendingTestCaseNumber + 1} but found {testCaseNumber} instead");
-                    Telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
-                        new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
+                    Telemetry.AddAndAggregate(JasmineTelemetryConstants.UnexpectedPendingTestCaseNumber,
+                        new List<int> { jasmineStateContext.TestRun.TestRunId }, JasmineTelemetryConstants.EventArea);
 
                     return JasmineParserStates.ExpectingTestResults;
                 }
@@ -111,8 +111,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // If none of the starter has matched, it must be a random line. Fire telemetry and log error
             Logger.Error($"{ParserName} : {StateName} : Expecting failed/pending test case " +
                         $" but encountered test case with {testCaseNumber} without encountering failed/pending starter.");
-            Telemetry.AddToCumulativeTelemetry(JasmineTelemetryConstants.EventArea, JasmineTelemetryConstants.FailedPendingTestCaseWithoutStarterMatch,
-                new List<int> { jasmineStateContext.TestRun.TestRunId }, true);
+            Telemetry.AddAndAggregate(JasmineTelemetryConstants.FailedPendingTestCaseWithoutStarterMatch,
+                new List<int> { jasmineStateContext.TestRun.TestRunId }, JasmineTelemetryConstants.EventArea);
 
             return JasmineParserStates.ExpectingTestResults;
         }

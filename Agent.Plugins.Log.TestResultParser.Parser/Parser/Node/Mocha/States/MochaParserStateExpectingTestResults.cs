@@ -49,8 +49,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 Logger.Error($"{ParserName} : {StateName} : Expecting failed test case with" +
                     $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
-                    new List<int> { mochaStateContext.TestRun.TestRunId }, true);
+                Telemetry.AddAndAggregate(MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
+                    new List<int> { mochaStateContext.TestRun.TestRunId }, MochaTelemetryConstants.EventArea);
 
                 // If it was not 1 there's a good chance we read some random line as a failed test case hence consider it a
                 // as a match but do not add it to our list of test cases
@@ -102,8 +102,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 Logger.Error($"{ParserName} : {StateName} : Passed tests count does not match passed summary" +
                     $" at line {mochaStateContext.CurrentLineNumber}");
-                Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
-                    MochaTelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
+                Telemetry.AddAndAggregate(MochaTelemetryConstants.PassedSummaryMismatch,
+                    new List<int> { mochaStateContext.TestRun.TestRunId }, MochaTelemetryConstants.EventArea);
             }
 
             // Extract the test run time from the passed tests summary

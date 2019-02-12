@@ -86,8 +86,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             Logger.Error($"{ParserName} : {StateName} : Transitioned to state ExpectingTestResults" +
                 $" at line {jestStateContext.CurrentLineNumber} as test run start indicator was encountered before encountering" +
                 $" the full summary.");
-            Telemetry.AddToCumulativeTelemetry(JestTelemetryConstants.EventArea,
-                JestTelemetryConstants.UnexpectedTestRunStart, new List<int> { jestStateContext.TestRun.TestRunId }, true);
+            Telemetry.AddAndAggregate(JestTelemetryConstants.UnexpectedTestRunStart,
+                new List<int> { jestStateContext.TestRun.TestRunId }, JestTelemetryConstants.EventArea);
 
             AttemptPublishAndResetParser();
 

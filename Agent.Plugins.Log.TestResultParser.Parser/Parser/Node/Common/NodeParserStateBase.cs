@@ -32,8 +32,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <param name="telemetryDataCollector"></param>
         protected NodeParserStateBase(ParserResetAndAttemptPublish parserResetAndAttempPublish, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector, string parserName)
         {
-            this.Logger = logger;
-            this.ParserName = parserName;
+            Logger = logger;
+            ParserName = parserName;
             StateName = GetType().Name;
             Telemetry = telemetryDataCollector;
             AttemptPublishAndResetParser = parserResetAndAttempPublish;
@@ -55,7 +55,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (stateContext.LinesWithinWhichMatchIsExpected == 1)
             {
                 Logger.Info($"{ParserName} : {StateName} : NoPatternMatched : Was expecting {stateContext.NextExpectedMatch} before line {stateContext.CurrentLineNumber}, but no matches occurred.");
-                Telemetry.AddToCumulativeTelemetry(ParserName, "UnexpectedParserResetCount", 1, true);
+                Telemetry.AddAndAggregate("UnexpectedParserResetCount", 1, ParserName);
                 AttemptPublishAndResetParser();
                 return true;
             }

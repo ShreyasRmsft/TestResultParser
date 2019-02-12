@@ -31,7 +31,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public PythonTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetry) : base(testRunManager, logger, telemetry)
         {
             base.Logger.Info("PythonTestResultParser : Starting python test result parser.");
-            base.Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.Initialize, true);
+            base.Telemetry.AddOrUpdate(PythonTelemetryConstants.Initialize, true, PythonTelemetryConstants.EventArea);
 
             _state = ParserState.ExpectingTestResults;
             _currentTestRun = new TestRun($"{Name}/{Version}", "Python", _currentTestRunId);
@@ -55,7 +55,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 try
                 {
-                    Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TotalLinesParsed, logData.LineNumber);
+                    Telemetry.AddOrUpdate(PythonTelemetryConstants.TotalLinesParsed,
+                        logData.LineNumber, PythonTelemetryConstants.EventArea);
 
                     switch (_state)
                     {
@@ -101,7 +102,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                             if (TryParseTestResult(logData))
                             {
                                 Logger.Error($"PythonTestResultParser : Parse : Expecting failed result or summary but found new test result at line {logData.LineNumber}.");
-                                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.SummaryOrFailedTestsNotFound, new List<int> { _currentTestRunId }, true);
+                                Telemetry.AddAndAggregate(PythonTelemetryConstants.SummaryOrFailedTestsNotFound, 
+                                    new List<int> { _currentTestRunId }, PythonTelemetryConstants.EventArea);
                                 Reset(logData);
                                 Parse(logData);
                             }
@@ -141,12 +143,14 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 catch (RegexMatchTimeoutException regexMatchTimeoutException)
                 {
                     Logger.Warning($"JasmineTestResultParser : AttemptMatch : failed due to timeout while with exception { regexMatchTimeoutException } at line {logData.LineNumber}");
-                    Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, "RegexTimeout", new List<string> { "UnknownRegex" }, true);
+                    Telemetry.AddAndAggregate(PythonTelemetryConstants.RegexTimeout, 
+                        new List<string> { "UnknownRegex" }, PythonTelemetryConstants.EventArea);
                 }
                 catch (Exception ex)
                 {
                     Logger.Error($"PythonTestResultParser : Parse : Unable to parse the log line {logData.Line} with exception {ex.ToString()} at line {logData.LineNumber}");
-                    Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.ParseException, ex.Message);
+                    Telemetry.AddAndAggregate(PythonTelemetryConstants.ParseException, 
+                        new List<string> { ex.Message }, PythonTelemetryConstants.EventArea);
 
                     Reset(logData);
 
@@ -308,7 +312,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 // This is safe check, if must be true always because parsers will try to parse for Outcome if Test and Time Summary already parsed.
                 Logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : TestRunSummary is null at line {logData.LineNumber}");
-                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestRunSummaryCorrupted, new List<int> { _currentTestRunId }, true);
+                Telemetry.AddAndAggregate(PythonTelemetryConstants.TestRunSummaryCorrupted,
+                    new List<int> { _currentTestRunId }, PythonTelemetryConstants.EventArea);
                 return false;
             }
 
@@ -342,7 +347,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             }
 
             Logger.Error($"PythonTestResultParser : TryParseSummaryOutcome : Expected match for SummaryTestOutcome was not found at line {logData.LineNumber}");
-            Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.TestOutcomeSummaryNotFound, new List<int> { _currentTestRunId }, true);
+            Telemetry.AddAndAggregate(PythonTelemetryConstants.TestOutcomeSummaryNotFound,
+                new List<int> { _currentTestRunId }, PythonTelemetryConstants.EventArea);
             return false;
         }
 
@@ -404,7 +410,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (data == null)
             {
                 Logger.Error("PythonTestResultParser : IsValidInput : Received null data");
-                Telemetry.AddToCumulativeTelemetry(PythonTelemetryConstants.EventArea, PythonTelemetryConstants.InvalidInput, new List<int> { _currentTestRunId }, true);
+                Telemetry.AddAndAggregate(PythonTelemetryConstants.InvalidInput, 
+                    new List<int> { _currentTestRunId }, PythonTelemetryConstants.EventArea);
             }
 
             return data != null;

@@ -48,8 +48,8 @@ namespace Agent.Plugins.UnitTests
 
             TelemetryDataCollector = new Mock<ITelemetryDataCollector>();
 
-            TelemetryDataCollector.Setup(x => x.AddToCumulativeTelemetry(It.IsAny<string>(), It.IsRegex(".*ParserTotalTime"), It.IsAny<object>(), It.IsAny<bool>()))
-                .Callback<string, string, object, bool>((string eventArea, string eventName, object value, bool aggregate) =>
+            TelemetryDataCollector.Setup(x => x.AddAndAggregate(It.IsRegex(".*ParserTotalTime"), It.IsAny<object>(), It.IsAny<string>()))
+                .Callback<string, object, string>((string eventName, object value, string eventArea) =>
                     {
                         ++_timesPerfTelemtryFired;
                         _totalTime += (double)value;
