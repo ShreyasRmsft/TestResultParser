@@ -22,5 +22,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public const string PythonParserTotalTime = "PythonParserTotalTime";
 
         public const string TotalLinesParsed = "TotalLinesParsed";
+
+        public const string RegexTimeout = "RegexTimeout";
     }
 }

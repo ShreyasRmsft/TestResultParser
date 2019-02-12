@@ -53,7 +53,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             if (_publishTelemetry)
             {
-                _telemetry.AddToCumulativeTelemetry(_telemetryArea, _telemetryEventName, _timer.Elapsed.TotalMilliseconds, true);
+                _telemetry.AddAndAggregate(_telemetryEventName, _timer.Elapsed.TotalMilliseconds, _telemetryArea);
             }
 
             if (_threshold.TotalMilliseconds == 0)
@@ -65,7 +65,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             if (_timer.Elapsed > _threshold)
             {
                 // Once we get a better understanding on these spikes, the alert can be based on threshold spikes allowed
-                _telemetry.AddToCumulativeTelemetry(_telemetryArea, "Spikes", 1, true);
+                _telemetry.AddAndAggregate("Spikes", 1, _telemetryArea);
 
                 _logger.Verbose($"PERF : {_name} : took {_timer.Elapsed.TotalMilliseconds} ms for line {_lineNumber}.");
             }

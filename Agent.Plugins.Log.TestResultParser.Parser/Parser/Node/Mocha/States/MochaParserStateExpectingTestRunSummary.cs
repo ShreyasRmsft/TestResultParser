@@ -65,8 +65,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 Logger.Error($"{ParserName} : {StateName} : Expecting failed test case with" +
                     $" number {mochaStateContext.LastFailedTestCaseNumber + 1} but found {testCaseNumber} instead");
-                Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
-                    new List<int> { mochaStateContext.TestRun.TestRunId }, true);
+                Telemetry.AddAndAggregate(MochaTelemetryConstants.UnexpectedFailedTestCaseNumber,
+                    new List<int> { mochaStateContext.TestRun.TestRunId }, MochaTelemetryConstants.EventArea);
 
                 return MochaParserStates.ExpectingTestResults;
             }
@@ -104,8 +104,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             // Passed tests summary is not expected soon after encountering passed tests summary, atleast one test case should have been there.
             Logger.Error($"{ParserName} : {StateName} : Was expecting atleast one test case before encountering" +
                 $" summary again at line {mochaStateContext.CurrentLineNumber}");
-            Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea, MochaTelemetryConstants.SummaryWithNoTestCases,
-                new List<int> { mochaStateContext.TestRun.TestRunId }, true);
+            Telemetry.AddAndAggregate(MochaTelemetryConstants.SummaryWithNoTestCases,
+                new List<int> { mochaStateContext.TestRun.TestRunId }, MochaTelemetryConstants.EventArea);
 
             // Reset the parser and start over
             AttemptPublishAndResetParser();
@@ -123,8 +123,8 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             {
                 Logger.Error($"{ParserName} : {StateName} : Passed tests count does not match passed summary" +
                     $" at line {mochaStateContext.CurrentLineNumber}");
-                Telemetry.AddToCumulativeTelemetry(MochaTelemetryConstants.EventArea,
-                    MochaTelemetryConstants.PassedSummaryMismatch, new List<int> { mochaStateContext.TestRun.TestRunId }, true);
+                Telemetry.AddAndAggregate(MochaTelemetryConstants.PassedSummaryMismatch,
+                    new List<int> { mochaStateContext.TestRun.TestRunId }, MochaTelemetryConstants.EventArea);
             }
 
             // Extract the test run time from the passed tests summary

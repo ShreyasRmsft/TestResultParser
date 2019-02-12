@@ -17,8 +17,16 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// <param name="eventSubArea">Sub area of the data point. This is along with the eventName forms the property name</param>
         /// <param name="eventName">Name of the data point</param>
         /// <param name="value">Data point value to be stored</param>
-        /// <param name="aggregate">When to override or perform smart aggregation when the data point already exists</param>
-        void AddToCumulativeTelemetry(string eventSubArea, string eventName, object value, bool aggregate = false);
+        void AddAndAggregate(string eventName, object value, string eventSubArea = null);
+
+        /// <summary>
+        /// Adds a new property or overwrites it if it already exisits. Cumulates data throught the life cycle of the data collector until 
+        /// PublishCumulativeTelemetryAsync is called.
+        /// </summary>
+        /// <param name="eventName"></param>
+        /// <param name="value"></param>
+        /// <param name="eventSubArea"></param>
+        void AddOrUpdate(string eventName, object value, string eventSubArea = null);
 
         /// <summary>
         /// Publish the cumulative telemetry accrued over time and resets the collection

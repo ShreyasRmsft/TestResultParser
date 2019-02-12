@@ -36,5 +36,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public const string JestParserTotalTime = "JestParserTotalTime";
 
         public const string TotalLinesParsed = "TotalLinesParsed";
+
+        public const string Exceptions = "Exceptions";
     }
 }
