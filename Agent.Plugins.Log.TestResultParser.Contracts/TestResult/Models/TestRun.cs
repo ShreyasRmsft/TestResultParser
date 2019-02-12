@@ -45,11 +45,6 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         public int TestRunId { get; }
 
         /// <summary>
-        /// The prefix to be addded to the test run title
-        /// </summary>
-        public string RunNamePrefix { get; }
-
-        /// <summary>
         /// Collection of passed tests
         /// </summary>
         public List<TestResult> PassedTests { get; set; } = new List<TestResult>();
@@ -68,5 +63,10 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
         /// Summary for the test run
         /// </summary>
         public TestRunSummary TestRunSummary { get; set; } = new TestRunSummary();
+
+        /// <summary>
+        /// The prefix to be addded to the test run title
+        /// </summary>
+        protected string RunNamePrefix;
     }
 }
