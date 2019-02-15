@@ -30,7 +30,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
             base(testRunManager, logger, telemetryDataCollector)
         {
             Logger.Info("JasmineTestResultParser : Starting jasmine test result parser.");
-            telemetryDataCollector.AddOrUpdate(JasmineTelemetryConstants.Initialize, true, JasmineTelemetryConstants.EventArea);
+            Telemetry.AddOrUpdate(JasmineTelemetryConstants.Initialize, true, JasmineTelemetryConstants.EventArea);
 
             // Initialize the starting state of the parser
             var testRun = new TestRun($"{Name}/{Version}", "Jasmine", 1);

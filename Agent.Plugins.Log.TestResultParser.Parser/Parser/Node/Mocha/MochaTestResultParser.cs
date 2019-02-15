@@ -30,7 +30,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public MochaTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector) : base(testRunManager, logger, telemetryDataCollector)
         {
             Logger.Info("MochaTestResultParser : Starting mocha test result parser.");
-            telemetryDataCollector.AddOrUpdate(MochaTelemetryConstants.Initialize, true, MochaTelemetryConstants.EventArea);
+            Telemetry.AddOrUpdate(MochaTelemetryConstants.Initialize, true, MochaTelemetryConstants.EventArea);
 
             // Initialize the starting state of the parser
             var testRun = new TestRun($"{Name}/{Version}", "Mocha", 1);
