@@ -29,7 +29,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public JasmineTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector) :
             base(testRunManager, logger, telemetryDataCollector)
         {
-            logger.Info("JasmineTestResultParser : Starting jasmine test result parser.");
+            Logger.Info("JasmineTestResultParser : Starting jasmine test result parser.");
             telemetryDataCollector.AddOrUpdate(JasmineTelemetryConstants.Initialize, true, JasmineTelemetryConstants.EventArea);
 
             // Initialize the starting state of the parser
@@ -37,7 +37,6 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
             _stateContext = new JasmineParserStateContext(testRun);
             _currentState = JasmineParserStates.ExpectingTestRunStart;
-
         }
 
         public override void Parse(LogData logData)

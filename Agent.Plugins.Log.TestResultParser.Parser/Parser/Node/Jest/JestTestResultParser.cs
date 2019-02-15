@@ -41,7 +41,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         public JestTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetryDataCollector)
         : base(testRunManager, logger, telemetryDataCollector)
         {
-            logger.Info("JestTestResultParser : Starting jest test result parser.");
+            Logger.Info("JestTestResultParser : Starting jest test result parser.");
             telemetryDataCollector.AddOrUpdate(JestTelemetryConstants.Initialize, true, JestTelemetryConstants.EventArea);
 
             // Initialize the starting state of the parser
