@@ -28,10 +28,11 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// <summary>
         /// Default constructor accepting only test run manager instance, rest of the requirements assume default values
         /// </summary>
-        public PythonTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetry) : base(testRunManager, logger, telemetry)
+        public PythonTestResultParser(ITestRunManager testRunManager, ITraceLogger logger, ITelemetryDataCollector telemetry) 
+            : base(testRunManager, logger, telemetry)
         {
-            base.Logger.Info("PythonTestResultParser : Starting python test result parser.");
-            base.Telemetry.AddOrUpdate(PythonTelemetryConstants.Initialize, true, PythonTelemetryConstants.EventArea);
+            Logger.Info("PythonTestResultParser : Starting python test result parser.");
+            Telemetry.AddOrUpdate(PythonTelemetryConstants.Initialize, true, PythonTelemetryConstants.EventArea);
 
             _state = ParserState.ExpectingTestResults;
             _currentTestRun = new TestRun($"{Name}/{Version}", "Python", _currentTestRunId);
