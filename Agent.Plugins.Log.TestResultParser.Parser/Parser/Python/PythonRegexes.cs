@@ -13,7 +13,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private static readonly TimeSpan RegexDefaultTimeout = TimeSpan.FromMilliseconds(100);
 
-        // Pattern : ^(.+) \.\.\. (.*)$
+        // Pattern : ^(.+) ... (.*)$
         // Example : test1 (testProject) ... ok
         public static Regex TestResult { get; } = new Regex($"^(?<{RegexCaptureGroups.TestCaseName}>.+) \\.\\.\\. (?<{RegexCaptureGroups.TestOutcome}>.*)$",
             RegexOptions.ExplicitCapture, RegexDefaultTimeout);
