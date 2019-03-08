@@ -143,7 +143,7 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
                 }
                 catch (RegexMatchTimeoutException regexMatchTimeoutException)
                 {
-                    Logger.Warning($"JasmineTestResultParser : AttemptMatch : failed due to timeout with exception { regexMatchTimeoutException } at line {logData.LineNumber}");
+                    Logger.Warning($"PythonTestResultParser : Parse : failed due to timeout with exception { regexMatchTimeoutException } at line {logData.LineNumber}");
                     Telemetry.AddAndAggregate(PythonTelemetryConstants.RegexTimeout, 
                         new List<string> { "UnknownRegex" }, PythonTelemetryConstants.EventArea);
                 }
