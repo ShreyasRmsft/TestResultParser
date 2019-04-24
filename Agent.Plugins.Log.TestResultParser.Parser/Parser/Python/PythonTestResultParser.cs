@@ -196,12 +196,16 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
 
         private bool TryParseTestResult(LogData logData)
         {
-            var resultMatch = PythonRegexes.TestResult.Match(logData.Line);
+            // TestResultIdentifier regex is 10x faster than the actual TestResult regex
+            // There is little extra cost for re-parse for success but there is huge save during mismatchs
+            var resultMatch = PythonRegexes.TestResultIdentifier.Match(logData.Line);
 
             if (!resultMatch.Success)
             {
                 return _partialTestResult == null ? false : TryParseForPartialResult(logData);
             }
+
+            resultMatch = PythonRegexes.TestResult.Match(logData.Line);
 
             _partialTestResult = null;
 
