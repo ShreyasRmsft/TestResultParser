@@ -13,10 +13,19 @@ namespace Agent.Plugins.Log.TestResultParser.Parser
         /// </summary>
         private static readonly TimeSpan RegexDefaultTimeout = TimeSpan.FromMilliseconds(100);
 
+        /// <summary>
+        /// Timeout for TestResult regex
+        /// </summary>
+        private static readonly TimeSpan TestResultRegexTimeout = TimeSpan.FromMilliseconds(200);
+
+        // Pattern : " ... "
+        // Example : test1 (testProject) ... ok
+        public static Regex TestResultIdentifier { get; } = new Regex($" \\.\\.\\. ", RegexOptions.ExplicitCapture, RegexDefaultTimeout);
+
         // Pattern : ^(.+) ... (.*)$
         // Example : test1 (testProject) ... ok
         public static Regex TestResult { get; } = new Regex($"^(?<{RegexCaptureGroups.TestCaseName}>.+) \\.\\.\\. (?<{RegexCaptureGroups.TestOutcome}>.*)$",
-            RegexOptions.ExplicitCapture, RegexDefaultTimeout);
+            RegexOptions.ExplicitCapture, TestResultRegexTimeout);
 
         // TODO: Have separate pattern for error if required
         // Pattern : ^(FAIL|ERROR)( )?:(.+)$
