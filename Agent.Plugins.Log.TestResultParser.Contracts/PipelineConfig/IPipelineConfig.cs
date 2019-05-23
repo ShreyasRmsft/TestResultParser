@@ -9,5 +9,11 @@ namespace Agent.Plugins.Log.TestResultParser.Contracts
     {
         Guid Project { get; set; }
         int BuildId { get; set; }
+        String StageName { get; set; }
+        int StageAttempt { get; set; }
+        String PhaseName { get; set; }
+        int PhaseAttempt { get; set; }
+        String JobName { get; set; }
+        int JobAttempt { get; set; }
     }
 }
