@@ -5,6 +5,11 @@ jobs:
   variables:
       buildConfiguration: 'Release'
   steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.*'
+        includePreviewVersions: true
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
@@ -22,6 +27,11 @@ jobs:
   variables:
       buildConfiguration: 'Release'
   steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.*'
+        includePreviewVersions: true
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
@@ -38,6 +48,11 @@ jobs:
   variables:
       buildConfiguration: 'Release'
   steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.*'
+        includePreviewVersions: true
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
