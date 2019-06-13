@@ -7,7 +7,7 @@ jobs:
   steps:
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx --collect "code coverage"
+    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
       displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
       condition: succeededOrFailed()
