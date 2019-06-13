@@ -21,6 +21,12 @@ jobs:
         testResultsFiles: '**/*.trx'
         publishRunAttachments: true
         testRunTitle: 'Windows'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+        pathToSources: '$(System.DefaultWorkingDirectory)'
+        failIfCoverageEmpty: true
 - job: macOS
   pool:
     vmImage: 'macOS-10.13'
@@ -42,6 +48,12 @@ jobs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
         testRunTitle: 'Mac'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+        pathToSources: '$(System.DefaultWorkingDirectory)'
+        failIfCoverageEmpty: true
 - job: Linux
   pool:
     vmImage: 'ubuntu-16.04'
@@ -63,3 +75,9 @@ jobs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
         testRunTitle: 'Linux'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+        pathToSources: '$(System.DefaultWorkingDirectory)'
+        failIfCoverageEmpty: true
