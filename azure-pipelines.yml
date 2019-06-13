@@ -5,9 +5,14 @@ jobs:
   variables:
       buildConfiguration: 'Release'
   steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.x'
+        includePreviewVersions: true
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx --collect "code coverage"
+    - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
       displayName: 'dotnet test Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj --configuration $(buildConfiguration)'
     - task: PublishTestResults@2
       condition: succeededOrFailed()
@@ -16,12 +21,23 @@ jobs:
         testResultsFiles: '**/*.trx'
         publishRunAttachments: true
         testRunTitle: 'Windows'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+        pathToSources: '$(System.DefaultWorkingDirectory)'
+        failIfCoverageEmpty: true
 - job: macOS
   pool:
     vmImage: 'macOS-10.13'
   variables:
       buildConfiguration: 'Release'
   steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.x'
+        includePreviewVersions: true
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
@@ -32,12 +48,23 @@ jobs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
         testRunTitle: 'Mac'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+        pathToSources: '$(System.DefaultWorkingDirectory)'
+        failIfCoverageEmpty: true
 - job: Linux
   pool:
     vmImage: 'ubuntu-16.04'
   variables:
       buildConfiguration: 'Release'
   steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '2.x'
+        includePreviewVersions: true
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
     - script: dotnet test "Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.csproj" --settings "$(System.DefaultWorkingDirectory)\Agent.Plugins.UnitTests\Agent.Plugins.UnitTests.runsettings" --configuration $(buildConfiguration) --logger:trx
@@ -48,3 +75,9 @@ jobs:
         testResultsFormat: VSTest
         testResultsFiles: '**/*.trx'
         testRunTitle: 'Linux'
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+        pathToSources: '$(System.DefaultWorkingDirectory)'
+        failIfCoverageEmpty: true
